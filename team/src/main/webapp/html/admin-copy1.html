@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="../resources/css/admin/admin-copy1.css">
+</head>
+<body>
+    <div id="adminMain">
+        <div id="adminModal">
+            <ul>
+                <li id="admin-R">식당 등록</li>
+                <li id="admin-B">게시글 관리</li>
+                <li id="admin-M">회원 관리</li>
+            </ul>
+        </div>
+        <div>
+            <!-- 식당 등록 -->
+            <div id="adminR" class="admin-mainMenu">
+                <form action="#">
+                    <div class="adminR-menu">
+                        <aside>업소 상호명</aside>
+                        <input type="text">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside>업종</aside>
+                        <select name="food" id="select">
+                            <option value="k">한식</option>
+                            <option value="c">중식</option>
+                            <option value="j">일식</option>
+                            <option value="일반대중음식">일반대중음식</option>
+                            <option value="편의점">편의점</option>
+                            <option value="제과점">제과점</option>
+                            <option value="패스트푸드">패스트푸드</option>
+                        </select>
+                    </div>
+                    <div class="adminR-menu">
+                        <aside>주소</aside>
+                        <input type="text" placeholder="주소">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside>휴대폰 번호(-제외)</aside>
+                        <input type="text" placeholder="전화번호">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside>키워드</aside>
+                        <textarea placeholder="키워드" style="width:50%" stlye="resize:none"></textarea>
+                    </div>
+                    <div id="btn">
+                        <button>등록</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 회원 관리 -->
+            <div id="adminMember" class="admin-mainMenu">
+                <div id="tableArea">
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+                                <th>회원 종류</th>
+                                <th>아이디</th>
+                                <th>회원 이름</th>
+                                <th>전화번호</th>
+                                <th>회원 권한</th>
+                                <th>회원 탈퇴여부</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>업주</td>
+                                <td>test</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>1</td>
+                                <td>N</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="pagination-area">
+
+                </div>
+            </div>
+            <!-- 게시글 관리 -->
+            <div class="admin-mainMenu" id="adminBoard">
+
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
