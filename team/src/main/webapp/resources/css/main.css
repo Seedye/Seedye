@@ -41,6 +41,9 @@
     font-size: 13px;
     margin: 3px 0px 0px 0px;
 }
+.category input{
+    display: none;
+}
 
 /* 검색 입력 란 */
 #search-query{
