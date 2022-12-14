@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+
+/* 로그인 화면 CSS 시작*/
+
+/* 전체 */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 로고 + 새싹이 */
+.login-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* body */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 로고 */
+.login-logo{
+    text-align: center;
+    margin-bottom: 100px;  
+}
+
+/* 새싹이 */
+.sprout{
+    font-size: 40px;
+    color: #2DB400;
+    font-weight: bold;
+}
+
+/* 아이디 / 비밀번호 */
+.input-text{
+    width: 400px;
+    margin: 20px 0 50px;
+}
+
+/* 아이디 / 비밀번호 input */
+.input-text input{
+    border: none;
+    border-bottom: 2px solid #e7e437;
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+/* 아이디 / 비밀번호를 클릭했을 때 */
+.input-text input:focus{
+    outline: none;
+    border-bottom-color: #ccff99;
+}
+
+/* 로그인 버튼 */
+.login-btn{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    background-color: #2DB400;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+/* 로그인 버튼 클릭 시 95%로 작아지게 */
+.login-btn:active{
+    transform: scale(0.95);
+}
+
+/* 아이디 저장을 감싸는 div 태그 */
+.save-area{
+    margin-top: 10px;
+    padding: 20px 0;
+    border-bottom: 2px solid rgb(133, 34, 34);
+    display: flex;
+    /* align-items: center; */
+    justify-content: center
+}
+
+/* input 아이디저장 체크박스 숨기기 */
+#saveId{
+    display: none;
+}
+
+/* save-area 안에 label */
+.save-area > label{
+    display: flex;
+    cursor: pointer;
+    justify-content: center
+}
+
+/* 회원가입 + ID / PW 찾기를 감싸고 있는 p 태그 */
+.login-end{
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 아이디 저장 옆 체크박스 */
+.save-area > label > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgb(133, 34, 34);
+
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* 체크박스 체크 시 아이콘 스타일 지정 */
+.save-area + label + div:checked{
+    background-color: rgb(133, 34, 34); /* 체크박스 체크시 배경색 */
+    border-color: rgb(133, 34, 34);
+}
+
+/* 체크박스 체크 시 아이콘 스타일 지정 */
+#saveId:checked + label > div{ /* 체크된 체크박스에 다음 라벨 (후손 라벨) */
+    background-color: rgb(133, 34, 34); /* 체크박스 체크시 배경색 */
+    border-color: rgb(133, 34, 34);
+    color: rgb(133, 34, 34);
+}
+
+/* 아이디 저장 */
+.saveId{
+    display: flex;
+    align-self: center;
+    font-size: 16px;
+    font-weight: bold;
+    color:rgb(133, 34, 34);
+}
+
+/* 회원가입 + ID / PW 찾기 */
+.login-end > a{
+    text-decoration: none;
+    color : rgb(133, 34, 34);
+    margin: 0 30px;
+    font-weight: bold;
+    font-size: 16px;
+    }
+
+/* 회원가입과 ID/PW찾기 사이 | */
+.login-span{
+    color: rgb(133, 34, 34);
+}
+
+/********************************************/
+
+
+
