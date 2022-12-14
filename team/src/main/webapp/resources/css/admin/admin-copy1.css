@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+
 #adminMain{
     display: flex;
 }
@@ -6,10 +19,15 @@
 /* 관리자 메뉴 */
 #adminModal{
     border: 1px solid black;
-    width: 10%;
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-direction: column;
-    background-color: greenyellow;
+    background-color:  #2db400;
+    position: sticky;
+    left: 20px;
+    top: 30px;
+    margin: 10px;
 }
 
 #adminModal > ul{
@@ -17,7 +35,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding:10px;
+    padding-inline-start: 0;    
 }
 
 #adminModal > ul > li{
@@ -30,8 +48,6 @@
 /* 식당 등록 전체 */
 #adminR{
     border: 1px solid black;
-    width: 80%;
-    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -41,8 +57,9 @@
 
 .admin-mainMenu{
     border: 1px solid black;
-    width: 80%;
-    height: 70%;
+    width: 100%;
+    height: 65vh;
+    
 }
 
 
@@ -68,5 +85,129 @@
 #btn{
     display: flex;
     justify-content: center;    
+}
+
+
+/* 회원 관리 목록 */
+#adminMember{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tableArea{
+    width: 80%;
+    height: 90%;
+    border: 1px solid #2db400;
+}
+
+.list-table{
+    width: 100%;
+    border: 1px solid black;
+}
+
+#tableHead{
+    background-color: #aaa;
+    font-size: 20px;
+}
+
+#memberH1{
+    text-align: center;
+    color: #2db400;
+    margin: 10px;
+}
+
+
+/* 이미지 영역 */
+#imageArea{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#imageArea > aside{
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.imageInput{
+    display: none;
+}
+
+.preview{
+    width: 100px;
+}
+
+.imageDiv{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imageDiv > label{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/* 식당관리 테이블 */
+#storeManage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#storeArea{
+    width: 80%;
+    height: 90%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#storeTable{
+    width: 100%;
+    height: 80%;
+    border: 1px solid black;
+}
+
+.storeList{
+    cursor: pointer;
+}
+
+#storeTH{
+    background-color: #2db400;
+}
+
+td{
+    text-align: center;
+}
+
+#storeH1{
+    text-align: center;
+    color: #2db400;
+    margin: 10px;
+}
+
+#btnArea{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+/* 페이지 목록 */
+.pagination{
+
+    list-style: none;
+    display: flex;
+    text-decoration: none;
 }
 
