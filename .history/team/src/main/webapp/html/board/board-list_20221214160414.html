@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boardList</title>
+    <link rel="stylesheet" href="../../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/boardList-style.css">
+</head>
+<body>
+  <header>
+        <!-- 헤더 -->
+        <section id="header-container">
+            <!-- 로고 -->
+            <section id="logo-section">
+                <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
+                <a href="#" id="logo-content">새싹이</a>
+            </section>
+            <!-- 메뉴창 -->
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="#"></a>공지사항</li>
+                <li><a href="#"></a>커뮤니티</li>
+                <li><a href="#"></a>소개</li>
+                <li><a href="#"></a>식당 등록 문의</li>
+                <li><a href="#"></a>후원</li>
+                <li><a href="#"></a>업데이트</li>
+                <li><a href="#"></a>관리자</li>
+            </ul>
+        </nav>
+    </section>
+    </header>
+    <main>
+      <!-- board 영역 -->
+      <section class="board-body-area">
+        <div class="board-title">커뮤니티</div>
+
+        <!-- 검색 -->
+        <div class="board-list-serch-write-area">
+          <!-- 검색어 입력 input -->
+          <div class="board-list-serch">
+            <input type="text" >
+          </div>
+          <!-- 검색 버튼 -->
+          <button>검색</button>
+          <!-- 글작성 버튼 -->
+          <div class="board-write-btn">글작성</div>
+        </div>
+
+        <!-- 게시글 리스트 영역 -->
+        <div class="board-list-area">
+          <!-- 게시글 나타나는 테이블 -->
+          <table class="board-list-table">
+            <tbody>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>처리상태</th>
+                <th>등록일</th>
+              </tr>
+
+              <!-- 공지 -->
+              <tr>
+                <td>공지</td>
+                <td>음식점 정보가 변경되었습니다.</td>
+                <td>공지사항</td>
+                <td>2022.12.13</td>
+      <!-- colspan="2" -->
+              </tr>
+
+              <!-- 게시물 -->
+              <tr>
+                <td>10</td>
+                <td>음식점 정보가 잘못되어있는거 같습니다.</td>
+                <td>처리중</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr>
+                <td>9</td>
+                <td>새싹 덕분에 잘 </td>
+                <td>처리중</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr>
+                <td>8</td>
+                <td>음식점 정보가 잘못되어있는거 같습니다.</td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr>
+                <td>7</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>음식점정보가 너무 이상하네요. 게요. </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>음식점정보가 너무 이상하네요. 맨탁 드릴게요. </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>음식점정보가 너무 이상하네요. 맨날 확인하면 옛날 정보만 나오는거 같습니다. 데이터 업데이트좀 부탁 드릴게요. </td>
+                <td>처리완료</td>
+                <td>2022.11.23</td>
+              </tr>
+            </tbody>
+          
+
+          </table>
+      
+            <ul class="board-list-page-area">
+              <li>&laquo;</li>
+              <li>&lt;</li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>&gt;</li>
+              <li>&raquo;</li>
+            </ul>
+            <!-- <div class="board-list-page-num"></div>
+            <div class="board-list-page-num"></div> -->
+          </div>
+          
+      </section>
+    </main>
+    
+    <footer>
+        <p>
+            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
+        </p>
+        <article>
+            <a href="#">프로젝트 소개</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보처리방침</a>
+            <span>|</span>
+            <a href="#">고객센터</a>
+        </article>
+    </footer>
+    
+</body>
+</html>
+
