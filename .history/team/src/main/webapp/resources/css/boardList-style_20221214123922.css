@@ -1,0 +1,131 @@
+*{
+  font-family: "NIXGONM-Vb";
+}
+/* main{
+  width: 1200px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
+.board-title{
+  margin-top: 0;
+  width: 99vw;
+  height: 350px;
+  background-color: #c6f0b8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+/* 검색 영역 스타일 */
+.board-list-serch-write-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+.board-list-serch{
+  width: 300px;
+  height: 60px;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid #ddd;
+
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board-list-serch > input{
+  width: 280px;
+  height: 50px;
+  border: 0px;
+  font-size: 20px;
+}
+.board-list-serch > input:focus{
+  outline: none;
+}
+.board-list-serch-write-area > button{
+  height: 65px;
+  width: 100px;
+  border-radius: 0 30px 30px 0;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+.board-write-btn{
+  margin: 20px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  justify-content: center;
+  border: 1px solid #ddd;
+  /* background-color: rgb(215, 235, 215); */
+}
+/* 테이블 스타일 */
+.board-list-table{
+  /* display: block; */
+  text-align: center;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  margin: auto;
+  /* background-color: red; */
+  /* height: 250px; */
+  /* width: 800px; */
+  
+}
+/* .board-list-area{
+  height: 500px;
+} */
+
+/* 게시글 번호 부분 */
+.board-list-table > tbody > tr > td:first-child {
+  width: 70px;
+  height: 50px;
+  /* background-color: blueviolet; */
+
+  /* text-align: center; */
+}
+/* 게시물 제목 부분 */
+.board-list-table > tbody > tr > td:nth-child(2){
+  display: block;
+  width: 600px;
+  text-align: left;
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+/* 게시글 처리상태/등록일 부분 */
+.board-list-table > tbody > tr > td:nth-child(3),
+.board-list-table > tbody > tr > td:nth-child(4){
+  width:140px;
+  height: 50px;
+}
+/* {
+  width: 140px;
+  height: 50px;
+
+} */
+
+.board-list-table > tbody> tr{
+  height: 50px;
+}
+
+/* 페이지 넘기기 스타일 */
+.board-list-page-area{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.board-list-page-area>li{
+  display: flex;
+  width: 30px;
+  list-style:none;
+  /* padding-left: 0px; */
+}
