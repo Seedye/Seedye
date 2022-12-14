@@ -32,6 +32,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 #logo{
@@ -40,7 +41,7 @@ body{
 }
 
 #logo-content{
-    color: green;
+    color: #2db400;
     -webkit-text-stroke: 1px white;
     text-decoration: none;
     font-weight: bold;
@@ -77,17 +78,17 @@ body{
 }
 
 #nav-bar > ul > li:hover{
-    background-color: rgba(0, 100, 0, 0.4);
+    background-color: rgba(45, 180, 0, 0.6);
     color: white;
     transition-duration: 0.3s;
 }
 
 footer {
-    width: 1024px;
+    width: 1200px;
     height: 134px;
     color: gray;
     font-size: var(--small-font-size);
-    padding-bottom: 40px;
+    padding: 20px 0;
   
     display: flex;
     flex-direction: column;
@@ -96,6 +97,8 @@ footer {
 
     position: absolute;
     bottom: 0;
+
+    border-top: 1px solid #ddd;
   }
   
   footer a {
