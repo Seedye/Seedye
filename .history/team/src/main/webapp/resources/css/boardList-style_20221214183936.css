@@ -35,7 +35,7 @@
   width: 300px;
   height: 60px;
   border-radius: 30px 0 0 30px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid #ddd;
 
   display: flex;
     justify-content: end;
@@ -55,7 +55,7 @@
   height: 60px;
   width: 100px;
   border-radius: 0 30px 30px 0;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid #ddd;
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
@@ -85,8 +85,9 @@
 /* 테이블 스타일 */
 .board-list-table{
   text-align: center;
-  border-spacing: 0;
+
   margin: auto;
+  /* width: 90vw; */
   border-top: 1px solid #2db400;
 }
 /* .board-list-area{
@@ -94,9 +95,9 @@
 } */
 .board-list-thead{
   height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
+  /* background-color: rgba(221, 221, 221, 0.623); */
   /* background-color: #ddd; */
-  /* background-color: whitesmoke; */
+  background-color: whitesmoke;
   border-top: 2px solid red;
 }
 .board-list-thead > tr{
@@ -141,7 +142,7 @@
   height: 50px;
 }
 .board-list-table > tbody> tr:hover{
-  background-color: #ddd;
+  background-color: #2db4001c;
 
 }
 /* .board-list-table > tbody > tr > td:hover{

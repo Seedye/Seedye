@@ -87,6 +87,7 @@
   text-align: center;
   border-spacing: 0;
   margin: auto;
+  /* width: 90vw; */
   border-top: 1px solid #2db400;
 }
 /* .board-list-area{

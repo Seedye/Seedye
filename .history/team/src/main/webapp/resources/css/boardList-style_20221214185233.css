@@ -85,8 +85,9 @@
 /* 테이블 스타일 */
 .board-list-table{
   text-align: center;
-  border-spacing: 0;
+
   margin: auto;
+  /* width: 90vw; */
   border-top: 1px solid #2db400;
 }
 /* .board-list-area{
@@ -94,9 +95,9 @@
 } */
 .board-list-thead{
   height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
+  /* background-color: rgba(221, 221, 221, 0.623); */
   /* background-color: #ddd; */
-  /* background-color: whitesmoke; */
+  background-color: whitesmoke;
   border-top: 2px solid red;
 }
 .board-list-thead > tr{
