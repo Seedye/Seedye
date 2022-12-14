@@ -6,21 +6,11 @@
   /* margin-top: 0; */
   width: 1200px;
   height: 250px;
-  background-color: white;
-  background-color: white;
+  background-color: #c6f0b8;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-}
-.board-title > img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity:0.3;
-}
-.board-title > p{
-  position: absolute;
 }
 /* 검색 영역 스타일 */
 .board-list-serch-write-area{
@@ -92,7 +82,7 @@
 } */
 .board-list-thead{
   height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
+  background-color: rgba(221, 221, 221, 0.425);
   border-top: 2px solid red;
 }
 .board-list-thead > tr{
@@ -162,7 +152,7 @@
   cursor: pointer;
   /* padding-left: 0px; */
 }
-.board-list-page-no:hover{
+.board-list-page-area>li:hover{
   /* background-color: #061a00; */
   border-bottom: 1px solid #2db400;
 }

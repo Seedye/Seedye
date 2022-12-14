@@ -6,8 +6,7 @@
   /* margin-top: 0; */
   width: 1200px;
   height: 250px;
-  background-color: white;
-  background-color: white;
+  background-color: #c6f0b8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +16,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity:0.3;
-}
-.board-title > p{
-  position: absolute;
 }
 /* 검색 영역 스타일 */
 .board-list-serch-write-area{

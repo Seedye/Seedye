@@ -6,21 +6,11 @@
   /* margin-top: 0; */
   width: 1200px;
   height: 250px;
-  background-color: white;
-  background-color: white;
+  background-color: #c6f0b8;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-}
-.board-title > img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity:0.3;
-}
-.board-title > p{
-  position: absolute;
 }
 /* 검색 영역 스타일 */
 .board-list-serch-write-area{
@@ -63,57 +53,50 @@
 .board-write-btn{
   margin: 20px;
   width: 100px;
-  height: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   border-radius: 6px;
   justify-content: center;
   border: 1px solid #ddd;
   cursor: pointer;
-  background-color: #2db400;
-  color: whitesmoke;
+  /* background-color: rgb(215, 235, 215); */
 }
 .board-write-btn:hover{
   transition-duration: 0.2s;
-  background-color: #2aa800;
-  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
+  background-color: #d8f0d0;
   border:none;
 }
 /* 테이블 스타일 */
 .board-list-table{
   text-align: center;
-
   margin: auto;
-  /* width: 90vw; */
-  border-top: 1px solid #2db400;
+
 }
 /* .board-list-area{
   height: 500px;
 } */
-.board-list-thead{
-  height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
-  border-top: 2px solid red;
-}
-.board-list-thead > tr{
-  border: 2px solid red;
-}
+
 /* 게시글 번호 부분 */
 .board-list-table > tbody > tr > td:first-child {
   width: 100px;
   height: 50px;
   cursor: pointer;
-  /* background-color: blueviolet; */
-
-  /* text-align: center; */
 }
 /* 게시물 제목 부분 */
 .board-list-table > tbody > tr > td:nth-child(2){
-  /* display: block; */
+  display: block;
   width: 600px;
   height: 50px;
+  
   text-align: left;
+  padding: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
+  background-color: aqua;
+
   
 }
 /* 게시글 처리상태/등록일 부분 */
@@ -136,13 +119,9 @@
   
   height: 50px;
 }
-.board-list-table > tbody> tr:hover{
-  background-color: #2db4001c;
-
-}
-/* .board-list-table > tbody > tr > td:hover{
+.board-list-table > tbody > tr > td:hover{
   background-color: #d8f0d0;
-} */
+}
 
 /* 페이지 넘기기 스타일 */
 .board-list-page-area{
@@ -154,15 +133,8 @@
 
 .board-list-page-area>li{
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 30px;
-  height: 30px;
   list-style:none;
   cursor: pointer;
   /* padding-left: 0px; */
-}
-.board-list-page-no:hover{
-  /* background-color: #061a00; */
-  border-bottom: 1px solid #2db400;
 }

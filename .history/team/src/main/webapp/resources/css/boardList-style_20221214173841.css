@@ -7,7 +7,6 @@
   width: 1200px;
   height: 250px;
   background-color: white;
-  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +16,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity:0.3;
+  opacity:0.7;
 }
 .board-title > p{
   position: absolute;

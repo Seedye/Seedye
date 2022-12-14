@@ -6,21 +6,11 @@
   /* margin-top: 0; */
   width: 1200px;
   height: 250px;
-  background-color: white;
-  background-color: white;
+  background-color: #c6f0b8;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-}
-.board-title > img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity:0.3;
-}
-.board-title > p{
-  position: absolute;
 }
 /* 검색 영역 스타일 */
 .board-list-serch-write-area{
@@ -76,7 +66,7 @@
 .board-write-btn:hover{
   transition-duration: 0.2s;
   background-color: #2aa800;
-  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
+  box-shadow: 1px 1px 1px 1px rgb(216, 216, 216);
   border:none;
 }
 /* 테이블 스타일 */
@@ -85,14 +75,14 @@
 
   margin: auto;
   /* width: 90vw; */
-  border-top: 1px solid #2db400;
+  border-top: 1px solid black;
 }
 /* .board-list-area{
   height: 500px;
 } */
 .board-list-thead{
   height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
+  /* background-color: red; */
   border-top: 2px solid red;
 }
 .board-list-thead > tr{
@@ -137,7 +127,7 @@
   height: 50px;
 }
 .board-list-table > tbody> tr:hover{
-  background-color: #2db4001c;
+  background-color: #d8f0d0;
 
 }
 /* .board-list-table > tbody > tr > td:hover{
@@ -162,7 +152,7 @@
   cursor: pointer;
   /* padding-left: 0px; */
 }
-.board-list-page-no:hover{
-  /* background-color: #061a00; */
-  border-bottom: 1px solid #2db400;
+.board-list-page-area>li:hover{
+  background-color: #061a00;
+  border-bottom: #2db400;
 }
