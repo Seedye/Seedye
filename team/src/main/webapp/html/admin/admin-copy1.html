@@ -5,39 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="../resources/css/admin/admin-copy1.css">
-    <link rel="stylesheet" href="../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/admin/admin-copy1.css">
+    <link rel="stylesheet" href="../../resources/css/header.css">
 </head>
-<main>
-    <header>
-            <!-- 헤더 -->
-        <section id="header-container">
-                <!-- 로고 -->
-            <section id="logo-section">
-                <a href="#"><img id="logo" src="../resources/images/새싹이.png"></a>
-                <a href="#" id="logo-content">새싹이</a>
-            </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="#"></a>공지사항</li>
-                <li><a href="#"></a>커뮤니티</li>
-                <li><a href="#"></a>소개</li>
-                <li><a href="#"></a>식당 등록 문의</li>
-                <li><a href="#"></a>후원</li>
-                <li><a href="#"></a>업데이트</li>
-                <li><a href="#"></a>관리자</li>
-            </ul>
-            </nav>
-        </section>
-    </header>
+<body>
     <main>
+        <header>
+                <!-- 헤더 -->
+            <section id="header-container">
+                    <!-- 로고 -->
+                <section id="header-section">
+                    <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
+                    <a href="#" id="logo-content">새싹이</a>
+                </section>
+                <!-- 메뉴창 -->
+                <nav id="nav-bar">
+                    <ul>
+                        <li><a href="#"></a>공지사항</li>
+                    <li><a href="#"></a>커뮤니티</li>
+                    <li><a href="#"></a>소개</li>
+                    <li><a href="#"></a>식당 등록 문의</li>
+                    <li><a href="#"></a>후원</li>
+                    <li><a href="#"></a>업데이트</li>
+                    <li><a href="#"></a>관리자</li>
+                </ul>
+                </nav>
+            </section>
+        </header>
         <div id="adminMain">
             <div id="adminModal">
                 <ul>
-                    <li id="admin-S">식당 관리</li>
-                    <li id="admin-B">게시글 관리</li>
-                    <li id="admin-M">회원 관리</li>
+                    <li id="admin-S"><a href="admin-copy1.html">식당 관리</a></li>
+                    <li id="admin-B"><a href="boardManage.html">게시글 관리</a></li>
+                    <li id="admin-M"><a href="member.html">회원 관리</a></li>
                 </ul>
             </div>
             <!-- 식당 등록 -->
@@ -73,13 +73,15 @@
                     <div class="adminR-menu">
                         <aside>업종</aside>
                         <select name="food" id="select">
-                            <option value="k">한식</option>
-                            <option value="c">중식</option>
-                            <option value="j">일식</option>
-                            <option value="n">일반대중음식</option>
-                            <option value="p">편의점</option>
-                            <option value="b">제과점</option>
-                            <option value="f">패스트푸드</option>
+                            <option value="">한식</option>
+                            <option value="">중식</option>
+                            <option value="">일식</option>
+                            <option value="">양식</option>
+                            <option value="">패스트푸드</option>
+                            <option value="">일반대중음식</option>
+                            <option value="">편의점</option>
+                            <option value="">제과점</option>
+                            <option value="">정육점</option>
                         </select>
                     </div>
                     <div class="adminR-menu">
@@ -92,55 +94,27 @@
                     </div>
                     <div class="adminR-menu">
                         <aside>메뉴, 가격</aside>
-                        <textarea placeholder="주요 메뉴, 가격" style=></textarea>
+                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none"></textarea>
                     </div>
                     <div id="btn">
                         <button>등록</button>
                     </div>
                 </form>
             </div>
-            <!-- 회원 관리 -->
-            <div id="adminMember" class="admin-mainMenu">
-                <div id="tableArea">
-                    <h1 id="memberH1">회원 관리</h1>
-                    <table class="list-table">
-                        <thead>
-                            <tr id="tableHead">
-                                <th>회원 종류</th>
-                                <th>아이디</th>
-                                <th>회원 이름</th>
-                                <th>전화번호</th>
-                                <th>회원 권한</th>
-                                <th>회원 탈퇴여부</th>
-                                <th>회원 관리</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>업주</td>
-                                <td>testzsdb</td>
-                                <td>테스트</td>
-                                <td>01011112222</td>
-                                <td>1</td>
-                                <td>N</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="pagination-area">
-
-                </div>
-            </div>
-            <!-- 게시글 관리 -->
-            <div class="admin-mainMenu" id="adminBoard">
-                <div>공지사항</div>
-                <div>업데이트</div>
-                <div>커뮤니티</div>
-            </div>
-            <!-- 식당 관리 -->
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
+                    <select>
+                        <option>업종</option>
+                        <option value="">한식</option>
+                        <option value="">중식</option>
+                        <option value="">일식</option>
+                        <option value="">양식</option>
+                        <option value="">패스트푸드</option>
+                        <option value="">일반대중음식</option>
+                        <option value="">편의점</option>
+                        <option value="">제과점</option>
+                        <option value="">정육점</option>
+                    </select>
                     <h1 id="storeH1">식당 관리</h1>
                     <table id="storeTable">
                         <thead>
@@ -162,7 +136,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -171,7 +145,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -180,7 +154,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -189,7 +163,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>5</td>
@@ -198,7 +172,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>6</td>
@@ -207,7 +181,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -216,7 +190,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>8</td>
@@ -225,7 +199,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>9</td>
@@ -234,7 +208,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td>
+                                <td><button class="store-manage">관리</button></td>
                             </tr>
                             <tr>
                                 <td>10</td>
@@ -243,7 +217,7 @@
                                 <td>서울특별시 종로구 남대문로</td>
                                 <td>0205050505</td>
                                 <td>등록완료</td>
-                                <td><button>관리</button></td> 
+                                <td><button class="store-manage">관리</button></td> 
                             </tr>
                         </tbody>
                     </table>
@@ -285,6 +259,6 @@
             <a href="#">고객센터</a>
         </article>
     </footer>
-   <script src="../resources/js/admin.js"></script>
+   <script src="../../resources/js/admin.js"></script>
 </body>
 </html>
