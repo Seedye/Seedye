@@ -5,9 +5,18 @@
     font-style: normal;
 }
 
-* {
-    font-family: NIXGONM-Vb;
+@font-face {
+    font-family: 'LotteMartHappy';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
 }
+
+* {
+    font-family: LotteMartHappy;
+    /* font-weight: bold; */
+}
+
 /* 공통 바디 사이즈 */
 body{
     width: 1200px;
@@ -17,7 +26,6 @@ body{
 
 /* 메인 가운데 정렬 */
 main{
-    text-align: center;
     height: 100%;
 }
 
@@ -25,34 +33,49 @@ main{
 footer{
     position: relative;
     margin-bottom: 0;
+    margin-top: 200px;
+}
+
+/* 본문 스타일 */
+.main-container{
+    width: 1200px;
+    margin: 0 auto;
 }
 
 
 /* 검색창 높이 설정 */
 .searchBox{
-    height: 40px;
+    height: 55px;
     display: flex;
     justify-content: center;
+    
+    
 }
 
 /* 검색창 제목 스타일 */
 .searchBoxName{
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-bottom: 60px;
     font-size: 30px;
 }
 
 /* 검색창 스타일 */
 .searchBox input{
     height: 100%;
-    width: 500px;
+    width: 700px;
     font-size: 20px;
     box-sizing: border-box;
     padding-left: 20px;
     border-radius: 10px;
-    border: 1px solid black;
-    /* 버튼간격 */
-    margin-right: 10px;
+    /* 버튼간격 */  
+    margin-right: 20px;
+    border: none;
+    box-shadow: 3px 3px 3px 3px #ddd;
+
+    /* 검색창에 입력중일 때 */
+    outline-style: hidden;
+    outline-color: gray;
 }
 
 /* 검색창 버튼 */
@@ -62,6 +85,9 @@ footer{
     /* background: #2db400; */
     border-radius: 5px;
     width: 50px;
+
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px 3px #ddd;
 
     /* 폰트 스타일 */
     /* color: white; */
@@ -73,13 +99,8 @@ footer{
 
 .box {
     padding: 4.5em 0;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    -webkit-justify-content: center;
     justify-content: center;
 }
 
@@ -89,7 +110,6 @@ footer{
     background: none;
     color: inherit;
     position: relative;
-    -moz-osx-font-smoothing: grayscale;
     cursor: pointer;
 }
 
@@ -103,9 +123,7 @@ footer{
 }
 .button--antiman.button--inverted,
 .button--antiman.button--inverted-alt {
-    -webkit-transition: color 0.3s;
     transition: color 0.3s;
-    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
 .button--antiman > span {
@@ -116,22 +134,18 @@ footer{
     content: '';
     z-index: -1;
     border-radius: inherit;
-    pointer-events: none;
     position: absolute;
     top: -2px;
     left: -1.5px;
     width: 100%;
     height: 100%;
-    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
     transition: transform 0.3s, opacity 0.3s;
-    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
 /* 선 에니메이션 */
 .button--antiman::before {
     border: 2px solid gray;
     opacity: 0;
-    -webkit-transform: scale3d(1.2, 1.2, 1);
     transform: scale3d(1.2, 1.2, 1);
 }
 .button--antiman.button--border-thin::before {
@@ -145,37 +159,38 @@ footer{
 }
 .button--antiman:hover::before {
     opacity: 1;
-    -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
 }
 .button--antiman:hover::after {
     opacity: 0;
-    -webkit-transform: scale3d(0.8, 0.8, 1);
     transform: scale3d(0.8, 0.8, 1);
 }
 
-/* 카테고리 박스, 검색 결과 박스 스타일 */
-.foodTypecategory, .searchList{
+.foodTypecategory h2{
+    text-align: center;
+}
+
+
+.foodTypecategory{
     margin-top: 50px;
-    border-top: 1px solid black;
-    padding: 24px;
+    padding-top: 10px;
+    
 }
 
 /* 카테고리 이미지 스타일 */
 .foodTypecategory img{
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
-    margin: 0 30px;
 }
 
 /* 리스트 점 삭제 */
 .foodTypecategory li{
-    /* list-style: none; */
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    list-style: none;
+    text-align: center;
 }
 
 /* 체크박스 없애기 */
@@ -186,27 +201,62 @@ footer{
 /* 카테고리 ul태그 스타일 */
 .foodTypecategory ul{
     display: flex;
-    width: 500px;
-    flex-wrap: wrap;
-    justify-content: center;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    padding-top: 10px;
     margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+}
+
+.foodTypecategory li *{
+    cursor: pointer;
+}
+
+.foodTypecategory div:hover{
+    border-bottom: 2px solid #2db400;
+}
+
+
+.category-box{
+    /* background-color: darkkhaki; */
+    width: 110px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    /* border-radius: 10px; */
+    
+}
+
+.category-box input:checked{
+    border: 1px solid black;
 }
 
 /* 검색 결과 박스 */
 .searchList{
-    border-top: 1px solid black;
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 40px;
+    width: 65%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
 }
 
 /* 검색 결과 박스(ul) */
-.searchList ul, .searchList li{
-    border: 1px solid black;
+.searchList ul{
     border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    
 }
 
 .searchList li{
+    
+    border-radius: 5px;
+    border: 1px solid black;
     display: flex;
     padding: 10px;
     justify-content: space-between;
+    margin-bottom: 1px;
 }
 
 /* 가게 정보 스타일 */
@@ -223,7 +273,6 @@ footer{
 /* 상세보기 버튼 스타일 */
 .storeInfoLink button{
     border: none;
-    background-color: white;
     height: 100%;
     border: 1px solid black;
     border-radius: 5px;
@@ -237,6 +286,8 @@ footer{
     color: white;
 }
 
+/* 사진 속 글씨 */
+/* 
 .searchAria{
     position: relative;
     
@@ -251,9 +302,50 @@ footer{
     padding: 10px;
     border-radius: 5px;
 }
+ */
 
-.searchAria > img{
-    width: 1200px;
-    height: 560px;
+/* 메인 페이지 이미지 스타일 */
+.main-image{
+    width: 100vw;
+    height: 550px;
     object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* 결과 정보 창 스타일 */
+.result-box{
+    display: flex;
+    /* border-top: 2px solid black; */
+    justify-content: flex-start;
+}
+
+/* 통계창 스타일 */
+.statistics{
+    /* border: 1px solid black; */
+    box-shadow: 3px 3px 3px 3px #ddd;
+    border-radius: 10px;
+    width: 20%;
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.statistics li{
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+/* 즐겨찾기 스타일 */
+.bookmark{
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    width: 15%;
+    
+}
+
+.bookmark li{
+    list-style: none;
+    margin-bottom: 8px;
 }
