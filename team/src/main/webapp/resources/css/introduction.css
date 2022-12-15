@@ -1,0 +1,58 @@
+/* #introduction-container > div{
+    width: 1200px;
+    margin-top: 30px;
+} */
+*{
+   font-family: NIXGONM-Vb;
+}
+
+#main-introduction{
+    width: 1000px;
+    height: 100px;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: yg-jalnan;
+    font-size: 50px;
+    border-bottom: 2px solid #2db400;
+
+}
+
+.first-introduction , .second-introduction , .third-introduction{
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 150px;
+    
+}
+
+.introduction-container img{
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+}
+
+.introduction-text{
+   /* border: 1px solid black; */
+   margin: 0 50px;
+   width: 650px;
+   height: 500px;
+   border-radius: 50px;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   font-size: 28px;
+}
+
+.introduction-text > p:first-child{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
