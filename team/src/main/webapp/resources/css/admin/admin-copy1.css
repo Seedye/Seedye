@@ -208,6 +208,14 @@ td{
 
     list-style: none;
     display: flex;
+    justify-content: center;
+}
+
+.pagination li{
+    margin: 0 5px;
+}
+
+.pagination li a{
     text-decoration: none;
 }
 
