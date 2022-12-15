@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+
+/* 회원가입 CSS 시작 */
+
+
+/* 전체 */
+*{
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+/* 회원가입 테두리 */
+.solid{
+    /* border: 1px solid black;  */
+    padding: 0px 30px 0px 30px;
+}
+
+/* 로고 + 새싹이 */
+.login-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* body */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 로고 */
+.login-logo{
+    text-align: center;
+    margin-bottom: 40px;  
+}
+
+/* 새싹이 */
+.sprout{
+    font-size: 40px;
+    color: #2DB400;
+    font-weight: bold;
+}
+
+
+
+.signUp-content{
+    display: flex;
+    justify-content: center; /* 가운데 배치 */
+    height: auto;
+}
+
+#signUp-frm{
+    margin-top: 30px; /* 위에서 30px만큼 떨어지게 */
+}
+
+#signUp-frm > label{
+    display: block; /* block 설정 */
+    margin-top: 30px; /* 위에서 40px만큼 떨어지게 */
+    font-size: 18px; /* 글자 크기 18px로 */
+}
+
+#signUp-frm > span{
+    display: block; /* block 설정 */
+    height: 20px; /* 높이 20px로 설정 */
+}
+
+/* 필수 작성 */
+.required{
+    color: #33332f;
+    padding: 0 5px; /* 좌우로 5px만큼 떨어지게 */
+}
+
+/* input 태그를 감싸고 있는 div 태그 */
+.signUp-input-area{
+    width: 500px; /* 너비 500px로 설정 */
+    height: 50px; /* 높이 50px로 설정 */
+
+    margin-top: 10px;
+    margin-bottom: 10px; /* 아래쪽으로 다른 요소와의 간격 10px */
+    border-bottom: 2px solid #2DB400;
+
+    /* border: 2px solid #33332f;
+    border-radius: 5px; 2번 디자인 */
+
+
+    display: flex;
+    align-items: center; /* 가운데로 */
+    position: relative;
+}
+
+/* 시작지점 : 아래 왼쪽 */
+.signUp-input-area:after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    width: 1px;
+    height: 1px;
+    background-color: #2DB400;
+    transition: all linear 1s;
+}
+
+/* 500px 만큼 길어지게 */
+.signUp-input-area:hover:after{
+    width: 500px;
+}
+
+.signUp-input-area > input{
+    width: 70%; /* 너비 70% */
+    height: 100%; /* 높이 100% */
+    padding : 15px 10px 5px;
+    font-size: 16px; /* 글자 크기 16px */
+    font-weight: bold; /* 글자 두껍게 */
+
+    border: none; /* 테두리 없애기 */
+    outline: none; /* 클릭시 테두리 없애기 */
+}
+
+.signUp-input-area > button{
+    width: 30%; /* 나머지 너비의 30% */
+    height: 70%; /* 나머지 높이이 70% */
+    background-color: white; /* 버튼 배경 하얀색 */
+    border: 2px solid #33332f; /* 버튼 테두리 회색 */
+    cursor: pointer; /* 마우스 가져다대면 손가락 가리키는 모양 */
+    border-radius: 30px;
+}
+
+/* :focus-within : 내부 input 요소에 포커스가 맞춰 졌을 때 */
+.signUp-input-area:focus-within{
+    border-bottom-color: #ccff99; /* 클릭시 아래 테두리 색 #455ba8 */
+}
+
+/* 입력 관련 메세지 */
+.signUp-message{
+    font-size: 14px; /* 글자 크기 14px */
+    letter-spacing: -1px; /* 작고 촘촘하게 */
+}
+
+.confirm{color : green;} /* 입력 성공 시 초록색 */
+.error{color : red;} /* 에러 발생 시 빨강색 */
+
+/* 회원가입 버튼 */
+#signUp-btn{
+    width: 100%; /* 너비 100% 사용 */
+    padding: 10px;
+    margin: 30px 0;
+    border: none; /* 테두리 제거 */
+    border-radius: 30px;
+
+    font-size: 20px; /* 글자 크기 20px */
+    font-weight: bold; /* 글자 두껍게 */
+    background-color: #2DB400; /* 배경 색 */
+    color: white; /* 글자 색 */
+    cursor: pointer; /* 마우스 가져다대면 손가락 가리키는 모양 */
+}
+
+#signUp-btn:active{
+    transform: scale(0.95); /* 마우스 클릭 시 95% 작아지게*/
+}
