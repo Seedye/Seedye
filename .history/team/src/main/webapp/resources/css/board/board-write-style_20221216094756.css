@@ -12,7 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
 }
 /* 상세보기 흰영역 */
 .board-view-area{
@@ -54,8 +53,10 @@
   /* overflow: auto; */
 }
 
-.board-view-title-detail-answer > p{
+.board-view-title-detail-answer > input{
   font-size: 30px;
+  border: none;
+  width: 100%;
 }
 /* .board-view-title-detail-answer:first-child{
   display: flex;
@@ -68,11 +69,11 @@
   justify-content: space-between;
   padding: 10px;
 }
-.board-view-content-text>p{
-  
-  line-height: 180%;
-  /* background-color: red; */
-  
+.board-view-content-text>textarea{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
 }
 .board-view-content-text{
   height: 150px;
