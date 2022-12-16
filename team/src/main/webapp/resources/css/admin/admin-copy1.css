@@ -18,40 +18,6 @@
 }
 
 
-/* 관리자 메뉴 */
-#adminModal{
-    border: 1px solid black;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background-color:  #2db400;
-    left: 20px;
-    top: 30px;
-    margin: 10px;
-}
-
-#adminModal > ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-inline-start: 0;    
-}
-
-#adminModal > ul > li{
-    margin: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none;
-}
-
-#adminModal > ul > li > a{
-    text-decoration: none;
-    color: black;
-}
-
 /* 식당 등록 전체 */
 #adminR{
     border: 1px solid black;
