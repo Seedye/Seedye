@@ -1,0 +1,98 @@
+*{
+  font-family: "NIXGONM-Vb";
+}
+.board-view-modal{
+  top: 0; left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 상세보기 흰영역 */
+.board-view-area{
+  width: 40vw;
+  height: auto;
+  min-width: 600px;
+  min-height: 300px;
+  /* max-height: ; */
+  background-color: white;
+  border-radius: 10px;
+  /* overflow: auto; */
+  overflow: hidden;
+  margin: auto;
+}
+/* 상세보기 제목 위에 초록*/
+.board-view-title{
+  width: 100%;
+  height: 40px;
+  background-color:  #2db400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  
+}
+.board-view-content-all{
+  padding: 20px;
+}
+.board-view-content-all > *{
+  padding: 10px 0 0 0;
+}
+.board-view-content-content{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.board-view-content-text>p{
+  
+  line-height: 180%;
+  /* background-color: red; */
+  
+}
+.board-view-content-text{
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.board-view-content-content > p:nth-child(2){
+  color:rgba(0, 0, 0, 0.486);
+}
+.board-view-content-content > p:nth-child(1){
+  font-size: 20px;
+}
+.board-view-content-img-area{
+  /* width: 1000px; */
+  display: flex;
+  height: 150px;
+  /* padding: 10px; */
+  border-radius: 10px;
+  box-shadow: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.board-view-content-img{
+  width: 100px;
+  /* min-width: 90px; */
+  height: 100px;
+  background-color: red;
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin: 10px;
+}
+.board-view-content-img > img{
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

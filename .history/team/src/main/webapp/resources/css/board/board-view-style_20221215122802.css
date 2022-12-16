@@ -1,0 +1,48 @@
+*{
+  font-family: "NIXGONM-Vb";
+}
+.board-view-modal{
+  top: 0; left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 상세보기 흰영역 */
+.board-view-area{
+  width: 50vw;
+  min-width: 400px;
+  height: auto;
+  min-height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: auto;
+}
+/* 상세보기 제목 */
+.board-view-title{
+  width: 100%;
+  height: 40px;
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.board-view-content-all{
+  padding: 10px;
+}
+.board-view-content-all > *{
+  padding: 10px 0 0 0;
+}
+.board-view-content-content{
+  display: flex;
+  justify-content: space-between;
+}
+.board-view-content-detail-answer>p{
+  background-color: red;
+}

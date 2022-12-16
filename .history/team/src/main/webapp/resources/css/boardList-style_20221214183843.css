@@ -4,7 +4,7 @@
 
 .board-title{
   /* margin-top: 0; */
-  width: 1200px;
+  width: 99vw;
   height: 250px;
   background-color: white;
   background-color: white;
@@ -58,6 +58,7 @@
   border: 1px solid #ddd;
   font-size: 15px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .board-write-btn{
@@ -72,6 +73,7 @@
   cursor: pointer;
   background-color: #2db400;
   color: whitesmoke;
+  /* font-weight: bold; */
 }
 .board-write-btn:hover{
   transition-duration: 0.2s;
@@ -92,7 +94,9 @@
 } */
 .board-list-thead{
   height: 60px;
-  background-color: rgba(221, 221, 221, 0.623);
+  /* background-color: rgba(221, 221, 221, 0.623); */
+  /* background-color: #ddd; */
+  background-color: whitesmoke;
   border-top: 2px solid red;
 }
 .board-list-thead > tr{

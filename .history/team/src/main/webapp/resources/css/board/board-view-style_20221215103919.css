@@ -1,0 +1,17 @@
+.board-view-modal{
+  top: 0; left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.board-view-area{
+  width: 50vw;
+  height: 70vw;
+  background-color: white;
+}
