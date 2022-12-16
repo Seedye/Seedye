@@ -16,7 +16,7 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
         if(!checkObj[key]){
 
             switch(key){
-            case "memberId" :  str = "이메일이 유효하지 않습니다."; break;
+            case "memberId" :  str = "아이디가 유효하지 않습니다."; break;
             case "memberPw"    :  str = "비밀번호가 유효하지 않습니다."; break; 
             case "memberPwConfirm" :  str = "비밀번호 확인이 유효하지 않습니다."; break;
             case "memberTel" : str = "전화번호가 유효하지 않습니다."; break;
@@ -108,7 +108,6 @@ memberPw.addEventListener("input", function(){
                 checkObj.memberPwConfirm = false;
             }
         }
-
         
     } else { // 유효하지 않음
         pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
@@ -165,6 +164,7 @@ memberTel.addEventListener("input", function(){
         checkObj.memberTel = false;
         return;
     }
+
     // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
     // 전화번호 정규표현식 검사
     const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
