@@ -11,3 +11,18 @@ memberManageBtn.addEventListener("click", ()=>{
     adminMember.style.display = "none";
     memberManage.style.display = "flex";
 })
+
+const sideMenu = document.getElementById("sideMenu");
+const sideList = document.getElementById("sideList");
+const sideLabel = document.getElementById("sideLabel");
+
+sideMenu.addEventListener("change", ()=>{
+    if(sideMenu.checked == true){
+        sideList.style.display = "flex";
+    } else{
+        sideList.style.display = "none";
+    }
+})
+
+
+
