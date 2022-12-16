@@ -20,4 +20,3 @@ storeManage.addEventListener("click", ()=>{
 })
 
 
-
