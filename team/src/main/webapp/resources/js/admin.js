@@ -1,37 +1,23 @@
-const adminMember = document.getElementById("adminMember");
 const adminR = document.getElementById("adminR");
-const adminMainMenu = document.getElementById("adminBoard");
-const storeManage = document.getElementById("storeManage");
+const storeManageMain = document.getElementById("storeManage")
+const memberManageBtn = document.getElementsByClassName("memberManageBtn")[0];
+const adminMember = document.getElementById("adminMember");
+const memberManage = document.getElementById("memberManage");
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    storeManage.style.display="flex";
-    adminMember.style.display = "none";
-    adminMainMenu.style.display = "none";
-    adminR.style.display="none";
 
-})
-
-const adminS = document.getElementById("admin-S");
-const adminB = document.getElementById("admin-B");
-const adminM = document.getElementById("admin-M");
-
-adminS.addEventListener("click", ()=>{
-    storeManage.style.display = "flex";
-    adminMember.style.display = "none";
-    adminMainMenu.style.display = "none";
     adminR.style.display = "none";
 })
 
-adminB.addEventListener("click", ()=>{
-    adminMainMenu.style.display = "flex";
-    storeManage.style.display = "none";
-    adminMember.style.display = "none";
-    adminR.style.display = "none";            
+
+const storeManage = document.getElementsByClassName("store-manage")[0];
+
+storeManage.addEventListener("click", ()=>{
+
+    adminR.style.display = "flex";
+    storeManageMain.style.display = "none";
+
 })
 
-adminM.addEventListener("click", ()=>{
-    adminMember.style.display = "flex";
-    adminMainMenu.style.display = "none";
-    storeManage.style.display = "none";
-    adminR.style.display = "none";            
-})
+
+

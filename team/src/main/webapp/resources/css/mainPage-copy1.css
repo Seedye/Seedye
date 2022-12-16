@@ -1,0 +1,351 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LotteMartHappy';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+}
+
+* {
+    font-family: LotteMartHappy;
+    /* font-weight: bold; */
+}
+
+/* 공통 바디 사이즈 */
+body{
+    width: 1200px;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* 메인 가운데 정렬 */
+main{
+    height: 100%;
+}
+
+/* 푸터 하단에 고정 */
+footer{
+    position: relative;
+    margin-bottom: 0;
+    margin-top: 200px;
+}
+
+/* 본문 스타일 */
+.main-container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 검색창 높이 설정 */
+.searchBox{
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+/* 검색창 제목 스타일 */
+.searchBoxName{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 60px;
+    font-size: 30px;
+}
+
+/* 검색창 스타일 */
+.searchBox input{
+    height: 100%;
+    width: 700px;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    border-radius: 10px;
+    /* 버튼간격 */  
+    margin-right: 20px;
+    border: none;
+    box-shadow: 3px 3px 3px 3px #ddd;
+
+    /* 검색창에 입력중일 때 */
+    outline-style: hidden;
+    outline-color: gray;
+}
+
+/* 검색창 버튼 */
+.searchBox button{
+    height: 100%;
+    border: none;
+    /* background: #2db400; */
+    border-radius: 5px;
+    width: 50px;
+
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px 3px #ddd;
+
+    /* 폰트 스타일 */
+    /* color: white; */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* 버튼 에니메이션 */
+
+.box {
+    padding: 4.5em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Common button styles */
+.button {
+    border: none;
+    background: none;
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Individual button styles */
+
+/* Antiman */
+.button--antiman {
+    background: none;
+    border: none;
+    height: 60px;
+}
+.button--antiman.button--inverted,
+.button--antiman.button--inverted-alt {
+    transition: color 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--antiman > span {
+    padding-left: 0.35em;
+}
+.button--antiman::before,
+.button--antiman::after {
+    content: '';
+    z-index: -1;
+    border-radius: inherit;
+    position: absolute;
+    top: -2px;
+    left: -1.5px;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s, opacity 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+/* 선 에니메이션 */
+.button--antiman::before {
+    border: 2px solid gray;
+    opacity: 0;
+    transform: scale3d(1.2, 1.2, 1);
+}
+.button--antiman.button--border-thin::before {
+    border-width: 1px;
+}
+.button--antiman.button--border-medium::before {
+    border-width: 2px;
+}
+.button--antiman.button--border-thick::before {
+    border-width: 3px;
+}
+.button--antiman:hover::before {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+}
+.button--antiman:hover::after {
+    opacity: 0;
+    transform: scale3d(0.8, 0.8, 1);
+}
+
+.foodTypecategory h2{
+    text-align: center;
+}
+
+
+.foodTypecategory{
+    margin-top: 50px;
+    padding-top: 10px;
+    
+}
+
+/* 카테고리 이미지 스타일 */
+.foodTypecategory img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+/* 리스트 점 삭제 */
+.foodTypecategory li{
+    /* display: flex; */
+    /* flex-direction: column; */
+    list-style: none;
+    text-align: center;
+}
+
+/* 체크박스 없애기 */
+.foodTypecategory input{
+    display: none;
+}
+
+/* 카테고리 ul태그 스타일 */
+.foodTypecategory ul{
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    padding-top: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+}
+
+.foodTypecategory li *{
+    cursor: pointer;
+}
+
+.foodTypecategory div:hover{
+    border-bottom: 2px solid #2db400;
+}
+
+
+.category-box{
+    /* background-color: darkkhaki; */
+    width: 110px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    /* border-radius: 10px; */
+    
+}
+
+.category-box input:checked{
+    border: 1px solid black;
+}
+
+/* 검색 결과 박스 */
+.searchList{
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 40px;
+    width: 65%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+}
+
+/* 검색 결과 박스(ul) */
+.searchList ul{
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    
+}
+
+.searchList li{
+    
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    margin-bottom: 1px;
+}
+
+/* 가게 정보 스타일 */
+.storeInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.searchList ul{
+    margin-top: 20px;
+}
+
+/* 상세보기 버튼 스타일 */
+.storeInfoLink button{
+    border: none;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.storeInfoLink button:hover{
+    background-color: #2db400;
+    color: white;
+}
+
+/* 사진 속 글씨 */
+/* 
+.searchAria{
+    position: relative;
+    
+}
+
+.searchAria .search-container{
+    position: absolute;
+    bottom: 30px;
+    right: 300px;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    border-radius: 5px;
+}
+ */
+
+/* 메인 페이지 이미지 스타일 */
+.main-image{
+    width: 100vw;
+    height: 550px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* 결과 정보 창 스타일 */
+.result-box{
+    display: flex;
+    /* border-top: 2px solid black; */
+    justify-content: flex-start;
+}
+
+/* 통계창 스타일 */
+.statistics{
+    /* border: 1px solid black; */
+    box-shadow: 3px 3px 3px 3px #ddd;
+    border-radius: 10px;
+    width: 20%;
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.statistics li{
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+/* 즐겨찾기 스타일 */
+.bookmark{
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #ddd;
+    width: 15%;
+    
+}
+
+.bookmark li{
+    list-style: none;
+    margin-bottom: 8px;
+}
