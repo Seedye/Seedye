@@ -50,8 +50,8 @@
             <div class="search-container">
                 <div class="searchBoxName">꿈나무 카드 가맹점 위치 조회</div>
                 <div class="searchBox">
-                    <input type="text" class="searchTxt" placeholder="oo구 oo동(지번) / ooo로 검색 가능(도로명)">
-                    <button class="searchBtn button button--antiman button--round-l button--text-medium">검색</button>
+                    <input type="text" class="searchTxt button--antiman" placeholder="oo구 oo동(지번) / ooo로 검색 가능(도로명)">
+                    <button class="searchBtn button button--antiman">검색</button>
                 </div>
     
             </div>
@@ -167,7 +167,42 @@
 
                 <div class="searchList">
                     <h2>검색 결과</h2>
-                    <ul>
+<!-- 
+                    <div class="searchList-none">
+                        검색 결과가 없습니다.
+                    </div>
+ -->
+                    <ul class="searchList-style">
+                        <li>
+                            <div class="storeInfo">
+                                <span>가게 이름</span>
+                                <span>가게 주소</span>
+                                <span>가게 전화번호</span>
+                            </div>
+                            <div class="storeInfoLink">
+                                <button>상세보기</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="storeInfo">
+                                <span>가게 이름</span>
+                                <span>가게 주소</span>
+                                <span>가게 전화번호</span>
+                            </div>
+                            <div class="storeInfoLink">
+                                <button>상세보기</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="storeInfo">
+                                <span>가게 이름</span>
+                                <span>가게 주소</span>
+                                <span>가게 전화번호</span>
+                            </div>
+                            <div class="storeInfoLink">
+                                <button>상세보기</button>
+                            </div>
+                        </li>
                         <li>
                             <div class="storeInfo">
                                 <span>가게 이름</span>
@@ -231,6 +266,50 @@
                 </div>
             </div>
         </div>
+
+        <!-- 상세보기 모달 팝업 -->
+        <div class="modal-cont">
+            <div class="storeInfoModal-window">
+                <div class="storeInfoModal-popup">
+                    <div class="modal-title">
+                        상세보기 x
+                    </div>
+                    <div class="modal-content">
+                        <div>
+                            <span>가게 이름</span>
+                            <span>가게 주소</span>
+                            가게 전화번호
+                            이미지
+                            메뉴설명
+                        </div>
+                        <div>
+                            지도 마커
+                            리뷰 x
+                            <div class="modal-btn">
+                                <button>잘못된 정보 신고하러 가기</button>
+                                <button>즐겨찾기 등록</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slideshow">
+            <div class="slide">
+                <img src="../resources/images/mainslide/children-gcdcf2541f_1280.jpg" alt="Slide 1">
+                <div class="caption">Caption 1</div>
+            </div>
+            <div class="slide">
+                <img src="../resources/images/mainslide/children-gfd08c2a3f_1280.jpg" alt="Slide 2">
+                <div class="caption">Caption 2</div>
+            </div>
+            <div class="slide">
+                <img src="../resources/images/mainslide/girls-gf0fcf7f58_1280.jpg" alt="Slide 3">
+                <div class="caption">Caption 3</div>
+            </div>
+            <!-- Add more slides here -->
+        </div>
     </main>
 
     <footer>
@@ -248,6 +327,8 @@
         </article>
     </footer>
     
+
+    <script src="../resources/js/mainPage.js"></script>
 
 </body>
 </html>
