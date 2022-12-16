@@ -130,6 +130,14 @@ margin-bottom: 20px;
     margin: 0 10px;
 }
 
+#searchStore{
+    text-align: center;
+    margin-top: 10px;
+}
+#searchStore > input{
+    width: 30%;
+}
+
 
 /* 이미지 영역 */
 #imageArea{
@@ -173,6 +181,11 @@ margin-bottom: 20px;
     align-items: center;
     border: 1px solid black;
     cursor: pointer;
+}
+
+.imageDiv > span{
+    color: red;
+    font-weight: bold;
 }
 
 /* 식당관리 테이블 */
@@ -224,7 +237,6 @@ td{
 #btnArea{
     display: flex;
     justify-content: end;
-    margin-top: 10px;
     margin-right: 25px;
 }
 /* 신청 조회 버튼 */
