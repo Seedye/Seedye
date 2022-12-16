@@ -79,7 +79,8 @@ memberPw.addEventListener("input", function(){
     }
 
     // 비밀번호 정규표현식 검사
-    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+    // const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!-|])[A-Za-z\d!-|]{8,16}$/;
+    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=-])[A-Za-z\d@$!%*?&#^)(_+=-]{8,16}$/;
 
     if(regEx.test(memberPw.value)){ // 유효한 비밀번호
         checkObj.memberPw = true;
@@ -143,4 +144,41 @@ memberPwConfirm.addEventListener("input",function(){
         checkObj.memberPwConfirm = false;
     }
     
+});
+
+const autoHyphen = (target) => {
+    target.value = target.value
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
+
+// 전화번호 유효성 검사
+const memberTel = document.getElementById("memberTel");
+const telMessage = document.getElementById("telMessage");
+
+memberTel.addEventListener("input", function(){
+
+    // 문자가 입력되지 않은 경우
+    if(memberTel.value.trim().length == 0){
+        telMessage.innerText = "전화번호를 입력해주세요.";
+        telMessage.classList.remove("confirm", "error");
+        checkObj.memberTel = false;
+        return;
+    }
+    // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
+    // 전화번호 정규표현식 검사
+    const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+
+    if(regEx.test(memberTel.value)){
+        telMessage.innerText = "유효한 전화번호 형식입니다."
+        telMessage.classList.add("confirm");
+        telMessage.classList.remove("error");
+        checkObj.memberTel = true;
+    } else{
+        telMessage.innerText = "전화번호 형식이 유효하지 않습니다."
+        telMessage.classList.add("error");
+        telMessage.classList.remove("confirm");
+        checkObj.memberTel = false;
+    }
+
 });
