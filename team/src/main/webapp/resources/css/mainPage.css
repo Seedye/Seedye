@@ -120,19 +120,18 @@ footer{
     background: none;
     border: none;
     height: 60px;
-}
-.button--antiman.button--inverted,
-.button--antiman.button--inverted-alt {
     transition: color 0.3s;
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
+
 .button--antiman > span {
     padding-left: 0.35em;
 }
+
 .button--antiman::before,
 .button--antiman::after {
     content: '';
-    z-index: -1;
+    z-index: 100;
     border-radius: inherit;
     position: absolute;
     top: -2px;
@@ -147,15 +146,6 @@ footer{
     border: 2px solid gray;
     opacity: 0;
     transform: scale3d(1.2, 1.2, 1);
-}
-.button--antiman.button--border-thin::before {
-    border-width: 1px;
-}
-.button--antiman.button--border-medium::before {
-    border-width: 2px;
-}
-.button--antiman.button--border-thick::before {
-    border-width: 3px;
 }
 .button--antiman:hover::before {
     opacity: 1;
@@ -214,7 +204,10 @@ footer{
 }
 
 .foodTypecategory div:hover{
-    border-bottom: 2px solid #2db400;
+    /* border-bottom: 2px solid #2db400; */
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #ddd inset;
+
 }
 
 
@@ -317,7 +310,24 @@ footer{
     display: flex;
     /* border-top: 2px solid black; */
     justify-content: flex-start;
+    height: 400px;
 }
+
+.searchList-none{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.searchList-style{
+    overflow-y: scroll;
+    height: 300px;
+    -ms-overflow-style: none;
+}
+
+.searchList-style::-webkit-scrollbar{
+    display: none;
+}
+
 
 /* 통계창 스타일 */
 .statistics{
@@ -349,3 +359,36 @@ footer{
     list-style: none;
     margin-bottom: 8px;
 }
+
+/* 모달팝업 */
+.storeInfoModal-window{
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    padding: 15px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+}
+
+.storeInfoModal-popup{
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    width: 1000px;
+    height: 700px;
+    overflow: hidden;
+}
+
+.modal-title{
+    height: 50px;
+    background-color: #2db400;
+    padding: 18px;
+    text-align: center;
+}
+
