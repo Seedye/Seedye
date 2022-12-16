@@ -1,0 +1,40 @@
+#sideAll{
+    width: 150px;
+    height: 100%;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+#sideAll > input{
+    display: none;
+}
+
+#sideAll > div > ul > li{
+    list-style: none;
+}
+
+#sideAll > div > ul > li > a{
+    text-decoration: none;
+}
+
+#sideAll > label > a{
+    text-decoration: none;
+}
+
+#sideAll > label{
+    font-weight: bold;
+}
+
+.sideM{
+    text-align: center;
+}
+
+#sideAll > div > ul{
+    padding-inline-start: 0px;
+}
+
+#sideAll > label:hover{
+    background-color: red;
+}
