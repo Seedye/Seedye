@@ -74,5 +74,5 @@ const boardView = document.getElementsByClassName("board-list-view");
 const boardViewModal = document.getElementById("boardViewModal");
 
 boardView.addEventListener("click", ()=>{
-  boardViewModal.style.display="flex";
+
 });

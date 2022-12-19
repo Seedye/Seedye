@@ -37,7 +37,7 @@
           <!-- 글작성 버튼 -->
           <div class="board-write-btn">글작성</div>
         </div>
-    <%-- 상세보기 연결 --%>
+    
     <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">

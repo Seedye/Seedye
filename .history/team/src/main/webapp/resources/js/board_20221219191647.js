@@ -70,9 +70,3 @@ inputFile.addEventListener("change", (e)=>{
 });
 
 //! 모달 연결
-const boardView = document.getElementsByClassName("board-list-view");
-const boardViewModal = document.getElementById("boardViewModal");
-
-boardView.addEventListener("click", ()=>{
-  boardViewModal.style.display="flex";
-});

@@ -21,7 +21,7 @@
                 <ul id="ul-container">
                     <li><a href="#"></a>새싹소개</li>
                     <li><a href="#"></a>공지사항</li>
-                    <li><a href="/boardList"></a>커뮤니티</li>
+                    <li><a href="/board/boardList"></a>커뮤니티</li>
                     <li><a href="#"></a>식당 등록 문의</li>
                     <li><a href="#"></a>마이 페이지</li>
                     <!-- <li><a href="#"></a>관리자</li> -->

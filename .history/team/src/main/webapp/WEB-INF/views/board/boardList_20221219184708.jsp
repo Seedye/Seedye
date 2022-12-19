@@ -37,8 +37,7 @@
           <!-- 글작성 버튼 -->
           <div class="board-write-btn">글작성</div>
         </div>
-    <%-- 상세보기 연결 --%>
-    <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
+    
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <div id="sideAll">                  
@@ -93,7 +92,7 @@
             <tbody>
 
               <!-- 공지 -->
-              <tr class="board-list-view">
+              <tr>
                 <td>공지</td>
                 <td>음식점 정보가 변경되었습니다.</td>
                 <td>공지사항</td>
@@ -102,58 +101,58 @@
               </tr>
 
               <!-- 게시물 -->
-              <tr class="board-list-view">
+              <tr>
                 <td>10</td>
                 <td>음식점 정보가 잘못되어있는거 같습니다.</td>
                 <td>처리중</td>
                 <td>2022.11.23</td>
               </tr>
 
-              <tr class="board-list-view">
+              <tr>
                 <td>9</td>
                 <td>새싹 덕분에 잘 </td>
                 <td>처리중</td>
                 <td>2022.11.23</td>
               </tr>
 
-              <tr class="board-list-view">
+              <tr>
                 <td>8</td>
                 <td>너무 구려</td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
 
-              <tr class="board-list-view">
+              <tr>
                 <td>7</td>
                 <td>음식점정보가 너무 이상하네요. </td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
-              <tr class="board-list-view">
+              <tr>
                 <td>6</td>
                 <td>음식점정보가 너무 이상하네요.  </td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
-              <tr class="board-list-view">
+              <tr>
                 <td>5</td>
                 <td>음식점정보가 너무 이상하네요.  </td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
-              <tr class="board-list-view">
+              <tr>
                 <td>4</td>
                 <td>음식점정보가 너무 이상하네요. </td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
-              <tr class="board-list-view">
+              <tr>
                 <td>3</td>
                 <td>음식점정보가 너무 이상하네요. 게요. </td>
                 <td>처리완료</td>
                 <td>2022.11.23</td>
               </tr>
-              <tr class="board-list-view">
+              <tr>
                 <td>2</td>
                 <td>음식점정보가 너무 이상하네요. 맨탁 드릴게요. </td>
                 <td>처리완료</td>
@@ -191,7 +190,6 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
     <script src="../../resources/js/test.js"></script>
-    <script src="../../resources/js/board.js"></script>
 </body>
 </html>
 
