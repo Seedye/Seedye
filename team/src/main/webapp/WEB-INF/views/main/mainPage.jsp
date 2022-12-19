@@ -8,11 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>새싹이 -꿈나무카드 가맹점 찾기</title>
 
+    <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/mainPage.css">
 </head>
 <body>
 
     <%-- 헤더 위치 --%>
+    <header>
+        <!-- 헤더 -->
+        <section id="header-container">
+            <!-- 로고 -->
+            <section id="header-section">
+                <a href="#"><img id="logo" src="../resources/images/새싹이.png"></a>
+                <a href="#" id="logo-content">새싹이</a>
+            </section>
+            <!-- 메뉴창 -->
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="#"></a>공지사항</li>
+                    <li><a href="#"></a>커뮤니티</li>
+                    <li><a href="#"></a>소개</li>
+                    <li><a href="#"></a>식당 등록 문의</li>
+                    <li><a href="#"></a>후원</li>
+                    <li><a href="#"></a>업데이트</li>
+                    <li><a href="#"></a>관리자</li>
+                </ul>
+            </nav>
+        </section>
+    </header>
 
     <main>
         <!-- 사진에 검색창 넣을려다가 일딴 뺏음 -->
@@ -149,7 +172,7 @@
                     <div class="searchList-none">
                         검색 결과가 없습니다.
                     </div>
- -->
+-->
                     <ul class="searchList-style">
                         <li>
                             <div class="storeInfo">
@@ -294,6 +317,22 @@
     </main>
 
     <%-- 푸터 위치 --%>
+    <footer>
+        <p>
+            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
+        </p>
+        <article>
+            <a href="#">프로젝트 소개</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보처리방침</a>
+            <span>|</span>
+            <a href="#">고객센터</a>
+        </article>
+    </footer>
+
+    <script src="../resources/js/mainPage.js"></script>
     
 </body>
 </html>
