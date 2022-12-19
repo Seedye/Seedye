@@ -86,7 +86,7 @@
                             </label>
                             <input type="file" id="image0" accept="image/*" class="imageInput">
                             <aside>사업자 등록증</aside>
-                            <span>*필수</span>
+                            <span class="red">*필수</span>
                         </div>
                         <div class="imageDiv">
                             <label for="image1">
@@ -104,11 +104,11 @@
                         </div>
                     </div>
                     <div class="adminR-menu">
-                        <aside>업소 상호명</aside>
+                        <aside><span class="red">＊</span>업소 상호명</aside>
                         <input type="text">
                     </div>
                     <div class="adminR-menu">
-                        <aside>업종</aside>
+                        <aside><span class="red">＊</span>업종</aside>
                         <select name="food" id="select">
                             <option value="">한식</option>
                             <option value="">중식</option>
@@ -123,17 +123,18 @@
                         </select>
                     </div>
                     <div class="adminR-menu">
-                        <aside>주소</aside>
+                        <aside><span class="red">＊</span>주소</aside>
                         <input type="text" placeholder="주소">
                     </div>
                     <div class="adminR-menu">
-                        <aside>휴대폰 번호(-제외)</aside>
+                        <aside><span class="red">＊</span>휴대폰 번호(-제외)</aside>
                         <input type="text" placeholder="전화번호">
                     </div>
                     <div class="adminR-menu">
                         <aside>메뉴, 가격</aside>
                         <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none"></textarea>
                     </div>
+                    <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
                         <button>등록</button>
                     </div>
@@ -309,7 +310,7 @@
             <a href="#">고객센터</a>
         </article>
     </footer>
-   <script src="../../resources/js/admin.js"></script>
+   <script src="../../resources/js/admin/admin.js"></script>
    <script src="../../resources/js/test.js"></script>
 </body>
 </html>
