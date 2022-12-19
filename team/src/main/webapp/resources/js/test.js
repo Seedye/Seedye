@@ -16,51 +16,102 @@ const sideMenu2 = document.getElementById("sideMenu2");
 const sideMenu3 = document.getElementById("sideMenu3");
 const sideMenu4 = document.getElementById("sideMenu4");
 
+const dropDownContent = document.querySelector(".dropdown-sideMenu1");
+const dropDownContent2 = document.querySelector(".dropdown-sideMenu2");
+const dropDownContent3 = document.querySelector(".dropdown-sideMenu3");
+const dropDownContent4 = document.querySelector(".dropdown-sideMenu4");
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    sideIntro.style.display = "none";
-    sideNotice.style.display = "none";
-    side.style.display = "none";
-    sideManage.style.display = "none";
-
-
-    sideMenu1.style.display = "none";
-    sideMenu2.style.display = "none";
-    sideMenu3.style.display = "none";
-    sideMenu4.style.display = "none";
-})
+let toggleFlag = true;
 
 
-sideIntro.addEventListener("change", ()=>{
+sideIntro.addEventListener("click", () => {
+    
+    if(toggleFlag){
+        dropDownContent.style.height = "150px";
+        dropDownContent2.style.height = "0px";
+        dropDownContent3.style.height = "0px";
+        dropDownContent4.style.height = "0px";
 
-    if(sideIntro.checked == true){
-        sideMenu1.style.display = "block"
-    } else{
-        sideMenu1.style.display = "none";
+        side1.style.backgroundColor = "#ffffff5c"
+        side2.style.backgroundColor = "#2db400"
+        side3.style.backgroundColor = "#2db400"
+        side6.style.backgroundColor = "#2db400"
+        
+        toggleFlag = false;
+        
+    }else{
+        dropDownContent.style.height = "0px";
+        side1.style.backgroundColor = "#2db400"
+        toggleFlag = true;
     }
 
-})
+});
 
-sideNotice.addEventListener("change", ()=>{
-    if(sideNotice.checked == true){
-        sideMenu2.style.display = "block";
-    } else{
-        sideMenu2.style.display = "none";
-    }
-})
+sideNotice.addEventListener("click", () => {
+    
+    if(toggleFlag){
+        dropDownContent2.style.height = "75px";
+        dropDownContent.style.height = "0px";
+        dropDownContent3.style.height = "0px";
+        dropDownContent4.style.height = "0px";
 
-side.addEventListener("change", ()=>{
-    if(side.checked == true){
-        sideMenu3.style.display = "block";
-    } else{
-        sideMenu3.style.display = "none";
+        side1.style.backgroundColor = "#2db400"
+        side2.style.backgroundColor = "#ffffff5c"
+        side3.style.backgroundColor = "#2db400"
+        side6.style.backgroundColor = "#2db400"
+        
+        toggleFlag = false;
+        
+    }else{
+        dropDownContent2.style.height = "0px";
+        side2.style.backgroundColor = "#2db400"
+        toggleFlag = true;
     }
-})
 
-sideManage.addEventListener("change", ()=>{
-    if(sideManage.checked == true){
-        sideMenu4.style.display = "block";
-    } else{
-        sideMenu4.style.display = "none";
+});
+
+side.addEventListener("click", () => {
+    
+    if(toggleFlag){
+        dropDownContent3.style.height = "100px";
+        dropDownContent.style.height = "0px";
+        dropDownContent2.style.height = "0px";
+        dropDownContent4.style.height = "0px";
+
+        side1.style.backgroundColor = "#2db400"
+        side2.style.backgroundColor = "#2db400"
+        side3.style.backgroundColor = "#ffffff5c"
+        side6.style.backgroundColor = "#2db400"
+        
+        toggleFlag = false;
+        
+    }else{
+        dropDownContent3.style.height = "0px";
+        side3.style.backgroundColor = "#2db400"
+        toggleFlag = true;
     }
-})
+
+});
+
+sideManage.addEventListener("click", () => {
+    
+    if(toggleFlag){
+        dropDownContent4.style.height = "100px";
+        dropDownContent.style.height = "0px";
+        dropDownContent2.style.height = "0px";
+        dropDownContent3.style.height = "0px";
+
+        side1.style.backgroundColor = "#2db400"
+        side2.style.backgroundColor = "#2db400"
+        side3.style.backgroundColor = "#2db400"
+        side6.style.backgroundColor = "#ffffff5c"
+        
+        toggleFlag = false;
+        
+    }else{
+        dropDownContent4.style.height = "0px";
+        side6.style.backgroundColor = "#2db400"
+        toggleFlag = true;
+    }
+
+});
