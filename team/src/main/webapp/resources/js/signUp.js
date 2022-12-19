@@ -97,7 +97,7 @@ memberId.addEventListener("input", function(){
         idMessage.classList.add("error");
         idMessage.classList.remove("confirm");
 
-        checkObj.memberEmail = false;      
+        checkObj.memberId = false;      
     }
 
 
