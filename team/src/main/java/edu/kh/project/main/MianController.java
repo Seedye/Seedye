@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MianController {
 
-	// ¸ŞÀÎÆäÀÌÁö
+	// ë©”ì¸í˜ì´ì§€ ì´ë™
 	@GetMapping("/")
 	public String mainPage() {
 		
