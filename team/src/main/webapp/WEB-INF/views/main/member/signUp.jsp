@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
 
-    <link rel="stylesheet" href="/team/src/main/webapp/resources/css/signUp.css">
+    <link rel="stylesheet" href="../resources/css/signUp.css">
 
 </head>
 <body>
@@ -18,14 +21,14 @@
 
                 <article class="login-logo">
                     <div class="login-head">
-                        <a href="#">
-                        <img width="50px" height="50px" src="/team/src/main/webapp/resources/images/새싹이.png">
+                        <a href="/">
+                        <img width="50px" height="50px" src="../resources/images/새싹이.png">
                         </a>
                         <div class="sprout">환영합니다.</div>
                     </div>
                 </article>
 
-                <form action="/member/signUp" method="POST" name="signUp-frm" id="signUp-frm">
+                <form action="/signUp" method="POST" name="signUp-frm" id="signUp-frm">
 
                     <label for="memberId">
                         * 
@@ -111,36 +114,33 @@
                 </form>
             </div>
         </section>
-        
-
-
 
     </main>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
+    <script>
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
 
-                var addr = ''; // 주소 변수
-    
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
+                    var addr = ''; // 주소 변수
+        
+                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+        
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('sample6_postcode').value = data.zonecode;
+                    document.getElementById("sample6_address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("sample6_detailAddress").focus();
                 }
-    
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-</script>
+            }).open();
+        }
+    </script>
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script
