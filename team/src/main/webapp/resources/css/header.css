@@ -15,6 +15,7 @@
 }
 
 *{
+    font-family: NIXGONM-Vb;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -34,12 +35,15 @@ body{
     flex-direction: column;
 }
 
+
+
 #header-section{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+
+    /* margin-top: 20px; */
 }
 
 #logo{
@@ -110,3 +114,102 @@ footer {
   footer a {
     color: gray;
   }
+
+#header-container.scrolled{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    width: 100vw;
+
+}
+    
+#header-section.scrolled{
+    background-color: white;
+    margin-left: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo.scrolled{
+    /* margin-left: 200px; */
+    width: 25px;
+    height: 25px;
+}
+
+#logo-content.scrolled{
+    color: #2db400;
+    -webkit-text-stroke: 1px white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: yg-jalnan;
+    font-size: 20px;
+    padding: 0px;
+
+}
+
+#nav-bar.scrolled{
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-right: 50px;
+}
+
+#ul-container.scrolled {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 0px 10px;
+    border-bottom: 1px solid white;
+}
+
+#login{
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 50px;
+}
+
+#login > a{
+    background-color: #2db400;
+
+    color: white;
+    text-decoration: none;
+
+    /* width: 55x; */
+    height: 25px;
+    display: flex;
+    align-items: center;
+
+    padding: 0px 10px;
+
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    
+}
+
+#login > a:hover{
+transition-duration: 0.2s;
+  background-color: #2aa800;
+  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
+  border:none;
+}
+
+#login2{
+    width: 120px;
+    height: 25px;
+    margin-left: 50px;
+}
+
+#login.scrolled{
+    display: none;
+}
+
+#login2.scrolled{
+    display: none;
+}

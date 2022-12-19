@@ -7,9 +7,9 @@
 
     background-color: #2db400;
     
-    position: fixed; 
+    position: absolute; 
     left: 20px;
-    top: 189.4;
+    top: 289.4px;
 
     border-right: 15px solid transparent;
     border-left: 15px solid transparent;
