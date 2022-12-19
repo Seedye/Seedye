@@ -1,10 +1,22 @@
 #sideAll{
-    width: 150px;
-    height: 100%;
+    width: 200px;
+    height: auto;
     display: flex;
-    flex-direction: column ;
-    justify-content: space-around;
-    border: 1px solid black;
+    flex-direction: column;
+    /* border: 3px solid #2db400; */
+
+    background-color: #2db400;
+    
+    position: fixed; 
+    left: 20px;
+    top: 189.4;
+
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+	border-top: 10px solid  green; 
+	border-bottom: 10px solid green; 
+
+
 }
 
 #sideAll > input{
@@ -13,18 +25,35 @@
 
 #sideAll > div > ul > li{
     list-style: none;
+    margin: 15px 0 15px 15px;
 }
 
 #sideAll > div > ul > li > a{
     text-decoration: none;
+    color: white;
 }
 
 #sideAll > label > a{
     text-decoration: none;
+    color: white;
 }
 
 #sideAll > label{
+    height: 16px;
     font-weight: bold;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+    color: white;
+
+    cursor: pointer;
+
+    /* border-bottom:1px solid; */
+
 }
 
 .sideM{
@@ -32,9 +61,15 @@
 }
 
 #sideAll > div > ul{
-    padding-inline-start: 0px;
+    /* position: absolute; */
+    width: 200px;
+
+    height:0;
+    overflow: hidden;
+    transition-duration:0.3s;
+
+    padding: 0;
+
 }
 
-#sideAll > label:hover{
-    background-color: red;
-}
+
