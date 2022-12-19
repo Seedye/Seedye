@@ -55,8 +55,50 @@ memberId.addEventListener("input", function(){
     }
 
     // 정규표현식을 이용한 유효성 검사
+    const reg = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{10,20}$/;
 
+    if(reg.test(memberId.value)){
+        $.ajax({
+            url : "/", // 비동기 통신을 진행할 서버 요청 주소
+            data: {"memberId" : memberId.value}, // JS객체에서 서버로 전달할 값
+            type: "GET", // 데이터 전달 방식(GET/POST) -> ajax는 보통 GET방식
+            success: (map) => { // 비동기 통신에 성공해서 응답 받았을 때
 
+                if(map.dup == 0 && map.secession == 0){
+                    idMessage.innerText = "사용가능한 아이디입니다."
+                    idMessage.classList.add("confirm");
+                    idMessage.classList.remove("error");
+                    checkObj.memberId = true;
+                }
+
+                if(map.dup > 0) {
+                    idMessage.innerText = "이미 사용중인 아이디입니다."
+                    idMessage.classList.add("error");
+                    idMessage.classList.remove("confirm");
+                    checkObj.memberId = false;                    
+                }
+
+                if(map.secession > 0){
+                    idMessage.innerText = "가입 불가능합니다."
+                    idMessage.classList.add("error");
+                    idMessage.classList.remobe("confirm");
+                    checkObj.memberId = false;                    
+                }
+            },
+            error : () => { // 비동기 통신이 실패했을 때 수행
+                console.log("ajax통신 실패");
+            },
+            complete : ()=> {// success, error 수행여부 관계없이 무조건 수행
+                console.log("중복 검사 수행 완료")
+            }
+        });
+    } else {
+        idMessage.innerText = "영문 대/소문자, 숫자만 사용 가능합니다.";
+        idMessage.classList.add("error");
+        idMessage.classList.remove("confirm");
+
+        checkObj.memberId = false;      
+    }
 
 
 });
