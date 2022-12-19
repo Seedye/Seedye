@@ -183,7 +183,8 @@ margin-bottom: 20px;
     cursor: pointer;
 }
 
-.imageDiv > span{
+
+.red{
     color: red;
     font-weight: bold;
 }

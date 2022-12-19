@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+
+#adminMain{
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-mainMenu{
+    border: 1px solid black;
+    width: 900px;
+    height: 65vh;
+    margin: 10px;
+    
+}    
+
+#boardManage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: #2db400;
+    width: 500px;
+    height: 500px;
+    font-size: 30px;
+    color: aliceblue;
+    padding: 100px;
+
+}
+
+.swiper-slide{
+    display: flex;
+    justify-content: center;
+}

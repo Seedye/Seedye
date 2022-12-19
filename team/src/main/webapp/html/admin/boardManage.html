@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="../../resources/css/admin/admin-copy1.css">
+    <link rel="stylesheet" href="../../resources/css/admin/boardManage.css">
     <link rel="stylesheet" href="../../resources/css/header.css">
     <link rel="stylesheet" href="../../resources/css/test.css">
+    <link rel="stylesheet" href="../../resources/css/admin/swiper.min.css">
 </head>
 <body>
     <main>
@@ -77,11 +78,28 @@
                 </div>
         </div>
         <div id="boardManage" class="admin-mainMenu">
-                <div>공지사항</div>
-                <div>업데이트</div>
-                <div>문의게시판</div>
-                <div>자유게시판</div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="container">공지사항</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="container">업데이트</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="container">자유게시판</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="container">문의게시판</div>
+                    </div>
+
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+
             </div>
+            
         </div>
     </div>
     </main>
@@ -99,7 +117,8 @@
             <a href="#">고객센터</a>
         </article>
     </footer>
-   <script src="../../resources/js/admin.js"></script>
    <script src="../../resources/js/test.js"></script>
+   <script src="../../resources/js/admin/swiper.min.js"></script>
+   <script src="../../resources/js/admin/boardManage.js"></script>
 </body>
 </html>
