@@ -218,12 +218,3 @@
 #sideAll {
   top: 389.4;
 }
-
-/*  사진 선택후 파일 추가 버튼 */
-.add-file-area-hidden{
-  display: none;
-}
-
-.add-file-area{
-  display: block;
-}

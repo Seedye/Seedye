@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +27,18 @@
             <nav id="nav-bar">
                 <ul>
                     <li><a href="#"></a>공지사항</li>
-                    <li><a href="../board/board-write.html"></a>커뮤니티</li>
-                <li><a href="#"></a>소개</li>
-                <li><a href="#"></a>식당 등록 문의</li>
-                <li><a href="#"></a>후원</li>
-                <li><a href="#"></a>업데이트</li>
-                <li><a href="#"></a>관리자</li>
-            </ul>
-        </nav>
-    </section>
+                    <li><a href="../board/boardList"></a>커뮤니티</li>
+                    <li><a href="#"></a>소개</li>
+                    <li><a href="#"></a>식당 등록 문의</li>
+                    <li><a href="#"></a>후원</li>
+                    <li><a href="#"></a>업데이트</li>
+                    <li><a href="#"></a>관리자</li>
+                </ul>
+            </nav>
+        </section>
     </header>
+
     <main>
-      
       <!-- board 영역 -->
       <section class="board-body-area">
         <div class="board-title">

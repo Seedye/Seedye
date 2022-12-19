@@ -64,6 +64,9 @@ inputFile.addEventListener("change", (e)=>{
       }
       // console.log(object);
     }
+    
+
   }
+
 });
 

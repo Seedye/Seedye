@@ -43,7 +43,6 @@
 .board-view-x-hidden{
   color:  #2db400;
   padding-right: 10px;
-  pointer-events : none;
 }
 .board-view-x{
   padding-right: 10px;
@@ -125,9 +124,9 @@
   cursor: pointer;
   /* display: none; */
 }
-/* .board-view-content-img :hover{
+.board-view-content-img :hover{
   background-color: #2db40025;
-} */
+}
 .board-view-content-img > img{
   /* position: absolute; */
   width: 100%;
@@ -206,24 +205,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
-/* .board-Write-img-delete :hover{
-  background-color: #2db40025;
-} */
+
 #addInputFile{
   display: none;
-}
-
-#sideAll {
-  top: 389.4;
-}
-
-/*  사진 선택후 파일 추가 버튼 */
-.add-file-area-hidden{
-  display: none;
-}
-
-.add-file-area{
-  display: block;
 }

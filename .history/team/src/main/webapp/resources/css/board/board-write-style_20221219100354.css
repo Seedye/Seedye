@@ -43,7 +43,6 @@
 .board-view-x-hidden{
   color:  #2db400;
   padding-right: 10px;
-  pointer-events : none;
 }
 .board-view-x{
   padding-right: 10px;
@@ -208,22 +207,9 @@
   align-items: center;
   cursor: pointer;
 }
-/* .board-Write-img-delete :hover{
+.board-Write-img-delete :hover{
   background-color: #2db40025;
-} */
+}
 #addInputFile{
   display: none;
-}
-
-#sideAll {
-  top: 389.4;
-}
-
-/*  사진 선택후 파일 추가 버튼 */
-.add-file-area-hidden{
-  display: none;
-}
-
-.add-file-area{
-  display: block;
 }

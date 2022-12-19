@@ -64,6 +64,44 @@ inputFile.addEventListener("change", (e)=>{
       }
       // console.log(object);
     }
+    
+
   }
+
 });
 
+// const addInputFile = document.getElementById("addInputFile"); // 파일 추가 선택
+
+// addInputFile.addEventListener("change", (e)=>{
+
+//   if(e.target.files[0] != undefined){
+//     for(let i=0; i < e.target.files.length; i++){
+//       // 이벤트 발생한 파일 길이 만큼 for문 돌림
+      
+//       const reader = new FileReader(); // 파일 읽는 객체
+//       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
+
+//       reader.onload = (e) => {
+//         // <div class="board-view-content-img">
+//         //   <div class="board-Write-img-delete">&times;</div>
+
+//         //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
+//         // </div>
+
+//         const contentImgDiv = document.createElement("div");
+//         const ImgDeleteDiv = document.createElement("div");
+//         const fileImg = document.createElement("img");
+
+//         contentImgDiv.classList.add("board-view-content-img");
+//         ImgDeleteDiv.classList.add("board-Write-img-delete");
+//         fileImg.setAttribute("src", e.target.result);
+
+//         // 조립하기
+//         ImgDeleteDiv.append('X');
+//         contentImgDiv.append(ImgDeleteDiv, fileImg);
+//         boardViewContentImgArea.append(contentImgDiv);
+
+//       }
+//     }
+//   }
+// });
