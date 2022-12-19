@@ -8,12 +8,12 @@
             <section id="header-section">
                 <div id="login2"></div>
                 <div>
-                    <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
-                    <a href="#" id="logo-content">새싹이</a>
+                    <a href="/"><img id="logo" src="../../resources/images/새싹이.png"></a>
+                    <a href="/" id="logo-content">새싹이</a>
                 </div>
                 <div id="login">
-                    <a href="">로그인</a>
-                    <a href="">회원가입</a>
+                    <a href="/login">로그인</a>
+                    <a href="/signUp">회원가입</a>
                 </div>
             </section>
             <!-- 메뉴창 -->
