@@ -15,22 +15,22 @@ var mySwiper = new Swiper('.swiper-container', {
   
   boardNotice.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
-    // ajax로 공지사항 불러오기  
+    boardTest.style.display = "block";
   });
 
   update.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
-    // 업데이트 불러오기
   });
 
   freeBoard.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
-    // 자유게시판 불러오기
   });
 
   question.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
-    // 문의게시판 불러오기
   });
+
+const boardTest = document.getElementById("boardTest");
+boardTest.style.display = "none";
 
 
