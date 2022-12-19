@@ -13,7 +13,7 @@
 }
 
 * {
-    font-family: LotteMartHappy;
+    font-family: NIXGONM-Vb;
     /* font-weight: bold; */
 }
 
@@ -362,7 +362,7 @@ footer{
 
 /* 모달팝업 */
 .storeInfoModal-window{
-    display: none;
+    display: flex;
 
     justify-content: center;
     align-items: center;
@@ -388,7 +388,15 @@ footer{
 .modal-title{
     height: 50px;
     background-color: #2db400;
+    color: white;
+    font-size: 20px;
     padding: 18px;
     text-align: center;
+    /* 상단 버튼 위치 조정 */
+    display: flex;
+    justify-content: space-between
 }
 
+.modal-title-hidden{
+    visibility: hidden;
+}

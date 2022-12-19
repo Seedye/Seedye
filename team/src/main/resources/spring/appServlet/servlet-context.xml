@@ -62,33 +62,10 @@
 	 -->
 	<context:component-scan base-package="edu.kh.project" />
 	
-	<!-- 인터셉터 등록/매핑주소 설정 -->
-	<interceptors>
-		<interceptor>
-			<mapping path="/**"/> <!-- 모든 요청 주소 -->
-			<beans:bean id="BoardTypeInterceptor" 
-				class="edu.kh.project.common.interceptor.BoardTypeInterceptor"/>
-		</interceptor>
-	</interceptors>
-	
 	<!-- 스프링 스케쥴러 어노테이션 인식 -->
 	<task:annotation-driven/>
 	
 	<!-- AOP 관련 어노테이션 인식 + proxy 제어 -->
 	<aop:aspectj-autoproxy/>
-	
-  <beans:bean id="chatHandler" class="edu.kh.project.chatting.model.websocket.ChattingWebsocketHandler"/>
-  <websocket:handlers>
-     <!-- websocket 매핑 주소 -->
-     <websocket:mapping handler="chatHandler" path="/chattingSock"/>
-     
-     <websocket:handshake-interceptors> 
-        <!-- interceptor : http통신에서 request, response를 가로채는 역할
-        handshake-interceptors :Httpsession에 있는 값을 가로채서 WebSocketSession 넣어주는 역할  -->
-        <beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-     </websocket:handshake-interceptors>
-     
-     <websocket:sockjs/>
-   </websocket:handlers> 
 	
 </beans:beans>
