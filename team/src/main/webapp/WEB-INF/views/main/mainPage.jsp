@@ -1,40 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>새싹이 -꿈나무카드 가맹점 찾기</title>
 
-    <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/mainPage.css">
 </head>
 <body>
 
-    <!-- 헤더 -->
-    <header>
-        <!-- 헤더 -->
-        <section id="header-container">
-            <!-- 로고 -->
-            <section id="header-section">
-                <a href="#"><img id="logo" src="../resources/images/새싹이.png"></a>
-                <a href="#" id="logo-content">새싹이</a>
-            </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="#"></a>공지사항</li>
-                    <li><a href="#"></a>커뮤니티</li>
-                    <li><a href="#"></a>소개</li>
-                    <li><a href="#"></a>식당 등록 문의</li>
-                    <li><a href="#"></a>후원</li>
-                    <li><a href="#"></a>업데이트</li>
-                    <li><a href="#"></a>관리자</li>
-                </ul>
-            </nav>
-        </section>
-    </header>
-
+    <%-- 헤더 위치 --%>
 
     <main>
         <!-- 사진에 검색창 넣을려다가 일딴 뺏음 -->
@@ -315,23 +293,7 @@
         -->
     </main>
 
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <%-- 푸터 위치 --%>
     
-
-    <script src="../resources/js/mainPage.js"></script>
-
 </body>
 </html>
