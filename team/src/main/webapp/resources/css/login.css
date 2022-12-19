@@ -63,6 +63,10 @@ body{
     font-size: 15px;
 }
 
+.input-text > #memberPw{
+    font-family: auto;
+}
+
 /* 아이디 / 비밀번호를 클릭했을 때 */
 .input-text input:focus{
     outline: none;
