@@ -29,19 +29,78 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
 }
 
 .container{
-    background-color: #2db400;
     width: 500px;
     height: 500px;
     font-size: 30px;
-    color: aliceblue;
-    padding: 100px;
-
+    text-align: center;
+    color: #2db400;
+    position: relative;
 }
 
 .swiper-slide{
     display: flex;
     justify-content: center;
+}
+
+.container > img{
+    width: 500px;
+    height: 500px;
+}
+
+/* 공지사항 */
+
+#boardNotice{
+    cursor: pointer;
+}
+
+#boardNotice > span{
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    color: darkred;
+    font-weight: bold;
+
+}
+
+/* 자유게시판 */
+#freeBoard{
+    cursor: pointer;
+}
+
+#freeBoard > span{
+    position: absolute;
+    left: 70%;
+    bottom: 5%;
+    color: #2db400;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+/* 업데이트 */
+#update{
+    cursor: pointer;
+}
+#update > span{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    color: ivory;
+    font-weight: bold;
+}
+
+/* 문의게시판 */
+#question{
+    cursor: pointer;
+}
+
+#question > span{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-weight: bold;
+    color: #2db400;
 }

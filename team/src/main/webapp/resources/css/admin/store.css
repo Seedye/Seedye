@@ -1,0 +1,126 @@
+.admin-mainMenu{
+    width: 900px;
+    height: 65vh;
+    margin: 0 10px 10px 10px;
+    
+}    
+
+/* 식당 등록 전체 */
+#adminR{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;  
+    border: 1px solid black;
+
+    
+}
+
+/* 식당 등록 폼 메뉴 */
+.adminR-menu{
+    display: flex;
+    margin: 10px;
+    padding: 3px;
+    font-weight: bold;
+}
+.adminR-menu > aside{
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.adminR-menu > input{
+    width: 50%;
+    padding-left: 5px;
+}
+/* 등록 버튼 */
+#btn{
+    display: flex;
+    justify-content: center;   
+    margin-bottom: 10px; 
+}
+
+#btn > button{
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#btn > button:hover{
+    background-color: #2db400;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#menu{
+    margin-bottom: 10px;
+    background-color: #2db400;
+    height: 10%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+    color: white;
+    
+}
+
+.close{
+    position: relative;
+    left: 40%;
+    cursor: pointer;
+}
+
+/* 이미지 영역 */
+#imageArea{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#imageArea > aside{
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.imageDiv > aside{
+    font-weight: bold;
+}
+
+
+.imageInput{
+    display: none;
+}
+
+.preview{
+    width: 100px;
+}
+
+.imageDiv{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imageDiv > label{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+
+.red{
+    color: red;
+    font-weight: bold;
+}

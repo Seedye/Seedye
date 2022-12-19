@@ -13,33 +13,33 @@
     <main>
         <header>
             <!-- 헤더 -->
-        <section id="header-container">
+            <section id="header-container">
                 <!-- 로고 -->
-            <section id="header-section">
-                <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
-                <a href="#" id="logo-content">새싹이</a>
+                <section id="header-section">
+                    <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
+                    <a href="#" id="logo-content">새싹이</a>
+                </section>
+                <!-- 메뉴창 -->
+                <nav id="nav-bar">
+                    <ul>
+                        <li><a href="#"></a>소개</li>
+                        <li><a href="#"></a>공지사항</li>
+                        <li><a href="#"></a>커뮤니티</li>
+                        <li><a href="#"></a>식당 등록 문의</li>
+                        <li><a href="#"></a>마이 페이지</li>
+                        <!-- <li><a href="#"></a>관리자</li> -->
+                        <!-- <li><a href="#"></a>후원</li> -->
+                    </ul>
+                </nav>
             </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="#"></a>공지사항</li>
-                <li><a href="#"></a>커뮤니티</li>
-                <li><a href="#"></a>소개</li>
-                <li><a href="#"></a>식당 등록 문의</li>
-                <li><a href="#"></a>후원</li>
-                <li><a href="#"></a>업데이트</li>
-                <li><a href="#"></a>관리자</li>
-            </ul>
-            </nav>
-        </section>
-        </header>
+        </header>    
 
         <div id="adminMain">
-            <div id="sideAll">
+            <div id="sideAll">                  
                 <label for="sideIntro" class="sideM" id="side1">소개</label>
                 <input type="checkbox" id="sideIntro">
                     <div id="sideMenu1">
-                        <ul>
+                        <ul class="dropdown-sideMenu1">
                             <li><a href="">소개글</a></li>
                             <li><a href="">프로젝트 및 팀원 소개</a></li>
                             <li><a href="">프로젝트 목적</a></li>
@@ -50,7 +50,7 @@
                 <label for="sideNotice" class="sideM" id="side2">공지사항</label>
                 <input type="checkbox" id="sideNotice">
                     <div id="sideMenu2">
-                        <ul>
+                        <ul class="dropdown-sideMenu2">
                             <li><a href="">공지사항</a></li>
                             <li><a href="">업데이트</a></li>
                         </ul>
@@ -58,7 +58,7 @@
                 <label for="side" class="sideM" id="side3">커뮤니티</label>
                 <input type="checkbox" id="side">
                     <div id="sideMenu3">
-                        <ul>
+                        <ul class="dropdown-sideMenu3">
                             <li><a href="">자유게시판</a></li>
                             <li><a href="">문의게시판</a></li>
                             <li><a href="">추가할 게시판</a></li>  
@@ -69,12 +69,12 @@
                 <label for="sideManage" class="sideM" id="side6">관리자 메뉴</label>
                 <input type="checkbox" id="sideManage">
                     <div id="sideMenu4">
-                        <ul>
+                        <ul class="dropdown-sideMenu4">
                             <li><a href="admin-copy1.html">식당 관리</a></li>
                             <li><a href="member.html">회원 관리</a></li>
                             <li><a href="boardManage.html">게시글 관리</a></li>
                         </ul>
-                    </div>
+                    </div>        
             </div>
             <!-- 회원 관리 -->
             <div id="adminMember" class="admin-mainMenu">
