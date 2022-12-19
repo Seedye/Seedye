@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="myPageMapper">
+<mapper namespace="memberMapper">
 
 	<!-- <resultMap type="edu.kh.project.member.model.vo.Member" id="member_rm"> -->
 	<resultMap type="Member" id="member_rm">
@@ -9,17 +9,25 @@
 		<id property="memberNo" column="MEMBER_NO" />
 		
 		<!-- <result/> 태그는 나머지 일반 컬럼 -->
-     <result property="memberEmail" column="MEMBER_EMAIL" />
+     <result property="memberId" column="MEMBER_ID" />
      <result property="memberPw" column="MEMBER_PW" />
-     <result property="memberNickname" column="MEMBER_NICKNAME" />
      <result property="memberTel" column="MEMBER_TEL" />
      <result property="memberAddress" column="MEMBER_ADDRESS" />
-     <result property="profileImage" column="PROFILE_IMG" />
      <result property="enrollDate" column="ENROLL_DATE" />
      <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
      <result property="authority" column="AUTHORITY" />
      
 	</resultMap>
+	
+<!-- 로그인 -->																					<!-- resultMap 의 id -->
+<select id="login" parameterType="string" resultMap="member_rm">
+SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_TEL, MEMBER_ADDRESS, 
+AUTHORITY, TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+FROM "MEMBER"
+WHERE MEMBER_DEL_FL = 'N'
+AND MEMBER_ID = #{memberId}
+</select>	
+	
 	
 	<!-- 회원 정보 수정 -->
 	<update id="updateInfo" parameterType="Member">
