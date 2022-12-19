@@ -14,28 +14,7 @@
 <body>
 
     <%-- 헤더 위치 --%>
-    <header>
-        <!-- 헤더 -->
-        <section id="header-container">
-            <!-- 로고 -->
-            <section id="header-section">
-                <a href="#"><img id="logo" src="../resources/images/새싹이.png"></a>
-                <a href="#" id="logo-content">새싹이</a>
-            </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul>
-                    <li><a href="#"></a>공지사항</li>
-                    <li><a href="#"></a>커뮤니티</li>
-                    <li><a href="#"></a>소개</li>
-                    <li><a href="#"></a>식당 등록 문의</li>
-                    <li><a href="#"></a>후원</li>
-                    <li><a href="#"></a>업데이트</li>
-                    <li><a href="#"></a>관리자</li>
-                </ul>
-            </nav>
-        </section>
-    </header>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
         <!-- 사진에 검색창 넣을려다가 일딴 뺏음 -->
@@ -329,21 +308,9 @@
     </main>
 
     <%-- 푸터 위치 --%>
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>
     
 </body>
