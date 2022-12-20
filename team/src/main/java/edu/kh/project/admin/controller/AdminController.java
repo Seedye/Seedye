@@ -2,10 +2,30 @@ package edu.kh.project.admin.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/admin")
 @Controller
 public class AdminController {
 
+
+	// 게시글 관리화면 이동
+	@GetMapping("/manageBoard")
+	public String selectManageBoard() {
+		return "admin/manageBoard";
+	}
+	
+	// 회원 관리 화면 이동
+	@GetMapping("/manageMember")
+	public String manageMember() {
+		return "admin/manageMember";
+	}
+	
+	// 식당 관리 화면 이동
+	@GetMapping("/manageStore")
+	public String manageStore() {
+		return "admin/manageStore";
+	}
 	
 	// 게시글 목록 조회
 	
