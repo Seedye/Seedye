@@ -15,7 +15,7 @@
     var login2 = document.getElementById("login2");
 
     // 스크롤 위치가 일정 값 이상이면 scrolled 클래스 추가, 이 값 미만이면 제거
-    if (scrollTop > 67 && flag) {
+    if (scrollTop > 81 && flag) {
 
         this.document.querySelector("header").style.position = "sticky";
         
@@ -32,7 +32,7 @@
         return;
     } 
     
-    if (scrollTop <= 67 && !flag) {
+    if (scrollTop <= 0 && !flag) {
 
         this.document.querySelector("header").style.position = "initial";
         
@@ -45,5 +45,7 @@
         login.classList.remove("scrolled");
         login2.classList.remove("scrolled");
         flag = true;
+
+        window.scrollTo({ left: 0, top: 81 });
     }
   });
