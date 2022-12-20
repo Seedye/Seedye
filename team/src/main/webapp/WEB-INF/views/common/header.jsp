@@ -19,13 +19,12 @@
             <!-- 메뉴창 -->
             <nav id="nav-bar">
                 <ul id="ul-container">
-                    <li><a href="#"></a>새싹소개</li>
-                    <li><a href="#"></a>공지사항</li>
-                    <li><a href="/boardList"></a>커뮤니티</li>
-                    <li><a href="#"></a>식당 등록 문의</li>
-                    <li><a href="#"></a>마이 페이지</li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="#">식당 등록 문의</a></li>
+                    <li><a href="#">마이 페이지</a></li>
+                    <li><a href="/support">후원</a></li>
                     <!-- <li><a href="#"></a>관리자</li> -->
-                    <!-- <li><a href="#"></a>후원</li> -->
                 </ul>
             </nav>
         </div>
