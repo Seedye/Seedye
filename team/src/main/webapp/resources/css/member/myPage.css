@@ -330,3 +330,37 @@ form[name='myPage-frm']{position: relative;}
 .myPage-row > #memberPw, #currentPw, #newPw, #newPwConfirm{
     font-family: auto;
 }
+
+/* 시작지점 : 아래 왼쪽 */
+.myPage-row:after{
+    content: "";
+    /* position: absolute; */
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: #2DB400;
+    transition: all linear 0.5s;
+}
+
+.myPage-row:before{
+    content: "";
+    /* position: absolute; */
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: #2DB400;
+    transition: all linear 0.5s;
+}
+
+/* 500px 만큼 길어지게 */
+.myPage-row:hover:after{
+    /* width: 100px; */
+}
+
+.myPage-row:hover:before{
+    width: 100px;
+}
