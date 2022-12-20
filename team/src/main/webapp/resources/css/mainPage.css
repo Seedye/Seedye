@@ -286,7 +286,7 @@ footer{
 
 /* 모달팝업 */
 .storeInfoModal-window{
-    display: flex;
+    display: none;
 
     justify-content: center;
     align-items: center;
