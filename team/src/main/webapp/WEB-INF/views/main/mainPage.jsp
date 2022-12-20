@@ -263,6 +263,9 @@
                             <span class="content"><span class="content-title">도로명 : </span>서울 마포구 동교로38길 12  지하1층 (연남동)</span>
                             <span class="content"><span class="content-title">전화번호 : </span>02-537-7172</span>
                             <span class="content-img"><img src="../resources/images/foodType/pizza.jpg"></span>
+                            <%-- <img src="../resources/images/mainslide/children-1.jpg">
+                            <img src="../resources/images/mainslide/children-2.jpg">
+                            <img src="../resources/images/mainslide/girls-1.jpg"> --%>
                             <span class="content-pre">
                                 &lt; 메뉴 설명 &gt;<br><br>
                                 페페로니 피자 3,000원<br>
@@ -312,6 +315,6 @@
 
     <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>
-    
+
 </body>
 </html>

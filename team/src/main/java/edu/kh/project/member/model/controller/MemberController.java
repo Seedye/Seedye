@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,7 @@ public class MemberController {
 	private MemberService service;
 	
 	// 로그인
-	@PostMapping("/member/login")
+	@PostMapping("/login")
 	public String login(/* @ModelAttribute */ Member inputMember,
 				Model model,
 				RedirectAttributes ra,
@@ -64,9 +65,17 @@ public class MemberController {
 		return "redirect:" + path;
 	}
 	
-
+	// 로그인
+	@GetMapping("/login")
+	public String loginPage() {
+		return "main/member/login";
+	}	
 	
-	
+	// 회원가입
+	@GetMapping("/signUp")
+	public String signUpPage() {
+		return "main/member/signUp";
+	}	
 	
 	
 	

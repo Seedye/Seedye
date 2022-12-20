@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
 
-    <link rel="stylesheet" href="/team/src/main/webapp/resources/css/login.css">
+    <link rel="stylesheet" href="../resources/css/login.css">
 
 </head>
 
@@ -17,14 +17,14 @@
     <main>
         <article class="login-logo">
             <div class="login-head">
-                <a href="#">
-                <img width="50px" height="50px" src="/team/src/main/webapp/resources/images/새싹이.png">
+                <a href="/">
+                <img width="50px" height="50px" src="../resources/images/새싹이.png">
                 </a>
                 <div class="sprout">새싹이</div>
             </div>
         </article>
 
-        <form action="/member/login" method="POST">
+        <form action="/login" method="POST">
             <div class="input-text">
                 <input type="text" name="email" placeholder="아이디" required>
             </div>
