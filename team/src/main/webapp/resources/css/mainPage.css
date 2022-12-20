@@ -133,7 +133,7 @@ footer{
 
 /* 체크박스 없애기 */
 .foodTypecategory input{
-    display: none;
+    /* display: none; */
 }
 
 /* 카테고리 ul태그 스타일 */
@@ -156,16 +156,12 @@ footer{
     box-shadow: 2px 2px 2px 2px #ddd inset;
 }
 
-.foodTypecategory div input:checked{
-    box-shadow: 2px 2px 2px 2px #ddd inset;
-}
-
 .category-box{
     width: 110px;
     padding: 5px;
     display: flex;
     flex-direction: column;
-    
+    border-radius: 10px;
 }
 
 /* 검색 결과 박스 */
@@ -348,10 +344,6 @@ footer{
 .modal-content-left{
     display: flex;
     flex-direction: column
-}
-
-.modal-contant-right{
-    margin-bottom: 30px;
 }
 
 #map{
