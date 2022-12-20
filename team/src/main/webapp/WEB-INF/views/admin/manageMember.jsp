@@ -1,0 +1,259 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/test.css">
+</head>
+<body>
+    <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+
+        <div id="adminMain">
+            <div id="sideAll">                  
+                <label for="sideIntro" class="sideM" id="side1">소개</label>
+                <input type="checkbox" id="sideIntro">
+                    <div id="sideMenu1">
+                        <ul class="dropdown-sideMenu1">
+                            <li><a href="">소개글</a></li>
+                            <li><a href="">프로젝트 및 팀원 소개</a></li>
+                            <li><a href="">프로젝트 목적</a></li>
+                            <li><a href="">꿈나무 카드</a></li>
+                        </ul>
+                    </div>
+        
+                <label for="sideNotice" class="sideM" id="side2">공지사항</label>
+                <input type="checkbox" id="sideNotice">
+                    <div id="sideMenu2">
+                        <ul class="dropdown-sideMenu2">
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">업데이트</a></li>
+                        </ul>
+                    </div>        
+                <label for="side" class="sideM" id="side3">커뮤니티</label>
+                <input type="checkbox" id="side">
+                    <div id="sideMenu3">
+                        <ul class="dropdown-sideMenu3">
+                            <li><a href="">자유게시판</a></li>
+                            <li><a href="">문의게시판</a></li>
+                            <li><a href="">추가할 게시판</a></li>  
+                        </ul>     
+                    </div>
+                <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>
+                <label for="" class="sideM" id="side5"><a href="">마이페이지</a></label>
+                <label for="sideManage" class="sideM" id="side6">관리자 메뉴</label>
+                <input type="checkbox" id="sideManage">
+                    <div id="sideMenu4">
+                        <ul class="dropdown-sideMenu4">
+                            <li><a href="admin-copy1.html">식당 관리</a></li>
+                            <li><a href="member.html">회원 관리</a></li>
+                            <li><a href="boardManage.html">게시글 관리</a></li>
+                        </ul>
+                    </div>        
+            </div>
+            <!-- 회원 관리 -->
+            <div id="adminMember" class="admin-mainMenu">
+                <div id="tableArea">
+                    <h1 id="memberH1">회원 관리</h1>
+                    <table class="list-table">
+                        <thead>
+                            <tr id="tableHead">
+                                <th>회원 종류</th>
+                                <th>아이디</th>
+                                <th>회원 이름</th>
+                                <th>전화번호</th>
+                                <th>가입일</th>
+                                <th>회원 탈퇴여부</th>
+                                <th>회원 관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button class="memberManageBtn">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>업주</td>
+                                <td>testzsdb</td>
+                                <td>테스트</td>
+                                <td>01011112222</td>
+                                <td>2022.12.15</td>
+                                <td>N</td>
+                                <td><button>관리</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form action="">
+                        <div id="searchArea">
+                            <select name="" id="">
+                                <option value="">아이디</option>
+                                <option value="">이름</option>
+                                <option value="">전화번호</option>
+                            </select>
+                            <input type="text">
+                            <button>검색</button>
+                        </div>
+                    </form>
+                    <div id="pagination-area">
+                        <ul class="pagination">
+                            <li><a href="">&lt;&lt;</a></li>
+                            <li><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                            <li><a href="">6</a></li>
+                            <li><a href="">7</a></li>
+                            <li><a href="">8</a></li>
+                            <li><a href="">9</a></li>
+                            <li><a href="">10</a></li>
+                            <li><a href="">&gt;&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="memberManage" class="admin-mainMenu">
+                <div id="memberManageAll">
+                    <h1>회원 관리</h1>
+                    <div id="memberInfoChange">
+                        <div id="memberInfo">
+                            <div class="memberInfoList">
+                                <aside>이름</aside>
+                                <span>테스트</span>
+                            </div>
+                            <div class="memberInfoList">
+                                <aside>아이디</aside>
+                                <span>Test</span>
+                            </div>
+                            <div class="memberInfoList">
+                                <aside>전화번호</aside>
+                                <span>01012345678</span>
+                            </div>
+                            <div class="memberInfoList">
+                                <aside>주소</aside>
+                                <span>서울시 중구 남대문로</span>
+                            </div>
+                            <div class="memberInfoList">
+                                <aside>가입일</aside>
+                                <span>2022.12.15</span>
+                            </div>
+                            <div class="memberInfoList">
+                                <aside>회원 종류</aside>
+                                <span>이용자</span>
+                            </div>
+                        </div>
+                        <div id="licenseArea">
+                            <img src="" id="licenseView">
+                            <span id="licenseText">사업자 등록증</span>
+                        </div>
+                    </div>
+                    <div id="memberBtn">
+                        <button id="m-Btn">권한 변경</button>
+                        <button id="m-BtnR">돌아가기</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </main>
+    <footer>
+    <p>
+        Copyright &copy; KH Information Educational Institute A-Class Seedye Team
+    </p>
+    <article>
+        <a href="#">프로젝트 소개</a>
+        <span>|</span>
+        <a href="#">이용약관</a>
+        <span>|</span>
+        <a href="#">개인정보처리방침</a>
+        <span>|</span>
+        <a href="#">고객센터</a>
+    </article>
+    </footer>
+    <script src="/resources/js/admin/member.js"></script>
+    <script src="/resources/js/test.js"></script>
+</body>
+</html>
