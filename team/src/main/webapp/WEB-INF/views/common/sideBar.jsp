@@ -38,9 +38,9 @@
         <input type="checkbox" id="sideManage">
             <div id="sideMenu4">
                 <ul class="dropdown-sideMenu4">
-                    <li><a href="admin-copy1.html">식당 관리</a></li>
-                    <li><a href="member.html">회원 관리</a></li>
-                    <li><a href="boardManage.html">게시글 관리</a></li>
+                    <li><a href="/admin/manageStore">식당 관리</a></li>
+                    <li><a href="/admin/manageMember">회원 관리</a></li>
+                    <li><a href="/admin/manageBoard">게시글 관리</a></li>
                 </ul>
             </div>        
     </div>

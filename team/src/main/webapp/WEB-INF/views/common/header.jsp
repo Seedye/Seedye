@@ -24,7 +24,9 @@
                     <li><a href="#">식당 등록 문의</a></li>
                     <li><a href="#">마이 페이지</a></li>
                     <li><a href="/support">후원</a></li>
-                    <!-- <li><a href="#"></a>관리자</li> -->
+                    <!-- <c:if test="${loginMember.authority == 2}"> -->
+                    <li><a href="/admin/manageBoard">관리자</a></li>
+                    <!-- </c:if> -->
                 </ul>
             </nav>
         </div>
