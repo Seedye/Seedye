@@ -1,0 +1,299 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/test.css">
+</head>
+<body>
+    <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
+
+        <div id="adminMain">
+            <div id="sideAll">                  
+                <label for="sideIntro" class="sideM" id="side1">소개</label>
+                <input type="checkbox" id="sideIntro">
+                    <div id="sideMenu1">
+                        <ul class="dropdown-sideMenu1">
+                            <li><a href="">소개글</a></li>
+                            <li><a href="">프로젝트 및 팀원 소개</a></li>
+                            <li><a href="">프로젝트 목적</a></li>
+                            <li><a href="">꿈나무 카드</a></li>
+                        </ul>
+                    </div>
+        
+                <label for="sideNotice" class="sideM" id="side2">공지사항</label>
+                <input type="checkbox" id="sideNotice">
+                    <div id="sideMenu2">
+                        <ul class="dropdown-sideMenu2">
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">업데이트</a></li>
+                        </ul>
+                    </div>        
+                <label for="side" class="sideM" id="side3">커뮤니티</label>
+                <input type="checkbox" id="side">
+                    <div id="sideMenu3">
+                        <ul class="dropdown-sideMenu3">
+                            <li><a href="">자유게시판</a></li>
+                            <li><a href="">문의게시판</a></li>
+                            <li><a href="">추가할 게시판</a></li>  
+                        </ul>     
+                    </div>
+                <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>
+                <label for="" class="sideM" id="side5"><a href="">마이페이지</a></label>
+                <label for="sideManage" class="sideM" id="side6">관리자 메뉴</label>
+                <input type="checkbox" id="sideManage">
+                    <div id="sideMenu4">
+                        <ul class="dropdown-sideMenu4">
+                            <li><a href="admin-copy1.html">식당 관리</a></li>
+                            <li><a href="member.html">회원 관리</a></li>
+                            <li><a href="boardManage.html">게시글 관리</a></li>
+                        </ul>
+                    </div>        
+            </div>
+
+            <!-- 식당 등록 -->
+            <div id="adminR" class="admin-mainMenu">
+                <form action="#">
+                    <div id="imageArea">
+                        <div class="imageDiv">
+                            <label for="image0">
+                                <img src="" class="preview">
+                            </label>
+                            <input type="file" id="image0" accept="image/*" class="imageInput">
+                            <aside>사업자 등록증</aside>
+                            <span class="red">*필수</span>
+                        </div>
+                        <div class="imageDiv">
+                            <label for="image1">
+                                <img src="" class="preview">
+                            </label>
+                            <input type="file" id="image1" accept="image/*" class="imageInput">
+                            <aside>가게 이미지</aside>
+                        </div>
+                        <div class="imageDiv">
+                            <label for="image2">
+                                <img src="" class="preview">
+                            </label>
+                            <aside>메뉴판 이미지</aside>
+                            <input type="file" id="image2" accept="image/*" class="imageInput">
+                        </div>
+                    </div>
+                    <div class="adminR-menu">
+                        <aside><span class="red">＊</span>업소 상호명</aside>
+                        <input type="text">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside><span class="red">＊</span>업종</aside>
+                        <select name="food" id="select">
+                            <option value="">한식</option>
+                            <option value="">중식</option>
+                            <option value="">일식</option>
+                            <option value="">양식</option>
+                            <option value="">패스트푸드</option>
+                            <option value="">일반대중음식</option>
+                            <option value="">편의점</option>
+                            <option value="">제과점</option>
+                            <option value="">정육점</option>
+                            <option value="">착한식당</option>
+                        </select>
+                    </div>
+                    <div class="adminR-menu">
+                        <aside><span class="red">＊</span>주소</aside>
+                        <input type="text" placeholder="주소">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside><span class="red">＊</span>휴대폰 번호(-제외)</aside>
+                        <input type="text" placeholder="전화번호">
+                    </div>
+                    <div class="adminR-menu">
+                        <aside>메뉴, 가격</aside>
+                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none"></textarea>
+                    </div>
+                    <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
+                    <div id="btn">
+                        <button>등록</button>
+                    </div>
+                </form>
+            </div>
+            <div id="storeManage" class="admin-mainMenu">
+                <div id="storeArea">
+                    <select>
+                        <option>업종</option>
+                        <option value="">한식</option>
+                        <option value="">중식</option>
+                        <option value="">일식</option>
+                        <option value="">양식</option>
+                        <option value="">패스트푸드</option>
+                        <option value="">일반대중음식</option>
+                        <option value="">편의점</option>
+                        <option value="">제과점</option>
+                        <option value="">정육점</option>
+                        <option value="">착한식당</option>
+                    </select>
+                    <h1 id="storeH1">식당 관리</h1>
+                    <table id="storeTable">
+                        <thead>
+                            <tr id="storeTH">
+                                <th>번호</th>
+                                <th>이름</th>
+                                <th>업종</th>
+                                <th>주소</th>
+                                <th>전화번호</th>
+                                <th>처리여부</th>
+                                <th>관리하기</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="storeList">
+                                <td>1</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>가나다</td>
+                                <td>한식</td>
+                                <td>서울특별시 종로구 남대문로</td>
+                                <td>0205050505</td>
+                                <td>등록완료</td>
+                                <td><button class="store-manage">관리</button></td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form action="">
+                        <div id="searchStore">
+                            <select name="" id="">
+                                <option value="">이름</option>
+                                <option value="">주소</option>
+                                <option value="">전화번호</option>
+                            </select>
+                            <input type="text">
+                            <button>검색</button>
+                        </div>
+                    </form>
+                    <div id="btnArea">
+                        <button>신청 조회</button>
+                    </div>
+                    <div id="pagination-area">
+                        <ul class="pagination">
+                            <li><a href="">&lt;&lt;</a></li>
+                            <li><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                            <li><a href="">6</a></li>
+                            <li><a href="">7</a></li>
+                            <li><a href="">8</a></li>
+                            <li><a href="">9</a></li>
+                            <li><a href="">10</a></li>
+                            <li><a href="">&gt;&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>    
+    </main>
+    <footer>
+        <p>
+            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
+        </p>
+        <article>
+            <a href="#">프로젝트 소개</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보처리방침</a>
+            <span>|</span>
+            <a href="#">고객센터</a>
+        </article>
+    </footer>
+   <script src="/resources/js/admin/admin.js"></script>
+   <script src="/resources/js/test.js"></script>
+</body>
+</html>
