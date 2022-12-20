@@ -67,11 +67,16 @@
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>주소</aside>
-                        <input type="text" placeholder="주소">
+                        <div id="addr-area">
+                            <button type="button" onclick="sample4_execDaumPostcode()">주소 검색</button>
+                            <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+                            <span id="guide" style="color:#999;display:none"></span>
+                        </div>
                     </div>
                     <div class="adminR-menu">
-                        <aside><span class="red">＊</span>휴대폰 번호(-제외)</aside>
-                        <input type="text" placeholder="전화번호">
+                        <aside><span class="red">＊</span>전화번호</aside>
+                        <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="">
                     </div>
                     <div class="adminR-menu">
                         <aside>메뉴, 가격</aside>
@@ -239,21 +244,11 @@
 
         </div>    
     </main>
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
-   <script src="/resources/js/admin/admin.js"></script>
-   <script src="/resources/js/sideBar.js"></script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/resources/js/admin/admin.js"></script>
+    <script src="/resources/js/sideBar.js"></script>
+   
 </body>
 </html>

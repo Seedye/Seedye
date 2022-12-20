@@ -4,10 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.kh.project.admin.model.service.AdminService;
+
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
 
+	private AdminService service;
 
 	// 게시글 관리화면 이동
 	@GetMapping("/manageBoard")
@@ -27,7 +30,9 @@ public class AdminController {
 		return "admin/manageStore";
 	}
 	
+
 	// 게시글 목록 조회
+
 	
 	// 게시글 상세 조회
 		
@@ -37,7 +42,7 @@ public class AdminController {
 	
 	// 게시글 수정
 	
-	// 게시글 작성(공지사항, 업데이트) 이동
+	// 게시글 작성(공지사항(code=1), 업데이트(code=2) 이동
 	
 	// 게시글 작성
 	
@@ -59,9 +64,14 @@ public class AdminController {
 	
 	// 회원 탈퇴
 	
+
 	// 식당 목록 조회
 	
+	
+	
+	
 	// 식당 등록 신청
+	
 	
 	// 식당 등록(조회 후 승인)
 	
