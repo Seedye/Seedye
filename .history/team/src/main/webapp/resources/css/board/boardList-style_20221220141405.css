@@ -99,10 +99,6 @@
   /* background-color: #ddd; */
   /* background-color: whitesmoke; */
   border-top: 2px solid red;
-  /* width: 100px; */
-}
-.board-list-thead > tr >th{
-  width: 150px;
 }
 .board-list-thead > tr{
   border: 2px solid red;

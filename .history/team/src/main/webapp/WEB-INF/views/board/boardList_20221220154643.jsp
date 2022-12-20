@@ -66,8 +66,11 @@
               <c:otherwise>
                 <c:forEach var="board" items="${boardList}">
                    <tr class="board-list-view" >
+                   
                     <td>${board.boardNo}</td>
-                    <td>${board.boardContent}</a></td>
+                    <td>
+                      <a href="/board/${boardNo}/${board.boardNo}?">${board.boardContent}</a>
+                    </td>
                     <td>${board.memberNo}</td>
                     <td>${board.readCount}</td>
                     <td>${board.createDate}</td>
@@ -94,6 +97,66 @@
               <td>44</td>
                 <td>2022.11.23</td>
               </tr>
+
+              <tr class="board-list-view">
+                <td>9</td>
+                <td>새싹 덕분에 잘 </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr class="board-list-view">
+                <td>8</td>
+                <td>너무 구려</td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr class="board-list-view">
+                <td>7</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>6</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>5</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>4</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>3</td>
+                <td>음식점정보가 너무 이상하네요. 게요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>2</td>
+                <td>음식점정보가 너무 이상하네요. 맨탁 드릴게요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr> --%>
+              
             </tbody>
           
 

@@ -72,7 +72,6 @@ inputFile.addEventListener("change", (e)=>{
 //! 모달 연결
 const boardView = document.getElementsByClassName("board-list-view"); // 게시물 리스트 한개
 const boardViewModal = document.getElementById("boardViewModal"); // 상세보기 모달
-const boardViewX = document.getElementById("boardViewX"); // 상세보기 X
 const boardWriteModal  = document.getElementById("boardWriteModal"); // 글작성 모달
 const boardWriteBtn = document.getElementById("boardWriteBtn"); // 글 작성 btn
 const boardWriteX = document.getElementById("boardWriteX"); // 글 작성 시 X
@@ -80,18 +79,7 @@ const boardWriteInput = document.getElementById("boardWriteInput"); // 글 작�
 // 상세보기 눌렀을 때
 boardView[0].addEventListener("click", ()=>{
   boardViewModal.style.display="flex";
-  document.body.style.overflow = "hidden";
 });
-
-// 상세보기 X
-boardViewX.addEventListener("click", ()=>{
-  boardViewModal.style.display = "none";
-  document.body.style.overflow = "unset";
-});
-// boardViewX.addEventListener("click", ()=>{
-//   boardViewModal.style.display = "none";
-//   document.body.style.overflow = "unset";
-// });
 
 // 글작성 버튼 눌렀을때
 boardWriteBtn.addEventListener("click", ()=>{
@@ -111,4 +99,3 @@ boardWriteInput.addEventListener("click", ()=>{
   boardWriteModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-

@@ -1,4 +1,4 @@
-package edu.kh.project.board.dao;
+package edu.kh.project.board.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,5 +9,8 @@ public class BoardDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	
+	
 	
 }

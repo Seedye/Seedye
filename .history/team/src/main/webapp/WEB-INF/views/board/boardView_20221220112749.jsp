@@ -7,7 +7,7 @@
       <div class="board-view-title">
         <p class="board-view-x-hidden">&times;</p>
         <p>상세 조회</p>
-        <p class="board-view-x" id="boardViewX">&times;</p>
+        <p class="board-view-x">&times;</p>
       </div>
 
       <!-- /* 상세보기 내용 */ -->
