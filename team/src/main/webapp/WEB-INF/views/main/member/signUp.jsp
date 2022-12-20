@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
 
-    <link rel="stylesheet" href="../resources/css/signUp.css">
+    <link rel="stylesheet" href="../resources/css/member/signUp.css">
 
 </head>
 <body>
@@ -149,7 +149,7 @@
     crossorigin="anonymous">
     </script>
 
-    <script src="../../resources/js/signUp.js"></script>
+    <script src="../../resources/js/member/signUp.js"></script>
 
 </body>
 

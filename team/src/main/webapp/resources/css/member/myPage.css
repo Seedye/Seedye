@@ -1,0 +1,366 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+
+/* 회원가입 CSS 시작 */
+
+
+/* 전체 */
+*{
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+/* 회원 페이지 전체를 감싸고 있는 요소 */
+.myPage-content{
+    display: flex; /* 플렉스 컨테이너 지정(설정) */
+    width: 1000px; /* 너비 1000px */
+    min-height: 700px; /* 최소 높이 700px */
+    margin: 50px auto;
+
+    /*
+        width / height 고정 크기 관련 속성
+
+        1) width / height
+            - 지정된 크기로 고정
+
+        2) min-width / min-height
+            - 내부 요소가 부모 크기보다 작아도 지정된 최소 크기를 유지
+            - 단, 내부 요소가 부모크기를 초과하면 부모의 크기가 늘어남
+
+        3) max-width / max-height
+            - 내부 요소가 부모 크기보다 커도 지정된 크기를 유지
+            - 단, 내부 요소가 부모 크기보다 작다면 부모의 크기가 줄어듬
+    */
+}
+
+/* 사이드메뉴 */
+.left-side{
+    width: 25%; /* 너비 25% 자리 할당*/
+    border-right: 2px solid #ccff99; /* 테두리 오른쪽 2px + 회색 */
+}
+
+.list-group{
+    width: 100%; /* 너비 100% */
+    list-style: none; /* li 태그의 • 삭제 */
+    padding-right: 20px; /* 오른쪽 여백 20px 할당 */
+}
+
+.list-group > li{
+    height: 50px; /* 높이 50px */
+    font-size: 18px; /* 글자 크기 18px */
+}
+
+.list-group > li > a{
+    color: #33332f; /* 글자 검정색 */
+    text-decoration: none; /* 밑줄 제거*/
+
+    display: flex; /* 플렉스 컨테이너 적용 */
+    height: 100%; /* 높이 100% 사용 */
+
+    justify-content: center; /* 가로선 가운데로 배치 */
+    align-items: center; /* 교차축 가운데로 배치*/
+
+    border-left: 2px solid #2DB400;
+    border-right: 2px solid #2DB400;
+    /* border-bottom: 2px solid #2DB400; */
+
+    border-radius: 50%;
+
+    font-size: bold;
+}
+
+/* .list-group > li:first-child{
+    border-top: 2px solid #2DB400;
+}
+
+.list-group > li:last-child{
+    border-bottom: 2px solid #2DB400;
+} */
+
+.list-group > li > a:hover{
+    background-color: #2DB400; /* 마우스 가져다대면 바탕색 변경 */
+    color : white;
+}
+
+/* ********************** */
+/* 마이페이지 공통 */
+.myPage-main{
+    width: 75%; /* 너비 75% 사용 */
+    padding: 0 50px;
+}
+
+/* 마이페이지 제목 */
+.myPage-title{
+    margin-bottom: 30px;
+    font-size: 30px; /* 글자 크기 30px */
+    color : #33332f;
+}
+
+/* 마이페이지 부제 */
+.myPage-subject{
+    display: block; /* 블록 설정 */
+    margin-bottom: 30px;
+
+    font-size: 14px; /* 글자 크기 14px */
+    /* letter-spacing: -1px; 글자 사이 간격 좁게(-) */
+    color : #33332f;
+    font-weight: bold;
+}
+
+/* 마이페이지 행 단위 스타일 지정 */
+.myPage-row{
+    width: 500px; /* 너비 500px */
+    height: 70px; /* 높이 50px */
+    margin-top: 30px; /* 위에서 20px 떨어지게 */
+
+    display: flex; /* 플렉스 컨테이너 설정 */
+    align-items: center; /* 세로선 중앙으로 */
+    border-bottom: 2px solid #2DB400;
+}
+
+.myPage-row > * {
+    font-size: 18px; /* 글자 크기 */
+    font-weight: bold; /* 글자 두껍게 */
+}
+
+/* 행 제목 */
+.myPage-row > label{
+    width: 30%; /* 너비 30% 공간 할당 */
+    color: #33332f; /* 행 제목(닉네임/전화번호) 색 변경 */
+    font-weight: bold;
+    /* text-align: center; */
+}
+
+.myPage-row > span{
+    width: 70%; /* 너비 70% 공간 할당 */
+    color: #33332f; /* 행 제목(주소) 색 변경 */
+    font-weight: bold;
+    /* text-align: center; */
+}
+
+/* 행 내부 input 태그 */
+.myPage-row > input{
+    width: 70%; /* 너비 70% */
+    height: 100%; /* 높이 100% */
+    border: none; /* 테두리 제거 */
+    outline: none; /* 아웃라인 제거 */
+    font-weight: normal; /* 글씨 두껍지않게 일반 사이즈로 */
+}
+
+/* 제출 버튼 */
+.myPage-submit{
+    width: 77%;
+    padding: 10px;
+    margin: 60px 0px 0px 0px;
+
+    border: none; /* 테두리 제거 */
+    font-size: 20px; /* 글자 크기 20px */
+    font-weight: bold; /* 글자 두껍게 */
+
+    background-color: #2DB400; /* 배경 색 */
+    color: white; /* 글자 색 하얀색 */
+    cursor: pointer; /* 마우스 커버 가져다대면 손가락 표시 */
+
+    border-radius: 30px;
+}
+
+/* form 태그 */
+form[name='myPage-frm']{
+    display: flex; /* 플렉스 설정 */
+    justify-content: center; /* 가로선 가운데 정렬 */
+    align-items: center; /* 세로선 가운데 정렬  */
+    flex-direction: column; /* 메인을 열로 시작 */
+}
+
+/* 내부 input 요소 focus 시 */
+.myPage-row:focus-within{
+    border-bottom-color: #2DB400;
+}
+
+
+/* ********************************** */
+
+/* 내 정보 페이지 전용 스타일 */
+
+.info-title{
+    border: none; /* 테두리(밑줄) 제거 */
+}
+
+.info-address{
+    margin: 0;
+}
+
+.info-address > button{
+    width: 30%; /* 너비 30% 공간 할당 */
+    height: 70%; /* 높이 70% 공간 할당 */
+
+    font-size: 20px; /* 글자 크기 20px */
+    font-weight: bold; /* 글자 두께 - 보통 */
+
+    background-color: white; /* 배경 색 */
+    border : 2px solid #33332f; /* 테두리 색 */
+    color : #33332f; /* 글자 색 */
+
+    border-radius: 50%;
+
+    cursor: pointer; /* 마우스 커버 가져다대면 손가락 표시 */
+}
+
+/* ***** 비밀번호 변경 화면 ***** */
+.myPage-row > input[type='password']{
+    width: 70%;
+}
+
+/* ***** 회원 탈퇴 약관 ***** */
+.secession-terms{
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    overflow: auto;
+    /* 내용이 요소를 벗어나는 경우 방향에 맞춰서 자동으로 스크롤 추가 */
+
+    font-family: sans-serif; /* 돋움체 */
+    font-size: 14px;
+}
+
+/* ***** 프로필 화면 ***** */
+.profile-image-area{
+    width: 150px;
+    height: 150px;
+    /* border: 3px solid #ccc; */
+    /* border-radius: 50%; */
+
+    position: relative;
+
+    overflow: hidden; /* 넘쳐 흐르면 숨기다 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 프로필 이미지 */
+#profile-image{
+    height: 100%;
+}
+
+form[name='myPage-frm']{position: relative;}
+
+/* 삭제 버튼 */
+#delete-image{
+    position: absolute;
+    top: -7px;
+    right: 240px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+/* 이미지 버튼 영역 */
+.profile-btn-area{
+    width: 230px;
+    margin: 20px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-btn-area > *{
+    width: 110px;
+    height: 33px;
+    padding: 5px 10px;
+
+    border: 1px solid black;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#image-input{display: none;}
+
+.profile-btn-area > button{
+    background-color: #2DB400;
+    color: white;
+    margin-left: 2px;
+}
+
+#pw{
+    display: none;
+}
+
+/* 인증 버튼 */
+.tel > button{
+    width: 42%; /* 너비 30% 공간 할당 */
+    height: 70%; /* 높이 70% 공간 할당 */
+
+    font-size: 20px; /* 글자 크기 20px */
+    font-weight: bold; /* 글자 두께 - 보통 */
+
+    background-color: white; /* 배경 색 */
+    border : 2px solid #33332f; /* 테두리 색 */
+    color : #33332f; /* 글자 색 */
+
+    cursor: pointer; /* 마우스 커버 가져다대면 손가락 표시 */
+
+    border-radius: 50%;
+}
+
+.tel > button:hover{
+    background-color: #2DB400; /* 배경 색 */
+    border : 2px solid #ccff99; /* 테두리 색 */
+    color : white; /* 글자 색 */
+}
+
+.info-address > button:hover{
+    background-color: #2DB400; /* 배경 색 */
+    border : 2px solid #ccff99; /* 테두리 색 */
+    color : white; /* 글자 색 */
+}
+
+.myPage-row > #memberPw, #currentPw, #newPw, #newPwConfirm{
+    font-family: auto;
+}
+
+/* 시작지점 : 아래 왼쪽 */
+.myPage-row:after{
+    content: "";
+    /* position: absolute; */
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: #2DB400;
+    transition: all linear 0.5s;
+}
+
+.myPage-row:before{
+    content: "";
+    /* position: absolute; */
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: #2DB400;
+    transition: all linear 0.5s;
+}
+
+/* 100px 만큼 길어지게 */
+/* .myPage-row:hover:after{
+    width: 100px;
+} */
+
+.myPage-row:hover:before{
+    width: 100px;
+}
