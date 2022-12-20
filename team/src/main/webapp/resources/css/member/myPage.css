@@ -356,10 +356,10 @@ form[name='myPage-frm']{position: relative;}
     transition: all linear 0.5s;
 }
 
-/* 500px 만큼 길어지게 */
-.myPage-row:hover:after{
-    /* width: 100px; */
-}
+/* 100px 만큼 길어지게 */
+/* .myPage-row:hover:after{
+    width: 100px;
+} */
 
 .myPage-row:hover:before{
     width: 100px;
