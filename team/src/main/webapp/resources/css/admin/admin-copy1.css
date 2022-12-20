@@ -31,7 +31,7 @@
 
 .admin-mainMenu{
     width: 900px;
-    height: 65vh;
+    height: 80vh;
     margin: 10px;
     
 }
@@ -246,6 +246,34 @@ td{
     justify-content: end;
     margin-right: 25px;
 }
+
+/* 식당 등록 주소 */
+#addr-area{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#addr-area > button{
+    width: 60px;
+    height: 25px;
+    background-color: #2db400;
+    color: white;
+    border: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#addr-area > input{
+    margin-bottom: 5px;
+    height: 40%;
+    padding: 3px;
+}
+
+
+
+
 /* 신청 조회 버튼 */
 #btnArea > button{
     height: 30px;
