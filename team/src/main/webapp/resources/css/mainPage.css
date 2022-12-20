@@ -109,7 +109,10 @@ footer{
 .foodTypecategory{
     margin-top: 50px;
     padding-top: 10px;
-    
+    flex-direction: column;
+
+    /* 카테고리 기능 숨기기 */
+    display: none;
 }
 
 /* 카테고리 이미지 스타일 */
@@ -149,23 +152,20 @@ footer{
 }
 
 .foodTypecategory div:hover{
-    /* border-bottom: 2px solid #2db400; */
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px #ddd inset;
 }
 
+.foodTypecategory div input:checked{
+    box-shadow: 2px 2px 2px 2px #ddd inset;
+}
+
 .category-box{
-    /* background-color: darkkhaki; */
     width: 110px;
     padding: 5px;
     display: flex;
     flex-direction: column;
-    /* border-radius: 10px; */
     
-}
-
-.category-box input:checked{
-    border: 1px solid black;
 }
 
 /* 검색 결과 박스 */
@@ -232,7 +232,9 @@ footer{
 
 /* 결과 정보 창 스타일 */
 .result-box{
-    display: flex;
+    /*  기능 숨기기 */
+    display: none;
+
     /* border-top: 2px solid black; */
     justify-content: flex-start;
     height: 400px;
@@ -349,16 +351,21 @@ footer{
 }
 
 .modal-contant-right{
-    width: 350px;
+    margin-bottom: 30px;
+}
+
+#map{
+    margin-bottom: 30px;
 }
 
 /* 팝업창 오른쪽 지도 크기 초기 설정(나중에 api사용시 수정해야할듯) */
+/* 
 .modal-contant-right img{
     width: 350px;
     height: 350px;
     margin-bottom: 30px;
 }
-
+ */
 /* 팝업창 가게이름 스타일 */
 .title{
     font-weight: bold;
@@ -381,12 +388,6 @@ footer{
     margin-bottom: 8px;
 }
 
-.content-img img{
-    width: 300px;
-    height: 200px;
-    margin: 40px 0;
-}
-
 .board-btn, .bookmark-btn{
     margin-top: 40px;
     margin-right: 60px;
@@ -407,4 +408,94 @@ footer{
 
 .board-btn:hover, .bookmark-btn:hover{
     background-color: #3e8e41;
+}
+
+/* 모달 팝업창 내부 이미지 슬라이드 */
+
+.modal-slider{
+    width: 380px;
+    height: 220px;
+    position: relative;
+    margin: 40px auto;
+    overflow: hidden;
+
+}
+
+.modal-slider input[type=radio]{
+    display: none;
+}
+
+.modal-imgs{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+
+.modal-imgs li{
+    position: absolute;
+    left: 640px;
+    transition-delay: 1s;
+
+    padding: 0;
+    margin: 0;
+}
+
+.modal-imgs img{
+    width: 380px;
+    height: 220px;
+}
+
+.modal-slider-dot{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 30;
+}
+
+.modal-slider-dot label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.modal-slider input[type=radio]:nth-child(1):checked~.modal-slider-dot>label:nth-child(1){
+    background-color: #fff;
+}
+
+.modal-slider input[type=radio]:nth-child(2):checked~.modal-slider-dot>label:nth-child(2){
+    background-color: #fff;
+}
+
+.modal-slider input[type=radio]:nth-child(3):checked~.modal-slider-dot>label:nth-child(3){
+    background-color: #fff;
+}
+
+.modal-slider input[type=radio]:nth-child(4):checked~.modal-slider-dot>label:nth-child(4){
+    background-color: #fff;
+}
+
+.modal-slider input[type=radio]:nth-child(1):checked~.modal-imgs>li:nth-child(1){
+    left: 0;
+    transition: 0.5s;
+    z-index: 29;
+}
+.modal-slider input[type=radio]:nth-child(2):checked~.modal-imgs>li:nth-child(2){
+    left: 0;
+    transition: 0.5s;
+    z-index: 29;
+}
+.modal-slider input[type=radio]:nth-child(3):checked~.modal-imgs>li:nth-child(3){
+    left: 0;
+    transition: 0.5s;
+    z-index: 29;
+}
+.modal-slider input[type=radio]:nth-child(4):checked~.modal-imgs>li:nth-child(4){
+    left: 0;
+    transition: 0.5s;
+    z-index: 29;
 }
