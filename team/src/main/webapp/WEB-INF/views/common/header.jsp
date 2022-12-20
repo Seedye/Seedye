@@ -7,7 +7,7 @@
             <!-- 로고 -->
             <section id="header-section">
                 <div id="login2"></div>
-                <div>
+                <div id="logo-container">
                     <a href="/"><img id="logo" src="../../resources/images/새싹이.png"></a>
                     <a href="/" id="logo-content">새싹이</a>
                 </div>
@@ -19,14 +19,15 @@
             <!-- 메뉴창 -->
             <nav id="nav-bar">
                 <ul id="ul-container">
+                    <li><a href="/introduction">소개</a></li>
                     <li><a href="#">공지사항</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="/boardList">커뮤니티</a></li>
                     <li><a href="#">식당 등록 문의</a></li>
-                    <li><a href="#">마이 페이지</a></li>
                     <li><a href="/support">후원</a></li>
                     <!-- <c:if test="${loginMember.authority == 2}"> -->
                     <li><a href="/admin/manageBoard">관리자</a></li>
                     <!-- </c:if> -->
+
                 </ul>
             </nav>
         </div>
