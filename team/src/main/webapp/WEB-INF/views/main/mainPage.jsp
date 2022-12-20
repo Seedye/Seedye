@@ -43,61 +43,61 @@
                     <li>
                         <div class="category-box">
                             <label for="food-aType"><img src="../resources/images/foodType/bibimbap.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-aType" checked>한식
+                            <input type="radio" name="categortGroup" id="food-aType">한식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-bType"><img src="../resources/images/foodType/black-bean-noodles.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-bType">중식
+                            <input type="radio" name="categortGroup" id="food-bType">중식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-cType"><img src="../resources/images/foodType/sushi.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-cType">일식
+                            <input type="radio" name="categortGroup" id="food-cType">일식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-dType"><img src="../resources/images/foodType/pizza.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-dType">양식
+                            <input type="radio" name="categortGroup" id="food-dType">양식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-eType"><img src="../resources/images/foodType/hamburger.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-eType">패스트푸드
+                            <input type="radio" name="categortGroup" id="food-eType">패스트푸드
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-fType"><img src="../resources/images/foodType/alum.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-fType">일반대중음식
+                            <input type="radio" name="categortGroup" id="food-fType">일반대중음식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-gType"><img src="../resources/images/foodType/store.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-gType">편의점
+                            <input type="radio" name="categortGroup" id="food-gType">편의점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-hType"><img src="../resources/images/foodType/cookie.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-hType">제과점
+                            <input type="radio" name="categortGroup" id="food-hType">제과점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-iType"><img src="../resources/images/foodType/flesh.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-iType">정육점
+                            <input type="radio" name="categortGroup" id="food-iType">정육점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-jType"><img src="../resources/images/foodType/icon.png" alt="업종"></label>
-                            <input type="checkbox" id="food-jType">착한식당
+                            <input type="radio" name="categortGroup" id="food-jType">착한식당
                         </div>
                     </li>
                     <!--  <li>
