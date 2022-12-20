@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,37 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="../../resources/css/admin/boardManage.css">
-    <link rel="stylesheet" href="../../resources/css/header.css">
-    <link rel="stylesheet" href="../../resources/css/test.css">
-    <link rel="stylesheet" href="../../resources/css/admin/swiper.min.css">
+    <link rel="stylesheet" href="/resources/css/admin/boardManage.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/test.css">
+    <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
 </head>
 <body>
-    
     <main>
-        <header>
-            <!-- 헤더 -->
-            <section id="header-container">
-                <!-- 로고 -->
-                <section id="header-section">
-                    <a href="#"><img id="logo" src="../../resources/images/새싹이.png"></a>
-                    <a href="#" id="logo-content">새싹이</a>
-                </section>
-                <!-- 메뉴창 -->
-                <nav id="nav-bar">
-                    <ul>
-                        <li><a href="#"></a>소개</li>
-                        <li><a href="#"></a>공지사항</li>
-                        <li><a href="#"></a>커뮤니티</li>
-                        <li><a href="#"></a>식당 등록 문의</li>
-                        <li><a href="#"></a>마이 페이지</li>
-                        <!-- <li><a href="#"></a>관리자</li> -->
-                        <!-- <li><a href="#"></a>후원</li> -->
-                    </ul>
-                </nav>
-            </section>
-        </header>    
-        
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
         <div id="adminMain">    
             <div id="sideAll">                  
                 <label for="sideIntro" class="sideM" id="side1">소개</label>
@@ -84,25 +64,25 @@
                         <div class="swiper-slide">
                             <div class="container" id="boardNotice">
                             <span>공지사항</span>
-                            <img src="../../resources/images/공지사항.jpg">
+                            <img src="/resources/images/공지사항.jpg">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="container" id="update">
                             <span>업데이트</span>
-                            <img src="../../resources/images/업데이트.jpg">
+                            <img src="/resources/images/업데이트.jpg">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="container" id="freeBoard">
                                 <span>자유 게시판</span>
-                                <img src="../../resources/images/자유게시판.jpg">
+                                <img src="/resources/images/자유게시판.jpg">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="container" id="question">
                             <span>문의게시판</span>
-                            <img src="../../resources/images/문의게시판.jpg">
+                            <img src="/resources/images/문의게시판.jpg">
                             </div>
                         </div>
 
@@ -152,8 +132,8 @@
             <a href="#">고객센터</a>
         </article>
     </footer>
-   <script src="../../resources/js/test.js"></script>
-   <script src="../../resources/js/admin/swiper.min.js"></script>
-   <script src="../../resources/js/admin/boardManage.js"></script>
+   <script src="/resources/js/test.js"></script>
+   <script src="/resources/js/admin/swiper.min.js"></script>
+   <script src="/resources/js/admin/boardManage.js"></script>
 </body>
 </html>
