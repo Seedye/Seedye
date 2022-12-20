@@ -1,9 +1,10 @@
  // 페이지가 로드된 후 스크롤 이벤트를 감지
  let flag = true;
  window.addEventListener("scroll", function() {
+ 
     // 현재 스크롤 위치를 조회
     var scrollTop = window.pageYOffset;
-    // 스크롤 위치가 일정 값 이상이면 scrolled 클래스 추가, 이 값 미만이면 제거
+ 
     var headerSection = document.getElementById("header-section");
     var logo = document.getElementById("logo");
     var logoContent = document.getElementById("logo-content");
@@ -12,6 +13,8 @@
     var nacVar = document.getElementById("nav-bar");
     var login = document.getElementById("login");
     var login2 = document.getElementById("login2");
+
+    // 스크롤 위치가 일정 값 이상이면 scrolled 클래스 추가, 이 값 미만이면 제거
     if (scrollTop > 67 && flag) {
 
         this.document.querySelector("header").style.position = "sticky";
@@ -27,7 +30,6 @@
 
         flag = false;
         return;
-
     } 
     
     if (scrollTop <= 67 && !flag) {
