@@ -19,12 +19,15 @@
 	<typeAliases>
 		<typeAlias type="edu.kh.project.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="edu.kh.project.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="edu.kh.project.admin.model.vo.Store" alias="Store"/>
+		<typeAlias type="edu.kh.project.admin.model.vo.StoreImage" alias="StoreImage"/>
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/main-mapper.xml"/>
 	
 	</mappers>
 	

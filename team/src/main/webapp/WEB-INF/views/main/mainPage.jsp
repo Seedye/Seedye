@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -43,61 +45,61 @@
                     <li>
                         <div class="category-box">
                             <label for="food-aType"><img src="../resources/images/foodType/bibimbap.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-aType">한식
+                            <input type="checkbox" id="food-aType" value="한식">한식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-bType"><img src="../resources/images/foodType/black-bean-noodles.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-bType">중식
+                            <input type="checkbox" id="food-bType" value="중식">중식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-cType"><img src="../resources/images/foodType/sushi.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-cType">일식
+                            <input type="checkbox" id="food-cType" value="일식">일식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-dType"><img src="../resources/images/foodType/pizza.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-dType">양식
+                            <input type="checkbox" id="food-dType" value="양식">양식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-eType"><img src="../resources/images/foodType/hamburger.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-eType">패스트푸드
+                            <input type="checkbox" id="food-eType" value="패스트푸드">패스트푸드
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-fType"><img src="../resources/images/foodType/alum.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-fType">일반대중음식
+                            <input type="checkbox" id="food-fType" value="일반대중음식">일반대중음식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-gType"><img src="../resources/images/foodType/store.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-gType">편의점
+                            <input type="checkbox" id="food-gType" value="편의점">편의점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-hType"><img src="../resources/images/foodType/cookie.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-hType">제과점
+                            <input type="checkbox" id="food-hType" value="제과점">제과점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-iType"><img src="../resources/images/foodType/flesh.jpg" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-iType">정육점
+                            <input type="checkbox" id="food-iType" value="정육점">정육점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-jType"><img src="../resources/images/foodType/icon.png" alt="업종"></label>
-                            <input type="radio" name="categortGroup" id="food-jType">착한식당
+                            <input type="checkbox" id="food-jType" value="착한식당">착한식당
                         </div>
                     </li>
                     <!--  <li>
@@ -114,34 +116,36 @@
                 <div class="statistics">
                     <h3>가맹점 수</h3>
                     <br>
-                    <ul>
-                        <li>
+                    <ul class="statistics-ul">
+<%-- 
+                        <li class="statistics-li">
                             <span>한식 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>중식 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>일식 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>양식 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>편의점 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>제과점 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>정육점 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>패스트푸드 : 300,000개</span>
                         </li>
-                        <li>
+                        <li class="statistics-li">
                             <span>일반대중음식 : 300,000개</span>
                         </li>
+                        --%>
                     </ul>
                 </div>
 
@@ -334,6 +338,11 @@
     <!-- 카카오 api -->
     <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9"></script> -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9&libraries=services"></script>
+    
+    <%-- 제이쿼리 사용시 필요한 스크립트 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+    crossorigin="anonymous"></script>
 
     <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>

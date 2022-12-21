@@ -125,24 +125,64 @@ searchBtn.addEventListener("click", () => {
 
             const resultBox = document.querySelector(".result-box");
     
+            if (categoryBoxItems.lastElementChild.checked){
+                categoryBoxItems.style.boxShadow = '2px 2px 2px 2px #ddd inset';
+            } else {
+                categoryBoxItems.style.boxShadow = 'none';
+            }
+
             resultBox.style.display = "flex";
     
+            /* 통계 ajax 비동기 처리 부분 */
+            $.ajax({
+                url : "/result",
+                type : "GET",
+                success : (resultList) => {
+                    /* resultBox 생성 시 statisticsUl 변수에 담기 */
+                    const statisticsUl = document.querySelector(".statistics-ul");
+                    // resultBox의 내용 삭제
+                    statisticsUl.innerHTML = "";
+
+                    for (let ListItems of resultList){
+                        const statisticsLi = document.createElement("li");
+                        statisticsLi.innerHTML = "<span>"+ ListItems.storeType + "</span><span>" + ListItems.storeCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</span>";
+
+                        statisticsUl.append(statisticsLi);
+                    }
+                },
+                error : () => {
+                    console.log("통계 불러오기 실패");
+                }
+            });
+
+            /* 검색어와 카테고리 선택 시 결과 창 조회하기 */
+            const searchValue = document.querySelector(".searchTxt");
+            const arr = document.querySelectorAll(".category-box input:checked");
+            const tempArr = [];
+
+            for(let a of arr){
+                tempArr.push(a.value);
+            }
+
+            $.ajax({
+                url : "/storeList",
+                data : {"searchValue" : searchValue, "categoryArr" : categoryArr},
+                type : "GET",
+                success : (storeList) => {
+
+                },
+                error : () => {
+                    console.log("검색 결과 불러오기 실패");
+                }
+            });
+
             window.scrollTo({
-                top: 510,
+                top: 550,
                 left: 0,
                 behavior : 'smooth'
             });
 
         });
         
-    }
-});
-
-categoryBoxItems.lastElementChild.addEventListener("change", () => {
-    
-    if (categoryBoxItems.lastElementChild.checked){
-        categoryBoxItems.style.boxShadow = '2px 2px 2px 2px #ddd inset';
-    } else {
-        categoryBoxItems.style.boxShadow = 'none';
     }
 });
