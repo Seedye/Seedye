@@ -58,8 +58,6 @@ function relayout() {
     });
 }
 
-
-
 /* 슬라이드 사용시 */
 /* 
 var slideIndex = 0;
@@ -105,30 +103,46 @@ for (let mainItems of modalBtn){
 
 const searchBtn = document.querySelector(".searchBtn");
 
-
+/* 검색 버튼 눌렀을때 카태고리 나오게 하는 부분 */
 searchBtn.addEventListener("click", () => {
 
     const foodTypecategory = document.querySelector(".foodTypecategory");
-    const categoryBox = document.querySelector(".category-box");
-
+    
     foodTypecategory.style.display = "flex";
-
+    
     window.scrollTo({
         top: 100,
         left: 0,
         behavior : 'smooth'
     });
+    
+    /* 카테고리 선택했을때 나오는 부분 */
+    const categoryBox = document.getElementsByClassName("category-box");
 
-    categoryBox.lastElementChild.addEventListener("click", () => {
-        const resultBox = document.querySelector(".result-box");
+    for (let categoryBoxItems of categoryBox){
 
-        resultBox.style.display = "flex";
+        categoryBoxItems.lastElementChild.addEventListener("click", () => {
 
-        window.scrollTo({
-            top: 510,
-            left: 0,
-            behavior : 'smooth'
+            const resultBox = document.querySelector(".result-box");
+    
+            resultBox.style.display = "flex";
+    
+            window.scrollTo({
+                top: 510,
+                left: 0,
+                behavior : 'smooth'
+            });
+
         });
-    })
-})
+        
+    }
+});
 
+categoryBoxItems.lastElementChild.addEventListener("change", () => {
+    
+    if (categoryBoxItems.lastElementChild.checked){
+        categoryBoxItems.style.boxShadow = '2px 2px 2px 2px #ddd inset';
+    } else {
+        categoryBoxItems.style.boxShadow = 'none';
+    }
+});

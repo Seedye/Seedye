@@ -28,6 +28,11 @@ WHERE MEMBER_DEL_FL = 'N'
 AND MEMBER_ID = #{memberId}
 </select>	
 	
+<!-- 회원 가입 -->	 <!-- 별칭 : Member(mybatis-config.xml) -->
+<insert id="signUp" parameterType="edu.kh.project.member.model.vo.Member">
+INSERT INTO "MEMBER" VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberId}, #{memberPw},
+#{memberTel}, #{memberAddress}, DEFAULT, DEFAULT, DEFAULT)
+</insert>
 	
 	<!-- 회원 정보 수정 -->
 	<update id="updateInfo" parameterType="Member">
