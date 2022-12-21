@@ -43,61 +43,61 @@
                     <li>
                         <div class="category-box">
                             <label for="food-aType"><img src="../resources/images/foodType/bibimbap.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-aType">한식
+                            <input type="radio" name="categortGroup" id="food-aType">한식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-bType"><img src="../resources/images/foodType/black-bean-noodles.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-bType">중식
+                            <input type="radio" name="categortGroup" id="food-bType">중식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-cType"><img src="../resources/images/foodType/sushi.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-cType">일식
+                            <input type="radio" name="categortGroup" id="food-cType">일식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-dType"><img src="../resources/images/foodType/pizza.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-dType">양식
+                            <input type="radio" name="categortGroup" id="food-dType">양식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-eType"><img src="../resources/images/foodType/hamburger.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-eType">패스트푸드
+                            <input type="radio" name="categortGroup" id="food-eType">패스트푸드
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-fType"><img src="../resources/images/foodType/alum.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-fType">일반대중음식
+                            <input type="radio" name="categortGroup" id="food-fType">일반대중음식
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-gType"><img src="../resources/images/foodType/store.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-gType">편의점
+                            <input type="radio" name="categortGroup" id="food-gType">편의점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-hType"><img src="../resources/images/foodType/cookie.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-hType">제과점
+                            <input type="radio" name="categortGroup" id="food-hType">제과점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-iType"><img src="../resources/images/foodType/flesh.jpg" alt="업종"></label>
-                            <input type="checkbox" id="food-iType">정육점
+                            <input type="radio" name="categortGroup" id="food-iType">정육점
                         </div>
                     </li>
                     <li>
                         <div class="category-box">
                             <label for="food-jType"><img src="../resources/images/foodType/icon.png" alt="업종"></label>
-                            <input type="checkbox" id="food-jType">착한식당
+                            <input type="radio" name="categortGroup" id="food-jType">착한식당
                         </div>
                     </li>
                     <!--  <li>
@@ -265,14 +265,14 @@
                             <%-- 상세보기 이미지 슬라이드 --%>
                             <div class="modal-slider">
                                 <input type="radio" name="slide" id="slide1" checked>
-                                <input type="radio" name="slide" id="slide2" checked>
-                                <input type="radio" name="slide" id="slide3" checked>
-                                <input type="radio" name="slide" id="slide4" checked>
+                                <input type="radio" name="slide" id="slide2">
+                                <input type="radio" name="slide" id="slide3">
+                                <input type="radio" name="slide" id="slide4">
                                 <ul id="imgHolder" class="modal-imgs">
-                                    <li><img src="../resources/images/mainslide/children-1.jpg"></li>
-                                    <li><img src="../resources/images/mainslide/children-2.jpg"></li>
-                                    <li><img src="../resources/images/mainslide/girls-1.jpg"></li>
-                                    <li><img src="../resources/images/mainslide/kids.jpg"></li>
+                                    <li><img src="../resources/images/foodType/pizza.jpg"></li>
+                                    <li><img src="../resources/images/foodType/cookie.jpg"></li>
+                                    <li><img src="../resources/images/foodType/hamburger.jpg"></li>
+                                    <li><img src="../resources/images/foodType/sushi.jpg"></li>
                                 </ul>
                                 <div class="modal-slider-dot">
                                     <label for="slide1">&nbsp;</label>
@@ -289,7 +289,9 @@
                             </span>
                         </div>
                         <div class="modal-contant-right">
-                            <span><img src="../resources/images/map.png" alt=""></span>
+                            <!-- 지도 위치(카카오api) -->
+                            <div id="map" style="width:350px;height:350px;"></div>
+                            <!-- <span><img src="../resources/images/map.png" alt=""></span> -->
                             <span>
                                 홈페이지 내부 규정상 가게에<br>
                                 리뷰는 달 수 없음을 양해부탁드립니다.<br>
@@ -328,9 +330,14 @@
 
     <%-- 푸터 위치 --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    
+    <!-- 카카오 api -->
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9&libraries=services"></script>
 
     <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>
+
 
 </body>
 </html>

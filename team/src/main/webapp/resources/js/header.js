@@ -6,6 +6,7 @@
     var scrollTop = window.pageYOffset;
  
     var headerSection = document.getElementById("header-section");
+    var logoContaniner = document.getElementById("logo-container");
     var logo = document.getElementById("logo");
     var logoContent = document.getElementById("logo-content");
     var headerContainer = document.getElementById("header-container");
@@ -20,6 +21,7 @@
         this.document.querySelector("header").style.position = "sticky";
         
         headerSection.classList.add("scrolled");
+        logoContaniner.classList.add("scrolled");
         logo.classList.add("scrolled");
         logoContent.classList.add("scrolled");
         headerContainer.classList.add("scrolled");
@@ -37,6 +39,7 @@
         this.document.querySelector("header").style.position = "initial";
         
         headerSection.classList.remove("scrolled");
+        logoContaniner.classList.remove("scrolled");
         logo.classList.remove("scrolled");
         logoContent.classList.remove("scrolled");
         headerContainer.classList.remove("scrolled");
