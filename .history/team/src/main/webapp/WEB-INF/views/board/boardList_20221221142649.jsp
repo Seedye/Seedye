@@ -50,7 +50,7 @@
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
-          <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
+          <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">
@@ -83,56 +83,34 @@
               </c:otherwise>
             
             </c:choose>
-<%--             
               <!-- 공지 -->
-              <tr class="board-list-view">
+              <%-- <tr class="board-list-view">
                 <td><i class="fa-solid fa-bullhorn"></i></td>
                 <td>음식점 정보가 변경되었습니다.</td>
                 <td>작성자</td>
-                <td>44</td>
+              <td>44</td>
                 <td>2022.12.13</td>
-              </tr>
+      <!-- colspan="2" -->
+              </tr> --%>
 
               <!-- 게시물 -->
-              <tr class="board-list-view">
+              <%-- <tr class="board-list-view">
                 <td>10</td>
                 <td>음식점 정보가 잘못되어있는거 같습니다.</td>
                 <td>작성자</td>
               <td>44</td>
                 <td>2022.11.23</td>
-              </tr> 
---%>
+              </tr>
             </tbody>
-        
+          
+
           </table>
       
             <ul class="board-list-page-area">
-              <li>
-                <a href="/board/${boardCode}?cp=1${sURL}">
-                  <i class="fa-solid fa-caret-left"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">
-                  <i class="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              <c:forEach var="i" begin="${pagination.startPage}" 
-                                  end="${pagination.endPage}" step="1">
-              
-                <c:choose>
-                  <c:when test="${i==pagination.currentPage}">
-                    <li class="board-list-page-no"><a>${i}</a></li>
-                  </c:when>
-                
-                  <c:otherwise>
-                    <li class="board-list-page-no"><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                  </c:otherwise>
-                </c:choose>
-              
-              </c:forEach>
-              
-<%--               
+              <li><i class="fa-solid fa-caret-left"></i></li>
+              <li><i class="fa-solid fa-angle-left"></i></li>
+              <li class="board-list-page-no">1</li>
+              <li class="board-list-page-no">2</li>
               <li class="board-list-page-no">3</li>
               <li class="board-list-page-no">4</li>
               <li class="board-list-page-no">5</li>
@@ -140,14 +118,9 @@
               <li class="board-list-page-no">7</li>
               <li class="board-list-page-no">8</li>
               <li class="board-list-page-no">9</li>
-              <li class="board-list-page-no">10</li> --%>
-              <!-- 다음 목록 시작 번호로 이동 -->
-              <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
-
-              <!-- 끝 페이지로 이동 -->
-              <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
-              <%-- <li><i class="fa-solid fa-angle-right"></i></li>
-              <li><i class="fa-solid fa-caret-right"></i></li> --%>
+              <li class="board-list-page-no">10</li>
+              <li><i class="fa-solid fa-angle-right"></i></li>
+              <li><i class="fa-solid fa-caret-right"></i></li>
             </ul>
             <!-- <div class="board-list-page-num"></div>
             <div class="board-list-page-num"></div> -->
@@ -155,21 +128,19 @@
 
           
       </section>
-      
       <%-- 상세보기 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
+      
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-      
-      
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     
-    <script src="../../resources/js/header.js"></script>
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/board.js"></script>
+    <script src="../../resources/js/header.js"></script>
 </body>
 </html>
 
