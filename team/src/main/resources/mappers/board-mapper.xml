@@ -17,11 +17,20 @@
      
 	</resultMap>
 	
-	<!-- 문의 게시글 조회 -->
-	<select id="boardListSelect"> 
-		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE, BOARD_CODE
+	<!-- 게시글 수 조회 -->
+	<select id="getListCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
 		FROM BOARD
 		WHERE BOARD_CODE = ${boardCode}
+		AND BOARD_DEL_FL = 'N'
+	</select>
+	
+	<!-- 문의 게시글 조회 -->
+	<select id="selectBoardList" parameterType="_int" resultMap="board_rm"> 
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE
+		FROM BOARD
+		WHERE BOARD_CODE = ${boardCode}
+		AND BOARD_DEL_FL = 'N'
 	</select>
 	
 	

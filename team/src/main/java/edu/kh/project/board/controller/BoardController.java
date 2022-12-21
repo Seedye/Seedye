@@ -16,7 +16,14 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	// 게시물 리스트 조회
+	
+	/** 게시물 리스트 조회
+	 * @param boardCode
+	 * @param model
+	 * @param cp
+	 * @param pm
+	 * @return
+	 */
 	@GetMapping("/boardList/{boardCode}")
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
 			Model model,
@@ -24,10 +31,15 @@ public class BoardController {
 			@RequestParam Map<String, Object> pm
 			) {
 		
+		
 		Map<String, Object> map = service.selectBoardList(boardCode,cp);
+		model.addAttribute("map", map);
 		
 		
 		return "board/boardList";
 	}
+	
+	
+	
 
 }
