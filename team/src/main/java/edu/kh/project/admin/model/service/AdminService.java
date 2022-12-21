@@ -2,6 +2,8 @@ package edu.kh.project.admin.model.service;
 
 import java.util.Map;
 
+import edu.kh.project.board.model.vo.Board;
+
 public interface AdminService {
 
 	
@@ -20,6 +22,10 @@ public interface AdminService {
 	 * @return
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+
+
+
+	Board selectBoardDetail(int boardNo);
 	
 	
 
