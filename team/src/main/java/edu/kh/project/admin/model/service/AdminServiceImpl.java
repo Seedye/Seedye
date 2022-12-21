@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import edu.kh.project.admin.model.dao.AdminDAO;
+import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
 
 
