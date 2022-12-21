@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 
 
-public class Stroeimage {
+public class StoreImage {
 
 	private int storeNo;
 	private String storeImagePath;
