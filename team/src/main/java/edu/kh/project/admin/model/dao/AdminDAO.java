@@ -45,13 +45,18 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectBoardList", boardCode, rowBounds);
 	}
 
-	public List<Board> seleceBoardList(Pagination pagination, Map<String, Object> pm) {
+	public List<Board> selectBoardList(Pagination pagination, Map<String, Object> pm) {
 		
 		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("adminMapper.selectBoarList_search",pm, rowBounds);
+		return sqlSession.selectList("adminMapper.selectBoardList_search",pm, rowBounds);
+	}
+
+	public Board selectBoardDetail(int boardNo) {
+	
+		return sqlSession.selectOne("adminMapper.selectBoardDetail", boardNo);
 	}
 
 	
