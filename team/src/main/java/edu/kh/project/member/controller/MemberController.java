@@ -90,12 +90,13 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// 회원가입
+	// 회원가입 페이지 이동
 	@GetMapping("/signUp")
 	public String signUpPage() {
 		return "/member/signUp";
 	}	
 	
+	// 회원가입
 	@PostMapping("/signUp")
 	public String signUp(/* @ModelAttribute 생략 */
 			Member inputMember /* 커맨드 객체 */,
