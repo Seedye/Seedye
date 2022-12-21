@@ -126,7 +126,7 @@
                   </c:when>
                 
                   <c:otherwise>
-                    <li class="board-list-page-no"><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                    <li class="board-list-page-no"><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a>2</li>
                   </c:otherwise>
                 </c:choose>
               

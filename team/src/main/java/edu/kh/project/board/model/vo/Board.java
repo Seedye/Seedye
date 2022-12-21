@@ -19,6 +19,8 @@ public class Board {
 	private int boardCode; // 게시판 코드
 	private int memberNo; // 회원 번호
 	private int readCount; // 조회수
+	private String memberId; // 멤버 아이디
+	
 	
 	// 이미지 목록
 	private List<boardImg> imgeList;
