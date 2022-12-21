@@ -1,5 +1,6 @@
 package edu.kh.project.admin.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import edu.kh.project.admin.model.service.AdminService;
+import edu.kh.project.admin.model.vo.Store;
 
 
 @RequestMapping("/admin")
@@ -59,7 +64,7 @@ public class AdminController {
 		}
 			return "admin/manageBoard";
 	}
-	
+
 	// 게시글 상세 조회
 		
 	// 게시글 삭제
@@ -86,12 +91,22 @@ public class AdminController {
 	
 	// 회원 목록 조회
 	
+	
 	// 회원 권한 변경
 	
 	// 회원 탈퇴
 	
 
 	// 식당 목록 조회
+	@GetMapping("selectStoreList")
+	@ResponseBody
+	public String selectStoreList() {
+		
+		List<Store> storeList = service.selectStoreList();
+		
+		System.out.println(storeList);
+		return new Gson().toJson(storeList);
+	}
 	
 	
 	

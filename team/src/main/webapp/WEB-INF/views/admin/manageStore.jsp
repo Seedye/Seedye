@@ -116,8 +116,8 @@
                                 <th>관리하기</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="storeList">
+                        <tbody id="tbody">
+                            <%-- <tr class="storeList">
                                 <td>1</td>
                                 <td>가나다</td>
                                 <td>한식</td>
@@ -207,7 +207,7 @@
                                 <td>등록완료</td>
                                 <td><button class="store-manage">관리</button></td> 
                             </tr>
-                        </tbody>
+                        </tbody> --%>
                     </table>
                     <form action="">
                         <div id="searchStore">

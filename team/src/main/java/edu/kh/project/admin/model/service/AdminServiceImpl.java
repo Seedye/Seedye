@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.kh.project.admin.model.dao.AdminDAO;
+import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
 
@@ -13,6 +15,7 @@ import edu.kh.project.common.Pagination;
 @Service
 public class AdminServiceImpl implements AdminService{
 
+	@Autowired
 	private AdminDAO dao;
 
 	/**
@@ -53,6 +56,13 @@ public class AdminServiceImpl implements AdminService{
 		
 	
 		return map;
+	}
+
+	
+	// 식당 목록 조회
+	@Override
+	public List<Store> selectStoreList() {
+		return dao.selectStoreList();
 	}
 
 	

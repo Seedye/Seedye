@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
 
@@ -52,6 +53,11 @@ public class AdminDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("adminMapper.selectBoarList_search",pm, rowBounds);
+	}
+
+	public List<Store> selectStoreList() {
+		return sqlSession.selectList("adminMapper.selectStoreList");
+				
 	}
 
 	

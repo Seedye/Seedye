@@ -1,6 +1,9 @@
 package edu.kh.project.admin.model.service;
 
+import java.util.List;
 import java.util.Map;
+
+import edu.kh.project.admin.model.vo.Store;
 
 public interface AdminService {
 
@@ -20,6 +23,13 @@ public interface AdminService {
 	 * @return
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+
+
+
+	/** 식당 목록 조회
+	 * @return storeList
+	 */
+	List<Store> selectStoreList();
 	
 	
 

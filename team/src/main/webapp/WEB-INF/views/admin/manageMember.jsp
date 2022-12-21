@@ -34,8 +34,8 @@
                                 <th>회원 관리</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="memberTbody">
+                        <%--<tr>
                                 <td>업주</td>
                                 <td>testzsdb</td>
                                 <td>테스트</td>
@@ -125,7 +125,7 @@
                                 <td>N</td>
                                 <td><button>관리</button></td>
                             </tr>
-                        </tbody>
+                        </tbody> --%>
                     </table>
                     <form action="">
                         <div id="searchArea">
