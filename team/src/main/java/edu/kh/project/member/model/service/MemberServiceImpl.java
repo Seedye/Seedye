@@ -22,17 +22,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member login(Member inputMember) {
 		Member loginMember = dao.login(inputMember.getMemberId());
-		
-		if(loginMember != null) { // 아이디 정상 입력
-			
-			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
-
-				loginMember.setMemberPw(null);
-				
-			} else {
-				loginMember = null;
-			}
-		}
+		/*
+		 * if(loginMember != null) { // 아이디 정상 입력
+		 * 
+		 * if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
+		 * 
+		 * loginMember.setMemberPw(null);
+		 * 
+		 * } else { loginMember = null; } }
+		 */
 		return loginMember;
 	}
 
