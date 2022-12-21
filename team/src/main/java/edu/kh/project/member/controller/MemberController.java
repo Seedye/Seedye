@@ -1,4 +1,4 @@
-package edu.kh.project.member.model.controller;
+package edu.kh.project.member.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +35,7 @@ public class MemberController {
 				) {
 		
 		Member loginMember = service.login(inputMember);
-		
+
 		String path = null;
 		
 		if(loginMember != null) {
@@ -69,7 +69,7 @@ public class MemberController {
 	// 로그인
 	@GetMapping("/login")
 	public String loginPage() {
-		return "main/member/login";
+		return "/member/login";
 	}	
 	
 	// 로그아웃
@@ -93,7 +93,7 @@ public class MemberController {
 	// 회원가입
 	@GetMapping("/signUp")
 	public String signUpPage() {
-		return "main/member/signUp";
+		return "/member/signUp";
 	}	
 	
 	@PostMapping("/signUp")

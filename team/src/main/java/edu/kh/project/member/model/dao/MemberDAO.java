@@ -18,8 +18,7 @@ public class MemberDAO {
 	}
 
 	// 회원가입 DAO
-	public int signUp(Member inputMember) {
-		
+	public int signUp(Member inputMember) {		
 		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
 }
