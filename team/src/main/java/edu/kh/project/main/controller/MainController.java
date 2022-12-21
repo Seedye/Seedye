@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.project.admin.model.vo.Store;
@@ -30,9 +31,21 @@ public class MainController {
 	
 		List<Store> resultList = service.resultList();
 		
-		System.out.println(resultList);
-		
 		return resultList;
+	}
+	
+	@GetMapping("/storeList")
+	@ResponseBody
+	public List<Store> storeList(
+			@RequestParam("searchValue") String searchValue,
+			@RequestParam("categoryArr") String[] categoryArr){
+		
+		
+		System.out.println(searchValue);
+		System.out.println(categoryArr);
+		
+		return null;
+		
 	}
 }
 
