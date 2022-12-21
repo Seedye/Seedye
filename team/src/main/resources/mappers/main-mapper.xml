@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mainMapper">
+
+	<resultMap type="Store" id="store_rm">
+	
+		<!-- <id/> 태그는 DB에서 PK에 해당하는 필드, 컬럼을 작성해는 태그 -->
+		<id property="storeNo" column="STORE_NO" />
+		<!-- <result/> 태그는 나머지 일반 컬럼 -->
+	     <result property="storeType" column="STORE_TYPE" />
+	     <result property="storeName" column="STORE_NAME" />
+	     <result property="roadnameAddress" column="ROADNAME_ADDRESS" />
+	     <result property="landnumberAddress" column="LANDNUMBER_ADDRESS" />
+	     <result property="storeTel" column="STORE_TEL" />
+	     <result property="checkFl" column="CHECK_FL" />
+	     <result property="memberNo" column="MEMBER_NO" />
+	     <result property="storeInfo" column="STORE_INFO" />
+	     <result property="storeCount" column="STORE_COUNT" />
+     
+	</resultMap>
+	
+	<select id="resultList" resultMap="store_rm">
+		SELECT STORE_TYPE, COUNT(STORE_TYPE) STORE_COUNT FROM STORE
+		WHERE CHECK_FL = 'B'
+		GROUP BY STORE_TYPE
+		ORDER BY STORE_COUNT DESC
+	</select>
+	
+</mapper>

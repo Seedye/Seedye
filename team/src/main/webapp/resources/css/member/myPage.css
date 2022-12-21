@@ -58,6 +58,7 @@
 .list-group > li{
     height: 50px; /* 높이 50px */
     font-size: 18px; /* 글자 크기 18px */
+    margin-bottom: 7px;
 }
 
 .list-group > li > a{
@@ -70,11 +71,12 @@
     justify-content: center; /* 가로선 가운데로 배치 */
     align-items: center; /* 교차축 가운데로 배치*/
 
-    border-left: 2px solid #2DB400;
-    border-right: 2px solid #2DB400;
+    /* border-left: 2px solid #2DB400;
+    border-right: 2px solid #2DB400; */
     /* border-bottom: 2px solid #2DB400; */
 
-    border-radius: 50%;
+    border: solid 1px #2DB400;
+    border-radius: 30px;
 
     font-size: bold;
 }

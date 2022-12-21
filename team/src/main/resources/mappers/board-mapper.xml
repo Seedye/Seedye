@@ -14,8 +14,10 @@
      <result property="boardCode" column="BOARD_CODE" />
      <result property="memberNo" column="MEMBER_NO" />
      <result property="readCount" column="READ_COUNT" />
+     <result property="memberId" column="MEMBER_ID" />
      
 	</resultMap>
+	
 	
 	<!-- 게시글 수 조회 -->
 	<select id="getListCount" parameterType="_int" resultType="_int">
@@ -27,10 +29,22 @@
 	
 	<!-- 문의 게시글 조회 -->
 	<select id="selectBoardList" parameterType="_int" resultMap="board_rm"> 
-		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, READ_COUNT, CREATE_DATE
 		FROM BOARD
+		JOIN MEMBER USING(MEMBER_NO)
 		WHERE BOARD_CODE = ${boardCode}
 		AND BOARD_DEL_FL = 'N'
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<!-- 자유 게시글 조회 -->
+	<select id="selectFreeBoardList" parameterType="_int" resultMap="board_rm"> 
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_ID, CREATE_DATE
+		FROM BOARD
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_CODE = ${boardCode}
+		AND BOARD_DEL_FL = 'N'
+		ORDER BY BOARD_NO DESC
 	</select>
 	
 	

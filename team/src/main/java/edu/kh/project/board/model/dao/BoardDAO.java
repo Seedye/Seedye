@@ -39,6 +39,15 @@ public class BoardDAO {
 	}
 	
 	
+	public List<Board> selectFreeBoardList(Pagination pagination, int boardCode) {
+		
+		int offset = (pagination.getCurrentPage() -1 )*pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectFreeBoardList", boardCode, rowBounds);
+	}
+	
+	
 	
 	
 }
