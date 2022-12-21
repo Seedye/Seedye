@@ -66,6 +66,7 @@
               <c:otherwise>
                 <c:forEach var="board" items="${boardList}">
                    <tr class="board-list-view" >
+                   
                     <td>${board.boardNo}</td>
                     <td>${board.boardContent}</a></td>
                     <td>${board.memberNo}</td>

@@ -43,7 +43,7 @@
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
-          <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
+          <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">
@@ -55,45 +55,85 @@
               <th>등록일</th>
             </thead>
             <tbody>
-            <c:choose>
-            <%-- 게시글 존재  x 시 --%>
-              <c:when test="${empty boardList}">
-                <tr>
-                  <th colspan="5">게시글 존재 하지 않습니다.</th>
-                </tr>
-              </c:when>
 
-              <c:otherwise>
-                <c:forEach var="board" items="${boardList}">
-                   <tr class="board-list-view" >
-                    <td>${board.boardNo}</td>
-                    <td>${board.boardContent}</a></td>
-                    <td>${board.memberNo}</td>
-                    <td>${board.readCount}</td>
-                    <td>${board.createDate}</td>
-                  </tr>
-                </c:forEach>
-              </c:otherwise>
-            
-            </c:choose>
               <!-- 공지 -->
-              <%-- <tr class="board-list-view">
+              <tr class="board-list-view">
                 <td><i class="fa-solid fa-bullhorn"></i></td>
                 <td>음식점 정보가 변경되었습니다.</td>
                 <td>작성자</td>
               <td>44</td>
                 <td>2022.12.13</td>
       <!-- colspan="2" -->
-              </tr> --%>
+              </tr>
 
               <!-- 게시물 -->
-              <%-- <tr class="board-list-view">
+              <tr class="board-list-view">
                 <td>10</td>
                 <td>음식점 정보가 잘못되어있는거 같습니다.</td>
                 <td>작성자</td>
               <td>44</td>
                 <td>2022.11.23</td>
               </tr>
+
+              <tr class="board-list-view">
+                <td>9</td>
+                <td>새싹 덕분에 잘 </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr class="board-list-view">
+                <td>8</td>
+                <td>너무 구려</td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+
+              <tr class="board-list-view">
+                <td>7</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>6</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>5</td>
+                <td>음식점정보가 너무 이상하네요.  </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>4</td>
+                <td>음식점정보가 너무 이상하네요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>3</td>
+                <td>음식점정보가 너무 이상하네요. 게요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              <tr class="board-list-view">
+                <td>2</td>
+                <td>음식점정보가 너무 이상하네요. 맨탁 드릴게요. </td>
+                <td>작성자</td>
+              <td>44</td>
+                <td>2022.11.23</td>
+              </tr>
+              
             </tbody>
           
 
@@ -126,8 +166,7 @@
       <%-- 게시물작성 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
     <script src="../../resources/js/sideBar.js"></script>

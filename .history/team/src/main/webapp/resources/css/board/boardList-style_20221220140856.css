@@ -99,10 +99,6 @@
   /* background-color: #ddd; */
   /* background-color: whitesmoke; */
   border-top: 2px solid red;
-  /* width: 100px; */
-}
-.board-list-thead > tr >th{
-  width: 150px;
 }
 .board-list-thead > tr{
   border: 2px solid red;
@@ -119,7 +115,7 @@
 /* 게시물 제목 부분 */
 .board-list-table > tbody > tr > td:nth-child(2){
   /* display: block; */
-  min-width: 500px;
+  width: 600px;
   height: 50px;
   text-align: left;
   cursor: pointer;
@@ -130,10 +126,10 @@
 .board-list-table > tbody > tr > td:nth-child(4),
 .board-list-table > tbody > tr > td:nth-child(5){
   /* width: 140px; */
-  min-width: 130px;
+  min-width: 140px;
   height: 50px;
   cursor: pointer;
-  /* background-color: red; */
+  background-color: red;
 }
 
 /* {

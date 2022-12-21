@@ -102,13 +102,13 @@
   /* width: 100px; */
 }
 .board-list-thead > tr >th{
-  width: 150px;
+  width: 100px;
 }
 .board-list-thead > tr{
   border: 2px solid red;
 }
 /* 게시글 번호 부분 */
-.board-list-table > tbody > tr > td:first-child {
+.board-list-table > tbody > tr > th:first-child {
   width: 100px;
   height: 50px;
   cursor: pointer;
@@ -117,7 +117,7 @@
   /* text-align: center; */
 }
 /* 게시물 제목 부분 */
-.board-list-table > tbody > tr > td:nth-child(2){
+.board-list-table > tbody > tr > th:nth-child(2){
   /* display: block; */
   min-width: 500px;
   height: 50px;
@@ -126,9 +126,9 @@
   
 }
 /* 게시글 처리상태/등록일 부분 */
-.board-list-table > tbody > tr > td:nth-child(3),
-.board-list-table > tbody > tr > td:nth-child(4),
-.board-list-table > tbody > tr > td:nth-child(5){
+.board-list-table > tbody > tr > th:nth-child(3),
+.board-list-table > tbody > tr > th:nth-child(4),
+.board-list-table > tbody > tr > th:nth-child(5){
   /* width: 140px; */
   min-width: 130px;
   height: 50px;

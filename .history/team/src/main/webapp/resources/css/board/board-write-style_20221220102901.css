@@ -1,16 +1,18 @@
 *{
   font-family: "NIXGONM-Vb";
 }
-.board-write-modal{
-  position: fixed;
-  top: 0;left: 0;bottom: 0;right: 0;
+.board-view-modal{
+  top: 0; left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
 
   display: none;
   /* display: flex; */
   align-items: center;
   justify-content: center;
-  z-index: 1000; 
+  z-index: 1000;
 }
 /* 상세보기 흰영역 */
 .board-view-area{
