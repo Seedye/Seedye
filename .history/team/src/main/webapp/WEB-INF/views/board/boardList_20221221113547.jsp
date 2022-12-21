@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="boardList" value="${map.boardList}"/>
+<c:set var="boardList" value="${map.board.List}"/>
 <c:set var="pagination" value="${map.pagination}"/>
 
 <!DOCTYPE html>
@@ -132,11 +132,10 @@
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
-      
-      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/board.js"></script>
