@@ -1,15 +1,23 @@
 package edu.kh.project.admin.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.project.admin.model.service.AdminService;
+
 
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
-
+	
+	@Autowired
 	private AdminService service;
 
 	// 게시글 관리화면 이동
@@ -17,6 +25,9 @@ public class AdminController {
 	public String selectManageBoard() {
 		return "admin/manageBoard";
 	}
+	
+	
+	
 	
 	// 회원 관리 화면 이동
 	@GetMapping("/manageMember")
@@ -32,7 +43,22 @@ public class AdminController {
 	
 
 	// 게시글 목록 조회
-
+	@GetMapping("/board/{boardCode}")
+	public String selectBoardList(@PathVariable("boardCode") int boardCode,
+			Model model,
+			@RequestParam(value="cp", required = false, defaultValue = "1")int cp,
+			@RequestParam Map<String, Object> pm) {
+		
+		if(pm.get("key") == null) {
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			model.addAttribute("map",map);
+		} else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectBoardList(pm,cp);
+			model.addAttribute("map",map);
+		}
+			return "admin/manageBoard";
+	}
 	
 	// 게시글 상세 조회
 		
