@@ -50,7 +50,7 @@
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
-          <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
+          <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">
@@ -107,32 +107,10 @@
           </table>
       
             <ul class="board-list-page-area">
-              <li>
-                <a href="/board/${boardCode}?cp=1${sURL}">
-                  <i class="fa-solid fa-caret-left"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">
-                  <i class="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              <c:forEach var="i" begin="${pagination.startPage}" 
-                                  end="${pagination.endPage}" step="1">
-              
-                <c:choose>
-                  <c:when test="${i==pagination.currentPage}">
-                    <li class="board-list-page-no"><a>${i}</a></li>
-                  </c:when>
-                
-                  <c:otherwise>
-                    <li class="board-list-page-no"><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                  </c:otherwise>
-                </c:choose>
-              
-              </c:forEach>
-              
-<%--               
+              <li><i class="fa-solid fa-caret-left"></i></li>
+              <li><i class="fa-solid fa-angle-left"></i></li>
+              <li class="board-list-page-no">1</li>
+              <li class="board-list-page-no">2</li>
               <li class="board-list-page-no">3</li>
               <li class="board-list-page-no">4</li>
               <li class="board-list-page-no">5</li>
@@ -140,14 +118,9 @@
               <li class="board-list-page-no">7</li>
               <li class="board-list-page-no">8</li>
               <li class="board-list-page-no">9</li>
-              <li class="board-list-page-no">10</li> --%>
-              <!-- 다음 목록 시작 번호로 이동 -->
-              <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
-
-              <!-- 끝 페이지로 이동 -->
-              <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
-              <%-- <li><i class="fa-solid fa-angle-right"></i></li>
-              <li><i class="fa-solid fa-caret-right"></i></li> --%>
+              <li class="board-list-page-no">10</li>
+              <li><i class="fa-solid fa-angle-right"></i></li>
+              <li><i class="fa-solid fa-caret-right"></i></li>
             </ul>
             <!-- <div class="board-list-page-num"></div>
             <div class="board-list-page-num"></div> -->
@@ -160,7 +133,7 @@
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
-      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+      <jsp:include page="/WEB-INF/views/board/footer.jsp"/>
       
       
     </main>
