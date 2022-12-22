@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -137,5 +138,17 @@ public class MemberController {
 		
 		return "redirect:" + path;
 	}
+	
+	// 아이디 중복 검사
+	@GetMapping("/idDupCheck") // url
+	@ResponseBody // 반환된 값을 jsp 경로가 아닌 값 자체로 인식
+	public int idDupCheck(String memberId) {
+		int result = service.idDupCheck(memberId);
+		return result;
+	}
+	
+	
+	
+	
 	
 }
