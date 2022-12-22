@@ -1,0 +1,56 @@
+*{
+    font-family: "NIXGONM-Vb";
+  }
+
+body{
+    width: 1200px;
+    height: 90vh;
+}
+
+/* 페이지 */
+.pagination{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 페이지 표시 */
+.pagination > li{
+    list-style: none;
+}
+
+/* 이미지 + 표 */
+#noticeAll{
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 65vh;
+    justify-content: center;
+}ㅓㅣ
+
+/* 이미지 */
+#banner > img{
+    width: 100%;
+    height: 100px;    
+}
+
+/* 표 */
+#noticeTable{
+    border: 1px solid black;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+/* 표 + 검색 */
+#tableArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+/* 검색 */
+#tableArea > div > form{
+    text-align: center;
+}
+
