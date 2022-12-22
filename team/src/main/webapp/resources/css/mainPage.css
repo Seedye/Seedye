@@ -133,7 +133,7 @@ footer{
 
 /* 체크박스 없애기 */
 .foodTypecategory input{
-    /* display: none; */
+    display: none;
 }
 
 /* 카테고리 ul태그 스타일 */
@@ -184,7 +184,7 @@ footer{
 .searchList li{
     
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid gray;
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -206,7 +206,7 @@ footer{
 .storeInfoLink button{
     border: none;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
@@ -233,7 +233,7 @@ footer{
 
     /* border-top: 2px solid black; */
     justify-content: flex-start;
-    height: 400px;
+    height: 450px;
 }
 
 .searchList-none{
@@ -243,7 +243,7 @@ footer{
 
 .searchList-style{
     overflow-y: scroll;
-    height: 300px;
+    height: 350px;
     -ms-overflow-style: none;
 }
 
@@ -262,9 +262,22 @@ footer{
     margin-right: 30px;
 }
 
+.statistics h3{
+    margin-bottom: 10px;
+}
+
 .statistics li{
     list-style: none;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.statistics li:last-child{
+    border: none;
 }
 
 /* 즐겨찾기 스타일 */

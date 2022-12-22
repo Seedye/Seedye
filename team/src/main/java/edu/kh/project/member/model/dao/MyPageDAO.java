@@ -7,18 +7,18 @@ import org.springframework.stereotype.Repository;
 import edu.kh.project.member.model.vo.Member;
 
 @Repository
-public class MemberDAO {
+public class MyPageDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	// 로그인 DAO
-	public Member login(String memberId) {
-		return sqlSession.selectOne("memberMapper.login",memberId);
+	
+	/** 회원 정보 수정 DAO
+	 * @param inputMember
+	 * @return
+	 */
+	public int updateInfo(Member inputMember) {
+		return sqlSession.update("myPageMapper.updateInfo", inputMember);
 	}
 
-	// 회원가입 DAO
-	public int signUp(Member inputMember) {		
-		return sqlSession.insert("memberMapper.signUp", inputMember);
-	}
 }

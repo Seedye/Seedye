@@ -39,6 +39,27 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	/** 자유 게시물 리스트 조회
+	 * @param boardCode
+	 * @param model
+	 * @param cp
+	 * @param pm
+	 * @return
+	 */
+	@GetMapping("/freeBoard/{boardCode}")
+	public String selectFreeBoardList(@PathVariable("boardCode") int boardCode,
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> pm
+			) {
+		
+		Map<String, Object> map = service.selectFreeBoardList(boardCode,cp);
+		model.addAttribute("map", map);
+		
+		
+		return "board/freeBoardList";
+	}
+	
 	
 	
 

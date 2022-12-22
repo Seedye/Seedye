@@ -22,6 +22,7 @@ public class Store {
 	private int memberNo;
 	private String storeInfo;
 	
-	
+	// 황석현 수정
+	private int storeCount; // 통계화면에 사용할 컬럼
 	
 }

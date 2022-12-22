@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.board.model.vo.Board;
 
 public interface AdminService {
 
@@ -30,6 +31,7 @@ public interface AdminService {
 	 * @return storeList
 	 */
 	List<Store> selectStoreList();
+	Board selectBoardDetail(int boardNo);
 	
 	
 

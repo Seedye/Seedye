@@ -3,6 +3,10 @@ package edu.kh.project.admin.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.logging.log4j.core.tools.picocli.CommandLine.ParameterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +14,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.google.gson.Gson;
-
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.admin.model.vo.Store;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import edu.kh.project.admin.model.service.AdminService;
+import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.member.model.vo.Member;
+
 
 
 @RequestMapping("/admin")
@@ -66,6 +74,20 @@ public class AdminController {
 	}
 
 	// 게시글 상세 조회
+	
+	@GetMapping("/board/{boardCode}/{boardNo}")
+	public String boardDetail(
+			@PathVariable("boardNo") int boardNo,
+			@PathVariable("boardCode") int boardCode,
+			Model model,
+			HttpServletRequest req, HttpServletResponse resp,
+			@SessionAttribute(value="loginMember", required = false)Member loginMember) throws ParameterException {
+	
+		Board board = service.selectBoardDetail(boardNo);
+		
+		return "admin/manageBoard";
+		
+	}
 		
 	// 게시글 삭제
 	

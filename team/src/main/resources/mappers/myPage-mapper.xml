@@ -19,25 +19,10 @@
      
 	</resultMap>
 	
-	<!-- 로그인 -->																					<!-- resultMap 의 id -->
-	<select id="login" parameterType="string" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_TEL, MEMBER_ADDRESS, 
-		AUTHORITY, TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
-		FROM "MEMBER"
-		WHERE MEMBER_DEL_FL = 'N'
-		AND MEMBER_ID = #{memberId}
-	</select>	
-		
-	<!-- 회원 가입 -->	 <!-- 별칭 : Member(mybatis-config.xml) -->
-	<insert id="signUp" parameterType="edu.kh.project.member.model.vo.Member">
-		INSERT INTO "MEMBER" VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberId}, #{memberPw},
-		#{memberTel}, #{memberAddress}, DEFAULT, DEFAULT, DEFAULT)
-	</insert>
-	
 	<!-- 회원 정보 수정 -->
 	<update id="updateInfo" parameterType="Member">
 		UPDATE "MEMBER" SET
-		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_ID = #{memberId},
 		MEMBER_TEL = #{memberTel},
 		MEMBER_ADDRESS = #{memberAddress}
 		WHERE MEMBER_NO = #{memberNo}
@@ -65,18 +50,11 @@
 	</update>
 	<!-- 파라미터가 Map인 경우 Key값만 작성하면 값을 얻어옴 -->
 	
+	<!-- 회원 탈퇴 -->
 	<update id="memberDelete">
 		UPDATE "MEMBER" SET
 		MEMBER_DEL_FL = 'Y'
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
-	<!-- 프로필 이미지 수정 -->
-	<update id="updateProfile">
-	UPDATE "MEMBER" SET
-	PROFILE_IMG = #{profileImage}
-	WHERE MEMBER_NO = #{memberNo}
-	</update>
-	
 	
 </mapper>

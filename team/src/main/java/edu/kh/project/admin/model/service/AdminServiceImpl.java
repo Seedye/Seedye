@@ -48,7 +48,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		List<Board> boardList = dao.seleceBoardList(pagination, pm);
+		List<Board> boardList = dao.selectBoardList(pagination, pm);
 		
 		Map<String, Object>map = new HashMap<String, Object>();
 		map.put("pagination", pagination);
@@ -56,6 +56,12 @@ public class AdminServiceImpl implements AdminService{
 		
 	
 		return map;
+	}
+
+	@Override
+	public Board selectBoardDetail(int boardNo) {
+		
+		return dao.selectBoardDetail(boardNo);
 	}
 
 	
