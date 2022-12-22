@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,37 +15,9 @@
     <script src="https://kit.fontawesome.com/8cc6d5f0de.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <!-- 헤더 -->
-        <div id="header-container">
-            <!-- 로고 -->
-            <section id="header-section">
-                <div id="login2"></div>
-                <div id="logo-container">
-                    <a href="/"><img id="logo" src="../../resources/images/새싹이.png"></a>
-                    <a href="/" id="logo-content">새싹이</a>
-                </div>
-                <div id="login">
-                    <a href="/login">로그인</a>
-                    <a href="/signUp">회원가입</a>
-                </div>
-            </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul id="ul-container">
-                    <li><a href="/introduction">소개</a></li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">커뮤니티</a></li>
-                    <li><a href="#">식당 등록 문의</a></li>
-                    <li><a href="/support">후원</a></li>
-                    <li><a href="#">관리자</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <main>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+    <main>
         <section>
             <div id="freeBoard-container">
                 <div id="title-content">
@@ -148,27 +124,9 @@
                     </div>
                 </div>
             </div>
-                
-
         </section>
-
-      
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>    
     </main>
-    
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
     
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/header.js"></script>

@@ -12,6 +12,8 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList(int boardCode, int cp);
 
+	Map<String, Object> selectFreeBoardList(int boardCode, int cp);
+
 	
 
 }

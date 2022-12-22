@@ -125,24 +125,105 @@ searchBtn.addEventListener("click", () => {
 
             const resultBox = document.querySelector(".result-box");
     
+            if (categoryBoxItems.lastElementChild.checked){
+                categoryBoxItems.style.boxShadow = '2px 2px 2px 2px #ddd inset';
+            } else {
+                categoryBoxItems.style.boxShadow = 'none';
+            }
+
             resultBox.style.display = "flex";
-    
+            
             window.scrollTo({
-                top: 510,
+                top: 550,
                 left: 0,
                 behavior : 'smooth'
             });
 
+            /* 통계 ajax 비동기 처리 부분 */
+            $.ajax({
+                url : "/result",
+                type : "GET",
+                success : (resultList) => {
+                    /* resultBox 생성 시 statisticsUl 변수에 담기 */
+                    const statisticsUl = document.querySelector(".statistics-ul");
+                    // resultBox의 내용 삭제
+                    statisticsUl.innerHTML = "";
+
+                    for (let ListItems of resultList){
+                        const statisticsLi = document.createElement("li");
+                        statisticsLi.innerHTML = "<span>"+ ListItems.storeType + "</span><span>" + ListItems.storeCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</span>";
+
+                        statisticsUl.append(statisticsLi);
+                    }
+                },
+                error : () => {
+                    console.log("통계 불러오기 실패");
+                }
+            });
+
+
+            /* 검색어와 카테고리 선택 시 결과 창 조회하기 */
+            const searchValue = document.querySelector(".searchTxt");
+            const categoryValue = document.querySelectorAll(".category-box input:checked");
+            const categoryArr = [];
+
+            for(let items of categoryValue){
+                categoryArr.push(items.value);
+            }
+
+            $.ajax({
+                url : "/storeList",
+                traditional: true,
+                data : {"searchValue" : searchValue.value, "categoryArr" : categoryArr},
+                type : "GET",
+                success : (storeList) => {
+
+                    const searchList = document.querySelector(".searchList");
+                    searchList.innerHTML = "<h2>검색 결과</h2>";
+
+                    if(storeList.length == 0) {
+                        const searchListNone = document.createElement("div");
+                        searchListNone.classList.add("searchList-none");
+
+                        searchList.append(searchListNone);
+                    } else {
+                        const searchListStyle = document.createElement("ul");
+                        searchListStyle.classList.add("searchList-style");
+
+                        searchList.append(searchListStyle);
+
+                        for(let storeItems of storeList){
+
+                            const searchLi = document.createElement("li");
+
+                            const storeInfo = document.createElement("div");
+                            storeInfo.classList.add("storeInfo");
+
+                            const storeName = document.createElement("span");
+                            storeName.innerText = storeItems.storeName;
+
+                            const storeAddress = document.createElement("span");
+                            storeAddress.innerText = storeItems.landnumberAddress;
+
+                            const storeTel = document.createElement("span");
+                            storeTel.innerText = storeItems.storeTel;
+
+                            const storeInfoLink = document.createElement("div");
+                            storeInfoLink.classList.add("storeInfoLink");
+                            storeInfoLink.innerHTML = "<button>상세보기</button>";
+
+                            searchLi.append(storeInfo, storeInfoLink);
+
+                            storeInfo.append(storeName, storeAddress, storeTel);
+                        }
+                    }
+                },
+                error : () => {
+                    console.log("검색 결과 불러오기 실패");
+                }
+            });
+            
         });
         
-    }
-});
-
-categoryBoxItems.lastElementChild.addEventListener("change", () => {
-    
-    if (categoryBoxItems.lastElementChild.checked){
-        categoryBoxItems.style.boxShadow = '2px 2px 2px 2px #ddd inset';
-    } else {
-        categoryBoxItems.style.boxShadow = 'none';
     }
 });

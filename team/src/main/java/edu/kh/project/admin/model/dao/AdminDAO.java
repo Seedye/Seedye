@@ -1,9 +1,16 @@
 package edu.kh.project.admin.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.common.Pagination;
 
 @Repository
 public class AdminDAO {
@@ -13,12 +20,46 @@ public class AdminDAO {
 
 	/** 게시글 수 조회
 	 * @param boardCode
-	 * @return listCount
+	 * @return
 	 */
 	public int getListCount(int boardCode) {
 		
 		return sqlSession.selectOne("adminMapper.getListCount", boardCode);
 	}
+
+	public int getListCount(Map<String, Object> pm) {
+	
+		return sqlSession.selectOne("adminMapper.getListCount", pm);
+	}
+
+	/** 특정 게시판 목록 조회
+	 * @param pagination
+	 * @param boardCode
+	 * @return boardList
+	 */
+	public List<Board> seleceBoardList(Pagination pagination, int boardCode) {
+		
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectBoardList", boardCode, rowBounds);
+	}
+
+	public List<Board> selectBoardList(Pagination pagination, Map<String, Object> pm) {
+		
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectBoardList_search",pm, rowBounds);
+	}
+
+	public Board selectBoardDetail(int boardNo) {
+	
+		return sqlSession.selectOne("adminMapper.selectBoardDetail", boardNo);
+	}
+
+	
 
 	
 

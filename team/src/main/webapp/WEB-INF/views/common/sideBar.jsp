@@ -27,7 +27,7 @@
         <input type="checkbox" id="side">
             <div id="sideMenu3">
                 <ul class="dropdown-sideMenu3">
-                    <li><a href="">자유게시판</a></li>
+                    <li><a href="/boardList/3">자유게시판</a></li>
                     <li><a href="">문의게시판</a></li>
                     <li><a href="">추가할 게시판</a></li>  
                 </ul>     

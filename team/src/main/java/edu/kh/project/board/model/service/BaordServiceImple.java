@@ -38,6 +38,26 @@ public class BaordServiceImple implements BoardService{
 		return map;
 	}
 
+	@Override
+	public Map<String, Object> selectFreeBoardList(int boardCode, int cp) {
+		
+		// 특정 게시판 전체 게시글 수 조회
+		int listCount = dao.getListCount(boardCode);
+		
+		// 페이징 처리 위해 
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		// 게시글 목록조회
+		List<Board> freeBoardList = dao.selectFreeBoardList(pagination, boardCode);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("freeBoardList", freeBoardList);
+		
+		
+		return map;
+	}
+
 	
 	
 }
