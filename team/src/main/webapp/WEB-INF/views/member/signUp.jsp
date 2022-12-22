@@ -37,7 +37,7 @@
                     <!-- 아이디 입력 -->
                     <div class="signUp-input-area">
                         <input type="text" name="memberId" id="memberId" placeholder="아이디"
-                        maxlength="20" autocomplete="off" required>
+                        maxlength="20" autocomplete="off" >
 
                     </div>
                     <span class="signUp-message" id="idMessage">영문과 숫자를 포함해 10~20 글자 사이로 입력해주세요.</span>
@@ -50,12 +50,12 @@
 
                     <div class="signUp-input-area">
                         <input type="password" name="memberPw" id="memberPw" placeholder="비밀번호 입력"
-                        maxlength="16" required>
+                        maxlength="16" >
                     </div>
 
                     <div class="signUp-input-area">
                         <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인"
-                        maxlength="16" required>
+                        maxlength="16" >
                     </div> 
 
                     <span class="signUp-message" id="pwMessage">소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
@@ -68,7 +68,7 @@
 
                     <div class="signUp-input-area">
                         <input type="text" name="memberTel" id="memberTel" placeholder="(- 없이 숫자만 입력)"
-                        maxlength="13" oninput="autoHyphen(this)" required>
+                        maxlength="13" oninput="autoHyphen(this)" >
 
                         <button type="button">인증번호 받기</button>
                     </div>
@@ -83,7 +83,7 @@
 
                     <div class="signUp-input-area">
                         <input type="text" name="phoneCheck" id="phoneCheck" placeholder="인증번호 입력"
-                        maxlength="6" required>
+                        maxlength="6" >
 
                         <button id="checkAuthKeyBtn" type="button">인증하기</button>
                     </div>
