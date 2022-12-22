@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.board.model.vo.Board;
@@ -84,6 +86,17 @@ public class AdminController {
 	}
 		
 	// 게시글 삭제
+	@GetMapping("/board/{boardCode}/{boardNo}/delete")
+	public String biardDelete(RedirectAttributes ra,
+			@RequestHeader("referer")String referer,
+			@PathVariable("boardNo")int boardNo,
+			@PathVariable("boardCode")int boardCode) {
+		
+		int result = service.boardDelete()
+		
+		
+		return null;
+	}
 	
 	// 게시글 수정화면 이동
 	
