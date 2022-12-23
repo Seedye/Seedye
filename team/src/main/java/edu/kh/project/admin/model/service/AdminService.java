@@ -39,6 +39,14 @@ public interface AdminService {
 
 
 	List<Member> selectMemberList();
+
+
+
+	/** 회원 등급 수정
+	 * @param memberNo
+	 * @return
+	 */
+	int updateInfo(int memberNo);
 	
 	
 

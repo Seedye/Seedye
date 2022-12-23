@@ -154,6 +154,13 @@ public class AdminController {
 	
 	
 	// 회원 권한 변경
+	@GetMapping("updateInfo")
+	public int updateInfo( int memberNo) {
+		
+		
+		return service.updateInfo(memberNo);
+	}
+	
 	
 	
 	// 회원 탈퇴

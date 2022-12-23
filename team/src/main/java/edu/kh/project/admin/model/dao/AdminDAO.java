@@ -82,6 +82,11 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectMemberList");
 	}
 
+	public int updateInfo(int memberNo) {
+		
+		return sqlSession.update("adminMapper.updateInfo", memberNo);
+	}
+
 	
 
 

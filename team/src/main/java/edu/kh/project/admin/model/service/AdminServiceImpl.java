@@ -86,6 +86,15 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectMemberList();
 	}
 
+	/**
+	 * 회원 등급 수정
+	 */
+	@Override
+	public int updateInfo(int memberNo) {
+		
+		return dao.updateInfo(memberNo);
+	}
+
 	
 	
 	
