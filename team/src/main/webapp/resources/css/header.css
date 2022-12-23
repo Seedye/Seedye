@@ -28,7 +28,7 @@ header{
     background-color: white;
     z-index: 1000;
     transition: top 0.5s ease;
-    width: 1550px;
+    width: 100vw;
 }
 
 body{
@@ -142,7 +142,7 @@ footer {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    width: 100%;
+    width: 100vw;
 
 }
     
@@ -200,25 +200,26 @@ footer {
 }
 
 #login{
-    width: 120px;
+    width: 200px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: center; */
     align-items: center;
     margin-right: 50px;
 }
 
 #login > a{
-    background-color: #2db400;
+    background-color: green;
 
     color: white;
     text-decoration: none;
 
-    /* width: 55x; */
+    width: 100%;
     height: 25px;
     display: flex;
+    justify-content: center;
     align-items: center;
 
-    padding: 0px 10px;
+    margin: 0px 5px;
 
     border-radius: 5px;
     font-size: 12px;
@@ -234,7 +235,7 @@ transition-duration: 0.2s;
 }
 
 #login2{
-    width: 120px;
+    width: 200px;
     height: 25px;
     margin-left: 50px;
 }
