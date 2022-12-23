@@ -116,6 +116,8 @@ public class AdminController {
 	
 	// 게시글 수정
 	
+	
+	
 	// 게시글 작성(공지사항(code=1), 업데이트(code=2) 이동
 	
 	// 게시글 작성
