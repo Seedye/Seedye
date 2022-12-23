@@ -92,10 +92,24 @@ public class AdminController {
 			@PathVariable("boardNo")int boardNo,
 			@PathVariable("boardCode")int boardCode) {
 		
-		int result = service.boardDelete()
+		int result = service.boardDelete(boardNo);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			
+			path = "/board/" + boardCode;
+			message = "삭제되었습니다";
+		}else {
+		
+			path = referer;
+			message = "게시글 삭제 실패";
+		}
 		
 		
-		return null;
+		ra.addFlashAttribute("message",message);
+		return "redirect:" + path;
 	}
 	
 	// 게시글 수정화면 이동
