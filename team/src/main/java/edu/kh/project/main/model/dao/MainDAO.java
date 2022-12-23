@@ -2,6 +2,7 @@ package edu.kh.project.main.model.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,10 @@ public class MainDAO {
 	// 메인페이지 통계표 비동기 ajax 목록 불러오기
 	public List<Store> resultList() {
 		return sqlSession.selectList("mainMapper.resultList");
+	}
+	
+	// 검색어 + 카테고리 검색 결과 출력하기
+	public List<Store> storeList(Map<String, Object> saerchResult) {
+		return sqlSession.selectList("mainMapper.storeList", saerchResult);
 	}
 }
