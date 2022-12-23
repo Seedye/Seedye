@@ -5,6 +5,7 @@ import java.util.Map;
 
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.member.model.vo.Member;
 
 public interface AdminService {
 
@@ -26,16 +27,18 @@ public interface AdminService {
 	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
 
 
+	Board selectBoardDetail(int boardNo);
 
 	/** 식당 목록 조회
 	 * @return storeList
 	 */
 	List<Store> selectStoreList();
-	Board selectBoardDetail(int boardNo);
-
 
 
 	int boardDelete(int boardNo);
+
+
+	List<Member> selectMemberList();
 	
 	
 

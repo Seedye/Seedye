@@ -1,4 +1,4 @@
-const memberManageBtn = document.getElementsByClassName("memberManageBtn")[0];
+const memberManageBtn = document.querySelectorAll(".memberManageBtn");
 const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
@@ -8,21 +8,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     selectMemberList();
 })
 
-memberManageBtn.addEventListener("click", ()=>{
-    adminMember.style.display = "none";
-    memberManage.style.display = "flex";
-})
-
-const sideMenu = document.getElementById("sideMenu");
-const sideList = document.getElementById("sideList");
-const sideLabel = document.getElementById("sideLabel");
-
-sideMenu.addEventListener("change", ()=>{
-    if(sideMenu.checked == true){
-        sideList.style.display = "flex";
-    } else{
-        sideList.style.display = "none";
-    }
+memberManageBtn.forEach(memberManageBtn =>{
+    memberManageBtn.addEventListener("click", ()=>{
+        adminMember.style.display = "none";
+        memberManage.style.display = "flex";
+    })
 })
 
 const memberTbody = document.getElementById("memberTbody");
@@ -30,7 +20,7 @@ const memberTbody = document.getElementById("memberTbody");
 function selectMemberList(){
 
     $.ajax({
-        url:"/selectMemberList",
+        url:"/admin/selectMemberList",
         dataType:"JSON",
         success:(memberList)=>{
         
@@ -50,37 +40,34 @@ function selectMemberList(){
 
                 // 아이디
                 const td2 = document.createElement("td");
-                td2.innerText = member.mebmerId
-
-                // 이름
-                const td3 = document.createElement("td");
-                td3.innerText = member.memberName
+                td2.innerText = member.memberId
 
                 // 전화번호
-                const td4 = document.createElement("td");
-                td4.innerText = member.memberTel
+                const td3 = document.createElement("td");
+                td3.innerText = member.memberTel
 
                 // 가입일 
-                const td5 = document.createElement("td");
-                td5.innerText = member.enrollDate
+                const td4 = document.createElement("td");
+                td4.innerText = member.enrollDate
 
                 // 회원 탈퇴 여부
-                const td6 = document.createElement("td");
+                const td5 = document.createElement("td");
                 if(member.memberDeleteFlag == 'Y'){
-                    td6.innerText = "탈퇴 회원"
+                    td5.innerText = "탈퇴 회원"
                 } else{
-                td6.innerText = "회원"
+                td5.innerText = "회원"
                 }
                 
                 // 회원 관리
-                const td7 = document.createElement("td");
-                td7.innerHTML = "<button class='memberManageBtn'>관리</button>"
+                const td6 = document.createElement("td");
+                td6.innerHTML = "<button>관리</button>"
+                
             
-                tr.append(td1, td2, td3, td4, td5, td6, td7);
+                tr.append(td1, td2, td3, td4, td5, td6);
 
                 memberTbody.append(tr);
 
-            },           
+            }           
         },
         error:()=>{
             console.log("실패");

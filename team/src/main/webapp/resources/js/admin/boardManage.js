@@ -2,7 +2,15 @@ var mySwiper = new Swiper('.swiper-container', {
     navigation: {
       prevEl: '.swiper-button-prev',
       nextEl: '.swiper-button-next',
+      
     },
+  
+    slidePerview : 1,
+    spaceBetween : 50,
+    centeredSlides: true,
+    // slideOffsetBefore: 20,
+    // slideOffsetAfter: 20
+    
   });
 
 

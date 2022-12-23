@@ -79,7 +79,7 @@ function selectStoreList(){
 
     tbody.innerHTML = "";
     $.ajax({
-        url:"selectStoreList",
+        url:"/admin/selectStoreList",
         dataType: "JSON", 
         success : storeList =>{
             console.log(storeList);
@@ -110,7 +110,7 @@ function selectStoreList(){
                 td5.innerText = store.storeTel;
                 
                 // 처리여부
-                const td = document.createElement("td");
+                const td6 = document.createElement("td");
                 
                 if(store.checkFl == 'B'){
                     td6.innerText = '기본'
@@ -126,6 +126,9 @@ function selectStoreList(){
                 const td7 = document.createElement("td");
                 td7.innerHTML = "<button>관리하기</button>"
                 
+                tr.append(td1, td2, td3, td4, td5, td6, td7);
+
+                tbody.append(tr);
             }
             
         },
@@ -145,3 +148,5 @@ function selectStoreList(){
 //     storeManageMain.style.display = "none";
 
 // })
+
+

@@ -143,9 +143,18 @@ public class AdminController {
 	
 	
 	// 회원 목록 조회
+	@GetMapping("selectMemberList")
+	@ResponseBody
+	public String selectMemberList() {
+		
+		List<Member> memberList = service.selectMemberList();
+		
+		return new Gson().toJson(memberList);
+	}
 	
 	
 	// 회원 권한 변경
+	
 	
 	// 회원 탈퇴
 	

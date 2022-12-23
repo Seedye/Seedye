@@ -87,7 +87,7 @@
 }
 
 #tableArea{
-    width: 100%;
+    width: 900px;
     height: 100%;
     box-sizing: border-box;
     padding: 10px;
@@ -112,7 +112,7 @@
 }
 .memberManageBtn{
     height: 70%;
-    width: 50%;
+    width: 10%;
     border-radius: 10%;
     cursor: pointer;
 }

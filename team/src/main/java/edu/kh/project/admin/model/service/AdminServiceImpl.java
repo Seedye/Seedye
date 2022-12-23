@@ -10,6 +10,7 @@ import edu.kh.project.admin.model.dao.AdminDAO;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
+import edu.kh.project.member.model.vo.Member;
 
 
 @Service
@@ -78,6 +79,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Store> selectStoreList() {
 		return dao.selectStoreList();
+	}
+
+	@Override
+	public List<Member> selectMemberList() {
+		return dao.selectMemberList();
 	}
 
 	
