@@ -76,35 +76,19 @@ function showSlides() {
 }
  */
 
-/* 모달 팝업창 여는 버튼 */
-const modalBtn = document.getElementsByClassName("storeInfoLink");
 
-/* 모달 팝업창 */
-const modalWindow = document.querySelector(".storeInfoModal-window");
-
-
-for (let mainItems of modalBtn){
-    
-    mainItems.lastElementChild.addEventListener("click", ()=>{
-        modalWindow.style.display = "flex";
-
-        relayout();
-    });
-    
-    /* 모달 팝업창 닫는 버튼 */
-    const modalCloseBtn = document.getElementsByClassName("modal-title");
-
-    for (let subItems of modalCloseBtn){
-        subItems.lastElementChild.addEventListener("click", () => {
-            modalWindow.style.display = "none";
-        });
-    }
-}
 
 const searchBtn = document.querySelector(".searchBtn");
 
 /* 검색 버튼 눌렀을때 카태고리 나오게 하는 부분 */
 searchBtn.addEventListener("click", () => {
+
+    if (searchBtn.previousElementSibling.value.trim().length == 0){
+        alert("검색어를 입력해주세요");
+        searchBtn.previousElementSibling.focus();
+
+        return;
+    }
 
     const foodTypecategory = document.querySelector(".foodTypecategory");
     
@@ -139,29 +123,6 @@ searchBtn.addEventListener("click", () => {
                 behavior : 'smooth'
             });
 
-            /* 통계 ajax 비동기 처리 부분 */
-            $.ajax({
-                url : "/result",
-                type : "GET",
-                success : (resultList) => {
-                    /* resultBox 생성 시 statisticsUl 변수에 담기 */
-                    const statisticsUl = document.querySelector(".statistics-ul");
-                    // resultBox의 내용 삭제
-                    statisticsUl.innerHTML = "";
-
-                    for (let ListItems of resultList){
-                        const statisticsLi = document.createElement("li");
-                        statisticsLi.innerHTML = "<span>"+ ListItems.storeType + "</span><span>" + ListItems.storeCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</span>";
-
-                        statisticsUl.append(statisticsLi);
-                    }
-                },
-                error : () => {
-                    console.log("통계 불러오기 실패");
-                }
-            });
-
-
             /* 검색어와 카테고리 선택 시 결과 창 조회하기 */
             const searchValue = document.querySelector(".searchTxt");
             const categoryValue = document.querySelectorAll(".category-box input:checked");
@@ -184,6 +145,7 @@ searchBtn.addEventListener("click", () => {
                     if(storeList.length == 0) {
                         const searchListNone = document.createElement("div");
                         searchListNone.classList.add("searchList-none");
+                        searchListNone.innerText = "검색 결과가 없습니다.";
 
                         searchList.append(searchListNone);
                     } else {
@@ -203,18 +165,60 @@ searchBtn.addEventListener("click", () => {
                             storeName.innerText = storeItems.storeName;
 
                             const storeAddress = document.createElement("span");
-                            storeAddress.innerText = storeItems.landnumberAddress;
+
+                            if (storeItems.landnumberAddress == null){
+
+                                storeAddress.innerText = storeItems.roadnameAddress;
+                                
+                            } else if (storeItems.roadnameAddress == null) {
+                                
+                                storeAddress.innerText = storeItems.landnumberAddress;
+                                
+                            } else {
+
+                                storeAddress.innerText = storeItems.roadnameAddress;
+                                
+                            }
 
                             const storeTel = document.createElement("span");
-                            storeTel.innerText = storeItems.storeTel;
+
+                            if(storeItems.storeTel == null){
+
+                                storeTel.innerText = "해당 가게의 전화번호가 없습니다.";
+
+                                storeTel.style.color = "red";
+
+                            } else {
+
+                                storeTel.innerText = storeItems.storeTel;
+
+                            }
 
                             const storeInfoLink = document.createElement("div");
                             storeInfoLink.classList.add("storeInfoLink");
                             storeInfoLink.innerHTML = "<button>상세보기</button>";
 
+                            searchListStyle.append(searchLi);
+                            
                             searchLi.append(storeInfo, storeInfoLink);
 
                             storeInfo.append(storeName, storeAddress, storeTel);
+
+                            storeInfoLink.lastElementChild.addEventListener("click", ()=>{
+                                modalWindow.style.display = "flex";
+                        
+                                relayout();
+
+                                const modalCloseBtn = document.getElementsByClassName("modal-title");
+                                
+                                for (let subItems of modalCloseBtn){
+                                    subItems.lastElementChild.addEventListener("click", () => {
+                                        modalWindow.style.display = "none";
+        
+                                    });
+                                }
+                            });
+
                         }
                     }
                 },
@@ -227,3 +231,28 @@ searchBtn.addEventListener("click", () => {
         
     }
 });
+
+/* 모달 팝업창 여는 버튼 */
+const modalBtn = document.getElementsByClassName("storeInfoLink");
+
+/* 모달 팝업창 */
+const modalWindow = document.querySelector(".storeInfoModal-window");
+
+
+for (let mainItems of modalBtn){
+    
+    mainItems.lastElementChild.addEventListener("click", ()=>{
+        modalWindow.style.display = "flex";
+
+        relayout();
+    });
+    
+    /* 모달 팝업창 닫는 버튼 */
+    const modalCloseBtn = document.getElementsByClassName("modal-title");
+
+    for (let subItems of modalCloseBtn){
+        subItems.lastElementChild.addEventListener("click", () => {
+            modalWindow.style.display = "none";
+        });
+    }
+}
