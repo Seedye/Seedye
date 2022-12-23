@@ -56,46 +56,50 @@
                 </div>
                 <div id="boardTest">
                     <table>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>등록일</th>
-                            <th>작성자</th>
-                            <th>조회수</th>
-                            <th>관리</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>test</td>
-                            <td>2022.12.19</td>
-                            <td>테스트</td>
-                            <td>4</td>
-                            <td>
-                                <button>관리</button>
-                            </td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>등록일</th>
+                                <th>작성자</th>
+                                <th>조회수</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <%-- <tr>
+                                <td>1</td>
+                                <td>test</td>
+                                <td>2022.12.19</td>
+                                <td>테스트</td>
+                                <td>4</td>
+                                <td>
+                                    <button>관리</button>
+                                </td>
+                            </tr> --%>
+                        </tbody>    
                     </table>
+                    <form action="">
+                        <div id="searchBoard">
+                            <select name="" id="">
+                                <option value="">이름</option>
+                                <option value="">내용</option>
+                                <option value="">작성자</option>
+                            </select>
+                            <input type="text">
+                            <button>검색</button>
+                        </div>
+                    </form>
                 </div>
                 
             </div>
         </div>
     </main>
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/sideBar.js"></script>
    <script src="/resources/js/admin/swiper.min.js"></script>
+   <script src="/resources/js/header.js"></script>
    <script src="/resources/js/admin/boardManage.js"></script>
 </body>
 </html>
