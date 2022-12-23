@@ -61,6 +61,15 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectBoardDetail(boardNo);
 	}
 
+	/**
+	 *게시글 삭제
+	 */
+	@Override
+	public int boardDelete(int boardNo) {
+		
+		return dao.boardDelete(boardNo);
+	}
+
 	
 	
 	

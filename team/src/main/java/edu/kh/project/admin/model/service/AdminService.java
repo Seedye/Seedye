@@ -26,6 +26,10 @@ public interface AdminService {
 
 
 	Board selectBoardDetail(int boardNo);
+
+
+
+	int boardDelete(int boardNo);
 	
 	
 

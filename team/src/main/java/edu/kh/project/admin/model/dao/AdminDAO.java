@@ -59,6 +59,15 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.selectBoardDetail", boardNo);
 	}
 
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int boardDelete(int boardNo) {
+		
+		return sqlSession.update("adminMapper.boardDelete",boardNo);
+	}
+
 	
 
 	
