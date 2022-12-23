@@ -1,10 +1,13 @@
 package edu.kh.project.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -32,9 +35,15 @@ public class MyPageController {
 	@PostMapping("/info")
 	public String updateInfo(Member inputMember, String[] memberAddress,
 			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam Map<String, Object> paramMap,
 			RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
+		
+		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		
+		System.out.println(paramMap);
 		
 		if(inputMember.getMemberAddress().equals(",,") ) {
 			inputMember.setMemberAddress(null);
@@ -44,7 +53,7 @@ public class MyPageController {
 		}
 
 		// 회원 정보 수정 서비스 호출 결과 반환 받기
-		int result = service.updateInfo(inputMember);
+		int result = service.updateInfo(inputMember, paramMap);
 				
 		String message = null;
 		

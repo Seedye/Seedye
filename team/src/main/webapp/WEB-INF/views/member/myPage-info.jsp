@@ -35,7 +35,7 @@
                 <h1 class="myPage-title">내 정보</h1>
                 <span class="myPage-subject">원하는 회원 정보를 수정할 수 있습니다.</span>
                 
-                <form action="info" method="POST" name="myPage-frm">
+                <form action="info" method="POST" name="myPage-frm" onsubmit>
 
                     <div class="myPage-row">
                         <label>아이디</label>
@@ -61,9 +61,9 @@
                         <label>새 비밀번호 확인</label>
                         <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="16">
                     </div>
-                    <span class="myPage-message" id="pwMessage">소문자, 대문자, 숫자, 특수문자를 모두 포함해 8~16 글자 사이로 입력해주세요.</span>
+                    <span class="myPage-message" id="newPwMessage">소문자, 대문자, 숫자, 특수문자를 모두 포함해 8~16 글자 사이로 입력해주세요.</span>
 
-                    <!-- <button class="myPage-submit">변경하기</button> -->
+                    <%-- <button class="myPage-submit">변경하기</button> --%>
                     </div>
 
                     <div class="myPage-row tel">
