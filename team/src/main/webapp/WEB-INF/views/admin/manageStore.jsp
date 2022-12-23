@@ -90,18 +90,18 @@
             </div>
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
-                    <select>
+                    <select id="selectBox">
                         <option>업종</option>
-                        <option value="">한식</option>
-                        <option value="">중식</option>
-                        <option value="">일식</option>
-                        <option value="">양식</option>
-                        <option value="">패스트푸드</option>
-                        <option value="">일반대중음식</option>
-                        <option value="">편의점</option>
-                        <option value="">제과점</option>
-                        <option value="">정육점</option>
-                        <option value="">착한식당</option>
+                        <option value="한식">한식</option>
+                        <option value="중식">중식</option>
+                        <option value="일식">일식</option>
+                        <option value="양식">양식</option>
+                        <option value=패스트푸드">패스트푸드</option>
+                        <option value="일반대중음식">일반대중음식</option>
+                        <option value="편의점">편의점</option>
+                        <option value="제과점">제과점</option>
+                        <option value="정육점">정육점</option>
+                        <option value="착한식당">착한식당</option>
                     </select>
                     <h1 id="storeH1">식당 관리</h1>
                     <table id="storeTable">
@@ -116,8 +116,8 @@
                                 <th>관리하기</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="storeList">
+                        <tbody id="tbody">
+                            <%-- <tr class="storeList">
                                 <td>1</td>
                                 <td>가나다</td>
                                 <td>한식</td>
@@ -207,7 +207,7 @@
                                 <td>등록완료</td>
                                 <td><button class="store-manage">관리</button></td> 
                             </tr>
-                        </tbody>
+                        </tbody> --%>
                     </table>
                     <form action="">
                         <div id="searchStore">

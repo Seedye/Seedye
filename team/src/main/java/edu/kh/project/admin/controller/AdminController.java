@@ -1,5 +1,6 @@
 package edu.kh.project.admin.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.google.gson.Gson;
+import edu.kh.project.admin.model.service.AdminService;
+import edu.kh.project.admin.model.vo.Store;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.member.model.vo.Member;
+
 
 
 @RequestMapping("/admin")
@@ -68,7 +76,7 @@ public class AdminController {
 		}
 			return "admin/manageBoard";
 	}
-	
+
 	// 게시글 상세 조회
 	
 	@GetMapping("/board/{boardCode}/{boardNo}")
@@ -135,13 +143,32 @@ public class AdminController {
 	
 	
 	// 회원 목록 조회
+	@GetMapping("selectMemberList")
+	@ResponseBody
+	public String selectMemberList() {
+		
+		List<Member> memberList = service.selectMemberList();
+		
+		return new Gson().toJson(memberList);
+	}
+	
 	
 	// 회원 권한 변경
+	
 	
 	// 회원 탈퇴
 	
 
 	// 식당 목록 조회
+	@GetMapping("selectStoreList")
+	@ResponseBody
+	public String selectStoreList() {
+		
+		List<Store> storeList = service.selectStoreList();
+		
+		System.out.println(storeList);
+		return new Gson().toJson(storeList);
+	}
 	
 	
 	

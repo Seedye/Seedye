@@ -9,8 +9,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
+import edu.kh.project.member.model.vo.Member;
 
 @Repository
 public class AdminDAO {
@@ -69,6 +71,19 @@ public class AdminDAO {
 	}
 
 	
+	
+	public List<Store> selectStoreList() {
+		return sqlSession.selectList("adminMapper.selectStoreList");
+
+	}
+
+	public List<Member> selectMemberList() {
+		
+		return sqlSession.selectList("adminMapper.selectMemberList");
+	}
+
+	
+
 
 	
 
