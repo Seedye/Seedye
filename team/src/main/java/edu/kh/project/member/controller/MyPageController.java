@@ -13,9 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.project.member.model.service.MyPageService;
 import edu.kh.project.member.model.vo.Member;
 
-@RequestMapping("/member/myPage")
-
-//@SessionAttributes("loginMember") // 탈퇴 성공 시 로그아웃에 사용
+@SessionAttributes("loginMember") // 탈퇴 성공 시 로그아웃에 사용
 
 @Controller
 public class MyPageController {

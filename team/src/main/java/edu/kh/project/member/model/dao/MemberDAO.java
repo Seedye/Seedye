@@ -21,4 +21,9 @@ public class MemberDAO {
 	public int signUp(Member inputMember) {		
 		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
+
+	// 아이디 중복 검사 DAO
+	public int idDupCheck(String memberId) {
+		return sqlSession.selectOne("memberMapper.idDupCheck", memberId);
+	}
 }

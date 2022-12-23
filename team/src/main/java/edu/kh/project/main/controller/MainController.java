@@ -1,9 +1,12 @@
 package edu.kh.project.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,32 +22,32 @@ public class MainController {
 
 	// 메인페이지 이동
 	@GetMapping("/")
-	public String mainPage() {
+	public String mainPage(Model model) {
+		
+		List<Store> resultList = service.resultList();
+		
+		model.addAttribute("resultList", resultList);
 		
 		return "main/mainPage";
 	}
-	
-	// 메인페이지 통계표 비동기 ajax 목록 불러오기
-	@GetMapping("/result")
-	@ResponseBody
-	public List<Store> resultList(){
-	
-		List<Store> resultList = service.resultList();
-		
-		return resultList;
-	}
-	
+
+	// 검색어 + 카테고리 검색 결과 출력하기
 	@GetMapping("/storeList")
 	@ResponseBody
 	public List<Store> storeList(
 			@RequestParam("searchValue") String searchValue,
 			@RequestParam("categoryArr") String[] categoryArr){
 		
+		Map<String, Object> saerchResult = new HashMap<String, Object>();
 		
-		System.out.println(searchValue);
-		System.out.println(categoryArr);
+		saerchResult.put("searchValue", searchValue);
+		saerchResult.put("categoryArr", categoryArr);
 		
-		return null;
+		System.out.println(saerchResult);
+		
+		List<Store> storeList = service.storeList(saerchResult);
+		
+		return storeList;
 		
 	}
 }

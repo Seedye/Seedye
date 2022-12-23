@@ -3,7 +3,7 @@ const checkObj = {
     "memberPw"        : false, /* 비밀번호 */
     "memberPwConfirm" : false, /* 비밀번호 확인 */
     "memberTel"       : false, /* 전화번호 */
-    "authKey"         : false  /* 인증번호 */
+    "phoneCheck"         : false  /* 인증번호 */
 };
 
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
@@ -20,7 +20,7 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
             case "memberPw"    :  str = "비밀번호가 유효하지 않습니다."; break; 
             case "memberPwConfirm" :  str = "비밀번호 확인이 유효하지 않습니다."; break;
             case "memberTel" : str = "전화번호가 유효하지 않습니다."; break;
-            case "authKey" : str = "인증이 완료되지 않았습니다."; break;
+            case "phoneCheck" : str = "인증이 완료되지 않았습니다."; break;
         }
 
             alert(str); // 대화상자 출력
@@ -42,7 +42,7 @@ const idMessage = document.getElementById("idMessage");
 memberId.addEventListener("input", function(){
 
     // 문자가 입력되지 않은 경우
-    if(memberId.ariaValueMax.trim().length == 0){
+    if(memberId.value.trim().length == 0){
         idMessage.innerText = "사용하고 싶은 아이디를 입력해주세요.";
         memberId.value = "";
 
@@ -55,33 +55,24 @@ memberId.addEventListener("input", function(){
     }
 
     // 정규표현식을 이용한 유효성 검사
-    const reg = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{10,20}$/;
+    const regEx = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{10,20}$/;
 
-    if(reg.test(memberId.value)){
+    if(regEx.test(memberId.value)){
         $.ajax({
-            url : "/", // 비동기 통신을 진행할 서버 요청 주소
+            url : "/idDupCheck", // 비동기 통신을 진행할 서버 요청 주소
             data: {"memberId" : memberId.value}, // JS객체에서 서버로 전달할 값
             type: "GET", // 데이터 전달 방식(GET/POST) -> ajax는 보통 GET방식
-            success: (map) => { // 비동기 통신에 성공해서 응답 받았을 때
+            success: (result) => { // 비동기 통신에 성공해서 응답 받았을 때
 
-                if(map.dup == 0 && map.secession == 0){
+                if(result == 0){
                     idMessage.innerText = "사용가능한 아이디입니다."
                     idMessage.classList.add("confirm");
                     idMessage.classList.remove("error");
                     checkObj.memberId = true;
-                }
-
-                if(map.dup > 0) {
+                } else {
                     idMessage.innerText = "이미 사용중인 아이디입니다."
                     idMessage.classList.add("error");
                     idMessage.classList.remove("confirm");
-                    checkObj.memberId = false;                    
-                }
-
-                if(map.secession > 0){
-                    idMessage.innerText = "가입 불가능합니다."
-                    idMessage.classList.add("error");
-                    idMessage.classList.remobe("confirm");
                     checkObj.memberId = false;                    
                 }
             },

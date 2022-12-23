@@ -26,4 +26,15 @@
 		ORDER BY STORE_COUNT DESC
 	</select>
 	
+	<select id="storeList" resultMap="store_rm">
+		SELECT *
+		FROM STORE
+		WHERE (ROADNAME_ADDRESS LIKE '%${searchValue}%' OR LANDNUMBER_ADDRESS LIKE '%${searchValue}%')
+		AND STORE_TYPE IN
+		<foreach collection="categoryArr" item="arr" open="(" close=")" separator=",">
+		#{arr}
+		</foreach>
+		ORDER BY STORE_NO
+	</select>
+	
 </mapper>
