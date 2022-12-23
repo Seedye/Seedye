@@ -12,8 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
@@ -90,10 +94,37 @@ public class AdminController {
 	}
 		
 	// 게시글 삭제
+	@GetMapping("/board/{boardCode}/{boardNo}/delete")
+	public String biardDelete(RedirectAttributes ra,
+			@RequestHeader("referer")String referer,
+			@PathVariable("boardNo")int boardNo,
+			@PathVariable("boardCode")int boardCode) {
+		
+		int result = service.boardDelete(boardNo);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			
+			path = "/board/" + boardCode;
+			message = "삭제되었습니다";
+		}else {
+		
+			path = referer;
+			message = "게시글 삭제 실패";
+		}
+		
+		
+		ra.addFlashAttribute("message",message);
+		return "redirect:" + path;
+	}
 	
 	// 게시글 수정화면 이동
 	
 	// 게시글 수정
+	
+	
 	
 	// 게시글 작성(공지사항(code=1), 업데이트(code=2) 이동
 	

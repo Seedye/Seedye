@@ -32,6 +32,10 @@ public interface AdminService {
 	 */
 	List<Store> selectStoreList();
 	Board selectBoardDetail(int boardNo);
+
+
+
+	int boardDelete(int boardNo);
 	
 	
 
