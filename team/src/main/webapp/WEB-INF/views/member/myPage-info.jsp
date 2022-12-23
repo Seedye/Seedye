@@ -39,7 +39,7 @@
 
                     <div class="myPage-row">
                         <label>아이디</label>
-                        <input type="text" name="memberId" value="rkdalsrb100" maxlength="20">
+                        <input type="text" name="memberId" value="${loginMember.memberId}" maxlength="20">
                     </div>
 
                     <button type="button" class="myPage-submit" id="btn1">비밀번호 변경</button>
@@ -66,7 +66,7 @@
 
                     <div class="myPage-row tel">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="010-1234-1234" maxlength="13">
+                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13">
                         <button type="button">인증</button>
                     </div>
 
@@ -78,7 +78,7 @@
                     <c:set var="addr" value="${fn:split(loginMember.memberAddress, ',,')}" />
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress" id="sample6_postcode" value="12345" placeholder="우편번호">
+                        <input type="text" name="memberAddress" id="sample6_postcode" value="${addr[0]}" placeholder="우편번호">
                         <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                     </div>
 

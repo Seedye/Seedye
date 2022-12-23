@@ -117,35 +117,13 @@
                     <h3>가맹점 수</h3>
                     <br>
                     <ul class="statistics-ul">
-<%-- 
+                    <%-- 가맹점 타입별 점포 수 --%>
+                    <c:forEach var="statList" items="${resultList}">
                         <li class="statistics-li">
-                            <span>한식 : 300,000개</span>
+                            <span>${statList.storeType}</span>
+                            <span>${statList.storeCount}</span>
                         </li>
-                        <li class="statistics-li">
-                            <span>중식 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>일식 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>양식 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>편의점 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>제과점 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>정육점 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>패스트푸드 : 300,000개</span>
-                        </li>
-                        <li class="statistics-li">
-                            <span>일반대중음식 : 300,000개</span>
-                        </li>
-                        --%>
+                    </c:forEach>
                     </ul>
                 </div>
 
@@ -157,6 +135,7 @@
                     </div>
 -->
                     <ul class="searchList-style">
+<%-- 
                         <li>
                             <div class="storeInfo">
                                 <span>가게 이름</span>
@@ -167,66 +146,7 @@
                                 <button>상세보기</button>
                             </div>
                         </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="storeInfo">
-                                <span>가게 이름</span>
-                                <span>가게 주소</span>
-                                <span>가게 전화번호</span>
-                            </div>
-                            <div class="storeInfoLink">
-                                <button>상세보기</button>
-                            </div>
-                        </li>
+                        --%>
                     </ul>
                 </div>
 

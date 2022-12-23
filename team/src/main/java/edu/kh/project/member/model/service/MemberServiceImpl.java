@@ -31,6 +31,11 @@ public class MemberServiceImpl implements MemberService{
 		 * 
 		 * } else { loginMember = null; } }
 		 */
+		
+		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
+		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
+		
+		
 		return loginMember;
 	}
 
@@ -47,6 +52,12 @@ public class MemberServiceImpl implements MemberService{
 		int result = dao.signUp(inputMember);
 		
 		return result;
+	}
+
+	// 아이디 중복 검사 서비스
+	@Override
+	public int idDupCheck(String memberId) {
+		return dao.idDupCheck(memberId);
 	}
 	
 	
