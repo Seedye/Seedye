@@ -115,6 +115,5 @@ boardWriteInput.addEventListener("click", ()=>{
   boardWriteModal.style.display = "none";
   document.body.style.overflow = "unset";
 
-  console.log()
 });
 
