@@ -161,8 +161,8 @@
                     <div id="memberInfoChange">
                         <div id="memberInfo">
                             <div class="memberInfoList">
-                                <aside>이름</aside>
-                                <span>테스트</span>
+                                <aside>번호</aside>
+                                <span id="memberNO">1</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>아이디</aside>
@@ -182,7 +182,7 @@
                             </div>
                             <div class="memberInfoList">
                                 <aside>회원 종류</aside>
-                                <span>이용자</span>
+                                <span id="authority">이용자</span>
                             </div>
                         </div>
                         <div id="licenseArea">
@@ -190,10 +190,12 @@
                             <span id="licenseText">사업자 등록증</span>
                         </div>
                     </div>
+                <form id="updateInfo" action="updateInfo" method = "GET">  
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
                         <button id="m-BtnR">돌아가기</button>
                     </div>
+                </form> 
                 </div>
             </div>
         </div>    

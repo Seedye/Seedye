@@ -74,4 +74,25 @@ function selectMemberList(){
         }
 
     })
+
+const mBtn = document.getElementById("m-Btn");
+
+mBtn.addEventListener("click" ,  () => {
+    
+    const memberNO = document.getElementById("memberNO");
+
+    $.ajax({
+        url : "/admin/updateInfo", 
+        data : {"memberNo":memberNo.innerText},
+        success:(result) => {
+            if(result > 0) {
+                alert("변경되었습니다.")
+            }else {
+                alert("회원 권한 변경 실패입니다.")
+            }
+        }
+    })
+
+})
+
 }

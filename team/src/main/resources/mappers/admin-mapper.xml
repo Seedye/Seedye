@@ -169,4 +169,10 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 	SELECT AUTHORITY, MEMBER_ID, MEMBER_TEL, ENROLL_DATE, MEMBER_DEL_FL
 	FROM "MEMBER"
 </select>
+
+<update id="updateInfo">
+	UPDATE "MEMBER" SET
+	AUTHORITY = 3
+	WHERE MEMBER_NO = #{memberNo}
+</update>
 </mapper>  
