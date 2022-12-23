@@ -90,18 +90,6 @@
          
          ORDER BY BOARD_NO DESC
   </select>
-  
-		<!-- 게시글 상세 조회 -->
-		<select id="selectBoardDetail" resultMap="board_rm">
-			SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, READ_COUNT,
-			TO_CHAR(CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')CREATE_DATE,
-			TO_CHAR(UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS')UPDATE_DATE,
-			MEMBER_NO, MEMBER_ID
-			FROM BOARD B
-			JOIN MEMBER USING(MEMBER_NO)
-			WHERE BOARD_NO = #{boardNo}
-			AND BOARD_DEL_FL='N'
-		</select>
 	
 	<!-- 게시글 삭제 -->	
 		
