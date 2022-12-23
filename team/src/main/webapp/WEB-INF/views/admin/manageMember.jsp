@@ -25,16 +25,18 @@
                     <table class="list-table">
                         <thead>
                             <tr id="tableHead">
+                                <th>회원 번호</th>
                                 <th>회원 종류</th>
                                 <th>아이디</th>
                                 <th>전화번호</th>
                                 <th>가입일</th>
-                                <th>회원 탈퇴여부</th>
+                                <th>탈퇴여부</th>
                                 <th>회원 관리</th>
                             </tr>
                         </thead>
                         <tbody id="memberTbody">
                         <%--<tr>
+                                <td>1</td>
                                 <td>업주</td>
                                 <td>testzsdb</td>
                                 <td>테스트</td>
@@ -130,7 +132,6 @@
                         <div id="searchArea">
                             <select name="" id="">
                                 <option value="">아이디</option>
-                                <option value="">이름</option>
                                 <option value="">전화번호</option>
                             </select>
                             <input type="text">
@@ -193,7 +194,7 @@
                 <form id="updateInfo" action="updateInfo" method = "GET">  
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
-                        <button id="m-BtnR">돌아가기</button>
+                        <button id="m-BtnR"><a href="/admin/manageMember">돌아가기</a></button>
                     </div>
                 </form> 
                 </div>
