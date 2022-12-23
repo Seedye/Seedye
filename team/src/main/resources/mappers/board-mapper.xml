@@ -16,8 +16,23 @@
      <result property="readCount" column="READ_COUNT" />
      <result property="memberId" column="MEMBER_ID" />
      
+     <!-- <collection property="imageList" 
+      			  javaType="java.util.ArrayList" ofType="BoardImg"
+      			  select="selectImageList"
+      			  column = "BOARD_NO"/> -->
 	</resultMap>
 	
+	<resultMap type="BoardImg" id="boardImg_rm">
+	
+		<id property="imgNo" column="IMG_NO" />
+		
+     <result property="imgPath" column="IMG_PATH" />
+     <result property="imgRename" column="IMG_RENAME" />
+     <result property="imgOriginal" column="IMG_ORIGINAL" />
+     <result property="imgOrder" column="IMG_ORDER" />
+     <result property="boardNo" column="BOARD_NO" />
+     
+	</resultMap>
 	
 	<!-- 게시글 수 조회 -->
 	<select id="getListCount" parameterType="_int" resultType="_int">
@@ -47,6 +62,31 @@
 		ORDER BY BOARD_NO DESC
 	</select>
 	
+	<!-- 문의 게시글 삽입 -->
+	<insert id="QAWrite" parameterType="Board" useGeneratedKeys="true">
+		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD 
+		VALUES(#{boardNo},#{boardTitle}, #{boardContent}, DEFAULT, DEFAULT, DEFAULT, #{boardCode}, #{memberNo}, DEFAULT)
+	</insert>
+	
+	<!-- 문의 게시판 이미지 삽입 -->
+	<insert id="QAWriteImg" parameterType="list">
+		INSERT INTO BOARD_IMG
+			SELECT SEQ_BOARD_IMG_NO.NEXTVAL IMG_NO, A.* FROM
+			
+			<foreach collection="list" item="img" open="(" close=") A" separator="UNION ALL">
+				SELECT #{img.imgPath} IMG_PATH,
+					#{img.imgRename} IMG_RENAME,
+					#{img.imgOriginal} IMG_ORIGINAL,
+					#{img.imgOrder} IMG_ORDER,
+					#{img.boardNo} BOARD_NO
+					FROM DUAL
+			
+			</foreach>
+	
+	</insert>
 	
 	
 	

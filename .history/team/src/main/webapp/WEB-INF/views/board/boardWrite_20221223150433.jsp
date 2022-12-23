@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
   <div class="board-write-modal" id="boardWriteModal">
-  <form action="/QAWrite/4" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
+  <form action="/QAWrite" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
     <div class="board-view-area">
       <!-- /* 상세보기 */ -->
       <div class="board-view-title">
@@ -15,7 +15,7 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <input name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
+          <input type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
           <!-- <p> ]</p> -->
       </div>
 
@@ -26,7 +26,7 @@
             <p>yjy_1005 / 2022.12.14</p>
           </div>
           <div class="board-view-content-text">
-            <textarea name="boardContent"></textarea>
+            <textarea></textarea>
 
           </div>
         </div>
