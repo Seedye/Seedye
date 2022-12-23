@@ -40,10 +40,15 @@ public class BoardDAO {
 	}
 	
 	
+	/** 자유 게시글 목록 조회
+	 * @param pagination
+	 * @param boardCode
+	 * @return
+	 */
 	public List<Board> selectFreeBoardList(Pagination pagination, int boardCode) {
 		
-		int offset = (pagination.getCurrentPage() -1 )*pagination.getLimit();
-		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		int offset = (pagination.getCurrentPage() -1 )*pagination.getLimit2();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit2());
 		
 		return sqlSession.selectList("boardMapper.selectFreeBoardList", boardCode, rowBounds);
 	}

@@ -54,7 +54,7 @@
 
 	<!-- 자유 게시글 조회 -->
 	<select id="selectFreeBoardList" parameterType="_int" resultMap="board_rm"> 
-		SELECT BOARD_NO, BOARD_TITLE, MEMBER_ID, CREATE_DATE
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_ID, TO_CHAR(CREATE_DATE, 'YYYY"."MM"."DD HH24:MI') CREATE_DATE
 		FROM BOARD
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE BOARD_CODE = ${boardCode}

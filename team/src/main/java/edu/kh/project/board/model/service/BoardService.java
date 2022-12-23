@@ -18,6 +18,11 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList(int boardCode, int cp);
 
+	/** 자유 게시물 리스트 조회
+	 * @param boardCode
+	 * @param cp
+	 * @return
+	 */
 	Map<String, Object> selectFreeBoardList(int boardCode, int cp);
 
 	/** 문의게시물 작성

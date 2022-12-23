@@ -82,16 +82,16 @@ const boardWriteBtn = document.getElementById("boardWriteBtn"); // 글 작성 bt
 const boardWriteX = document.getElementById("boardWriteX"); // 글 작성 시 X
 const boardWriteInput = document.getElementById("boardWriteInput"); // 글 작성 완료btn
 // 상세보기 눌렀을 때
-boardView[0].addEventListener("click", ()=>{
-  boardViewModal.style.display="flex";
-  document.body.style.overflow = "hidden";
-});
+// boardView[0].addEventListener("click", ()=>{
+//   boardViewModal.style.display="flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-// 상세보기 X
-boardViewX.addEventListener("click", ()=>{
-  boardViewModal.style.display = "none";
-  document.body.style.overflow = "unset";
-});
+// // 상세보기 X
+// boardViewX.addEventListener("click", ()=>{
+//   boardViewModal.style.display = "none";
+//   document.body.style.overflow = "unset";
+// });
 // boardViewX.addEventListener("click", ()=>{
 //   boardViewModal.style.display = "none";
 //   document.body.style.overflow = "unset";
