@@ -23,7 +23,7 @@ public class Board {
 	
 	
 	// 이미지 목록
-	private List<boardImg> imgeList;
+	private List<BoardImg> imageList;
 	
 }
 

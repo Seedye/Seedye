@@ -18,6 +18,6 @@ public class Member {
 	private String memberAddress; // 주소
 	private String enrollDate; // 가입일
 	private String memberDeleteFlag; // 탈퇴여부
-	private int authority; // 권한 (2:관리자 / 1:일반)
+	private int authority; // 권한 (2:관리자 / 1:일반 / 3: 식당 업주)
 	
 }

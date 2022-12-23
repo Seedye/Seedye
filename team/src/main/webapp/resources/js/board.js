@@ -6,6 +6,8 @@ const imgDelete = document.getElementsByClassName("board-Write-img-delete"); // 
 
 let inputFileCheck = 0; // 파일 갯수 확인용
 
+var form = new FormData(); // 이미지 데이터 담기
+
 inputFile.addEventListener("change", (e)=>{
 
   console.log(inputFileCheck);
@@ -35,7 +37,7 @@ inputFile.addEventListener("change", (e)=>{
     for(let i=0; i < fileInputNum; i++){
       // 이벤트 발생한 파일 길이 만큼 for문 돌림
       
-      
+      form.append("files", e.target.files[i]);
       const reader = new FileReader(); // 파일 읽는 객체
       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
 
@@ -68,6 +70,8 @@ inputFile.addEventListener("change", (e)=>{
     }
   }
 });
+// 글작성
+
 
 //! 모달 연결
 const boardView = document.getElementsByClassName("board-list-view"); // 게시물 리스트 한개
@@ -78,16 +82,16 @@ const boardWriteBtn = document.getElementById("boardWriteBtn"); // 글 작성 bt
 const boardWriteX = document.getElementById("boardWriteX"); // 글 작성 시 X
 const boardWriteInput = document.getElementById("boardWriteInput"); // 글 작성 완료btn
 // 상세보기 눌렀을 때
-boardView[0].addEventListener("click", ()=>{
-  boardViewModal.style.display="flex";
-  document.body.style.overflow = "hidden";
-});
+// boardView[0].addEventListener("click", ()=>{
+//   boardViewModal.style.display="flex";
+//   document.body.style.overflow = "hidden";
+// });
 
-// 상세보기 X
-boardViewX.addEventListener("click", ()=>{
-  boardViewModal.style.display = "none";
-  document.body.style.overflow = "unset";
-});
+// // 상세보기 X
+// boardViewX.addEventListener("click", ()=>{
+//   boardViewModal.style.display = "none";
+//   document.body.style.overflow = "unset";
+// });
 // boardViewX.addEventListener("click", ()=>{
 //   boardViewModal.style.display = "none";
 //   document.body.style.overflow = "unset";
@@ -106,9 +110,11 @@ boardWriteX.addEventListener("click",()=>{
 
 });
 
-// 글 작성 완료
+// 글 작성 완료(데이터 넣기)
 boardWriteInput.addEventListener("click", ()=>{
   boardWriteModal.style.display = "none";
   document.body.style.overflow = "unset";
+
+  console.log()
 });
 

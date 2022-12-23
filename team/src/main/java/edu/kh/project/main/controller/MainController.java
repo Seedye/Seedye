@@ -50,5 +50,19 @@ public class MainController {
 		return storeList;
 		
 	}
+	
+	// 모달 팝업창 해당 가맹점 조회
+	@GetMapping("/modalContent")
+	@ResponseBody
+	public List<Store> modalResult(
+			@RequestParam("storeNo") int storeNo){
+		
+		List<Store> modalResult = service.modalResult(storeNo);
+		
+		System.out.println(storeNo);
+		System.out.println(modalResult);
+		
+		return modalResult;
+	}
 }
 

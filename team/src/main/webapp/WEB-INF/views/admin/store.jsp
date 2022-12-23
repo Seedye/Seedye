@@ -62,12 +62,16 @@
             </div>
             <div class="adminR-menu">
                 <aside><span class="red">＊</span>주소</aside>
-                <input type="text" placeholder="주소">
-
+                <div id="addr-area">
+                    <button type="button" onclick="sample4_execDaumPostcode()">주소 검색</button>
+                    <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                    <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+                    <span id="guide" style="color:#999;display:none"></span>
+                </div>
             </div>
             <div class="adminR-menu">
                 <aside><span class="red">＊</span>전화번호</aside>
-                <input type="text" placeholder="전화번호">
+                <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="">
             </div>
             <div class="adminR-menu">
                 <aside>메뉴, 가격</aside>
@@ -80,6 +84,7 @@
         </form>
     </div>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/resources/js/admin/admin.js"></script>
 </body>
 </html>

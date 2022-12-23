@@ -9,8 +9,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
+import edu.kh.project.member.model.vo.Member;
 
 @Repository
 public class AdminDAO {
@@ -59,7 +61,34 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.selectBoardDetail", boardNo);
 	}
 
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int boardDelete(int boardNo) {
+		
+		return sqlSession.update("adminMapper.boardDelete",boardNo);
+	}
+
 	
+	
+	public List<Store> selectStoreList() {
+		return sqlSession.selectList("adminMapper.selectStoreList");
+
+	}
+
+	public List<Member> selectMemberList() {
+		
+		return sqlSession.selectList("adminMapper.selectMemberList");
+	}
+
+	public int updateInfo(int memberNo) {
+		
+		return sqlSession.update("adminMapper.updateInfo", memberNo);
+	}
+
+	
+
 
 	
 

@@ -27,15 +27,14 @@
                             <tr id="tableHead">
                                 <th>회원 종류</th>
                                 <th>아이디</th>
-                                <th>회원 이름</th>
                                 <th>전화번호</th>
                                 <th>가입일</th>
                                 <th>회원 탈퇴여부</th>
                                 <th>회원 관리</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="memberTbody">
+                        <%--<tr>
                                 <td>업주</td>
                                 <td>testzsdb</td>
                                 <td>테스트</td>
@@ -125,7 +124,7 @@
                                 <td>N</td>
                                 <td><button>관리</button></td>
                             </tr>
-                        </tbody>
+                        </tbody> --%>
                     </table>
                     <form action="">
                         <div id="searchArea">
@@ -162,8 +161,8 @@
                     <div id="memberInfoChange">
                         <div id="memberInfo">
                             <div class="memberInfoList">
-                                <aside>이름</aside>
-                                <span>테스트</span>
+                                <aside>번호</aside>
+                                <span id="memberNO">1</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>아이디</aside>
@@ -183,7 +182,7 @@
                             </div>
                             <div class="memberInfoList">
                                 <aside>회원 종류</aside>
-                                <span>이용자</span>
+                                <span id="authority">이용자</span>
                             </div>
                         </div>
                         <div id="licenseArea">
@@ -191,10 +190,12 @@
                             <span id="licenseText">사업자 등록증</span>
                         </div>
                     </div>
+                <form id="updateInfo" action="updateInfo" method = "GET">  
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
                         <button id="m-BtnR">돌아가기</button>
                     </div>
+                </form> 
                 </div>
             </div>
         </div>    
@@ -213,7 +214,8 @@
         <a href="#">고객센터</a>
     </article>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/member.js"></script>
     <script src="/resources/js/sideBar.js"></script>
-</body>
+    </body>
 </html>

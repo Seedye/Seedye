@@ -19,6 +19,7 @@
 	<typeAliases>
 		<typeAlias type="edu.kh.project.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="edu.kh.project.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="edu.kh.project.board.model.vo.BoardImg" alias="BoardImg"/>
 		<typeAlias type="edu.kh.project.admin.model.vo.Store" alias="Store"/>
 		<typeAlias type="edu.kh.project.admin.model.vo.StoreImage" alias="StoreImage"/>
 	</typeAliases>
@@ -27,9 +28,9 @@
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/admin-mapper.xml"/>
 		<mapper resource="/mappers/main-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
-	
 	</mappers>
 	
 	
