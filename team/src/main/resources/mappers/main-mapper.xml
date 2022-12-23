@@ -17,8 +17,20 @@
 	     <result property="storeInfo" column="STORE_INFO" />
 	     <result property="storeCount" column="STORE_COUNT" />
      
+     	 <collection property="storeImgList" javaType="java.util.ArrayList"
+     	 ofType="StoreImage" select="selectStoreImageList" column="STORE_NO"/>
+     	 
 	</resultMap>
 	
+	<resultMap type="StoreImage" id="storeImage_rm">
+		<id property="storeNo" column="STORE_NO"/>
+		<result property="sImgPath" column="S_IMG_PATH"/>
+		<result property="sImgOriginal" column="S_IMG_ORIGINAL"/>
+		<result property="sImgRename" column="S_IMG_RENAME"/>
+		<result property="sImgOrder" column="S_IMG_ORDER"/>
+	</resultMap>
+	
+	<!-- 가맹점 총 점포수 -->
 	<select id="resultList" resultMap="store_rm">
 		SELECT STORE_TYPE, COUNT(STORE_TYPE) STORE_COUNT FROM STORE
 		WHERE CHECK_FL = 'B'
@@ -26,6 +38,7 @@
 		ORDER BY STORE_COUNT DESC
 	</select>
 	
+	<!-- 검색어 + 카태고리 포함한 결과 출력 -->
 	<select id="storeList" resultMap="store_rm">
 		SELECT *
 		FROM STORE
@@ -35,6 +48,20 @@
 		#{arr}
 		</foreach>
 		ORDER BY STORE_NO
+	</select>
+	
+	<!-- collection에 저장할 스토어이미지 리스트 -->
+	<select id="selectStoreImageList" resultMap="storeImage_rm">
+		SELECT * FROM STORE_IMG
+		WHERE STORE_NO = #{storeNo}
+		ORDER BY S_IMG_ORDER
+	</select>
+	
+	<!-- 모달 팝업창 해당 가맹점 조회 -->
+	<select id="modalResult" resultMap="store_rm">
+		SELECT *
+		FROM STORE
+		WHERE STORE_NO = #{storeNo}
 	</select>
 	
 </mapper>

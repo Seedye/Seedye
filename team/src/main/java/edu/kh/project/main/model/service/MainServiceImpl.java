@@ -29,4 +29,10 @@ public class MainServiceImpl implements MainService {
 		return dao.storeList(saerchResult);
 	}
 	
+	// 모달 팝업창 해당 가맹점 조회
+	@Override
+	public List<Store> modalResult(int storeNo) {
+		return dao.modalResult(storeNo);
+	}
+	
 }

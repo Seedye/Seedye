@@ -207,8 +207,8 @@
                             </div>
 
                             <span class="content-pre">
-                                &lt; 메뉴 설명 &gt;<br><br>
-                                페페로니 피자 3,000원<br>
+                                &lt; 메뉴 설명 &gt;
+                                페페로니 피자 3,000원
                                 하와이안 피자 4,000원
                             </span>
                         </div>

@@ -13,4 +13,7 @@ public interface MainService {
 	// 검색어 + 카테고리 검색 결과 출력하기
 	List<Store> storeList(Map<String, Object> saerchResult);
 
+	// 모달 팝업창 해당 가맹점 조회
+	List<Store> modalResult(int storeNo);
+
 }

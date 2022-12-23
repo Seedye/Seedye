@@ -1,5 +1,7 @@
 package edu.kh.project.admin.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,5 +24,6 @@ public class Store {
 	
 	// 황석현 수정
 	private int storeCount; // 통계화면에 사용할 컬럼
+	private List<StoreImage> storeImgList;
 	
 }
