@@ -49,8 +49,18 @@ body{
     margin: 20px;
 }
 
+
+
+/* 표 가운데정렬 */
+td{
+    text-align: center;
+}
+
+tr{
+    border-bottom: 1px solid black;
+}
+
 /* 검색 */
 #tableArea > div > form{
     text-align: center;
 }
-
