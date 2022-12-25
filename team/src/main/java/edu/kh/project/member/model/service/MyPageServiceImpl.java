@@ -1,5 +1,7 @@
 package edu.kh.project.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,18 @@ public class MyPageServiceImpl implements MyPageService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	// 회원 정보 수정 서비스
+//	@Transactional
+//	@Override
+//	public int updateInfo(Member inputMember) {
+//		int result = dao.updateInfo(inputMember);
+//		return result;
+//	}
+
+	// 회원 정보 수정 서비스
 	@Transactional
 	@Override
-	public int updateInfo(Member inputMember) {
-		int result = dao.updateInfo(inputMember);
+	public int updateInfo(Member inputMember, Map<String, Object> paramMap) {
+		int result = dao.updateInfo(inputMember, paramMap);
 		return result;
 	}
 

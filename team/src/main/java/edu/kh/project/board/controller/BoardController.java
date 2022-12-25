@@ -57,7 +57,7 @@ public class BoardController {
 	 * @param pm
 	 * @return
 	 */
-	@GetMapping("/freeBoard/{boardCode}")
+	@GetMapping("/freeBoardList/{boardCode}")
 	public String selectFreeBoardList(@PathVariable("boardCode") int boardCode,
 			Model model,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,

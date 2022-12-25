@@ -25,4 +25,9 @@ public class MainDAO {
 	public List<Store> storeList(Map<String, Object> saerchResult) {
 		return sqlSession.selectList("mainMapper.storeList", saerchResult);
 	}
+
+	// 모달 팝업창 해당 가맹점 조회
+	public List<Store> modalResult(int storeNo) {
+		return sqlSession.selectList("mainMapper.modalResult", storeNo);
+	}
 }

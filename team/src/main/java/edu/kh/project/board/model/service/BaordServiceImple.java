@@ -45,6 +45,7 @@ public class BaordServiceImple implements BoardService{
 		return map;
 	}
 
+	// 자유 게시글 리스트 조회
 	@Override
 	public Map<String, Object> selectFreeBoardList(int boardCode, int cp) {
 		
