@@ -121,19 +121,20 @@
 }
 
 #freeBoard-list li {
-border: 1px solid #f7f8f9;
+  border: 1px solid #f7f8f9;
 
   width: 500px;
   height: 86px;
 
   list-style: none;
   display: flex;
-  /* flex-direction: column; */
 
   justify-content: space-between;
 
   padding: 20px;
   cursor: pointer;
+
+  font-weight: bold;
 }
 
 /* #freeBoard-list li > p{
@@ -186,6 +187,8 @@ border: 1px solid #f7f8f9;
   padding-left: 70px;
   padding-right: 30px;
   text-align: left;
+
+  overflow-y: visible;
 
 
 }
@@ -241,13 +244,27 @@ border: 1px solid #f7f8f9;
 #freeBoard-detail-anwser-content{
   font-size: 14px;
   line-height: 22px;
-  height: 150px;
+  height: 120px;
 
+  overflow-y: scroll;
+}
+
+#freeBoard-detail-anwser-content::-webkit-scrollbar{
+  width: 3px;
+}
+
+#freeBoard-detail-anwser-content::-webkit-scrollbar-thumb{
+  height: 30%;
+  background: #2db420;
+  
+  border-radius: 5px;
 }
 
 #freeBoard-detail-btn{
   display: flex;
   justify-content: center;
+
+  margin-top: 20px;
 }
 
 #freeBoard-detail-btn > button{
