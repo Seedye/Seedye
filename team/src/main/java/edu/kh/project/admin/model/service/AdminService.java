@@ -47,6 +47,30 @@ public interface AdminService {
 	 * @return
 	 */
 	int updateInfo(int memberNo);
+
+
+
+	/** 회원 관리 화면
+	 * @param memberNo
+	 * @return member
+	 */
+	Member selectMember(int memberNo);
+
+
+
+	/** selectBox 조회
+	 * @param storeType
+	 * @return storeList
+	 */
+	List<Store> selectStoreList(String storeType);
+
+
+
+	/** 식당 신청조회
+	 * @param checkFl
+	 * @return storeList
+	 */
+	List<Store> selectEnroll(char checkFl);
 	
 	
 

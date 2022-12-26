@@ -72,19 +72,53 @@ public class AdminDAO {
 
 	
 	
+	/** 식당 리스트 조회
+	 * @return storeList
+	 */
 	public List<Store> selectStoreList() {
 		return sqlSession.selectList("adminMapper.selectStoreList");
 
 	}
 
+	/** 회원 리스트 조회
+	 * @return memberList
+	 */
 	public List<Member> selectMemberList() {
 		
 		return sqlSession.selectList("adminMapper.selectMemberList");
 	}
 
+	/** 회원 등급 수정
+	 * @param memberNo
+	 * @return
+	 */
 	public int updateInfo(int memberNo) {
 		
 		return sqlSession.update("adminMapper.updateInfo", memberNo);
+	}
+
+	/** 회원 관리 화면 조회
+	 * @param memberNo
+	 * @return member
+	 */
+	public Member selectMember(int memberNo) {
+		return sqlSession.selectOne("adminMapper.selectMember", memberNo);
+	}
+
+	/** 식당 selectBox 조회
+	 * @param storeType
+	 * @return storeList
+	 */
+	public List<Store> selectStoreList(String storeType) {
+		return sqlSession.selectList("adminMapper.selectType", storeType);
+	}
+
+	/** 식당 신청 조회
+	 * @param checkFl
+	 * @return storeList
+	 */
+	public List<Store> selectEnroll(char checkFl) {
+		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
 	}
 
 	

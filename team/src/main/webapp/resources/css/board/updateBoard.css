@@ -19,11 +19,11 @@ body{
 }
 
 /* 이미지 + 표 */
-#noticeAll{
+#updateAll{
     display: flex;
     flex-direction: column;
     width: 900px;
-    height: 65vh;
+    height: 80vh;
     justify-content: center;
 }
 
@@ -34,10 +34,12 @@ body{
 }
 
 /* 표 */
-#noticeTable{
+#updateTable{
     border: 1px solid black;
-    width: 80%;
+    width: 100%;
+    height: 100%;
     margin-bottom: 10px;
+
 }
 
 /* 표 + 검색 */
@@ -49,18 +51,41 @@ body{
     margin: 20px;
 }
 
-
-
-/* 표 가운데정렬 */
-td{
-    text-align: center;
-}
-
-tr{
-    border-bottom: 1px solid black;
-}
-
 /* 검색 */
 #tableArea > div > form{
     text-align: center;
 }
+
+th{
+    background-color: #ccc;
+}
+tr:hover{
+    background-color: #2db400;
+}
+
+td{
+    text-align: center;
+        
+}
+
+
+#btn-area{
+   margin: 5px 10px;
+   display: flex;
+   position: relative;
+}
+
+#writeBtn{
+    position: relative;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;    
+}
+
+#writeBtn:hover{
+    background-color: #2db400;
+    color: white;
+    font-weight: bold;
+}
+

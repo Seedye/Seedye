@@ -25,16 +25,18 @@
                     <table class="list-table">
                         <thead>
                             <tr id="tableHead">
+                                <th>회원 번호</th>
                                 <th>회원 종류</th>
                                 <th>아이디</th>
                                 <th>전화번호</th>
                                 <th>가입일</th>
-                                <th>회원 탈퇴여부</th>
+                                <th>탈퇴여부</th>
                                 <th>회원 관리</th>
                             </tr>
                         </thead>
                         <tbody id="memberTbody">
                         <%--<tr>
+                                <td>1</td>
                                 <td>업주</td>
                                 <td>testzsdb</td>
                                 <td>테스트</td>
@@ -130,7 +132,6 @@
                         <div id="searchArea">
                             <select name="" id="">
                                 <option value="">아이디</option>
-                                <option value="">이름</option>
                                 <option value="">전화번호</option>
                             </select>
                             <input type="text">
@@ -162,23 +163,23 @@
                         <div id="memberInfo">
                             <div class="memberInfoList">
                                 <aside>번호</aside>
-                                <span id="memberNO">1</span>
+                                <span id="memberNo">"${tempNo.value}"</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>아이디</aside>
-                                <span>Test</span>
+                                <span id="memberId">Test</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>전화번호</aside>
-                                <span>01012345678</span>
+                                <span id="memberTel">01012345678</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>주소</aside>
-                                <span>서울시 중구 남대문로</span>
+                                <span id="memberAddress">서울시 중구 남대문로</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>가입일</aside>
-                                <span>2022.12.15</span>
+                                <span id="enrollDate">2022.12.15</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>회원 종류</aside>
@@ -190,12 +191,13 @@
                             <span id="licenseText">사업자 등록증</span>
                         </div>
                     </div>
-                <form id="updateInfo" action="updateInfo" method = "GET">  
+                <div id="updateInfo" >  
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
-                        <button id="m-BtnR">돌아가기</button>
+                        <button id="m-BtnD">탈퇴</button>
+                        <button id="m-BtnR"><a href="/admin/manageMember">돌아가기</a></button>
                     </div>
-                </form> 
+                </div> 
                 </div>
             </div>
         </div>    
