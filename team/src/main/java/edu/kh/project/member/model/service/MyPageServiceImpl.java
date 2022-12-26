@@ -20,20 +20,13 @@ public class MyPageServiceImpl implements MyPageService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	// 회원 정보 수정 서비스
-//	@Transactional
-//	@Override
-//	public int updateInfo(Member inputMember) {
-//		int result = dao.updateInfo(inputMember);
-//		return result;
-//	}
-
-	// 회원 정보 수정 서비스
 	@Transactional
 	@Override
-	public int updateInfo(Member inputMember, Map<String, Object> paramMap) {
-		int result = dao.updateInfo(inputMember, paramMap);
+	public int updateInfo(Member inputMember) {
+		int result = dao.updateInfo(inputMember);
 		return result;
 	}
+
 
 	// 회원 탈퇴 서비스
 //	@Transactional

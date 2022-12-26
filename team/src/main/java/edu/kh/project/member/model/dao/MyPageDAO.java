@@ -19,18 +19,8 @@ public class MyPageDAO {
 	 * @param inputMember
 	 * @return
 	 */
-//	public int updateInfo(Member inputMember) {
-//		return sqlSession.update("myPageMapper.updateInfo", inputMember);
-//	}
-
-
-	/** 회원 정보 수정 DAO
-	 * @param inputMember
-	 * @param paramMap
-	 * @return
-	 */
-	public int updateInfo(Member inputMember, Map<String, Object> paramMap) {
-		return sqlSession.update("myPageMapper.updateInfo", paramMap);
+	public int updateInfo(Member inputMember) {
+		return sqlSession.update("myPageMapper.updateInfo", inputMember);
 	}
 
 }

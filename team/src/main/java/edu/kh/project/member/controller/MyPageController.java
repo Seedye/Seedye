@@ -35,15 +35,18 @@ public class MyPageController {
 	@PostMapping("/info")
 	public String updateInfo(Member inputMember, String[] memberAddress,
 			@SessionAttribute("loginMember") Member loginMember,
-			@RequestParam Map<String, Object> paramMap,
+//			@RequestParam Map<String, Object> paramMap,
 			RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
-		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
-		paramMap.put("memberNo", loginMember.getMemberNo());
+		System.out.println(inputMember);
+//		System.out.println(paramMap.get("currentPw"));
+//		System.out.println(paramMap.get("memberId"));
 		
-		System.out.println(paramMap);
+		
+		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
+//		paramMap.put("memberNo", loginMember.getMemberNo());
 		
 		if(inputMember.getMemberAddress().equals(",,") ) {
 			inputMember.setMemberAddress(null);
@@ -53,7 +56,7 @@ public class MyPageController {
 		}
 
 		// 회원 정보 수정 서비스 호출 결과 반환 받기
-		int result = service.updateInfo(inputMember, paramMap);
+		int result = service.updateInfo(inputMember);
 				
 		String message = null;
 		
@@ -62,12 +65,14 @@ public class MyPageController {
 			
 			// DB - session 동기화 작업
 			loginMember.setMemberId(inputMember.getMemberId());
-			loginMember.setMemberPw(inputMember.getMemberPw());
 			loginMember.setMemberTel(inputMember.getMemberTel());
 			loginMember.setMemberAddress(inputMember.getMemberAddress());
+			
+			
 		} else {
 			message = "회원 정보 수정 실패...";
 		}
+	
 		
 		ra.addFlashAttribute("message", message);
 		

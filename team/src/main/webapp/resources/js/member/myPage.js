@@ -145,16 +145,43 @@ btn1.addEventListener("click", function(){
             newPwMessage.innerText = "유효한 비밀번호 형식입니다.";
             newPwMessage.classList.add("confirm");
             newPwMessage.classList.remove("error");
-
             checkObj.newPwConfirm = true;
 
         } else{
-            newPwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
+            newPwMessage.innerText = "새 비밀번호와 일치하지 않습니다.";
             newPwMessage.classList.add("error");
             newPwMessage.classList.remove("confirm");
             checkObj.newPwConfirm = false;
         }
     });
+
+//
+
+newPwConfirm.addEventListener("input", function(){
+            
+    if(checkObj.newPw){
+        
+        if(newPw.value == newPwConfirm.value){
+            newPwMessage.innerText = "새 비밀번호와 일치합니다.";
+            newPwMessage.classList.add("confirm");
+            newPwMessage.classList.remove("error");
+            checkObj.newPwConfirm = true;
+        
+        } else{
+            newPwMessage.innerText = "새 비밀번호와 일치하지 않습니다.";
+            newPwMessage.classList.add("error");
+            newPwMessage.classList.remove("confirm");
+            checkObj.newPwConfirm = false;
+        }
+    
+    }else{ // 비밀번호가 유효하지 않은경우
+        
+        checkObj.newPwConfirm = false;
+    }
+
+})
+
+//
 
 
     // btn1 숨기기 (display: none)
