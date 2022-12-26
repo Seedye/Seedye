@@ -27,6 +27,30 @@ public class MyPageServiceImpl implements MyPageService{
 		return result;
 	}
 
+	// 회원 정보 (비밀번호 포함) 수정 서비스
+	@Transactional
+	@Override
+	public int updateAllInfo(Member inputMember, Map<String, Object> paramMap) {
+		
+		String encPw = dao.selectEncPw( (int)paramMap.get("memberNo"));
+		
+		if(bcrypt.matches( (String)paramMap.get("currentPw"), encPw)) {
+			
+			int infoResult = dao.updateInfo(inputMember);
+			// 새 비밀번호 암호화
+			String newPw = bcrypt.encode( (String)paramMap.get("newPw"));
+			
+			paramMap.put("newPw", newPw);
+			// paramMap에 존재하는 기존 "newPw"를 덮어쓰기
+			
+			int PwResult = dao.updatePw(paramMap);
+			
+			return infoResult + PwResult;
+		}
+		
+		return 0;
+	}
+
 
 	// 회원 탈퇴 서비스
 //	@Transactional

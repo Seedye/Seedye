@@ -12,6 +12,13 @@ public interface MyPageService {
 	 */
 	int updateInfo(Member inputMember);
 
+	/** 회원 정보 (비밀번호 포함) 수정 서비스
+	 * @param inputMember
+	 * @param paramMap
+	 * @return allResult
+	 */
+	int updateAllInfo(Member inputMember, Map<String, Object> paramMap);
+
 	/** 회원 탈퇴 서비스
 	 * @param memberNo
 	 * @param memberPw

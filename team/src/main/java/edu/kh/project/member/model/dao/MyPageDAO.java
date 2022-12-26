@@ -17,10 +17,24 @@ public class MyPageDAO {
 	
 	/** 회원 정보 수정 DAO
 	 * @param inputMember
-	 * @return
+	 * @return result
 	 */
 	public int updateInfo(Member inputMember) {
 		return sqlSession.update("myPageMapper.updateInfo", inputMember);
+	}
+
+
+	/** 회원 정보 (비밀번호 포함) 수정 서비스
+	 * @param paramMap
+	 * @return result
+	 */
+	public int updatePw(Map<String, Object> paramMap) {
+		return sqlSession.update("myPageMapper.changePw", paramMap);
+	}
+
+
+	public String selectEncPw(int memberNo) {
+		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
 	}
 
 }

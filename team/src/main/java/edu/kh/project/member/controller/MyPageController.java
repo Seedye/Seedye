@@ -35,18 +35,20 @@ public class MyPageController {
 	@PostMapping("/info")
 	public String updateInfo(Member inputMember, String[] memberAddress,
 			@SessionAttribute("loginMember") Member loginMember,
-//			@RequestParam Map<String, Object> paramMap,
+			@RequestParam Map<String, Object> paramMap,
 			RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
 		System.out.println(inputMember);
-//		System.out.println(paramMap.get("currentPw"));
+		System.out.println(paramMap.get("newPw"));
+		System.out.println(paramMap.get("newPw") == null);
+		System.out.println(paramMap.get("newPw") == "");
 //		System.out.println(paramMap.get("memberId"));
 		
 		
 		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
-//		paramMap.put("memberNo", loginMember.getMemberNo());
+		paramMap.put("memberNo", loginMember.getMemberNo());
 		
 		if(inputMember.getMemberAddress().equals(",,") ) {
 			inputMember.setMemberAddress(null);
@@ -55,23 +57,45 @@ public class MyPageController {
 			inputMember.setMemberAddress(address);
 		}
 
-		// 회원 정보 수정 서비스 호출 결과 반환 받기
-		int result = service.updateInfo(inputMember);
 				
 		String message = null;
 		
-		if (result > 0) {
-			message = "회원 정보가 수정되었습니다.";
+		if(paramMap.get("newPw") == "") {
 			
-			// DB - session 동기화 작업
-			loginMember.setMemberId(inputMember.getMemberId());
-			loginMember.setMemberTel(inputMember.getMemberTel());
-			loginMember.setMemberAddress(inputMember.getMemberAddress());
+			// 회원 정보 수정 서비스 호출 결과 반환 받기
+			int result = service.updateInfo(inputMember);
 			
+			if (result > 0) {
+				message = "회원 정보가 수정되었습니다.";
+				
+				// DB - session 동기화 작업
+				loginMember.setMemberId(inputMember.getMemberId());
+				loginMember.setMemberTel(inputMember.getMemberTel());
+				loginMember.setMemberAddress(inputMember.getMemberAddress());
+				
+				
+			} else {
+				message = "회원 정보 수정 실패...";
+			}
 			
 		} else {
-			message = "회원 정보 수정 실패...";
+			
+			// 비밀번호를 입력 했을때 정보와 비밀번호 변경하기
+			int allResult = service.updateAllInfo(inputMember, paramMap);
+			
+			if(allResult > 1) {
+				message = "회원 정보와 비밀번호가 수정되었습니다.";
+				
+				// DB - session 동기화 작업
+				loginMember.setMemberId(inputMember.getMemberId());
+				loginMember.setMemberTel(inputMember.getMemberTel());
+				loginMember.setMemberAddress(inputMember.getMemberAddress());
+			} else {
+				message = "회원 정보 수정 실패...";
+			}
+			
 		}
+		
 	
 		
 		ra.addFlashAttribute("message", message);
