@@ -147,6 +147,11 @@ public class MemberController {
 		return result;
 	}
 	
+	//  비밀번호 찾기 페이지 이동
+	@GetMapping("/find")
+	public String findPage() {
+		return "/member/find";
+	}
 	
 	
 	

@@ -10,6 +10,7 @@
     <title>회원가입</title>
 
     <link rel="stylesheet" href="../resources/css/member/signUp.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
 
 </head>
 <body>
@@ -116,6 +117,7 @@
         </section>
 
     </main>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
     <script>

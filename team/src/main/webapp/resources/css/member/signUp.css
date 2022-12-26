@@ -69,7 +69,7 @@ body{
 
 #signUp-frm > label{
     display: block; /* block 설정 */
-    margin-top: 30px; /* 위에서 40px만큼 떨어지게 */
+    margin-top: 30px; /* 위에서 30px만큼 떨어지게 */
     font-size: 18px; /* 글자 크기 18px로 */
 }
 

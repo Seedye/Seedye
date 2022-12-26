@@ -10,14 +10,14 @@ public interface MyPageService {
 	 * @param inputMember
 	 * @return result
 	 */
-//	int updateInfo(Member inputMember);
+	int updateInfo(Member inputMember);
 
-	/** 회원 정보 수정 서빗
+	/** 회원 정보 (비밀번호 포함) 수정 서비스
 	 * @param inputMember
 	 * @param paramMap
-	 * @return result
+	 * @return allResult
 	 */
-	int updateInfo(Member inputMember, Map<String, Object> paramMap);
+	int updateAllInfo(Member inputMember, Map<String, Object> paramMap);
 
 	/** 회원 탈퇴 서비스
 	 * @param memberNo

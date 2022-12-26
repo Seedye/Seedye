@@ -10,6 +10,7 @@
     <title>로그인</title>
 
     <link rel="stylesheet" href="../resources/css/member/login.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
 
 </head>
 
@@ -50,10 +51,11 @@
             <p class="login-end">
                 <a href="/signUp">회원가입</a>
                 <span class="login-span">|</span>
-                <a href="#">ID/PW 찾기</a>
+                <a href="/find">ID/PW 찾기</a>
             </p>
         </form>
     </main>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 <c:if test="${not empty sessionScope.message}">
     <script>
