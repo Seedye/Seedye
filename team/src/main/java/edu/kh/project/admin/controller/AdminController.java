@@ -152,6 +152,18 @@ public class AdminController {
 		return new Gson().toJson(memberList);
 	}
 	
+	// 회원 관리 화면 조회
+	@GetMapping("selectMember")
+	@ResponseBody
+	public Member selectMember(int memberNo) {
+		
+		Member member = new Member();
+		
+		member = service.selectMember(memberNo);
+		
+		return member;
+	}
+	
 	
 	// 회원 권한 변경
 	@GetMapping("updateInfo")
@@ -163,6 +175,7 @@ public class AdminController {
 	
 	
 	
+	
 	// 회원 탈퇴
 	
 
@@ -170,13 +183,23 @@ public class AdminController {
 	@GetMapping("selectStoreList")
 	@ResponseBody
 	public String selectStoreList() {
+
+			List<Store> storeList = service.selectStoreList();
+			
+			
+			return new Gson().toJson(storeList);
 		
-		List<Store> storeList = service.selectStoreList();
 		
-		System.out.println(storeList);
-		return new Gson().toJson(storeList);
+		
 	}
 	
+	@GetMapping("selectType")
+	@ResponseBody
+	public String selectType(String storeType) {
+		List<Store> storeList = service.selectStoreList(storeType);
+	
+		return new Gson().toJson(storeList);
+	}
 	
 	
 	

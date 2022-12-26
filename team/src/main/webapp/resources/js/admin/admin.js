@@ -150,3 +150,65 @@ function selectStoreList(){
 // })
 
 
+const selectBox = document.getElementById("selectBox");
+
+selectBox.addEventListener("change", ()=>{
+    $.ajax({
+        url:"/admin/selectType",
+        data: {"storeType" : selectBox.value},
+        success : storeList =>{
+            console.log(storeList);
+            
+            for(let store of storeList){
+                
+                const tr = document.createElement("tr");
+                tr.classList.add("storeList");
+                
+                // 번호
+                const td1 = document.createElement("td");
+                td1.innerText = store.storeNo;
+                
+                // 이름
+                const td2 = document.createElement("td");
+                td2.innerText = store.storeName;
+                
+                // 업종
+                const td3 = document.createElement("td");
+                td3.innerText = store.storeType;
+                
+                // 주소
+                const td4 = document.createElement("td");
+                td4.innerText = store.roadnameAddress;
+                
+                // 전화번호
+                const td5 = document.createElement("td");
+                td5.innerText = store.storeTel;
+                
+                // 처리여부
+                const td6 = document.createElement("td");
+                
+                if(store.checkFl == 'B'){
+                    td6.innerText = '기본'
+                } else if(store.checkFl == 'N'){
+                    td6.innerText = '미확인'
+                } else if(store.checkFl = 'C'){
+                    td6.innerText = '협의중'
+                } else {
+                    td6.innerText = "등록 완료"
+                }
+
+                // 관리하기
+                const td7 = document.createElement("td");
+                td7.innerHTML = "<button>관리하기</button>"
+                
+                tr.append(td1, td2, td3, td4, td5, td6, td7);
+
+                tbody.append(tr);
+            }
+            
+        },
+        error : ()=>{
+            console.log("실패")
+        }
+    })
+});

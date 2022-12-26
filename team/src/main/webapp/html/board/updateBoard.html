@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>업데이트</title>
     <link rel="stylesheet" href="../../resources/css/header.css">
+    <link rel="stylesheet" href="../../resources/css/board/updateBoard.css">
 </head>
 <body>
     <header>
@@ -38,9 +39,12 @@
         </div>
     </header>
     <main>
-        <div><img src=""></div>
-        <div>
-            <table>
+        <div id="updateAll">
+            <div id="banner">
+                <img src="../../resources/images/update.png">
+            </div>
+            <div id="tableArea">
+                <table id="updateTable">
                 <thead>
                     <tr>
                         <th>번호</th>
@@ -50,11 +54,11 @@
                         <th>등록일</th>
                     </tr>
                 </thead>
-                <tbody id="noticeTbody">
+                <tbody id="updateTbody">
                     <tr>
                         <td>1</td>
-                        <td>제목</td>
-                        <td>작성자</td>
+                        <td>공지사항</td>
+                        <td>관리자</td>
                         <td>5</td>
                         <td>2022.12.22</td>
                     </tr>
@@ -123,6 +127,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="btn-area">
+                <button id="writeBtn">글 작성</button>
+            </div>
             <div id="pagination-area">
                 <ul class="pagination">
                     <li><a href="">&lt;&lt;</a></li>
