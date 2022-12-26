@@ -47,6 +47,18 @@ public interface AdminService {
 	 * @return
 	 */
 	int updateInfo(int memberNo);
+
+
+
+	/** 회원 관리 화면
+	 * @param memberNo
+	 * @return member
+	 */
+	Member selectMember(int memberNo);
+
+
+
+	List<Store> selectStoreList(String storeType);
 	
 	
 
