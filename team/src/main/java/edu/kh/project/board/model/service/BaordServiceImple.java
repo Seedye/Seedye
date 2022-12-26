@@ -111,6 +111,12 @@ public class BaordServiceImple implements BoardService{
 		return boardNo;
 	}
 
+	@Override
+	public List<Board> selectFreeBoardDetail(int boardNo) {
+		
+		return dao.selectFreeBoardDetail(boardNo);
+	}
+
 	
 	
 }

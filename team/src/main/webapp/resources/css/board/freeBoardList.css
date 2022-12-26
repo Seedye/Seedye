@@ -10,7 +10,7 @@
   border-radius: 30px;
 
   width: 1100px;
-  height: 900px;
+  height: auto;
   margin: 50px 0;
 
  text-align: center;
@@ -224,6 +224,7 @@ border: 1px solid #f7f8f9;
   width: 200px;
   height: 200px;
   margin-top: 20px;
+  /* display: flex; */
 }
 
 #freeBoard-detail-anwser{

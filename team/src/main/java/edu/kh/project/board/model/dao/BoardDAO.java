@@ -72,6 +72,11 @@ public class BoardDAO {
 		return sqlSession.insert("boardMapper.QAWriteImg",boardImgList);
 	}
 
+	public List<Board> selectFreeBoardDetail(int boardNo) {
+		
+		return sqlSession.selectList("boardMapper.selectFreeBoardDetail", boardNo);
+	}
+
 	
 	
 	

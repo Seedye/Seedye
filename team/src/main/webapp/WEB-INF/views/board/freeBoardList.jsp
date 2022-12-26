@@ -44,7 +44,7 @@
                     <div id="freeBoard-list">
                         <ul id="ul-container">
                             <c:forEach var="freeBoard" items="${freeBoardList}">
-                            <li>
+                            <li class="freeBoard-listOne">
                                 <div>
                                     <div class="freeBoard-title">
                                         <i class="fa-solid fa-seedling"></i>
@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="freeBoard-information">${freeBoard.memberId} | ${freeBoard.createDate}</div>
                                 </div>
-                                <div class="arrow">
+                                <div class="arrow" id="${freeBoard.boardNo}">
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </div>
                             </li>
@@ -76,7 +76,7 @@
                     <div id="freeBoard-detail">
                         <div id="freeBoard-detail-view">
 
-                            <p>10번째 게시글 입니다.</p>
+                            <%-- <p>10번째 게시글 입니다.</p>
                             
                             <div id="freeBoard-detail-title">
                                 <p>내용</p>
@@ -99,7 +99,7 @@
                             <div id="freeBoard-detail-btn">
                                 <button id="update">수정</button>
                                 <button id="delete">삭제</button>
-                            </div> 
+                            </div>  --%>
                         </div>
                     </div>
                 </div>
@@ -137,10 +137,16 @@
 
             </div>
         </section>
-        
-    <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
+
+    <jsp:include page="/WEB-INF/views/board/freeBoardWrite.jsp"/>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>    
     </main>
+
+    <script>
+        var boardNo = "${freeBoardList[0].boardNo}";
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/header.js"></script>
