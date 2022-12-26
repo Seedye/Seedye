@@ -167,10 +167,13 @@ public class AdminController {
 	
 	// 회원 권한 변경
 	@GetMapping("updateInfo")
+	@ResponseBody
 	public int updateInfo( int memberNo) {
 		
+		System.out.println(memberNo);
+		int result = service.updateInfo(memberNo);
 		
-		return service.updateInfo(memberNo);
+		return result;
 	}
 	
 	
