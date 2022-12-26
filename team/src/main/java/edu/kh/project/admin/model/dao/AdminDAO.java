@@ -72,11 +72,17 @@ public class AdminDAO {
 
 	
 	
+	/** 식당 리스트 조회
+	 * @return storeList
+	 */
 	public List<Store> selectStoreList() {
 		return sqlSession.selectList("adminMapper.selectStoreList");
 
 	}
 
+	/** 회원 리스트 조회
+	 * @return memberList
+	 */
 	public List<Member> selectMemberList() {
 		
 		return sqlSession.selectList("adminMapper.selectMemberList");
@@ -85,6 +91,18 @@ public class AdminDAO {
 	public int updateInfo(int memberNo) {
 		
 		return sqlSession.update("adminMapper.updateInfo", memberNo);
+	}
+
+	/** 회원 관리 화면 조회
+	 * @param memberNo
+	 * @return member
+	 */
+	public Member selectMember(int memberNo) {
+		return sqlSession.selectOne("adminMapper.selectMember", memberNo);
+	}
+
+	public List<Store> selectStoreList(String storeType) {
+		return sqlSession.selectList("adminMapper.selectType", storeType);
 	}
 
 	

@@ -163,23 +163,23 @@
                         <div id="memberInfo">
                             <div class="memberInfoList">
                                 <aside>번호</aside>
-                                <span id="memberNO">1</span>
+                                <span id="memberNo">"${tempNo.value}"</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>아이디</aside>
-                                <span>Test</span>
+                                <span id="memberId">Test</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>전화번호</aside>
-                                <span>01012345678</span>
+                                <span id="memberTel">01012345678</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>주소</aside>
-                                <span>서울시 중구 남대문로</span>
+                                <span id="memberAddress">서울시 중구 남대문로</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>가입일</aside>
-                                <span>2022.12.15</span>
+                                <span id="enrollDate">2022.12.15</span>
                             </div>
                             <div class="memberInfoList">
                                 <aside>회원 종류</aside>
@@ -194,6 +194,7 @@
                 <form id="updateInfo" action="updateInfo" method = "GET">  
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
+                        <button id="m-BtnD">탈퇴</button>
                         <button id="m-BtnR"><a href="/admin/manageMember">돌아가기</a></button>
                     </div>
                 </form> 

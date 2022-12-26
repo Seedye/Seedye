@@ -16,7 +16,7 @@
             <span>식당 등록 문의</span>
             <span class="close">X</span>
         </div>
-        <form action="#">
+        <form action="">
             <div id="imageArea">
                 <div class="imageDiv">
                     <label for="image0">

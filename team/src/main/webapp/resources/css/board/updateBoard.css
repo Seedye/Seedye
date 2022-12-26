@@ -23,21 +23,23 @@ body{
     display: flex;
     flex-direction: column;
     width: 900px;
-    height: 65vh;
+    height: 80vh;
     justify-content: center;
 }
 
 /* 이미지 */
 #banner > img{
-    width: 50%;
+    width: 100%;
     height: 100px;    
 }
 
 /* 표 */
 #updateTable{
     border: 1px solid black;
-    width: 80%;
+    width: 100%;
+    height: 100%;
     margin-bottom: 10px;
+
 }
 
 /* 표 + 검색 */
@@ -52,5 +54,38 @@ body{
 /* 검색 */
 #tableArea > div > form{
     text-align: center;
+}
+
+th{
+    background-color: #ccc;
+}
+tr:hover{
+    background-color: #2db400;
+}
+
+td{
+    text-align: center;
+        
+}
+
+
+#btn-area{
+   margin: 5px 10px;
+   display: flex;
+   position: relative;
+}
+
+#writeBtn{
+    position: relative;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;    
+}
+
+#writeBtn:hover{
+    background-color: #2db400;
+    color: white;
+    font-weight: bold;
 }
 

@@ -96,6 +96,18 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	
+	// 회원 관리 화면 
+	@Override
+	public Member selectMember(int memberNo) {
+		return dao.selectMember(memberNo);
+	}
+
+	@Override
+	public List<Store> selectStoreList(String storeType) {
+		return dao.selectStoreList(storeType);
+	}
+
+	
 	
 	
 }

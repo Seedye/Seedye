@@ -2,6 +2,7 @@ const memberManageBtn = document.getElementsByClassName("memberManageBtn");
 const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
+const memberNo = document.getElementById("memberNo");
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -12,8 +13,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 const memberTbody = document.getElementById("memberTbody");
+const memberId = document.getElementById("memberId");
+const memberTel = document.getElementById("memberId");
+const roadNameAddress = document.getElementById("memberId");
+const enrollDate = document.getElementById("memberId");
+const authority = document.getElementById("authority");
 
-let tempNo;
+let tempNo = [];
 
 function selectMemberList(){
 
@@ -39,7 +45,7 @@ function selectMemberList(){
                     td2.style.fontWeight = "bold"
                     td2.style.color = "red"
                 } else {
-                    td2.innertext = "회원"
+                    td2.innerText = "식당 업주"
                     td2.style.fontWeight = "bold"
                     td2.style.color = "blue"
                 }
@@ -74,29 +80,59 @@ function selectMemberList(){
 
                 memberTbody.append(tr);
 
-                // const array = [];
+                
 
+                // 회원 관리 버튼 클릭
                 for(i=0; i<memberManageBtn.length; i++){
                     memberManageBtn[i].addEventListener("click", (e)=>{
-                        
+                    
+                        // 선택한 관리 버튼
+                        let dv = e.currentTarget;
 
-                        const temptr = [];
+                        // 선택한 관리버튼의 회원번호
+                        tempNo = dv.parentNode.parentNode.children[0].innerText;
 
-                        const temp = [];
-                        temptr = document.getElementsByTagName("tr");
-                        for(z=0; z<i; z++){
-                            temp = temptr[z+1].childNodes[0].innerText;
-                            
-                        }
-                        
-                        
+                        memberNo.innerText = "tempNo";
+
 
                         adminMember.style.display = "none";
                         memberManage.style.display = "flex";
                         
 
-                    });
+                        // 회원 관리 페이지 
+                        $.ajax({
+                            url:"/admin/selectMember",
+                            data :{"memberNo" : tempNo},
+                            dataType: "JSON",
+                            success: (member)=>{
+                                memberNo.innerText = member.memberNo;
+                                memberId.innerText = member.memberId; 
+                                memberTel.innerText = member.memberTel;
 
+                                // 회원 주소 도로명 주소만 표시
+                                let str = member.memberAddress;
+                                let addr = str.split(",,", 3);
+                                
+                                memberAddress.innerText = addr[1];
+
+
+                                enrollDate.innerText = member.enrollDate;
+                                
+                                if(member.authority == 1){
+                                    authority.innerText = "일반 회원"
+                                }
+                                if(member.authority == 2){
+                                    authority.innerText = "관리자"
+                                }
+                                if(member.authority == 3){
+                                    authority.innerText = "식당 업주"
+                                }
+                            },
+                            error:()=>{
+                                console.log("실패");
+                            }
+                        })
+                    });
                 }
 
             }               
@@ -112,7 +148,6 @@ const mBtn = document.getElementById("m-Btn");
 
 mBtn.addEventListener("click" ,  () => {
     
-    const memberNO = document.getElementById("memberNO");
 
     $.ajax({
         url : "/admin/updateInfo", 
@@ -127,4 +162,5 @@ mBtn.addEventListener("click" ,  () => {
     })
 
 })
+
 

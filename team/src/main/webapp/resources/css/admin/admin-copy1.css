@@ -350,6 +350,7 @@ td{
 
 #memberInfoChange{
     display: flex;
+    margin-left: auto;
 }
 
 #memberInfo{
@@ -402,3 +403,6 @@ td{
 }
 
 
+#m-BtnR > a{
+    text-decoration: none;
+}
