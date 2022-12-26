@@ -95,8 +95,8 @@ function selectMemberList(){
                         memberNo.innerText = "tempNo";
 
 
-                        adminMember.style.display = "none";
-                        memberManage.style.display = "flex";
+                        // adminMember.style.display = "none";
+                        // memberManage.style.display = "flex";
                         
 
                         // 회원 관리 페이지 
@@ -127,6 +127,9 @@ function selectMemberList(){
                                 if(member.authority == 3){
                                     authority.innerText = "식당 업주"
                                 }
+
+                                adminMember.style.display = "none";
+                                memberManage.style.display = "flex";
                             },
                             error:()=>{
                                 console.log("실패");
@@ -151,7 +154,7 @@ mBtn.addEventListener("click" ,  () => {
 
     $.ajax({
         url : "/admin/updateInfo", 
-        data : {"memberNo":memberNo.innerText},
+        data : {"memberNo":tempNo},
         success:(result) => {
             if(result > 0) {
                 alert("변경되었습니다.")

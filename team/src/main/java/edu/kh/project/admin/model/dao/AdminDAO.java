@@ -88,6 +88,10 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectMemberList");
 	}
 
+	/** 회원 등급 수정
+	 * @param memberNo
+	 * @return
+	 */
 	public int updateInfo(int memberNo) {
 		
 		return sqlSession.update("adminMapper.updateInfo", memberNo);
