@@ -170,25 +170,36 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 	FROM "MEMBER"
 </select>
 
+<!-- 회원 권한 변경 -->
 <update id="updateInfo">
 	UPDATE "MEMBER" SET
 	AUTHORITY = 3
 	WHERE MEMBER_NO = #{memberNo}
 </update>
 
-
+<!-- 회원 관리 화면 조회 -->
 <select id="selectMember" parameterType="_int" resultMap="member_rm">
 SELECT MEMBER_NO, MEMBER_ID, MEMBER_TEL, MEMBER_ADDRESS, ENROLL_DATE, AUTHORITY
 FROM "MEMBER"
 WHERE MEMBER_NO  = #{memberNo}
 </select>
 
-
+<!-- 식당 selectBox 조회 -->
 <select id="selectType" resultMap="store_rm">
   SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   FROM STORE
   WHERE STORE_NAME LIKE '%회기%'
   AND STORE_TYPE = #{storeType}
+  AND CHECK_FL = 'B'
 </select>
+
+<!-- 식당 신청 조회 -->
+<select id="selectEnroll" resultMap="store_rm">
+SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
+  FROM STORE
+  WHERE STORE_NAME LIKE '%회기%'
+  AND CHECK_FL = #{checkFl}
+</select>
+
 
 </mapper>  

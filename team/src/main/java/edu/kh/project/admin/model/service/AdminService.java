@@ -58,7 +58,19 @@ public interface AdminService {
 
 
 
+	/** selectBox 조회
+	 * @param storeType
+	 * @return storeList
+	 */
 	List<Store> selectStoreList(String storeType);
+
+
+
+	/** 식당 신청조회
+	 * @param checkFl
+	 * @return storeList
+	 */
+	List<Store> selectEnroll(char checkFl);
 	
 	
 

@@ -5,8 +5,6 @@ const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
 document.addEventListener("DOMContentLoaded", ()=>{
-
-    adminR.style.display = "none";
     selectStoreList();
 })
 
@@ -76,8 +74,8 @@ function sample4_execDaumPostcode() {
 function selectStoreList(){
 
     const tbody = document.getElementById("tbody");
-
     tbody.innerHTML = "";
+
     $.ajax({
         url:"/admin/selectStoreList",
         dataType: "JSON", 
@@ -129,6 +127,9 @@ function selectStoreList(){
                 tr.append(td1, td2, td3, td4, td5, td6, td7);
 
                 tbody.append(tr);
+
+                adminR.style.display = "none";
+
             }
             
         },
@@ -149,17 +150,23 @@ function selectStoreList(){
 
 // })
 
-
+// selectBox 업종 선택
 const selectBox = document.getElementById("selectBox");
 
 selectBox.addEventListener("change", ()=>{
+
+    
     $.ajax({
         url:"/admin/selectType",
         data: {"storeType" : selectBox.value},
-        success : storeList =>{
-            console.log(storeList);
+        dataType:"JSON",
+        success : storeTypeList =>{
+            console.log(storeTypeList);
             
-            for(let store of storeList){
+            const tbody = document.getElementById("tbody");
+            
+            tbody.innerHTML = "";
+            for(let store of storeTypeList){
                 
                 const tr = document.createElement("tr");
                 tr.classList.add("storeList");
@@ -211,4 +218,54 @@ selectBox.addEventListener("change", ()=>{
             console.log("실패")
         }
     })
+});
+
+
+const enroll = document.getElementById("enroll");
+enroll.addEventListener("click", ()=>{
+    $.ajax({
+        url:"/admin/enroll",
+        data:{"checkFl" : 'C'},
+        success : (storeList)=>{
+            console.log(storeList);
+
+            const tbody = document.getElementById("tbody");
+
+            tbody.innerHTML = "";
+
+            for(let store of storeList){
+
+            
+                const tr = document.createElement("tr");
+                tr.classList.add("storeList")
+            
+                const td1 = document.createElement("td");
+                td1.innerText = store.storeNo
+
+                const td2 = document.createElement("td");
+                td2.innerText = store.storeName;
+
+                const td3 = document.createElement("td");
+                td3.innerText = store.storeType;
+
+                const td4 = document.createElement("td");
+                td4.innerText = store.roadnameAddress;
+
+                const td5 = document.createElement("td");
+                td5.innerText = store.storeTel;
+
+                const td6 = document.createElement("td");
+                td6.innerText = store.checkFl;
+
+                const td7 = document.createElement("td");
+                td7.innerHTML = "<button>관리하기</button>";
+
+            }
+        }, 
+        error:()=>{
+            console.log("실패");
+        }
+
+    })
+
 });
