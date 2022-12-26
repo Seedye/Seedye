@@ -32,12 +32,11 @@
 	<select id="selectEncPw" parameterType="_int" resultType="string">
 		SELECT MEMBER_PW
 		FROM "MEMBER"
-		WHERE MEMBER_NO = #{memberNo}	
+		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
 	<!-- 
 		parameterType 속성은
-		
 		<select> : 필수
 		<insert> / <update> / <delete> : 선택 ( TypeHandler가 알아서 판단 )
 	 -->
