@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BoardImg {
+	
 	private int imgNo; // 이미지 번호
 	private String imgPath; // 이미지 저장 폴더 경로
 	private String imgRename; // 변경된 이미지 파일 이름
