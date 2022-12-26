@@ -102,9 +102,16 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectMember(memberNo);
 	}
 
+	// 식당 selectBox 조회
 	@Override
 	public List<Store> selectStoreList(String storeType) {
 		return dao.selectStoreList(storeType);
+	}
+
+	// 식당 신청 조회
+	@Override
+	public List<Store> selectEnroll(char checkFl) {
+		return dao.selectEnroll(checkFl);
 	}
 
 	
