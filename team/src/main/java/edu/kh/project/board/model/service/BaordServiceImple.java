@@ -109,16 +109,14 @@ public class BaordServiceImple implements BoardService {
 		}
 		return boardNo;
 	}
-<<<<<<< Updated upstream
 
+	// 자유 게시판 상세조회
 	@Override
 	public List<Board> selectFreeBoardDetail(int boardNo) {
 		
 		return dao.selectFreeBoardDetail(boardNo);
 	}
 
-=======
->>>>>>> Stashed changes
 	
 	
 	
