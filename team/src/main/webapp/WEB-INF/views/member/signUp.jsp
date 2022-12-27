@@ -59,7 +59,7 @@
                         maxlength="16" >
                     </div> 
 
-                    <span class="signUp-message" id="pwMessage">소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
+                    <span class="signUp-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
                     <!-- 전화번호 입력 -->
                     <label for="memberTel">

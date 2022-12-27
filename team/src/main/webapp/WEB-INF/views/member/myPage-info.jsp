@@ -48,20 +48,20 @@
 
                     <div class="myPage-row">
                         <label>현재 비밀번호</label>
-                        <input type="password" id="currentPw" name="currentPw" maxlength="16">
+                        <input type="password" id="currentPw" name="currentPw" maxlength="16" placeholder="비밀번호 입력">
                     </div>
 
                     <div class="myPage-row">
                         <label>새 비밀번호</label>
-                        <input type="password" id="newPw" name="newPw" maxlength="16">
+                        <input type="password" id="newPw" name="newPw" maxlength="16" placeholder="새 비밀번호 입력">
                     </div>
-                    <span class="myPage-message" id="pwMessage">소문자, 대문자, 숫자, 특수문자를 모두 포함해 8~16 글자 사이로 입력해주세요.</span>
+                    <span class="myPage-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
                     <div class="myPage-row">
                         <label>새 비밀번호 확인</label>
-                        <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="16">
+                        <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="16" placeholder="새 비밀번호 확인">
                     </div>
-                    <span class="myPage-message" id="newPwMessage">소문자, 대문자, 숫자, 특수문자를 모두 포함해 8~16 글자 사이로 입력해주세요.</span>
+                    <span class="myPage-message" id="newPwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
                     <%-- <button class="myPage-submit">변경하기</button> --%>
                     </div>
