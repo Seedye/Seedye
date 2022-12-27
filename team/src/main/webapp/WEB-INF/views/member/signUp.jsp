@@ -69,7 +69,7 @@
 
                     <div class="signUp-input-area">
                         <input type="text" name="memberTel" id="memberTel" placeholder="(- 없이 숫자만 입력)"
-                        maxlength="13" oninput="autoHyphen(this)" >
+                        maxlength="13" autocomplete="off" oninput="autoHyphen(this)" >
 
                         <button type="button">인증번호 받기</button>
                     </div>
