@@ -95,39 +95,41 @@ for(var i =0; i < inputFile.length; i++){
     inputFilearea++;
     console.log("마지막 콘솔 출력 : "+inputFilearea);
 
-    if(inputFileCheck!=4){
-      // 
-      // <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
-      //   <label for="inputFile2">
-      //     <div class="board-Write-img-delete">
-      //       <i class="fa-solid fa-plus fa-1x"></i>
-      //     </div>
-      //   </label>
-      //   <input type="file" name="inputFile" id="inputFile2" class="inputFile" multiple="multiple" hidden>                
-      // </div> 
-  
-      const inputFileareaDiv = document.createElement("div");
-      const inputFileLabel = document.createElement("label");
-      const imgDeleteDiv = document.createElement("div");
-      const inputFileInput = document.createElement("input");
-
-      inputFileareaDiv.classList.add("board-view-content-img");
-      inputFileareaDiv.setAttribute("id", "inputFilearea"+ inputFilearea);// 파일 몇번째 추가인가 작성
-      inputFileLabel.setAttribute("for", "inputFile"+inputFilearea);
-      imgDeleteDiv.classList.add("board-Write-img-delete");
-      imgDeleteDiv.setAttribute("class","fa-solid fa-plus fa-1x" );
-      inputFileInput.setAttribute("type","file");
-      inputFileInput.setAttribute("name", "inputFile");
-      inputFileInput.setAttribute("id","inputFile"+inputFilearea);
-      inputFileInput.classList.add("inputFile");
-      inputFileInput.setAttribute("multiple", "multiple");
-
-      inputFileLabel.append(imgDeleteDiv,inputFileInput);
-      inputFileareaDiv.append(inputFileLabel);
-      boardViewContentImgArea.append(inputFileareaDiv);
-      
-    }
   });
+  if(inputFileCheck!=4){
+    // 
+    // <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+    //   <label for="inputFile2">
+    //     <div class="board-Write-img-delete">
+    //       <i class="fa-solid fa-plus fa-1x"></i>
+    //     </div>
+    //   </label>
+    //   <input type="file" name="inputFile" id="inputFile2" class="inputFile" multiple="multiple" hidden>                
+    // </div> 
+
+    const inputFileareaDiv = document.createElement("div");
+    const inputFileLabel = document.createElement("label");
+    const imgDeleteDiv = document.createElement("div");
+    const inputFileInput = document.createElement("input");
+
+    inputFileareaDiv.classList.add("board-view-content-img");
+    inputFileareaDiv.setAttribute("id", "inputFilearea"+ inputFilearea);// 파일 몇번째 추가인가 작성
+    inputFileLabel.setAttribute("for", "inputFile"+inputFilearea);
+    imgDeleteDiv.classList.add("board-Write-img-delete");
+    imgDeleteDiv.setAttribute("class","fa-solid fa-plus fa-1x" );
+    inputFileInput.setAttribute("type","file");
+    inputFileInput.setAttribute("name", "inputFile");
+    inputFileInput.setAttribute("id","inputFile"+inputFilearea);
+    inputFileInput.classList.add("inputFile");
+    inputFileInput.setAttribute("multiple", "multiple");
+
+    inputFileLabel.append(imgDeleteDiv,inputFileInput);
+    inputFileareaDiv.append(inputFileLabel);
+    boardViewContentImgArea.append(inputFileareaDiv);
+
+    
+  
+  }
 
 }
 

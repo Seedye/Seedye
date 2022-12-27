@@ -47,7 +47,7 @@
                     <i class="fa-solid fa-plus fa-3x"></i>
                     <p>업로드할 사진을 선택해 주세요</p>
                   </label>
-                  <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple">
+                  <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple" hidden>
                 </div>
                 <!-- 이미지미리보기 -->
                 <!-- <div class="board-view-content-img">

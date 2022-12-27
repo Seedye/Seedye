@@ -87,12 +87,13 @@ public class BoardController {
 	 * @throws IOException 
 	 */
 	@PostMapping("/QAWrite/{boardCode}")
-	public String QAWrite(
+	@ResponseBody
+	public int QAWrite(
 			@PathVariable("boardCode") int boardCode,
 			@SessionAttribute(value="loginMember") Member loginMember,
 			RedirectAttributes ra,
 			HttpSession session,
-			@RequestParam(value="inputFile") List<MultipartFile> fileList,
+			@RequestParam(value="files") List<MultipartFile> fileList,
 			Board board,
 			@RequestHeader("referer") String referer
 			
@@ -111,13 +112,14 @@ public class BoardController {
 		
 		
 		
-		String path=null;
-		if(result > 0) {
-			path = referer;
-		}else {
-			path = referer; // **나중에 변경필요
-		}
-		return "redirect:"+path;
+//		String path=null;
+//		if(result > 0) {
+//			path = referer;
+//		}else {
+//			path = referer; // **나중에 변경필요
+//		}
+//		
+		return result;
 	}
 	
 	/** 자유 게시판 상세조회

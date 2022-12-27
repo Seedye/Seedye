@@ -25,8 +25,7 @@ for(var i =0; i < inputFile.length; i++){
 
   // let j = inputFilearea;
   inputFile[0].addEventListener("change", (e)=>{
-    // const inputFilearea = document.getElementById("inputFilearea"+inputFilearea);
-    // inputFilearea.style.display="none";
+
     // console.log("input한 파일 갯수 : "+inputFileCheck);
   
     if(e.target.files[0] != undefined){
@@ -40,7 +39,46 @@ for(var i =0; i < inputFile.length; i++){
       let fileInputNum = e.target.files.length;
       // // 파일 4개 이하일 경우 추가 버튼 보이게
       console.log("for문 돌아갈 숫자 : "+ fileInputNum);
-     
+      // switch(filesLength){
+      //   case 1: // 파일 1개 +버튼 O
+      //     inputFilearea2.classList.remove("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area");
+      //     break;
+         
+      //   case 2: // 파일 2개 +버튼 O
+      //     inputFilearea3.classList.remove("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area");
+      //     break;
+         
+      //   case 3: // 파일 3개 +버튼 O
+      //     inputFilearea4.classList.remove("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area");
+      //     break;
+         
+      //   case 4: // 파일 4개 +버튼 x
+      //     // 파일 추가 버튼 안보임
+      //     inputFilearea1.classList.add("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area-hidden");
+      //     break;
+        
+      //   default:
+      //     fileInputNum = 4 - inputFileCheck;
+      //     alert("파일은 4개까지만 첨부가능합니다.");
+      //     // 파일 추가 버튼 안보임
+      //     inputFilearea1.classList.remove("add-file-area");
+      //     inputFilearea2.classList.remove("add-file-area");
+      //     inputFilearea3.classList.remove("add-file-area");
+      //     inputFilearea4.classList.remove("add-file-area");
+      //     inputFilearea1.classList.add("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area-hidden");
+      //     break;
+  
+      // }
+      
       for(let i=0; i < fileInputNum; i++){
   
         // 이벤트 발생한 파일 길이 만큼 for문 돌림
@@ -90,13 +128,12 @@ for(var i =0; i < inputFile.length; i++){
   
       }
     }
-    
+    // const inputFilearea = document.getElementById("inputFilearea"+inputFilearea);
 
     inputFilearea++;
-    console.log("마지막 콘솔 출력 : "+inputFilearea);
 
     if(inputFileCheck!=4){
-      // 
+      // inputFilearea.style.display="none";
       // <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
       //   <label for="inputFile2">
       //     <div class="board-Write-img-delete">
@@ -125,13 +162,24 @@ for(var i =0; i < inputFile.length; i++){
       inputFileLabel.append(imgDeleteDiv,inputFileInput);
       inputFileareaDiv.append(inputFileLabel);
       boardViewContentImgArea.append(inputFileareaDiv);
+
       
+    
     }
   });
 
 }
 
 
+inputFile2.addEventListener("change", (e)=>{
+  
+});
+inputFile3.addEventListener("change", (e)=>{
+        
+});
+inputFile4.addEventListener("change", (e)=>{
+        
+});
 
 
 //! 모달 연결

@@ -74,7 +74,7 @@
                 <c:forEach var="board" items="${boardList}">
                    <tr class="board-list-view" >
                     <td>${board.boardNo}</td>
-                    <td><i class="fa-solid fa-seedling"></i>${board.boardTitle}</a></td>
+                    <td><i class="fa-solid fa-seedling"></i>${board.boardContent}</a></td>
                     <td>${board.memberId}</td>
                     <td>${board.readCount}</td>
                     <td>${board.createDate}</td>

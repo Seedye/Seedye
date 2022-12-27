@@ -125,7 +125,9 @@ for(var i =0; i < inputFile.length; i++){
       inputFileLabel.append(imgDeleteDiv,inputFileInput);
       inputFileareaDiv.append(inputFileLabel);
       boardViewContentImgArea.append(inputFileareaDiv);
+
       
+    
     }
   });
 

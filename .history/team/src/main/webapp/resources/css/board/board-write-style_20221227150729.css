@@ -186,10 +186,6 @@
 .board-view-content-img-select>input{
   display: none;
 }
-.board-view-content-img>input{
-  display: none;
-}
-
 /* .board-view-content-img-area > div{
   position: absolute;w
   width: 100%;

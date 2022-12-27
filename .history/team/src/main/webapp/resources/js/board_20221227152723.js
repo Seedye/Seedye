@@ -3,14 +3,14 @@ const inputFile1 = document.getElementById("inputFile1"); // 글쓰기 파일 �
 const inputFile = document.getElementsByClassName("inputFile");
 const inputFilearea1 = document.getElementById("inputFilearea1"); // 업로드할 사진을 선택해주세요 문구 나오는 곳
 //! 추가 파일 선택
-// // 영역
-// const inputFilearea2 = document.getElementById("inputFilearea2");
-// const inputFilearea3 = document.getElementById("inputFilearea3");
-// const inputFilearea4 = document.getElementById("inputFilearea4");
-// // input 태그
-// const inputFile2 = document.getElementById("inputFile2");
-// const inputFile3 = document.getElementById("inputFile3");
-// const inputFile4 = document.getElementById("inputFile4");
+// 영역
+const inputFilearea2 = document.getElementById("inputFilearea2");
+const inputFilearea3 = document.getElementById("inputFilearea3");
+const inputFilearea4 = document.getElementById("inputFilearea4");
+// input 태그
+const inputFile2 = document.getElementById("inputFile2");
+const inputFile3 = document.getElementById("inputFile3");
+const inputFile4 = document.getElementById("inputFile4");
 
 // 파일 추가해줄 큰 영역
 const boardViewContentImgArea = document.getElementById("boardViewContentImgArea");
@@ -21,12 +21,11 @@ const imgDelete = document.getElementsByClassName("board-Write-img-delete"); // 
 let inputFileCheck = 0;
 let inputFilearea = 0;
 
-for(var i =0; i < inputFile.length; i++){
+for(var i =0; i < inputFile.length+1; i++){
 
   // let j = inputFilearea;
   inputFile[0].addEventListener("change", (e)=>{
-    // const inputFilearea = document.getElementById("inputFilearea"+inputFilearea);
-    // inputFilearea.style.display="none";
+
     // console.log("input한 파일 갯수 : "+inputFileCheck);
   
     if(e.target.files[0] != undefined){
@@ -40,7 +39,46 @@ for(var i =0; i < inputFile.length; i++){
       let fileInputNum = e.target.files.length;
       // // 파일 4개 이하일 경우 추가 버튼 보이게
       console.log("for문 돌아갈 숫자 : "+ fileInputNum);
-     
+      // switch(filesLength){
+      //   case 1: // 파일 1개 +버튼 O
+      //     inputFilearea2.classList.remove("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area");
+      //     break;
+         
+      //   case 2: // 파일 2개 +버튼 O
+      //     inputFilearea3.classList.remove("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area");
+      //     break;
+         
+      //   case 3: // 파일 3개 +버튼 O
+      //     inputFilearea4.classList.remove("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area");
+      //     break;
+         
+      //   case 4: // 파일 4개 +버튼 x
+      //     // 파일 추가 버튼 안보임
+      //     inputFilearea1.classList.add("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area-hidden");
+      //     break;
+        
+      //   default:
+      //     fileInputNum = 4 - inputFileCheck;
+      //     alert("파일은 4개까지만 첨부가능합니다.");
+      //     // 파일 추가 버튼 안보임
+      //     inputFilearea1.classList.remove("add-file-area");
+      //     inputFilearea2.classList.remove("add-file-area");
+      //     inputFilearea3.classList.remove("add-file-area");
+      //     inputFilearea4.classList.remove("add-file-area");
+      //     inputFilearea1.classList.add("add-file-area-hidden");
+      //     inputFilearea2.classList.add("add-file-area-hidden");
+      //     inputFilearea3.classList.add("add-file-area-hidden");
+      //     inputFilearea4.classList.add("add-file-area-hidden");
+      //     break;
+  
+      // }
+      
       for(let i=0; i < fileInputNum; i++){
   
         // 이벤트 발생한 파일 길이 만큼 for문 돌림
@@ -90,13 +128,9 @@ for(var i =0; i < inputFile.length; i++){
   
       }
     }
-    
-
     inputFilearea++;
-    console.log("마지막 콘솔 출력 : "+inputFilearea);
 
     if(inputFileCheck!=4){
-      // 
       // <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
       //   <label for="inputFile2">
       //     <div class="board-Write-img-delete">
@@ -125,13 +159,22 @@ for(var i =0; i < inputFile.length; i++){
       inputFileLabel.append(imgDeleteDiv,inputFileInput);
       inputFileareaDiv.append(inputFileLabel);
       boardViewContentImgArea.append(inputFileareaDiv);
-      
+    
     }
   });
 
 }
 
 
+inputFile2.addEventListener("change", (e)=>{
+  
+});
+inputFile3.addEventListener("change", (e)=>{
+        
+});
+inputFile4.addEventListener("change", (e)=>{
+        
+});
 
 
 //! 모달 연결
