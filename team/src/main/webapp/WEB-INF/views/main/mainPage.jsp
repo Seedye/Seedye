@@ -21,9 +21,6 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
-        <!-- 사진에 검색창 넣을려다가 일딴 뺏음 -->
-        <div class="searchAria">
-        </div>
         <!-- 메인페이지 상단 이미지 -->
         <img class="main-image" src="../resources/images/mainImg.jpg" alt="">
 
@@ -184,6 +181,10 @@
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test3.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test4.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test5.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test6.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test7.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test8.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test9.jpg">테스트 중입니다.</div>
             </div>
 
         <!-- 상세보기 모달 팝업 -->
