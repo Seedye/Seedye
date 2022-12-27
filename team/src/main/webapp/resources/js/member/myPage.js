@@ -5,6 +5,36 @@ const currentPw = document.getElementById("currentPw");
 const newPw = document.getElementById("newPw");
 const newPwConfirm = document.getElementById("newPwConfirm");
 
+const checkObj = {
+    "newPw"        : false, /* 새 비밀번호 */
+    "newPwConfirm" : false, /* 새 비밀번호 확인 */
+};
+
+document.getElementById("myPage-frm").addEventListener("submit", function(event){
+
+    for(let key in checkObj){
+
+        let str;
+
+        // checkObj 속성 하나를 꺼내 값을 검사했는데 false인 경우
+        if(!checkObj[key]){
+
+            switch(key){
+            case "newPw"    :  str = "새 비밀번호가 유효하지 않습니다."; break; 
+            case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
+        }
+
+            alert(str); // 대화상자 출력
+
+            // 유효하지 않은 입력으로 포커스 이동
+            document.getElementById(key).focus();
+
+            event.preventDefault(); // 제출 이벤트 제거
+            return; // 함수 종료
+        }
+    }
+});
+
 const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=|-])[A-Za-z\d@$!%*?&#^)(_+=|-]{8,16}$/;
 
 btn1.addEventListener("click", function(){
@@ -13,41 +43,13 @@ btn1.addEventListener("click", function(){
     if(pw.style.display !== 'block') {
         pw.style.display = 'block';
 
-        currentPw.setAttribute("required", "");
-        newPw.setAttribute("required", "");
-        newPwConfirm.setAttribute("required", "");
+        // currentPw.setAttribute("required", "");
+        // newPw.setAttribute("required", "");
+        // newPwConfirm.setAttribute("required", "");
 
-        const checkObj = {
-            "currentPw"    : false, /* 현재 비밀번호 */
-            "newPw"        : false, /* 새 비밀번호 */
-            "newPwConfirm" : false, /* 새 비밀번호 확인 */
-        };
+        
 
-        // document.getElementById("myPage-frm").addEventListener("submit", function(event){
-
-        //     for(let key in checkObj){
         
-        //         let str;
-        
-        //         // checkObj 속성 하나를 꺼내 값을 검사했는데 false인 경우
-        //         if(!checkObj[key]){
-        
-        //             switch(key){
-        //             case "currentPw" :  str = "현재 비밀번호가 유효하지 않습니다."; break;
-        //             case "newPw"    :  str = "새 비밀번호가 유효하지 않습니다."; break; 
-        //             case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
-        //         }
-        
-        //             alert(str); // 대화상자 출력
-        
-        //             // 유효하지 않은 입력으로 포커스 이동
-        //             document.getElementById(key).focus();
-        
-        //             event.preventDefault(); // 제출 이벤트 제거
-        //             return; // 함수 종료
-        //         }
-        //     }
-        // });
 
         // 비밀번호 유효성 검사
         const pwMessage = document.getElementById("pwMessage");
