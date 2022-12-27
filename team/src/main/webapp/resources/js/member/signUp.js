@@ -215,3 +215,21 @@ memberTel.addEventListener("input", function(){
     }
 
 });
+
+// document.getElementById("sendSMS").addEventListener("click", () => {
+
+//     const toPhone = document.getElementById("sendSMS").previousElementSibling.value;
+
+//     $.ajax({
+//         url : "/send-one",
+//         data : {"toPhone": toPhone},
+//         type : "POST",
+//         success : () => {
+//             alert("메세지 발송~");
+//         },
+//         error : () => {
+//             alert("메세지 발송 실패~");
+
+//         }
+//     });
+// });
