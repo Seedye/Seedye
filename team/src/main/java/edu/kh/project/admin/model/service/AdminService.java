@@ -59,6 +59,23 @@ public interface AdminService {
 
 
 	List<Store> selectStoreList(String storeType);
+
+
+
+	/** 게시글 수정
+	 * @param board
+	 * @return
+	 * @throws Exception
+	 */
+	int boardUpdate(Board board) throws Exception;
+
+
+
+	/** 게시글 삽입(공지,업데이트)
+	 * @param board
+	 * @return
+	 */
+	int boardWrite(Board board);
 	
 	
 

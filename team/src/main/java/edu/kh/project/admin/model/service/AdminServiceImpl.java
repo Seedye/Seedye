@@ -1,15 +1,19 @@
 package edu.kh.project.admin.model.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import edu.kh.project.admin.model.dao.AdminDAO;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
+import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
 
@@ -105,6 +109,40 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Store> selectStoreList(String storeType) {
 		return dao.selectStoreList(storeType);
+	}
+
+	/** 게시글 수정
+	 *
+	 */
+	@Override
+	public int boardUpdate(Board board) throws Exception {
+		
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
+		int result = dao.boardUpdate(board);
+		
+		return result;
+	}
+
+	/**
+	 * 게시글 작성(공지, 업데이트)
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int boardWrite(Board board) {
+		
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
+		int boardNo = dao.boardWrite(board);
+		
+		
+		
+		
+		return boardNo;
 	}
 
 	
