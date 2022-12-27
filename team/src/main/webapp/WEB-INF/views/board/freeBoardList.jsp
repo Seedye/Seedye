@@ -94,7 +94,7 @@
                                 <p>작성일</p>
                             </div> 
 
-                            <p id="freeBoard-detail-anwser-content">인지하고 빠루게 수정하겠습니다 불편을 끼쳐서 죄송합니다.</p>
+                            <div id="freeBoard-detail-anwser-content">인지하고 빠루게 수정하겠습니다 불편을 끼쳐서 죄송합니다.</div>
                             
                             <div id="freeBoard-detail-btn">
                                 <button id="update">수정</button>
@@ -144,6 +144,8 @@
 
     <script>
         var boardNo = "${freeBoardList[0].boardNo}";
+        var memberId = "${loginMember.memberId}";
+        var memberNo = "${loginMember.memberNo}";
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
