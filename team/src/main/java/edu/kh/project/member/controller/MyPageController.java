@@ -91,7 +91,7 @@ public class MyPageController {
 				loginMember.setMemberTel(inputMember.getMemberTel());
 				loginMember.setMemberAddress(inputMember.getMemberAddress());
 			} else {
-				message = "회원 정보 수정 실패...";
+				message = "현재 비밀번호가 일치하지 않습니다.";
 			}
 			
 		}
