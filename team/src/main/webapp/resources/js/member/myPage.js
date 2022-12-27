@@ -5,7 +5,7 @@ const currentPw = document.getElementById("currentPw");
 const newPw = document.getElementById("newPw");
 const newPwConfirm = document.getElementById("newPwConfirm");
 
-const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=-])[A-Za-z\d@$!%*?&#^)(_+=-]{8,16}$/;
+const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=|-])[A-Za-z\d@$!%*?&#^)(_+=|-]{8,16}$/;
 
 btn1.addEventListener("click", function(){
 
@@ -58,7 +58,7 @@ btn1.addEventListener("click", function(){
 
             // 새 비밀번호가 입력되지 않은 경우
             if(newPw.value.trim().length == 0){
-                pwMessage.innerText = "소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
+                pwMessage.innerText = "영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
                 newPw.value = "";
                 pwMessage.classList.remove("confirm", "error"); // 검정 글씨로 변환
                 checkObj.newPw = false;
@@ -134,7 +134,7 @@ btn1.addEventListener("click", function(){
         
 
         if(newPwConfirm.value.trim().length == 0){
-            newPwMessage.innerText = "소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
+            newPwMessage.innerText = "영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
             newPwConfirm.value = "";
             newPwMessage.classList.remove("confirm", "error");
             checkObj.newPwConfirm = false;
