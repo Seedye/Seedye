@@ -16,7 +16,7 @@
             <span>식당 등록 문의</span>
             <span class="close">X</span>
         </div>
-        <form action="">
+        <form action="/admin/enroll" method="post">
             <div id="imageArea">
                 <div class="imageDiv">
                     <label for="image0">
@@ -48,16 +48,16 @@
             <div class="adminR-menu">
                 <aside><span class="red">＊</span>업종</aside>
                 <select name="food" id="select">
-                    <option value="">한식</option>
-                    <option value="">중식</option>
-                    <option value="">일식</option>
-                    <option value="">양식</option>
-                    <option value="">패스트푸드</option>
-                    <option value="">일반대중음식</option>
-                    <option value="">편의점</option>
-                    <option value="">제과점</option>
-                    <option value="">정육점</option>
-                    <option value="">착한식당</option>
+                    <option value="한식">한식</option>
+                    <option value="중식">중식</option>
+                    <option value="일식">일식</option>
+                    <option value="양식">양식</option>
+                    <option value="패스트푸드">패스트푸드</option>
+                    <option value="일반대중음식">일반대중음식</option>
+                    <option value="편의점">편의점</option>
+                    <option value="제과점">제과점</option>
+                    <option value="정육점">정육점</option>
+                    <option value="착한식당">착한식당</option>
                 </select>
             </div>
             <div class="adminR-menu">

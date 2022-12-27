@@ -233,7 +233,39 @@
 #freeBoard-detail-anwser{
   font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+#freeBoard-detail-anwser p{
+
+  width: 50px;
+
+}
+
+#freeBoard-detail-anwser input{
+  width: 100%;
+  border-radius: 10px;
+  height: 28px;
+  margin-left: 10px;
+  padding: 0px 10px;
+}
+
+#freeBoard-detail-anwser button{
+  margin-left: 10px;
+
+  border: 1px solid #2db420;
+  border-radius: 10px;
+  background-color: #2db420;
+
+  width: 100px;
+  height: 30px;
+  
+  color: white;
+  font-weight: bolder;
+
+  cursor: pointer;
+
 }
 
 #freeBoard-detail-anwser>p:nth-child(2){

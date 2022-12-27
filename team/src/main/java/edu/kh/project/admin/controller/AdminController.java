@@ -92,6 +92,18 @@ public class AdminController {
 		return "admin/manageBoard";
 		
 	}
+	
+	@GetMapping("selectBoardNotice")
+	@ResponseBody
+	public String selectBoardNotice(int boardCode) {
+		
+		List<Board> boardNoticeList = service.selectBoardNotice(boardCode);
+		
+		return new Gson().toJson(boardNoticeList);
+		
+	}
+	
+	
 		
 	// 게시글 삭제
 	@GetMapping("/board/{boardCode}/{boardNo}/delete")
