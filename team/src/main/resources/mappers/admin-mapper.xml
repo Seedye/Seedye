@@ -210,4 +210,37 @@ AND BOARD_DEL_FL = 'N'
 </select>
 
 
+<insert id="register" parameterType="store" useGeneratedKeys="true">
+	
+	<selectKey keyProperty="storeNo" resultType="_int" order="BEFORE">
+		SELECT SEQ_STORE_NO.NEXTVAL FROM DUAL
+	</selectKey>
+		INSERT INTO STORE
+		VALUES(#{storeNo}, #{storeType}, #{storeName}, 
+		#{roadnameAddress}, #{landnumberAddress}, #{storeTel}, DEFAULT, 
+		#{memberNo}, #{storeInfo})
+
+</insert>
+
+<insert id="insertLicense">
+INSERT INTO LICENSE
+VALUES(#{storeNo}, #{licensePath}, #{licenseOriginal}, #{licenseRename})
+</insert>
+
+<insert id="insertStoreImageList" parameterType="list">
+	INSERT INTO STORE_IMG
+	SELECT SEQ_STORE_IMG_NO.NEXTVAL STORE_IMG_NO, A.* FROM
+	<foreach collection="list" item="img" open="(" close=") A" 
+		separator="UNION ALL">
+		SELECT #{img.storeImagePath} S_IMG_PATH,
+		      #{img.storeImageReName} S_IMG_RENAME,
+		      #{img.storeImageOriginal} S_IMG_ORIGINAL,
+		      #{img.storeImageOrder} S_IMG_ORDER,
+		      #{img.storeNo} STORE_NO
+		FROM DUAL	
+	</foreach>
+</insert>
+
+
+
 </mapper>  

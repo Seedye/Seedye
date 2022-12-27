@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/sideBar.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
+    <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
 </head>
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/admin/store.jsp" />
+        
         <div id="adminMain">    
             
             <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
