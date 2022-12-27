@@ -21,7 +21,7 @@
         
         <article class="find-logo">
             <div class="find-head">
-                <a href="#">
+                <a href="/">
                 <img width="50px" height="50px" src="../../resources/images/새싹이.png">
                 </a>
                 <div class="sprout">새싹이</div>

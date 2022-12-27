@@ -17,6 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MemberService;
 import edu.kh.project.member.model.vo.Member;
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Controller
 @SessionAttributes({"loginMember", "message", "test2"})
@@ -24,6 +29,12 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+//	final DefaultMessageService messageService;
+//	
+//	public MemberController() {
+//		this.messageService = NurigoApp.INSTANCE.initialize("NCSGKH1S9GUXAXCF", "ZOGVLRXYFLYRSETGK5QLDPKFKN1U0NC6", "https://api.coolsms.co.kr");
+//	}
 	
 	// 로그인
 	@PostMapping("/login")
@@ -153,7 +164,23 @@ public class MemberController {
 		return "/member/find";
 	}
 	
-	
-	
+//	@PostMapping("/send-one")
+//	public SingleMessageSentResponse sendOne(
+//			@RequestParam("toPhone") String toPhone) {
+//		
+//		Message sendMsg = new Message();
+//		
+//		sendMsg.setFrom("01055888974");
+//		sendMsg.setTo(toPhone);
+//		
+//		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+//		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+//		
+//		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+//		
+//		System.out.println(response);
+//		
+//		return response;
+//	}
 	
 }

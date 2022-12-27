@@ -28,7 +28,7 @@ header{
     background-color: white;
     z-index: 1000;
     transition: top 0.5s ease;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 body{
@@ -36,10 +36,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
-
-
 
 #header-section{
     width: 100%;

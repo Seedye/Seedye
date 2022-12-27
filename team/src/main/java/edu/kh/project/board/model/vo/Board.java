@@ -25,5 +25,8 @@ public class Board {
 	// 이미지 목록
 	private List<BoardImg> imageList;
 	
+	// 댓글 목록
+    private List<Comment> commentList;
+	
 }
 

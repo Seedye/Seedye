@@ -329,8 +329,20 @@ form[name='myPage-frm']{position: relative;}
     color : white; /* 글자 색 */
 }
 
-.myPage-row > #memberPw, #currentPw, #newPw, #newPwConfirm{
-    font-family: auto;
+input[type=password]{
+    font-family: "굴림";
+}
+
+::placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+:-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+::-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
 }
 
 /* 시작지점 : 아래 왼쪽 */
