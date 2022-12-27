@@ -68,7 +68,7 @@
 
                     <div class="myPage-row tel">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13">
+                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" oninput="autoHyphen(this)">
                         <button type="button">인증</button>
                     </div>
 

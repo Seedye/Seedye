@@ -194,3 +194,10 @@ newPwConfirm.addEventListener("input", function(){
     }
 
 });
+
+// 전화번호 오토하이픈
+const autoHyphen = (target) => {
+    target.value = target.value
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
