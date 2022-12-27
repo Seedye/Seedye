@@ -48,17 +48,20 @@ boardTest.style.display = "none";
 
 
 
+// 공지사항
 function selectBoardNotice(){
   const tbody = document.getElementById("tbody");
   tbody.innerHTML = "";
 
   $.ajax({
-    url:"/selectBoardNotice",
-    data:{"boardCode" : 1},
+    url:"/admin/selectBoardNotice",
+    data:{"boardCode" : '1'},
     dataType : "JSON",
     success : boardNoticeList =>{
 
       for(let board of boardNoticeList){
+
+        const tr = document.createElement("tr");
 
         // 게시글 번호
         const td1 = document.createElement("td");
@@ -70,7 +73,7 @@ function selectBoardNotice(){
         
         // 작성자
         const td3 = document.createElement("td");
-        td3.innerText = board.memberNo;
+        td3.innerText = board.memberId;
         
         // 조회수
         const td4 = document.createElement("td");
@@ -78,11 +81,15 @@ function selectBoardNotice(){
         
         // 등록일
         const td5 = document.createElement("td");
-        td5.innerText = board.boardCreateDate
+        td5.innerText = board.createDate
         
         // 관리
         const td6 = document.createElement("td");
         td6.innerHTML = "<button class='store-manage'>관리</button>"
+
+        tr.append(td1, td2, td3, td4, td5, td6);
+
+        tbody.append(tr);
 
       }
     
@@ -94,6 +101,7 @@ function selectBoardNotice(){
     
   })
 }
+
 
 
 

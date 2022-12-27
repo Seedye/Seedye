@@ -32,7 +32,7 @@
                     <li><a href="/introduction">소개</a></li>
                     <li><a href="/freeBoardList/3">공지사항</a></li>
                     <li><a href="/boardList/4">커뮤니티</a></li>
-                    <li><a href="">식당 등록 문의</a></li>
+                    <li><a href="" id="inquiry">식당 등록 문의</a></li>
                     <li><a href="/support">후원</a></li>
                     <!-- <c:if test="${loginMember.authority == 2}"> -->
                     <li><a href="/admin/manageBoard">관리자</a></li>
@@ -41,4 +41,5 @@
                 </ul>
             </nav>
         </div>
+
     </header>

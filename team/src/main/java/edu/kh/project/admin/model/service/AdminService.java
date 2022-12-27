@@ -71,6 +71,10 @@ public interface AdminService {
 	 * @return storeList
 	 */
 	List<Store> selectEnroll(char checkFl);
+
+
+
+	List<Board> selectBoardNotice(int boardCode);
 	
 	
 

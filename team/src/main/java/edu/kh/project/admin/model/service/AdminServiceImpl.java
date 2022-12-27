@@ -114,6 +114,12 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectEnroll(checkFl);
 	}
 
+	@Override
+	public List<Board> selectBoardNotice(int boardCode) {
+		// TODO Auto-generated method stub
+		return dao.selectBoardNotice(boardCode);
+	}
+
 	
 	
 	

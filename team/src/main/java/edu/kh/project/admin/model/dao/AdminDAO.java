@@ -121,6 +121,11 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
 	}
 
+	public List<Board> selectBoardNotice(int boardCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
+	}
+
 	
 
 
