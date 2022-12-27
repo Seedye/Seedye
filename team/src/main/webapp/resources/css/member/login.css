@@ -61,8 +61,20 @@ body{
     font-size: 15px;
 }
 
-.input-text > #memberPw{
-    font-family: auto;
+input[type=password]{
+    font-family: "굴림";
+}
+
+::placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+:-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+::-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
 }
 
 /* 아이디 / 비밀번호를 클릭했을 때 */
