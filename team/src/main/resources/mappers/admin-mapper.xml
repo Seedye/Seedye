@@ -193,6 +193,30 @@ WHERE MEMBER_NO  = #{memberNo}
   AND CHECK_FL = 'B'
 </select>
 
+<!-- 게시글 수정 -->
+ <update id="boardUpdate">
+	UPDATE BOARD SET
+	BOARD_TITLE = #{boardTitle},
+	BOARD_CONTENT = #{boardContent}
+	WHERE BOARD_NO = #{boardNo}
+ </update>
+ 
+ 
+ <!-- 게시글 작성 -->
+   <insert id="boardWrite" parameterType="Board" useGeneratedKeys="true">
+  
+	  <selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+	  	SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	  </selectKey>
+	  
+  
+	  INSERT INTO BOARD
+	  VALUES(#{boardNo},
+            #{boardTitle}, #{boardContent},
+            DEFAULT, DEFAULT, DEFAULT, DEFAULT, 
+            #{memberNo}, #{boardCode} )
+  </insert>
+  
 <!-- 식당 신청 조회 -->
 <select id="selectEnroll" resultMap="store_rm">
 SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
