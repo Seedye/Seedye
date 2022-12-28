@@ -185,6 +185,15 @@ public class AdminDAO {
 		return sqlSession.insert("adminMapper.insertStoreImageList", storeImageList);
 	}
 
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return
+	 */
+	public int deleteMember(int memberNo) {
+		
+		return sqlSession.update("adminMapper.memberDelete", memberNo);
+	}
+
 	
 
 

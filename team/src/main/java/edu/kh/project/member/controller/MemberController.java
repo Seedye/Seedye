@@ -162,6 +162,8 @@ public class MemberController {
 	@GetMapping("/find")
 	public String findPage() {
 		return "/member/find";
+		
+		
 	}
 	
 //	@PostMapping("/send-one")
