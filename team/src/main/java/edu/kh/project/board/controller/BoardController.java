@@ -76,49 +76,48 @@ public class BoardController {
 	}
 	
 	
-	/** 문의게시물 작성
-	 * @param loginMember
-	 * @param ra
-	 * @param session
-	 * @param fileList
-	 * @param board
-	 * @param referer
-	 * @return
-	 * @throws IOException 
-	 */
-	@PostMapping("/QAWrite/{boardCode}")
-	public String QAWrite(
-			@PathVariable("boardCode") int boardCode,
-			@SessionAttribute(value="loginMember") Member loginMember,
-			RedirectAttributes ra,
-			HttpSession session,
-			@RequestParam(value="inputFile") List<MultipartFile> fileList,
-			Board board,
-			@RequestHeader("referer") String referer
-			
-			) throws IOException {
-		
-		board.setBoardCode(boardCode);
-		board.setMemberNo(loginMember.getMemberNo());
-		
-		
-		String webPath = "/resources/images/board/";
-		String folderPath = session.getServletContext().getRealPath(webPath);
-		
-		System.out.println(board);
-		
-		int result = service.QAWrite( board, fileList, webPath, folderPath);
-		
-		
-		
-		String path=null;
-		if(result > 0) {
-			path = referer;
-		}else {
-			path = referer; // **나중에 변경필요
-		}
-		return "redirect:"+path;
-	}
+	 /** 문의게시물 작성
+	    * @param loginMember
+	    * @param ra
+	    * @param session
+	    * @param fileList
+	    * @param board
+	    * @param referer
+	    * @return
+	    * @throws IOException 
+	    */
+	   @PostMapping("/QAWrite/{boardCode}")
+	   public String QAWrite(
+	         @PathVariable("boardCode") int boardCode,
+	         @SessionAttribute(value="loginMember") Member loginMember,
+	         RedirectAttributes ra,
+	         HttpSession session,
+	         @RequestParam(value="inputFile") List<MultipartFile> fileList,
+	         Board board,
+	         @RequestHeader("referer") String referer
+	         
+	         ) throws IOException {
+	      
+	      board.setBoardCode(boardCode);
+	      board.setMemberNo(loginMember.getMemberNo());
+	      
+	      
+	      String webPath = "/resources/images/board/";
+	      String folderPath = session.getServletContext().getRealPath(webPath);
+	      
+	      System.out.println(board);
+	      
+	      int result = service.QAWrite( board, fileList, webPath, folderPath);
+	      
+	      
+	      
+	      String path="";
+	      path=referer;
+	      
+
+	      return "redirect:"+path;
+	   }
+
 	
 	/** 자유 게시판 상세조회
 	 * @param boardNo
@@ -134,6 +133,23 @@ public class BoardController {
 		System.out.println(freeBoardDetail);
 		
 		return freeBoardDetail;
+		
+	}
+	
+	/** 문의 게시판 상세조회
+	 * @param boardNo
+	 * @return
+	 */
+	@PostMapping("/QABoardDetail")
+	@ResponseBody
+	public List<Board> selectQABoardDetail(@RequestParam("boardNo") int boardNo) {
+		
+		List<Board> QABoardDetail = service.selectFreeBoardDetail(boardNo);
+
+		System.out.println(boardNo);
+		System.out.println(QABoardDetail);
+		
+		return QABoardDetail;
 		
 	}
 	
