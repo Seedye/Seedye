@@ -18,6 +18,7 @@
 
         <div id="adminMain">
             <jsp:include page="/WEB-INF/views/common/sideBar.jsp" />
+            <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
             <!-- 식당 등록 -->
             <div id="adminR" class="admin-mainMenu">
