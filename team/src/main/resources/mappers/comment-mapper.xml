@@ -6,20 +6,8 @@
 		<insert id="insertComment">
 		INSERT INTO "COMMENT" VALUES(
 			SEQ_COMMENT_NO.NEXTVAL,
-			#{commentContent}, DEFAULT,
-			#{boardNo}, #{memberNo},
-			
-			<!-- 일반 댓글 -->
-			<if test='parentNo == 0'>
-				NULL
-			</if>
-			
-			<!-- 답글 -->
-			<if test='parentNo != 0'>
-				#{parentNo}
-			</if>
-			
-			,DEFAULT )
+			#{commentContent}, DEFAULT,DEFAULT,
+			#{boardNo}, #{memberNo},NULL )
 	</insert>
 	
 	
