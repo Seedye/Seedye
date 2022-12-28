@@ -23,7 +23,13 @@
 	<result property="storeTel" column="STORE_TEL" />
 	<result property="checkFl" column="CHECK_FL" />
 	<result property="memberNo" column="MEMBER_NO" />
-	<result property="storeInfo" column="STORE_INFO" />           
+	<result property="storeInfo" column="STORE_INFO" />   
+	
+	<collection property="imageList" 
+	javaType="java.util.ArrayList" ofType="StoreImage"
+	select="selectImageList"
+	column="STORE_NO"/>
+	        
 </resultMap>
 
 <resultMap type="Member" id="member_rm">
@@ -37,6 +43,15 @@
 	<result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
 </resultMap>
 
+
+<resultMap type="StoreImage" id="storeImg_rm">
+	<id property="storeImgNo" column="S_IMG_NO"/>
+	<result property="storeImagePath" column="S_IMG_PATH"/>
+	<result property="storeImageOriginal" column="S_IMG_ORIGINAL"/>
+	<result property="storeImageRename" column="S_IMG_RENAME"/>
+	<result property="storeImageOrder" column="S_IMG_ORDER"/>
+	<result property="storeNo" column="STORE_NO"/>
+</resultMap>
 
 
 
@@ -201,6 +216,7 @@ SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   AND CHECK_FL = #{checkFl}
 </select>
 
+<!-- 공지사항 조회 -->
 <select id="selectBoardNotice" resultMap="board_rm">
 SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID
 FROM BOARD
@@ -210,6 +226,7 @@ AND BOARD_DEL_FL = 'N'
 </select>
 
 
+<!-- 이미지 제외한 식당 정보 등록 -->
 <insert id="register" parameterType="store" useGeneratedKeys="true">
 	
 	<selectKey keyProperty="storeNo" resultType="_int" order="BEFORE">
@@ -222,18 +239,20 @@ AND BOARD_DEL_FL = 'N'
 
 </insert>
 
+<!-- 사업자 등록증 이미지 등록 -->
 <insert id="insertLicense">
 INSERT INTO LICENSE
 VALUES(#{storeNo}, #{licensePath}, #{licenseOriginal}, #{licenseRename})
 </insert>
 
+<!-- 가맹점 이미지 등록 -->
 <insert id="insertStoreImageList" parameterType="list">
 	INSERT INTO STORE_IMG
 	SELECT SEQ_STORE_IMG_NO.NEXTVAL STORE_IMG_NO, A.* FROM
 	<foreach collection="list" item="img" open="(" close=") A" 
 		separator="UNION ALL">
 		SELECT #{img.storeImagePath} S_IMG_PATH,
-		      #{img.storeImageReName} S_IMG_RENAME,
+		      #{img.storeImageRename} S_IMG_RENAME,
 		      #{img.storeImageOriginal} S_IMG_ORIGINAL,
 		      #{img.storeImageOrder} S_IMG_ORDER,
 		      #{img.storeNo} STORE_NO

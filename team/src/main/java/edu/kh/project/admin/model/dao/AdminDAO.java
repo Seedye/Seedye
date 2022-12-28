@@ -131,10 +131,16 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
 	}
 
+	/** 식당 정보 먼저 등록
+	 * @param store
+	 * @return result
+	 */
 	public int register(Store store) {
 		int result = sqlSession.insert("adminMapper.register", store);
 		
 		if(result > 0) {
+			
+			// 이미지 등록을 위해 storeNo 세팅
 			result = store.getStoreNo();
 		} 
 		return result;
@@ -142,12 +148,20 @@ public class AdminDAO {
 
 	
 
+	/** 사업자 등록증 등록
+	 * @param license
+	 * @return result
+	 */
 	public int insertLicense(License license) {
 		return sqlSession.insert("adminMapper.insertLicense", license);
 	}
 
 	
 
+	/** 가맹점 이미지 등록
+	 * @param storeImageList
+	 * @return result
+	 */
 	public int insertStoreImageList(List<StoreImage> storeImageList) {
 		return sqlSession.insert("adminMapper.insertStoreImageList", storeImageList);
 	}

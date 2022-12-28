@@ -5,6 +5,8 @@ const boardManage = document.getElementById("boardManage");
 const inquiry = document.getElementById("inquiry");
 
 inquiry.addEventListener("click", ()=>{
+    
+    
     inquiryR.style.display = "flex";
     
 })
@@ -78,6 +80,8 @@ for(let i=0; i<imageInput.length; i++){
 
     imageInput[i].addEventListener("change", (event)=>{
 
+        console.log(event.target.files[0]);
+
         if(event.target.files[0] != undefined){
 
             const reader = new FileReader();
@@ -86,7 +90,7 @@ for(let i=0; i<imageInput.length; i++){
 
             reader.onload = e =>{
 
-                preview[i].setAttribute("src", event.target.result);
+                preview[i].setAttribute("src", e.target.result);
             }
 
 

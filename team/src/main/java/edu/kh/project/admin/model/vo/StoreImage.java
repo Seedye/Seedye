@@ -16,5 +16,6 @@ public class StoreImage {
 	private String storeImageRename;
 	private int storeImageOrder;
 	private String storeImageOriginal;
+	private int storeImageNo;
 	
 }

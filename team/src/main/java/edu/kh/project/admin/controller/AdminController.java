@@ -242,25 +242,37 @@ public class AdminController {
 			RedirectAttributes ra,
 			HttpSession session, @RequestHeader("referer")String referer) throws Exception{
 		
-			
+		
+		// 로그인한 유저 번호
 		store.setMemberNo(loginMember.getMemberNo());
 		
+		// 사업자 등록증
 		String webPath = "/resources/images/license/";
+
+		// 가맹점 이미지
 		String webPath2 = "/resources/images/store/";
 		
+		// 사업자 등록증
 		String folderPath = session.getServletContext().getRealPath(webPath);
+		
+		// 가맹점 이미지
 		String folderPath2 = session.getServletContext().getRealPath(webPath2);
 		
 		int result = service.register(store, license, imageList, licenseImg, webPath, webPath2, folderPath, folderPath2);
 		
 		String path = null;
+		String message = null;
 		
 		if(result > 0) {
 			
-			path = "referer";
+			path = referer;
+			message ="성공";
 		} else {
 			path = "/";
+			message = "실패";
 		}
+		
+		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
 	}

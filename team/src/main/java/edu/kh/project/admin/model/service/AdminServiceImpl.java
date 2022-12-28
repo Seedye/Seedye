@@ -129,6 +129,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectBoardNotice(boardCode);
 	}
 
+	// 식당 등록 문의
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int register(Store store, License license, List<MultipartFile> imageList, MultipartFile licenseImg,
@@ -139,21 +140,31 @@ public class AdminServiceImpl implements AdminService{
 		
 		store.setStoreInfo(Util.newLineHandling(store.getStoreInfo()));
 		
+		// 이미지 제외 식당 정보 등록
 		int result = dao.register(store);
-				
+
+		// 이미지 등록을 위해 storeNo 세팅
 		int storeNo = result;
 		
+		// 이미지 제외 정보가 등록되었을 때
 		if(result > 0) {
 			
 			license.setStoreNo(result);
 			
+			
 			String reName = null;	
+			
+			license.setLicenseOriginal(licenseImg.getOriginalFilename());
+			
 			
 			if(licenseImg.getSize() != 0) {
 				reName = Util.fileRename(licenseImg.getOriginalFilename());
 				license.setLicensePath(webPath + reName); 
 				
 			}
+			license.setLicenseRename(reName);
+			
+			System.out.println(license);
 			int result1 = dao.insertLicense(license);
 			
 			if(result1 > 0) {
@@ -162,6 +173,7 @@ public class AdminServiceImpl implements AdminService{
 				} 
 			}
 			
+			// 사업자 등록증 이미지가 등록되었을 때
 			if(result1 > 0) {
 			
 				List<StoreImage> storeImageList = new ArrayList<StoreImage>();
@@ -175,8 +187,10 @@ public class AdminServiceImpl implements AdminService{
 					
 					String reName2 = Util.fileRename(imageList.get(i).getOriginalFilename());
 					
+					
 					img.setStoreImageRename(reName2);
 					reNameList.add(reName2);
+					
 					
 					img.setStoreImageOriginal(imageList.get(i).getOriginalFilename());
 					
@@ -184,12 +198,17 @@ public class AdminServiceImpl implements AdminService{
 					
 					img.setStoreImageOrder(i);
 					
+					System.out.println(img);
 					storeImageList.add(img);
 				}
 				
+				System.out.println(storeImageList);
 								
 				if(!storeImageList.isEmpty()) {
 					storeNo = result;
+					
+					System.out.println(storeImageList);
+					
 					int result2 = dao.insertStoreImageList(storeImageList);
 					if(result2 == storeImageList.size()) {
 						for(int i=0; i<storeImageList.size(); i++) {
@@ -200,11 +219,13 @@ public class AdminServiceImpl implements AdminService{
 							}
 						}
 					
+					// 가맹점 이미지 등록 성공시
 					if(result2 > 0) {
 						result = result2;
 					}
 				}
-				
+			
+				// 사업자 등록증 이미지 등록 실패시
 			} else {
 				result = 0;
 			}

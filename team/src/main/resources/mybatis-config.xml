@@ -23,6 +23,8 @@
 		<typeAlias type="edu.kh.project.admin.model.vo.Store" alias="Store"/>
 		<typeAlias type="edu.kh.project.admin.model.vo.StoreImage" alias="StoreImage"/>
 		<typeAlias type="edu.kh.project.board.model.vo.Comment"  alias="Comment" />
+		<typeAlias type="edu.kh.project.admin.model.vo.License"  alias="License" />
+		
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
