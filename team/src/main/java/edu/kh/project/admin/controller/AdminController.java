@@ -1,5 +1,6 @@
 package edu.kh.project.admin.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
 
@@ -136,14 +138,89 @@ public class AdminController {
 	}
 	
 	// 게시글 수정화면 이동
+	@GetMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate(@PathVariable("boardCode")int boardCode,
+			@PathVariable("boardNo")int boardNo,
+			Model model) {
+		
+		Board board = service.selectBoardDetail(boardNo);
+		
+		board.setBoardContent(Util.newlineClear(board.getBoardContent()));
+		
+		model.addAttribute("board",board);
+		
+		return "board/boardUpdate";
+	}
 	
 	// 게시글 수정
-	
+	@PostMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate( 
+			Board board,
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1")int cp,
+			@RequestHeader("referer")String referer,
+			RedirectAttributes ra) throws Exception {
+		
+		board.setBoardNo(boardNo);
+		
+		int result = service.boardUpdate(board);
+		
+		String path = null;
+		String message = null;
+		
+		if (result > 0 ) {
+			path = "/board/" + boardCode + "/" + boardNo + "?cp" + cp;
+			message = "게시글이 수정되었습니다.";
+		}else {
+			path = referer;
+			message = "게시글 수정에 실패하였습니다.";
+		}
+		
+		ra.addFlashAttribute("message",message);
+			
+		return "redirect" + path;
+	}
 	
 	
 	// 게시글 작성(공지사항(code=1), 업데이트(code=2) 이동
+	@GetMapping("/write/{boardCode}")
+	public String boardWrite(@PathVariable("boardCode") int boardCode) {
+		
+		return "board/boardWrite";
+	}
 	
 	// 게시글 작성
+	@PostMapping("/write/{boardCode}")
+	public String boardWrite(Board board,
+			@SessionAttribute("loginMember") Member loginMember,
+			@PathVariable("boardCode")int boardCode,
+			RedirectAttributes ra, HttpSession session,
+			@RequestHeader("referer") String referer) throws IOException {
+		
+		board.setBoardCode(boardCode);
+		
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		int boardNo = service.boardWrite(board);
+		
+		String message = null;
+		String path = null;
+		
+		if(boardNo > 0) {
+			message = "등록되었습니다.";
+			path = "/board/" + boardCode + "/" + boardNo;
+		
+		}else {
+			message = "등록이 실패하였습니다.";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect" + path;
+	}
+	
 	
 	// 댓글 작성(문의하기 게시판)
 	
@@ -185,7 +262,7 @@ public class AdminController {
 	@ResponseBody
 	public int updateInfo( int memberNo) {
 		
-		System.out.println(memberNo);
+		
 		int result = service.updateInfo(memberNo);
 		
 		return result;
@@ -228,6 +305,7 @@ public class AdminController {
 		
 		return new Gson().toJson(storeList);
 	}
+	
 	
 	
 	

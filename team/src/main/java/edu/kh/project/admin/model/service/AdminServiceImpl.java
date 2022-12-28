@@ -3,6 +3,7 @@ package edu.kh.project.admin.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import edu.kh.project.admin.model.dao.AdminDAO;
 import edu.kh.project.admin.model.vo.License;
@@ -117,6 +119,40 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectStoreList(storeType);
 	}
 
+	/** 게시글 수정
+	 *
+	 */
+	@Override
+	public int boardUpdate(Board board) throws Exception {
+		
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
+		int result = dao.boardUpdate(board);
+		
+		return result;
+	}
+
+	/**
+	 * 게시글 작성(공지, 업데이트)
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int boardWrite(Board board) {
+		
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
+		int boardNo = dao.boardWrite(board);
+		
+		
+		
+		
+		return boardNo;
+		
+	}
 	// 식당 신청 조회
 	@Override
 	public List<Store> selectEnroll(char checkFl) {
