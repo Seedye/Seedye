@@ -9,7 +9,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Pagination;
 import edu.kh.project.member.model.vo.Member;
@@ -141,9 +143,47 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
 	}
 
+	/** 공지사항 조회
+	 * @param boardCode
+	 * @return boardList
+	 */
 	public List<Board> selectBoardNotice(int boardCode) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
+	}
+
+	/** 식당 정보 먼저 등록
+	 * @param store
+	 * @return result
+	 */
+	public int register(Store store) {
+		int result = sqlSession.insert("adminMapper.register", store);
+		
+		if(result > 0) {
+			
+			// 이미지 등록을 위해 storeNo 세팅
+			result = store.getStoreNo();
+		} 
+		return result;
+	}
+
+	
+
+	/** 사업자 등록증 등록
+	 * @param license
+	 * @return result
+	 */
+	public int insertLicense(License license) {
+		return sqlSession.insert("adminMapper.insertLicense", license);
+	}
+
+	
+
+	/** 가맹점 이미지 등록
+	 * @param storeImageList
+	 * @return result
+	 */
+	public int insertStoreImageList(List<StoreImage> storeImageList) {
+		return sqlSession.insert("adminMapper.insertStoreImageList", storeImageList);
 	}
 
 	

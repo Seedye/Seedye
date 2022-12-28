@@ -6,7 +6,6 @@ const memberNo = document.getElementById("memberNo");
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
-    memberManage.style.display = "none";
     selectMemberList();
 })
 

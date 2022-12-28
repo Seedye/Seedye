@@ -23,6 +23,7 @@
 <body>
   <%-- 헤더 추가 --%>
   <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+  <jsp:include page="/WEB-INF/views/admin/store.jsp" />
     <main>
       <!-- board 영역 -->
       <section class="board-body-area">
