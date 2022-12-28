@@ -144,6 +144,8 @@ public class AdminServiceImpl implements AdminService{
 		
 		
 		return boardNo;
+		
+	}
 	// 식당 신청 조회
 	@Override
 	public List<Store> selectEnroll(char checkFl) {
