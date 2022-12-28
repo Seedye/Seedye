@@ -131,6 +131,8 @@ public class AdminDAO {
 		int result = sqlSession.insert("adminMapper.boardWrite", board);
 		
 		return result;
+	
+	}
 	/** 식당 신청 조회
 	 * @param checkFl
 	 * @return storeList
