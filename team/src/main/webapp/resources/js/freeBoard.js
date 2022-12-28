@@ -1,6 +1,4 @@
 
-
-
 const freeBoardOne = document.getElementsByClassName("freeBoard-listOne");
 
 console.log(boardNo);
@@ -48,52 +46,100 @@ for (let freeBoardOneItems of freeBoardOne) {
                 
                 imgContainer.append(img);
 
-                const freeBoardDetailAnwser = document.createElement("div");
-                freeBoardDetailAnwser.setAttribute("id", "freeBoard-detail-anwser");
+                // const freeBoardDetailAnwser = document.createElement("div");
+                // freeBoardDetailAnwser.setAttribute("id", "freeBoard-detail-anwser");
 
-                const smallTitleC = document.createElement("p");
-                const smallTitleD = document.createElement("p");
+                // const smallTitleC = document.createElement("p");
+                // const smallTitleD = document.createElement("p");
 
-                smallTitleC.innerText = "답글";
-                smallTitleD.innerText = freeBoardDetail[0].commentCreateDate;
+                // smallTitleC.innerText = "답글";
+                // smallTitleD.innerText = freeBoardDetail[0].commentCreateDate;
 
-                freeBoardDetailAnwser.append(smallTitleC);
-                freeBoardDetailAnwser.append(smallTitleD);
+                // freeBoardDetailAnwser.append(smallTitleC);
+                // freeBoardDetailAnwser.append(smallTitleD);
 
                 //
-                const freeBoardDetailAnwserContent = document.createElement("p");
-                freeBoardDetailAnwserContent.setAttribute("id", "freeBoard-detail-anwser-content");
+                // const freeBoardDetailAnwserContent = document.createElement("p");
+                // freeBoardDetailAnwserContent.setAttribute("id", "freeBoard-detail-anwser-content");
                 //
 
-                freeBoardDetailAnwserContent.innerText = freeBoardDetail[0].commentContent;
+                // freeBoardDetailAnwserContent.innerText = freeBoardDetail[0].commentContent;
 
                 freeBoardDetailView.append(bigTitle);
                 freeBoardDetailView.append(freeBoardDetailTitle);
                 freeBoardDetailView.append(freeBoardDetailContent);
                 freeBoardDetailView.append(imgContainer);
-                freeBoardDetailView.append(freeBoardDetailAnwser);
-                freeBoardDetailView.append(freeBoardDetailAnwserContent);
+                // freeBoardDetailView.append(freeBoardDetailAnwser);
+                // freeBoardDetailView.append(freeBoardDetailAnwserContent);
 
-                if(memberId == freeBoardDetail[0].memberId){
+            //     if(memberId == freeBoardDetail[0].memberId){
 
-                const freeBoardDetailBtn = document.createElement("div");
-                freeBoardDetailBtn.setAttribute("id", "freeBoard-detail-btn");
+            //     const freeBoardDetailBtn = document.createElement("div");
+            //     freeBoardDetailBtn.setAttribute("id", "freeBoard-detail-btn");
 
-                const btnA = document.createElement("button");
-                const btnB = document.createElement("button");
+            //     const btnA = document.createElement("button");
+            //     const btnB = document.createElement("button");
 
-                btnA.setAttribute("id", "update");
-                btnB.setAttribute("id", "delete");
+            //     btnA.setAttribute("id", "update");
+            //     btnB.setAttribute("id", "delete");
 
-                btnA.innerText = "수정";
-                btnB.innerText = "삭제";
+            //     btnA.innerText = "수정";
+            //     btnB.innerText = "삭제";
 
-                freeBoardDetailBtn.append(btnA);
-                freeBoardDetailBtn.append(btnB);
+            //     freeBoardDetailBtn.append(btnA);
+            //     freeBoardDetailBtn.append(btnB);
 
                 
-                freeBoardDetailView.append(freeBoardDetailBtn);
-            }
+            //     freeBoardDetailView.append(freeBoardDetailBtn);
+            // }
+
+            $.ajax({
+       
+                url : "/comment/list",
+                data : {"boardNo" : boardNo},
+                type : "GET",
+                dataType : "json",
+                success : (rList) => {
+                    console.log(rList);
+    
+                    const freeBoardDetailAnwser = document.createElement("div");
+                    freeBoardDetailAnwser.setAttribute("id", "freeBoard-detail-anwser")
+                    
+                    const anwser = document.createElement("p");
+                    anwser.innerText = "답글";
+                    
+                    const input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    
+                    const anwserBtn = document.createElement("button");
+                    anwserBtn.innerText = "답글 작성";
+                    
+                    freeBoardDetailAnwser.append(anwser);
+                    freeBoardDetailAnwser.append(input);
+                    freeBoardDetailAnwser.append(anwserBtn);
+                    
+                        
+                    const freeBoardDetailAnwserContent = document.createElement("div");
+                    freeBoardDetailAnwserContent.setAttribute("id", "freeBoard-detail-anwser-content");
+                    
+                    for (let comment of rList) {
+                        
+                    const anwserP = document.createElement("p");
+                    anwserP.innerText = comment.memberId + " : " + comment.commentContent;
+    
+                    freeBoardDetailAnwserContent.append(anwserP);
+    
+    
+                    freeBoardDetailView.append(freeBoardDetailAnwser);
+                    freeBoardDetailView.append(freeBoardDetailAnwserContent);
+    
+                    }
+                },
+    
+                error : () => {
+                    console.log("댓글 조회 실패");
+                }
+            });
             
             },
             
