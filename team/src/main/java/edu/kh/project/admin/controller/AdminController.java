@@ -272,7 +272,14 @@ public class AdminController {
 	
 	
 	// 회원 탈퇴
-	
+	@GetMapping("deleteMember")
+	@ResponseBody
+	public int memberDelete (int memberNo) {
+		
+		int result = service.deleteMember(memberNo);
+		
+		return result;
+	}
 
 	// 식당 목록 조회
 	@GetMapping("selectStoreList")

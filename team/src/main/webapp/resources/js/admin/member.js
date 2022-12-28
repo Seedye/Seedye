@@ -165,4 +165,26 @@ mBtn.addEventListener("click" ,  () => {
 
 })
 
+const mBtnD = document.getElementById("m-BtnD");
+
+mBtnD.addEventListener("click" ,  () => {
+    
+    $.ajax({
+        url : "/admin/deleteMember", 
+        data : {"memberNo":tempNo},
+        success:(result) => {
+            if(result > 0) {
+                alert("탈퇴처리 되었습니다..")
+            }else {
+                alert("회원 권한 변경 실패입니다.")
+            }
+        },
+
+        error:() => {
+            console.log("실패");
+        }
+    })
+
+})
+
 

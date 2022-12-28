@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.project.member.model.dao.MemberDAO;
 import edu.kh.project.member.model.vo.Member;
 
+@Transactional
 @Service
 public class MemberServiceImpl implements MemberService{
 

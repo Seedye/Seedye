@@ -46,30 +46,38 @@
 
                     <div id="pw" class="pw">
 
-                    <div class="myPage-row">
-                        <label>현재 비밀번호</label>
-                        <input type="password" id="currentPw" name="currentPw" maxlength="16" placeholder="비밀번호 입력">
-                    </div>
+                        <div class="myPage-row">
+                            <label>현재 비밀번호</label>
+                            <input type="password" id="currentPw" name="currentPw" maxlength="16" placeholder="비밀번호 입력">
+                        </div>
 
-                    <div class="myPage-row">
-                        <label>새 비밀번호</label>
-                        <input type="password" id="newPw" name="newPw" maxlength="16" placeholder="새 비밀번호 입력">
-                    </div>
-                    <span class="myPage-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
+                        <div class="myPage-row">
+                            <label>새 비밀번호</label>
+                            <input type="password" id="newPw" name="newPw" maxlength="16" placeholder="새 비밀번호 입력">
+                        </div>
+                        <span class="myPage-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
-                    <div class="myPage-row">
-                        <label>새 비밀번호 확인</label>
-                        <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="16" placeholder="새 비밀번호 확인">
-                    </div>
-                    <span class="myPage-message" id="newPwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
+                        <div class="myPage-row">
+                            <label>새 비밀번호 확인</label>
+                            <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="16" placeholder="새 비밀번호 확인">
+                        </div>
+                        <span class="myPage-message" id="newPwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
                     <%-- <button class="myPage-submit">변경하기</button> --%>
                     </div>
 
-                    <div class="myPage-row tel">
+                    <div class="myPage-row tel mainTel">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" oninput="autoHyphen(this)">
-                        <button type="button">인증</button>
+                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
+                        <button type="button">전화번호 변경</button>
+                    </div>
+                    <div class="confirm">
+                        <div class="myPage-row tel confirmCheck">
+                            <label>인증번호</label>
+                            <input type="text" name="confirmTel" maxlength="4">
+                            <button type="button">인증확인</button>
+                        </div>
+                        <span class="myPage-message" id="confirm"></span>
                     </div>
 
                     <div class="myPage-row info-title">
@@ -105,6 +113,12 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- footer.jsp include -->
 
+    <%-- 제이쿼리 사용시 필요한 스크립트 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     <!-- 다음 주소 api 추가 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -132,6 +146,10 @@
                 }
             }).open();
         }
+    </script>
+
+    <script>
+        const loginMemberTel = "${loginMember.memberTel}";
     </script>
     
         <!-- myPage.js external 방식으로 추가 -->
