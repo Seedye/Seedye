@@ -113,6 +113,24 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectType", storeType);
 	}
 
+	/** 게시글 수정
+	 * @param board
+	 * @return
+	 */
+	public int boardUpdate(Board board) {
+		
+		return sqlSession.update("adminMapper.boardUpdate",board);
+	}
+
+	/** 게시글 작성(공지,업데이트)
+	 * @param board
+	 * @return result
+	 */
+	public int boardWrite(Board board) {
+		
+		int result = sqlSession.insert("adminMapper.boardWrite", board);
+		
+		return result;
 	/** 식당 신청 조회
 	 * @param checkFl
 	 * @return storeList
