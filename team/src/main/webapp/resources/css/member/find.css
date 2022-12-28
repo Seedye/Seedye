@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'NIXGONM-Vb';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: NIXGONM-Vb;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 로그인 화면 전체 위치와 높이 */
+main {
+    /* height: 80vh; */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}    
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 로고 */
+.find-logo{
+    text-align: center;
+    margin-bottom: 100px;
+    margin: auto;
+    padding: 20px 20px 20px 20px;
+}
+
+/* 새싹이 */
+.sprout{
+    font-size: 40px;
+    color: #2DB400;
+    font-weight: bold;
+}
+
+/* 로고 + 새싹이 */
+.find-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.find-text{
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color : #33333f;
+}
+
+/* .find-content {
+    height: 500px;
+} */
+
+/* 로그인 영역 */
+.find-frm {
+    width: 500px;
+    padding: 20px 20px;
+    margin: 0px auto;
+}
+
+
+.find-wrap {
+    border: none;
+    border-bottom: 2px solid #e7e437;
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+
+.find-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.find-row:focus-within{
+    border: none;
+}
+
+.icon {
+    width: 25px;
+    height: 20px;
+    color: #e7e437;
+}
+
+
+.find-wrap input {
+    width: 342px;
+    height: 19px;
+    padding-right: 30px;
+    border: none;
+}
+
+.find-wrap input:focus {
+    outline:none;
+}
+.findMessage{
+    font-size: 14px; /* 글자 크기 14px */
+    letter-spacing: -1px; /* 작고 촘촘하게 */
+    color : #33333f;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/**************************************************************************/
+
+/* 로그인 버튼 */
+.find-btn{
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    width: 100%;
+    background-color:#2DB400;
+    border : none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 3px;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+
+
+/* 에러메세지 출력 */
+.message-area{
+    margin: 10px 10px 20px 10px;
+    padding: 10px 10px 20px 10px;
+}
+
+.confirm{color : #2DB400;} /* 입력 성공 시 초록색 */
+.error{color : rgb(233, 86, 86);} /* 에러 발생 시 빨강색 */
+
+
+/* 이전 화면으로 */
+.loginPage {
+    padding: 10px 0px 10px 0px; 
+}
+
+a, span {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(133, 34, 34);
+    font-size: 18px;
+    font-weight: bold;
+} 
+
+.login-page{
+    padding: 0px 0px 20px 0px;
+}

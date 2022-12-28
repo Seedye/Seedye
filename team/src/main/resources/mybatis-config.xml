@@ -22,6 +22,7 @@
 		<typeAlias type="edu.kh.project.board.model.vo.BoardImg" alias="BoardImg"/>
 		<typeAlias type="edu.kh.project.admin.model.vo.Store" alias="Store"/>
 		<typeAlias type="edu.kh.project.admin.model.vo.StoreImage" alias="StoreImage"/>
+		<typeAlias type="edu.kh.project.board.model.vo.Comment"  alias="Comment" />
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -31,6 +32,7 @@
 		<mapper resource="/mappers/admin-mapper.xml"/>
 		<mapper resource="/mappers/main-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/comment-mapper.xml"/>
 	</mappers>
 	
 	

@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/mainPage.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 </head>
 <body>
 
@@ -19,9 +21,6 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
-        <!-- 사진에 검색창 넣을려다가 일딴 뺏음 -->
-        <div class="searchAria">
-        </div>
         <!-- 메인페이지 상단 이미지 -->
         <img class="main-image" src="../resources/images/mainImg.jpg" alt="">
 
@@ -98,7 +97,7 @@
                     </li>
                     <li>
                         <div class="category-box">
-                            <label for="food-jType"><img src="../resources/images/foodType/icon.png" alt="업종"></label>
+                            <label for="food-jType"><img src="../resources/images/foodType/kind store.png" alt="업종"></label>
                             <input type="checkbox" id="food-jType" value="착한식당">착한식당
                         </div>
                     </li>
@@ -169,7 +168,24 @@
                     </ul>
                 </div>
             </div>
+
+                <!-- 신규 가맹점 등록 현황 -->
+            <div class="newStore">
+                <div class="newStoreTitle">신규 가맹점 등록 현황</div>
+            </div>
         </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test1.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test2.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test3.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test4.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test5.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test6.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test7.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test8.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test9.jpg">테스트 중입니다.</div>
+            </div>
 
         <!-- 상세보기 모달 팝업 -->
         <div class="modal-container">
@@ -233,23 +249,8 @@
                 </div>
             </div>
         </div>
-        <!-- 슬라이드 쇼 광고 혹은 게시물 사진 사용 할 때 사용할 예정 -->
-<!-- 
-        <div id="slideshow">
-            <div class="slide">
-                <img src="../resources/images/mainslide/children-gcdcf2541f_1280.jpg" alt="Slide 1">
-                <div class="caption">Caption 1</div>
-            </div>
-            <div class="slide">
-                <img src="../resources/images/mainslide/children-gfd08c2a3f_1280.jpg" alt="Slide 2">
-                <div class="caption">Caption 2</div>
-            </div>
-            <div class="slide">
-                <img src="../resources/images/mainslide/girls-gf0fcf7f58_1280.jpg" alt="Slide 3">
-                <div class="caption">Caption 3</div>
-            </div>
-        </div>
-        -->
+
+        
     </main>
 
     <%-- 푸터 위치 --%>
@@ -263,9 +264,11 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>
+
 
 
 </body>

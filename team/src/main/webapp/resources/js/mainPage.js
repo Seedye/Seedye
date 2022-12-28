@@ -1,13 +1,4 @@
 /* 카카오 지도 api */
-// var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-
-// var options = { //지도를 생성할 때 필요한 기본 옵션
-// 	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-// 	level: 1 //지도의 레벨(확대, 축소 정도)
-// };
-
-// var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -76,23 +67,6 @@ function relayout(name, addr) {
     });
 }
 
-/* 슬라이드 사용시 */
-/* 
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("slide");
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
- */
 
 const searchBtn = document.querySelector(".searchBtn");
 
@@ -263,9 +237,14 @@ searchBtn.addEventListener("click", () => {
                                         modalImgs.setAttribute("id", "imgHolder");
                                         modalImgs.classList.add("modal-imgs");
 
-                                        /* 
-                                            이미지가 있을 경우
-                                            예상 코드 
+                                        if (modalResult[0].storeImg == null){
+                                            const storeImg = document.createElement("li");
+                                            storeImg.innerHTML = "<img src=../resources/images/modal/noneImg.png>"; 
+
+                                            modalImgs.append(storeImg);
+                                        } else{
+                                            
+                                            // 이미지가 있을 경우 예상 코드 
                                             for (let modalImgList of modalResult.storeImg){
                                                 
                                                 const storeImg = document.createElement("li");
@@ -273,7 +252,7 @@ searchBtn.addEventListener("click", () => {
 
                                                 modalImgs.append(storeImg);
                                             }
-                                        */
+                                        }
 
                                         /* 이미지 개수 마다 다르게  */
                                         const modalSliderDot = document.createElement("div");
@@ -290,8 +269,17 @@ searchBtn.addEventListener("click", () => {
 
                                         const modalMenu = document.createElement("span");
                                         modalMenu.classList.add("content-pre");
-                                        modalMenu.innerHTML = "&lt; 메뉴 설명 &gt;<br><br>"
-                                        + modalResult[0].storeInfo;
+
+                                        if( modalResult[0].storeInfo == null) {
+
+                                            modalMenu.innerHTML = "&lt; 메뉴 설명 &gt;<br><br>"
+                                            + "기존 데이터는 공공데이터포털에서 받아온 자료이므로,<br>"
+                                            + "메뉴 설명이 따로 없습니다."
+
+                                        } else {
+                                            modalMenu.innerHTML = "&lt; 메뉴 설명 &gt;<br><br>"
+                                            + modalResult[0].storeInfo;
+                                        }
 
                                         modalContent.append(title, roadAddr, landAddr, storeTel, modalSlider, modalMenu);
 
@@ -367,3 +355,15 @@ for (let mainItems of modalBtn){
         });
     }
 }
+
+/* 신규 가맹점 등록 현황 swiper */
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    freeMode: true,
+    loop: true,
+    autoplay:{
+        delay: 3000,
+        disableOnInteraction : false,
+    },
+});

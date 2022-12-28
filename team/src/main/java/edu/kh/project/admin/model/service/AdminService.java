@@ -58,6 +58,10 @@ public interface AdminService {
 
 
 
+	/** selectBox 조회
+	 * @param storeType
+	 * @return storeList
+	 */
 	List<Store> selectStoreList(String storeType);
 
 
@@ -76,6 +80,15 @@ public interface AdminService {
 	 * @return
 	 */
 	int boardWrite(Board board);
+	/** 식당 신청조회
+	 * @param checkFl
+	 * @return storeList
+	 */
+	List<Store> selectEnroll(char checkFl);
+
+
+
+	List<Board> selectBoardNotice(int boardCode);
 	
 	
 

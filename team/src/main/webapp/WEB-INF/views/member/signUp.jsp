@@ -10,6 +10,7 @@
     <title>회원가입</title>
 
     <link rel="stylesheet" href="../resources/css/member/signUp.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
 
 </head>
 <body>
@@ -58,7 +59,7 @@
                         maxlength="16" >
                     </div> 
 
-                    <span class="signUp-message" id="pwMessage">소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
+                    <span class="signUp-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
 
                     <!-- 전화번호 입력 -->
                     <label for="memberTel">
@@ -68,7 +69,7 @@
 
                     <div class="signUp-input-area">
                         <input type="text" name="memberTel" id="memberTel" placeholder="(- 없이 숫자만 입력)"
-                        maxlength="13" oninput="autoHyphen(this)" >
+                        maxlength="13" autocomplete="off" oninput="autoHyphen(this)" >
 
                         <button type="button">인증번호 받기</button>
                     </div>
@@ -116,6 +117,7 @@
         </section>
 
     </main>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
     <script>

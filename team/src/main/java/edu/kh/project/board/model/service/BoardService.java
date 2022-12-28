@@ -35,6 +35,10 @@ public interface BoardService {
 	 */
 	int QAWrite(Board board, List<MultipartFile> fileList, String webPath, String folderPath) throws IOException;
 
-	
+	/** 자유 게시판 상세조회
+	 * @param boardNo
+	 * @return
+	 */
+	List<Board> selectFreeBoardDetail(int boardNo);
 
 }

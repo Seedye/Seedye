@@ -221,7 +221,7 @@
                         </div>
                     </form>
                     <div id="btnArea">
-                        <button>신청 조회</button>
+                        <button id="enroll">신청 조회</button>
                     </div>
                     <div id="pagination-area">
                         <ul class="pagination">

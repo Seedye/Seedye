@@ -7,7 +7,7 @@
 	<id property="boardNo" column="BOARD_NO" />
 	<result property="boardTitle" column="BOARD_TITLE" />
 	<result property="boardContent" column="BOARD_CONTENT" />
-	<result property="boardCreateDate" column="CREATE_DATE" />
+	<result property="createDate" column="CREATE_DATE" />
 	<result property="boardUpdateDate" column="UPDATE_DATE" />
 	<result property="readCount" column="READ_COUNT" />
 	<result property="memberId" column="MEMBER_ID" />
@@ -170,25 +170,27 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 	FROM "MEMBER"
 </select>
 
+<!-- 회원 권한 변경 -->
 <update id="updateInfo">
 	UPDATE "MEMBER" SET
 	AUTHORITY = 3
 	WHERE MEMBER_NO = #{memberNo}
 </update>
 
-
+<!-- 회원 관리 화면 조회 -->
 <select id="selectMember" parameterType="_int" resultMap="member_rm">
 SELECT MEMBER_NO, MEMBER_ID, MEMBER_TEL, MEMBER_ADDRESS, ENROLL_DATE, AUTHORITY
 FROM "MEMBER"
 WHERE MEMBER_NO  = #{memberNo}
 </select>
 
-
+<!-- 식당 selectBox 조회 -->
 <select id="selectType" resultMap="store_rm">
   SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   FROM STORE
   WHERE STORE_NAME LIKE '%회기%'
   AND STORE_TYPE = #{storeType}
+  AND CHECK_FL = 'B'
 </select>
 
 <!-- 게시글 수정 -->
@@ -215,5 +217,21 @@ WHERE MEMBER_NO  = #{memberNo}
             #{memberNo}, #{boardCode} )
   </insert>
   
+<!-- 식당 신청 조회 -->
+<select id="selectEnroll" resultMap="store_rm">
+SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
+  FROM STORE
+  WHERE STORE_NAME LIKE '%회기%'
+  AND CHECK_FL = #{checkFl}
+</select>
+
+<select id="selectBoardNotice" resultMap="board_rm">
+SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID
+FROM BOARD
+JOIN "MEMBER" USING(MEMBER_NO)
+WHERE BOARD_CODE = #{boardCode}
+AND BOARD_DEL_FL = 'N'
+</select>
+
 
 </mapper>  

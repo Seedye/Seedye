@@ -73,6 +73,16 @@ public class BoardDAO {
 	}
 
 	
+	/** 자유 게시판 상세조회
+	 * @param boardNo
+	 * @return
+	 */
+	public List<Board> selectFreeBoardDetail(int boardNo) {
+		
+		return sqlSession.selectList("boardMapper.selectFreeBoardDetail", boardNo);
+	}
+
+	
 	
 	
 	

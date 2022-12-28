@@ -84,7 +84,7 @@ memberId.addEventListener("input", function(){
             }
         });
     } else {
-        idMessage.innerText = "영문 대/소문자, 숫자만 사용 가능합니다.";
+        idMessage.innerText = "영문과 숫자를 포함해 10~20 글자 사이로 입력해주세요.";
         idMessage.classList.add("error");
         idMessage.classList.remove("confirm");
 
@@ -104,7 +104,7 @@ memberPw.addEventListener("input", function(){
 
     // 비밀번호가 입력되지 않은 경우
     if(memberPw.value.trim().length == 0){
-        pwMessage.innerText = "소문자, 대문자, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
+        pwMessage.innerText = "영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.";
         memberPw.value = "";
         pwMessage.classList.remove("confirm", "error"); // 검정 글씨로 변환
         checkObj.memberPw = false; 
@@ -113,7 +113,7 @@ memberPw.addEventListener("input", function(){
 
     // 비밀번호 정규표현식 검사
     // const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!-|])[A-Za-z\d!-|]{8,16}$/;
-    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=-])[A-Za-z\d@$!%*?&#^)(_+=-]{8,16}$/;
+    const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=|-])[A-Za-z\d@$!%*?&#^)(_+=|-]{8,16}$/;
 
     if(regEx.test(memberPw.value)){ // 유효한 비밀번호
         checkObj.memberPw = true;
@@ -215,3 +215,21 @@ memberTel.addEventListener("input", function(){
     }
 
 });
+
+// document.getElementById("sendSMS").addEventListener("click", () => {
+
+//     const toPhone = document.getElementById("sendSMS").previousElementSibling.value;
+
+//     $.ajax({
+//         url : "/send-one",
+//         data : {"toPhone": toPhone},
+//         type : "POST",
+//         success : () => {
+//             alert("메세지 발송~");
+//         },
+//         error : () => {
+//             alert("메세지 발송 실패~");
+
+//         }
+//     });
+// });

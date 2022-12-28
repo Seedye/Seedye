@@ -105,6 +105,10 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.selectMember", memberNo);
 	}
 
+	/** 식당 selectBox 조회
+	 * @param storeType
+	 * @return storeList
+	 */
 	public List<Store> selectStoreList(String storeType) {
 		return sqlSession.selectList("adminMapper.selectType", storeType);
 	}
@@ -127,6 +131,17 @@ public class AdminDAO {
 		int result = sqlSession.insert("adminMapper.boardWrite", board);
 		
 		return result;
+	/** 식당 신청 조회
+	 * @param checkFl
+	 * @return storeList
+	 */
+	public List<Store> selectEnroll(char checkFl) {
+		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
+	}
+
+	public List<Board> selectBoardNotice(int boardCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
 	}
 
 	

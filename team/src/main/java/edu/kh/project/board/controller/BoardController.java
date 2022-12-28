@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.member.model.vo.Member;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class BoardController {
@@ -116,6 +120,22 @@ public class BoardController {
 		return "redirect:"+path;
 	}
 	
+	/** 자유 게시판 상세조회
+	 * @param boardNo
+	 * @return
+	 */
+	@PostMapping("/freeBoardDetail")
+	@ResponseBody
+	public List<Board> selectFreeBoardDetail(@RequestParam("boardNo") int boardNo) {
+		
+		List<Board> freeBoardDetail = service.selectFreeBoardDetail(boardNo);
+
+		System.out.println(boardNo);
+		System.out.println(freeBoardDetail);
+		
+		return freeBoardDetail;
+		
+	}
 	
 
 }

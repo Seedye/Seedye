@@ -10,7 +10,7 @@
   border-radius: 30px;
 
   width: 1100px;
-  height: 900px;
+  height: auto;
   margin: 50px 0;
 
  text-align: center;
@@ -121,19 +121,20 @@
 }
 
 #freeBoard-list li {
-border: 1px solid #f7f8f9;
+  border: 1px solid #f7f8f9;
 
   width: 500px;
   height: 86px;
 
   list-style: none;
   display: flex;
-  /* flex-direction: column; */
 
   justify-content: space-between;
 
   padding: 20px;
   cursor: pointer;
+
+  font-weight: bold;
 }
 
 /* #freeBoard-list li > p{
@@ -187,6 +188,8 @@ border: 1px solid #f7f8f9;
   padding-right: 30px;
   text-align: left;
 
+  overflow-y: visible;
+
 
 }
 
@@ -224,12 +227,45 @@ border: 1px solid #f7f8f9;
   width: 200px;
   height: 200px;
   margin-top: 20px;
+  /* display: flex; */
 }
 
 #freeBoard-detail-anwser{
   font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+#freeBoard-detail-anwser p{
+
+  width: 50px;
+
+}
+
+#freeBoard-detail-anwser input{
+  width: 100%;
+  border-radius: 10px;
+  height: 28px;
+  margin-left: 10px;
+  padding: 0px 10px;
+}
+
+#freeBoard-detail-anwser button{
+  margin-left: 10px;
+
+  border: 1px solid #2db420;
+  border-radius: 10px;
+  background-color: #2db420;
+
+  width: 100px;
+  height: 30px;
+  
+  color: white;
+  font-weight: bolder;
+
+  cursor: pointer;
+
 }
 
 #freeBoard-detail-anwser>p:nth-child(2){
@@ -240,13 +276,27 @@ border: 1px solid #f7f8f9;
 #freeBoard-detail-anwser-content{
   font-size: 14px;
   line-height: 22px;
-  height: 150px;
+  height: 120px;
 
+  overflow-y: scroll;
+}
+
+#freeBoard-detail-anwser-content::-webkit-scrollbar{
+  width: 3px;
+}
+
+#freeBoard-detail-anwser-content::-webkit-scrollbar-thumb{
+  height: 30%;
+  background: #2db420;
+  
+  border-radius: 5px;
 }
 
 #freeBoard-detail-btn{
   display: flex;
   justify-content: center;
+
+  margin-top: 20px;
 }
 
 #freeBoard-detail-btn > button{

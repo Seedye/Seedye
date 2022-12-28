@@ -96,6 +96,18 @@ public class AdminController {
 		return "admin/manageBoard";
 		
 	}
+	
+	@GetMapping("selectBoardNotice")
+	@ResponseBody
+	public String selectBoardNotice(int boardCode) {
+		
+		List<Board> boardNoticeList = service.selectBoardNotice(boardCode);
+		
+		return new Gson().toJson(boardNoticeList);
+		
+	}
+	
+	
 		
 	// 게시글 삭제
 	@GetMapping("/board/{boardCode}/{boardNo}/delete")
@@ -275,11 +287,21 @@ public class AdminController {
 		
 	}
 	
+	// 식당 selectBox 조회
 	@GetMapping("selectType")
 	@ResponseBody
-	public String selectType(String storeType) {
-		List<Store> storeList = service.selectStoreList(storeType);
+	public String selectTypeList(String storeType) {
+		List<Store> storeTypeList = service.selectStoreList(storeType);
 	
+		return new Gson().toJson(storeTypeList);
+	}
+	
+	// 식당관리 신청조회
+	@GetMapping("enroll")
+	@ResponseBody
+	public String selectEnroll(char checkFl) {
+		List<Store> storeList = service.selectEnroll(checkFl);
+		
 		return new Gson().toJson(storeList);
 	}
 	
