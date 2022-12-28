@@ -99,6 +99,18 @@ public interface AdminService {
 
 
 
+	/** 식당 등록
+	 * @param store
+	 * @param license
+	 * @param imageList
+	 * @param licenseImg
+	 * @param webPath
+	 * @param webPath2
+	 * @param folderPath
+	 * @param folderPath2
+	 * @return result
+	 * @throws Exception
+	 */
 	int register(Store store, License license, List<MultipartFile> imageList, MultipartFile licenseImg,
 			String webPath, String webPath2, String folderPath, String folderPath2) throws Exception;
 
