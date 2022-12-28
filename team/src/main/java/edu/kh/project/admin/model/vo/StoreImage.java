@@ -15,5 +15,7 @@ public class StoreImage {
 	private String storeImagePath;
 	private String storeImageRename;
 	private int storeImageOrder;
+	private String storeImageOriginal;
+	private int storeImageNo;
 	
 }

@@ -56,7 +56,7 @@
                         </tr>
                     </thead>
                     <tbody id="noticeTbody">
-                        <tr>
+                        <%--<tr>
                             <td>1</td>
                             <td>제목</td>
                             <td>작성자</td>
@@ -125,7 +125,7 @@
                             <td>작성자</td>
                             <td>5</td>
                             <td>2022.12.22</td>
-                        </tr>
+                        </tr>--%>
                     </tbody>
                 </table>
                 <div id="pagination-area">
@@ -164,20 +164,8 @@
 
 
     </main>
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script src="/resources/js/admin/noticeBoard.js"></script>
 
 
 </body>

@@ -3,6 +3,9 @@ package edu.kh.project.admin.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.member.model.vo.Member;
@@ -88,9 +91,32 @@ public interface AdminService {
 
 
 
+	/** 공지사항 조회
+	 * @param boardCode
+	 * @return boardList
+	 */
 	List<Board> selectBoardNotice(int boardCode);
-	
-	
+
+
+
+	/** 식당 등록
+	 * @param store
+	 * @param license
+	 * @param imageList
+	 * @param licenseImg
+	 * @param webPath
+	 * @param webPath2
+	 * @param folderPath
+	 * @param folderPath2
+	 * @return result
+	 * @throws Exception
+	 */
+	int register(Store store, License license, List<MultipartFile> imageList, MultipartFile licenseImg,
+			String webPath, String webPath2, String folderPath, String folderPath2) throws Exception;
+
+
+
+
 
 	
 	

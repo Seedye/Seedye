@@ -92,18 +92,15 @@
                             <div id="freeBoard-detail-anwser">
                                 <p>답변</p>
                                 <p>작성일</p>
-                            </div> 
+                            </div> --%>
 
-                            <div id="freeBoard-detail-anwser-content">인지하고 빠루게 수정하겠습니다 불편을 끼쳐서 죄송합니다.</div>
-                            
-                            <div id="freeBoard-detail-btn">
-                                <button id="update">수정</button>
-                                <button id="delete">삭제</button>
-                            </div>  --%>
+                          <jsp:include page="/WEB-INF/views/board/comment.jsp"/>
+
                         </div>
                     </div>
                 </div>
-                            <ul class="board-list-page-area">
+
+            <ul class="board-list-page-area">
               <li>
                 <a href="/freeBoardList/${boardCode}?cp=1${sURL}">
                   <i class="fa-solid fa-caret-left"></i>
@@ -150,10 +147,11 @@
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 
+    <script src="../../resources/js/freeBoard.js"></script>
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/header.js"></script>
-    <script src="../../resources/js/freeBoard.js"></script>
     <script src="../../resources/js/board.js"></script>
+    <%-- <script src="../../resources/js/comment.js"></script> --%>
 
 </body>
 </html>

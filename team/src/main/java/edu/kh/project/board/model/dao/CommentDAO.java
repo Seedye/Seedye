@@ -14,12 +14,12 @@ public class CommentDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-
+	// 댓글 목록 조회
 	public List<Comment> selectCommentList(int boardNo) {
 		return sqlSession.selectList("boardMapper.selectCommentList", boardNo);
 	}
 
-
+	// 댓글 등록
 	public int insertComment(Comment comment) {
 		return sqlSession.insert("commentMapper.insertComment", comment);
 	}
