@@ -272,6 +272,15 @@ public class AdminServiceImpl implements AdminService{
 			
 	}
 
+	/**
+	 * 회원 탈퇴
+	 */
+	@Override
+	public int deleteMember(int memberNo) {
+		
+		return dao.deleteMember(memberNo);
+	}
+
 
 	
 	

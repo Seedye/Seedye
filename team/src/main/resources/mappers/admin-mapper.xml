@@ -286,4 +286,13 @@ VALUES(#{storeNo}, #{licensePath}, #{licenseOriginal}, #{licenseRename})
 
 
 
+<!-- 회원 탈퇴  -->
+<update id="memberDelete">
+	UPDATE "MEMBER" SET
+	MEMBER_DEL_FL = 'Y'
+	WHERE MEMBER_NO = #{memberNo}
+</update>
+
+
+
 </mapper>  
