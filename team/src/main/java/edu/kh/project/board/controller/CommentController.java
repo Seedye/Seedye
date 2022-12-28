@@ -21,6 +21,7 @@ public class CommentController {
 	@Autowired
 	private CommentService service;
 	
+	// 댓글 목록 조회
 	@GetMapping("/list")
 		public String selectCommentList(int boardNo) {
 			List<Comment> rList = service.selectCommentList(boardNo);
