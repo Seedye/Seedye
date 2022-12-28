@@ -6,8 +6,9 @@ const newPw = document.getElementById("newPw");
 const newPwConfirm = document.getElementById("newPwConfirm");
 
 const checkObj = {
-    "newPw"        : false, /* 새 비밀번호 */
-    "newPwConfirm" : false, /* 새 비밀번호 확인 */
+    "newPw"        : true, /* 새 비밀번호 */
+    "newPwConfirm" : true, /* 새 비밀번호 확인 */
+    "confirm" : true, /* 인증번호 */
 };
 
 document.getElementById("myPage-frm").addEventListener("submit", function(event){
@@ -22,6 +23,7 @@ document.getElementById("myPage-frm").addEventListener("submit", function(event)
             switch(key){
             case "newPw"    :  str = "새 비밀번호가 유효하지 않습니다."; break; 
             case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
+            case "confirm" :  str = "전화번호 인증을 완료해주세요."; break;
         }
 
             alert(str); // 대화상자 출력
@@ -42,6 +44,9 @@ btn1.addEventListener("click", function(){
     // btn1 보이기 (display: block)
     if(pw.style.display !== 'block') {
         pw.style.display = 'block';
+
+        checkObj.newPw = false;
+        checkObj.newPwConfirm = false;
 
         // currentPw.setAttribute("required", "");
         // newPw.setAttribute("required", "");
@@ -69,7 +74,6 @@ btn1.addEventListener("click", function(){
             }
 
             // 새 비밀번호 정규표현식 검사
-            
 
             if(regEx.test(newPw.value)){
                 checkObj.newPw = true;
@@ -193,6 +197,9 @@ newPwConfirm.addEventListener("input", function(){
         currentPw.removeAttribute("required");
         newPw.removeAttribute("required");
         newPwConfirm.removeAttribute("required");
+
+        checkObj.newPw = true;
+        checkObj.newPwConfirm = true;
     }
 
 });
@@ -203,3 +210,85 @@ const autoHyphen = (target) => {
     .replace(/[^0-9]/g, '')
     .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 }
+
+// 전화번호 인증하기
+const mainTel = document.querySelector(".mainTel");
+
+// 전화번호 변경 버튼 눌렀을 때
+mainTel.lastElementChild.addEventListener("click", () => {
+
+    checkObj.confirm = false;
+    
+    const inputTel = document.querySelector("input[name=memberTel]");
+
+    let changeTel;
+    
+    // 전화번호가 읽기 전용일 때 (전화번호가 기존에 입력된 정보 일 때)
+    if(inputTel.getAttribute("readonly") == false){
+
+        
+        // 읽기 전용 속성 삭제
+        inputTel.removeAttribute("readonly");
+        
+        // 입력칸 비우고 포커스 등 스타일 변경
+        inputTel.value = "";
+        inputTel.focus();
+        mainTel.lastElementChild.innerText = "인증번호 발송";
+        mainTel.nextElementSibling.style.display = "flex";
+        
+    // 인증번호 발송 버튼을 눌렀을 때
+    } else {
+
+        const confirmTelMassege = document.getElementById("confirm");
+
+        confirmTelMassege.innerText = "인증번호를 입력해주세요.";
+        confirmTelMassege.classList.add("error");
+        confirmTelMassege.classList.remove("confirm");
+
+        confirmTelMassege.style.display = "flex";
+
+        changeTel = inputTel.value;
+
+        $.ajax({
+            url : "/info/confirmTel",
+            data : {"toPhone" : changeTel},
+            type : "POST",
+            success : (randomNumber) => {
+                
+                const confirm = document.querySelector(".confirmCheck");
+                
+                // 인증확인 버튼 눌렀을 때
+                confirm.lastElementChild.addEventListener("click", () => {
+                    
+                    const confirmCheck = document.querySelector("input[name=confirmTel]");
+
+                    if (confirmCheck.value == randomNumber){
+
+                        // 인증번호 일치 할 때
+                        checkObj.confirm = true;
+
+                        confirmTelMassege.innerText = "인증이 완료 되었습니다.";
+                        confirmTelMassege.classList.add("confirm");
+                        confirmTelMassege.classList.remove("error");
+
+                    } else {
+
+                        // 인증번호 일치하지 않을 때
+                        checkObj.confirm = false;
+
+                        confirmTelMassege.innerText = "인증번호가 일치하지 않습니다.";
+                        confirmTelMassege.classList.add("error");
+                        confirmTelMassege.classList.remove("confirm");
+                    }
+
+                });
+
+            },
+            error : () => {
+                alert("문자 인증 전송 실패");
+            }
+
+        });
+    }
+
+});
