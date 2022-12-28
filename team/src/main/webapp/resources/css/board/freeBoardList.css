@@ -310,3 +310,17 @@
   border: none;
   border-radius: 5px;
 }
+
+#contentD{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+#deleteBtn{
+  margin-right: 10px;
+  background-color: #f7f8f9;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}

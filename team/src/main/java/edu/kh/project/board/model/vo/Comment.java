@@ -16,5 +16,6 @@ public class Comment {
 	private int boardNo;
 	private int memberNo;
 	private int parentNo;
+	private String memberId;
 	
 }

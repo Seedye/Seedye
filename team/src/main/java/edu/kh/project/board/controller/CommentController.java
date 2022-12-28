@@ -33,9 +33,14 @@ public class CommentController {
 	@PostMapping("/insert")
 	public int insertComment(Comment comment/* 커맨드 객체*/) {
 		
+		System.out.println(comment);
+		
 		return service.insertComment(comment);
+		
+		
 	}
-	}		
+	
+}		
 	
 	
 
