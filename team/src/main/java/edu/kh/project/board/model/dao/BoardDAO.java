@@ -82,6 +82,18 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectFreeBoardDetail", boardNo);
 	}
 
+	/** 문의 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int DeleteQABoard(int boardNo) {
+		
+		int result= sqlSession.update("boardMapper.DeleteQABoard", boardNo);
+		
+		System.out.println(result);
+		return result;
+	}
+
 	
 	
 	
