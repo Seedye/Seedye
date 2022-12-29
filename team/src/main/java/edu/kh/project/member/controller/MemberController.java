@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MemberService;
 import edu.kh.project.member.model.vo.Member;
+import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -29,6 +30,13 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+	// coolsms 사용 시 필요
+	final DefaultMessageService messageService;
+	
+	public MemberController() {
+		this.messageService = NurigoApp.INSTANCE.initialize("NCSGKH1S9GUXAXCF", "ZOGVLRXYFLYRSETGK5QLDPKFKN1U0NC6", "https://api.coolsms.co.kr");
+	}
 	
 //	final DefaultMessageService messageService;
 //	
@@ -158,13 +166,78 @@ public class MemberController {
 		return result;
 	}
 	
+	// 전화번호 중복 검사
+	@GetMapping("/telDupCheck") // url
+	@ResponseBody // 반환된 값을 jsp 경로가 아닌 값 자체로 인식
+	public int telDupCheck(String memberTel) {
+		int result = service.telDupCheck(memberTel);
+		return result;
+	}
+	
 	//  비밀번호 찾기 페이지 이동
 	@GetMapping("/find")
 	public String findPage() {
 		return "/member/find";
+	}
+	
+	// 회원 가입 휴대전화 인증
+	@PostMapping("/signUp/phoneCheck")
+	@ResponseBody
+	public int phoneCheck(@RequestParam("toPhone") String toPhone) {
 		
+		Message sendMsg = new Message();
+		
+		sendMsg.setFrom("01055888974");
+		sendMsg.setTo(toPhone);
+		
+		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+		sendMsg.setText("새싹이 회원가입 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+		
+		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+		
+		System.out.println(randomNumber);
+		
+		return randomNumber;
 		
 	}
+	
+	
+//    @GetMapping("/signUp")
+//    @ResponseBody
+//    public int signUp(String phone, Model model) {
+//        
+//        String authKey = service.signUp(phone);
+//        
+//        if(authKey != null) {
+//            model.addAttribute("authKey", authKey);
+//            
+//            return 1;
+//        }else {
+//            return 0;
+//        }
+//    }
+//    
+//    
+//    @GetMapping("/checkAuthKey")
+//    @ResponseBody
+//    public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
+//            SessionStatus status){
+//        
+//        if(inputKey.equals(authKey)) {
+//            status.setComplete();
+//            return 1;
+//        }
+//        
+//        return 0;
+//    }	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 //	@PostMapping("/send-one")
 //	public SingleMessageSentResponse sendOne(
