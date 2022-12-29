@@ -253,6 +253,8 @@ public class AdminController {
 		
 		member = service.selectMember(memberNo);
 		
+		System.out.println(member);
+		
 		return member;
 	}
 	
@@ -364,7 +366,16 @@ public class AdminController {
 	
 	
 	// 식당 등록(조회 후 승인)
-	
+	@GetMapping("storeManage")
+	@ResponseBody
+	public Store selectStoreManage(int storeNo) {
+		
+		Store store = service.selectStoreManage(storeNo);
+		
+		System.out.println(store);
+		return store;
+		
+	}
 	
 	
 	

@@ -18,4 +18,7 @@ public class StoreImage {
 	private String storeImageOriginal;
 	private int storeImageNo;
 	
+	
+	
+	private String licensePath;
 }

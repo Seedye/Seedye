@@ -20,4 +20,8 @@ public class Member {
 	private String memberDeleteFlag; // 탈퇴여부
 	private int authority; // 권한 (2:관리자 / 1:일반 / 3: 식당 업주)
 	
+	
+	
+	private String licensePath;
+	
 }

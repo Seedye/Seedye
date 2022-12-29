@@ -18,6 +18,7 @@
 
         <div id="adminMain">
             <jsp:include page="/WEB-INF/views/common/sideBar.jsp" />
+            <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
             <!-- 식당 등록 -->
             <div id="adminR" class="admin-mainMenu">
@@ -48,21 +49,21 @@
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>업소 상호명</aside>
-                        <input type="text">
+                        <input type="text" id="storeNameArea">
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>업종</aside>
                         <select name="food" id="select">
-                            <option value="">한식</option>
-                            <option value="">중식</option>
-                            <option value="">일식</option>
-                            <option value="">양식</option>
-                            <option value="">패스트푸드</option>
-                            <option value="">일반대중음식</option>
-                            <option value="">편의점</option>
-                            <option value="">제과점</option>
-                            <option value="">정육점</option>
-                            <option value="">착한식당</option>
+                            <option value="한식">한식</option>
+                            <option value="중식">중식</option>
+                            <option value="일식">일식</option>
+                            <option value="양식">양식</option>
+                            <option value="패스트푸드">패스트푸드</option>
+                            <option value="일반대중음식">일반대중음식</option>
+                            <option value="편의점">편의점</option>
+                            <option value="제과점">제과점</option>
+                            <option value="정육점">정육점</option>
+                            <option value="착한식당">착한식당</option>
                         </select>
                     </div>
                     <div class="adminR-menu">
@@ -76,11 +77,11 @@
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>전화번호</aside>
-                        <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="">
+                        <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="" id="phoneNumberArea">
                     </div>
                     <div class="adminR-menu">
                         <aside>메뉴, 가격</aside>
-                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none"></textarea>
+                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none" id="InfoArea"></textarea>
                     </div>
                     <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
