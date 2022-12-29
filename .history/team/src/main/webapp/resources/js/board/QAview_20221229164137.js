@@ -141,10 +141,8 @@ for(let boardListViewItems of boardListView){
 
             //? 상세보기 보기 display=none
 
-
             boardWriteModal.style.display="flex";
 
-            boardWriteTitle.innerHTML="";
             // 작성 -> 수정
             // <p class="board-view-x-hidden">&times;</p>
             // <p>작성</p>
@@ -154,27 +152,16 @@ for(let boardListViewItems of boardListView){
             const writeXP = document.createElement("P");
 
             writeXHiddenP.classList.add("board-view-x-hidden");
-            writeXHiddenP.innerHTML='&times;';
+            writeXHiddenP.innerText='&times;';
             writeTittleP.innerText="문의 수정";
             writeXP.classList.add("board-view-x");
-            writeXP.setAttribute("id", "boardWriteUpdateX");
-            writeXP.innerHTML='&times;';
+            writeXP.setAttribute("id", "boardWriteX");
+            writeXHiddenP.innerText='&times;';
 
             // 합치기
             boardWriteTitle.append(writeXHiddenP, writeTittleP,writeXP);
             
-            // 수정중 X 누를때
-            writeXP.addEventListener("click", ()=>{
-              boardWriteModal.style.display="none";
-            });
 
-            // 수정될 제목
-            boardTitle.innerHTML=QABoardDetail[0].boardTitle;
-            boardContent.innerText=QABoardDetail[0].boardContent;
-
-
-            //TODO : 이미지 불러오기 / 저장된 이미지
-            
           });
           boardUpDel.append(boardDelete, boardUpdate);
           

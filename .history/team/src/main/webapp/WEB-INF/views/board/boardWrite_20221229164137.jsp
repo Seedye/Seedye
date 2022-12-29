@@ -15,8 +15,7 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
-          </textarea>
+          <input id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
           <!-- <p> ]</p> -->
       </div>
 

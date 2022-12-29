@@ -5,7 +5,7 @@
   <form action="/QAWrite/4" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
     <div class="board-view-area">
       <!-- /* 상세보기 */ -->
-      <div class="board-view-title" id="boardWriteTitle">
+      <div class="board-view-title">
         <p class="board-view-x-hidden">&times;</p>
         <p>작성</p>
         <p class="board-view-x" id="boardWriteX">&times;</p>
@@ -15,8 +15,7 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
-          </textarea>
+          <input id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
           <!-- <p> ]</p> -->
       </div>
 

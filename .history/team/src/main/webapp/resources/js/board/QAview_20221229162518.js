@@ -135,46 +135,10 @@ for(let boardListViewItems of boardListView){
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";
 
-          const boardWriteTitle = document.getElementById("boardWriteTitle");
-          // !게시물 수정
+          // ?게시물 수정
           boardUpdate.addEventListener("click", ()=>{
-
-            //? 상세보기 보기 display=none
-
-
-            boardWriteModal.style.display="flex";
-
-            boardWriteTitle.innerHTML="";
-            // 작성 -> 수정
-            // <p class="board-view-x-hidden">&times;</p>
-            // <p>작성</p>
-            // <p class="board-view-x" id="boardWriteX">&times;</p>
-            const writeXHiddenP = document.createElement("P");
-            const writeTittleP = document.createElement("P");
-            const writeXP = document.createElement("P");
-
-            writeXHiddenP.classList.add("board-view-x-hidden");
-            writeXHiddenP.innerHTML='&times;';
-            writeTittleP.innerText="문의 수정";
-            writeXP.classList.add("board-view-x");
-            writeXP.setAttribute("id", "boardWriteUpdateX");
-            writeXP.innerHTML='&times;';
-
-            // 합치기
-            boardWriteTitle.append(writeXHiddenP, writeTittleP,writeXP);
             
-            // 수정중 X 누를때
-            writeXP.addEventListener("click", ()=>{
-              boardWriteModal.style.display="none";
-            });
-
-            // 수정될 제목
-            boardTitle.innerHTML=QABoardDetail[0].boardTitle;
-            boardContent.innerText=QABoardDetail[0].boardContent;
-
-
-            //TODO : 이미지 불러오기 / 저장된 이미지
-            
+            boardWriteBtn.style.display="flex";
           });
           boardUpDel.append(boardDelete, boardUpdate);
           

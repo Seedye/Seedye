@@ -168,13 +168,6 @@ for(let boardListViewItems of boardListView){
               boardWriteModal.style.display="none";
             });
 
-            // 수정될 제목
-            boardTitle.innerHTML=QABoardDetail[0].boardTitle;
-            boardContent.innerText=QABoardDetail[0].boardContent;
-
-
-            //TODO : 이미지 불러오기 / 저장된 이미지
-            
           });
           boardUpDel.append(boardDelete, boardUpdate);
           

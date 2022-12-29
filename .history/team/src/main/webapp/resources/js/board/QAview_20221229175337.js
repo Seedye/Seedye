@@ -172,8 +172,6 @@ for(let boardListViewItems of boardListView){
             boardTitle.innerHTML=QABoardDetail[0].boardTitle;
             boardContent.innerText=QABoardDetail[0].boardContent;
 
-
-            //TODO : 이미지 불러오기 / 저장된 이미지
             
           });
           boardUpDel.append(boardDelete, boardUpdate);

@@ -37,7 +37,6 @@ inputFilearea1.addEventListener("change", (e) => {
     
     // 선택파일 4개라면
     if(filesLength > 4){
-      alert("사진 첨부는 4개까지 가능합니다.")
       fileInputNum = 4;
     }else{
       fileInputNum = e.target.files.length;
@@ -198,9 +197,7 @@ boardWriteX.addEventListener("click", () => {
   document.body.style.overflow = "unset";
   boardTitle.value = null;
   boardContent.value = null;
-  boardViewContentImgArea.innerHTML = "";
-  inputFilearea1.innerHTML="";
-  boardViewContentImgArea.innerText ="";
+  inputFilearea1.innerHTML = null;
   console.log("취소눌림");
 });
 
