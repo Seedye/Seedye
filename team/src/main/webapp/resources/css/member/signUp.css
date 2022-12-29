@@ -209,3 +209,7 @@ input[type=password]{
     margin-top: 30px;
     display: none;
 }
+
+#timer{
+    margin-right: 10px;
+}

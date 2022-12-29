@@ -72,7 +72,7 @@
                         maxlength="13" autocomplete="off" >
                         <%-- oninput="autoHyphen(this)" 오토하이픈 --%>
 
-                        <button type="button">인증번호 받기</button>
+                        <button id="sendAuthKeyBtn" type="button" disabled >인증번호 받기</button>
                     </div>
 
                     <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.</span>   
@@ -87,6 +87,8 @@
                         <div class="signUp-input-area confirmCheck">
                             <input type="text" name="phoneCheck" id="phoneCheck" placeholder="인증번호 입력"
                             maxlength="4" autocomplete="off" >
+
+                            <span id="timer"></span>
 
                             <button id="checkAuthKeyBtn" type="button">인증하기</button>
                         </div>
