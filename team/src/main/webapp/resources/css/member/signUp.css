@@ -204,3 +204,12 @@ input[type=password]{
 #signUp-btn:active{
     transform: scale(0.95); /* 마우스 클릭 시 95% 작아지게*/
 }
+
+.phoneConfirmBox{
+    margin-top: 30px;
+    display: none;
+}
+
+#timer{
+    margin-right: 10px;
+}

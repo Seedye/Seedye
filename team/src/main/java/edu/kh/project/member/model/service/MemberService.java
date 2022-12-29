@@ -19,8 +19,15 @@ public interface MemberService{
 	
 	/** 아이디 중복 검사 서비스
 	 * @param memberId
-	 * @return
+	 * @return result
 	 */
 	int idDupCheck(String memberId);
+
+	
+	/** 전화번호 중복 검사 서비스
+	 * @param memberTel
+	 * @return result
+	 */
+	int telDupCheck(String memberTel);
 
 }

@@ -69,7 +69,7 @@
                     <div class="myPage-row tel mainTel">
                         <label>전화번호</label>
                         <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
-                        <button type="button">전화번호 변경</button>
+                        <button type="button" class="aaa">전화번호 변경</button>
                     </div>
                     <div class="confirm">
                         <div class="myPage-row tel confirmCheck">
