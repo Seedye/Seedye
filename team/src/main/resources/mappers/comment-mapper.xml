@@ -8,7 +8,21 @@
 			SEQ_COMMENT_NO.NEXTVAL,
 			#{commentContent}, DEFAULT,DEFAULT,
 			#{boardNo}, #{memberNo},NULL )
-	</insert>
+		</insert>
+		
+		<!-- 댓글 삭제 -->
+		<update id="deleteComment">
+			UPDATE "COMMENT" SET
+			COMMENT_DEL_FL = 'Y'
+			WHERE COMMENT_NO = #{commentNo}
+		</update>
+		
+		<!-- 댓글 수정 -->
+		<update id="updateComment">
+			UPDATE "COMMENT" SET
+			COMMENT_CONTENT = #{commentContent}
+			WHERE COMMENT_NO = #{commentNo}
+		</update>
 	
 	
 </mapper>
