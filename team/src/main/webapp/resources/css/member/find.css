@@ -60,6 +60,8 @@ body{
     font-size: 18px;
     font-weight: bold;
     color : #33333f;
+
+    margin-top: 10px;
 }
 
 /* .find-content {
@@ -78,7 +80,7 @@ body{
     border: none;
     border-bottom: 2px solid #e7e437;
     width: 100%;
-    padding: 10px 10px;
+    padding: 10px 10px 0 10px;
     font-size: 15px;
 }
 
@@ -89,35 +91,47 @@ body{
     justify-content: center;
     align-items: center;
     border: none;
+
+    height: 50px;
+}
+
+.find-row button, .confirm-box button{
+    width: 30%; /* 나머지 너비의 30% */
+    height: 70%; /* 나머지 높이이 70% */
+    background-color: white; /* 버튼 배경 하얀색 */
+    border: 2px solid #33332f; /* 버튼 테두리 회색 */
+    cursor: pointer; /* 마우스 가져다대면 손가락 가리키는 모양 */
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .find-row:focus-within{
     border: none;
 }
 
-.icon {
-    width: 25px;
-    height: 20px;
-    color: #e7e437;
-}
-
-
 .find-wrap input {
-    width: 342px;
+    width: 50%;
     height: 19px;
     padding-right: 30px;
     border: none;
+
+    font-size: 20px;
+    text-align: center;
 }
 
 .find-wrap input:focus {
     outline:none;
 }
+
 .findMessage{
     font-size: 14px; /* 글자 크기 14px */
     letter-spacing: -1px; /* 작고 촘촘하게 */
     color : #33333f;
     text-align: center;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 
@@ -166,4 +180,64 @@ a, span {
 
 .login-page{
     padding: 0px 0px 20px 0px;
+}
+
+/* 아이디 비밀번호 찾기 버튼 */
+.pwChangeBox{
+    margin-top: 30px;
+}
+
+.confirm-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+    height: 50px;
+}
+
+/* 새로 화면 나오는 박스 스타일 */
+.new-box{
+    justify-content: space-between;
+    margin-right: 30px;
+}
+
+.new-box input{
+    text-align: start;
+    width: 70%;
+    height: 100%;
+}
+
+.font-text{
+    color: rgb(133, 34, 34);
+    font-weight: bold;
+}
+
+input[type=password]{
+    font-family: "굴림";
+}
+
+::placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+:-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+::-ms-input-placeholder{
+    font-family: NIXGONM-Vb, sans-serif;
+}
+
+.memberInfo{
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 첫화면 요소 숨기기 */
+.confirmTelBox, .memberInfo, .readonlyBox, .newPwBox, .newConfirmPwBox, .pwChangeBox, .formBtn{
+    display: none;
 }

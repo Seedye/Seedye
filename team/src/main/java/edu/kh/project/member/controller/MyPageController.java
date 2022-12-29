@@ -1,9 +1,13 @@
 package edu.kh.project.member.controller;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -174,12 +178,50 @@ public class MyPageController {
       
       this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
       
-      System.out.println(randomNumber);
-      
       return randomNumber;
 	}
 	
+	// 아이디 비밀번호 찾기 화면에서 인증 완료 시 휴대폰 번호로 맴버 조회
+	@PostMapping("/find/findConfirm")
+	@ResponseBody
+	public String findConfirm(
+			@RequestParam("toPhone") String toPhone,
+			HttpSession session
+			) {
+		
+		Message sendMsg = new Message();
+	      
+		sendMsg.setFrom("01055888974");
+		sendMsg.setTo(toPhone);
+      
+		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+      
+		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+		
+		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
+		
+		session.setAttribute("randomNumber", randomNumber);
+		
+		return selectPhoneMemberId;
+	}
 	
+	@PostMapping("/find/confirmCheck")
+	@ResponseBody
+	public int confirmCheck(
+			@RequestParam("inputConfirmNo") int inputConfirmNo,
+			HttpSession session) {
+		
+		int confirmNo = (int)session.getAttribute("randomNumber");
+		
+		if (confirmNo == inputConfirmNo) {
+			session.removeAttribute("randomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
+	}
 	
 	
 	
