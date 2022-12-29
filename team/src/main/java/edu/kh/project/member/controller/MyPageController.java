@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MyPageService;
 import edu.kh.project.member.model.vo.Member;
-//import net.nurigo.java_sdk.Coolsms;
+import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
