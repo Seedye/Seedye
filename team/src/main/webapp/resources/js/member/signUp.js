@@ -20,7 +20,7 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
             case "memberPw"    :  str = "비밀번호가 유효하지 않습니다."; break; 
             case "memberPwConfirm" :  str = "비밀번호 확인이 유효하지 않습니다."; break;
             case "memberTel" : str = "전화번호가 유효하지 않습니다."; break;
-            case "phoneCheck" : str = "인증이 완료되지 않았습니다."; break;
+            case "phoneCheck" : str = "전화번호 인증이 완료되지 않았습니다."; break;
         }
 
             alert(str); // 대화상자 출력
@@ -233,3 +233,69 @@ memberTel.addEventListener("input", function(){
 //         }
 //     });
 // });
+
+// 전화번호 인증 번호 전송
+const mainTel = document.querySelector(".mainTel");
+const phoneConfirmBox = document.querySelector(".phoneConfirmBox");
+
+// 인증번호 받기 버튼 눌렀을 때
+mainTel.lastElementChild.addEventListener("click", () => {
+
+    checkObj.phoneCheck = false;
+
+    const inputTel = document.querySelector("input[name=memberTel]");
+
+    let changeTel;
+
+    phoneConfirmBox.style.display = "block";
+
+    const authKeyMessage = document.getElementById("authKeyMessage");
+    
+    authKeyMessage.innerText = "인증번호를 입력해주세요.";
+    authKeyMessage.classList.add("error");
+    authKeyMessage.classList.remove("confirm");
+
+    // authKeyMessage.style.display = "block";
+
+    changeTel = inputTel.value;
+
+    $.ajax({
+        url : "/signUp/phoneCheck",
+        data : {"toPhone" : changeTel},
+        type : "POST",
+        success : (randomNumber) => {
+
+            const confirmCheck = document.querySelector(".confirmCheck");
+
+            // 인증확인 버튼 눌렀을 때
+            confirmCheck.lastElementChild.addEventListener("click", () => {
+
+                const phoneCheck = document.querySelector("input[name=phoneCheck]");
+
+                if (phoneCheck.value == randomNumber){
+
+                    // 인증번호 일치 할 때
+                    checkObj.phoneCheck = true;
+
+                    authKeyMessage.innerText = "인증이 완료 되었습니다.";
+                    authKeyMessage.classList.add("confirm");
+                    authKeyMessage.classList.remove("error");
+                
+                } else {
+                    checkObj.phoneCheck = false;
+
+                    authKeyMessage.innerText = "인증번호가 일치하지 않습니다.";
+                    authKeyMessage.classList.add("error");
+                    authKeyMessage.classList.remove("confirm");
+
+                }
+
+            });
+        },
+        error : () => {
+            alert("인증 전송 실패");
+        }
+
+    });
+
+});
