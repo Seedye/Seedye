@@ -37,7 +37,20 @@ public class CommentController {
 		
 		return service.insertComment(comment);
 		
+	}
+	
+	// 댓글 삭제
+	@GetMapping("/delete")
+	public int deleteComment(int commentNo) {
 		
+		return service.deleteComment(commentNo);
+	}
+	
+	// 댓글 수정
+	@PostMapping("/update")
+	public int updateComment(Comment comment) {
+		
+		return service.updateComment(comment);
 	}
 	
 }		

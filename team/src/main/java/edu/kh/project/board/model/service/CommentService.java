@@ -12,6 +12,12 @@ public interface CommentService {
 	// 댓글 등록
 	int insertComment(Comment comment);
 
+	// 댓글 삭제
+	int deleteComment(int commentNo);
+
+	// 댓글 수정
+	int updateComment(Comment comment);
+
 	
 
 
