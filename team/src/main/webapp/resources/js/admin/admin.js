@@ -126,10 +126,77 @@ function selectStoreList(){
                 tr.append(td1, td2, td3, td4, td5, td6, td7);
 
                 tbody.append(tr);
-
-             
+                
+                
             }
             
+            // 관리하기 버튼 클릭
+            const storeManage = document.getElementsByClassName("store-manage");
+            
+            for(i=0; i<storeManage.length; i++){
+                
+                
+                storeManage[i].addEventListener("click", (e)=>{
+                // 선택한 관리 버튼
+                let dv = e.currentTarget;
+
+                // 선택한 관리버튼의 식당번호
+                tempNo = dv.parentNode.parentNode.children[0].innerText;
+                                  
+                storeManageMain.style.display = "none";
+                adminR.style.display = "flex";
+            
+
+                    $.ajax({
+                        url:"/admin/storeManage",
+                        data: {"storeNo" : tempNo},
+                        success:(store)=>{
+                         
+                          const preview = document.getElementsByClassName("preview");
+                          
+                          const storeNameArea = document.getElementById("storeNameArea");
+
+                          const select = document.getElementById("select");
+                          const roadAddressArea = document.getElementById("sample4_roadAddress");
+                          const landAddressArea = document.getElementById("sample4_jibunAddress");
+                          const phoneNumberArea = document.getElementById("phoneNumberArea");
+                          const infoArea = document.getElementById("infoArea");
+
+                        
+
+                          storeNameArea.setAttribute('value', store.storeName);
+
+                          if(storeType = '한식'){ select.setAttribute('selected', '한식')}
+                          else if(storeType = '일식'){select.setAttribute('selected', '일식')}
+                          else if(storeType = '중식'){select.setAttribute('selected', '중식')}
+                          else if(storeType = '양식'){select.setAttribute('selected', '양식')}
+                          else if(storeType = '패스트푸드'){select.setAttribute('selected', '패스트푸드')}
+                          else if(storeType = '일반대중음식'){select.setAttribute('selected', '일반대중음식')}
+                          else if(storeType = '편의점'){select.setAttribute('selected', '편의점')}
+                          else if(storeType = '제과점'){select.setAttribute('selected', '제과점')}
+                          else if(storeType = '양식점'){select.setAttribute('selected', '양식점')}
+                          else{select.setAttribute('selected', '착한식당')}
+
+
+                          roadAddressArea.value=store.roadnameAddress;
+                        landAddressArea.setAttribute('value', store.landnumberAddress);
+                        phoneNumberArea.setAttribute('value', store.storeTel);
+                          
+                        //   if(storeInfo != undefined){
+                        //     infoArea.setAttribute('value', store.storeInfo);
+                        //   }
+
+
+
+                          
+                            
+                            
+                        }
+                    })
+            
+            
+                });
+            }
         },
         error : ()=>{
             console.log("실패")
@@ -218,12 +285,12 @@ selectBox.addEventListener("change", ()=>{
     })
 });
 
-
+// 신청 조회
 const enroll = document.getElementById("enroll");
 enroll.addEventListener("click", ()=>{
     $.ajax({
         url:"/admin/enroll",
-        data:{"checkFl" : 'C'},
+        data:{"checkFl" : 'N'},
         success : (storeList)=>{
             console.log(storeList);
 
@@ -267,19 +334,3 @@ enroll.addEventListener("click", ()=>{
     })
 
 });
-
-const storeManage = document.getElementById("store-manage");
-
-for(i=0; i<storeManage.length; i++){
-    storeManage[i].addEventListener("click", (e)=>{
-
-        let tempNo = e.cur
-
-        $.ajax({
-            url:"/admin/selectEnroll",
-            data:""
-        })
-
-
-    })
-

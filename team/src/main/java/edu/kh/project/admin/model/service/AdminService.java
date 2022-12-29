@@ -124,6 +124,10 @@ public interface AdminService {
 
 
 
+	Store selectStoreManage(int storeNo);
+
+
+
 
 
 	

@@ -116,6 +116,7 @@
     width: 50%;
     border-radius: 10%;
     cursor: pointer;
+    min-height: 18px;
 }
 
 #memberManage{
