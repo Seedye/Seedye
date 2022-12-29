@@ -20,6 +20,9 @@ public class Board {
 	private int memberNo; // 회원 번호
 	private int readCount; // 조회수
 	private String memberId; // 멤버 아이디
+	private String commentContent;
+	private String commentCreateDate;
+
 	
 	
 	// 이미지 목록
