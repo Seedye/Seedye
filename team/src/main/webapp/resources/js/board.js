@@ -13,7 +13,9 @@ const inputFilearea1 = document.getElementById("inputFilearea1"); // 업로드�
 // const inputFile4 = document.getElementById("inputFile4");
 
 // 파일 추가해줄 큰 영역
-const boardViewContentImgArea = document.getElementById("boardViewContentImgArea");
+const boardViewContentImgArea = document.getElementById(
+  "boardViewContentImgArea"
+);
 
 const imgDelete = document.getElementsByClassName("board-Write-img-delete"); // 파일 지우기
 
@@ -34,12 +36,11 @@ inputFilearea1.addEventListener("change", (e) => {
     // 첫번재 선택된 파일 갯수
     let filesLength = parseInt(e.target.files.length);
 
-    
     // 선택파일 4개라면
-    if(filesLength > 4){
-      alert("사진 첨부는 4개까지 가능합니다.")
+    if (filesLength > 4) {
+      alert("사진 첨부는 4개까지 가능합니다.");
       fileInputNum = 4;
-    }else{
+    } else {
       fileInputNum = e.target.files.length;
     }
     console.log("선택한 파일 갯수 : " + filesLength);
@@ -177,7 +178,7 @@ boardWriteBtn.addEventListener("click", () => {
   imgAreaDiv.setAttribute("id", "boardViewContentImgArea");
   inputFileLabel.setAttribute("for", "inputFile1");
   inputFileLabel.setAttribute("class", "fa-solid fa-plus fa-3x");
-  inputFileTextP.innerText= "업로드할 사진을 선택해 주세요";
+  inputFileTextP.innerText = "업로드할 사진을 선택해 주세요";
   inputFileTextP.classList.add("inputFileTextP");
   inputFileInput.setAttribute("type", "file");
   inputFileInput.setAttribute("name", "inputFile");
@@ -199,8 +200,8 @@ boardWriteX.addEventListener("click", () => {
   boardTitle.value = null;
   boardContent.value = null;
   boardViewContentImgArea.innerHTML = "";
-  inputFilearea1.innerHTML="";
-  boardViewContentImgArea.innerText ="";
+  inputFilearea1.innerHTML = "";
+  boardViewContentImgArea.innerText = "";
   console.log("취소눌림");
 });
 

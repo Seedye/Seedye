@@ -145,4 +145,12 @@
 	</update>
 	
 	
+	<!-- 문의 게시글 수정 -->
+	<update id="updateAQBoard">
+		UPDATE BOARD SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
 </mapper>

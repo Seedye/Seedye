@@ -94,6 +94,15 @@ public class BoardDAO {
 		return result;
 	}
 
+	/**문의 게시글 수정
+	 * @param board
+	 * @param boardNo 
+	 * @return
+	 */
+	public int updateAQBoard(Board board) {
+		return sqlSession.update("boardMapper.updateAQBoard", board);
+	}
+
 	
 	
 	

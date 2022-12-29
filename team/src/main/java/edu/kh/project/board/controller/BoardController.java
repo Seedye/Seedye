@@ -161,20 +161,23 @@ public class BoardController {
 	@ResponseBody
 	public int DeleteQABoard(@RequestParam("boardNo")int boardNo) {
 		
-//		int result = service.DeleteQABoard(boardNo);
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			path="/board/boardList";
-//		}else {
-//			path="/board/boardList";
-//		}
-		
 		System.out.println(boardNo);
 //		
 		int result = service.DeleteQABoard(boardNo);
 		return result;
+	}
+	
+	/** 문의 게시글 업데이트
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/QABoardUpdate")
+	@ResponseBody
+	public int updateAQBoard(@RequestParam("boardNo")int boardNo, Board board) {
+		
+		board.setBoardNo(boardNo);
+		System.out.println(board);
+		return service.updateAQBoard(board);
 	}
 	
 

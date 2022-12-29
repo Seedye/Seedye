@@ -47,4 +47,11 @@ public interface BoardService {
 	 */
 	int DeleteQABoard(int boardNo);
 
+	/** 문의 게시글 수정
+	 * @param boardNo
+	 * @param board
+	 * @return
+	 */
+	int updateAQBoard(Board board);
+
 }
