@@ -135,7 +135,7 @@ function selectStoreList(){
             
             for(i=0; i<storeManage.length; i++){
                 
-                
+
                 storeManage[i].addEventListener("click", (e)=>{
                 // 선택한 관리 버튼
                 let dv = e.currentTarget;
@@ -147,40 +147,36 @@ function selectStoreList(){
                 adminR.style.display = "flex";
             
 
+
                     $.ajax({
                         url:"/admin/storeManage",
                         data: {"storeNo" : tempNo},
-                        success:(store)=>{
+                        success:(storeList)=>{
                          
-                          const preview = document.getElementsByClassName("preview");
-                          
-                          const storeNameArea = document.getElementById("storeNameArea");
-
-                          const select = document.getElementById("select");
-                          const roadAddressArea = document.getElementById("sample4_roadAddress");
-                          const landAddressArea = document.getElementById("sample4_jibunAddress");
-                          const phoneNumberArea = document.getElementById("phoneNumberArea");
-                          const infoArea = document.getElementById("infoArea");
+                            console.log(store);
+                            const preview = document.getElementsByClassName("preview");
+                            
+                            const storeNameArea = document.getElementById("storeNameArea");
+  
+                            const select = document.getElementById("select");
+                            const phoneNumberArea = document.getElementById("phoneNumberArea");
+                            const infoArea = document.getElementById("infoArea");
+                            
+                            
+                            console.log(store.roadnameAddress);
+                            
 
                         
 
                           storeNameArea.setAttribute('value', store.storeName);
+                            document.getElementById("sample4_roadAddress").value = store.roadnameAddress;
+                            document.getElementById("sample4_jibunAddress").value = store.landnumberAddress;
 
-                          if(storeType = '한식'){ select.setAttribute('selected', '한식')}
-                          else if(storeType = '일식'){select.setAttribute('selected', '일식')}
-                          else if(storeType = '중식'){select.setAttribute('selected', '중식')}
-                          else if(storeType = '양식'){select.setAttribute('selected', '양식')}
-                          else if(storeType = '패스트푸드'){select.setAttribute('selected', '패스트푸드')}
-                          else if(storeType = '일반대중음식'){select.setAttribute('selected', '일반대중음식')}
-                          else if(storeType = '편의점'){select.setAttribute('selected', '편의점')}
-                          else if(storeType = '제과점'){select.setAttribute('selected', '제과점')}
-                          else if(storeType = '양식점'){select.setAttribute('selected', '양식점')}
-                          else{select.setAttribute('selected', '착한식당')}
+                          phoneNumberArea.setAttribute('value', store.storeTel);
+
+                          console.log(store.storeType);
 
 
-                          roadAddressArea.value=store.roadnameAddress;
-                        landAddressArea.setAttribute('value', store.landnumberAddress);
-                        phoneNumberArea.setAttribute('value', store.storeTel);
                           
                         //   if(storeInfo != undefined){
                         //     infoArea.setAttribute('value', store.storeInfo);

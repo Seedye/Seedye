@@ -282,9 +282,15 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
+	public List<StoreImage> selectStoreManageImg(int storeNo) {
+		return dao.selectStoreManageImg(storeNo);
+	}
+
+	@Override
 	public Store selectStoreManage(int storeNo) {
 		return dao.selectStoreManage(storeNo);
 	}
+
 
 
 	

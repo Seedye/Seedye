@@ -29,4 +29,7 @@ public class Store {
 	private List<StoreImage> storeImgList;
 	
 	private List<StoreImage> imageList;
+	
+	private String licensePath;
+	private String allPath;
 }

@@ -1,6 +1,7 @@
 package edu.kh.project.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ import com.google.gson.Gson;
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
@@ -370,10 +372,19 @@ public class AdminController {
 	@ResponseBody
 	public Store selectStoreManage(int storeNo) {
 		
-		Store store = service.selectStoreManage(storeNo);
 		
+		Store store = service.selectStoreManage(storeNo);
+
 		System.out.println(store);
+		
+		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
+		
+		System.out.println(storeList);
+		
+		
+		
 		return store;
+		
 		
 	}
 	

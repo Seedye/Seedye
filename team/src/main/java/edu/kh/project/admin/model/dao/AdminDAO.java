@@ -207,9 +207,22 @@ public class AdminDAO {
 		return sqlSession.update("adminMapper.memberDelete", memberNo);
 	}
 
-	public Store selectStoreManage(int storeNo) {
-		return sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
+	public List<StoreImage> selectStoreManageImg(int storeNo) {
+		List<StoreImage> storeList = sqlSession.selectList("adminMapper.selectImageList", storeNo);
+		
+		System.out.println(storeList);
+		
+		return storeList;
 	}
+
+	public Store selectStoreManage(int storeNo) {
+		Store store = sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
+		
+		System.out.println(store);
+		
+		return store;
+	}
+
 
 	
 
