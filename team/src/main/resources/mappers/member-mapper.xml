@@ -43,25 +43,19 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
-	<!-- 이메일 중복 검사 -->
+	<!-- 아이디 중복 검사 -->
 	<select id="idDupCheck" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM "MEMBER"
 		WHERE MEMBER_ID = #{memberId}
 		AND MEMBER_DEL_FL = 'N'
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!-- 전화번호 중복 검사 -->
+	<select id="telDupCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_TEL = ${memberTel}
+		AND MEMBER_DEL_FL = 'N'
+	</select>	
 	
 	<!-- 암호화된 비밀번호 조회 -->
 	<select id="selectEncPw" parameterType="_int" resultType="string">

@@ -1,5 +1,6 @@
 package edu.kh.project.member.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -35,6 +36,15 @@ public class MyPageDAO {
 
 	public String selectEncPw(int memberNo) {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
+	}
+
+
+	/** 휴대폰 번호로 맴버 아이디 조회
+	 * @param toPhone
+	 * @return memberId
+	 */
+	public String selectPhoneMemberId(String toPhone) {
+		return sqlSession.selectOne("myPageMapper.selectPhoneMemberId", toPhone);
 	}
 
 }

@@ -51,6 +51,12 @@ public class MyPageServiceImpl implements MyPageService{
 		return 0;
 	}
 
+	// 휴대폰 번호로 맴버 아이디 조회
+	@Override
+	public String selectPhoneMemberId(String toPhone) {
+		return dao.selectPhoneMemberId(toPhone);
+	}
+
 
 	// 회원 탈퇴 서비스
 //	@Transactional

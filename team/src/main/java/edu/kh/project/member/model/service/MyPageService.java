@@ -19,6 +19,12 @@ public interface MyPageService {
 	 */
 	int updateAllInfo(Member inputMember, Map<String, Object> paramMap);
 
+	/** 휴대폰 번호로 맴버 조회
+	 * @param toPhone
+	 * @return selectPhoneMemberId
+	 */
+	String selectPhoneMemberId(String toPhone);
+
 	/** 회원 탈퇴 서비스
 	 * @param memberNo
 	 * @param memberPw
