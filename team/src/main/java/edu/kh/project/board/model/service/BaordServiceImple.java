@@ -118,6 +118,13 @@ public class BaordServiceImple implements BoardService {
 	}
 
 	
+	// 문의 게시글 삭제
+	@Override
+	public int DeleteQABoard(int boardNo) {
+		return dao.DeleteQABoard(boardNo);
+	}
+
+	
 	
 	
 

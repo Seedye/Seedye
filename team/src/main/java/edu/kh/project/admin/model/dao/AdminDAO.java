@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +34,7 @@ public class AdminDAO {
 	
 		return sqlSession.selectOne("adminMapper.getListCount", pm);
 	}
-
+	
 	/** 특정 게시판 목록 조회
 	 * @param pagination
 	 * @param boardCode
@@ -104,7 +103,17 @@ public class AdminDAO {
 	 * @return member
 	 */
 	public Member selectMember(int memberNo) {
-		return sqlSession.selectOne("adminMapper.selectMember", memberNo);
+		
+		// 사업자 등록증 이미지 조회
+		String result = sqlSession.selectOne("adminMapper.selectLicense", memberNo);
+		
+		// 회원 정보 조회
+		Member member = sqlSession.selectOne("adminMapper.selectMember", memberNo);
+		
+		// 사업자 등록증 경로 
+		member.setLicensePath(result);
+		
+		return member;
 	}
 
 	/** 식당 selectBox 조회
@@ -183,6 +192,9 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int insertStoreImageList(List<StoreImage> storeImageList) {
+		
+		System.out.println(storeImageList);
+		
 		return sqlSession.insert("adminMapper.insertStoreImageList", storeImageList);
 	}
 
@@ -193,6 +205,10 @@ public class AdminDAO {
 	public int deleteMember(int memberNo) {
 		
 		return sqlSession.update("adminMapper.memberDelete", memberNo);
+	}
+
+	public Store selectStoreManage(int storeNo) {
+		return sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
 	}
 
 	

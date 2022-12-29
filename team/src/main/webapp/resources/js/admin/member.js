@@ -17,6 +17,8 @@ const memberTel = document.getElementById("memberId");
 const roadNameAddress = document.getElementById("memberId");
 const enrollDate = document.getElementById("memberId");
 const authority = document.getElementById("authority");
+const licenseView = document.getElementById("licenseView");
+
 
 let tempNo = [];
 
@@ -65,6 +67,8 @@ function selectMemberList(){
                 const td6 = document.createElement("td");
                 if(member.memberDeleteFlag == 'Y'){
                     td6.innerText = "탈퇴 회원"
+                    td6.style.color="red";
+                    td6.style.fontWeight = "bold";
                 } else{
                     td6.innerText = "회원"
                 }
@@ -126,6 +130,11 @@ function selectMemberList(){
                                 if(member.authority == 3){
                                     authority.innerText = "식당 업주"
                                 }
+
+                                if(member.licensePath != null){
+                                    licenseView.setAttribute("src", member.licensePath);
+                                }
+                                
 
                                 adminMember.style.display = "none";
                                 memberManage.style.display = "flex";

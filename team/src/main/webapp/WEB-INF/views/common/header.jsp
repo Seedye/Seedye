@@ -34,9 +34,9 @@
                     <li><a href="/boardList/4">커뮤니티</a></li>
                     <li><a href="javascript:void(0);" id="inquiry">식당 등록 문의</a></li>
                     <li><a href="/support">후원</a></li>
-                    <!-- <c:if test="${loginMember.authority == 2}"> -->
-                    <li><a href="/admin/manageBoard">관리자</a></li>
-                    <!-- </c:if> -->
+                    <c:if test="${loginMember.authority == 2}">
+                    <li><a href="/admin/manageStore">관리자</a></li>
+                    </c:if>
 
                 </ul>
             </nav>

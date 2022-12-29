@@ -234,18 +234,18 @@ public class AdminServiceImpl implements AdminService{
 					
 					img.setStoreImageOrder(i);
 					
-					System.out.println(img);
 					storeImageList.add(img);
 				}
 				
-				System.out.println(storeImageList);
 								
 				if(!storeImageList.isEmpty()) {
 					storeNo = result;
 					
-					System.out.println(storeImageList);
 					
 					int result2 = dao.insertStoreImageList(storeImageList);
+					
+					System.out.println(result2);
+					
 					if(result2 == storeImageList.size()) {
 						for(int i=0; i<storeImageList.size(); i++) {
 							
@@ -279,6 +279,11 @@ public class AdminServiceImpl implements AdminService{
 	public int deleteMember(int memberNo) {
 		
 		return dao.deleteMember(memberNo);
+	}
+
+	@Override
+	public Store selectStoreManage(int storeNo) {
+		return dao.selectStoreManage(storeNo);
 	}
 
 

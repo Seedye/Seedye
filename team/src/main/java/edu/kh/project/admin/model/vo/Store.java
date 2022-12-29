@@ -28,4 +28,5 @@ public class Store {
 	private int storeCount; // 통계화면에 사용할 컬럼
 	private List<StoreImage> storeImgList;
 	
+	private List<StoreImage> imageList;
 }

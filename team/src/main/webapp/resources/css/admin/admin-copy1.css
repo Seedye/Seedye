@@ -21,10 +21,11 @@
 /* 식당 등록 전체 */
 #adminR{
     border: 1px solid black;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     margin-left: auto;
+
    
     
 }
@@ -115,6 +116,7 @@
     width: 50%;
     border-radius: 10%;
     cursor: pointer;
+    min-height: 18px;
 }
 
 #memberManage{
