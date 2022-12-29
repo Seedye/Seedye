@@ -91,10 +91,10 @@
                             
                             <div id="freeBoard-detail-anwser">
                                 <p>답변</p>
-                                <p>작성일</p>
-                            </div> --%>
+                                <input type="text" id="commentContent">
+                                <button>답글 작성</button>
+                            </div>  --%>
 
-                          <jsp:include page="/WEB-INF/views/board/comment.jsp"/>
 
                         </div>
                     </div>
