@@ -26,4 +26,9 @@ public class MemberDAO {
 	public int idDupCheck(String memberId) {
 		return sqlSession.selectOne("memberMapper.idDupCheck", memberId);
 	}
+
+	// 전화번호 중복 검사 DAO
+	public int telDupCheck(String memberTel) {
+		return sqlSession.selectOne("memberMapper.telDupCheck", memberTel);
+	}
 }

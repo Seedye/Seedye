@@ -166,14 +166,21 @@ public class MemberController {
 		return result;
 	}
 	
+	// 전화번호 중복 검사
+	@GetMapping("/telDupCheck") // url
+	@ResponseBody // 반환된 값을 jsp 경로가 아닌 값 자체로 인식
+	public int telDupCheck(String memberTel) {
+		int result = service.telDupCheck(memberTel);
+		return result;
+	}
+	
 	//  비밀번호 찾기 페이지 이동
 	@GetMapping("/find")
 	public String findPage() {
 		return "/member/find";
-		
-		
 	}
 	
+	// 회원 가입 휴대전화 인증
 	@PostMapping("/signUp/phoneCheck")
 	@ResponseBody
 	public int phoneCheck(@RequestParam("toPhone") String toPhone) {
@@ -193,6 +200,39 @@ public class MemberController {
 		return randomNumber;
 		
 	}
+	
+	
+//    @GetMapping("/signUp")
+//    @ResponseBody
+//    public int signUp(String phone, Model model) {
+//        
+//        String authKey = service.signUp(phone);
+//        
+//        if(authKey != null) {
+//            model.addAttribute("authKey", authKey);
+//            
+//            return 1;
+//        }else {
+//            return 0;
+//        }
+//    }
+//    
+//    
+//    @GetMapping("/checkAuthKey")
+//    @ResponseBody
+//    public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
+//            SessionStatus status){
+//        
+//        if(inputKey.equals(authKey)) {
+//            status.setComplete();
+//            return 1;
+//        }
+//        
+//        return 0;
+//    }	
+	
+	
+	
 	
 	
 	
