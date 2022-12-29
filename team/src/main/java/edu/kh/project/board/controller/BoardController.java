@@ -153,5 +153,29 @@ public class BoardController {
 		
 	}
 	
+	/** 문의 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/QABoardDelete")
+	@ResponseBody
+	public int DeleteQABoard(@RequestParam("boardNo")int boardNo) {
+		
+//		int result = service.DeleteQABoard(boardNo);
+//		
+//		String path = null;
+//		
+//		if(result > 0) {
+//			path="/board/boardList";
+//		}else {
+//			path="/board/boardList";
+//		}
+		
+		System.out.println(boardNo);
+//		
+		int result = service.DeleteQABoard(boardNo);
+		return result;
+	}
+	
 
 }

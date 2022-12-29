@@ -41,4 +41,10 @@ public interface BoardService {
 	 */
 	List<Board> selectFreeBoardDetail(int boardNo);
 
+	/** 문의 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int DeleteQABoard(int boardNo);
+
 }
