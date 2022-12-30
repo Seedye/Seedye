@@ -221,7 +221,7 @@ boardWriteInput.addEventListener("click", () => {
 (()=>{
   const select = document.getElementById("search-key");// select 하는곳
   const input = document.getElementById("search-query") // input하는곳
-  const option = document.querySelectorAll("#search-key > option");
+  const option = document.querySelectorAll("#serch-key > option");
 
   if(select != null){
     // 검색창 존재할 때
@@ -238,8 +238,8 @@ boardWriteInput.addEventListener("click", () => {
     // selected 속성 추가
     for(let op of option){
       // option의 value와 key가 일치할 때
-      if(op.value == key){
-        // op.setAttribute("selected", true)
+      if(op.vlaue == key){
+        // op.setAttribute("selected", ture)
         op.selected = true;
       }
     }

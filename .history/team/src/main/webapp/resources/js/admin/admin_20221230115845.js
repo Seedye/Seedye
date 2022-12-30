@@ -225,10 +225,10 @@ function selectStoreList(){
 
                           
                          
-                        //   console.log(store.storeInfo);
-                        //   if(store.storeInfo != null){
-                        //     infoArea.innerText = store.storeInfo;
-                        //   }
+                          console.log(store.storeInfo);
+                          if(store.storeInfo != null){
+                            infoArea.innerText = store.storeInfo;
+                          }
 
 
 

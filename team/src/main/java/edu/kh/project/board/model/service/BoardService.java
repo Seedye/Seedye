@@ -54,4 +54,12 @@ public interface BoardService {
 	 */
 	int updateAQBoard(Board board);
 
+
+	/** 게시판 검색 목록 조회
+	 * @param pm
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+
 }

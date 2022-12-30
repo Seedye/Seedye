@@ -1,6 +1,7 @@
 package edu.kh.project.board.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -101,6 +102,26 @@ public class BoardDAO {
 	 */
 	public int updateAQBoard(Board board) {
 		return sqlSession.update("boardMapper.updateAQBoard", board);
+	}
+
+	/** 게시글 검색 조건 일치 게시글 수 조회
+	 * @param pm
+	 * @return listCount
+	 */
+	public int getListCount(Map<String, Object> pm) {
+		return sqlSession.selectOne("boardMapper.getListCount_search", pm);
+	}
+
+	/** 게시글 : 검색 조건 일치 게시글 목록 조회
+	 * @param pagination
+	 * @param pm
+	 * @return boardList
+	 */
+	public List<Board> selectBoardList(Pagination pagination, Map<String, Object> pm) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("boardMapper.selectBoardList_search", pm, rowBounds);
 	}
 
 	
