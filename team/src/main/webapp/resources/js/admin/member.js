@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 const memberTbody = document.getElementById("memberTbody");
 const memberId = document.getElementById("memberId");
-const memberTel = document.getElementById("memberId");
-const roadNameAddress = document.getElementById("memberId");
-const enrollDate = document.getElementById("memberId");
+const memberTel = document.getElementById("memberTel");
+const memberAddress = document.getElementById("memberAddress");
+const enrollDate = document.getElementById("enrollDate");
 const authority = document.getElementById("authority");
 const licenseView = document.getElementById("licenseView");
 

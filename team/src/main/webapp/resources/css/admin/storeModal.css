@@ -9,6 +9,7 @@
 #inquiryR{
     display: none;
     position: absolute;
+    top: auto;
     z-index: 50;
     flex-direction: column;
     justify-content: space-between;

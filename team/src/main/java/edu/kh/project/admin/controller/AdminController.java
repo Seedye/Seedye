@@ -377,21 +377,22 @@ public class AdminController {
 		
 		System.out.println(storeCheck);
 		
+		// 식당 등록 미확인일때 협의중으로 변경
 		if(storeCheck == 'N') {
 		
 			service.storeChange(storeNo);
 			
 		}
 		
+		// 식당 정보 조회(이미지 제외)
 		Store store = service.selectStoreManage(storeNo);
 
 		System.out.println(store);
-		
+
+		// 식당 이미지 조회
 		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
-		System.out.println(store);
-		
-		
+		store.setLicensePath(storeList.get(0).getLicensePath());
 		
 		return store;
 		
