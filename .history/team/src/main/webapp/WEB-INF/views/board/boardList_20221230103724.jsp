@@ -32,37 +32,37 @@
           <p>커뮤니티</p>
         </div>
         <!-- 검색 -->
-        <form action="4" method="get" id="boardSearch" onSubmit="return true">
-          <div class="board-list-serch-write-area">
+          <form action="4" method="get" id="boardSearch" onSubmit="return true">
+        <div class="board-list-serch-write-area">
 
-              <!-- 검색어 입력 input -->
-              <div class="board-list-serch">
-                <select name="key" id="search-key">
-                  <option value="t">제목</option>
-                  <option value="c">내용</option>
-                  <option value="tc">제목+내용</option>
-                  <option value="w">작성자</option>
-                </select>
-                <input type="text" name="query" id="search-query">
-              </div>
+            <!-- 검색어 입력 input -->
+            <div class="board-list-serch">
+              <select name="key" id="search-key">
+                <option value="t">제목</option>
+                <option value="c">내용</option>
+                <option value="tc">제목+내용</option>
+                <option value="w">작성자</option>
+              </select>
+              <input type="text" name="query" id="search-query">
+            </div>
 
-              <!-- 검색 버튼 -->
-              <button class="board-serch-btn"><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
+            <!-- 검색 버튼 -->
+            <button class="board-serch-btn"><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
 
-              <c:if test="${not empty loginMember}">
-                <!-- 글작성 버튼 -->
-                <div class="board-write-btn" id="boardWriteBtn">글작성</div>
-              </c:if>
-            
+            <c:if test="${not empty loginMember}">
+              <!-- 글작성 버튼 -->
+              <div class="board-write-btn" id="boardWriteBtn">글작성</div>
+            </c:if>
+          
 
-          </div>
-        </form>
+        </div>
+          </form>
 
     
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
-          <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
+          <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">

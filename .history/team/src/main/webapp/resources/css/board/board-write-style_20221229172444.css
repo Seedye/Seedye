@@ -55,11 +55,9 @@
 
 .board-view-title-detail-answer > textarea{
   font-size: 30px;
-  width: 100%;
   border: none;
+  width: 100%;
   outline: none;
-  resize: none;
-  
 }
 /* .board-view-title-detail-answer:first-child{
   display: flex;

@@ -3,7 +3,8 @@
 }
 body{
   width: 1200px;
-  margin: auto;
+  flex-direction: column;
+  margin: 0 auto;
 }
 .board-title{
   /* margin-top: 0; */
@@ -82,7 +83,7 @@ body{
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
-  /* background-color: red; */
+  background-color: red;
 }
 
 .board-write-btn{

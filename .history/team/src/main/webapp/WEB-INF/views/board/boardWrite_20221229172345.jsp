@@ -15,7 +15,8 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)"></textarea>
+          <input id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)">
+          </input>
           <!-- <p> ]</p> -->
       </div>
 
@@ -102,7 +103,7 @@
       </div>
           
       </div>
-      <div class="board-view-content-delete-update" id="wirteUpdateBtn">
+      <div class="board-view-content-delete-update">
         <button class="board-view-btn" id="boardWriteInput">
           등록
         </button>

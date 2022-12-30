@@ -47,4 +47,19 @@ public interface BoardService {
 	 */
 	int DeleteQABoard(int boardNo);
 
+	/** 문의 게시글 수정
+	 * @param boardNo
+	 * @param board
+	 * @return
+	 */
+	int updateAQBoard(Board board);
+
+
+	/** 게시판 검색 목록 조회
+	 * @param pm
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+
 }

@@ -2,8 +2,8 @@
   font-family: "NIXGONM-Vb";
 }
 body{
+  display: flex;
   width: 1200px;
-  margin: auto;
 }
 .board-title{
   /* margin-top: 0; */
@@ -82,7 +82,7 @@ body{
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
-  /* background-color: red; */
+  background-color: red;
 }
 
 .board-write-btn{
