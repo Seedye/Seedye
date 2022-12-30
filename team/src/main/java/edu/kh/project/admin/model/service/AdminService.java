@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.member.model.vo.Member;
 
@@ -124,7 +125,29 @@ public interface AdminService {
 
 
 
+	List<StoreImage> selectStoreManageImg(int storeNo);
+
+
+
 	Store selectStoreManage(int storeNo);
+
+
+	/** 식당 상태 조회
+	 * @param storeNo
+	 * @return storeCheck
+	 */
+	char storeCheck(int storeNo);
+
+	void storeChange(int storeNo);
+
+
+	
+
+
+
+	
+
+	
 
 
 

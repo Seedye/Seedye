@@ -26,7 +26,7 @@
                     <div id="imageArea">
                         <div class="imageDiv">
                             <label for="image0">
-                                <img src="" class="preview">
+                                <img src="" class="preview" id="image0i">
                             </label>
                             <input type="file" id="image0" accept="image/*" class="imageInput">
                             <aside>사업자 등록증</aside>
@@ -34,14 +34,14 @@
                         </div>
                         <div class="imageDiv">
                             <label for="image1">
-                                <img src="" class="preview">
+                                <img src="" class="preview" id="image1i">
                             </label>
                             <input type="file" id="image1" accept="image/*" class="imageInput">
                             <aside>가게 이미지</aside>
                         </div>
                         <div class="imageDiv">
                             <label for="image2">
-                                <img src="" class="preview">
+                                <img src="" class="preview" id="image2i">
                             </label>
                             <aside>메뉴판 이미지</aside>
                             <input type="file" id="image2" accept="image/*" class="imageInput">
@@ -54,24 +54,24 @@
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>업종</aside>
                         <select name="food" id="select">
-                            <option value="한식">한식</option>
-                            <option value="중식">중식</option>
-                            <option value="일식">일식</option>
-                            <option value="양식">양식</option>
-                            <option value="패스트푸드">패스트푸드</option>
-                            <option value="일반대중음식">일반대중음식</option>
-                            <option value="편의점">편의점</option>
-                            <option value="제과점">제과점</option>
-                            <option value="정육점">정육점</option>
-                            <option value="착한식당">착한식당</option>
+                            <option value="한식" id="a">한식</option>
+                            <option value="중식" id="b">중식</option>
+                            <option value="일식" id="c">일식</option>
+                            <option value="양식" id="d">양식</option>
+                            <option value="패스트푸드" id="e">패스트푸드</option>
+                            <option value="일반대중음식" id="f">일반대중음식</option>
+                            <option value="편의점" id="g">편의점</option>
+                            <option value="제과점" id="h">제과점</option>
+                            <option value="정육점" id="i">정육점</option>
+                            <option value="착한식당" id="j">착한식당</option>
                         </select>
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>주소</aside>
                         <div id="addr-area">
-                            <button type="button" onclick="sample4_execDaumPostcode()">주소 검색</button>
-                            <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+                            <button type="button" id="addressSearch" onclick="sample4_execDaumPostcode()">주소 검색</button>
+                            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="roadAddr" value="">
+                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="landAddr" value="">
                             <span id="guide" style="color:#999;display:none"></span>
                         </div>
                     </div>

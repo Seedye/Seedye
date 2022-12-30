@@ -1,6 +1,7 @@
 package edu.kh.project.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ import com.google.gson.Gson;
 import edu.kh.project.admin.model.service.AdminService;
 import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
@@ -363,17 +365,36 @@ public class AdminController {
 		
 		return "redirect:" + path;
 	}
-	
+
 	
 	// 식당 등록(조회 후 승인)
 	@GetMapping("storeManage")
 	@ResponseBody
 	public Store selectStoreManage(int storeNo) {
 		
+		// 식당 상태 조회
+		char storeCheck = service.storeCheck(storeNo);
+		
+		System.out.println(storeCheck);
+		
+		if(storeCheck == 'N') {
+		
+			service.storeChange(storeNo);
+			
+		}
+		
 		Store store = service.selectStoreManage(storeNo);
+
+		System.out.println(store);
+		
+		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
 		System.out.println(store);
+		
+		
+		
 		return store;
+		
 		
 	}
 	
