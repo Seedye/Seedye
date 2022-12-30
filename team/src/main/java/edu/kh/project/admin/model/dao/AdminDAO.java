@@ -216,12 +216,21 @@ public class AdminDAO {
 	}
 
 	public Store selectStoreManage(int storeNo) {
-		Store store = sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
+				
+			Store store = sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
 		
-		System.out.println(store);
+			System.out.println(store);
 		
-		return store;
+			return store;
 	}
+	public char storeCheck(int storeNo) {
+		return sqlSession.selectOne("adminMapper.storeCheck", storeNo);
+	}
+
+	public void storeChange(int storeNo) {
+		sqlSession.update("adminMapper.storeChange", storeNo);
+	}
+
 
 
 	

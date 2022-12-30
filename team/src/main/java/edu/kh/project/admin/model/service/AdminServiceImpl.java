@@ -292,6 +292,19 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 
+	// 식당 상태 조회
+	@Override
+	public char storeCheck(int storeNo) {
+		return dao.storeCheck(storeNo);
+	}
+
+	@Override
+	public void storeChange(int storeNo) {
+		dao.storeChange(storeNo);
+		
+	}
+
+
 
 	
 	

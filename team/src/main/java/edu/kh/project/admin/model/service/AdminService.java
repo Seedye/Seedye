@@ -132,6 +132,20 @@ public interface AdminService {
 	Store selectStoreManage(int storeNo);
 
 
+	/** 식당 상태 조회
+	 * @param storeNo
+	 * @return storeCheck
+	 */
+	char storeCheck(int storeNo);
+
+	void storeChange(int storeNo);
+
+
+	
+
+
+
+	
 
 	
 

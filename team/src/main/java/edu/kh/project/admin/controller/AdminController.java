@@ -365,13 +365,23 @@ public class AdminController {
 		
 		return "redirect:" + path;
 	}
-	
+
 	
 	// 식당 등록(조회 후 승인)
 	@GetMapping("storeManage")
 	@ResponseBody
 	public Store selectStoreManage(int storeNo) {
 		
+		// 식당 상태 조회
+		char storeCheck = service.storeCheck(storeNo);
+		
+		System.out.println(storeCheck);
+		
+		if(storeCheck == 'N') {
+		
+			service.storeChange(storeNo);
+			
+		}
 		
 		Store store = service.selectStoreManage(storeNo);
 
@@ -379,7 +389,7 @@ public class AdminController {
 		
 		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
-		System.out.println(storeList);
+		System.out.println(store);
 		
 		
 		

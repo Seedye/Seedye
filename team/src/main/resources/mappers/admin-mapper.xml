@@ -303,15 +303,16 @@ VALUES(#{storeNo}, #{licensePath}, #{licenseOriginal}, #{licenseRename})
 	WHERE MEMBER_NO = #{memberNo}
 </update>
 
+<!-- 이미지 조회 -->
 <select id="selectImageList" resultMap="storeImg_rm">
-SELECT S_IMG_PATH || S_IMG_ORIGINAL AS ALL_PATH, S_IMG_ORDER, LICENSE_PATH
+SELECT S_IMG_PATH || S_IMG_RENAME AS ALL_PATH, S_IMG_ORDER, LICENSE_PATH
 FROM STORE_IMG
 JOIN LICENSE USING(STORE_NO)
 WHERE STORE_NO = #{storeNo}
 ORDER BY S_IMG_ORDER
 </select>
 
-<!--  -->
+<!-- 식당 등록 이미지 제외하고 조회 -->
 <select id="selectStoreManage" resultMap="store_rm">
 SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, LANDNUMBER_ADDRESS, STORE_TEL, STORE_INFO 
 FROM STORE
@@ -324,6 +325,20 @@ SELECT LICENSE_PATH
 FROM STORE
 JOIN LICENSE USING(STORE_NO)
 WHERE MEMBER_NO = #{memberNo}
+</select>
+
+<!-- 협의 중 변경 -->
+<update id="storeChange">
+UPDATE STORE SET
+CHECK_FL = 'C'
+WHERE STORE_NO = #{storeNo}
+</update>
+
+<!-- 식당 등록상태 조회 -->
+<select id="storeCheck" resultType="char">
+SELECT CHECK_FL
+FROM STORE
+WHERE STORE_NO = #{storeNo}
 </select>
 
 
