@@ -212,4 +212,6 @@ input[type=password]{
 
 #timer{
     margin-right: 10px;
+    font-size: 14px; /* 글자 크기 14px */
+    letter-spacing: -1px; /* 작고 촘촘하게 */
 }
