@@ -63,4 +63,11 @@
 		WHERE MEMBER_TEL = ${toPhone}
 	</select>
 	
+	<update id="pwChange" parameterType="Member">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_TEL = #{memberTel}
+	</update>
+	
 </mapper>

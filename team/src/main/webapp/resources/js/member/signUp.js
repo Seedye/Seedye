@@ -23,7 +23,7 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
             case "memberTel" : str = "전화번호가 유효하지 않습니다."; break;
             case "phoneCheck" : str = "전화번호 인증이 완료되지 않았습니다."; break;
             // case "authKey" : str = "인증 제한 시간이 초과되었습니다."; break;
-        }
+            }
 
             alert(str); // 대화상자 출력
 
