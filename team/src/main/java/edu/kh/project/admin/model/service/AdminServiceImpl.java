@@ -92,6 +92,9 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectStoreList();
 	}
 
+	/**
+	 * 회원 목록 조회
+	 */
 	@Override
 	public List<Member> selectMemberList() {
 		return dao.selectMemberList();
@@ -234,18 +237,18 @@ public class AdminServiceImpl implements AdminService{
 					
 					img.setStoreImageOrder(i);
 					
+					System.out.println(img);
 					storeImageList.add(img);
 				}
 				
+				System.out.println(storeImageList);
 								
 				if(!storeImageList.isEmpty()) {
 					storeNo = result;
 					
+					System.out.println(storeImageList);
 					
 					int result2 = dao.insertStoreImageList(storeImageList);
-					
-					System.out.println(result2);
-					
 					if(result2 == storeImageList.size()) {
 						for(int i=0; i<storeImageList.size(); i++) {
 							
@@ -283,7 +286,8 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Store selectStoreManage(int storeNo) {
-		return dao.selectStoreManage(storeNo);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
