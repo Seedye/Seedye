@@ -40,15 +40,24 @@ public class BoardController {
 	 * @return
 	 */
 	@GetMapping("/boardList/{boardCode}")
-	public String selectBoardList(@PathVariable("boardCode") int boardCode,
+	public String selectBoardList(
+			@PathVariable("boardCode") int boardCode,
 			Model model,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
 			@RequestParam Map<String, Object> pm
 			) {
 		
-		
-		Map<String, Object> map = service.selectBoardList(boardCode,cp);
-		model.addAttribute("map", map);
+		if(pm.get("key") == null) {
+			
+			Map<String, Object> map = service.selectBoardList(boardCode,cp);
+			model.addAttribute("map", map);
+		}
+		// 게시판 검색 목
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
 		
 		
 		return "board/boardList";
@@ -161,20 +170,23 @@ public class BoardController {
 	@ResponseBody
 	public int DeleteQABoard(@RequestParam("boardNo")int boardNo) {
 		
-//		int result = service.DeleteQABoard(boardNo);
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			path="/board/boardList";
-//		}else {
-//			path="/board/boardList";
-//		}
-		
 		System.out.println(boardNo);
 //		
 		int result = service.DeleteQABoard(boardNo);
 		return result;
+	}
+	
+	/** 문의 게시글 업데이트
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/QABoardUpdate")
+	@ResponseBody
+	public int updateAQBoard(@RequestParam("boardNo")int boardNo, Board board) {
+		
+		board.setBoardNo(boardNo);
+		System.out.println(board);
+		return service.updateAQBoard(board);
 	}
 	
 

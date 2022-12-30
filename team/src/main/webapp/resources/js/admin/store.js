@@ -58,12 +58,7 @@ function sample4_execDaumPostcode() {
             }).open();
         }
 
-        const roadAddress = document.getElementById("sample4_roadAddress");
-        roadAddress.addEventListener("input", ()=>{
-            
-   
-        });
-
+       
                 
 // 전화번호
 $(document).on("keyup", ".phoneNumber", function() { 

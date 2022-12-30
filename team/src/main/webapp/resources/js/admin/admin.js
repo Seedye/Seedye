@@ -4,7 +4,7 @@ const memberManageBtn = document.getElementsByClassName("memberManageBtn")[0];
 const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
-var infoArea = document.getElementById("infoArea");
+var infoArea = document.getElementById("InfoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 //             }).open();
 //         }
 
-        // const roadAddress = document.getElementById("sample4_roadAddress");
+        const roadAddress = document.getElementById("sample4_roadAddress");
       
         
         
@@ -174,8 +174,8 @@ function selectStoreList(){
 
                             if(store.imageList.length != 0){
 
-                                if(store.imageList[0].licensePath != null){
-                                image0i.setAttribute("src", store.imageList[0].licensePath);
+                                if(store.licensePath != null){
+                                image0i.setAttribute("src", store.licensePath);
                                 }
 
                                 if(store.imageList[0].allPath != null){
@@ -187,15 +187,13 @@ function selectStoreList(){
                                 }
 
                             } else{
-                                image0i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
-                                image1i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
-                                image2i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
+                                image0i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                image1i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                image2i.setAttribute("src", "/resources/images/modal/noneImg.png");
                             }
                           storeNameArea.setAttribute('value', store.storeName);
 
-                          const addressSearch = document.getElementById("addressSearch");
-                          addressSearch.removeAttribute("onclick");
-                            document.getElementById("sample4_roadAddress").setAttribute('value', store.roadnameAddress);
+                            roadAddress.setAttribute('value', store.roadnameAddress);
                             document.getElementById("sample4_jibunAddress").setAttribute('value', store.landnumberAddress);
 
                           phoneNumberArea.setAttribute('value', store.storeTel);
@@ -223,13 +221,14 @@ function selectStoreList(){
                           if(store.storeType == '정육점'){ i.setAttribute("selected", true);}
                           if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
 
+                          console.log(store.storeInfo);
+                          console.log(store.landnumberAddress);
                           
                          
-                          console.log(store.storeInfo);
-                          if(store.storeInfo != null){
-                            infoArea.innerText = store.storeInfo;
-                          }
+                        if(store.storeInfo != null){
 
+                            infoArea.innerText = store.storeInfo;
+                        }
 
 
                           
