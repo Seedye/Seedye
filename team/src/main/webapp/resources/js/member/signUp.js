@@ -3,8 +3,8 @@ const checkObj = {
     "memberPw"        : false, /* 비밀번호 */
     "memberPwConfirm" : false, /* 비밀번호 확인 */
     "memberTel"       : false, /* 전화번호 */
-    "phoneCheck"      : false /* 인증번호 */
-    // ,"authKey"         : false  /* 인증 제한 시간*/
+    "phoneCheck"      : false, /* 인증번호 */
+    "authKey"         : false, /* 인증 제한 시간*/
 };
 
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
@@ -22,8 +22,8 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
             case "memberPwConfirm" :  str = "비밀번호 확인이 유효하지 않습니다."; break;
             case "memberTel" : str = "전화번호가 유효하지 않습니다."; break;
             case "phoneCheck" : str = "전화번호 인증이 완료되지 않았습니다."; break;
-            // case "authKey" : str = "인증 제한 시간이 초과되었습니다."; break;
-            }
+            case "authKey" : str = "인증 제한 시간이 초과되었습니다."; break;
+        }
 
             alert(str); // 대화상자 출력
 
@@ -284,6 +284,8 @@ const phoneConfirmBox = document.querySelector(".phoneConfirmBox");
 // 인증번호 받기 버튼 눌렀을 때
 mainTel.lastElementChild.addEventListener("click", () => {
 
+    timer();
+
     checkObj.phoneCheck = false;
 
     const inputTel = document.querySelector("input[name=memberTel]");
@@ -300,9 +302,10 @@ mainTel.lastElementChild.addEventListener("click", () => {
 
     // authKeyMessage.style.display = "block";
 
-    alert("인증번호를 전송 중 입니다.");
+    alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
 
     changeTel = inputTel.value;
+
 
     $.ajax({
         url : "/signUp/phoneCheck",
@@ -345,42 +348,72 @@ mainTel.lastElementChild.addEventListener("click", () => {
 
 });
 
-// 타이머 구현_daldal
-function $ComTimer(){
-    //prototype extend
-}
 
-$ComTimer.prototype = {
-    comSecond : ""
-    , fnCallback : function(){}
-    , timer : ""
-    , domId : ""
-    , fnTimer : function(){
-        var m = "0" + Math.floor(this.comSecond / 60) + ":" + (this.comSecond % 60) + "";	// 남은 시간 계산
-        this.comSecond--;					// 1초씩 감소
-        console.log(m);
-        this.domId.innerText = m;
-        // checkObj.authKey = true;
+// // 타이머 구현_daldal
+// function $ComTimer(){
+//     //prototype extend
+// }
 
-        if (this.comSecond < 0) {			// 시간이 종료 되었으면..
+// $ComTimer.prototype = {
+//     comSecond : ""
+//     , fnCallback : function(){}
+//     , timer : ""
+//     , domId : ""
+//     , fnTimer : function(){
+//         var m = "0" + Math.floor(this.comSecond / 60) + ":" + (this.comSecond % 60) + "";	// 남은 시간 계산
+//         this.comSecond--;					// 1초씩 감소
+//         console.log(m);
+//         this.domId.innerText = m;
+//         // checkObj.authKey = true;
+
+//         if (this.comSecond < 0) {			// 시간이 종료 되었으면..
+//             checkObj.authKey = false;
+//             clearInterval(this.timer);		// 타이머 해제
+//             alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
+//             window.close();
+//             window.opener.location = "/signUp"
+//         }
+//     }
+//     ,fnStop : function(){
+//         clearInterval(this.timer);
+//     }
+// }
+
+// var AuthTimer = new $ComTimer()
+
+// AuthTimer.comSecond = 179; // 제한 시간
+
+// AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}; // 제한 시간 만료 메세지
+
+// AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000); 
+
+// AuthTimer.domId = document.getElementById("timer");
+
+
+const timer = function(){
+
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+    
+    // setInterval(함수, 시간) : 주기적인 실행
+    let x = setInterval(function(){
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+    
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+    
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(x); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "시간만료";
             checkObj.authKey = false;
-            clearInterval(this.timer);		// 타이머 해제
-            alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
-            window.close();
-            window.opener.location = "/signUp"
+    
+        } else { // 타임아웃이 아닐 시
+            checkObj.authKey = true;
         }
-    }
-    ,fnStop : function(){
-        clearInterval(this.timer);
-    }
+    
+    }, 1000);
 }
-
-var AuthTimer = new $ComTimer()
-
-AuthTimer.comSecond = 179; // 제한 시간
-
-AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}; // 제한 시간 만료 메세지
-
-AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000); 
-
-AuthTimer.domId = document.getElementById("timer");
