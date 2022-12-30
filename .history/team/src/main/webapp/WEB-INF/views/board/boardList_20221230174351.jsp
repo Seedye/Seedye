@@ -122,39 +122,16 @@
           </table>
             <%-- 페이지네이션 --%>
             <ul class="board-list-page-area">
-
-            <c:choose>
-                    
-                      <c:when test="${not empty param.query}">
-
-
-                        <li>
-                          <a href="/boardList/${boardCode}?cp=1&key=${param.key}&query=${param.query}">
-                            <i class="fa-solid fa-caret-left"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/boardList/${boardCode}?cp=${pagination.prevPage}&key=${param.key}&query=${param.query}">
-                            <i class="fa-solid fa-angle-left"></i>
-                          </a>
-                        </li>
-                      </c:when>
-                      <c:otherwise>
-                      
-                       <li>
-                          <a href="/boardList/${boardCode}?cp=1${sURL}">
-                            <i class="fa-solid fa-caret-left"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/boardList/${boardCode}?cp=${pagination.prevPage}${sURL}">
-                            <i class="fa-solid fa-angle-left"></i>
-                          </a>
-                        </li>
-                      </c:otherwise>
-                    
-                    </c:choose>
-              
+              <li>
+                <a href="/boardList/${boardCode}?cp=1${sURL}">
+                  <i class="fa-solid fa-caret-left"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/boardList/${boardCode}?cp=${pagination.prevPage}${sURL}">
+                  <i class="fa-solid fa-angle-left"></i>
+                </a>
+              </li>
 
 <%--               
               <li class="board-list-page-no">3</li>
@@ -199,25 +176,22 @@
 
               <!-- 다음 목록 시작 번호로 이동 -->
 
+              <%-- <c:otherwise>
                     <c:choose>
                     
                       <c:when test="${not empty param.query}">
-                        <%-- <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li> --%>
-                        <li><a href="/boardList/${boardCode}?cp=${pagination.nextPage}&key=${param.key}&query=${param.query}"><i class="fa-solid fa-angle-right"></i></a></li>
-
-                        <!-- 끝 페이지로 이동 -->
-                        <li><a href="/boardList/${boardCode}?cp=${pagination.maxPage}&key=${param.key}&query=${param.query}"><i class="fa-solid fa-caret-right"></i></a></li>
+                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
                       </c:when>
                       <c:otherwise>
                       
-                        <%-- <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li> --%>
-                        <li><a href="/boardList/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
-
-                        <!-- 끝 페이지로 이동 -->
-                        <li><a href="/boardList/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
+                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
                       </c:otherwise>
                     
-                    </c:choose>
+                    </c:choose> --%>
+              <li><a href="/boardList/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
+
+              <!-- 끝 페이지로 이동 -->
+              <li><a href="/boardList/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
               
               <%-- <li><i class="fa-solid fa-angle-right"></i></li>
               <li><i class="fa-solid fa-caret-right"></i></li> --%>

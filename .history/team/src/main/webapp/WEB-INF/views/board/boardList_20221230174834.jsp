@@ -126,6 +126,11 @@
             <c:choose>
                     
                       <c:when test="${not empty param.query}">
+                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
+                        <li><a href="/boardList/${boardCode}?cp=${pagination.nextPage}&key=${param.key}&query=${param.query}"><i class="fa-solid fa-angle-right"></i></a></li>
+
+                        <!-- 끝 페이지로 이동 -->
+                        <li><a href="/boardList/${boardCode}?cp=${pagination.maxPage}&key=${param.key}&query=${param.query}"><i class="fa-solid fa-caret-right"></i></a></li>
 
 
                         <li>
