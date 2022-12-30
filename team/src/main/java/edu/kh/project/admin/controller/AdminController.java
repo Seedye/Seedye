@@ -399,6 +399,8 @@ public class AdminController {
 		
 	}
 	
+	// 식당 등록
+	
 	
 	
 	
