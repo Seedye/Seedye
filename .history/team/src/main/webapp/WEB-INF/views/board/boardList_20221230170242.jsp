@@ -152,21 +152,11 @@
                   </c:when>
                 
                   <c:otherwise>
-
-                    <c:choose>
-                    
-                      <c:when test="${not empty param.query}">
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
-                      </c:when>
-                      <c:otherwise>
-                      
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                      </c:otherwise>
-                    
-                    </c:choose>
-
+                  <%-- <c:if test="${not empty param.query}">
+                  </c:if> --%>
                   
-                  
+
+                    <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
 
                   </c:otherwise>
                 </c:choose>

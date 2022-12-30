@@ -52,7 +52,7 @@ public class BoardController {
 			Map<String, Object> map = service.selectBoardList(boardCode,cp);
 			model.addAttribute("map", map);
 		}
-		// 게시판 검색 목록 조회
+		// 게시판 검색 목
 		else {
 			pm.put("boardCode", boardCode);
 			Map<String, Object> map = service.selectBoardList(pm, cp);
