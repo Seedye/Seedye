@@ -238,8 +238,8 @@ boardWriteInput.addEventListener("click", () => {
     // selected 속성 추가
     for(let op of option){
       // option의 value와 key가 일치할 때
-      if(op.value == key){
-        // op.setAttribute("selected", true)
+      if(op.vlaue == key){
+        // op.setAttribute("selected", ture)
         op.selected = true;
       }
     }
