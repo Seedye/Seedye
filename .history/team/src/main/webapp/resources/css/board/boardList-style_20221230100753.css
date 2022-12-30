@@ -1,0 +1,216 @@
+*{
+  font-family: "NIXGONM-Vb";
+}
+
+.board-title{
+  /* margin-top: 0; */
+  width: 99vw;
+  height: 250px;
+  background-color: white;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.board-title > img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity:0.3;
+}
+.board-title > p{
+  position: absolute;
+}
+/* 검색 영역 스타일 */
+.board-list-serch-write-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+.board-list-serch{
+  width: 50vw;
+  min-width: 400px;
+  max-width: 600px;
+  height: 60px;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  display: flex;
+    justify-content: end;
+    align-items: center;
+    overflow: hidden;
+}
+.board-list-serch > input{
+  width: 80%;
+  height: 50px;
+  border: 0px;
+  font-size: 20px;
+  background-color: red;
+}
+.board-list-serch > input:focus{
+  outline: none;
+
+}
+.board-list-serch > select {
+  width: 20%;
+  height: 100%;
+  border: none;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.board-list-serch > select:focus{
+  outline: none;
+}
+#search-key > option{
+  height: 10px;
+}
+.board-list-serch-write-area > button{
+  height: 60px;
+  width: 100px;
+  border-radius: 0 30px 30px 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.board-write-btn{
+  margin: 20px;
+  width: 100px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  justify-content: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background-color: #2db400;
+  color: whitesmoke;
+  font-size: 16px;
+  font-weight: bold;
+}
+.board-write-btn:hover{
+  transition-duration: 0.2s;
+  background-color: #2aa800;
+  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
+  border:none;
+}
+/* 테이블 스타일 */
+.board-list-table{
+  text-align: center;
+  border-spacing: 0;
+  margin: auto;
+  border-top: 1px solid #2db400;
+}
+/* .board-list-area{
+  height: 500px;
+} */
+/* 테이블 제목부분 */
+.board-list-thead{
+  height: 60px;
+  background-color: rgba(221, 221, 221, 0.623);
+  /* background-color: #ddd; */
+  /* background-color: whitesmoke; */
+  border-top: 2px solid red;
+  /* width: 100px; */
+}
+.board-list-thead > tr >th{
+  width: 150px;
+}
+.board-list-thead > tr{
+  border: 2px solid red;
+}
+/* 게시글 번호 부분 */
+.board-list-table > tbody > tr > td:first-child {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  /* background-color: blueviolet; */
+
+  /* text-align: center; */
+}
+/* 게시물 제목 부분 */
+.board-list-table > tbody > tr > td:nth-child(2){
+  /* display: block; */
+  min-width: 500px;
+  height: 50px;
+  text-align: left;
+  cursor: pointer;
+  
+}
+/* 게시글 처리상태/등록일 부분 */
+.board-list-table > tbody > tr > td:nth-child(3),
+.board-list-table > tbody > tr > td:nth-child(4),
+.board-list-table > tbody > tr > td:nth-child(5){
+  /* width: 140px; */
+  min-width: 130px;
+  height: 50px;
+  cursor: pointer;
+  /* background-color: red; */
+}
+
+/* {
+  width: 140px;
+  height: 50px;
+
+} */
+
+.board-list-table > tbody> tr{
+  
+  height: 50px;
+}
+.board-list-table > tbody> tr:hover{
+  background-color: #ddd;
+
+}
+/* .board-list-table > tbody > tr > td:hover{
+  background-color: #d8f0d0;
+} */
+
+/* 페이지 넘기기 스타일 */
+.board-list-page-area{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.board-list-page-area>li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  list-style:none;
+  cursor: pointer;
+  /* padding-left: 0px; */
+}
+.board-list-page-no:hover{
+  /* background-color: #061a00; */
+  border-bottom: 1px solid #2db400;
+}
+i{
+  /* color : rgba(0, 0, 0, 0.459) */
+  color:green;
+}
+i:hover{
+  color : rgba(0, 0, 0, 0.692)
+}
+
+#sideAll {
+  top: 389.4;
+}
+.board-list-page-area a{
+  color: #2db400c5;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
