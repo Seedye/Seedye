@@ -380,3 +380,39 @@ enroll.addEventListener("click", ()=>{
     })
 
 });
+
+
+
+Paging = function(totalCnt, dataSize, pageSize, pageNo, token){
+    totalCnt = parseInt(totalCnt); // 전체 목록 수
+    dataSize = parseInt(dataSize); // 페이지당 목록 수
+    pageSize = parseInt(pageSize); // 페이지 그룹 범위
+    pageNo = parseInt(pageNo); // 현재 페이지
+
+    let html = new Array();
+    if(totalCnt == 0){
+        return "";
+    }
+
+    // 페이지
+    let pageCnt = totalCnt % dataSize;
+    if(pageCnt == 0){
+        pageCnt = parseInt(totalCnt / dataSize);
+    } else {
+        pageCnt = parseInt(totalCnt / dataSize) + 1;
+    }
+
+    let pRcnt = parseInt(pageNo/pageSize);
+    if(pageNo % pageSize == 0){
+        pRcnt = parseInt(pageNo / pageSize) -1;
+    } 
+
+    if(pageNo > pageSize){
+        let s2;
+        if(pageNo % pageSize == 0){
+            s2 = pageNo - pageSize;
+        }
+
+    }
+    
+}
