@@ -56,4 +56,11 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 휴대폰 전화번호로 맴버 아이디 조회 -->
+	<select id="selectPhoneMemberId" resultType="string">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_TEL = ${toPhone}
+	</select>
+	
 </mapper>

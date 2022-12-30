@@ -4,6 +4,7 @@ const memberManageBtn = document.getElementsByClassName("memberManageBtn")[0];
 const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
+var infoArea = document.getElementById("infoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
@@ -130,67 +131,113 @@ function selectStoreList(){
                 
             }
             
+            const image0i = document.getElementById("image0i");
+            const image1i = document.getElementById("image1i");
+            const image2i = document.getElementById("image2i");
+
             // 관리하기 버튼 클릭
             const storeManage = document.getElementsByClassName("store-manage");
             
             for(i=0; i<storeManage.length; i++){
                 
-                
+
                 storeManage[i].addEventListener("click", (e)=>{
+                
                 // 선택한 관리 버튼
                 let dv = e.currentTarget;
-
+                
                 // 선택한 관리버튼의 식당번호
                 tempNo = dv.parentNode.parentNode.children[0].innerText;
                                   
                 storeManageMain.style.display = "none";
                 adminR.style.display = "flex";
-            
+        
 
                     $.ajax({
                         url:"/admin/storeManage",
                         data: {"storeNo" : tempNo},
                         success:(store)=>{
                          
-                          const preview = document.getElementsByClassName("preview");
-                          
-                          const storeNameArea = document.getElementById("storeNameArea");
+                            console.log(store);
+                            const preview = document.getElementsByClassName("preview");
+                            
+                            const storeNameArea = document.getElementById("storeNameArea");
+  
+                            const select = document.getElementById("select");
+                            const phoneNumberArea = document.getElementById("phoneNumberArea");
+                            
+                            
+                            console.log(store.roadnameAddress);
+                            console.log(store.imageList);
+                           
+                            
 
-                          const select = document.getElementById("select");
-                          const roadAddressArea = document.getElementById("sample4_roadAddress");
-                          const landAddressArea = document.getElementById("sample4_jibunAddress");
-                          const phoneNumberArea = document.getElementById("phoneNumberArea");
-                          const infoArea = document.getElementById("infoArea");
+                            if(store.imageList.length != 0){
 
-                        
+                                if(store.imageList[0].licensePath != null){
+                                image0i.setAttribute("src", store.imageList[0].licensePath);
+                                }
 
+                                if(store.imageList[0].allPath != null){
+                                    image1i.setAttribute("src", store.imageList[0].allPath);
+                                }
+
+                                if(store.imageList[1].allPath != null){
+                                    image2i.setAttribute("src", store.imageList[1].allPath);
+                                }
+
+                            } else{
+                                image0i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
+                                image1i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
+                                image2i.setAttribute("src", "/resources/images/board/20221223170357_53971.png")
+                            }
                           storeNameArea.setAttribute('value', store.storeName);
 
-                          if(storeType = '한식'){ select.setAttribute('selected', '한식')}
-                          else if(storeType = '일식'){select.setAttribute('selected', '일식')}
-                          else if(storeType = '중식'){select.setAttribute('selected', '중식')}
-                          else if(storeType = '양식'){select.setAttribute('selected', '양식')}
-                          else if(storeType = '패스트푸드'){select.setAttribute('selected', '패스트푸드')}
-                          else if(storeType = '일반대중음식'){select.setAttribute('selected', '일반대중음식')}
-                          else if(storeType = '편의점'){select.setAttribute('selected', '편의점')}
-                          else if(storeType = '제과점'){select.setAttribute('selected', '제과점')}
-                          else if(storeType = '양식점'){select.setAttribute('selected', '양식점')}
-                          else{select.setAttribute('selected', '착한식당')}
+                          const addressSearch = document.getElementById("addressSearch");
+                          addressSearch.removeAttribute("onclick");
+                            document.getElementById("sample4_roadAddress").setAttribute('value', store.roadnameAddress);
+                            document.getElementById("sample4_jibunAddress").setAttribute('value', store.landnumberAddress);
+
+                          phoneNumberArea.setAttribute('value', store.storeTel);
 
 
-                          roadAddressArea.value=store.roadnameAddress;
-                        landAddressArea.setAttribute('value', store.landnumberAddress);
-                        phoneNumberArea.setAttribute('value', store.storeTel);
+                          const a = document.getElementById("a");
+                          const b = document.getElementById("b");
+                          const c = document.getElementById("c");
+                          const d = document.getElementById("d");
+                          const e = document.getElementById("e");
+                          const f = document.getElementById("f");
+                          const g = document.getElementById("g");
+                          const h = document.getElementById("h");
+                          const i = document.getElementById("i");
+                          const j = document.getElementById("j");
+
+                          if(store.storeType == '한식'){ a.setAttribute("selected", true);}
+                          if(store.storeType == '중식'){ b.setAttribute("selected", true);}
+                          if(store.storeType == '일식'){ c.setAttribute("selected", true);}
+                          if(store.storeType == '양식'){ d.setAttribute("selected", true);}
+                          if(store.storeType == '패스트푸드'){ e.setAttribute("selected", true);}
+                          if(store.storeType == '일반대중음식'){ f.setAttribute("selected", true);}
+                          if(store.storeType == '편의점'){ g.setAttribute("selected", true);}
+                          if(store.storeType == '제과점'){ h.setAttribute("selected", true);}
+                          if(store.storeType == '정육점'){ i.setAttribute("selected", true);}
+                          if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
+
                           
-                        //   if(storeInfo != undefined){
-                        //     infoArea.setAttribute('value', store.storeInfo);
-                        //   }
+                         
+                          console.log(store.storeInfo);
+                          if(store.storeInfo != null){
+                            infoArea.innerText = store.storeInfo;
+                          }
 
 
 
                           
                             
                             
+                        }, 
+                        error:()=>{
+                            console.log("실패");
                         }
                     })
             

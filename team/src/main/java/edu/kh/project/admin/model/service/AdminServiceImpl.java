@@ -285,10 +285,29 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
+	public List<StoreImage> selectStoreManageImg(int storeNo) {
+		return dao.selectStoreManageImg(storeNo);
+	}
+
+	@Override
 	public Store selectStoreManage(int storeNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	// 식당 상태 조회
+	@Override
+	public char storeCheck(int storeNo) {
+		return dao.storeCheck(storeNo);
+	}
+
+	@Override
+	public void storeChange(int storeNo) {
+		dao.storeChange(storeNo);
+		
+	}
+
 
 
 	

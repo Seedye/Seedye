@@ -51,12 +51,12 @@
 
                     <div class="signUp-input-area">
                         <input type="password" name="memberPw" id="memberPw" placeholder="비밀번호 입력"
-                        maxlength="16" >
+                        maxlength="16" autocomplete="off" >
                     </div>
 
                     <div class="signUp-input-area">
                         <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인"
-                        maxlength="16" >
+                        maxlength="16" autocomplete="off" >
                     </div> 
 
                     <span class="signUp-message" id="pwMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
@@ -67,28 +67,33 @@
                         <span class="required">전화번호 (필수 입력)</span>
                     </label>
 
-                    <div class="signUp-input-area">
+                    <div class="signUp-input-area mainTel">
                         <input type="text" name="memberTel" id="memberTel" placeholder="(- 없이 숫자만 입력)"
-                        maxlength="13" autocomplete="off" oninput="autoHyphen(this)" >
+                        maxlength="13" autocomplete="off" >
+                        <%-- oninput="autoHyphen(this)" 오토하이픈 --%>
 
-                        <button type="button">인증번호 받기</button>
+                        <button id="sendAuthKeyBtn" type="button" disabled >인증번호 받기</button>
                     </div>
 
                     <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.</span>   
 
-                    <!-- 인증번호 입력 -->
-                    <label for="phoneCheck">
-                        *
-                        <span class="required">인증번호 (필수 입력)</span>
-                    </label>
+                    <div class="phoneConfirmBox">
+                        <!-- 인증번호 입력 -->
+                        <label for="phoneCheck">
+                            *
+                            <span class="required">인증번호 (필수 입력)</span>
+                        </label>
 
-                    <div class="signUp-input-area">
-                        <input type="text" name="phoneCheck" id="phoneCheck" placeholder="인증번호 입력"
-                        maxlength="6" >
+                        <div class="signUp-input-area confirmCheck">
+                            <input type="text" name="phoneCheck" id="phoneCheck" placeholder="인증번호 입력"
+                            maxlength="4" autocomplete="off" >
 
-                        <button id="checkAuthKeyBtn" type="button">인증하기</button>
+                            <span id="timer"></span>
+
+                            <button id="checkAuthKeyBtn" type="button">인증하기</button>
+                        </div>
+                        <span id="authKeyMessage" class="signUp-message">인증되었습니다.</span>
                     </div>
-                    <span id="authKeyMessage" class="signUp-message">인증되었습니다.</span>
 
                     <!-- 주소 입력 -->
                     <label for="memberAddress">

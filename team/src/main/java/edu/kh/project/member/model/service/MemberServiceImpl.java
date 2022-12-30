@@ -58,6 +58,12 @@ public class MemberServiceImpl implements MemberService{
 	public int idDupCheck(String memberId) {
 		return dao.idDupCheck(memberId);
 	}
+
+	// 전화번호 중복 검사 서비스
+	@Override
+	public int telDupCheck(String memberTel) {
+		return dao.telDupCheck(memberTel);
+	}
 	
 	
 	

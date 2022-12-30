@@ -26,25 +26,66 @@
                 </a>
                 <div class="sprout">새싹이</div>
             </div>
-            <div class="find-text">비밀번호를 찾을 아이디를 입력해주세요.</div>
+            <div class="find-text">아이디 / 비밀번호 찾기</div>
         </article>
 
         <section class="find-content">
             <form action="/find" method="POST" onsubmit="return findValidate()">
                 <div class="find-frm">
+
                     <div class="find-wrap">
                         <div class="find-row">
-                            <div class="icon"><i class="fa-solid fa-user"></i></div>
-                            <input type="text" id="memberId" placeholder="아이디" maxlength="20" autocomplete="off">
+                            <div class="font-text">전화번호</div>
+                            <input type="text" id="memberTel" placeholder="(- 없이 숫자만 입력)" maxlength="20" autocomplete="off">
+                            <button type="button">인증번호 받기</button>
                         </div>
                     </div>
-                    
-                    <div class="message-area">
-                        <p id="findMessage" class="findMessage">영문과 숫자를 포함해 10~20 글자 사이로 입력해주세요.</p>
+
+                    <div class="confirmTelBox">
+                        <div class="find-wrap">
+                            <div class="confirm-box confirmBtnBox">
+                                <div class="font-text">인증번호</div>
+                                <input type="text" id="confirmNum" maxlength="4" autocomplete="off">
+                                <button type="button">인증번호 확인</button>
+                            </div>
+                        </div>
+                        <span class="findMessage">인증 확인 유무</span>
+                    </div>
+
+                    <div class="memberInfo">휴대전화 등록된 회원 아이디</div>
+
+                    <div class="find-wrap readonlyBox">
+                        <div class="confirm-box new-box">
+                            <div class="font-text">아이디</div>
+                            <input type="text" id="memberId" maxlength="20" autocomplete="off" value="test" readonly>
+                        </div>
+                    </div>
+
+                    <div class="newPwBox">
+                        <div class="find-wrap">
+                            <div class="confirm-box new-box">
+                                <div class="font-text">새 비밀번호</div> 
+                                <input type="password" id="newPw" maxlength="16" autocomplete="off">
+                            </div>
+                        </div>
+                        <span class="findMessage">새 비밀번호 정규식</span>
+                    </div>
+
+                    <div class="newConfirmPwBox">
+                        <div class="find-wrap">
+                            <div class="confirm-box new-box">
+                                <div class="font-text">새 비밀번호 확인</div>
+                                <input type="password" id="newConfirmPw" maxlength="16" autocomplete="off">
+                            </div>
+                        </div>
+                        <span class="findMessage">새 비밀번호 확인 정규식</span>
                     </div>
                     
-                    <div>
-                        <button class="find-btn">비밀번호 찾기</button>
+                    <div class="pwChangeBox">
+                        <button type="button" class="find-btn">비밀번호 변경</button>
+                    </div>
+                    <div class="formBtn">
+                        <button class="find-btn">수정</button>
                     </div>
                 </div>
             </form>
@@ -55,6 +96,12 @@
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <%-- 제이쿼리 사용시 필요한 스크립트 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+    crossorigin="anonymous"></script>
+    
+    <script src="../../resources/js/member/find.js"></script>
 
 </body>
 </html>
