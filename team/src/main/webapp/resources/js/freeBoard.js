@@ -136,12 +136,10 @@ for (let freeBoardOneItems of freeBoardOne) {
                                     updateContainer.append(updateInput);
                                     updateContainer.append(updateBtnContainer);
 
-                                    
-
                                 // }
 
-                                freeBoardDetailAnwserContent.append(contentD);
                                 freeBoardDetailAnwserContent.append(updateContainer);
+                                freeBoardDetailAnwserContent.append(contentD);
                                 
                                 // 댓글 삭제 ajax
                                 deleteBtn.addEventListener("click", () => {
@@ -184,33 +182,38 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                                         $.ajax({
                                             url:"/comment/update",
-                                        data : {"commentNo" : comment.commentNo,
-                                                "commentContent" : updateInput.value},
-                                        type : "post",
-                                        success : function(result) {
+                                            data : {"commentNo" : comment.commentNo,
+                                                    "commentContent" : updateInput.value},
+                                            type : "post",
+                                            success : function(result) {
 
-                                            if(result > 0) {
-                                                alert("댓글 수정 완료");
+                                                if(result > 0) {
+                                                    alert("댓글 수정 완료");
 
-                                                freeBoardDetailAnwserContent.innerHTML = "";
-                                                
-                                                commentListFun();
+                                                    freeBoardDetailAnwserContent.innerHTML = "";
+                                                    
+                                                    commentListFun();
 
-                                            }else {
-                                                alert("수정 실패")
+                                                }else {
+                                                    alert("수정 실패")
+                                                }
+                                            },
+                                            error : function(req, status, error){
+
+                                                console.log("댓글 삭제 실패");
+                                                console.log(req.responseText);
                                             }
-                                        },
-                                        error : function(req, status, error){
-
-                                            console.log("댓글 삭제 실패");
-                                            console.log(req.responseText);
-                                        }
                                     
+                                        });
                                     });
-
-                                    });
+                                    
                                 });
+                                
+                                cancel.addEventListener("click", function(){
 
+                                    updateContainer.style.display = "none";
+                            });
+                        
                             }
                         },
                         
@@ -238,6 +241,29 @@ for (let freeBoardOneItems of freeBoardOne) {
                 freeBoardDetailBtn.append(boardDeleteBtn);
                 
                 freeBoardDetailView.append(freeBoardDetailBtn);
+
+                // 게시글 삭제
+                boardDeleteBtn.addEventListener("click", () => {
+                    $.ajax({
+                      url: "/freeBoardDelete",
+                      type: "GET",
+                      data: { boardNo: freeBoardOneItems.lastElementChild.id },
+                      dataType: "json",
+                      success: (result) => {
+                        if (result > 0) {
+
+                            alert("게시글 삭제 성공")
+                            location.reload();
+
+                        } else {
+                          alert("삭제 XXX");
+                        }
+                      },
+                      error: () => {
+                        console.log("게시물 작성중 오류발생");
+                      },
+                    });
+                  });
             }
 
                 commentListFun();

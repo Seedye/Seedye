@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../../resources/css/sideBar.css">
     <link rel="stylesheet" href="../../resources/css/board/freeBoardList.css">
     <link rel="stylesheet" href="../../resources/css/board/board-write-style.css">
-    <link rel="stylesheet" href="../../resources/css/board/boardList-style.css">
     <title>자유 게시판</title>
     <script src="https://kit.fontawesome.com/8cc6d5f0de.js" crossorigin="anonymous"></script>
 </head>
@@ -22,24 +21,36 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
-    <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
+    <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
+
         <section id="freeBoard-section">
             <div id="freeBoard-container">
-                <div id="title-content">
+               <form action="3" method="get" id="boardSearch" onSubmit="return true">
+                    <div class="board-list-serch-write-area">
                     <p>자유 게시판</p>
 
-                    <div id="title-search">
-                        <input type="text">
-                        <button><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
-                    </div>
-                    
-                    <c:if test="${not empty loginMember}">
-                        <div id="title-write">
-                            <button id="boardWriteBtn">글작성</button>
+                        <!-- 검색어 입력 input -->
+                        <div class="board-list-serch">
+                            <select name="key" id="search-key">
+                            <option value="t">제목</option>
+                            <option value="c">내용</option>
+                            <option value="tc">제목+내용</option>
+                            <option value="w">작성자</option>
+                            </select>
+                            <input type="text" name="query" id="search-query">
                         </div>
-                    </c:if>
-                    
-                </div>
+
+                        <!-- 검색 버튼 -->
+                        <button class="board-serch-btn"><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
+
+                        <c:if test="${not empty loginMember}">
+                            <!-- 글작성 버튼 -->
+                            <div class="board-write-btn" id="boardWriteBtn">글작성</div>
+                        </c:if>
+
+                    </div>
+                 </form>
+
                 <div id="freeBoard-content">
                     <div id="freeBoard-list">
                         <ul id="ul-container">
@@ -111,25 +122,42 @@
                   <i class="fa-solid fa-angle-left"></i>
                 </a>
               </li>
-              <c:forEach var="i" begin="${pagination.startPage}" 
-                                  end="${pagination.endPage}" step="1">
-              
-                <c:choose>
-                  <c:when test="${i == pagination.currentPage}">
-                    <li class="board-list-page-no"><a>${i}</a></li>
-                  </c:when>
-                
-                  <c:otherwise>
-                    <li class="board-list-page-no"><a href="/freeBoardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                  </c:otherwise>
-                </c:choose>
-              
-              </c:forEach>
 
+                <c:forEach var="i" begin="${pagination.startPage}" 
+                                    end="${pagination.endPage}" step="1">
+                
+                    <c:choose>
+                    <c:when test="${i == pagination.currentPage}">
+                        <li class="board-list-page-no"><a>${i}</a></li>
+                    </c:when>
+                    
+                    <c:otherwise>
+
+                        <c:choose>
+                        
+                        <c:when test="${not empty param.query}">
+                            <li class="board-list-page-no"><a href="/freeBoardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                        
+                            <li class="board-list-page-no"><a href="/freeBoardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                        </c:otherwise>
+                        
+                        </c:choose>
+
+                    
+                    
+
+                    </c:otherwise>
+                    </c:choose>
+                
+                </c:forEach>
+
+                <!-- 다음 목록 시작 번호로 이동 -->
                 <li><a href="/freeBoardList/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
 
-              <!-- 끝 페이지로 이동 -->
-              <li><a href="/freeBoardList/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
+                <!-- 끝 페이지로 이동 -->
+                <li><a href="/freeBoardList/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
             </ul>
 
             </div>
@@ -151,7 +179,6 @@
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/header.js"></script>
     <script src="../../resources/js/board.js"></script>
-    <%-- <script src="../../resources/js/comment.js"></script> --%>
 
 </body>
 </html>

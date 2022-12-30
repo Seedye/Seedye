@@ -43,7 +43,7 @@ public class BoardDAO {
 	
 	/** 자유 게시글 목록 조회
 	 * @param pagination
-	 * @param boardCode
+	 * @param pm
 	 * @return
 	 */
 	public List<Board> selectFreeBoardList(Pagination pagination, int boardCode) {
@@ -122,6 +122,21 @@ public class BoardDAO {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("boardMapper.selectBoardList_search", pm, rowBounds);
+	}
+
+	public int freeBoardDelete(int boardNo) {
+		
+		int result= sqlSession.update("boardMapper.freeBoardDelete", boardNo);
+		
+		System.out.println(result);
+		return result;
+	}
+
+	public List<Board> selectFreeBoardList(Pagination pagination, Map<String, Object> pm) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit2();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit2());
+		return sqlSession.selectList("boardMapper.selectFreeBoardList_search", pm, rowBounds);
 	}
 
 	
