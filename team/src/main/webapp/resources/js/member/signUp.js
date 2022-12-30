@@ -345,42 +345,71 @@ mainTel.lastElementChild.addEventListener("click", () => {
 
 });
 
-// 타이머 구현_daldal
-function $ComTimer(){
-    //prototype extend
-}
 
-$ComTimer.prototype = {
-    comSecond : ""
-    , fnCallback : function(){}
-    , timer : ""
-    , domId : ""
-    , fnTimer : function(){
-        var m = "0" + Math.floor(this.comSecond / 60) + ":" + (this.comSecond % 60) + "";	// 남은 시간 계산
-        this.comSecond--;					// 1초씩 감소
-        console.log(m);
-        this.domId.innerText = m;
-        // checkObj.authKey = true;
+// // 타이머 구현_daldal
+// function $ComTimer(){
+//     //prototype extend
+// }
 
-        if (this.comSecond < 0) {			// 시간이 종료 되었으면..
-            checkObj.authKey = false;
-            clearInterval(this.timer);		// 타이머 해제
-            alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
-            window.close();
-            window.opener.location = "/signUp"
-        }
+// $ComTimer.prototype = {
+//     comSecond : ""
+//     , fnCallback : function(){}
+//     , timer : ""
+//     , domId : ""
+//     , fnTimer : function(){
+//         var m = "0" + Math.floor(this.comSecond / 60) + ":" + (this.comSecond % 60) + "";	// 남은 시간 계산
+//         this.comSecond--;					// 1초씩 감소
+//         console.log(m);
+//         this.domId.innerText = m;
+//         // checkObj.authKey = true;
+
+//         if (this.comSecond < 0) {			// 시간이 종료 되었으면..
+//             checkObj.authKey = false;
+//             clearInterval(this.timer);		// 타이머 해제
+//             alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
+//             window.close();
+//             window.opener.location = "/signUp"
+//         }
+//     }
+//     ,fnStop : function(){
+//         clearInterval(this.timer);
+//     }
+// }
+
+// var AuthTimer = new $ComTimer()
+
+// AuthTimer.comSecond = 179; // 제한 시간
+
+// AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}; // 제한 시간 만료 메세지
+
+// AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000); 
+
+// AuthTimer.domId = document.getElementById("timer");
+
+
+
+
+var time = 180; // 인증번호 제한시간 작성
+var min = ""; // 분
+var sec = ""; // 초
+
+// setInterval(함수, 시간) : 주기적인 실행
+var x = setInterval(function(){
+    // parseInt() : 정수를 반환
+    min = parseInt(time/60); // 몫을 계산
+    sec = time%60; // 나머지 계산
+
+    document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+    time--;
+
+    // 타임아웃 시
+    if(time < 0) {
+        clearInterval(x); // setInterval() 실행 끝
+        document.getElementById("timer").innerHTML = "시간만료";
+        checkObj.authKey = false;
+
+    } else { // 타임아웃이 아닐 시
+        checkObj.authKey = true;
     }
-    ,fnStop : function(){
-        clearInterval(this.timer);
-    }
-}
 
-var AuthTimer = new $ComTimer()
-
-AuthTimer.comSecond = 179; // 제한 시간
-
-AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}; // 제한 시간 만료 메세지
-
-AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000); 
-
-AuthTimer.domId = document.getElementById("timer");
+}, 1000);
