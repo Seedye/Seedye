@@ -156,7 +156,9 @@
                     <c:choose>
                     
                       <c:when test="${not empty param.query}">
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
+                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?key=${param.key}&query=${param.query}">${i}</a></li>
+                                                                    <%-- http://localhost/boardList/4?key=t&query=1 --%>
+
                       </c:when>
                       <c:otherwise>
                       

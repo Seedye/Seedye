@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-  String queryValue = request.getParameter("query");
-%>
 
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -152,21 +149,19 @@
                   </c:when>
                 
                   <c:otherwise>
+                  <%-- if(query!=null){
 
-                    <c:choose>
-                    
-                      <c:when test="${not empty param.query}">
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
-                      </c:when>
-                      <c:otherwise>
-                      
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                      </c:otherwise>
-                    
-                    </c:choose>
+                  } --%>
 
+                  <c:if test="${not empty param.queryValue}">
                   
+
+                  </c:if>
                   
+                    <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                    <%-- http://localhost/boardList/4?key=t&query=2 --%>
+                    <%-- <li><a href="/board/${boardCode}/?cp=${i}">${i}</a></li> --%>
+
 
                   </c:otherwise>
                 </c:choose>

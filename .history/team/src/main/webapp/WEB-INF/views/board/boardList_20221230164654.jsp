@@ -143,8 +143,7 @@
               <li class="board-list-page-no">9</li>
               <li class="board-list-page-no">10</li> --%>
 
-              <c:forEach var="i" begin="${pagination.startPage}" 
-                                  end="${pagination.endPage}" step="1">
+              <c:forEach var="i" begin="${pagination.startPage}"end="${pagination.endPage}" step="1">
               
                 <c:choose>
                   <c:when test="${i == pagination.currentPage}">
@@ -152,22 +151,25 @@
                   </c:when>
                 
                   <c:otherwise>
+                  <%-- if(query!=null){
 
-                    <c:choose>
-                    
-                      <c:when test="${not empty param.query}">
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}&key=${param.key}&query=${param.query}">${i}</a></li>
-                      </c:when>
-                      <c:otherwise>
-                      
-                        <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
-                      </c:otherwise>
-                    
-                    </c:choose>
+                  } --%>
 
+                  <%-- <p>-------------------------------------------------</p>
+                  ${param.query}
+                  <p>-------------------------------------------------</p> --%>
                   
-                  
+                  <c:if test="${not empty param.query}">
 
+                    <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                                                                                        key=t&query=1
+                  </c:if>
+                  
+                    <%-- http://localhost/boardList/4?key=t&query=2 --%>
+                    <%-- <li><a href="/board/${boardCode}/?cp=${i}">${i}</a></li> --%>
+
+                    <%-- <li class="board-list-page-no"><a href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                    <li><a href="/board/${boardCode}/?cp=${i}">${i}</a></li>
                   </c:otherwise>
                 </c:choose>
               
@@ -175,7 +177,7 @@
               
 
               <!-- 다음 목록 시작 번호로 이동 -->
-              <li><a href="/boardList/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
+              <li id="boardPageNum"><a href="/boardList/${boardCode}?cp=${pagination.nextPage}${sURL}"><i class="fa-solid fa-angle-right"></i></a></li>
 
               <!-- 끝 페이지로 이동 -->
               <li><a href="/boardList/${boardCode}?cp=${pagination.maxPage}${sURL}"><i class="fa-solid fa-caret-right"></i></a></li>
@@ -186,7 +188,8 @@
             <!-- <div class="board-list-page-num"></div>
             <div class="board-list-page-num"></div> -->
           </div>
-
+<%-- 검색 안했을 때 : http://localhost/boardList/4?cp=1 --%>
+<%-- 검색 했을 때 :   http://localhost/boardList/4?key=t&query=1 --%>
           
       </section>
       
