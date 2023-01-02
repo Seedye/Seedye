@@ -1,11 +1,12 @@
 #sideAll{
-    width: 200px;
+    width: 150px;
     height: auto;
     display: flex;
     flex-direction: column;
     /* border: 3px solid #2db400; */
 
     background-color: #2db400;
+    
     
     position: absolute; 
     left: 20px;
@@ -16,7 +17,7 @@
 	border-top: 10px solid  green; 
 	border-bottom: 10px solid green; 
 
-
+    z-index: 600;
 }
 
 #sideAll > input{
@@ -39,7 +40,6 @@
 }
 
 #sideAll > label{
-    height: 16px;
     font-weight: bold;
     font-size: 16px;
 
@@ -47,7 +47,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 40px;
+    padding: 30px 0;
     color: white;
 
     cursor: pointer;

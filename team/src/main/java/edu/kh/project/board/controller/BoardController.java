@@ -19,12 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.member.model.vo.Member;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class BoardController {
