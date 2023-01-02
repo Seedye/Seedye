@@ -1,3 +1,33 @@
+// 타이머 함수 작성
+const authKey = document.getElementById("authKey");
+const timer = function(){
+
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+    
+    // setInterval(함수, 시간) : 주기적인 실행
+    let x = setInterval(function(){
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+    
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+    
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(x); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "시간만료";
+            checkObj.authKey = false;
+    
+        } else { // 타임아웃이 아닐 시
+            checkObj.authKey = true;
+        }
+    
+    }, 1000);
+}
+
 const checkObj = {
     "memberId"        : false, /* 아이디 */
     "memberPw"        : false, /* 비밀번호 */
@@ -338,31 +368,3 @@ confirmCheck.lastElementChild.addEventListener("click", () => {
 
 });
 
-const authKey = document.getElementById("authKey");
-const timer = function(){
-
-    let time = 180; // 인증번호 제한시간 작성
-    let min = ""; // 분
-    let sec = ""; // 초
-    
-    // setInterval(함수, 시간) : 주기적인 실행
-    let x = setInterval(function(){
-        // parseInt() : 정수를 반환
-        min = parseInt(time/60); // 몫을 계산
-        sec = time%60; // 나머지 계산
-    
-        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
-    
-        // 타임아웃 시
-        if(time < 0) {
-            clearInterval(x); // setInterval() 실행 끝
-            document.getElementById("timer").innerHTML = "시간만료";
-            checkObj.authKey = false;
-    
-        } else { // 타임아웃이 아닐 시
-            checkObj.authKey = true;
-        }
-    
-    }, 1000);
-}
