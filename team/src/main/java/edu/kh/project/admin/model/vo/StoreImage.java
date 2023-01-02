@@ -23,4 +23,13 @@ public class StoreImage {
 	private List<StoreImage> storeList;
 	private String licensePath;
 	private String allPath;
+	
+	// 황석현
+	private String sImgPath;
+	private String sImgRename;	
+	private String sImgOriginal;
+	private int sImgOrder;
+
+
+	
 }
