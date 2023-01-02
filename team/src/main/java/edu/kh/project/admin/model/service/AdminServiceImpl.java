@@ -88,8 +88,15 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 식당 목록 조회
 	@Override
-	public List<Store> selectStoreList() {
-		return dao.selectStoreList();
+	public List<Store> selectStoreList(int cp) {
+		
+		int listCount = dao.selectCount();
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		return dao.selectStoreList(pagination); 
+				
+		
 	}
 
 	@Override
@@ -302,6 +309,13 @@ public class AdminServiceImpl implements AdminService{
 	public void storeChange(int storeNo) {
 		dao.storeChange(storeNo);
 		
+	}
+
+	// 식당 등록 승인
+	@Override
+	public int registerStore(int storeNo) {
+		
+		return dao.registerStore(storeNo);
 	}
 
 

@@ -285,17 +285,21 @@ public class AdminController {
 		return result;
 	}
 
+	
+	// 수정 중
 	// 식당 목록 조회
 	@GetMapping("selectStoreList")
 	@ResponseBody
 	public String selectStoreList() {
-
-			List<Store> storeList = service.selectStoreList();
+		
+		int cp = 2;	
+		
+			List<Store> storeList = service.selectStoreList(cp);
+			
+			System.out.println(storeList);
 			
 			
 			return new Gson().toJson(storeList);
-		
-		
 		
 	}
 	
@@ -313,6 +317,7 @@ public class AdminController {
 	@ResponseBody
 	public String selectEnroll(char checkFl) {
 		List<Store> storeList = service.selectEnroll(checkFl);
+		
 		
 		return new Gson().toJson(storeList);
 	}
@@ -399,10 +404,20 @@ public class AdminController {
 		
 	}
 	
+	
+
 	// 식당 등록
+	@GetMapping("registerStore")
+	@ResponseBody
+	public int registerStore(int storeNo) {
+		
+		int result = service.registerStore(storeNo);
+		
+		return result;
+		
+	}
 	
-	
-	
+
 	
 	
 	
