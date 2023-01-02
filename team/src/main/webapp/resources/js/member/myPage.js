@@ -24,7 +24,7 @@ document.getElementById("myPage-frm").addEventListener("submit", function(event)
             case "newPw"    :  str = "새 비밀번호가 유효하지 않습니다."; break; 
             case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
             case "confirm" :  str = "전화번호 인증을 완료해주세요."; break;
-        }
+            }
 
             alert(str); // 대화상자 출력
 

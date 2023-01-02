@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -58,13 +59,6 @@ public class MyPageController {
 			RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
-		
-		System.out.println(inputMember);
-		System.out.println(paramMap.get("newPw"));
-		System.out.println(paramMap.get("newPw") == null);
-		System.out.println(paramMap.get("newPw") == "");
-//		System.out.println(paramMap.get("memberId"));
-		
 		
 		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
 		paramMap.put("memberNo", loginMember.getMemberNo());
@@ -189,17 +183,18 @@ public class MyPageController {
 			HttpSession session
 			) {
 		
+		// 전달 받은 전화번호로 회원 조회
+		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
+		
 		Message sendMsg = new Message();
-	      
+		
 		sendMsg.setFrom("01055888974");
 		sendMsg.setTo(toPhone);
-      
+		
 		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
 		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
-      
-		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
 		
-		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
+		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
 		
 		session.setAttribute("randomNumber", randomNumber);
 		
@@ -223,6 +218,36 @@ public class MyPageController {
 		return 0;
 	}
 	
-	
+	// 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	@PostMapping("/find")
+	public String pwChange(Member inputContent,
+			RedirectAttributes ra,
+			@RequestHeader("referer") String referer) {
+		
+		System.out.println(inputContent.getMemberId());
+		System.out.println(inputContent.getMemberTel());
+		System.out.println(inputContent.getMemberPw());
+		
+		int result = service.pwChange(inputContent);
+		
+		String path = null;
+		String message = null;
+		
+		if (result > 0) {
+			
+			path = "/login";
+			message = "비밀번호 변경이 완료되었습니다.";
+			
+		} else {
+			
+			path = referer;
+			message = "비밀번호 변경이 실패했습니다.";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
 	
 }

@@ -71,7 +71,7 @@
                         <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
                         <button type="button" class="aaa">전화번호 변경</button>
                     </div>
-                    <div class="confirm">
+                    <div class="confirmBox">
                         <div class="myPage-row tel confirmCheck">
                             <label>인증번호</label>
                             <input type="text" name="confirmTel" maxlength="4">

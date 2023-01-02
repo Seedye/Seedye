@@ -47,4 +47,13 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.selectPhoneMemberId", toPhone);
 	}
 
+
+	/** 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	 * @param inputContent
+	 * @return reuslt
+	 */
+	public int pwChange(Member inputContent) {
+		return sqlSession.update("myPageMapper.pwChange", inputContent);
+	}
+
 }
