@@ -61,5 +61,19 @@ public interface BoardService {
 	 * @return
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+	
+	/** 게시판 검색 목록 조회
+	 * @param pm
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectFreeBoardList(Map<String, Object> pm, int cp);
+
+	/** 자유 게시글 삭제
+	 * @param boardNo
+	 * @param board
+	 * @return
+	 */
+	int freeBoardDelete(int boardNo);
 
 }

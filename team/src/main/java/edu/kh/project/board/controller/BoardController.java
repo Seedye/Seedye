@@ -77,8 +77,17 @@ public class BoardController {
 			@RequestParam Map<String, Object> pm
 			) {
 		
-		Map<String, Object> map = service.selectFreeBoardList(boardCode,cp);
-		model.addAttribute("map", map);
+		if(pm.get("key") == null) {
+			
+			Map<String, Object> map = service.selectFreeBoardList(boardCode,cp);
+			model.addAttribute("map", map);
+		}
+		// 게시판 검색 목록 조회
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectFreeBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
 		
 		
 		return "board/freeBoardList";
@@ -143,6 +152,20 @@ public class BoardController {
 		
 		return freeBoardDetail;
 		
+	}
+	
+	/** 자유 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/freeBoardDelete")
+	@ResponseBody
+	public int freeBoardDelete(@RequestParam("boardNo")int boardNo) {
+		
+		System.out.println(boardNo);
+//		
+		int result = service.freeBoardDelete(boardNo);
+		return result;
 	}
 	
 	/** 문의 게시판 상세조회

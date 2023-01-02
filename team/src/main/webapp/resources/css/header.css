@@ -28,7 +28,7 @@ header{
     background-color: white;
     z-index: 1000;
     transition: top 0.5s ease;
-    /* width: 100vw; */
+    width: 100vw;
 }
 
 body{
@@ -140,7 +140,7 @@ footer {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    width: 1550px;
+    width: 100%;
 
 }
     
@@ -157,7 +157,7 @@ footer {
 
 }
 
-#logo-conatiner.scrolled{
+#logo-container.scrolled{
     display: flex;
     justify-content: center;
     align-items: center;

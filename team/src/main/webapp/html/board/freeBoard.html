@@ -44,19 +44,33 @@
 
         <section>
             <div id="freeBoard-container">
-                <div id="title-content">
-                    <p>자유 게시판</p>
+                <form action="4" method="get" id="boardSearch" onSubmit="return true">
+                    
+                    <div class="board-list-serch-write-area">
+                        <p>자유 게시판</p>
 
-                    <div id="title-search">
-                        <input type="text">
-                        <button><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
+                        <!-- 검색어 입력 input -->
+                        <div class="board-list-serch">
+                          <select name="key" id="search-key">
+                            <option value="t">제목</option>
+                            <option value="c">내용</option>
+                            <option value="tc">제목+내용</option>
+                            <option value="w">작성자</option>
+                          </select>
+                          <input type="text" name="query" id="search-query">
+                        </div>
+          
+                        <!-- 검색 버튼 -->
+                        <button class="board-serch-btn"><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
+          
+                        <c:if test="${not empty loginMember}">
+                          <!-- 글작성 버튼 -->
+                          <div class="board-write-btn" id="boardWriteBtn">글작성</div>
+                        </c:if>
+                      
+          
                     </div>
-                    
-                    <div id="title-write">
-                        <button>글작성</button>
-                    </div>
-                    
-                </div>
+                  </form>
                 <div id="freeBoard-content">
                     <div id="freeBoard-list">
                         <ul id="ul-container">
