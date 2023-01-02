@@ -8,10 +8,10 @@
         <input type="checkbox" id="sideIntro">
             <div id="sideMenu1">
                 <ul class="dropdown-sideMenu1">
-                    <li><a href="">소개글</a></li>
-                    <li><a href="">프로젝트 및 팀원 소개</a></li>
+                    <%-- <li><a href="">소개글</a></li> --%>
+                    <%-- <li><a href="">프로젝트 및 팀원 소개</a></li>
                     <li><a href="">프로젝트 목적</a></li>
-                    <li><a href="">꿈나무 카드</a></li>
+                    <li><a href="">꿈나무 카드</a></li> --%>
                 </ul>
             </div>
 
@@ -29,7 +29,7 @@
                 <ul class="dropdown-sideMenu3">
                     <li><a href="/boardList/3">자유게시판</a></li>
                     <li><a href="">문의게시판</a></li>
-                    <li><a href="">추가할 게시판</a></li>  
+                    <%-- <li><a href="">추가할 게시판</a></li>   --%>
                 </ul>     
             </div>
         <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>

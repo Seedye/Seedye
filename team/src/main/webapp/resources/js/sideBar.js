@@ -26,24 +26,24 @@ let toggleFlag = true;
 
 sideIntro.addEventListener("click", () => {
     
-    if(toggleFlag){
-        dropDownContent.style.height = "150px";
-        dropDownContent2.style.height = "0px";
-        dropDownContent3.style.height = "0px";
-        dropDownContent4.style.height = "0px";
+    // if(toggleFlag){
+    //     dropDownContent.style.height = "150px";
+    //     dropDownContent2.style.height = "0px";
+    //     dropDownContent3.style.height = "0px";
+    //     dropDownContent4.style.height = "0px";
 
-        side1.style.backgroundColor = "#ffffff5c"
-        side2.style.backgroundColor = "#2db400"
-        side3.style.backgroundColor = "#2db400"
-        side6.style.backgroundColor = "#2db400"
+    //     side1.style.backgroundColor = "#ffffff5c"
+    //     side2.style.backgroundColor = "#2db400"
+    //     side3.style.backgroundColor = "#2db400"
+    //     side6.style.backgroundColor = "#2db400"
         
-        toggleFlag = false;
+    //     toggleFlag = false;
         
-    }else{
-        dropDownContent.style.height = "0px";
-        side1.style.backgroundColor = "#2db400"
-        toggleFlag = true;
-    }
+    // }else{
+    //     dropDownContent.style.height = "0px";
+    //     side1.style.backgroundColor = "#2db400"
+    //     toggleFlag = true;
+    // }
 
 });
 
@@ -55,7 +55,7 @@ sideNotice.addEventListener("click", () => {
         dropDownContent3.style.height = "0px";
         dropDownContent4.style.height = "0px";
 
-        side1.style.backgroundColor = "#2db400"
+        // side1.style.backgroundColor = "#2db400"
         side2.style.backgroundColor = "#ffffff5c"
         side3.style.backgroundColor = "#2db400"
         side6.style.backgroundColor = "#2db400"
@@ -63,22 +63,22 @@ sideNotice.addEventListener("click", () => {
         toggleFlag = false;
         
     }else{
+
         dropDownContent2.style.height = "0px";
         side2.style.backgroundColor = "#2db400"
         toggleFlag = true;
     }
-
 });
 
 side.addEventListener("click", () => {
     
     if(toggleFlag){
-        dropDownContent3.style.height = "100px";
-        dropDownContent.style.height = "0px";
+        dropDownContent3.style.height = "75px";
+        // dropDownContent.style.height = "0px";
         dropDownContent2.style.height = "0px";
         dropDownContent4.style.height = "0px";
 
-        side1.style.backgroundColor = "#2db400"
+        // side1.style.backgroundColor = "#2db400"
         side2.style.backgroundColor = "#2db400"
         side3.style.backgroundColor = "#ffffff5c"
         side6.style.backgroundColor = "#2db400"
@@ -97,11 +97,11 @@ sideManage.addEventListener("click", () => {
     
     if(toggleFlag){
         dropDownContent4.style.height = "100px";
-        dropDownContent.style.height = "0px";
+        // dropDownContent.style.height = "0px";
         dropDownContent2.style.height = "0px";
         dropDownContent3.style.height = "0px";
 
-        side1.style.backgroundColor = "#2db400"
+        // side1.style.backgroundColor = "#2db400"
         side2.style.backgroundColor = "#2db400"
         side3.style.backgroundColor = "#2db400"
         side6.style.backgroundColor = "#ffffff5c"
@@ -113,5 +113,7 @@ sideManage.addEventListener("click", () => {
         side6.style.backgroundColor = "#2db400"
         toggleFlag = true;
     }
+
+    dropDownContent4.style.height = "0px";
 
 });

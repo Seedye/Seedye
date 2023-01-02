@@ -164,9 +164,16 @@
   height: 70px;
 }
 
+.imgContainer{
+  display: flex;
+  /* justify-content: space-between; */
+}
+
 #freeBoard-detail-view img{
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
+  margin: 0px 5px;
+
 }
 
 #freeBoard-detail-anwser{
@@ -237,7 +244,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: -25px;
+  bottom: -100px;
 
 }
 
@@ -260,11 +267,18 @@
   align-items: center;
   justify-content: space-between;
 
+  width: 495px;
+
   padding: 2.5px 0px;
 }
 
+.pen{
+  margin-right: 10px;
+  display: flex;
+}
+
 .fa-pen{
-  margin:0 10px 0 70px;
+  margin:0 10px;
   background-color: #f7f8f9;
   border: none;
   font-size: 10px;
@@ -286,9 +300,6 @@
 
 }
 
-.pen{
-  margin-right: 10px;
-}
 
 .updateContainer{
   display: flex;
