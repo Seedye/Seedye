@@ -4,7 +4,7 @@ const checkObj = {
     "memberPwConfirm" : false, /* 비밀번호 확인 */
     "memberTel"       : false, /* 전화번호 */
     "phoneCheck"      : false, /* 인증번호 */
-    "authKey"         : false, /* 인증 제한 시간*/
+    "authKey"         : false, /* 인증 제한 시간(타이머) */
 };
 
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
@@ -389,7 +389,7 @@ mainTel.lastElementChild.addEventListener("click", () => {
 
 // AuthTimer.domId = document.getElementById("timer");
 
-
+const authKey = document.getElementById("authKey");
 const timer = function(){
 
     let time = 180; // 인증번호 제한시간 작성
