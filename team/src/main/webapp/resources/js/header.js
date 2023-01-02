@@ -14,6 +14,7 @@
     var nacVar = document.getElementById("nav-bar");
     var login = document.getElementById("login");
     var login2 = document.getElementById("login2");
+    var header = document.querySelector("header");
 
     // 스크롤 위치가 일정 값 이상이면 scrolled 클래스 추가, 이 값 미만이면 제거
     if (scrollTop > 81 && flag) {
@@ -29,6 +30,7 @@
         nacVar.classList.add("scrolled");
         login.classList.add("scrolled");
         login2.classList.add("scrolled");
+        header.classList.add("scrolled");
 
         flag = false;
         return;
@@ -47,6 +49,7 @@
         nacVar.classList.remove("scrolled");
         login.classList.remove("scrolled");
         login2.classList.remove("scrolled");
+        header.classList.remove("scrolled");
         flag = true;
 
         window.scrollTo({ left: 0, top: 81 });
