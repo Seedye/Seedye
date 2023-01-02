@@ -67,7 +67,7 @@
 		UPDATE "MEMBER" SET
 		MEMBER_PW = #{memberPw}
 		WHERE MEMBER_ID = #{memberId}
-		AND MEMBER_TEL = #{memberTel}
+		AND MEMBER_TEL = ${memberTel}
 	</update>
 	
 </mapper>
