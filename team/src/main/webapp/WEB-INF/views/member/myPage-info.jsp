@@ -25,8 +25,8 @@
             <section class="left-side">
                 <!-- 사이드메뉴 -->
                 <ul class="list-group">
-                    <li><a href="/">내정보</a></li>
-                    <li><a href="/">회원 탈퇴</a></li>
+                    <li><a href="/info">내정보</a></li>
+                    <li><a href="/delete">회원 탈퇴</a></li>
                 </ul>
             </section>
 

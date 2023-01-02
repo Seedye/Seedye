@@ -17,6 +17,9 @@ const newPwBox = document.querySelector(".newPwBox");
 const newConfirmPwBox = document.querySelector(".newConfirmPwBox");
 const formBtn = document.querySelector(".formBtn");
 
+// 타이머 함수 작성
+const authKey = document.getElementById("authKey");
+
 // 입력한 전화번호 담을 변수 선언
 let toPhone;
 
@@ -55,10 +58,36 @@ let resultId;
 // 전화번호 입력한 값
 const inputTel = document.querySelector(".find-row > input");
 
+let confirmTelTimer;
 // 인증번호 받기 버튼을 눌렀을 때
 confirmTelBtn.lastElementChild.addEventListener("click", () => {
     
-    timer();
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+
+    // setInterval(함수, 시간) : 주기적인 실행
+    confirmTelTimer = setInterval(function(){
+
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(confirmTelTimer); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "인증 시간이 만료 되었습니다. 다시 인증번호를 발급해주세요.";
+            const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+            sendAuthKeyBtn.setAttribute("disabled", "");
+
+        } else {
+            sendAuthKeyBtn.removeAttribute("disabled");
+        }
+
+    }, 1000);
 
     // 전화번호 정규식
     const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
@@ -106,6 +135,8 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
 
 // 인증번호 확인 버튼 눌렀을 때
 confirmBox.lastElementChild.addEventListener("click", () => {
+
+    clearInterval(confirmTelTimer);
     
     const confirmBoxInput = document.querySelector(".confirmBtnBox input");
     
@@ -117,13 +148,17 @@ confirmBox.lastElementChild.addEventListener("click", () => {
 
             // result가 0일 때 인증 실패
             if(result == 0){
-                alert("인증번호가 일치하지 않습니다.");
 
+                confirmTelBox.lastElementChild.innerText = "인증번호가 일치하지 않습니다.";
+
+                confirmTelBox.lastElementChild.classList.add("error");
+                confirmTelBox.lastElementChild.classList.remove("confirm");
+                
                 return;
             } else{
-
+                
                 console.log(resultId);
-
+                
                 if(resultId == ""){
                     
                     alert("등록된 회원이 없습니다.");
@@ -133,12 +168,16 @@ confirmBox.lastElementChild.addEventListener("click", () => {
                     confirmTelBox.lastElementChild.innerText = "";
                     
                     inputTel.focus();
-
+                    
                     return false;
                     
                 } else {
 
-                    alert("인증이 완료 되었습니다.");
+                    
+                    confirmTelBox.lastElementChild.innerText = "인증이 완료 되었습니다.";
+
+                    confirmTelBox.lastElementChild.classList.add("confirm");
+                    confirmTelBox.lastElementChild.classList.remove("error");
 
                     // 아이디 찾기 결과 담을 요소
                     const findId = document.querySelector(".readonlyBox input");
@@ -277,34 +316,3 @@ confirmBox.lastElementChild.addEventListener("click", () => {
 } else{
 
 } */
-
-const authKey = document.getElementById("authKey");
-const timer = function(){
-
-
-    let time = 180; // 인증번호 제한시간 작성
-    let min = ""; // 분
-    let sec = ""; // 초
-    
-    // setInterval(함수, 시간) : 주기적인 실행
-    let x = setInterval(function(){
-        // parseInt() : 정수를 반환
-        min = parseInt(time/60); // 몫을 계산
-        sec = time%60; // 나머지 계산
-    
-        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
-    
-        // 타임아웃 시
-        if(time < 0) {
-            clearInterval(x); // setInterval() 실행 끝
-            document.getElementById("timer").innerHTML = "인증 시간이 만료 되었습니다. 다시 인증번호를 발급해주세요.";
-            const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
-            sendAuthKeyBtn.setAttribute("disabled", "");
-    
-        } else {
-            sendAuthKeyBtn.removeAttribute("disabled");
-        }
-    
-    }, 1000);
-}

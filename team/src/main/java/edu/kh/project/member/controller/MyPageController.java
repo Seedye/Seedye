@@ -180,17 +180,17 @@ public class MyPageController {
 		// 전달 받은 전화번호로 회원 조회
 		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
 		
-//		Message sendMsg = new Message();
-//		
-//		sendMsg.setFrom("01055888974");
-//		sendMsg.setTo(toPhone);
-//		
-//		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
-//		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
-//		
-//		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
-//		
-//		session.setAttribute("randomNumber", randomNumber);
+		Message sendMsg = new Message();
+		
+		sendMsg.setFrom("01055888974");
+		sendMsg.setTo(toPhone);
+		
+		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+		
+		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+		
+		session.setAttribute("randomNumber", randomNumber);
 		
 		return selectPhoneMemberId;
 	}
@@ -201,17 +201,15 @@ public class MyPageController {
 			@RequestParam("inputConfirmNo") int inputConfirmNo,
 			HttpSession session) {
 		
-//		int confirmNo = (int)session.getAttribute("randomNumber");
-//		
-//		if (confirmNo == inputConfirmNo) {
-//			session.removeAttribute("randomNumber");
-//			
-//			return 1;
-//		}
-//		
-//		return 0;
+		int confirmNo = (int)session.getAttribute("randomNumber");
 		
-		return 1;
+		if (confirmNo == inputConfirmNo) {
+			session.removeAttribute("randomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
 		
 	}
 	
