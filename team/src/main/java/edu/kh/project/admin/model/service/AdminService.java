@@ -36,7 +36,7 @@ public interface AdminService {
 	/** 식당 목록 조회
 	 * @return storeList
 	 */
-	List<Store> selectStoreList();
+	List<Store> selectStoreList(int cp);
 
 
 	int boardDelete(int boardNo);
@@ -139,6 +139,17 @@ public interface AdminService {
 	char storeCheck(int storeNo);
 
 	void storeChange(int storeNo);
+
+
+
+	/** 식당 등록 승인
+	 * @param storeNo
+	 * @return result
+	 */
+	int registerStore(int storeNo);
+
+
+
 
 
 	

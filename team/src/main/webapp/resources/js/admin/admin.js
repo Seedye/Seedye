@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 
+
 // function sample4_execDaumPostcode() {
 //     new daum.Postcode({
 //         oncomplete: function(data) {
@@ -73,12 +74,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 function selectStoreList(){
 
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-
     $.ajax({
         url:"/admin/selectStoreList",
-        dataType: "JSON", 
+        dataType: "JSON",   
         success : storeList =>{
             console.log(storeList);
             
@@ -134,6 +132,7 @@ function selectStoreList(){
             const image0i = document.getElementById("image0i");
             const image1i = document.getElementById("image1i");
             const image2i = document.getElementById("image2i");
+
 
             // 관리하기 버튼 클릭
             const storeManage = document.getElementsByClassName("store-manage");
@@ -230,11 +229,31 @@ function selectStoreList(){
                             infoArea.innerText = store.storeInfo;
                         }
 
+                        // 식당 등록 (협의중 -> 등록완료)
+                        const registerStore = document.getElementById("registerStore");
+                        registerStore.addEventListener("click", ()=>{
+                            
+                            $.ajax({
+                                url:"/admin/registerStore",
+                                data:{"storeNo" : tempNo},
+                                success: (result)=>{
+                                    console.log("성공");
+                                
+                                    if(result > 0){
+                                        alert("성공");
+                                        adminR.style.display = "none";
+                                        storeManageMain.style.display = "flex";
+                                    }
+                                },
+                                error:()=>{
+                                    console.log("실패");
+                                }    
 
                           
                             
-                            
-                        }, 
+                            })  
+                        });
+                    },
                         error:()=>{
                             console.log("실패");
                         }
@@ -382,37 +401,3 @@ enroll.addEventListener("click", ()=>{
 });
 
 
-
-Paging = function(totalCnt, dataSize, pageSize, pageNo, token){
-    totalCnt = parseInt(totalCnt); // 전체 목록 수
-    dataSize = parseInt(dataSize); // 페이지당 목록 수
-    pageSize = parseInt(pageSize); // 페이지 그룹 범위
-    pageNo = parseInt(pageNo); // 현재 페이지
-
-    let html = new Array();
-    if(totalCnt == 0){
-        return "";
-    }
-
-    // 페이지
-    let pageCnt = totalCnt % dataSize;
-    if(pageCnt == 0){
-        pageCnt = parseInt(totalCnt / dataSize);
-    } else {
-        pageCnt = parseInt(totalCnt / dataSize) + 1;
-    }
-
-    let pRcnt = parseInt(pageNo/pageSize);
-    if(pageNo % pageSize == 0){
-        pRcnt = parseInt(pageNo / pageSize) -1;
-    } 
-
-    if(pageNo > pageSize){
-        let s2;
-        if(pageNo % pageSize == 0){
-            s2 = pageNo - pageSize;
-        }
-
-    }
-    
-}

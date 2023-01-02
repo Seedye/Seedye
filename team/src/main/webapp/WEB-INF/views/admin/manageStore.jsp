@@ -22,7 +22,7 @@
 
             <!-- 식당 등록 -->
             <div id="adminR" class="admin-mainMenu">
-                <form action="#">
+                <form action="/admin/resisterStore" method="Post">
                     <div id="imageArea">
                         <div class="imageDiv">
                             <label for="image0">
@@ -85,9 +85,9 @@
                     </div>
                     <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
-                        <button>등록</button>
+                        <button id="registerStore" type="button">등록</button>
                     </div>
-                </form>
+                </form> 
             </div>
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
@@ -217,27 +217,44 @@
                                 <option value="">주소</option>
                                 <option value="">전화번호</option>
                             </select>
-                            <input type="text">
+                            <input type="text" id="keyword">
                             <button>검색</button>
                         </div>
                     </form>
                     <div id="btnArea">
                         <button id="enroll">신청 조회</button>
                     </div>
-                    <div id="pagination-area">
+                    <div class="pagination-area">
                         <ul class="pagination">
-                            <li><a href="">&lt;&lt;</a></li>
-                            <li><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">4</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">6</a></li>
-                            <li><a href="">7</a></li>
-                            <li><a href="">8</a></li>
-                            <li><a href="">9</a></li>
-                            <li><a href="">10</a></li>
-                            <li><a href="">&gt;&gt;</a></li>
+                            <!-- 첫 페이지로 이동 -->
+                            <li><a href="/board/${boardCode}?cp=1${sURL}">&lt;&lt;</a></li>
+                            <!-- 이전 목록 마지막 번호로 이동 -->
+                            <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">&lt;</a></li>
+        
+                            <c:forEach var="i" begin="${pagination.startPage}" 
+                                end="${pagination.endPage}" step="1">
+        
+                                <c:choose>
+                                    <c:when test="${i == pagination.currentPage}">
+                                        <%-- 현재 페이지인 경우 --%>
+                                        <li><a class="current">${i}</a></li>
+                                    </c:when>
+        
+                                    <c:otherwise>
+                                        <!-- 현재 페이지를 제외한 나머지 -->
+                                        <li><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+        
+                            </c:forEach>
+                            <!-- 특정 페이지로 이동 -->
+                            
+                            <!-- 다음 목록 시작 번호로 이동 -->
+                            <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}">&gt;</a></li>
+        
+                            <!-- 끝 페이지로 이동 -->
+                            <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+        
                         </ul>
                     </div>
                 </div>
