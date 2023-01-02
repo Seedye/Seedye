@@ -2,6 +2,7 @@ package edu.kh.project.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -239,11 +240,16 @@ public class AdminController {
 	// 회원 목록 조회
 	@GetMapping("selectMemberList")
 	@ResponseBody
-	public String selectMemberList() {
+	public Map<String, Object> selectMemberList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp) {
 		
-		List<Member> memberList = service.selectMemberList();
+
+
+		Map<String, Object> map = service.selectMemberList(cp);
 		
-		return new Gson().toJson(memberList);
+		System.out.println(map);
+		
+		return map;
 	}
 	
 	// 회원 관리 화면 조회

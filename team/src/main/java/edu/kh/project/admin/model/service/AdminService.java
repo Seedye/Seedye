@@ -42,7 +42,7 @@ public interface AdminService {
 	int boardDelete(int boardNo);
 
 
-	List<Member> selectMemberList();
+//	List<Member> selectMemberList();
 
 
 
@@ -147,6 +147,10 @@ public interface AdminService {
 	 * @return result
 	 */
 	int registerStore(int storeNo);
+
+
+
+	Map<String, Object> selectMemberList(int cp);
 
 
 

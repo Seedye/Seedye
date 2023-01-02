@@ -100,8 +100,22 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Member> selectMemberList() {
-		return dao.selectMemberList();
+	public Map<String, Object> selectMemberList(int cp) {
+		
+		int listCount = dao.memberListCount();
+		
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		
+		List<Member> memberList= dao.selectMemberList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("memberList", memberList);
+		
+		return map;
 	}
 
 	/**
@@ -317,6 +331,8 @@ public class AdminServiceImpl implements AdminService{
 		
 		return dao.registerStore(storeNo);
 	}
+
+
 
 
 
