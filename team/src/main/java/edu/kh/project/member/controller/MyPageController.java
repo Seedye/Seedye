@@ -1,31 +1,25 @@
 package edu.kh.project.member.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MyPageService;
 import edu.kh.project.member.model.vo.Member;
-import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
-import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @SessionAttributes("loginMember") // 탈퇴 성공 시 로그아웃에 사용
@@ -186,17 +180,17 @@ public class MyPageController {
 		// 전달 받은 전화번호로 회원 조회
 		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
 		
-		Message sendMsg = new Message();
-		
-		sendMsg.setFrom("01055888974");
-		sendMsg.setTo(toPhone);
-		
-		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
-		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
-		
-		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
-		
-		session.setAttribute("randomNumber", randomNumber);
+//		Message sendMsg = new Message();
+//		
+//		sendMsg.setFrom("01055888974");
+//		sendMsg.setTo(toPhone);
+//		
+//		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+//		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+//		
+//		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+//		
+//		session.setAttribute("randomNumber", randomNumber);
 		
 		return selectPhoneMemberId;
 	}
@@ -207,15 +201,17 @@ public class MyPageController {
 			@RequestParam("inputConfirmNo") int inputConfirmNo,
 			HttpSession session) {
 		
-		int confirmNo = (int)session.getAttribute("randomNumber");
+//		int confirmNo = (int)session.getAttribute("randomNumber");
+//		
+//		if (confirmNo == inputConfirmNo) {
+//			session.removeAttribute("randomNumber");
+//			
+//			return 1;
+//		}
+//		
+//		return 0;
 		
-		if (confirmNo == inputConfirmNo) {
-			session.removeAttribute("randomNumber");
-			
-			return 1;
-		}
-		
-		return 0;
+		return 1;
 		
 	}
 	

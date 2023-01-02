@@ -243,3 +243,9 @@ input[type=password]{
 
 .confirm{color : #2DB400;} /* 입력 성공 시 초록색 */
 .error{color : rgb(233, 86, 86);} /* 에러 발생 시 빨강색 */
+
+#timer{
+    margin-right: 10px;
+    font-size: 14px; /* 글자 크기 14px */
+    letter-spacing: -1px; /* 작고 촘촘하게 */
+}

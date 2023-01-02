@@ -44,12 +44,12 @@
                     <div class="confirmTelBox">
                         <div class="find-wrap">
                             <div class="confirm-box confirmBtnBox">
-                                <div class="font-text">인증번호</div>
+                                <div class="font-text" id="authKey">인증번호</div>
                                 <input type="text" id="confirmNum" maxlength="4" autocomplete="off">
-                                <button type="button">인증번호 확인</button>
+                                <button type="button" id="sendAuthKeyBtn">인증번호 확인</button>
                             </div>
                         </div>
-                        <span class="findMessage">03 : 00</span>
+                        <span id="timer"></span>
                     </div>
 
                     <div class="memberInfo">휴대전화 등록된 회원 아이디</div>

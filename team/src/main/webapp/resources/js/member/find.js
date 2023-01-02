@@ -50,7 +50,7 @@ document.getElementById("find-changePw").addEventListener("submit", e => {
 });
 
 // 인증 결과 후 아이디를 담을 변수 생성
-let resultId
+let resultId;
 
 // 전화번호 입력한 값
 const inputTel = document.querySelector(".find-row > input");
@@ -58,9 +58,10 @@ const inputTel = document.querySelector(".find-row > input");
 // 인증번호 받기 버튼을 눌렀을 때
 confirmTelBtn.lastElementChild.addEventListener("click", () => {
     
+    timer();
+
     // 전화번호 정규식
     const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-
 
     // 전화번호 입력칸에 아무것도 입력 안했을 때
     if (inputTel.value.trim().length == 0){
@@ -75,7 +76,7 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
         confirmTelBox.style.display = "block";
 
         // 인증번호 타이머 삽입 예정
-        confirmTelBox.lastElementChild.innerText = "03분00초";
+        // confirmTelBox.lastElementChild.innerText = "03분00초";
 
         
         $.ajax({
@@ -102,6 +103,7 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
         return;
     }
 });
+
 // 인증번호 확인 버튼 눌렀을 때
 confirmBox.lastElementChild.addEventListener("click", () => {
     
@@ -276,3 +278,33 @@ confirmBox.lastElementChild.addEventListener("click", () => {
 
 } */
 
+const authKey = document.getElementById("authKey");
+const timer = function(){
+
+
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+    
+    // setInterval(함수, 시간) : 주기적인 실행
+    let x = setInterval(function(){
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+    
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+    
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(x); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "인증 시간이 만료 되었습니다. 다시 인증번호를 발급해주세요.";
+            const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+            sendAuthKeyBtn.setAttribute("disabled", "");
+    
+        } else {
+            sendAuthKeyBtn.removeAttribute("disabled");
+        }
+    
+    }, 1000);
+}

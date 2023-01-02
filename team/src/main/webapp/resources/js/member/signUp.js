@@ -1,3 +1,33 @@
+// 타이머 함수 작성
+const authKey = document.getElementById("authKey");
+const timer = function(){
+
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+    
+    // setInterval(함수, 시간) : 주기적인 실행
+    let x = setInterval(function(){
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+    
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+    
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(x); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "시간만료";
+            checkObj.authKey = false;
+    
+        } else { // 타임아웃이 아닐 시
+            checkObj.authKey = true;
+        }
+    
+    }, 1000);
+}
+
 const checkObj = {
     "memberId"        : false, /* 아이디 */
     "memberPw"        : false, /* 비밀번호 */
@@ -191,6 +221,11 @@ const memberTel = document.getElementById("memberTel");
 const telMessage = document.getElementById("telMessage");
 
 memberTel.addEventListener("input", function(){
+    
+    // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
+    // 전화번호 정규표현식 검사
+    const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 
     // 문자가 입력되지 않은 경우
     if(memberTel.value.trim().length == 0){
@@ -199,12 +234,7 @@ memberTel.addEventListener("input", function(){
         checkObj.memberTel = false;
         sendAuthKeyBtn.removeAttribute("disabled");
         return;
-    }
-
-    // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
-    // 전화번호 정규표현식 검사
-    const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-    const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+    }   
 
     if(regEx.test(memberTel.value)){
 
@@ -213,7 +243,6 @@ memberTel.addEventListener("input", function(){
             data: {"memberTel": memberTel.value},
             type: "GET",
             success: (result) => {
-                console.log(result)
 
                 if (result == 0){ // 전화번호 중복이 아닐 시
                     telMessage.innerText = "유효한 전화번호 형식입니다."
@@ -238,9 +267,6 @@ memberTel.addEventListener("input", function(){
             error: () => {
                 console.log("ajax 통신 실패");
             },
-            complete: () => {
-                console.log("중복 검사 수행 완료");
-            }
         });
 
     } else {
@@ -253,167 +279,92 @@ memberTel.addEventListener("input", function(){
 
 });
 
-// document.getElementById("sendSMS").addEventListener("click", () => {
-
-//     const toPhone = document.getElementById("sendSMS").previousElementSibling.value;
-
-//     $.ajax({
-//         url : "/send-one",
-//         data : {"toPhone": toPhone},
-//         type : "POST",
-//         success : () => {
-//             alert("메세지 발송~");
-//         },
-//         error : () => {
-//             alert("메세지 발송 실패~");
-
-//         }
-//     });
-// });
 
 // 전화번호 인증 번호 전송
 const mainTel = document.querySelector(".mainTel");
 const phoneConfirmBox = document.querySelector(".phoneConfirmBox");
 
-// const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
-// const authKeyMessage = document.getElementById("authKeyMessage");
-// let timer;
-// let isRunning = 4;
-// let authSec = 59;
+// 인증 결과 후 아이디를 담을 변수 생성
+let resultId;
+
+// 전화번에 입력한 번호 담을 변수
+const inputTel = document.querySelector("input[name=memberTel]");
+
+const authKeyMessage = document.getElementById("authKeyMessage");
 
 // 인증번호 받기 버튼 눌렀을 때
 mainTel.lastElementChild.addEventListener("click", () => {
 
+    // 인증번호 3분 타이머
     timer();
 
     checkObj.phoneCheck = false;
 
-    const inputTel = document.querySelector("input[name=memberTel]");
-
-    let changeTel;
 
     phoneConfirmBox.style.display = "block";
 
-    const authKeyMessage = document.getElementById("authKeyMessage");
     
     authKeyMessage.innerText = "인증번호를 입력해주세요.";
     authKeyMessage.classList.add("error");
     authKeyMessage.classList.remove("confirm");
-
-    // authKeyMessage.style.display = "block";
-
-    alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
-
-    changeTel = inputTel.value;
-
-
+    
     $.ajax({
         url : "/signUp/phoneCheck",
-        data : {"toPhone" : changeTel},
+        data : {"toPhone" : inputTel.value},
         type : "POST",
-        success : (randomNumber) => {
+        success : (result) => {
 
-            const confirmCheck = document.querySelector(".confirmCheck");
+            alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
 
-            // 인증확인 버튼 눌렀을 때
-            confirmCheck.lastElementChild.addEventListener("click", () => {
-
-                const phoneCheck = document.querySelector("input[name=phoneCheck]");
-
-                if (phoneCheck.value == randomNumber){
-
-                    // 인증번호 일치 할 때
-                    checkObj.phoneCheck = true;
-
-                    authKeyMessage.innerText = "인증이 완료 되었습니다.";
-                    authKeyMessage.classList.add("confirm");
-                    authKeyMessage.classList.remove("error");
-                
-                } else {
-                    checkObj.phoneCheck = false;
-
-                    authKeyMessage.innerText = "인증번호가 일치하지 않습니다.";
-                    authKeyMessage.classList.add("error");
-                    authKeyMessage.classList.remove("confirm");
-
-                }
-
-            });
         },
         error : () => {
-            alert("인증번호 전송 실패");
-        }
 
+            alert("인증번호 전송 실패");
+            
+        }
+        
+    });
+    
+});
+const confirmCheck = document.querySelector(".confirmCheck");
+
+const phoneCheck = document.querySelector("input[name=phoneCheck]");
+
+// 인증확인 버튼 눌렀을 때
+confirmCheck.lastElementChild.addEventListener("click", () => {
+
+    $.ajax({
+        url : "/signUp/confirmCheck",
+        data : {"phoneCheck" : phoneCheck.value},
+        type : "POST",
+        success : (result) => {
+
+            if(result == 0){
+
+                checkObj.phoneCheck = false;
+
+                alert("인증번호가 일치하지 않습니다.");
+
+                authKeyMessage.innerText = "인증번호가 일치하지 않습니다.";
+                authKeyMessage.classList.add("error");
+                authKeyMessage.classList.remove("confirm");
+                
+            } else {
+                
+                alert("인증이 완료 되었습니다.");
+
+                checkObj.phoneCheck = true;
+
+                authKeyMessage.innerText = "인증이 완료 되었습니다.";
+                authKeyMessage.classList.add("confirm");
+                authKeyMessage.classList.remove("error");
+            }
+        },
+        error : () => {
+
+            alert("인증번호 비교 실패");
+        }
     });
 
 });
 
-
-// // 타이머 구현_daldal
-// function $ComTimer(){
-//     //prototype extend
-// }
-
-// $ComTimer.prototype = {
-//     comSecond : ""
-//     , fnCallback : function(){}
-//     , timer : ""
-//     , domId : ""
-//     , fnTimer : function(){
-//         var m = "0" + Math.floor(this.comSecond / 60) + ":" + (this.comSecond % 60) + "";	// 남은 시간 계산
-//         this.comSecond--;					// 1초씩 감소
-//         console.log(m);
-//         this.domId.innerText = m;
-//         // checkObj.authKey = true;
-
-//         if (this.comSecond < 0) {			// 시간이 종료 되었으면..
-//             checkObj.authKey = false;
-//             clearInterval(this.timer);		// 타이머 해제
-//             alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
-//             window.close();
-//             window.opener.location = "/signUp"
-//         }
-//     }
-//     ,fnStop : function(){
-//         clearInterval(this.timer);
-//     }
-// }
-
-// var AuthTimer = new $ComTimer()
-
-// AuthTimer.comSecond = 179; // 제한 시간
-
-// AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}; // 제한 시간 만료 메세지
-
-// AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000); 
-
-// AuthTimer.domId = document.getElementById("timer");
-
-const authKey = document.getElementById("authKey");
-const timer = function(){
-
-    let time = 180; // 인증번호 제한시간 작성
-    let min = ""; // 분
-    let sec = ""; // 초
-    
-    // setInterval(함수, 시간) : 주기적인 실행
-    let x = setInterval(function(){
-        // parseInt() : 정수를 반환
-        min = parseInt(time/60); // 몫을 계산
-        sec = time%60; // 나머지 계산
-    
-        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
-    
-        // 타임아웃 시
-        if(time < 0) {
-            clearInterval(x); // setInterval() 실행 끝
-            document.getElementById("timer").innerHTML = "시간만료";
-            checkObj.authKey = false;
-    
-        } else { // 타임아웃이 아닐 시
-            checkObj.authKey = true;
-        }
-    
-    }, 1000);
-}

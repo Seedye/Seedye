@@ -155,6 +155,31 @@ public class BaordServiceImple implements BoardService {
 		return map;
 	}
 
+	// 자유 게시글 삭제
+	@Override
+	public int freeBoardDelete(int boardNo) {
+		return dao.freeBoardDelete(boardNo);
+	}
+
+	@Override
+	public Map<String, Object> selectFreeBoardList(Map<String, Object> pm, int cp) {
+
+		// 1. 검색 조건 일치하는 전체 게시글 수 조회
+				int listCount = dao.getListCount(pm);
+				
+				// 2. 검색 조건 일치 게시글 수 + cp(현재 페이지) 이용해 페이징 처리 객체 생성
+				Pagination pagination = new Pagination(listCount, cp);
+				
+				// 3. 페이징 처리 객체 이용헤 검색 조건 일치 게시글 목록 조회
+				List<Board> freeBoardList = dao.selectFreeBoardList(pagination, pm);
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("pagination", pagination);
+				map.put("freeBoardList", freeBoardList);
+				
+				return map;
+	}
+
 	
 	
 	
