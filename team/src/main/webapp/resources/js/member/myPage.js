@@ -9,6 +9,7 @@ const checkObj = {
     "newPw"        : true, /* 새 비밀번호 */
     "newPwConfirm" : true, /* 새 비밀번호 확인 */
     "confirm" : true, /* 인증번호 */
+    "authKey" : true, /* 인증 제한 시간(타이머) */
 };
 
 document.getElementById("myPage-frm").addEventListener("submit", function(event){
@@ -24,6 +25,7 @@ document.getElementById("myPage-frm").addEventListener("submit", function(event)
             case "newPw"    :  str = "새 비밀번호가 유효하지 않습니다."; break; 
             case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
             case "confirm" :  str = "전화번호 인증을 완료해주세요."; break;
+            case "authKey" : str = "인증 제한 시간이 초과되었습니다."; break;
             }
 
             alert(str); // 대화상자 출력
@@ -239,6 +241,10 @@ mainTel.lastElementChild.addEventListener("click", () => {
     // 인증번호 발송 버튼을 눌렀을 때
     } else {
 
+        timer();
+
+        checkObj.authKey = false;
+
         const confirmTelMassege = document.getElementById("confirm");
 
         confirmTelMassege.innerText = "인증번호를 입력해주세요.";
@@ -246,6 +252,8 @@ mainTel.lastElementChild.addEventListener("click", () => {
         confirmTelMassege.classList.remove("confirm");
 
         confirmTelMassege.style.display = "flex";
+
+        alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
 
         changeTel = inputTel.value;
 
@@ -292,3 +300,32 @@ mainTel.lastElementChild.addEventListener("click", () => {
     }
 
 });
+
+const authKey = document.getElementById("authKey");
+const timer = function(){
+
+    let time = 180; // 인증번호 제한시간 작성
+    let min = ""; // 분
+    let sec = ""; // 초
+    
+    // setInterval(함수, 시간) : 주기적인 실행
+    let x = setInterval(function(){
+        // parseInt() : 정수를 반환
+        min = parseInt(time/60); // 몫을 계산
+        sec = time%60; // 나머지 계산
+    
+        document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
+        time--;
+    
+        // 타임아웃 시
+        if(time < 0) {
+            clearInterval(x); // setInterval() 실행 끝
+            document.getElementById("timer").innerHTML = "시간만료";
+            checkObj.authKey = false;
+    
+        } else { // 타임아웃이 아닐 시
+            checkObj.authKey = true;
+        }
+    
+    }, 1000);
+}

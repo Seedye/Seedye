@@ -216,6 +216,7 @@ public class MyPageController {
 		}
 		
 		return 0;
+		
 	}
 	
 	// 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
@@ -223,10 +224,6 @@ public class MyPageController {
 	public String pwChange(Member inputContent,
 			RedirectAttributes ra,
 			@RequestHeader("referer") String referer) {
-		
-		System.out.println(inputContent.getMemberId());
-		System.out.println(inputContent.getMemberTel());
-		System.out.println(inputContent.getMemberPw());
 		
 		int result = service.pwChange(inputContent);
 		
