@@ -217,7 +217,6 @@ public class MyPageController {
 		
 		return 0;
 		
-		return 1;
 	}
 	
 	// 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
