@@ -41,7 +41,13 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                 const imgContainer = document.createElement("div");
                 const img = document.createElement("img");
-                //img.setAttribute("src",freeBoardDetail[0].imageList[0].imgPath+"/"+freeBoardDetail[0].imageList[0].imgRename);
+                if(freeBoardDetail[0].imageList[0] == null){
+                    img.setAttribute("src","../../resources/images/map.png");
+
+                } else {
+                    img.setAttribute("src",freeBoardDetail[0].imageList[0].imgPath+"/"+freeBoardDetail[0].imageList[0].imgRename);
+
+                }
                 imgContainer.append(img);
 
                 freeBoardDetailView.append(bigTitle);
@@ -94,21 +100,24 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 anwserP.innerText = comment.memberId + " : " + comment.commentContent;
                                 contentD.append(anwserP);
 
-                                // if (memberNo == comment.memberNo) {
+                                
+                                const pen = document.createElement("div");
+                                pen.classList.add("pen");
 
-                                    const pen = document.createElement("div");
-                                    pen.classList.add("pen");
+                                const updateBtn = document.createElement("button");
+                                updateBtn.classList.add("updateBtn")
+                                updateBtn.setAttribute("class", "fa-solid fa-pen");
 
-                                    const updateBtn = document.createElement("button");
-                                    updateBtn.classList.add("updateBtn")
-                                    updateBtn.setAttribute("class", "fa-solid fa-pen");
+                                const deleteBtn = document.createElement("button");
+                                deleteBtn.classList.add("deleteBtn")
+                                deleteBtn.innerText ="x";
 
-                                    const deleteBtn = document.createElement("button");
-                                    deleteBtn.classList.add("deleteBtn")
-                                    deleteBtn.innerText ="x";
+                                if (memberNo == comment.memberNo) {
 
                                     pen.append(updateBtn)
                                     pen.append(deleteBtn)
+
+                                }
 
                                     contentD.append(pen);
 
@@ -136,7 +145,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                     updateContainer.append(updateInput);
                                     updateContainer.append(updateBtnContainer);
 
-                                // }
 
                                 freeBoardDetailAnwserContent.append(updateContainer);
                                 freeBoardDetailAnwserContent.append(contentD);
@@ -252,6 +260,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                       success: (result) => {
                         if (result > 0) {
 
+                            alert("정말 게시글을 삭제 하시겠습니까?")
                             alert("게시글 삭제 성공")
                             location.reload();
 
@@ -273,7 +282,7 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                     $.ajax({
                         url : "/comment/insert",
-                        data : {"commentContent" : commentContent.value,
+                        data : {"commentContent" : input.value,
                                 "memberNo" : memberNo,
                                 "boardNo" : freeBoardOneItems.lastElementChild.id},
                         type : "post",
@@ -282,9 +291,11 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 alert("댓글 등록 완료")
 
                                 // 입력한 댓글 초기화
-                                commentContent.value = "";
+                                input.value = "";
+
                                 // 댓글 리스트를 초기화
                                 freeBoardDetailAnwserContent.innerHTML = "";
+
                                 // 댓글 리스트를 조회하는 ajax 함수 실행
                                 commentListFun();
 
@@ -300,23 +311,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                     });
                 });
 
-                // if(memberId == freeBoardDetail[0].memberId){
-                //     const freeBoardDetailBtn = document.createElement("div");
-                //     freeBoardDetailBtn.setAttribute("id", "freeBoard-detail-btn");
-                    
-                //     const boardUpdateBtn = document.createElement("button");
-                //     boardUpdateBtn.setAttribute("id", "boardUpdate-btn");
-                //     boardUpdateBtn.innerText = "수정";
-
-                //     const boardDeleteBtn = document.createElement("button");
-                //     boardDeleteBtn.setAttribute("id", "boardDelete-btn");
-                //     boardDeleteBtn.innerText = "삭제";
-
-                //     freeBoardDetailBtn.append(boardUpdateBtn);
-                //     freeBoardDetailBtn.append(boardDeleteBtn);
-                    
-                //     freeBoardDetailView.append(freeBoardDetailBtn);
-                // }
             },
             
             error : () => {
