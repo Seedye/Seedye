@@ -237,7 +237,7 @@ searchBtn.addEventListener("click", () => {
                                         modalImgs.setAttribute("id", "imgHolder");
                                         modalImgs.classList.add("modal-imgs");
 
-                                        if (modalResult[0].storeImg == null){
+                                        if (modalResult[0].storeImgList.length == 0){
                                             const storeImg = document.createElement("li");
                                             storeImg.innerHTML = "<img src=../resources/images/modal/noneImg.png>"; 
 
@@ -245,10 +245,10 @@ searchBtn.addEventListener("click", () => {
                                         } else{
                                             
                                             // 이미지가 있을 경우 예상 코드 
-                                            for (let modalImgList of modalResult.storeImg){
+                                            for (let modalImgList of modalResult[0].storeImgList){
                                                 
                                                 const storeImg = document.createElement("li");
-                                                storeImg.innerHTML = "<img src=" + modalImgList.sImgPath + modalImgList.sImgRename + ">"; 
+                                                storeImg.innerHTML = "<img src=" + modalImgList.simgPath + modalImgList.simgRename + ">"; 
 
                                                 modalImgs.append(storeImg);
                                             }

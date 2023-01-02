@@ -132,6 +132,7 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
         return;
     }
 });
+
 // 인증번호 확인 버튼 눌렀을 때
 confirmBox.lastElementChild.addEventListener("click", () => {
 

@@ -1,4 +1,5 @@
 // 회원가입 타이머 작성
+// 타이머 함수 작성
 const authKey = document.getElementById("authKey");
 const timer = function(){
 
@@ -221,6 +222,11 @@ const memberTel = document.getElementById("memberTel");
 const telMessage = document.getElementById("telMessage");
 
 memberTel.addEventListener("input", function(){
+    
+    // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
+    // 전화번호 정규표현식 검사
+    const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 
     // 문자가 입력되지 않은 경우
     if(memberTel.value.trim().length == 0){
@@ -229,12 +235,7 @@ memberTel.addEventListener("input", function(){
         checkObj.memberTel = false;
         sendAuthKeyBtn.removeAttribute("disabled");
         return;
-    }
-
-    // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
-    // 전화번호 정규표현식 검사
-    const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-    const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+    }   
 
     if(regEx.test(memberTel.value)){
 
@@ -243,7 +244,6 @@ memberTel.addEventListener("input", function(){
             data: {"memberTel": memberTel.value},
             type: "GET",
             success: (result) => {
-                console.log(result)
 
                 if (result == 0){ // 전화번호 중복이 아닐 시
                     telMessage.innerText = "유효한 전화번호 형식입니다."
@@ -268,9 +268,6 @@ memberTel.addEventListener("input", function(){
             error: () => {
                 console.log("ajax 통신 실패");
             },
-            complete: () => {
-                console.log("중복 검사 수행 완료");
-            }
         });
 
     } else {
@@ -283,73 +280,92 @@ memberTel.addEventListener("input", function(){
 
 });
 
+
 // 전화번호 인증 번호 전송
 const mainTel = document.querySelector(".mainTel");
 const phoneConfirmBox = document.querySelector(".phoneConfirmBox");
 
+// 인증 결과 후 아이디를 담을 변수 생성
+let resultId;
+
+// 전화번에 입력한 번호 담을 변수
+const inputTel = document.querySelector("input[name=memberTel]");
+
+const authKeyMessage = document.getElementById("authKeyMessage");
+
 // 인증번호 받기 버튼 눌렀을 때
 mainTel.lastElementChild.addEventListener("click", () => {
 
+    // 인증번호 3분 타이머
     timer();
 
     checkObj.phoneCheck = false;
 
-    const inputTel = document.querySelector("input[name=memberTel]");
-
-    let changeTel;
 
     phoneConfirmBox.style.display = "block";
 
-    const authKeyMessage = document.getElementById("authKeyMessage");
     
     authKeyMessage.innerText = "인증번호를 입력해주세요.";
     authKeyMessage.classList.add("error");
     authKeyMessage.classList.remove("confirm");
-
-    // authKeyMessage.style.display = "block";
-
-    alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
-
-    changeTel = inputTel.value;
-
-
+    
     $.ajax({
         url : "/signUp/phoneCheck",
-        data : {"toPhone" : changeTel},
+        data : {"toPhone" : inputTel.value},
         type : "POST",
-        success : (randomNumber) => {
+        success : (result) => {
 
-            const confirmCheck = document.querySelector(".confirmCheck");
+            alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
 
-            // 인증확인 버튼 눌렀을 때
-            confirmCheck.lastElementChild.addEventListener("click", () => {
-
-                const phoneCheck = document.querySelector("input[name=phoneCheck]");
-
-                if (phoneCheck.value == randomNumber){
-
-                    // 인증번호 일치 할 때
-                    checkObj.phoneCheck = true;
-
-                    authKeyMessage.innerText = "인증이 완료 되었습니다.";
-                    authKeyMessage.classList.add("confirm");
-                    authKeyMessage.classList.remove("error");
-                
-                } else {
-                    checkObj.phoneCheck = false;
-
-                    authKeyMessage.innerText = "인증번호가 일치하지 않습니다.";
-                    authKeyMessage.classList.add("error");
-                    authKeyMessage.classList.remove("confirm");
-
-                }
-
-            });
         },
         error : () => {
-            alert("인증번호 전송 실패");
-        }
 
+            alert("인증번호 전송 실패");
+            
+        }
+        
+    });
+    
+});
+const confirmCheck = document.querySelector(".confirmCheck");
+
+const phoneCheck = document.querySelector("input[name=phoneCheck]");
+
+// 인증확인 버튼 눌렀을 때
+confirmCheck.lastElementChild.addEventListener("click", () => {
+
+    $.ajax({
+        url : "/signUp/confirmCheck",
+        data : {"phoneCheck" : phoneCheck.value},
+        type : "POST",
+        success : (result) => {
+
+            if(result == 0){
+
+                checkObj.phoneCheck = false;
+
+                alert("인증번호가 일치하지 않습니다.");
+
+                authKeyMessage.innerText = "인증번호가 일치하지 않습니다.";
+                authKeyMessage.classList.add("error");
+                authKeyMessage.classList.remove("confirm");
+                
+            } else {
+                
+                alert("인증이 완료 되었습니다.");
+
+                checkObj.phoneCheck = true;
+
+                authKeyMessage.innerText = "인증이 완료 되었습니다.";
+                authKeyMessage.classList.add("confirm");
+                authKeyMessage.classList.remove("error");
+            }
+        },
+        error : () => {
+
+            alert("인증번호 비교 실패");
+        }
     });
 
 });
+
