@@ -50,7 +50,7 @@ document.getElementById("find-changePw").addEventListener("submit", e => {
 });
 
 // 인증 결과 후 아이디를 담을 변수 생성
-let resultId
+let resultId;
 
 // 전화번호 입력한 값
 const inputTel = document.querySelector(".find-row > input");
@@ -102,6 +102,7 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
         return;
     }
 });
+
 // 인증번호 확인 버튼 눌렀을 때
 confirmBox.lastElementChild.addEventListener("click", () => {
     
