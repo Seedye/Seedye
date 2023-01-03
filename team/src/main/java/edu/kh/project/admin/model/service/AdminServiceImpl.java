@@ -88,20 +88,41 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 식당 목록 조회
 	@Override
-	public List<Store> selectStoreList(int cp) {
+	public Map<String, Object> selectStoreList(int cp) {
 		
 		int listCount = dao.selectCount();
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		return dao.selectStoreList(pagination); 
+		List<Store> storeList = dao.selectStoreList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("storeList", storeList);
+		
+		return map;
 				
 		
 	}
 
 	@Override
-	public List<Member> selectMemberList() {
-		return dao.selectMemberList();
+	public Map<String, Object> selectMemberList(int cp) {
+		
+		int listCount = dao.memberListCount();
+		
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		
+		List<Member> memberList= dao.selectMemberList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("memberList", memberList);
+		
+		return map;
 	}
 
 	/**
@@ -317,6 +338,8 @@ public class AdminServiceImpl implements AdminService{
 		
 		return dao.registerStore(storeNo);
 	}
+
+
 
 
 

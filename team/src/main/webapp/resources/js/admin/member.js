@@ -27,8 +27,14 @@ function selectMemberList(){
     $.ajax({
         url:"/admin/selectMemberList",
         dataType:"JSON",
-        success:(memberList)=>{
+        success:(map)=>{
+
+            
         
+            const memberList = map.memberList;
+
+            console.log(map);
+
             for(let member of memberList){
                 
                 const tr = document.createElement("tr");
@@ -83,7 +89,10 @@ function selectMemberList(){
 
                 memberTbody.append(tr);
 
-                
+                   
+
+
+              
 
                 // 회원 관리 버튼 클릭
                 for(i=0; i<memberManageBtn.length; i++){

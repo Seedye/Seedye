@@ -34,15 +34,15 @@ public interface AdminService {
 	Board selectBoardDetail(int boardNo);
 
 	/** 식당 목록 조회
-	 * @return storeList
+	 * @return map
 	 */
-	List<Store> selectStoreList(int cp);
+	Map<String, Object> selectStoreList(int cp);
 
 
 	int boardDelete(int boardNo);
 
 
-	List<Member> selectMemberList();
+//	List<Member> selectMemberList();
 
 
 
@@ -147,6 +147,10 @@ public interface AdminService {
 	 * @return result
 	 */
 	int registerStore(int storeNo);
+
+
+
+	Map<String, Object> selectMemberList(int cp);
 
 
 

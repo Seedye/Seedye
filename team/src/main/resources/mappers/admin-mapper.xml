@@ -353,4 +353,9 @@ WHERE STORE_NO = #{storeNo}
 SELECT COUNT(*) FROM STORE
 </select>
 
+<select id="memberListCount" resultType="_int">
+SELECT COUNT(*) FROM MEMBER
+</select>
+
+
 </mapper>  

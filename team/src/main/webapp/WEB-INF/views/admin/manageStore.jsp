@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="pagination" value="${map.pagination}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,6 +108,15 @@
                     </select>
                     <h1 id="storeH1">식당 관리</h1>
                     <table id="storeTable">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="35%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="10%">
+                        </colgroup>
                         <thead>
                             <tr id="storeTH">
                                 <th>번호</th>
@@ -226,34 +237,27 @@
                     </div>
                     <div class="pagination-area">
                         <ul class="pagination">
-                            <!-- 첫 페이지로 이동 -->
-                            <li><a href="/board/${boardCode}?cp=1${sURL}">&lt;&lt;</a></li>
-                            <!-- 이전 목록 마지막 번호로 이동 -->
-                            <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">&lt;</a></li>
+                            <li><a href="">&lt;&lt;</a></li>
+                            <li><a href="">&lt;</a></li>
         
                             <c:forEach var="i" begin="${pagination.startPage}" 
-                                end="${pagination.endPage}" step="1">
+                                end="${pagination.endPage.value}" step="1">
         
                                 <c:choose>
                                     <c:when test="${i == pagination.currentPage}">
-                                        <%-- 현재 페이지인 경우 --%>
-                                        <li><a class="current">${i}</a></li>
+                                        <li><a class="current">${pagination.currentPage}</a></li>
                                     </c:when>
         
                                     <c:otherwise>
-                                        <!-- 현재 페이지를 제외한 나머지 -->
-                                        <li><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                                        <li><a href="javascript:void(0)">${i}</a></li>
                                     </c:otherwise>
                                 </c:choose>
         
                             </c:forEach>
-                            <!-- 특정 페이지로 이동 -->
                             
-                            <!-- 다음 목록 시작 번호로 이동 -->
-                            <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}">&gt;</a></li>
+                            <li><a href="">&gt;</a></li>
         
-                            <!-- 끝 페이지로 이동 -->
-                            <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+                            <li><a href="">&gt;&gt;</a></li>
         
                         </ul>
                     </div>

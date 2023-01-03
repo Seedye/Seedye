@@ -89,11 +89,16 @@ public class AdminDAO {
 	}
 
 	/** 회원 리스트 조회
+	 * @param pagination 
 	 * @return memberList
 	 */
-	public List<Member> selectMemberList() {
+	public List<Member> selectMemberList(Pagination pagination) {
 		
-		return sqlSession.selectList("adminMapper.selectMemberList");
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+				
+		return sqlSession.selectList("adminMapper.selectMemberList", null, rowBounds);
 	}
 
 	/** 회원 등급 수정
@@ -265,6 +270,10 @@ public class AdminDAO {
 
 	public int selectCount() {
 		return sqlSession.selectOne("adminMapper.selectCount");
+	}
+
+	public int memberListCount() {
+		return sqlSession.selectOne("adminMapper.memberListCount");
 	}
 
 
