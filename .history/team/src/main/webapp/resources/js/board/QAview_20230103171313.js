@@ -30,7 +30,6 @@ for (let boardListViewItems of boardListView) {
     boardViewModal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
-    const abc=function(){}
     $.ajax({
       url: "/QABoardDetail",
       type: "POST",
@@ -81,7 +80,6 @@ for (let boardListViewItems of boardListView) {
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
-            commentTextarea.setAttribute("id", "commentContent");
             boardViewContentTextComment.append(commentTextarea);
             // commentTextarea.innerText ="아무거나";
             // ajax써서 넘겨 줘야함
@@ -186,7 +184,7 @@ for (let boardListViewItems of boardListView) {
 
               $.ajax({
                 url : "/comment/insert",
-                          data : {"commentContent" : commentContent.value,
+                          data : {"commentContent" : textarea.value,
                                   "memberNo" : memberNo,
                                   "boardNo" : boardListViewItems.lastElementChild.id},
                           type : "post",
@@ -195,14 +193,13 @@ for (let boardListViewItems of boardListView) {
                                   alert("댓글 등록 완료")
   
                                   // 입력한 댓글 초기화
-                                  // commentContent.value = "";
+                                  textarea.value = "";
   
                                   // // 댓글 리스트를 초기화
                                   // freeBoardDetailAnwserContent.innerHTML = "";
   
                                   // // 댓글 리스트를 조회하는 ajax 함수 실행
                                   // commentListFun();
-                                  location.reload();
   
                               } else{
                                   alert("실패");

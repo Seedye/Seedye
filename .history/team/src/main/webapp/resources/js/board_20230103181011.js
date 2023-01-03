@@ -283,6 +283,7 @@ boardWriteInput.addEventListener("click", () => {
 const pageNoList = document.getElementsByClassName("board-list-page-no");
 (()=>{
   for(let items of pageNoList){
+    console.log(items.id);
     if(items.id == ""){
       items.style.borderBottom = "1px solid #2db420";
       
