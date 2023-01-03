@@ -165,8 +165,6 @@ if(btn1 != null){
             
             })
 
-        // 위에까진 성공.
-
         newPwConfirm.addEventListener("input", ()=>{
             
 
@@ -218,9 +216,6 @@ if(btn1 != null){
 
     })
 
-    //
-
-
         // btn1 숨기기 (display: none)
         } else {
             pw.style.display = 'none';
@@ -246,10 +241,12 @@ const autoHyphen = (target) => {
 // 전화번호 인증하기
 const mainTel = document.querySelector(".mainTel");
 
+const confirmTelMassege = document.getElementById("confirm");
+
 if(mainTel != null){
     // 전화번호 변경 버튼 눌렀을 때
     mainTel.lastElementChild.addEventListener("click", () => {
-
+        
         checkObj.confirm = false;
         
         const inputTel = document.querySelector("input[name=memberTel]");
@@ -276,7 +273,6 @@ if(mainTel != null){
 
             checkObj.authKey = false;
 
-            const confirmTelMassege = document.getElementById("confirm");
 
             confirmTelMassege.innerText = "인증번호를 입력해주세요.";
             confirmTelMassege.classList.add("error");
@@ -284,51 +280,67 @@ if(mainTel != null){
 
             confirmTelMassege.style.display = "flex";
 
-            alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
-
+            
             changeTel = inputTel.value;
-
+            
             $.ajax({
                 url : "/info/confirmTel",
                 data : {"toPhone" : changeTel},
                 type : "POST",
-                success : (randomNumber) => {
+                success : (result) => {
                     
-                    const confirm = document.querySelector(".confirmCheck");
+                    alert("인증번호를 발송하였습니다. 3분 이내에 입력해주세요.");
                     
-                    // 인증확인 버튼 눌렀을 때
-                    confirm.lastElementChild.addEventListener("click", () => {
-                        
-                        const confirmCheck = document.querySelector("input[name=confirmTel]");
-
-                        if (confirmCheck.value == randomNumber){
-
-                            // 인증번호 일치 할 때
-                            checkObj.confirm = true;
-
-                            confirmTelMassege.innerText = "인증이 완료 되었습니다.";
-                            confirmTelMassege.classList.add("confirm");
-                            confirmTelMassege.classList.remove("error");
-
-                        } else {
-
-                            // 인증번호 일치하지 않을 때
-                            checkObj.confirm = false;
-
-                            confirmTelMassege.innerText = "인증번호가 일치하지 않습니다.";
-                            confirmTelMassege.classList.add("error");
-                            confirmTelMassege.classList.remove("confirm");
-                        }
-
-                    });
-
+                    
                 },
                 error : () => {
                     alert("문자 인증 전송 실패");
                 }
-
+                
             });
         }
+        
+    });
+    
+    const confirm = document.querySelector(".confirmCheck");
+    
+    const confirmCheck = document.querySelector("input[name=confirmTel]");
+
+    // 인증확인 버튼 눌렀을 때
+    confirm.lastElementChild.addEventListener("click", () => {
+        
+        $.ajax({
+            url : "/info/confirmCheck",
+            data : {"infoInputNo" : confirmCheck.value},
+            type : "POST",
+            success : (result) => {
+
+                if (result == 1){
+        
+                    // 인증번호 일치 할 때
+                    checkObj.confirm = true;
+        
+                    confirmTelMassege.innerText = "인증이 완료 되었습니다.";
+                    confirmTelMassege.classList.add("confirm");
+                    confirmTelMassege.classList.remove("error");
+        
+                } else {
+        
+                    // 인증번호 일치하지 않을 때
+                    checkObj.confirm = false;
+        
+                    confirmTelMassege.innerText = "인증번호가 일치하지 않습니다.";
+                    confirmTelMassege.classList.add("error");
+                    confirmTelMassege.classList.remove("confirm");
+                }
+            },
+            error : () => {
+
+                alert("인증번호 확인중 오류 발생");
+
+            }
+        })
+
 
     });
 }

@@ -152,10 +152,12 @@ public class MyPageController {
 		
 	}
 	
+	// 내 정보 페이지에서 휴대폰 변경을 할 때 인증번호 발송
 	@PostMapping("/info/confirmTel")
 	@ResponseBody
 	public int confirmTel(
-			@RequestParam("toPhone") String toPhone) {
+			@RequestParam("toPhone") String toPhone,
+			HttpSession session) {
 		
 	  Message sendMsg = new Message();
 	      
@@ -167,7 +169,26 @@ public class MyPageController {
       
       this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
       
-      return randomNumber;
+      session.setAttribute("infoRandomNumber", randomNumber);
+      
+      return 0;
+	}
+	
+	@PostMapping("/info/confirmCheck")
+	@ResponseBody
+	public int infoConfirmCheck(
+			@RequestParam("infoInputNo") int infoInputNo,
+			HttpSession session) {
+		
+		int confirmNo = (int)session.getAttribute("infoRandomNumber");
+		
+		if (confirmNo == infoInputNo) {
+			session.removeAttribute("infoRandomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	// 아이디 비밀번호 찾기 화면에서 인증 완료 시 휴대폰 번호로 맴버 조회
@@ -191,7 +212,7 @@ public class MyPageController {
 		
 		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
 		
-		session.setAttribute("randomNumber", randomNumber);
+		session.setAttribute("findRandomNumber", randomNumber);
 		
 		return selectPhoneMemberId;
 	}
@@ -202,10 +223,10 @@ public class MyPageController {
 			@RequestParam("inputConfirmNo") int inputConfirmNo,
 			HttpSession session) {
 		
-		int confirmNo = (int)session.getAttribute("randomNumber");
+		int confirmNo = (int)session.getAttribute("findRandomNumber");
 		
 		if (confirmNo == inputConfirmNo) {
-			session.removeAttribute("randomNumber");
+			session.removeAttribute("findRandomNumber");
 			
 			return 1;
 		}
