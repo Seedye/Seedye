@@ -30,7 +30,6 @@ for (let boardListViewItems of boardListView) {
     boardViewModal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
-    const abc=function(){}
     $.ajax({
       url: "/QABoardDetail",
       type: "POST",
@@ -189,7 +188,7 @@ for (let boardListViewItems of boardListView) {
                           data : {"commentContent" : commentContent.value,
                                   "memberNo" : memberNo,
                                   "boardNo" : boardListViewItems.lastElementChild.id},
-                          type : "post",
+                          type : "post",skldjf
                           success : function(result) {
                               if (result > 0){
                                   alert("댓글 등록 완료")
@@ -202,7 +201,6 @@ for (let boardListViewItems of boardListView) {
   
                                   // // 댓글 리스트를 조회하는 ajax 함수 실행
                                   // commentListFun();
-                                  location.reload();
   
                               } else{
                                   alert("실패");

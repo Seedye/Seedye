@@ -185,10 +185,14 @@
                       </c:when>
                       <c:otherwise>
                       
-                        <li class="board-list-page-no" id="${i}"><a class="aaa" href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                        <li class="board-list-page-no"><a class="aaa" href="/boardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
                       </c:otherwise>
                     
                     </c:choose>
+
+                  
+                  
+
                   </c:otherwise>
                 </c:choose>
               
@@ -241,7 +245,6 @@
       var boardNo = "${boardList[0].boardNo}";
       var loginMemberAutority = "${loginMember.authority}";
       var memberNo = "${loginMember.memberNo}";
-      var cp = "${param.cp}";
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>

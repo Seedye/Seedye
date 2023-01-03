@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.member.model.vo.Member;
 
 @Controller
@@ -210,6 +211,8 @@ public class BoardController {
 		System.out.println(board);
 		return service.updateAQBoard(board);
 	}
+	
+	
 	
 
 }
