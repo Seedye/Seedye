@@ -30,7 +30,6 @@ for (let boardListViewItems of boardListView) {
     boardViewModal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
-    const abc=function(){}
     $.ajax({
       url: "/QABoardDetail",
       type: "POST",
@@ -81,13 +80,40 @@ for (let boardListViewItems of boardListView) {
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
-            commentTextarea.setAttribute("id", "commentContent");
             boardViewContentTextComment.append(commentTextarea);
             // commentTextarea.innerText ="아무거나";
             // ajax써서 넘겨 줘야함
             // 답변을
             // 답변저장눌렀을때
-           
+            $.ajax({
+              url : "/comment/insert",
+                        data : {"commentContent" : textarea.value,
+                                "memberNo" : memberNo,
+                                "boardNo" : boardListViewItems.lastElementChild.id},
+                        type : "post",
+                        success : function(result) {
+                            if (result > 0){
+                                alert("댓글 등록 완료")
+
+                                // 입력한 댓글 초기화
+                                textarea.value = "";
+
+                                // // 댓글 리스트를 초기화
+                                // freeBoardDetailAnwserContent.innerHTML = "";
+
+                                // // 댓글 리스트를 조회하는 ajax 함수 실행
+                                // commentListFun();
+
+                            } else{
+                                alert("실패");
+                            }
+
+                        },
+
+                        error : () => {
+                            console.log("댓글 등록 실패");
+                        }
+            });
           }else{
             QAContentCommentP.innerText =
             "**** 답변 준비중입니다 (　-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄ _ -̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ ) ****";
@@ -182,40 +208,7 @@ for (let boardListViewItems of boardListView) {
 
             boardUpdate.innerText = "답변 저장";
 
-            boardUpdate.addEventListener("click",()=>{
 
-              $.ajax({
-                url : "/comment/insert",
-                          data : {"commentContent" : commentContent.value,
-                                  "memberNo" : memberNo,
-                                  "boardNo" : boardListViewItems.lastElementChild.id},
-                          type : "post",
-                          success : function(result) {
-                              if (result > 0){
-                                  alert("댓글 등록 완료")
-  
-                                  // 입력한 댓글 초기화
-                                  // commentContent.value = "";
-  
-                                  // // 댓글 리스트를 초기화
-                                  // freeBoardDetailAnwserContent.innerHTML = "";
-  
-                                  // // 댓글 리스트를 조회하는 ajax 함수 실행
-                                  // commentListFun();
-                                  location.reload();
-  
-                              } else{
-                                  alert("실패");
-                              }
-  
-                          },
-  
-                          error : () => {
-                              console.log("댓글 등록 실패");
-                          }
-            });
-          });
-          boardUpDel.append(boardUpdate, boardDelete);
           }else{
             
             boardUpdate.innerText = "수정";
