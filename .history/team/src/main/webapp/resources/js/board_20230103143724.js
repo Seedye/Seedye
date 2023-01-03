@@ -68,18 +68,18 @@ inputFilearea1.addEventListener("change", (e) => {
         fileImg.setAttribute("src", e.target.result);
 
         // 조립하기
-        // ImgDeleteDiv.append("X");
+        ImgDeleteDiv.append("X");
         contentImgDiv.append(ImgDeleteDiv, fileImg);
         boardViewContentImgArea.append(contentImgDiv);
 
         // 이미지 삭제
-        // const ImgDelete = document.getElementById("ImgDelete" + inputFileCheck);
-        // ImgDelete.addEventListener("click", () => {
-        //   console.log("삭제 클릭되었음");
-        //   contentImgDiv.remove();
-        //   inputFileCheck--;
-        //   console.log(inputFileCheck);
-        // });
+        const ImgDelete = document.getElementById("ImgDelete" + inputFileCheck);
+        ImgDelete.addEventListener("click", () => {
+          console.log("삭제 클릭되었음");
+          contentImgDiv.remove();
+          inputFileCheck--;
+          console.log(inputFileCheck);
+        });
 
         inputFileCheck++;
         console.log("input한 파일 갯수 : " + inputFileCheck);
@@ -228,6 +228,7 @@ boardWriteX.addEventListener("click", () => {
   inputFilearea1.innerHTML = "";
   boardViewContentImgArea.innerText = "";
   location.reload();
+
   console.log("취소눌림");
 });
 
@@ -279,4 +280,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

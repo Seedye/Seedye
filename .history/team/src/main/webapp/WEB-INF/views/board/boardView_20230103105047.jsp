@@ -57,7 +57,7 @@
               <%-- <p>2022.12.15</p> --%>
             </div>
               <div class="board-view-content-text" id="boardViewContentTextComment">
-                <%-- <textarea type="text"></textarea> --%>
+                <textarea type="text">
                 <%-- <p>yjy_1005님 사이트 이용에 불편을 드려 죄송합니다. 빠른 조치를 취하도록 하겠습니다.
                   항상 노력하는 새싹이 되겠습니다. 앞으로도 많은 이용 부탁드리겠습니다!
                 </p> --%>
@@ -78,5 +78,3 @@
         </div>
     </div>
   </div>
-
-

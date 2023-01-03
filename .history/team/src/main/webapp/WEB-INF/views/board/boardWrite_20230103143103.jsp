@@ -94,8 +94,8 @@
                     </div>
                   </label>
                   <input type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
-                </div>  --%>
-              </div>
+                </div> 
+              </div> --%>
 
           
         </div>
@@ -112,7 +112,3 @@
   </form>
     
   </div>
-
-
-
-  

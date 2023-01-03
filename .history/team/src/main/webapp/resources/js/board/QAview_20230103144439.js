@@ -318,5 +318,3 @@ boardViewX.addEventListener("click", () => {
   boardViewModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-
-

@@ -228,6 +228,7 @@ boardWriteX.addEventListener("click", () => {
   inputFilearea1.innerHTML = "";
   boardViewContentImgArea.innerText = "";
   location.reload();
+  
   console.log("취소눌림");
 });
 
@@ -279,4 +280,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

@@ -167,130 +167,156 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
+          if(loginMemberAutority != 2){
 
+            const boardUpdate = document.createElement("div");
+            boardUpdate.classList.add("board-view-btn");
+            boardUpdate.innerText = "수정";
+  
+            const boardWriteTitle = document.getElementById("boardWriteTitle");
+            // !게시물 수정
+            boardUpdate.addEventListener("click", () => {
+              boardViewModal.style.display = "none";
+              document.body.style.overflow = "unset";
+              boardViewTitleDetailAnswer.innerHTML = null;
+              boardViewContentContent.innerHTML = null;
+              boardViewContentText.innerHTML = null;
+              boardViewContentContentComment.innerHTML = null;
+              boardViewContentTextComment.innerHTML = null;
+              ContentImgArea.style.display = "none";
+              ContentImgArea.innerHTML = null;
+              //? 상세보기 보기 display=none
+  
+              boardWriteModal.style.display = "flex";
+  
+              boardWriteTitle.innerHTML = "";
+              // 작성 -> 수정
+              // <p class="board-view-x-hidden">&times;</p>
+              // <p>작성</p>
+              // <p class="board-view-x" id="boardWriteX">&times;</p>
+              const writeXHiddenP = document.createElement("P");
+              const writeTittleP = document.createElement("P");
+              const writeXP = document.createElement("P");
+  
+              writeXHiddenP.classList.add("board-view-x-hidden");
+              writeXHiddenP.innerHTML = "&times;";
+              writeTittleP.innerText = "문의 수정";
+              writeXP.classList.add("board-view-x");
+              writeXP.setAttribute("id", "boardWriteUpdateX");
+              writeXP.innerHTML = "&times;";
+  
+              // 합치기
+              boardWriteTitle.append(writeXHiddenP, writeTittleP, writeXP);
+  
+              // 수정중 X 누를때
+              writeXP.addEventListener("click", () => {
+                boardWriteModal.style.display = "none";
+                location.reload();
+              });
+  
+              // 수정될 제목
+              boardTitle.innerHTML = QABoardDetail[0].boardTitle;
+              boardContent.innerText = QABoardDetail[0].boardContent;
 
-
-          const boardUpdate = document.createElement("div");
-          boardUpdate.classList.add("board-view-btn");
-          boardUpdate.innerText = "수정";
-
-          const boardWriteTitle = document.getElementById("boardWriteTitle");
-          // !게시물 수정
-          boardUpdate.addEventListener("click", () => {
-            boardViewModal.style.display = "none";
-            document.body.style.overflow = "unset";
-            boardViewTitleDetailAnswer.innerHTML = null;
-            boardViewContentContent.innerHTML = null;
-            boardViewContentText.innerHTML = null;
-            boardViewContentContentComment.innerHTML = null;
-            boardViewContentTextComment.innerHTML = null;
-            ContentImgArea.style.display = "none";
-            ContentImgArea.innerHTML = null;
-            //? 상세보기 보기 display=none
-
-            boardWriteModal.style.display = "flex";
-
-            boardWriteTitle.innerHTML = "";
-            // 작성 -> 수정
-            // <p class="board-view-x-hidden">&times;</p>
-            // <p>작성</p>
-            // <p class="board-view-x" id="boardWriteX">&times;</p>
-            const writeXHiddenP = document.createElement("P");
-            const writeTittleP = document.createElement("P");
-            const writeXP = document.createElement("P");
-
-            writeXHiddenP.classList.add("board-view-x-hidden");
-            writeXHiddenP.innerHTML = "&times;";
-            writeTittleP.innerText = "문의 수정";
-            writeXP.classList.add("board-view-x");
-            writeXP.setAttribute("id", "boardWriteUpdateX");
-            writeXP.innerHTML = "&times;";
-
-            // 합치기
-            boardWriteTitle.append(writeXHiddenP, writeTittleP, writeXP);
-
-            // 수정중 X 누를때
-            writeXP.addEventListener("click", () => {
-              boardWriteModal.style.display = "none";
-              location.reload();
+              // 저장된 이미지 불러오기
+              if (QABoardDetail[0].imageList.length != 0) {
+                boardViewContentImgArea.innerHTML ="";
+                ContentImgArea.style.display = "flex";
+                // <div class="board-view-content-img">
+                //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
+                // </div>
+                console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
+                console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
+      
+      
+                for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
+                  //TODO 아마도 수정 필요
+                  if (i < 4) {
+                    
+                    const contentImgDiv = document.createElement("div");
+                    const contentImgImg = document.createElement("img");
+      
+                    contentImgDiv.classList.add("board-view-content-img");
+                    contentImgImg.setAttribute("src", QABoardDetail[0].imageList[i].imgPath + "/" + QABoardDetail[0].imageList[i].imgRename);
+      
+                    contentImgDiv.append(contentImgImg);
+                    boardViewContentImgArea.append(contentImgDiv);
+                  }
+                }
+              } else {
+                ContentImgArea.style.display = "none";
+              }
+  
+              //글 수정 완료 버튼
+              const wirteUpdateBtn = document.getElementById("wirteUpdateBtn");
+  
+              wirteUpdateBtn.innerHTML = "";
+              const QAupdateBtn = document.createElement("div");
+              QAupdateBtn.setAttribute("class", "board-view-btn");
+              QAupdateBtn.setAttribute("id", "boardUpdateInput");
+              QAupdateBtn.innerText = "수정";
+  
+              wirteUpdateBtn.append(QAupdateBtn);
+              const boardUpdateInput =
+                document.getElementById("boardUpdateInput");
+              // 수정 버튼 클릭 했을때
+              boardUpdateInput.addEventListener("click", () => {
+                console.log("수정버튼 눌림");
+                $.ajax({
+                  url: "/QABoardUpdate",
+                  type: "GET",
+                  data: {
+                    boardNo: boardListViewItems.lastElementChild.id,
+                    boardContent: boardContent.value,
+                    boardTitle: boardTitle.value,
+                  },
+                  dataType: "json",
+                  success: (result) => {
+                    if (result > 0) {
+                      // boardViewModal.style.display = "none";
+                      alert("게시물 업데이트 완료");
+                      location.reload();
+                    } else {
+                      alert("게시물 업데이트 실패");
+                      location.reload();
+                    }
+                  },
+                  error: () => {
+                    alert("게시물 업데이트 중 오류");
+                  },
+                });
+              });
             });
+            boardUpDel.append(boardUpdate, boardDelete);
+          }else{
+            const boardUpdate = document.createElement("div");
+            boardUpdate.classList.add("board-view-btn");
+            boardUpdate.innerText = "답변등록";
 
-            // 수정될 제목
-            boardTitle.innerHTML = QABoardDetail[0].boardTitle;
-            boardContent.innerText = QABoardDetail[0].boardContent;
-
-           //TODO : 이미지 불러오기 / 저장된 이미지
-
-             //! 이미지 만드는 create작성해야함.
-        if (QABoardDetail[0].imageList.length != 0) {
-          boardViewContentImgArea.innerHTML ="";
-          ContentImgArea.style.display = "flex";
-          // <div class="board-view-content-img">
-          //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
-          // </div>
-          console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
-          console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
-
-
-          for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
-            //TODO 아마도 수정 필요
-            if (i < 4) {
-              
-              const contentImgDiv = document.createElement("div");
-              const contentImgImg = document.createElement("img");
-
-              contentImgDiv.classList.add("board-view-content-img");
-              contentImgImg.setAttribute("src", QABoardDetail[0].imageList[i].imgPath + "/" + QABoardDetail[0].imageList[i].imgRename);
-
-              contentImgDiv.append(contentImgImg);
-              boardViewContentImgArea.append(contentImgDiv);
-            }
-          }
-        } else {
-          ContentImgArea.style.display = "none";
-        }
-
-            //글 수정 완료 버튼
-            const wirteUpdateBtn = document.getElementById("wirteUpdateBtn");
-
-            wirteUpdateBtn.innerHTML = "";
-            const QAupdateBtn = document.createElement("div");
-            QAupdateBtn.setAttribute("class", "board-view-btn");
-            QAupdateBtn.setAttribute("id", "boardUpdateInput");
-            QAupdateBtn.innerText = "수정";
-
-            wirteUpdateBtn.append(QAupdateBtn);
-            const boardUpdateInput =
-              document.getElementById("boardUpdateInput");
-            // 수정 버튼 클릭 했을때
-            boardUpdateInput.addEventListener("click", () => {
-              console.log("수정버튼 눌림");
+            boardUpdate.addEventListener("click", ()=>{
               $.ajax({
-                url: "/QABoardUpdate",
+                url: "/QABoardCommnetUpdate",
                 type: "GET",
-                data: {
-                  boardNo: boardListViewItems.lastElementChild.id,
-                  boardContent: boardContent.value,
-                  boardTitle: boardTitle.value,
-                },
+                data: { boardNo: boardListViewItems.lastElementChild.id },
                 dataType: "json",
                 success: (result) => {
                   if (result > 0) {
+                    alert("답변등록 완료");
                     // boardViewModal.style.display = "none";
-                    alert("게시물 업데이트 완료");
                     location.reload();
+  
                   } else {
-                    alert("게시물 업데이트 실패");
-                    location.reload();
+                    alert("답변등록 실패");
                   }
                 },
                 error: () => {
-                  alert("게시물 업데이트 중 오류");
+                  console.log("답변등록중 오류발생");
+                  // boardViewModal.style.display = "none";
                 },
               });
             });
-          });
-          boardUpDel.append(boardUpdate, boardDelete);
+            boardUpDel.append(boardUpdate, boardDelete);
+          }
         } else {
           boardUpDel.innerHTML = "";
         }
@@ -318,5 +344,3 @@ boardViewX.addEventListener("click", () => {
   boardViewModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-
-

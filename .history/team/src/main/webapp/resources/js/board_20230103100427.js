@@ -279,4 +279,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

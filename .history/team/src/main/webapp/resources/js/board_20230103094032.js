@@ -137,7 +137,7 @@ function writeValidate(){
   }
   if(boardContent.value.trim().length == 0){
     alert("내용입력은 필수 입니다.");
-    boardContent.value="";
+    boardTitle.value="";
     boardContent.focus();
     return false;
   }
@@ -176,14 +176,12 @@ const boardContent = document.getElementById("boardContent"); //글내용
 
 const contentDetailAnswer = document.getElementById("contentDetailAnswer");
 
-// 글작성 버튼 눌렀을때
+// 글등록 버튼 눌렀을때
 boardWriteBtn.addEventListener("click", () => {
   boardWriteModal.style.display = "flex";
   document.body.style.overflow = "hidden";
 
-  boardTitle.value="";
-  boardContent.value="";
-  boardViewContentImgArea.innerHTML="";
+ 
 
     // <label for="inputFile1">
     //   <i class="fa-solid fa-plus fa-3x"></i>
@@ -227,7 +225,6 @@ boardWriteX.addEventListener("click", () => {
   boardViewContentImgArea.innerHTML = "";
   inputFilearea1.innerHTML = "";
   boardViewContentImgArea.innerText = "";
-  location.reload();
   console.log("취소눌림");
 });
 
@@ -279,4 +276,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

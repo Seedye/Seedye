@@ -15,7 +15,7 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)" maxlength='20'></textarea>
+          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)"></textarea>
           <!-- <p> ]</p> -->
       </div>
 
@@ -69,7 +69,7 @@
                 </div> 
               -->
                 <!-- 사진 추가 버튼 -->
-                <%-- <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
                   <label for="inputFile2">
                     <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
@@ -94,7 +94,7 @@
                     </div>
                   </label>
                   <input type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
-                </div>  --%>
+                </div> 
               </div>
 
           
@@ -112,7 +112,3 @@
   </form>
     
   </div>
-
-
-
-  

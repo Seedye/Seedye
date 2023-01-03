@@ -136,8 +136,8 @@ function writeValidate(){
     return false;
   }
   if(boardContent.value.trim().length == 0){
-    alert("내용입력은 필수 입니다.");
-    boardContent.value="";
+    alert("제목입력은 필수 입니다.");
+    boardTitle.value="";
     boardContent.focus();
     return false;
   }
@@ -181,41 +181,36 @@ boardWriteBtn.addEventListener("click", () => {
   boardWriteModal.style.display = "flex";
   document.body.style.overflow = "hidden";
 
-  boardTitle.value="";
-  boardContent.value="";
-  boardViewContentImgArea.innerHTML="";
+  // <label for="inputFile1">
+  //   <i class="fa-solid fa-plus fa-3x"></i>
+  //   <p>업로드할 사진을 선택해 주세요</p>
+  // </label>
+  // <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple">
 
-    // <label for="inputFile1">
-    //   <i class="fa-solid fa-plus fa-3x"></i>
-    //   <p>업로드할 사진을 선택해 주세요</p>
-    // </label>
-    // <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple">
-  
-    const imgAreaDiv = document.createElement("div");
-    const inputFileLabel = document.createElement("label");
-    // const inputFileP = document.createElement("P");
-    const inputFileTextP = document.createElement("P");
-    // var inputFileText = document.createTextNode("업로드할 사진을 선택해 주세요");
-    const inputFileInput = document.createElement("input");
-  
-    imgAreaDiv.classList.add("board-view-content-img-area");
-    imgAreaDiv.setAttribute("id", "boardViewContentImgArea");
-    inputFileLabel.setAttribute("for", "inputFile1");
-    inputFileLabel.setAttribute("class", "fa-solid fa-plus fa-3x");
-    inputFileTextP.innerText = "업로드할 사진을 선택해 주세요";
-    inputFileTextP.classList.add("inputFileTextP");
-    inputFileInput.setAttribute("type", "file");
-    inputFileInput.setAttribute("name", "inputFile");
-    inputFileInput.setAttribute("id", "inputFile1");
-    inputFileInput.classList.add("inputFile");
-    inputFileInput.setAttribute("multiple", "multiple");
-  
-    inputFileLabel.append(inputFileTextP);
-    inputFilearea1.append(inputFileLabel, inputFileInput);
-    boardViewContentImgArea.append(inputFilearea1);
-  
-    inputFilearea1.style.display = "flex";
+  const imgAreaDiv = document.createElement("div");
+  const inputFileLabel = document.createElement("label");
+  // const inputFileP = document.createElement("P");
+  const inputFileTextP = document.createElement("P");
+  // var inputFileText = document.createTextNode("업로드할 사진을 선택해 주세요");
+  const inputFileInput = document.createElement("input");
 
+  imgAreaDiv.classList.add("board-view-content-img-area");
+  imgAreaDiv.setAttribute("id", "boardViewContentImgArea");
+  inputFileLabel.setAttribute("for", "inputFile1");
+  inputFileLabel.setAttribute("class", "fa-solid fa-plus fa-3x");
+  inputFileTextP.innerText = "업로드할 사진을 선택해 주세요";
+  inputFileTextP.classList.add("inputFileTextP");
+  inputFileInput.setAttribute("type", "file");
+  inputFileInput.setAttribute("name", "inputFile");
+  inputFileInput.setAttribute("id", "inputFile1");
+  inputFileInput.classList.add("inputFile");
+  inputFileInput.setAttribute("multiple", "multiple");
+
+  inputFileLabel.append(inputFileTextP);
+  inputFilearea1.append(inputFileLabel, inputFileInput);
+  boardViewContentImgArea.append(inputFilearea1);
+
+  inputFilearea1.style.display = "flex";
 });
 
 // 글작성 취소
@@ -227,22 +222,14 @@ boardWriteX.addEventListener("click", () => {
   boardViewContentImgArea.innerHTML = "";
   inputFilearea1.innerHTML = "";
   boardViewContentImgArea.innerText = "";
-  location.reload();
   console.log("취소눌림");
 });
 
 // 글 작성 완료(데이터 넣기)
 boardWriteInput.addEventListener("click", () => {
-  
-  if(boardTitle.value.trim().length == 0){
+  boardWriteModal.style.display = "none";
+  document.body.style.overflow = "unset";
 
-  }
-  if(boardContent.value.trim().length == 0){
-
-  }else{
-    boardWriteModal.style.display = "none";
-    document.body.style.overflow = "unset";
-  }
   // boardTitle.value = null;
   // boardContent.value = null;
   // inputFilearea1.innerHTML = "";
@@ -279,4 +266,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

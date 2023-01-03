@@ -136,8 +136,8 @@ function writeValidate(){
     return false;
   }
   if(boardContent.value.trim().length == 0){
-    alert("내용입력은 필수 입니다.");
-    boardContent.value="";
+    alert("제목입력은 필수 입니다.");
+    boardTitle.value="";
     boardContent.focus();
     return false;
   }
@@ -176,14 +176,17 @@ const boardContent = document.getElementById("boardContent"); //글내용
 
 const contentDetailAnswer = document.getElementById("contentDetailAnswer");
 
-// 글작성 버튼 눌렀을때
+// 글등록 버튼 눌렀을때
 boardWriteBtn.addEventListener("click", () => {
   boardWriteModal.style.display = "flex";
   document.body.style.overflow = "hidden";
 
-  boardTitle.value="";
-  boardContent.value="";
-  boardViewContentImgArea.innerHTML="";
+  if(boardTitle.value.trim().length == 0){
+
+  }
+  if(boardContent.value.trim().length == 0){
+
+  }else{
 
     // <label for="inputFile1">
     //   <i class="fa-solid fa-plus fa-3x"></i>
@@ -215,7 +218,7 @@ boardWriteBtn.addEventListener("click", () => {
     boardViewContentImgArea.append(inputFilearea1);
   
     inputFilearea1.style.display = "flex";
-
+  }
 });
 
 // 글작성 취소
@@ -227,22 +230,14 @@ boardWriteX.addEventListener("click", () => {
   boardViewContentImgArea.innerHTML = "";
   inputFilearea1.innerHTML = "";
   boardViewContentImgArea.innerText = "";
-  location.reload();
   console.log("취소눌림");
 });
 
 // 글 작성 완료(데이터 넣기)
 boardWriteInput.addEventListener("click", () => {
-  
-  if(boardTitle.value.trim().length == 0){
+  boardWriteModal.style.display = "none";
+  document.body.style.overflow = "unset";
 
-  }
-  if(boardContent.value.trim().length == 0){
-
-  }else{
-    boardWriteModal.style.display = "none";
-    document.body.style.overflow = "unset";
-  }
   // boardTitle.value = null;
   // boardContent.value = null;
   // inputFilearea1.innerHTML = "";
@@ -279,4 +274,3 @@ boardWriteInput.addEventListener("click", () => {
   }
 
 })();
-

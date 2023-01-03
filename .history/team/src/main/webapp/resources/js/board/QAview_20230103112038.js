@@ -65,27 +65,17 @@ for (let boardListViewItems of boardListView) {
         QATextCommentP.innerText = "답변";
 
         if (QABoardDetail[0].commentContent != null) {
-          if(loginMemberAutority== 2){
-            QAIDAndDateCommentP.innerText = "";
-            const commentTextarea= document.createElement("textarea");
-            commentTextarea.innerText = QABoardDetail[0].commentContent;
-            boardViewContentTextComment.append(commentTextarea);
-          }else{
-            QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
-            QAContentCommentP.innerText = QABoardDetail[0].commentContent;
-          }
-
+          QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
+          QAContentCommentP.innerText = QABoardDetail[0].commentContent;
         } else {
-
           if(loginMemberAutority== 2){
-            QAIDAndDateCommentP.innerText = "";
-            const commentTextarea= document.createElement("textarea");
-            boardViewContentTextComment.append(commentTextarea);
 
+            QAIDAndDateCommentP.innerText = "";
           }else{
+
+
             QAContentCommentP.innerText =
-            "**** 답변 준비중입니다 (　-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄ _ -̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ ) ****";
-            boardViewContentTextComment.append(QAContentCommentP);
+              "**** 답변 준비중입니다 (　-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄ _ -̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ ) ****";
           }
         }
 
@@ -97,6 +87,7 @@ for (let boardListViewItems of boardListView) {
           QATextCommentP,
           QAIDAndDateCommentP
         );
+        boardViewContentTextComment.append(QAContentCommentP);
 
         console.log(
           "이미지 리스트 길이 출력 : " + QABoardDetail[0].imageList.length
@@ -137,7 +128,7 @@ for (let boardListViewItems of boardListView) {
           ".board-view-content-delete-update"
         );
 
-        if (boardUpDel.id == QABoardDetail[0].memberId || loginMemberAutority== 2) {
+        if (boardUpDel.id == QABoardDetail[0].memberId) {
           boardUpDel.innerHTML = "";
 
           const boardDelete = document.createElement("div");
@@ -167,9 +158,6 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
-
-
-
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";
@@ -318,5 +306,3 @@ boardViewX.addEventListener("click", () => {
   boardViewModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-
-

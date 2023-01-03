@@ -70,13 +70,14 @@ for (let boardListViewItems of boardListView) {
             const commentTextarea= document.createElement("textarea");
             commentTextarea.innerText = QABoardDetail[0].commentContent;
             boardViewContentTextComment.append(commentTextarea);
+
           }else{
+
             QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
             QAContentCommentP.innerText = QABoardDetail[0].commentContent;
           }
 
         } else {
-
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
@@ -137,7 +138,7 @@ for (let boardListViewItems of boardListView) {
           ".board-view-content-delete-update"
         );
 
-        if (boardUpDel.id == QABoardDetail[0].memberId || loginMemberAutority== 2) {
+        if (boardUpDel.id == QABoardDetail[0].memberId) {
           boardUpDel.innerHTML = "";
 
           const boardDelete = document.createElement("div");
@@ -167,9 +168,6 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
-
-
-
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";
@@ -318,5 +316,3 @@ boardViewX.addEventListener("click", () => {
   boardViewModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-
-

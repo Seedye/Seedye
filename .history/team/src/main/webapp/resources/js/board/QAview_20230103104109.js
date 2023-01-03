@@ -52,9 +52,17 @@ for (let boardListViewItems of boardListView) {
         // 답변 id/날짜 생성 P
         const QAIDAndDateCommentP = document.createElement("p");
 
-        console.log("관리자 인가요? : "+loginMemberAutority);
+        console.log("관리자 인가요 : ?"+loginMemberAutority);
         // 답변 내용 생성 P
-        const QAContentCommentP = document.createElement("p");
+        if(loginMemberAutority == 2){
+
+          const QAContentCommentP = document.createElement("p");
+          const QAContentCommentInput = document.createElement("input");
+          QAContentCommentP.append(QAContentCommentInput);
+        }else{
+
+          const QAContentCommentP = document.createElement("p");
+        }
 
         QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
@@ -63,40 +71,30 @@ for (let boardListViewItems of boardListView) {
         QAContentP.innerText = QABoardDetail[0].boardContent;
 
         QATextCommentP.innerText = "답변";
+        // 관리자면
+      
 
-        if (QABoardDetail[0].commentContent != null) {
-          if(loginMemberAutority== 2){
-            QAIDAndDateCommentP.innerText = "";
-            const commentTextarea= document.createElement("textarea");
-            commentTextarea.innerText = QABoardDetail[0].commentContent;
-            boardViewContentTextComment.append(commentTextarea);
-          }else{
+          if (QABoardDetail[0].commentContent != null) {
             QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
             QAContentCommentP.innerText = QABoardDetail[0].commentContent;
-          }
-
-        } else {
-
-          if(loginMemberAutority== 2){
+          } else {
+            inputFile()
             QAIDAndDateCommentP.innerText = "";
-            const commentTextarea= document.createElement("textarea");
-            boardViewContentTextComment.append(commentTextarea);
-
-          }else{
             QAContentCommentP.innerText =
-            "**** 답변 준비중입니다 (　-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄ _ -̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ ) ****";
-            boardViewContentTextComment.append(QAContentCommentP);
+              "**** 답변 준비중입니다 (　-̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷄ _ -̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥̥᷅ ) ****";
           }
-        }
+        
 
         boardViewTitleDetailAnswer.append(QATitleP);
         boardViewContentContent.append(QATextP, QAIDAndDateP);
         boardViewContentText.append(QAContentP);
 
+        // 답변 and 등록 날짜
         boardViewContentContentComment.append(
           QATextCommentP,
           QAIDAndDateCommentP
         );
+        boardViewContentTextComment.append(QAContentCommentP);
 
         console.log(
           "이미지 리스트 길이 출력 : " + QABoardDetail[0].imageList.length
@@ -137,7 +135,7 @@ for (let boardListViewItems of boardListView) {
           ".board-view-content-delete-update"
         );
 
-        if (boardUpDel.id == QABoardDetail[0].memberId || loginMemberAutority== 2) {
+        if (boardUpDel.id == QABoardDetail[0].memberId) {
           boardUpDel.innerHTML = "";
 
           const boardDelete = document.createElement("div");
@@ -167,9 +165,6 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
-
-
-
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";
@@ -318,5 +313,3 @@ boardViewX.addEventListener("click", () => {
   boardViewModal.style.display = "none";
   document.body.style.overflow = "unset";
 });
-
-
