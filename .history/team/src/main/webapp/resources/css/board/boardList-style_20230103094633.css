@@ -52,7 +52,7 @@ body{
   width: 80%;
   height: 50px;
   border: 0px;
-  padding:0 15px;
+  padding-left: 15px;
   font-size: 20px;
 }
 .board-list-serch > input:focus{

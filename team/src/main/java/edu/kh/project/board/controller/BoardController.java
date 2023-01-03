@@ -48,7 +48,9 @@ public class BoardController {
 		if(pm.get("key") == null) {
 			
 			Map<String, Object> map = service.selectBoardList(boardCode,cp);
+			
 			model.addAttribute("map", map);
+			System.out.println(map);
 		}
 		// 게시판 검색 목
 		else {
@@ -56,7 +58,6 @@ public class BoardController {
 			Map<String, Object> map = service.selectBoardList(pm, cp);
 			model.addAttribute("map", map);
 		}
-		
 		
 		return "board/boardList";
 	}

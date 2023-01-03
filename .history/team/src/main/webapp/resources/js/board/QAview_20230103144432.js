@@ -167,9 +167,9 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
+          if(loginMemberAutority != 2){}
 
-
-
+          
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";

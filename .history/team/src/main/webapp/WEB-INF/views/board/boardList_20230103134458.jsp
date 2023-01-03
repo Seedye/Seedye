@@ -65,7 +65,7 @@
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
-          <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
+          <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/> --%>
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">
@@ -127,13 +127,12 @@
                     
                       <c:when test="${not empty param.query}">
 
-                        <%-- 첫 페이지로 이동 --%>
+
                         <li>
                           <a href="/boardList/${boardCode}?cp=1&key=${param.key}&query=${param.query}">
                             <i class="fa-solid fa-caret-left"></i>
                           </a>
                         </li>
-                        <%-- 이전 목록 마지막 번호로 이동 --%>
                         <li>
                           <a href="/boardList/${boardCode}?cp=${pagination.prevPage}&key=${param.key}&query=${param.query}">
                             <i class="fa-solid fa-angle-left"></i>
@@ -141,15 +140,14 @@
                         </li>
                       </c:when>
                       <c:otherwise>
-                        <%-- 첫 페이지로 이동 --%>
+                      
                        <li>
                           <a href="/boardList/${boardCode}?cp=1${sURL}">
                             <i class="fa-solid fa-caret-left"></i>
                           </a>
                         </li>
-                        <%-- 이전 목록 마지막 번호로 이동 --%>
                         <li>
-                          <a href="/boardList/${boardCode}?cp=${pagination.prevPage}">
+                          <a href="/boardList/${boardCode}?cp=${pagination.prevPage}${sURL}">
                             <i class="fa-solid fa-angle-left"></i>
                           </a>
                         </li>

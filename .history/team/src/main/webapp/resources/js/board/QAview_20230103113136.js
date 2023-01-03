@@ -167,9 +167,6 @@ for (let boardListViewItems of boardListView) {
               },
             });
           });
-
-
-
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           boardUpdate.innerText = "수정";
