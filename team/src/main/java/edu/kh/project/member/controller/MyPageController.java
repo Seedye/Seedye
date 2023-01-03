@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MyPageService;
@@ -117,44 +118,46 @@ public class MyPageController {
 		return "member/myPage-delete";
 	}
 	
-	// 회원 탈퇴
-//	@PostMapping("/delete")
-//	public String memberDelete(
-//			@SessionAttribute("loginMember") Member loginMember,
-//			String memberPw,
-//			SessionStatus status,
-//			RedirectAttributes ra
-//			) {
-//		
-//		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
-//		
-//		String message = null;
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			
-//			message = "탈퇴 되었습니다.";
-//			
-//			path = "/"; // 메인 페이지로 이동
-//			
-//			status.setComplete(); // 로그아웃 코드 추가
-//		} else {
-//			message = "비밀번호가 일치하지 않습니다.";
-//			
-//			path = "delete"; // 탈퇴 페이지로 이동
-//		}
-//		
-//		ra.addFlashAttribute("message", message);
-//		
-//		return "redirect:" + path;
-//		
-//	}
+//	 회원 탈퇴
+	@PostMapping("/delete")
+	public String memberDelete(
+			@SessionAttribute("loginMember") Member loginMember,
+			String memberPw,
+			SessionStatus status,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
+		
+		String message = null;
+		
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "탈퇴 되었습니다.";
+			
+			path = "/"; // 메인 페이지로 이동
+			
+			status.setComplete(); // 로그아웃 코드 추가
+		} else {
+			message = "비밀번호가 일치하지 않습니다.";
+			
+			path = "delete"; // 탈퇴 페이지로 이동
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
+	// 내 정보 페이지에서 휴대폰 변경을 할 때 인증번호 발송
 	@PostMapping("/info/confirmTel")
 	@ResponseBody
 	public int confirmTel(
-			@RequestParam("toPhone") String toPhone) {
+			@RequestParam("toPhone") String toPhone,
+			HttpSession session) {
 		
 	  Message sendMsg = new Message();
 	      
@@ -166,7 +169,26 @@ public class MyPageController {
       
       this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
       
-      return randomNumber;
+      session.setAttribute("infoRandomNumber", randomNumber);
+      
+      return 0;
+	}
+	
+	@PostMapping("/info/confirmCheck")
+	@ResponseBody
+	public int infoConfirmCheck(
+			@RequestParam("infoInputNo") int infoInputNo,
+			HttpSession session) {
+		
+		int confirmNo = (int)session.getAttribute("infoRandomNumber");
+		
+		if (confirmNo == infoInputNo) {
+			session.removeAttribute("infoRandomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	// 아이디 비밀번호 찾기 화면에서 인증 완료 시 휴대폰 번호로 맴버 조회
@@ -190,7 +212,7 @@ public class MyPageController {
 		
 		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
 		
-		session.setAttribute("randomNumber", randomNumber);
+		session.setAttribute("findRandomNumber", randomNumber);
 		
 		return selectPhoneMemberId;
 	}
@@ -201,10 +223,10 @@ public class MyPageController {
 			@RequestParam("inputConfirmNo") int inputConfirmNo,
 			HttpSession session) {
 		
-		int confirmNo = (int)session.getAttribute("randomNumber");
+		int confirmNo = (int)session.getAttribute("findRandomNumber");
 		
 		if (confirmNo == inputConfirmNo) {
-			session.removeAttribute("randomNumber");
+			session.removeAttribute("findRandomNumber");
 			
 			return 1;
 		}

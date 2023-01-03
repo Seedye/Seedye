@@ -2,6 +2,7 @@ package edu.kh.project.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.common.Pagination;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
@@ -239,11 +241,18 @@ public class AdminController {
 	// 회원 목록 조회
 	@GetMapping("selectMemberList")
 	@ResponseBody
-	public String selectMemberList() {
+	public Map<String, Object> selectMemberList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp) {
 		
-		List<Member> memberList = service.selectMemberList();
+
+
+		Map<String, Object> map = service.selectMemberList(cp);
 		
-		return new Gson().toJson(memberList);
+		model.addAttribute("map", map);
+				
+		
+		System.out.println(map.get("pagination"));
+		return map;
 	}
 	
 	// 회원 관리 화면 조회
@@ -290,16 +299,18 @@ public class AdminController {
 	// 식당 목록 조회
 	@GetMapping("selectStoreList")
 	@ResponseBody
-	public String selectStoreList() {
+	public String selectStoreList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
 		
-		int cp = 2;	
 		
-			List<Store> storeList = service.selectStoreList(cp);
+		Map<String, Object> map = service.selectStoreList(cp);
+		
+		model.addAttribute("map", map);
 			
-			System.out.println(storeList);
+		
+		System.out.println(map);
 			
-			
-			return new Gson().toJson(storeList);
+		return new Gson().toJson(map);
 		
 	}
 	

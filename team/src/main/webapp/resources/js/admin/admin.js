@@ -72,13 +72,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
             $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
         });
 
+
+let cp = 1;
+
 function selectStoreList(){
 
     $.ajax({
         url:"/admin/selectStoreList",
-        dataType: "JSON",   
-        success : storeList =>{
-            console.log(storeList);
+        dataType: "JSON",
+        data:{"cp" : cp},   
+        success : (map) =>{
+            
+            const storeList = map.storeList;
+            const pagination = map.pagination;
+            
+            console.log(pagination);
             
             for(let store of storeList){
                 
@@ -103,7 +111,13 @@ function selectStoreList(){
                 
                 // 전화번호
                 const td5 = document.createElement("td");
-                td5.innerText = store.storeTel;
+                if(store.storeTel == null){
+                    store.storeTel = "정보 없음"
+                    td5.style.color = "red";
+                
+                }
+                
+                    td5.innerText = store.storeTel;
                 
                 // 처리여부
                 const td6 = document.createElement("td");

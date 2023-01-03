@@ -36,6 +36,6 @@ public interface MyPageService {
 	 * @param memberPw
 	 * @return result
 	 */
-//	int memberDelete(int memberNo, String memberPw);
+	int memberDelete(int memberNo, String memberPw);
 
 }
