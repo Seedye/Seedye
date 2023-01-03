@@ -80,7 +80,6 @@ function selectStoreList(){
     $.ajax({
         url:"/admin/selectStoreList",
         dataType: "JSON",
-        data:{"cp" : cp},   
         success : (map) =>{
             
             const storeList = map.storeList;
@@ -139,13 +138,19 @@ function selectStoreList(){
                 tr.append(td1, td2, td3, td4, td5, td6, td7);
 
                 tbody.append(tr);
-                
+            
                 
             }
             
-            const image0i = document.getElementById("image0i");
-            const image1i = document.getElementById("image1i");
-            const image2i = document.getElementById("image2i");
+            for(i=pagination.startPage; i<=pagination.startPage; i++){
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                const span = document.createElement("span");
+                li.appendChild(a);
+                a.appendChild(span);
+                span.innerText = i;
+
+            }
 
 
             // 관리하기 버튼 클릭

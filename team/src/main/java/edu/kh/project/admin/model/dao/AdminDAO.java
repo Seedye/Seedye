@@ -168,8 +168,8 @@ public class AdminDAO {
 	 * @param boardCode
 	 * @return boardList
 	 */
-	public List<Board> selectBoardNotice(int boardCode) {
-		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
+	public List<Board> selectAdminBoard(int boardCode) {
+		return sqlSession.selectList("adminMapper.selectAdminBoard", boardCode);
 	}
 
 	/** 식당 정보 먼저 등록

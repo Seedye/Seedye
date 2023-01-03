@@ -96,7 +96,7 @@ public interface AdminService {
 	 * @param boardCode
 	 * @return boardList
 	 */
-	List<Board> selectBoardNotice(int boardCode);
+	List<Board> selectAdminBoard(int boardCode);
 
 
 

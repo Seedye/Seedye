@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="pagination" value="${map.pagination}" />
 
@@ -241,7 +241,7 @@
                             <li><a href="">&lt;</a></li>
         
                             <c:forEach var="i" begin="${pagination.startPage}" 
-                                end="${pagination.endPage.value}" step="1">
+                                end="${pagination.endPage}" step="1">
         
                                 <c:choose>
                                     <c:when test="${i == pagination.currentPage}">

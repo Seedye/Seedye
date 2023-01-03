@@ -67,7 +67,7 @@ public class AdminController {
 		return "admin/manageStore";
 	}
 	
-
+	
 	// 게시글 목록 조회
 	@GetMapping("/board/{boardCode}")
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
@@ -83,7 +83,7 @@ public class AdminController {
 			Map<String, Object> map = service.selectBoardList(pm,cp);
 			model.addAttribute("map",map);
 		}
-			return "admin/manageBoard";
+			return "board/boardList";
 	}
 
 	// 게시글 상세 조회
@@ -102,13 +102,16 @@ public class AdminController {
 		
 	}
 	
-	@GetMapping("selectBoardNotice")
+	// 게시판 리스트 조회
+	@GetMapping("selectBoardList")
 	@ResponseBody
-	public String selectBoardNotice(int boardCode) {
+	public String selectAdminBoard(int boardCode) {
 		
-		List<Board> boardNoticeList = service.selectBoardNotice(boardCode);
+		List<Board> adminBoardList = service.selectAdminBoard(boardCode);
 		
-		return new Gson().toJson(boardNoticeList);
+		System.out.println(adminBoardList);
+		
+		return new Gson().toJson(adminBoardList);
 		
 	}
 	

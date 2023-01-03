@@ -189,8 +189,8 @@ public class AdminServiceImpl implements AdminService{
 
 	// 공지사항 조회
 	@Override
-	public List<Board> selectBoardNotice(int boardCode) {
-		return dao.selectBoardNotice(boardCode);
+	public List<Board> selectAdminBoard(int boardCode) {
+		return dao.selectAdminBoard(boardCode);
 	}
 
 	// 식당 등록 문의

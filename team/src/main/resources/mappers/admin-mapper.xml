@@ -251,7 +251,7 @@ SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
 </select>
 
 <!-- 공지사항 조회 -->
-<select id="selectBoardNotice" resultMap="board_rm">
+<select id="selectAdminBoard" resultMap="board_rm">
 SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID
 FROM BOARD
 JOIN "MEMBER" USING(MEMBER_NO)
