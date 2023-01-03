@@ -13,11 +13,13 @@
     <title>마이페이지</title>
 
     <link rel="stylesheet" href="../../resources/css/member/myPage.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
 
 </head>
 <body>
     <main>
         <!-- header.jsp include -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <session class="myPage-content">
 
@@ -86,8 +88,10 @@
 
     </main>
     <!-- footer.jsp include -->
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <!-- 다음 주소 api 추가 -->
-
+    <!-- myPage.js external 방식으로 추가 -->
+    <script src="../../resources/js/member/myPage.js"></script>
+    
 </body>
 </html>

@@ -74,14 +74,19 @@ public class MyPageServiceImpl implements MyPageService{
 
 
 	// 회원 탈퇴 서비스
-//	@Transactional
-//	@Override
-//	public int memberDelete(int memberNo, String memberPw) {
-//		
-//		String encPw = dao.selectEncPw(memberNo);
-//		
-//		if(bcrypt.matches)
-//		return dao.memberDelete(memberNo);
-//	}
+	@Transactional
+	@Override
+	public int memberDelete(int memberNo, String memberPw) {
+		
+		// 비밀번호 조회
+		String encPw = dao.selectEncPw(memberNo);
+		
+		// 일치하면 탈퇴
+		if(bcrypt.matches(memberPw, encPw)) {
+			
+			return dao.memberDelete(memberNo);
+		}
+		return 0;
+	}
 
 }

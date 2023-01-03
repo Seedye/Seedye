@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MyPageService;
@@ -117,39 +118,39 @@ public class MyPageController {
 		return "member/myPage-delete";
 	}
 	
-	// 회원 탈퇴
-//	@PostMapping("/delete")
-//	public String memberDelete(
-//			@SessionAttribute("loginMember") Member loginMember,
-//			String memberPw,
-//			SessionStatus status,
-//			RedirectAttributes ra
-//			) {
-//		
-//		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
-//		
-//		String message = null;
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			
-//			message = "탈퇴 되었습니다.";
-//			
-//			path = "/"; // 메인 페이지로 이동
-//			
-//			status.setComplete(); // 로그아웃 코드 추가
-//		} else {
-//			message = "비밀번호가 일치하지 않습니다.";
-//			
-//			path = "delete"; // 탈퇴 페이지로 이동
-//		}
-//		
-//		ra.addFlashAttribute("message", message);
-//		
-//		return "redirect:" + path;
-//		
-//	}
+//	 회원 탈퇴
+	@PostMapping("/delete")
+	public String memberDelete(
+			@SessionAttribute("loginMember") Member loginMember,
+			String memberPw,
+			SessionStatus status,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
+		
+		String message = null;
+		
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "탈퇴 되었습니다.";
+			
+			path = "/"; // 메인 페이지로 이동
+			
+			status.setComplete(); // 로그아웃 코드 추가
+		} else {
+			message = "비밀번호가 일치하지 않습니다.";
+			
+			path = "delete"; // 탈퇴 페이지로 이동
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
 	@PostMapping("/info/confirmTel")
 	@ResponseBody
