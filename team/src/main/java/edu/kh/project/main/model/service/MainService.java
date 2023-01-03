@@ -16,4 +16,7 @@ public interface MainService {
 	// 모달 팝업창 해당 가맹점 조회
 	List<Store> modalResult(int storeNo);
 
+	// 신규 추가된 가맹점 조회(위에서 10개)
+	List<Store> newInsertList();
+
 }

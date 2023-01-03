@@ -34,5 +34,11 @@ public class MainServiceImpl implements MainService {
 	public List<Store> modalResult(int storeNo) {
 		return dao.modalResult(storeNo);
 	}
+
+	// 신규 추가된 가맹점 조회(위에서 10개)
+	@Override
+	public List<Store> newInsertList() {
+		return dao.newInsertList();
+	}
 	
 }
