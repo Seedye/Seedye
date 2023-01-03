@@ -25,7 +25,7 @@ public class MyPageDAO {
 	}
 
 
-	/** 회원 정보 (비밀번호 포함) 수정 서비스
+	/** 회원 정보 (비밀번호 포함) 수정 DAO
 	 * @param paramMap
 	 * @return result
 	 */
@@ -34,12 +34,17 @@ public class MyPageDAO {
 	}
 
 
+	
+	/** 암호화된 비밀번호 조회 DAO
+	 * @param memberNo
+	 * @return
+	 */
 	public String selectEncPw(int memberNo) {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
 	}
 
 
-	/** 휴대폰 번호로 맴버 아이디 조회
+	/** 휴대폰 번호로 맴버 아이디 조회 DAO
 	 * @param toPhone
 	 * @return memberId
 	 */
@@ -48,12 +53,21 @@ public class MyPageDAO {
 	}
 
 
-	/** 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	/** 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경 DAO
 	 * @param inputContent
 	 * @return reuslt
 	 */
 	public int pwChange(Member inputContent) {
 		return sqlSession.update("myPageMapper.pwChange", inputContent);
+	}
+
+
+	/** 회원 탈퇴 DAO
+	 * @param memberNo
+	 * @return
+	 */
+	public int memberDelete(int memberNo) {
+		return sqlSession.update("myPageMapper.memberDelete", memberNo);
 	}
 
 }
