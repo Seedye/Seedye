@@ -24,9 +24,20 @@ public class MainController {
 	@GetMapping("/")
 	public String mainPage(Model model) {
 		
+		// 가맹점 수 조회
 		List<Store> resultList = service.resultList();
 		
-		model.addAttribute("resultList", resultList);
+		// 신규 추가된 가맹점 조회(위에서 10개)
+		List<Store> newInsertList = service.newInsertList();
+		
+		Map<String, Object> mainPageMap = new HashMap<String, Object>();
+		
+		mainPageMap.put("resultList" ,resultList);
+		mainPageMap.put("newInsertList" ,newInsertList);
+		
+		model.addAttribute("mainPageMap", mainPageMap);
+		
+		System.out.println(mainPageMap);
 		
 		return "main/mainPage";
 	}

@@ -30,4 +30,9 @@ public class MainDAO {
 	public List<Store> modalResult(int storeNo) {
 		return sqlSession.selectList("mainMapper.modalResult", storeNo);
 	}
+
+	// 신규 추가된 가맹점 조회(위에서 10개)
+	public List<Store> newInsertList() {
+		return sqlSession.selectList("mainMapper.newInsertList");
+	}
 }
