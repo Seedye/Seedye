@@ -39,10 +39,10 @@ public class MemberFilter implements Filter {
 		// -> session에 loginMember가 있는지 확인
 		HttpSession session = req.getSession(); // 세션 객체 얻어오기
 		
-		if(session.getAttribute("loginMember") == session.getAttribute("loginMember")) { // 세션에서 loginMember라는 값을 얻어오겠다. null이면 로그인 X
+		if(session.getAttribute("loginMember") != null) { // 세션에서 loginMember라는 값을 얻어오겠다.
 			resp.sendRedirect("/"); // 메인페이지로 리다이렉트
 			
-		} else { // 로그인 O
+		} else { // 로그인 X
 			
 			// 연결된 다음 필터로 이동(없으면 Servlet / JSP로 이동)
 			chain.doFilter(request, response);
