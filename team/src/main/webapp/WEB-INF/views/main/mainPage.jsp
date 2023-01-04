@@ -153,18 +153,35 @@
                     <h3>즐겨찾기</h3>
                     <br>
                     <ul>
-                        <li>
-                            <span>삼겹살집</span>
-                        </li>
-                        <li>
-                            <span>부대찌개</span>
-                        </li>
-                        <li>
-                            <span>햄버거</span>
-                        </li>
-                        <li>
-                            <span>매그노나르도</span>
-                        </li>
+                        <c:choose>
+
+                            <c:when test="${empty loginMember}">
+                                <li>
+                                    <span>로그인 후</span>
+                                </li>
+                                <li>
+                                    <span>이용해주세요.</span>
+                                </li>
+                            </c:when>
+
+                            <c:when test="${empty mainPageMap.bookmarkList}">
+                                <li>
+                                    <span>즐겨찾기를</span>
+                                </li>
+                                <li>
+                                    <span>등록해주세요.</span>
+                                </li>
+                            </c:when>
+
+                            <c:otherwise>
+                                <c:forEach var="bookmarkList" items="${mainPageMap.bookmarkList}">
+                                    <li>
+                                        <span>${bookmarkList.storeName}</span>
+                                    </li>
+                                </c:forEach>
+                            </c:otherwise>
+                        
+                        </c:choose>
                     </ul>
                 </div>
             </div>
@@ -270,6 +287,11 @@
     <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9"></script> -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9&libraries=services"></script>
     
+    <script>
+    var memberNo = "${loginMember.memberNo}";
+    var memberBookmarkNo = "${mainPageMap.bookmarkList[0].storeNo}";
+    var bookmarkList = "${mainPageMap.bookmarkList}"
+    </script>
     <%-- 제이쿼리 사용시 필요한 스크립트 --%>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 

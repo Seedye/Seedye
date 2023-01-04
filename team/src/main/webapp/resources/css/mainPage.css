@@ -548,3 +548,7 @@ footer{
     height: 380px;
     object-fit: cover;
 }
+
+.bookmark li{
+    border-bottom: 1px solid #ddd;
+}
