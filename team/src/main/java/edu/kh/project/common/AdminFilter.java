@@ -45,18 +45,26 @@ public class AdminFilter extends HttpFilter implements Filter{
 		
 		HttpSession session = req.getSession();
 		
-		
-		if(((Member)session.getAttribute("loginMember")).getAuthority() == 1) { // 일반 회원
-			session.setAttribute("message", "관리자만 이용할 수 있는 기능입니다");
-			resp.sendRedirect("/");
-		} else if(((Member)session.getAttribute("loginMember")).getAuthority() == 3) { 
-			// 업주 회원
+		if(session.getAttribute("loginMember") == null) { // 로그인	X
+			session.setAttribute("message", "관리자 로그인시 이용 가능합니다.");
+			resp.sendRedirect("/"); // 메인페이지로 리다이렉트
 			
-			session.setAttribute("message", "관리자만 이용할 수 있는 기능입니다");
-			resp.sendRedirect("/");
-		}else {
-			chain.doFilter(request, response);
+		}else { // 로그인 O
+			
+			if(((Member)session.getAttribute("loginMember")).getAuthority() == 1) { // 일반 회원
+				session.setAttribute("message", "관리자만 이용할 수 있는 기능입니다");
+				resp.sendRedirect("/");
+			} else if(((Member)session.getAttribute("loginMember")).getAuthority() == 3) { 
+				// 업주 회원
+				
+				session.setAttribute("message", "관리자만 이용할 수 있는 기능입니다");
+				resp.sendRedirect("/");
+			}else {
+				chain.doFilter(request, response);
+			}
+			
 		}
+		
 		
 		
 
