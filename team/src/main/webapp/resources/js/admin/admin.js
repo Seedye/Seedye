@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
     selectStoreList();
+
+    pageBtnClick();
 })
 
 
@@ -73,7 +75,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
 
 
-let cp = 1;
 
 function selectStoreList(){
 
@@ -308,23 +309,10 @@ selectBox.addEventListener("change", ()=>{
 
     let cp = 1;
 
-    const pageBtn = document.getElementsByClassName("pageBtn");
-    for(i=0; i<pageBtn.length; i++){
-
-        pageBtn[i].addEventListener("click", ()=>{
-
-           console.log(pageBtn[i].innerHTML);
-           
-            cp = pageBtn[i].innerHTML;
-
-            selectBoxSelect(cp);
-
-        })
-    } 
-        selectBoxSelect(cp);
-    
+    selectBoxSelect(cp);
 });
-    
+
+ 
 
 function selectBoxSelect(cp){
         $.ajax({
@@ -397,7 +385,7 @@ function selectBoxSelect(cp){
                     if (totalCount != 0) {
                         totalPages = Math.ceil(totalCount / pageSize);
                         // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
-                        var htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
+                        let htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
                         // common.js - pageLink
                     
                         const paginationMenu = document.getElementsByClassName("pagination")[0];
@@ -467,6 +455,27 @@ enroll.addEventListener("click", ()=>{
 
 });
 
+const pageBtnClick = ()=>{
+    
+    let cp =0;
+    const pageBtn = document.getElementsByClassName("pageBtn");
+
+        for(i=0; i<pageBtn.length; i++){
+            
+            if(pageBtn[i].addEventListener("click", (e)=>{
+                
+                cp = e.currentTarget.innerText;
+            }) )
+            {
+                console.log(cp);
+                break;
+
+            }
+            
+        }
+
+    }
+
 
 function pageLink(curPage, totalPages, selectBoxSelect) {
 	var pageUrl = "";
@@ -483,32 +492,34 @@ function pageLink(curPage, totalPages, selectBoxSelect) {
 	
 	var nextPage = endPage + 1;
 	
-    console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage", totalPages, "totalPages")
+    // console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage", totalPages, "totalPages")
 	
 	//맨 첫 페이지
 	if (curPage > 1 && pageLimit < curPage) {
-	    pageUrl += "<a class='page first' 'pageBtn' href='javascript:"  + "(1);'><i class='fas fa-angle-double-left'></a>";
+	    pageUrl += "<a class='page first''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"+  "(1);'><i class='fas fa-angle-double-left'></a>";
 	}
+
 	//이전 페이지
 	if (curPage > pageLimit) {
-	    pageUrl += " <a class='page prev''pageBtn' href='javascript:"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></a>";
+	    pageUrl += "<a class='page prev''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></a>";
 	}
+
 	//~pageLimit 맞게 페이지 수 보여줌
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += " <a href='#' 'pageBtn'><strong>" + i + "</strong></a>"
+	        pageUrl += "<a class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</a>"
 	    } else {
-	        pageUrl += " <a class= 'pageBtn' href='javascript:" + "(" + i + ");'> " + i + " </a>";
+	        pageUrl += "<a class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'" + "(" + i + ");'> " + i + " </a>";
 	    }
 	}
 	//다음 페이지
 	if (nextPage <= totalPages) {
-	    pageUrl += "<a class='page next' 'pageBtn' href='javascript:" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></a>";
+	    pageUrl += "<a class='page next' 'pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></a>";
 	}
 	//맨 마지막 페이지
 	if (curPage < totalPages && nextPage < totalPages) {
-	    pageUrl += "<a class='page last' 'pageBtn' href='javascript:"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></a>";
+	    pageUrl += "<a class='page last''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></a>";
 	}
 	// console.log(pageUrl);
 	
