@@ -359,6 +359,15 @@ confirmCheck.lastElementChild.addEventListener("click", () => {
                 authKeyMessage.innerText = "인증이 완료 되었습니다.";
                 authKeyMessage.classList.add("confirm");
                 authKeyMessage.classList.remove("error");
+
+                const memberTel = document.getElementById("memberTel");
+
+                memberTel.setAttribute("readonly", "");
+                // timer.style.display = "none";
+                // document.getElementById("timer").innerHTML = "";
+
+
+
             }
         },
         error : () => {
