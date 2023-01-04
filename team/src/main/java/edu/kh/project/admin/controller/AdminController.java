@@ -136,7 +136,7 @@ public class AdminController {
 		}else {
 		
 			path = referer;
-			message = "게시글 삭제 실패";
+			message = " 삭제 실패";
 		}
 		
 		
@@ -229,13 +229,7 @@ public class AdminController {
 	}
 	
 	
-	// 댓글 작성(문의하기 게시판)
-	
-	// 댓글 조회
-	
-	// 댓글 수정
-	
-	// 댓글 삭제
+	// 답글 작성
 	
 	
 	// -----------------------------------------------------------
