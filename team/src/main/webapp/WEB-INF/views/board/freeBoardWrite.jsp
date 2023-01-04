@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
   <div class="board-write-modal" id="boardWriteModal">
-  <form action="/QAWrite/3" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
+  <form action="/QAWrite/3" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidate()">
     <div class="board-view-area">
       <!-- /* 상세보기 */ -->
       <div class="board-view-title" id="boardWriteTitle">
@@ -15,14 +15,14 @@
       <div class="board-view-content-all">
         <div class="board-view-title-detail-answer">
           <!-- <p>[ </p> -->
-          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)"></textarea>
+          <textarea id="boardTitle" name="boardTitle" type="text" placeholder="작성할 제목을 입력해주세요.(20자내외)" maxlength='20'></textarea>
           <!-- <p> ]</p> -->
       </div>
 
       <div class="board-view-title-detail-answer">
         <div class="board-view-content-detail-answer">
           <div class="board-view-content-content">
-            <p>내용</p>
+            <p>문의 내용</p>
             <p>작성자 : ${loginMember.memberId}</p>
           </div>
           <div class="board-view-content-text">
@@ -69,7 +69,7 @@
                 </div> 
               -->
                 <!-- 사진 추가 버튼 -->
-                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+                <%-- <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
                   <label for="inputFile2">
                     <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
@@ -94,7 +94,7 @@
                     </div>
                   </label>
                   <input type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
-                </div> 
+                </div>  --%>
               </div>
 
           
@@ -112,3 +112,7 @@
   </form>
     
   </div>
+
+
+
+  

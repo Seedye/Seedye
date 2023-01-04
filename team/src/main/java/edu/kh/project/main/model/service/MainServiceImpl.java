@@ -1,15 +1,16 @@
 package edu.kh.project.main.model.service;
 
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.main.model.dao.MainDAO;
+import edu.kh.project.main.model.vo.Bookmark;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -39,6 +40,26 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<Store> newInsertList() {
 		return dao.newInsertList();
+	}
+
+	// 로그인한 회원의 즐겨찾기 조회
+	@Override
+	public List<Bookmark> selectBookmarkList(int memberNo) {
+		return dao.selectBookmarkList(memberNo);
+	}
+
+	// 즐겨찾기 삭제
+	@Override
+	@Transactional
+	public int modalDelete(Map<String, Integer> deleteMap) {
+		return dao.modalDelete(deleteMap);
+	}
+
+	// 즐겨찾기 등록
+	@Override
+	@Transactional
+	public int modalInsert(Map<String, Integer> insertMap) {
+		return dao.modalInsert(insertMap);
 	}
 	
 }

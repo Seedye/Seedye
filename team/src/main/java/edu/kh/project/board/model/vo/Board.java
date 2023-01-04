@@ -22,6 +22,7 @@ public class Board {
 	private String memberId; // 멤버 아이디
 	private String commentContent;
 	private String commentCreateDate;
+	private String commentNo;
 
 	
 	

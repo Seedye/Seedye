@@ -208,8 +208,6 @@ searchBtn.addEventListener("click", () => {
                                         datatype : "JSON",
                                         success : (modalResult) => {
     
-                                            console.log(modalResult);
-    
                                             const modalContent = document.querySelector(".modal-content-left");
                                             modalContent.innerHTML = "";
     
@@ -248,8 +246,6 @@ searchBtn.addEventListener("click", () => {
                                                 // 이미지가 있을 경우 예상 코드 
                                                 for (let modalImgList of modalResult[0].storeImgList){
 
-                                                    console.log(modalImgList);
-                                                    
                                                     const storeImg = document.createElement("li");
                                                     storeImg.innerHTML += "<img src=" + modalImgList.storeImagePath + modalImgList.storeImageRename + ">"; 
     
@@ -307,8 +303,75 @@ searchBtn.addEventListener("click", () => {
                                         error : () => {
                                             console.log("모달 팝업 결과 불러오기 실패");
                                         }
-                                    })
+                                    });
+
+                                    // 즐겨찾기 버튼 과 삭제 버튼
+                                    const bookmarkBtn = document.getElementsByClassName("bookmark-btn");
+
+                                    for(let bookmarkItems of bookmarkBtn){
+                                        
+                                        if(memberBookmarkNo == storeInfoLink.lastElementChild.id){
+                                            
+                                            bookmarkItems.innerText = "즐겨찾기 삭제";
+
+                                            bookmarkItems.addEventListener("click", () => {
+
+                                                if (confirm("즐겨찾기 삭제 하시겠습니까?")){
+
+                                                    $.ajax({
+                                                        url : "modalContent/delete",
+                                                        data : {"loginMemberNo" : memberNo, "bookmarkStoreNo" : memberBookmarkNo},
+                                                        success : (result) => {
     
+                                                            if(result > 0){
+                                                                alert("즐겨찾기가 삭제 되었습니다.");
+
+                                                                bookmarkItems.innerText = "즐겨찾기 등록";
+                                                            }
+    
+                                                        },
+                                                        error : () => {
+                                                            alert("즐겨찾기 삭제 중 오류 발생");
+                                                        }
+    
+                                                    });
+        
+                                                }
+                                            });
+                                            
+                                            
+                                        } else {
+                                            
+                                            bookmarkItems.innerText = "즐겨찾기 등록";
+                                            
+                                            bookmarkItems.addEventListener("click", () => {
+                                                
+                                                $.ajax({
+                                                    url : "/modalContent/insert",
+                                                    data : {"loginMemberNo" : memberNo, "bookmarkStoreNo" : storeInfoLink.lastElementChild.id},
+                                                    success : (result) => {
+    
+                                                        if(result > 0){
+                                                            alert("즐겨찾기가 등록 되었습니다.");
+
+                                                            bookmarkItems.innerText = "즐겨찾기 삭제";
+                                                            
+                                                        }
+    
+                                                    },
+                                                    error : () => {
+                                                        alert("즐겨찾기 등록 중 오류 발생");
+                                                    }
+    
+                                                });
+                                                
+
+                                            });
+
+                                        }
+                                    }
+    
+                                    // 모달 팝업창 닫기 버튼
                                     const modalCloseBtn = document.getElementsByClassName("modal-title");
                                     
                                     for (let subItems of modalCloseBtn){
@@ -370,3 +433,10 @@ var swiper = new Swiper(".mySwiper", {
         disableOnInteraction : false,
     },
 });
+
+// const bookmarkRefresh = function(){
+//     $.ajax({
+//         url :
+//     })
+// };
+

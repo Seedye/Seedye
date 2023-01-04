@@ -87,7 +87,7 @@
 
               <c:otherwise>
                 <c:forEach var="board" items="${boardList}">
-                  <tr class="board-list-view">
+                   <tr class="board-list-view">
                     <td>${board.boardNo}</td>
                     <td><i class="fa-solid fa-seedling"></i>${board.boardTitle}</a></td>
                     <td>${board.memberId}</td>
@@ -242,6 +242,7 @@
       var loginMemberAutority = "${loginMember.authority}";
       var memberNo = "${loginMember.memberNo}";
       var cp = "${param.cp}";
+      var commentNo = ${comment.commentNo};
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>

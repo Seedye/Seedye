@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.main.model.vo.Bookmark;
 
 public interface MainService {
 
@@ -18,5 +19,14 @@ public interface MainService {
 
 	// 신규 추가된 가맹점 조회(위에서 10개)
 	List<Store> newInsertList();
+
+	// 로그인한 회원의 즐겨찾기 조회
+	List<Bookmark> selectBookmarkList(int memberNo);
+
+	// 즐겨찾기 삭제
+	int modalDelete(Map<String, Integer> deleteMap);
+
+	// 즐겨찾기 등록
+	int modalInsert(Map<String, Integer> insertMap);
 
 }

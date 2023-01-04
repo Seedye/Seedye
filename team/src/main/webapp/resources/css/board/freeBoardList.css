@@ -162,8 +162,20 @@
   line-height: 22px;
 
   height: 70px;
+
+  overflow-y: scroll;
 }
 
+#freeBoard-detail-content::-webkit-scrollbar{
+  width: 3px;
+}
+
+#freeBoard-detail-content::-webkit-scrollbar-thumb{
+  height: 30%;
+  background: #2db420;
+  
+  border-radius: 5px;
+}
 .imgContainer{
   display: flex;
   height: 120px;

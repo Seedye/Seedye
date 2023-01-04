@@ -59,10 +59,8 @@ for (let boardListViewItems of boardListView) {
         QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
         QAIDAndDateP.innerText =
-        QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
-
-        var content = QABoardDetail[0].boardContent;
-        QAContentP.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+          QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
+        QAContentP.innerText = QABoardDetail[0].boardContent;
 
         QATextCommentP.innerText = "답변";
 
@@ -174,6 +172,9 @@ for (let boardListViewItems of boardListView) {
             });
           });
 
+
+
+          console.log("뭐라나옴?:"+QABoardDetail[0].commentNo);
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           if(loginMemberAutority ==2) {
@@ -258,7 +259,7 @@ for (let boardListViewItems of boardListView) {
             // !게시물 수정
             boardUpdate.addEventListener("click", () => {
               boardViewModal.style.display = "none";
-              // document.body.style.overflow = "unset";
+              document.body.style.overflow = "unset";
               boardViewTitleDetailAnswer.innerHTML = null;
               boardViewContentContent.innerHTML = null;
               boardViewContentText.innerHTML = null;

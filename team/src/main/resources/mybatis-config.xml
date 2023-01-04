@@ -24,6 +24,7 @@
 		<typeAlias type="edu.kh.project.admin.model.vo.StoreImage" alias="StoreImage"/>
 		<typeAlias type="edu.kh.project.board.model.vo.Comment"  alias="Comment" />
 		<typeAlias type="edu.kh.project.admin.model.vo.License"  alias="License" />
+		<typeAlias type="edu.kh.project.main.model.vo.Bookmark"  alias="Bookmark" />
 		
 	</typeAliases>
 	
