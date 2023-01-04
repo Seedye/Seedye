@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.member.model.vo.Member;
 
 @Controller
@@ -48,7 +49,9 @@ public class BoardController {
 		if(pm.get("key") == null) {
 			
 			Map<String, Object> map = service.selectBoardList(boardCode,cp);
+			
 			model.addAttribute("map", map);
+			System.out.println(map);
 		}
 		// 게시판 검색 목
 		else {
@@ -56,7 +59,6 @@ public class BoardController {
 			Map<String, Object> map = service.selectBoardList(pm, cp);
 			model.addAttribute("map", map);
 		}
-		
 		
 		return "board/boardList";
 	}
@@ -209,6 +211,8 @@ public class BoardController {
 		System.out.println(board);
 		return service.updateAQBoard(board);
 	}
+	
+	
 	
 
 }

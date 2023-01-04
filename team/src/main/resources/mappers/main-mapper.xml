@@ -24,10 +24,10 @@
 	
 	<resultMap type="StoreImage" id="storeImage_rm">
 		<id property="storeNo" column="STORE_NO"/>
-		<result property="sImgPath" column="S_IMG_PATH"/>
-		<result property="sImgOriginal" column="S_IMG_ORIGINAL"/>
-		<result property="sImgRename" column="S_IMG_RENAME"/>
-		<result property="sImgOrder" column="S_IMG_ORDER"/>
+		<result property="storeImagePath" column="S_IMG_PATH"/>
+		<result property="storeImageOriginal" column="S_IMG_ORIGINAL"/>
+		<result property="storeImageRename" column="S_IMG_RENAME"/>
+		<result property="storeImageOrder" column="S_IMG_ORDER"/>
 	</resultMap>
 	
 	<!-- 가맹점 총 점포수 -->
@@ -62,6 +62,17 @@
 		SELECT *
 		FROM STORE
 		WHERE STORE_NO = #{storeNo}
+	</select>
+	
+	<!-- 신규 추가된 가맹점 조회(위에서 10개) -->
+	<select id="newInsertList" resultMap="store_rm">
+		SELECT STORE_NO, STORE_NAME
+		FROM STORE
+		WHERE CHECK_FL = 'Y'
+		<![CDATA[
+		AND ROWNUM <= 10
+		]]>
+		ORDER BY STORE_NO
 	</select>
 	
 </mapper>

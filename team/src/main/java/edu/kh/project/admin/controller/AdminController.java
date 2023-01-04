@@ -67,7 +67,7 @@ public class AdminController {
 		return "admin/manageStore";
 	}
 	
-
+	
 	// 게시글 목록 조회
 	@GetMapping("/board/{boardCode}")
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
@@ -83,7 +83,7 @@ public class AdminController {
 			Map<String, Object> map = service.selectBoardList(pm,cp);
 			model.addAttribute("map",map);
 		}
-			return "admin/manageBoard";
+			return "board/boardList";
 	}
 
 	// 게시글 상세 조회
@@ -102,13 +102,16 @@ public class AdminController {
 		
 	}
 	
-	@GetMapping("selectBoardNotice")
+	// 게시판 리스트 조회
+	@GetMapping("selectBoardList")
 	@ResponseBody
-	public String selectBoardNotice(int boardCode) {
+	public String selectAdminBoard(int boardCode) {
 		
-		List<Board> boardNoticeList = service.selectBoardNotice(boardCode);
+		List<Board> adminBoardList = service.selectAdminBoard(boardCode);
 		
-		return new Gson().toJson(boardNoticeList);
+		System.out.println(adminBoardList);
+		
+		return new Gson().toJson(adminBoardList);
 		
 	}
 	
@@ -133,7 +136,7 @@ public class AdminController {
 		}else {
 		
 			path = referer;
-			message = "게시글 삭제 실패";
+			message = " 삭제 실패";
 		}
 		
 		
@@ -226,13 +229,7 @@ public class AdminController {
 	}
 	
 	
-	// 댓글 작성(문의하기 게시판)
-	
-	// 댓글 조회
-	
-	// 댓글 수정
-	
-	// 댓글 삭제
+	// 답글 작성
 	
 	
 	// -----------------------------------------------------------
@@ -317,10 +314,19 @@ public class AdminController {
 	// 식당 selectBox 조회
 	@GetMapping("selectType")
 	@ResponseBody
-	public String selectTypeList(String storeType) {
-		List<Store> storeTypeList = service.selectStoreList(storeType);
+	public String selectTypeList(Model model, String storeType,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+		
+		
+		System.out.println(cp);
+		
+		Map<String, Object> typeMap = service.selectStoreList(storeType, cp);
 	
-		return new Gson().toJson(storeTypeList);
+		model.addAttribute("typeMap", typeMap);
+		
+		System.out.println(typeMap);
+		
+		return new Gson().toJson(typeMap);
 	}
 	
 	// 식당관리 신청조회

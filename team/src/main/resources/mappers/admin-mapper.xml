@@ -186,7 +186,7 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 <select id="selectStoreList" resultMap="store_rm">
   SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   FROM STORE
-  WHERE STORE_NAME LIKE '%회기%'
+  WHERE STORE_NAME LIKE '%강남%'
 </select>
 
 <!-- 회원 목록 조회 -->
@@ -210,10 +210,10 @@ WHERE MEMBER_NO  = #{memberNo}
 </select>
 
 <!-- 식당 selectBox 조회 -->
-<select id="selectType" resultMap="store_rm">
+<select id="selectList" resultMap="store_rm">
   SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   FROM STORE
-  WHERE STORE_NAME LIKE '%회기%'
+  WHERE STORE_NAME LIKE '%강남%'
   AND STORE_TYPE = #{storeType}
   AND CHECK_FL = 'B'
 </select>
@@ -251,7 +251,7 @@ SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
 </select>
 
 <!-- 공지사항 조회 -->
-<select id="selectBoardNotice" resultMap="board_rm">
+<select id="selectAdminBoard" resultMap="board_rm">
 SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID
 FROM BOARD
 JOIN "MEMBER" USING(MEMBER_NO)
@@ -357,5 +357,11 @@ SELECT COUNT(*) FROM STORE
 SELECT COUNT(*) FROM MEMBER
 </select>
 
+<!--  -->
+<select id="typeList" resultType="_int">
+SELECT COUNT(*) FROM STORE
+WHERE STORE_TYPE= #{storeType}
+AND STORE_NAME LIKE '%강남%'
+</select>
 
 </mapper>  

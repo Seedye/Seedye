@@ -117,7 +117,7 @@
                     <br>
                     <ul class="statistics-ul">
                     <%-- 가맹점 타입별 점포 수 --%>
-                    <c:forEach var="statList" items="${resultList}">
+                    <c:forEach var="statList" items="${mainPageMap.resultList}">
                         <li class="statistics-li">
                             <span>${statList.storeType}</span>
                             <span>${statList.storeCount}</span>
@@ -176,15 +176,25 @@
         </div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="..//resources/images/mainslide/test1.jpg">테스트 중입니다.</div>
-                <div class="swiper-slide"><img src="..//resources/images/mainslide/test2.jpg">테스트 중입니다.</div>
+                <c:forEach var="insertList" items="${mainPageMap.newInsertList}">
+
+                    <c:choose>
+                        <c:when test="${empty insertList.storeImgList[0]}">
+                            <div class="swiper-slide"><img src="/resources/images/modal/noneImg.png">${insertList.storeName}</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="swiper-slide"><img src="${insertList.storeImgList[0].storeImagePath}${insertList.storeImgList[0].storeImageRename}">${insertList.storeName}</div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <%-- <div class="swiper-slide"><img src="..//resources/images/mainslide/test2.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test3.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test4.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test5.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test6.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test7.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test8.jpg">테스트 중입니다.</div>
-                <div class="swiper-slide"><img src="..//resources/images/mainslide/test9.jpg">테스트 중입니다.</div>
+                <div class="swiper-slide"><img src="..//resources/images/mainslide/test9.jpg">테스트 중입니다.</div> --%>
             </div>
 
         <!-- 상세보기 모달 팝업 -->
@@ -242,7 +252,7 @@
                             </span>
                         </div>
                         <div class="modal-btn">
-                            <button class="board-btn">문의하러 가기</button>
+                            <button class="board-btn" onclick="location.href='/boardList/4'">문의하러 가기</button>
                             <button class="bookmark-btn">즐겨찾기 등록</button>
                         </div>
                     </div>
