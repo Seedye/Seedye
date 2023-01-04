@@ -30,6 +30,13 @@
 		<result property="storeImageOrder" column="S_IMG_ORDER"/>
 	</resultMap>
 	
+	<resultMap type="Bookmark" id="bookmark_rm">
+		<id property="memberNo" column="MEMBER_NO"/>
+		<result property="storeNo" column="STORE_NO"/>
+		<result property="bookmarkDate" column="BOOKMARK_DATE"/>
+		<result property="storeName" column="STORE_NAME"/>
+	</resultMap>
+	
 	<!-- 가맹점 총 점포수 -->
 	<select id="resultList" resultMap="store_rm">
 		SELECT STORE_TYPE, COUNT(STORE_TYPE) STORE_COUNT FROM STORE
@@ -74,5 +81,26 @@
 		]]>
 		ORDER BY STORE_NO
 	</select>
+	
+	<!-- 즐겨찾기 목록 조회 -->
+	<select id="selectBookmarkList" resultMap="bookmark_rm">
+		SELECT B.MEMBER_NO, B.STORE_NO, S.STORE_NAME
+		FROM BOOKMARK B
+		LEFT JOIN STORE S ON(B.STORE_NO = S.STORE_NO)
+		WHERE B.MEMBER_NO = ${memberNo}
+	</select>
+	
+	<!-- 즐겨찾기 삭제 -->
+	<delete id="modalDelete">
+		DELETE FROM BOOKMARK
+		WHERE MEMBER_NO = ${memberNo}
+		AND STORE_NO = ${storeNo}
+	</delete>
+	
+	<!-- 즐겨찾기 등록 -->
+	<insert id="modalInsert">
+		INSERT INTO BOOKMARK
+		VALUES(${memberNo}, ${storeNo}, DEFAULT)
+	</insert>
 	
 </mapper>

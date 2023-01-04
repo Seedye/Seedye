@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.project.admin.model.vo.Store;
+import edu.kh.project.main.model.vo.Bookmark;
 
 @Repository
 public class MainDAO {
@@ -34,5 +35,20 @@ public class MainDAO {
 	// 신규 추가된 가맹점 조회(위에서 10개)
 	public List<Store> newInsertList() {
 		return sqlSession.selectList("mainMapper.newInsertList");
+	}
+
+	// 로그인한 회원의 즐겨찾기 조회
+	public List<Bookmark> selectBookmarkList(int memberNo) {
+		return sqlSession.selectList("mainMapper.selectBookmarkList", memberNo);
+	}
+
+	// 즐겨찾기 삭제
+	public int modalDelete(Map<String, Integer> deleteMap) {
+		return sqlSession.delete("mainMapper.modalDelete", deleteMap);
+	}
+
+	// 즐겨찾기 등록
+	public int modalInsert(Map<String, Integer> insertMap) {
+		return sqlSession.insert("mainMapper.modalInsert", insertMap);
 	}
 }
