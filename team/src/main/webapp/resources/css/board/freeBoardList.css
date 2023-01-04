@@ -166,6 +166,8 @@
 
 .imgContainer{
   display: flex;
+  height: 120px;
+  width: 500px;
   /* justify-content: space-between; */
 }
 
@@ -224,7 +226,7 @@
 #freeBoard-detail-anwser-content{
   font-size: 14px;
   line-height: 22px;
-  height: 135px;
+  height: 230px;
 
   overflow-y: scroll;
 }
@@ -244,7 +246,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: -100px;
+  bottom: -10px;
 
 }
 
@@ -272,8 +274,16 @@
   padding: 2.5px 0px;
 }
 
+.contentD p {
+  cursor: pointer;
+}
+
 .pen{
   margin-right: 10px;
+  display: flex;
+}
+
+.rCommentBtnContainer{
   display: flex;
 }
 
@@ -286,6 +296,15 @@
   
 
 }
+
+/* .fa-comment-dots{
+  margin:0 10px;
+  background-color: #f7f8f9;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+
+} */
 
 .deleteBtn{
   margin-right: 15px;
@@ -327,14 +346,45 @@
   border: none;
 
   margin:0 5px;
-  border: none;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
 }
 
+.rCommentContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.088);
+  border-radius: 10px;
+  padding: 0 10px;
 
+}
 
+.rCommentTextarea{
+  width: 430px;
+  height: 30px;
+  outline: none;
+  border: none;
+
+  resize: none;
+}
+
+.rCommentContainer button{
+  background-color: white;
+  border: none;
+  
+  margin:0 5px;
+  /* font-size: 14px; */
+  font-weight: bold;
+  cursor: pointer;
+}
+.rCommentCancel{
+  font-size: 18px;
+  margin-bottom: 5px;
+}
 
 .board-list-serch-write-area{
   display: flex;
@@ -457,5 +507,14 @@ i:hover{
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.fa-comment-dots {
+  text-transform: none;
+}
+
+.asd{
+  display: flex;
   align-items: center;
 }
