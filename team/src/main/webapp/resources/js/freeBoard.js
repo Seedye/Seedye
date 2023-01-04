@@ -35,9 +35,13 @@ for (let freeBoardOneItems of freeBoardOne) {
                 freeBoardDetailTitle.append(simpleContent);
                 freeBoardDetailTitle.append(smallTitleA);
 
+                
                 const freeBoardDetailContent = document.createElement("p");
                 freeBoardDetailContent.setAttribute("id", "freeBoard-detail-content")
-                freeBoardDetailContent.innerText = freeBoardDetail[0].boardContent;
+               
+                var content = freeBoardDetail[0].boardContent;
+                freeBoardDetailContent.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+                // freeBoardDetailContent.innerText = freeBoardDetail[0].boardContent;
 
                 freeBoardDetailView.append(bigTitle);
                 freeBoardDetailView.append(freeBoardDetailTitle);
@@ -357,15 +361,124 @@ for (let freeBoardOneItems of freeBoardOne) {
                     const freeBoardDetailBtn = document.createElement("div");
                     freeBoardDetailBtn.setAttribute("id", "freeBoard-detail-btn");
                     
-                    const boardUpdateBtn = document.createElement("button");
-                    boardUpdateBtn.setAttribute("id", "boardUpdate-btn");
-                    boardUpdateBtn.innerText = "수정";
+                    const boardUpdate = document.createElement("button");
+                    boardUpdate.setAttribute("id", "boardUpdate-btn");
+                    boardUpdate.innerText = "수정";
 
                     const boardDeleteBtn = document.createElement("button");
                     boardDeleteBtn.setAttribute("id", "boardDelete-btn");
                     boardDeleteBtn.innerText = "삭제";
 
-                    freeBoardDetailBtn.append(boardUpdateBtn);
+                    // 게시글 수정
+                     boardUpdate.addEventListener("click", () => {
+
+                        document.body.style.overflow = "unset";
+                        boardWriteModal.style.display = "flex";
+            
+                        boardWriteTitle.innerHTML = "";
+                        // 작성 -> 수정
+                        // <p class="board-view-x-hidden">&times;</p>
+                        // <p>작성</p>
+                        // <p class="board-view-x" id="boardWriteX">&times;</p>
+                        const writeXHiddenP = document.createElement("P");
+                        const writeTittleP = document.createElement("P");
+                        const writeXP = document.createElement("P");
+            
+                        writeXHiddenP.classList.add("board-view-x-hidden");
+                        writeXHiddenP.innerHTML = "&times;";
+                        writeTittleP.innerText = "문의 수정";
+                        writeXP.classList.add("board-view-x");
+                        writeXP.setAttribute("id", "boardWriteUpdateX");
+                        writeXP.innerHTML = "&times;";
+            
+                        // 합치기
+                        boardWriteTitle.append(writeXHiddenP, writeTittleP, writeXP);
+            
+                        // 수정중 X 누를때
+                        writeXP.addEventListener("click", () => {
+                            boardWriteModal.style.display = "none";
+                            location.reload();
+                        });
+            
+                        // 수정될 제목
+                        boardTitle.innerHTML = freeBoardDetail[0].boardTitle;
+                        boardContent.innerText = freeBoardDetail[0].boardContent;
+            
+                        //TODO : 이미지 불러오기 / 저장된 이미지
+            
+                        //! 이미지 만드는 create작성해야함.
+                            if (freeBoardDetail[0].imageList.length != 0) {
+                                boardViewContentImgArea.innerHTML ="";
+                                // ContentImgArea.style.display = "flex";
+                                // <div class="board-view-content-img">
+                                //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
+                                // </div>
+                                console.log("이미지번호 : "+ freeBoardDetail[0].imgNo);
+                                console.log("이미지길이 : "+freeBoardDetail[0].imageList.length);
+                    
+                    
+                                for (let i = 0; i < freeBoardDetail[0].imageList.length; i++) {
+                                //TODO 아마도 수정 필요
+                                if (i < 4) {
+                                    
+                                    const contentImgDiv = document.createElement("div");
+                                    const contentImgImg = document.createElement("img");
+                    
+                                    contentImgDiv.classList.add("board-view-content-img");
+                                    contentImgImg.setAttribute("src", freeBoardDetail[0].imageList[i].imgPath + "/" + freeBoardDetail[0].imageList[i].imgRename);
+                    
+                                    contentImgDiv.append(contentImgImg);
+                                    boardViewContentImgArea.append(contentImgDiv);
+                                }
+                                }
+                            } else {
+                                ContentImgArea.style.display = "none";
+                            }
+            
+                        //글 수정 완료 버튼
+                        const wirteUpdateBtn = document.getElementById("wirteUpdateBtn");
+            
+                        wirteUpdateBtn.innerHTML = "";
+                        const QAupdateBtn = document.createElement("div");
+                        QAupdateBtn.setAttribute("class", "board-view-btn");
+                        QAupdateBtn.setAttribute("id", "boardUpdateInput");
+                        QAupdateBtn.innerText = "수정";
+            
+                        wirteUpdateBtn.append(QAupdateBtn);
+                        const boardUpdateInput =
+                            document.getElementById("boardUpdateInput");
+
+                        // 수정 버튼 클릭 했을때
+                        boardUpdateInput.addEventListener("click", () => {
+                            console.log("수정버튼 눌림");
+                            $.ajax({
+                            url: "/QABoardUpdate",
+                            type: "GET",
+                            data: {
+                                "boardNo": freeBoardOneItems.lastElementChild.id,
+                                "boardContent": boardContent.value,
+                                "boardTitle": boardTitle.value,
+                            },
+                            dataType: "json",
+                            success: (result) => {
+                                if (result > 0) {
+
+                                alert("게시물 업데이트 완료");
+
+                                location.reload();
+                                } else {
+                                alert("게시물 업데이트 실패");
+                                location.reload();
+                                }
+                            },
+                            error: () => {
+                                alert("게시물 업데이트 중 오류");
+                            },
+                            });
+                        });
+                        });
+
+                    freeBoardDetailBtn.append(boardUpdate);
                     freeBoardDetailBtn.append(boardDeleteBtn);
                     
                     freeBoardDetailView.append(freeBoardDetailBtn);

@@ -160,7 +160,7 @@
                             </c:when>
 
                             <c:otherwise>
-                                <li class="board-list-page-no"><a href="/freeBoardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                                <li class="board-list-page-no" id="${i}"><a href="/freeBoardList/${boardCode}?cp=${i}${sURL}">${i}</a></li>
                             </c:otherwise>
                             
                             </c:choose>
