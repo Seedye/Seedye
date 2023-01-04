@@ -320,10 +320,19 @@ public class AdminController {
 	// 식당 selectBox 조회
 	@GetMapping("selectType")
 	@ResponseBody
-	public String selectTypeList(String storeType) {
-		List<Store> storeTypeList = service.selectStoreList(storeType);
+	public String selectTypeList(Model model, String storeType,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+		
+		
+		System.out.println(cp);
+		
+		Map<String, Object> typeMap = service.selectStoreList(storeType, cp);
 	
-		return new Gson().toJson(storeTypeList);
+		model.addAttribute("typeMap", typeMap);
+		
+		System.out.println(typeMap);
+		
+		return new Gson().toJson(typeMap);
 	}
 	
 	// 식당관리 신청조회

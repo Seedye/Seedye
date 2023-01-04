@@ -66,7 +66,7 @@ public interface AdminService {
 	 * @param storeType
 	 * @return storeList
 	 */
-	List<Store> selectStoreList(String storeType);
+	Map<String, Object> selectStoreList(String storeType, int cp);
 
 
 

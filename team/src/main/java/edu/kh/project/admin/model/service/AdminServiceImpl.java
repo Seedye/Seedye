@@ -143,8 +143,22 @@ public class AdminServiceImpl implements AdminService{
 
 	// 식당 selectBox 조회
 	@Override
-	public List<Store> selectStoreList(String storeType) {
-		return dao.selectStoreList(storeType);
+	public Map<String, Object> selectStoreList(String storeType, int cp) {
+		
+		int typeList = dao.typeList(storeType);
+		
+		Pagination pagination = new Pagination(typeList, cp);
+		
+		List<Store> storeTypeList = dao.selectStoreList(storeType, pagination);
+		
+		Map<String, Object> typeMap = new HashMap<String, Object>();
+		
+		typeMap.put("storeTypeList", storeTypeList);
+		typeMap.put("pagination", pagination);
+		
+		System.out.println(typeMap);
+		
+		return typeMap;
 	}
 
 	/** 게시글 수정

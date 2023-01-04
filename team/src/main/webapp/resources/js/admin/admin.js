@@ -302,72 +302,120 @@ function selectStoreList(){
 // selectBox 업종 선택
 const selectBox = document.getElementById("selectBox");
 
+
+
 selectBox.addEventListener("change", ()=>{
 
+    let cp = 1;
+
+    const pageBtn = document.getElementsByClassName("pageBtn");
+    for(i=0; i<pageBtn.length; i++){
+
+        pageBtn[i].addEventListener("click", ()=>{
+
+           console.log(pageBtn[i].innerHTML);
+           
+            cp = pageBtn[i].innerHTML;
+
+            selectBoxSelect(cp);
+
+        })
+    } 
+        selectBoxSelect(cp);
     
-    $.ajax({
-        url:"/admin/selectType",
-        data: {"storeType" : selectBox.value},
-        dataType:"JSON",
-        success : storeTypeList =>{
-            console.log(storeTypeList);
-            
-            const tbody = document.getElementById("tbody");
-            
-            tbody.innerHTML = "";
-            for(let store of storeTypeList){
-                
-                const tr = document.createElement("tr");
-                tr.classList.add("storeList");
-                
-                // 번호
-                const td1 = document.createElement("td");
-                td1.innerText = store.storeNo;
-                
-                // 이름
-                const td2 = document.createElement("td");
-                td2.innerText = store.storeName;
-                
-                // 업종
-                const td3 = document.createElement("td");
-                td3.innerText = store.storeType;
-                
-                // 주소
-                const td4 = document.createElement("td");
-                td4.innerText = store.roadnameAddress;
-                
-                // 전화번호
-                const td5 = document.createElement("td");
-                td5.innerText = store.storeTel;
-                
-                // 처리여부
-                const td6 = document.createElement("td");
-                
-                if(store.checkFl == 'B'){
-                    td6.innerText = '기본'
-                } else if(store.checkFl == 'N'){
-                    td6.innerText = '미확인'
-                } else if(store.checkFl = 'C'){
-                    td6.innerText = '협의중'
-                } else {
-                    td6.innerText = "등록 완료"
-                }
-
-                // 관리하기
-                const td7 = document.createElement("td");
-                td7.innerHTML = "<button class='store-manage'>관리하기</button>"
-                
-                tr.append(td1, td2, td3, td4, td5, td6, td7);
-
-                tbody.append(tr);
-            }
-            
-        },
-        error : ()=>{
-            console.log("실패")
-        }
-    })
 });
+    
+
+function selectBoxSelect(cp){
+        $.ajax({
+            url:"/admin/selectType",
+            data: {"storeType" : selectBox.value, "cp":cp},
+            dataType:"JSON",
+            success : (typeMap) =>{
+                
+
+                const pagination = typeMap.pagination;
+                
+                var pageSize = pagination.pageSize;
+                var totalPages = 0;
+                var curPage = cp;
+                
+                const tbody = document.getElementById("tbody")
+                
+                const storeTypeList = typeMap.storeTypeList;
+                
+                tbody.innerHTML = "";
+                for(let store of storeTypeList){
+                    
+                    const tr = document.createElement("tr");
+                    tr.classList.add("storeList");
+                    
+                    // 번호
+                    const td1 = document.createElement("td");
+                    td1.innerText = store.storeNo;
+                    
+                    // 이름
+                    const td2 = document.createElement("td");
+                    td2.innerText = store.storeName;
+                    
+                    // 업종
+                    const td3 = document.createElement("td");
+                    td3.innerText = store.storeType;
+                    
+                    // 주소
+                    const td4 = document.createElement("td");
+                    td4.innerText = store.roadnameAddress;
+                    
+                    // 전화번호
+                    const td5 = document.createElement("td");
+                    td5.innerText = store.storeTel;
+                    
+                    // 처리여부
+                    const td6 = document.createElement("td");
+                    
+                    if(store.checkFl == 'B'){
+                        td6.innerText = '기본'
+                    } else if(store.checkFl == 'N'){
+                        td6.innerText = '미확인'
+                    } else if(store.checkFl = 'C'){
+                        td6.innerText = '협의중'
+                    } else {
+                        td6.innerText = "등록 완료"
+                    }
+
+                    // 관리하기
+                    const td7 = document.createElement("td");
+                    td7.innerHTML = "<button class='store-manage'>관리하기</button>"
+                    
+                    tr.append(td1, td2, td3, td4, td5, td6, td7);
+
+                    tbody.append(tr);
+
+                    const totalCount = pagination.listCount;
+
+
+                    if (totalCount != 0) {
+                        totalPages = Math.ceil(totalCount / pageSize);
+                        // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
+                        var htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
+                        // common.js - pageLink
+                    
+                        const paginationMenu = document.getElementsByClassName("pagination")[0];
+
+                        paginationMenu.innerHTML = "";
+
+                        paginationMenu.innerHTML = pageLink(curPage, totalPages, selectBoxSelect);
+                    }
+
+                }
+                
+            },
+            error : ()=>{
+                console.log("실패")
+            }
+        })
+    }
+
 
 // 신청 조회
 const enroll = document.getElementById("enroll");
@@ -418,5 +466,53 @@ enroll.addEventListener("click", ()=>{
     })
 
 });
+
+
+function pageLink(curPage, totalPages, selectBoxSelect) {
+	var pageUrl = "";
+	
+	var pageLimit = 10;
+	var startPage = parseInt((curPage - 1) / pageLimit) * pageLimit + 1;
+	var endPage = startPage + pageLimit - 1;
+	
+    
+    
+	if (totalPages < endPage) {
+	    endPage = totalPages;
+	}
+	
+	var nextPage = endPage + 1;
+	
+    console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage", totalPages, "totalPages")
+	
+	//맨 첫 페이지
+	if (curPage > 1 && pageLimit < curPage) {
+	    pageUrl += "<a class='page first' 'pageBtn' href='javascript:"  + "(1);'><i class='fas fa-angle-double-left'></a>";
+	}
+	//이전 페이지
+	if (curPage > pageLimit) {
+	    pageUrl += " <a class='page prev''pageBtn' href='javascript:"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></a>";
+	}
+	//~pageLimit 맞게 페이지 수 보여줌
+	for (var i = startPage; i <= endPage; i++) {
+	    //현재페이지면 진하게 표시
+	    if (i == curPage) {
+	        pageUrl += " <a href='#' 'pageBtn'><strong>" + i + "</strong></a>"
+	    } else {
+	        pageUrl += " <a class= 'pageBtn' href='javascript:" + "(" + i + ");'> " + i + " </a>";
+	    }
+	}
+	//다음 페이지
+	if (nextPage <= totalPages) {
+	    pageUrl += "<a class='page next' 'pageBtn' href='javascript:" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></a>";
+	}
+	//맨 마지막 페이지
+	if (curPage < totalPages && nextPage < totalPages) {
+	    pageUrl += "<a class='page last' 'pageBtn' href='javascript:"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></a>";
+	}
+	// console.log(pageUrl);
+	
+	return pageUrl;
+}
 
 

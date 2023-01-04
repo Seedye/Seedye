@@ -132,8 +132,14 @@ public class AdminDAO {
 	 * @param storeType
 	 * @return storeList
 	 */
-	public List<Store> selectStoreList(String storeType) {
-		return sqlSession.selectList("adminMapper.selectType", storeType);
+	public List<Store> selectStoreList(String storeType, Pagination pagination) {
+		
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectList", storeType, rowBounds);
+
 	}
 
 	/** 게시글 수정
@@ -274,6 +280,12 @@ public class AdminDAO {
 
 	public int memberListCount() {
 		return sqlSession.selectOne("adminMapper.memberListCount");
+	}
+
+	
+	
+	public int typeList(String storeType) {
+		return sqlSession.selectOne("adminMapper.typeList", storeType);
 	}
 
 
