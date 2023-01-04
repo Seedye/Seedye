@@ -291,8 +291,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Store selectStoreManage(int storeNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectStoreManage(storeNo);
 	}
 
 

@@ -196,4 +196,69 @@ mBtnD.addEventListener("click" ,  () => {
 
 })
 
+$.ajax({
+    url : "/feed/" + memberNickname + "/selectBookmarkList",
+    type : "GET",
+    data : {"memberNo" : memberNo, "cp" : cp},
+    dataType : "json",
+    success : (map) => {
 
+        if(map==null) {
+            console.log("결과 없음");
+        }else{
+
+            const memberList = map.memberList;
+            const pagination = map.pagination;
+        
+            if (cp <= pagination.maxPage) {
+                
+                cp++;
+                console.log("cp :" + cp);
+            }
+
+                const tableHead = document.getElementById("tableHead");
+                /* tableHead.setAttribute("id", "tablehead"); */
+                const memberNo = document.getElementsByClassName("memberNo");
+    
+                tableHead.append(memberNo);
+    
+            for(let tableHead of memberList){
+
+                const boardContainer = document.createElement("a");
+                boardContainer.href = "/feedDetail/"+ bookmark.boardNo;
+
+                imgContainer.append(boardContainer);
+
+                const feedImg = document.createElement("img");
+                feedImg.classList.add("feed-img");
+                feedImg.setAttribute("src", bookmark.imgPath);
+
+                const hoverIconContainer = document.createElement("div")
+                hoverIconContainer.classList.add("hover-icon-container");
+
+                boardContainer.append(feedImg, hoverIconContainer);
+
+                const faHeart = document.createElement("i");
+                faHeart.classList.add("fa-regular", "fa-heart");
+
+                const faComment = document.createElement("i");
+                faComment.classList.add("fa-regular", "fa-comment");
+
+                hoverIconContainer.append(faHeart, faComment);
+
+                const boardLikeSpan = document.createElement("span");
+                const boardCommentSpan = document.createElement("span");
+
+                boardLikeSpan.innerText = bookmark.likeCount;
+                boardCommentSpan.innerText = bookmark.commentCount;
+
+                faHeart.append(boardLikeSpan);
+                faComment.append(boardCommentSpan);
+            }
+        }
+},
+error : () => {
+    console.log("게시글 오류 발생");
+}
+
+}); 

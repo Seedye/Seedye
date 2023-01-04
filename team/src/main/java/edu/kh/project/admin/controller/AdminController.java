@@ -81,7 +81,7 @@ public class AdminController {
 			Map<String, Object> map = service.selectBoardList(pm,cp);
 			model.addAttribute("map",map);
 		}
-			return "admin/manageBoard";
+			return "board/boardList";
 	}
 
 	// 게시글 상세 조회
@@ -131,7 +131,7 @@ public class AdminController {
 		}else {
 		
 			path = referer;
-			message = "게시글 삭제 실패";
+			message = " 삭제 실패";
 		}
 		
 		

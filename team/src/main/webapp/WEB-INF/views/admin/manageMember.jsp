@@ -25,8 +25,8 @@
                     <table class="list-table">
                         <thead>
                             <tr id="tableHead">
-                                <th>회원 번호</th>
-                                <th>회원 종류</th>
+                                <th class = "memberNo">회원 번호</th>
+                                <th cl>회원 종류</th>
                                 <th>아이디</th>
                                 <th>전화번호</th>
                                 <th>가입일</th>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
             </div>
-            <div id="memberManage" class="admin-mainMenu">
+            <div id="memberManage" class="admin-mainMenu">  
                 <div id="memberManageAll">
                     <h1>회원 관리</h1>
                     <div id="memberInfoChange">
