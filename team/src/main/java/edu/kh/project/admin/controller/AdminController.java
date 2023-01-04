@@ -2,6 +2,7 @@ package edu.kh.project.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.common.Pagination;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
@@ -65,7 +67,7 @@ public class AdminController {
 		return "admin/manageStore";
 	}
 	
-
+	
 	// 게시글 목록 조회
 	@GetMapping("/board/{boardCode}")
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
@@ -100,13 +102,16 @@ public class AdminController {
 		
 	}
 	
-	@GetMapping("selectBoardNotice")
+	// 게시판 리스트 조회
+	@GetMapping("selectBoardList")
 	@ResponseBody
-	public String selectBoardNotice(int boardCode) {
+	public String selectAdminBoard(int boardCode) {
 		
-		List<Board> boardNoticeList = service.selectBoardNotice(boardCode);
+		List<Board> adminBoardList = service.selectAdminBoard(boardCode);
 		
-		return new Gson().toJson(boardNoticeList);
+		System.out.println(adminBoardList);
+		
+		return new Gson().toJson(adminBoardList);
 		
 	}
 	
@@ -233,11 +238,18 @@ public class AdminController {
 	// 회원 목록 조회
 	@GetMapping("selectMemberList")
 	@ResponseBody
-	public String selectMemberList() {
+	public Map<String, Object> selectMemberList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp) {
 		
-		List<Member> memberList = service.selectMemberList();
+
+
+		Map<String, Object> map = service.selectMemberList(cp);
 		
-		return new Gson().toJson(memberList);
+		model.addAttribute("map", map);
+				
+		
+		System.out.println(map.get("pagination"));
+		return map;
 	}
 	
 	// 회원 관리 화면 조회
@@ -279,27 +291,42 @@ public class AdminController {
 		return result;
 	}
 
+	
+	// 수정 중
 	// 식당 목록 조회
 	@GetMapping("selectStoreList")
 	@ResponseBody
-	public String selectStoreList() {
-
-			List<Store> storeList = service.selectStoreList();
-			
-			
-			return new Gson().toJson(storeList);
+	public String selectStoreList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
 		
 		
+		Map<String, Object> map = service.selectStoreList(cp);
+		
+		model.addAttribute("map", map);
+			
+		
+		System.out.println(map);
+			
+		return new Gson().toJson(map);
 		
 	}
 	
 	// 식당 selectBox 조회
 	@GetMapping("selectType")
 	@ResponseBody
-	public String selectTypeList(String storeType) {
-		List<Store> storeTypeList = service.selectStoreList(storeType);
+	public String selectTypeList(Model model, String storeType,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+		
+		
+		System.out.println(cp);
+		
+		Map<String, Object> typeMap = service.selectStoreList(storeType, cp);
 	
-		return new Gson().toJson(storeTypeList);
+		model.addAttribute("typeMap", typeMap);
+		
+		System.out.println(typeMap);
+		
+		return new Gson().toJson(typeMap);
 	}
 	
 	// 식당관리 신청조회
@@ -307,6 +334,7 @@ public class AdminController {
 	@ResponseBody
 	public String selectEnroll(char checkFl) {
 		List<Store> storeList = service.selectEnroll(checkFl);
+		
 		
 		return new Gson().toJson(storeList);
 	}
@@ -371,21 +399,22 @@ public class AdminController {
 		
 		System.out.println(storeCheck);
 		
+		// 식당 등록 미확인일때 협의중으로 변경
 		if(storeCheck == 'N') {
 		
 			service.storeChange(storeNo);
 			
 		}
 		
+		// 식당 정보 조회(이미지 제외)
 		Store store = service.selectStoreManage(storeNo);
 
 		System.out.println(store);
-		
+
+		// 식당 이미지 조회
 		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
-		System.out.println(store);
-		
-		
+		store.setLicensePath(storeList.get(0).getLicensePath());
 		
 		return store;
 		
@@ -393,7 +422,19 @@ public class AdminController {
 	}
 	
 	
+
+	// 식당 등록
+	@GetMapping("registerStore")
+	@ResponseBody
+	public int registerStore(int storeNo) {
+		
+		int result = service.registerStore(storeNo);
+		
+		return result;
+		
+	}
 	
+
 	
 	
 	

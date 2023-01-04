@@ -74,19 +74,31 @@ public class AdminDAO {
 	
 	
 	/** 식당 리스트 조회
+	 * @param pagination 
 	 * @return storeList
 	 */
-	public List<Store> selectStoreList() {
-		return sqlSession.selectList("adminMapper.selectStoreList");
+	public List<Store> selectStoreList(Pagination pagination) {
+		
 
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectStoreList", null, rowBounds);
+		
 	}
 
 	/** 회원 리스트 조회
+	 * @param pagination 
 	 * @return memberList
 	 */
-	public List<Member> selectMemberList() {
+	public List<Member> selectMemberList(Pagination pagination) {
 		
-		return sqlSession.selectList("adminMapper.selectMemberList");
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+				
+		return sqlSession.selectList("adminMapper.selectMemberList", null, rowBounds);
 	}
 
 	/** 회원 등급 수정
@@ -120,8 +132,14 @@ public class AdminDAO {
 	 * @param storeType
 	 * @return storeList
 	 */
-	public List<Store> selectStoreList(String storeType) {
-		return sqlSession.selectList("adminMapper.selectType", storeType);
+	public List<Store> selectStoreList(String storeType, Pagination pagination) {
+		
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectList", storeType, rowBounds);
+
 	}
 
 	/** 게시글 수정
@@ -156,8 +174,8 @@ public class AdminDAO {
 	 * @param boardCode
 	 * @return boardList
 	 */
-	public List<Board> selectBoardNotice(int boardCode) {
-		return sqlSession.selectList("adminMapper.selectBoardNotice", boardCode);
+	public List<Board> selectAdminBoard(int boardCode) {
+		return sqlSession.selectList("adminMapper.selectAdminBoard", boardCode);
 	}
 
 	/** 식당 정보 먼저 등록
@@ -207,6 +225,10 @@ public class AdminDAO {
 		return sqlSession.update("adminMapper.memberDelete", memberNo);
 	}
 
+	/** 식당 이미지 조회
+	 * @param storeNo
+	 * @return storeList
+	 */
 	public List<StoreImage> selectStoreManageImg(int storeNo) {
 		List<StoreImage> storeList = sqlSession.selectList("adminMapper.selectImageList", storeNo);
 		
@@ -215,6 +237,10 @@ public class AdminDAO {
 		return storeList;
 	}
 
+	/** 식당 정보 조회
+	 * @param storeNo
+	 * @return store
+	 */
 	public Store selectStoreManage(int storeNo) {
 				
 			Store store = sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
@@ -223,12 +249,43 @@ public class AdminDAO {
 		
 			return store;
 	}
+	/** 식당 등록 상태 조회
+	 * @param storeNo
+	 * @return 
+	 */
 	public char storeCheck(int storeNo) {
 		return sqlSession.selectOne("adminMapper.storeCheck", storeNo);
 	}
 
+	/** 식당 조회 클릭시 미확인-> 협의중 변경
+	 * @param storeNo
+	 */
 	public void storeChange(int storeNo) {
 		sqlSession.update("adminMapper.storeChange", storeNo);
+	}
+
+	
+	
+	/** 식당 등록 승인
+	 * @param storeNo
+	 * @return result
+	 */
+	public int registerStore(int storeNo) {
+		return sqlSession.update("adminMapper.registerStore", storeNo);
+	}
+
+	public int selectCount() {
+		return sqlSession.selectOne("adminMapper.selectCount");
+	}
+
+	public int memberListCount() {
+		return sqlSession.selectOne("adminMapper.memberListCount");
+	}
+
+	
+	
+	public int typeList(String storeType) {
+		return sqlSession.selectOne("adminMapper.typeList", storeType);
 	}
 
 

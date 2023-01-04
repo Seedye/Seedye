@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 const memberTbody = document.getElementById("memberTbody");
 const memberId = document.getElementById("memberId");
-const memberTel = document.getElementById("memberId");
-const roadNameAddress = document.getElementById("memberId");
-const enrollDate = document.getElementById("memberId");
+const memberTel = document.getElementById("memberTel");
+const memberAddress = document.getElementById("memberAddress");
+const enrollDate = document.getElementById("enrollDate");
 const authority = document.getElementById("authority");
 const licenseView = document.getElementById("licenseView");
 
@@ -27,8 +27,14 @@ function selectMemberList(){
     $.ajax({
         url:"/admin/selectMemberList",
         dataType:"JSON",
-        success:(memberList)=>{
+        success:(map)=>{
+
+            
         
+            const memberList = map.memberList;
+
+            console.log(map);
+
             for(let member of memberList){
                 
                 const tr = document.createElement("tr");
@@ -83,7 +89,10 @@ function selectMemberList(){
 
                 memberTbody.append(tr);
 
-                
+                   
+
+
+              
 
                 // 회원 관리 버튼 클릭
                 for(i=0; i<memberManageBtn.length; i++){

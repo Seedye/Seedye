@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.member.model.vo.Member;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class BoardController {
@@ -40,16 +39,26 @@ public class BoardController {
 	 * @return
 	 */
 	@GetMapping("/boardList/{boardCode}")
-	public String selectBoardList(@PathVariable("boardCode") int boardCode,
+	public String selectBoardList(
+			@PathVariable("boardCode") int boardCode,
 			Model model,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
 			@RequestParam Map<String, Object> pm
 			) {
 		
-		
-		Map<String, Object> map = service.selectBoardList(boardCode,cp);
-		model.addAttribute("map", map);
-		
+		if(pm.get("key") == null) {
+			
+			Map<String, Object> map = service.selectBoardList(boardCode,cp);
+			
+			model.addAttribute("map", map);
+			System.out.println(map);
+		}
+		// 게시판 검색 목
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
 		
 		return "board/boardList";
 	}
@@ -68,8 +77,17 @@ public class BoardController {
 			@RequestParam Map<String, Object> pm
 			) {
 		
-		Map<String, Object> map = service.selectFreeBoardList(boardCode,cp);
-		model.addAttribute("map", map);
+		if(pm.get("key") == null) {
+			
+			Map<String, Object> map = service.selectFreeBoardList(boardCode,cp);
+			model.addAttribute("map", map);
+		}
+		// 게시판 검색 목록 조회
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectFreeBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
 		
 		
 		return "board/freeBoardList";
@@ -136,6 +154,20 @@ public class BoardController {
 		
 	}
 	
+	/** 자유 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/freeBoardDelete")
+	@ResponseBody
+	public int freeBoardDelete(@RequestParam("boardNo")int boardNo) {
+		
+		System.out.println(boardNo);
+//		
+		int result = service.freeBoardDelete(boardNo);
+		return result;
+	}
+	
 	/** 문의 게시판 상세조회
 	 * @param boardNo
 	 * @return
@@ -161,21 +193,26 @@ public class BoardController {
 	@ResponseBody
 	public int DeleteQABoard(@RequestParam("boardNo")int boardNo) {
 		
-//		int result = service.DeleteQABoard(boardNo);
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			path="/board/boardList";
-//		}else {
-//			path="/board/boardList";
-//		}
-		
 		System.out.println(boardNo);
 //		
 		int result = service.DeleteQABoard(boardNo);
 		return result;
 	}
+	
+	/** 문의 게시글 업데이트
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/QABoardUpdate")
+	@ResponseBody
+	public int updateAQBoard(@RequestParam("boardNo")int boardNo, Board board) {
+		
+		board.setBoardNo(boardNo);
+		System.out.println(board);
+		return service.updateAQBoard(board);
+	}
+	
+	
 	
 
 }

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="pagination" value="${map.pagination}"/>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,7 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/sideBar.css">
+
 </head>
 <body>
     <main>
@@ -138,22 +142,37 @@
                             <button>검색</button>
                         </div>
                     </form>
-                    <div id="pagination-area">
+                    <div class="pagination-area">
                         <ul class="pagination">
-                            <li><a href="">&lt;&lt;</a></li>
-                            <li><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">4</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">6</a></li>
-                            <li><a href="">7</a></li>
-                            <li><a href="">8</a></li>
-                            <li><a href="">9</a></li>
-                            <li><a href="">10</a></li>
-                            <li><a href="">&gt;&gt;</a></li>
+                            <%-- 첫 페이지로 이동 --%>
+                            <li><a href="javascript:void(0)" id="firstP">&lt;&lt;</a></li>
+                            <%-- 이전 목록 마지막 번호로 이동 --%>
+                            <li><a href="javascript:void(0)" id="preP">&lt;</a></li>
+        
+                           <c:forEach var="i" begin="${pagination.startPage}" 
+                                end="${pagination.endPage}" step="1">
+        
+                                <c:choose>
+                                    <c:when test="${i == pagination.currentPage}"> 
+                                        <li><a class="current">${i}</a></li>
+                                    </c:when>
+        
+                                    <c:otherwise>
+                                        <%-- 현재 페이지를 제외한 나머지 --%>
+                                        <li><a href="javascript:void(0)">${i}</a></li>
+                                    </c:otherwise>
+                                </c:choose> 
+        
+                            </c:forEach>
+                            <!-- 특정 페이지로 이동 -->
+                            
+                            <!-- 다음 목록 시작 번호로 이동 -->
+                            <li><a href="javascript:void(0);" id="nextP">&gt;</a></li>
+        
+                            <!-- 끝 페이지로 이동 -->
+                            <li><a href="javascript:void(0);">&gt;&gt;</a></li>
                         </ul>
-                    </div>
+                    </div>        
                 </div>
             </div>
             <div id="memberManage" class="admin-mainMenu">  

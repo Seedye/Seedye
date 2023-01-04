@@ -23,4 +23,5 @@ public class StoreImage {
 	private List<StoreImage> storeList;
 	private String licensePath;
 	private String allPath;
+	
 }

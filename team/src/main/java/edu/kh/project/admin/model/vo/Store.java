@@ -31,5 +31,5 @@ public class Store {
 	private List<StoreImage> imageList;
 	
 	private String licensePath;
-	private String allPath;
+	private List<Store> allPath;
 }

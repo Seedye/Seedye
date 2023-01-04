@@ -34,15 +34,15 @@ public interface AdminService {
 	Board selectBoardDetail(int boardNo);
 
 	/** 식당 목록 조회
-	 * @return storeList
+	 * @return map
 	 */
-	List<Store> selectStoreList();
+	Map<String, Object> selectStoreList(int cp);
 
 
 	int boardDelete(int boardNo);
 
 
-	List<Member> selectMemberList();
+//	List<Member> selectMemberList();
 
 
 
@@ -66,7 +66,7 @@ public interface AdminService {
 	 * @param storeType
 	 * @return storeList
 	 */
-	List<Store> selectStoreList(String storeType);
+	Map<String, Object> selectStoreList(String storeType, int cp);
 
 
 
@@ -96,7 +96,7 @@ public interface AdminService {
 	 * @param boardCode
 	 * @return boardList
 	 */
-	List<Board> selectBoardNotice(int boardCode);
+	List<Board> selectAdminBoard(int boardCode);
 
 
 
@@ -139,6 +139,21 @@ public interface AdminService {
 	char storeCheck(int storeNo);
 
 	void storeChange(int storeNo);
+
+
+
+	/** 식당 등록 승인
+	 * @param storeNo
+	 * @return result
+	 */
+	int registerStore(int storeNo);
+
+
+
+	Map<String, Object> selectMemberList(int cp);
+
+
+
 
 
 	

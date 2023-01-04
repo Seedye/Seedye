@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .rain {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.rain::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: blue;
+  border-radius: 10%;
+  animation: rainDrop linear infinite;
+}
+
+.rain::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 15px;
+  background: blue;
+  border-radius: 15%;
+  animation: rainDrop linear infinite;
+}
+
+@keyframes rainDrop {
+  0% {
+    top: -10%;
+    left: -20%;
+  }
+  100% {
+    top: 110%;
+    left: 120%;
+  }
+}
+    </style>
+</head>
+<body>
+    
+    <section class="rain">1</section><br>
+    <section class="rain">2</section><br>
+    <section class="rain">3</section><br>
+    <section class="rain">4</section><br>
+    <section class="rain">5</section><br>
+    <section class="rain">6</section><br>
+    <section class="rain">7</section><br>
+    <section class="rain">8</section><br>
+    <section class="rain">9</section><br>
+    <section class="rain">10</section><br>
+</body>
+</html>

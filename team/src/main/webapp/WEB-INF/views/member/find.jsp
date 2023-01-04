@@ -30,13 +30,13 @@
         </article>
 
         <section class="find-content">
-            <form action="/find" method="POST" onsubmit="return findValidate()">
+            <form action="/find" method="POST" name="find-changePw" id="find-changePw">
                 <div class="find-frm">
 
                     <div class="find-wrap">
                         <div class="find-row">
                             <div class="font-text">전화번호</div>
-                            <input type="text" id="memberTel" placeholder="(- 없이 숫자만 입력)" maxlength="20" autocomplete="off">
+                            <input type="text" id="memberTel" name="memberTel" placeholder="(- 없이 숫자만 입력)" maxlength="20" autocomplete="off">
                             <button type="button">인증번호 받기</button>
                         </div>
                     </div>
@@ -44,12 +44,12 @@
                     <div class="confirmTelBox">
                         <div class="find-wrap">
                             <div class="confirm-box confirmBtnBox">
-                                <div class="font-text">인증번호</div>
+                                <div class="font-text" id="authKey">인증번호</div>
                                 <input type="text" id="confirmNum" maxlength="4" autocomplete="off">
-                                <button type="button">인증번호 확인</button>
+                                <button type="button" id="sendAuthKeyBtn">인증번호 확인</button>
                             </div>
                         </div>
-                        <span class="findMessage">인증 확인 유무</span>
+                        <span id="timer"></span>
                     </div>
 
                     <div class="memberInfo">휴대전화 등록된 회원 아이디</div>
@@ -57,7 +57,7 @@
                     <div class="find-wrap readonlyBox">
                         <div class="confirm-box new-box">
                             <div class="font-text">아이디</div>
-                            <input type="text" id="memberId" maxlength="20" autocomplete="off" value="test" readonly>
+                            <input type="text" id="memberId" name="memberId" maxlength="20" autocomplete="off" value="test" readonly>
                         </div>
                     </div>
 
@@ -65,10 +65,9 @@
                         <div class="find-wrap">
                             <div class="confirm-box new-box">
                                 <div class="font-text">새 비밀번호</div> 
-                                <input type="password" id="newPw" maxlength="16" autocomplete="off">
+                                <input type="password" id="newPw" name="memberPw" maxlength="16" autocomplete="off">
                             </div>
                         </div>
-                        <span class="findMessage">새 비밀번호 정규식</span>
                     </div>
 
                     <div class="newConfirmPwBox">
@@ -78,7 +77,7 @@
                                 <input type="password" id="newConfirmPw" maxlength="16" autocomplete="off">
                             </div>
                         </div>
-                        <span class="findMessage">새 비밀번호 확인 정규식</span>
+                        <span class="findMessage" id="changeMessage">영문, 숫자, 특수문자를 각 하나 이상 포함해 8~16 글자 사이로 입력해주세요.</span>
                     </div>
                     
                     <div class="pwChangeBox">

@@ -2,6 +2,7 @@ package edu.kh.project.member.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,12 +38,6 @@ public class MemberController {
 	public MemberController() {
 		this.messageService = NurigoApp.INSTANCE.initialize("NCSGKH1S9GUXAXCF", "ZOGVLRXYFLYRSETGK5QLDPKFKN1U0NC6", "https://api.coolsms.co.kr");
 	}
-	
-//	final DefaultMessageService messageService;
-//	
-//	public MemberController() {
-//		this.messageService = NurigoApp.INSTANCE.initialize("NCSGKH1S9GUXAXCF", "ZOGVLRXYFLYRSETGK5QLDPKFKN1U0NC6", "https://api.coolsms.co.kr");
-//	}
 	
 	// 로그인
 	@PostMapping("/login")
@@ -183,7 +178,8 @@ public class MemberController {
 	// 회원 가입 휴대전화 인증
 	@PostMapping("/signUp/phoneCheck")
 	@ResponseBody
-	public int phoneCheck(@RequestParam("toPhone") String toPhone) {
+	public int phoneCheck(@RequestParam("toPhone") String toPhone,
+			HttpSession session) {
 		
 		Message sendMsg = new Message();
 		
@@ -195,67 +191,27 @@ public class MemberController {
 		
 		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
 		
-		System.out.println(randomNumber);
+		session.setAttribute("randomNumber", randomNumber);
 		
-		return randomNumber;
+		return 0;
 		
 	}
 	
-	
-//    @GetMapping("/signUp")
-//    @ResponseBody
-//    public int signUp(String phone, Model model) {
-//        
-//        String authKey = service.signUp(phone);
-//        
-//        if(authKey != null) {
-//            model.addAttribute("authKey", authKey);
-//            
-//            return 1;
-//        }else {
-//            return 0;
-//        }
-//    }
-//    
-//    
-//    @GetMapping("/checkAuthKey")
-//    @ResponseBody
-//    public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
-//            SessionStatus status){
-//        
-//        if(inputKey.equals(authKey)) {
-//            status.setComplete();
-//            return 1;
-//        }
-//        
-//        return 0;
-//    }	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@PostMapping("/send-one")
-//	public SingleMessageSentResponse sendOne(
-//			@RequestParam("toPhone") String toPhone) {
-//		
-//		Message sendMsg = new Message();
-//		
-//		sendMsg.setFrom("01055888974");
-//		sendMsg.setTo(toPhone);
-//		
-//		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
-//		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
-//		
-//		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
-//		
-//		System.out.println(response);
-//		
-//		return response;
-//	}
-	
+	@PostMapping("/signUp/confirmCheck")
+	@ResponseBody
+	public int confirmCheck(
+			@RequestParam("phoneCheck") int phoneCheck,
+			HttpSession session) {
+		
+		int confirmNo = (int)session.getAttribute("randomNumber");
+		
+		if (confirmNo == phoneCheck) {
+			session.removeAttribute("randomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
+		
+	}
 }

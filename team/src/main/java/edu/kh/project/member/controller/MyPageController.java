@@ -1,16 +1,14 @@
 package edu.kh.project.member.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -20,11 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.service.MyPageService;
 import edu.kh.project.member.model.vo.Member;
-import net.nurigo.java_sdk.Coolsms;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
-import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @SessionAttributes("loginMember") // 탈퇴 성공 시 로그아웃에 사용
@@ -58,13 +54,6 @@ public class MyPageController {
 			RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
-		
-		System.out.println(inputMember);
-		System.out.println(paramMap.get("newPw"));
-		System.out.println(paramMap.get("newPw") == null);
-		System.out.println(paramMap.get("newPw") == "");
-//		System.out.println(paramMap.get("memberId"));
-		
 		
 		// loginMember에서 회원 번호를 얻어와 paramMap에 추가
 		paramMap.put("memberNo", loginMember.getMemberNo());
@@ -129,44 +118,46 @@ public class MyPageController {
 		return "member/myPage-delete";
 	}
 	
-	// 회원 탈퇴
-//	@PostMapping("/delete")
-//	public String memberDelete(
-//			@SessionAttribute("loginMember") Member loginMember,
-//			String memberPw,
-//			SessionStatus status,
-//			RedirectAttributes ra
-//			) {
-//		
-//		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
-//		
-//		String message = null;
-//		
-//		String path = null;
-//		
-//		if(result > 0) {
-//			
-//			message = "탈퇴 되었습니다.";
-//			
-//			path = "/"; // 메인 페이지로 이동
-//			
-//			status.setComplete(); // 로그아웃 코드 추가
-//		} else {
-//			message = "비밀번호가 일치하지 않습니다.";
-//			
-//			path = "delete"; // 탈퇴 페이지로 이동
-//		}
-//		
-//		ra.addFlashAttribute("message", message);
-//		
-//		return "redirect:" + path;
-//		
-//	}
+//	 회원 탈퇴
+	@PostMapping("/delete")
+	public String memberDelete(
+			@SessionAttribute("loginMember") Member loginMember,
+			String memberPw,
+			SessionStatus status,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.memberDelete(loginMember.getMemberNo(), memberPw);
+		
+		String message = null;
+		
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "탈퇴 되었습니다.";
+			
+			path = "/"; // 메인 페이지로 이동
+			
+			status.setComplete(); // 로그아웃 코드 추가
+		} else {
+			message = "비밀번호가 일치하지 않습니다.";
+			
+			path = "delete"; // 탈퇴 페이지로 이동
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
+	// 내 정보 페이지에서 휴대폰 변경을 할 때 인증번호 발송
 	@PostMapping("/info/confirmTel")
 	@ResponseBody
 	public int confirmTel(
-			@RequestParam("toPhone") String toPhone) {
+			@RequestParam("toPhone") String toPhone,
+			HttpSession session) {
 		
 	  Message sendMsg = new Message();
 	      
@@ -178,7 +169,26 @@ public class MyPageController {
       
       this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
       
-      return randomNumber;
+      session.setAttribute("infoRandomNumber", randomNumber);
+      
+      return 0;
+	}
+	
+	@PostMapping("/info/confirmCheck")
+	@ResponseBody
+	public int infoConfirmCheck(
+			@RequestParam("infoInputNo") int infoInputNo,
+			HttpSession session) {
+		
+		int confirmNo = (int)session.getAttribute("infoRandomNumber");
+		
+		if (confirmNo == infoInputNo) {
+			session.removeAttribute("infoRandomNumber");
+			
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	// 아이디 비밀번호 찾기 화면에서 인증 완료 시 휴대폰 번호로 맴버 조회
@@ -189,19 +199,20 @@ public class MyPageController {
 			HttpSession session
 			) {
 		
-		Message sendMsg = new Message();
-	      
-		sendMsg.setFrom("01055888974");
-		sendMsg.setTo(toPhone);
-      
-		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
-		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
-      
-		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
-		
+		// 전달 받은 전화번호로 회원 조회
 		String selectPhoneMemberId = service.selectPhoneMemberId(toPhone);
 		
-		session.setAttribute("randomNumber", randomNumber);
+		Message sendMsg = new Message();
+		
+		sendMsg.setFrom("01055888974");
+		sendMsg.setTo(toPhone);
+		
+		int randomNumber = (int)((Math.random()*(9999-1000+1))+1000);
+		sendMsg.setText("새싹이 본인확인 인증번호[" + randomNumber + "]입니다. -타인 노출 금지-");
+		
+		this.messageService.sendOne(new SingleMessageSendingRequest(sendMsg));
+		
+		session.setAttribute("findRandomNumber", randomNumber);
 		
 		return selectPhoneMemberId;
 	}
@@ -212,17 +223,44 @@ public class MyPageController {
 			@RequestParam("inputConfirmNo") int inputConfirmNo,
 			HttpSession session) {
 		
-		int confirmNo = (int)session.getAttribute("randomNumber");
+		int confirmNo = (int)session.getAttribute("findRandomNumber");
 		
 		if (confirmNo == inputConfirmNo) {
-			session.removeAttribute("randomNumber");
+			session.removeAttribute("findRandomNumber");
 			
 			return 1;
 		}
 		
 		return 0;
+		
 	}
 	
-	
+	// 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	@PostMapping("/find")
+	public String pwChange(Member inputContent,
+			RedirectAttributes ra,
+			@RequestHeader("referer") String referer) {
+		
+		int result = service.pwChange(inputContent);
+		
+		String path = null;
+		String message = null;
+		
+		if (result > 0) {
+			
+			path = "/login";
+			message = "비밀번호 변경이 완료되었습니다.";
+			
+		} else {
+			
+			path = referer;
+			message = "비밀번호 변경이 실패했습니다.";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
 	
 }

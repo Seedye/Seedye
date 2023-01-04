@@ -88,16 +88,44 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 식당 목록 조회
 	@Override
-	public List<Store> selectStoreList() {
-		return dao.selectStoreList();
+	public Map<String, Object> selectStoreList(int cp) {
+		
+		int listCount = dao.selectCount();
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Store> storeList = dao.selectStoreList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("storeList", storeList);
+		
+		return map;
+				
+		
 	}
 
 	/**
 	 * 회원 목록 조회
 	 */
 	@Override
-	public List<Member> selectMemberList() {
-		return dao.selectMemberList();
+	public Map<String, Object> selectMemberList(int cp) {
+		
+		int listCount = dao.memberListCount();
+		
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		
+		List<Member> memberList= dao.selectMemberList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("memberList", memberList);
+		
+		return map;
 	}
 
 	/**
@@ -118,8 +146,22 @@ public class AdminServiceImpl implements AdminService{
 
 	// 식당 selectBox 조회
 	@Override
-	public List<Store> selectStoreList(String storeType) {
-		return dao.selectStoreList(storeType);
+	public Map<String, Object> selectStoreList(String storeType, int cp) {
+		
+		int typeList = dao.typeList(storeType);
+		
+		Pagination pagination = new Pagination(typeList, cp);
+		
+		List<Store> storeTypeList = dao.selectStoreList(storeType, pagination);
+		
+		Map<String, Object> typeMap = new HashMap<String, Object>();
+		
+		typeMap.put("storeTypeList", storeTypeList);
+		typeMap.put("pagination", pagination);
+		
+		System.out.println(typeMap);
+		
+		return typeMap;
 	}
 
 	/** 게시글 수정
@@ -164,8 +206,8 @@ public class AdminServiceImpl implements AdminService{
 
 	// 공지사항 조회
 	@Override
-	public List<Board> selectBoardNotice(int boardCode) {
-		return dao.selectBoardNotice(boardCode);
+	public List<Board> selectAdminBoard(int boardCode) {
+		return dao.selectAdminBoard(boardCode);
 	}
 
 	// 식당 등록 문의
@@ -306,6 +348,15 @@ public class AdminServiceImpl implements AdminService{
 		dao.storeChange(storeNo);
 		
 	}
+
+	// 식당 등록 승인
+	@Override
+	public int registerStore(int storeNo) {
+		
+		return dao.registerStore(storeNo);
+	}
+
+
 
 
 

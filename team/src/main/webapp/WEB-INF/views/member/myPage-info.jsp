@@ -25,8 +25,8 @@
             <section class="left-side">
                 <!-- 사이드메뉴 -->
                 <ul class="list-group">
-                    <li><a href="/">내정보</a></li>
-                    <li><a href="/">회원 탈퇴</a></li>
+                    <li><a href="/info">내정보</a></li>
+                    <li><a href="/delete">회원 탈퇴</a></li>
                 </ul>
             </section>
 
@@ -69,12 +69,15 @@
                     <div class="myPage-row tel mainTel">
                         <label>전화번호</label>
                         <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
-                        <button type="button" class="aaa">전화번호 변경</button>
+                        <button type="button" class="aaa" id="authKey">전화번호 변경</button>
                     </div>
-                    <div class="confirm">
+                    <div class="confirmBox">
                         <div class="myPage-row tel confirmCheck">
                             <label>인증번호</label>
                             <input type="text" name="confirmTel" maxlength="4">
+
+                            <div id="timer"></div>
+
                             <button type="button">인증확인</button>
                         </div>
                         <span class="myPage-message" id="confirm"></span>

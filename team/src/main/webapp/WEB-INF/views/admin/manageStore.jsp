@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="pagination" value="${map.pagination}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +13,8 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <main>
@@ -22,7 +26,7 @@
 
             <!-- 식당 등록 -->
             <div id="adminR" class="admin-mainMenu">
-                <form action="#">
+                <form action="/admin/resisterStore" method="Post">
                     <div id="imageArea">
                         <div class="imageDiv">
                             <label for="image0">
@@ -31,6 +35,7 @@
                             <input type="file" id="image0" accept="image/*" class="imageInput">
                             <aside>사업자 등록증</aside>
                             <span class="red">*필수</span>
+                            <span>${pagination}</span>
                         </div>
                         <div class="imageDiv">
                             <label for="image1">
@@ -69,7 +74,7 @@
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>주소</aside>
                         <div id="addr-area">
-                            <button type="button" id="addressSearch" onclick="sample4_execDaumPostcode()">주소 검색</button>
+                            <button type="button" onclick="sample4_execDaumPostcode()" id="addrSearch">주소 검색</button>
                             <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="roadAddr" value="">
                             <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="landAddr" value="">
                             <span id="guide" style="color:#999;display:none"></span>
@@ -85,9 +90,9 @@
                     </div>
                     <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
-                        <button>등록</button>
+                        <button id="registerStore" type="button">등록</button>
                     </div>
-                </form>
+                </form> 
             </div>
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
@@ -106,6 +111,15 @@
                     </select>
                     <h1 id="storeH1">식당 관리</h1>
                     <table id="storeTable">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="35%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="10%">
+                        </colgroup>
                         <thead>
                             <tr id="storeTH">
                                 <th>번호</th>
@@ -217,27 +231,37 @@
                                 <option value="">주소</option>
                                 <option value="">전화번호</option>
                             </select>
-                            <input type="text">
+                            <input type="text" id="keyword">
                             <button>검색</button>
                         </div>
                     </form>
                     <div id="btnArea">
                         <button id="enroll">신청 조회</button>
                     </div>
-                    <div id="pagination-area">
+                    <div class="pagination-area">
                         <ul class="pagination">
-                            <li><a href="">&lt;&lt;</a></li>
-                            <li><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">4</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">6</a></li>
-                            <li><a href="">7</a></li>
-                            <li><a href="">8</a></li>
-                            <li><a href="">9</a></li>
-                            <li><a href="">10</a></li>
+     <%--                        <li><a href="">&lt;&lt;</a></li>
+                            <li><a href="">&lt;</a></li>
+        
+                            <c:forEach var="i" begin="${pagination.startPage}" 
+                                end="${pagination.endPage}" step="1">
+        
+                                <c:choose>
+                                    <c:when test="${i == pagination.currentPage}">
+                                        <li><a class="current">${pagination.currentPage}</a></li>
+                                    </c:when>
+        
+                                    <c:otherwise>
+                                        <li><a href="javascript:void(0)">${i}</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+        
+                            </c:forEach>
+                            
+                            <li><a href="">&gt;</a></li>
+        
                             <li><a href="">&gt;&gt;</a></li>
+         --%>
                         </ul>
                     </div>
                 </div>

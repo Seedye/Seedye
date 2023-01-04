@@ -25,11 +25,17 @@ public interface MyPageService {
 	 */
 	String selectPhoneMemberId(String toPhone);
 
+	/** 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	 * @param inputContent
+	 * @return result
+	 */
+	int pwChange(Member inputContent);
+
 	/** 회원 탈퇴 서비스
 	 * @param memberNo
 	 * @param memberPw
 	 * @return result
 	 */
-//	int memberDelete(int memberNo, String memberPw);
+	int memberDelete(int memberNo, String memberPw);
 
 }

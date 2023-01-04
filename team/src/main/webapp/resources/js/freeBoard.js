@@ -39,21 +39,34 @@ for (let freeBoardOneItems of freeBoardOne) {
                 freeBoardDetailContent.setAttribute("id", "freeBoard-detail-content")
                 freeBoardDetailContent.innerText = freeBoardDetail[0].boardContent;
 
-                const imgContainer = document.createElement("div");
-                const img = document.createElement("img");
-                //img.setAttribute("src",freeBoardDetail[0].imageList[0].imgPath+"/"+freeBoardDetail[0].imageList[0].imgRename);
-                imgContainer.append(img);
-
                 freeBoardDetailView.append(bigTitle);
                 freeBoardDetailView.append(freeBoardDetailTitle);
                 freeBoardDetailView.append(freeBoardDetailContent);
+
+                const imgContainer = document.createElement("div");
+                imgContainer.classList.add("imgContainer");
+
+                
+                for(let i = 0; i < 4 ; i++) {
+                    const img = document.createElement("img");
+
+                if(freeBoardDetail[0].imageList[i] == null){
+                    img.setAttribute("src","../../resources/images/기본 이미지.png");
+
+                } else {
+                    img.setAttribute("src",freeBoardDetail[0].imageList[i].imgPath+"/"+freeBoardDetail[0].imageList[i].imgRename);
+
+                }
+
+                imgContainer.append(img);
                 freeBoardDetailView.append(imgContainer);
+                }
                 
                 const freeBoardDetailAnwser = document.createElement("div");
                 freeBoardDetailAnwser.setAttribute("id", "freeBoard-detail-anwser")
                 
                 const anwser = document.createElement("p");
-                anwser.innerText = "답글";
+                anwser.innerText = "답변";
                 
                 const input = document.createElement("input");
                 input.setAttribute("type", "text");
@@ -62,7 +75,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                 
                 const anwserBtn = document.createElement("button");
                 anwserBtn.setAttribute("id","comment-btn");
-                anwserBtn.innerText = "답글 작성";
+                anwserBtn.innerText = "답변 작성";
                 
                 freeBoardDetailAnwser.append(anwser);
                 freeBoardDetailAnwser.append(input);
@@ -75,6 +88,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                 freeBoardDetailView.append(freeBoardDetailAnwserContent);
 
                 const commentListFun = function(){
+
                     // 댓글 조회 ajax
                     $.ajax({
                         url : "/comment/list",
@@ -94,54 +108,54 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 anwserP.innerText = comment.memberId + " : " + comment.commentContent;
                                 contentD.append(anwserP);
 
-                                // if (memberNo == comment.memberNo) {
+                                
+                                const pen = document.createElement("div");
+                                pen.classList.add("pen");
 
-                                    const pen = document.createElement("div");
-                                    pen.classList.add("pen");
+                                const updateBtn = document.createElement("button");
+                                updateBtn.classList.add("updateBtn")
+                                updateBtn.setAttribute("class", "fa-solid fa-pen");
 
-                                    const updateBtn = document.createElement("button");
-                                    updateBtn.classList.add("updateBtn")
-                                    updateBtn.setAttribute("class", "fa-solid fa-pen");
+                                const deleteBtn = document.createElement("button");
+                                deleteBtn.classList.add("deleteBtn")
+                                deleteBtn.innerText ="x";
 
-                                    const deleteBtn = document.createElement("button");
-                                    deleteBtn.classList.add("deleteBtn")
-                                    deleteBtn.innerText ="x";
+                                if (memberNo == comment.memberNo) {
 
                                     pen.append(updateBtn)
                                     pen.append(deleteBtn)
 
-                                    contentD.append(pen);
+                                }
 
-                                    const updateContainer = document.createElement("div");
-                                    updateContainer.classList.add("updateContainer");
+                                contentD.append(pen);
 
-                                    const updateInput = document.createElement("textarea");
-                                    updateInput.classList.add("updateInput");
-                                    updateInput.setAttribute("id", "updateInput");
+                                const updateContainer = document.createElement("div");
+                                updateContainer.classList.add("updateContainer");
 
-                                    const updateBtnContainer = document.createElement("updateBtnContainer");
-                                    updateBtnContainer.classList.add("updateBtnContainer");
+                                const updateInput = document.createElement("textarea");
+                                updateInput.classList.add("updateInput");
+                                updateInput.setAttribute("id", "updateInput");
 
-                                    const ok = document.createElement("button");
-                                    ok.classList.add("ok");
-                                    ok.innerText ="o";
+                                const updateBtnContainer = document.createElement("updateBtnContainer");
+                                updateBtnContainer.classList.add("updateBtnContainer");
 
-                                    const cancel = document.createElement("button");
-                                    cancel.classList.add("cancel");
-                                    cancel.innerText ="x";
+                                const ok = document.createElement("button");
+                                ok.classList.add("ok");
+                                ok.innerText ="o";
 
-                                    updateBtnContainer.append(ok);
-                                    updateBtnContainer.append(cancel);
+                                const cancel = document.createElement("button");
+                                cancel.classList.add("cancel");
+                                cancel.innerText ="x";
 
-                                    updateContainer.append(updateInput);
-                                    updateContainer.append(updateBtnContainer);
+                                updateBtnContainer.append(ok);
+                                updateBtnContainer.append(cancel);
 
-                                    
+                                updateContainer.append(updateInput);
+                                updateContainer.append(updateBtnContainer);
 
-                                // }
 
-                                freeBoardDetailAnwserContent.append(contentD);
                                 freeBoardDetailAnwserContent.append(updateContainer);
+                                freeBoardDetailAnwserContent.append(contentD);
                                 
                                 // 댓글 삭제 ajax
                                 deleteBtn.addEventListener("click", () => {
@@ -174,43 +188,48 @@ for (let freeBoardOneItems of freeBoardOne) {
                                     }
                                 });
 
-                                // 댓글 수정 ajax
-                                updateBtn.addEventListener("click", function(){
-                                    
-                                    updateContainer.style.display = "flex";
+                                    // 댓글 수정 ajax
+                                    updateBtn.addEventListener("click", function(){
+                                        
+                                        updateContainer.style.display = "flex";
 
-                                    updateInput.innerText = comment.commentContent;
-                                    ok.addEventListener("click", function(){
+                                        updateInput.innerText = comment.commentContent;
+                                        ok.addEventListener("click", function(){
 
-                                        $.ajax({
-                                            url:"/comment/update",
-                                        data : {"commentNo" : comment.commentNo,
-                                                "commentContent" : updateInput.value},
-                                        type : "post",
-                                        success : function(result) {
+                                            $.ajax({
+                                                url:"/comment/update",
+                                                data : {"commentNo" : comment.commentNo,
+                                                        "commentContent" : updateInput.value},
+                                                type : "post",
+                                                success : function(result) {
 
-                                            if(result > 0) {
-                                                alert("댓글 수정 완료");
+                                                    if(result > 0) {
+                                                        alert("댓글 수정 완료");
 
-                                                freeBoardDetailAnwserContent.innerHTML = "";
-                                                
-                                                commentListFun();
+                                                        freeBoardDetailAnwserContent.innerHTML = "";
+                                                        
+                                                        commentListFun();
 
-                                            }else {
-                                                alert("수정 실패")
-                                            }
-                                        },
-                                        error : function(req, status, error){
+                                                    }else {
+                                                        alert("수정 실패")
+                                                    }
+                                                },
+                                                error : function(req, status, error){
 
-                                            console.log("댓글 삭제 실패");
-                                            console.log(req.responseText);
-                                        }
-                                    
+                                                    console.log("댓글 삭제 실패");
+                                                    console.log(req.responseText);
+                                                }
+                                        
+                                            });
+                                        });
+                                        
                                     });
+                                
+                                cancel.addEventListener("click", function(){
 
-                                    });
+                                    updateContainer.style.display = "none";
                                 });
-
+                        
                             }
                         },
                         
@@ -238,6 +257,30 @@ for (let freeBoardOneItems of freeBoardOne) {
                 freeBoardDetailBtn.append(boardDeleteBtn);
                 
                 freeBoardDetailView.append(freeBoardDetailBtn);
+
+                // 게시글 삭제
+                boardDeleteBtn.addEventListener("click", () => {
+                    $.ajax({
+                      url: "/freeBoardDelete",
+                      type: "GET",
+                      data: { boardNo: freeBoardOneItems.lastElementChild.id },
+                      dataType: "json",
+                      success: (result) => {
+                        if (result > 0) {
+
+                            alert("정말 게시글을 삭제 하시겠습니까?")
+                            alert("게시글 삭제 성공")
+                            location.reload();
+
+                        } else {
+                          alert("삭제 XXX");
+                        }
+                      },
+                      error: () => {
+                        console.log("게시물 작성중 오류발생");
+                      },
+                    });
+                  });
             }
 
                 commentListFun();
@@ -247,7 +290,7 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                     $.ajax({
                         url : "/comment/insert",
-                        data : {"commentContent" : commentContent.value,
+                        data : {"commentContent" : input.value,
                                 "memberNo" : memberNo,
                                 "boardNo" : freeBoardOneItems.lastElementChild.id},
                         type : "post",
@@ -256,9 +299,11 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 alert("댓글 등록 완료")
 
                                 // 입력한 댓글 초기화
-                                commentContent.value = "";
+                                input.value = "";
+
                                 // 댓글 리스트를 초기화
                                 freeBoardDetailAnwserContent.innerHTML = "";
+
                                 // 댓글 리스트를 조회하는 ajax 함수 실행
                                 commentListFun();
 
@@ -274,23 +319,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                     });
                 });
 
-                // if(memberId == freeBoardDetail[0].memberId){
-                //     const freeBoardDetailBtn = document.createElement("div");
-                //     freeBoardDetailBtn.setAttribute("id", "freeBoard-detail-btn");
-                    
-                //     const boardUpdateBtn = document.createElement("button");
-                //     boardUpdateBtn.setAttribute("id", "boardUpdate-btn");
-                //     boardUpdateBtn.innerText = "수정";
-
-                //     const boardDeleteBtn = document.createElement("button");
-                //     boardDeleteBtn.setAttribute("id", "boardDelete-btn");
-                //     boardDeleteBtn.innerText = "삭제";
-
-                //     freeBoardDetailBtn.append(boardUpdateBtn);
-                //     freeBoardDetailBtn.append(boardDeleteBtn);
-                    
-                //     freeBoardDetailView.append(freeBoardDetailBtn);
-                // }
             },
             
             error : () => {

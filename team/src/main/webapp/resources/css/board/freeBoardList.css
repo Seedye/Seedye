@@ -17,77 +17,17 @@
 
 }
 
-#title-content{
+.board-list-serch-write-area > p{
   font-size: 50px;
-  padding: 70px;
   font-weight: bold;
-
+  width: 800px;
   display: flex;
-  align-items: center;
-}
-
-#title-content > p{
-  width: 300px;
-}
-
-#title-search{
-  display: flex;
-  align-items: center;
-
-}
-
-#title-search > input{
-  width: 300px;
-  height: 50px;
-
-  border-top-left-radius:25px;
-  border-bottom-left-radius:25px;
-
-  padding-left: 15px;
-
-  font-size: 20px;
-
-  border: 1px solid black;
-
-  margin-left: 170px;
-
-}
-
-#title-search > button{
-  width: 50px;
-  height: 50px;
-
-  border: 1px solid black;
-  border-left: none;
-
-  border-top-right-radius: 25px ;
-  border-bottom-right-radius: 25px ;
-
-}
-
-#title-write{
-  display: flex;
-  align-items: center;
   justify-content: center;
-
+  margin-right: 100px;
 }
-
-#title-write > button{
-  width: 80px;
-  height: 50px;
-  background-color: #2db420;
-  border: 1px solid #2db420;
-  font-size: 16px;
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
-  margin-left: 20px;
-}
-
 
 #freeBoard-content{
   display: flex;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -99,7 +39,7 @@
   background-color: white;
 
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 
 }
@@ -224,9 +164,16 @@
   height: 70px;
 }
 
+.imgContainer{
+  display: flex;
+  /* justify-content: space-between; */
+}
+
 #freeBoard-detail-view img{
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
+  margin: 0px 5px;
+
 }
 
 #freeBoard-detail-anwser{
@@ -297,7 +244,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: -25px;
+  bottom: -100px;
 
 }
 
@@ -320,11 +267,18 @@
   align-items: center;
   justify-content: space-between;
 
+  width: 495px;
+
   padding: 2.5px 0px;
 }
 
+.pen{
+  margin-right: 10px;
+  display: flex;
+}
+
 .fa-pen{
-  margin:0 10px 0 70px;
+  margin:0 10px;
   background-color: #f7f8f9;
   border: none;
   font-size: 10px;
@@ -346,9 +300,6 @@
 
 }
 
-.pen{
-  margin-right: 10px;
-}
 
 .updateContainer{
   display: flex;
@@ -380,4 +331,131 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+}
+
+
+
+
+.board-list-serch-write-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+.board-list-serch{
+  width: 60vw;
+  height: 50px;
+  min-width: 300px;
+  max-width: 500px;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  overflow: hidden;
+
+}
+.board-list-serch > input{
+  width: 80%;
+  
+  height: 50px;
+  border: 0px;
+  font-size: 20px;
+
+  padding: 0px 10px;
+}
+.board-list-serch > input:focus{
+  outline: none;
+
+}
+.board-list-serch > select {
+  width: 20%;
+  min-width: 90px;
+  height: 100%;
+  border: none;
+  padding-left: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.board-list-serch > select:focus{
+  outline: none;
+}
+#search-key > option{
+  height: 100px;
+}
+.board-serch-btn{
+  height: 50px;
+  width: 150px;
+  border-radius: 0 30px 30px 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  /* background-color: red; */
+}
+
+.board-write-btn{
+  margin: 20px;
+  width: 180px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  justify-content: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background-color: #2db400;
+  color: whitesmoke;
+  font-size: 16px;
+  font-weight: bold;
+}
+.board-write-btn:hover{
+  transition-duration: 0.2s;
+  background-color: #2aa800;
+  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
+  border:none;
+}
+
+.board-list-page-area{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.board-list-page-area>li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  list-style:none;
+  cursor: pointer;
+  /* padding-left: 0px; */
+}
+.board-list-page-no:hover{
+  /* background-color: #061a00; */
+  border-bottom: 1px solid #2db400;
+}
+i{
+  /* color : rgba(0, 0, 0, 0.459) */
+  color:green;
+}
+i:hover{
+  color : rgba(0, 0, 0, 0.692)
+}
+
+#sideAll {
+  top: 389.4;
+}
+.board-list-page-area a{
+  color: #2db400c5;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

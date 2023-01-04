@@ -385,12 +385,12 @@ input[type=password]{
 .confirm{color : #2DB400;} /* 입력 성공 시 초록색 */
 .error{color : rgb(233, 86, 86);} /* 에러 발생 시 빨강색 */
 
-.confirm{
+.confirmBox{
     display: none;
     flex-direction: column;
 }
 
-.confirm span{
+.confirmBox span{
     padding: 5px;
 }
 
@@ -404,4 +404,10 @@ input[type=password]{
     border: 2px solid #33332f; /* 버튼 테두리 회색 */
     cursor: pointer; /* 마우스 가져다대면 손가락 가리키는 모양 */
     border-radius: 30px;
+}
+
+#timer{
+    margin-right: 10px;
+    font-size: 14px; /* 글자 크기 14px */
+    letter-spacing: -1px; /* 작고 촘촘하게 */
 }

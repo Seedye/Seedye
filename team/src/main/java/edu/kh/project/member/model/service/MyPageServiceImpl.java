@@ -57,16 +57,36 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.selectPhoneMemberId(toPhone);
 	}
 
+	// 아이디 / 비밀번호 찾기 페이지에서 비밀번호 변경
+	@Override
+	public int pwChange(Member inputContent) {
+		
+		// 비밀번호 암호화
+		String encPw = bcrypt.encode(inputContent.getMemberPw());
+		
+		inputContent.setMemberPw(encPw);
+		
+		int result = dao.pwChange(inputContent);
+		
+		return result;
+		
+	}
+
 
 	// 회원 탈퇴 서비스
-//	@Transactional
-//	@Override
-//	public int memberDelete(int memberNo, String memberPw) {
-//		
-//		String encPw = dao.selectEncPw(memberNo);
-//		
-//		if(bcrypt.matches)
-//		return dao.memberDelete(memberNo);
-//	}
+	@Transactional
+	@Override
+	public int memberDelete(int memberNo, String memberPw) {
+		
+		// 비밀번호 조회
+		String encPw = dao.selectEncPw(memberNo);
+		
+		// 일치하면 탈퇴
+		if(bcrypt.matches(memberPw, encPw)) {
+			
+			return dao.memberDelete(memberNo);
+		}
+		return 0;
+	}
 
 }

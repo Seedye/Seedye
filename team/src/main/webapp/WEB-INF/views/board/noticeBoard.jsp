@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,35 +12,7 @@
     <link rel="stylesheet" href="/resources/css/board/noticeBoard.css">
 </head>
 <body>
-    <header>
-        <!-- 헤더 -->
-        <div id="header-container">
-            <!-- 로고 -->
-            <section id="header-section">
-                <div id="login2"></div>
-                <div>
-                    <a href="#"><img id="logo" src="/resources/images/새싹이.png"></a>
-                    <a href="#" id="logo-content">새싹이</a>
-                </div>
-                <div id="login">
-                    <a href="">로그인</a>
-                    <a href="">회원가입</a>
-                </div>
-            </section>
-            <!-- 메뉴창 -->
-            <nav id="nav-bar">
-                <ul id="ul-container">
-                    <li><a href="#"></a>새싹소개</li>
-                    <li><a href="#"></a>공지사항</li>
-                    <li><a href="#"></a>커뮤니티</li>
-                    <li><a href="#"></a>식당 등록 문의</li>
-                    <li><a href="#"></a>마이 페이지</li>
-                    <!-- <li><a href="#"></a>관리자</li> -->
-                    <!-- <li><a href="#"></a>후원</li> -->
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <main>
         <div id="noticeAll">
             <div id="banner"><img src="/resources/images/important.png"></div>
@@ -128,20 +100,37 @@
                         </tr>--%>
                     </tbody>
                 </table>
-                <div id="pagination-area">
+                <div class="pagination-area">
                     <ul class="pagination">
-                        <li><a href="">&lt;&lt;</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">6</a></li>
-                        <li><a href="">7</a></li>
-                        <li><a href="">8</a></li>
-                        <li><a href="">9</a></li>
-                        <li><a href="">10</a></li>
-                        <li><a href="">&gt;&gt;</a></li>
+                        <!-- 첫 페이지로 이동 -->
+                        <li><a href="/board/${boardCode}?cp=1${sURL}">&lt;&lt;</a></li>
+                        <!-- 이전 목록 마지막 번호로 이동 -->
+                        <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">&lt;</a></li>
+    
+                        <c:forEach var="i" begin="${pagination.startPage}" 
+                            end="${pagination.endPage}" step="1">
+    
+                            <c:choose>
+                                <c:when test="${i == pagination.currentPage}">
+                                    <%-- 현재 페이지인 경우 --%>
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+    
+                                <c:otherwise>
+                                    <!-- 현재 페이지를 제외한 나머지 -->
+                                    <li><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+    
+                        </c:forEach>
+                        <!-- 특정 페이지로 이동 -->
+                        
+                        <!-- 다음 목록 시작 번호로 이동 -->
+                        <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}">&gt;</a></li>
+    
+                        <!-- 끝 페이지로 이동 -->
+                        <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+    
                     </ul>
                 </div>
                 <div>
