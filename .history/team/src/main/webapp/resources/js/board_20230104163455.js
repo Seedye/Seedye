@@ -11,9 +11,6 @@ const inputFilearea1 = document.getElementById("inputFilearea1"); // 업로드�
 // const inputFile2 = document.getElementById("inputFile2");
 // const inputFile3 = document.getElementById("inputFile3");
 // const inputFile4 = document.getElementById("inputFile4");
- 
-
-
 
 // 파일 추가해줄 큰 영역
 const boardViewContentImgArea = document.getElementById(

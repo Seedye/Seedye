@@ -183,6 +183,8 @@ public class BoardController {
 		System.out.println(boardNo);
 		System.out.println(QABoardDetail);
 		
+		
+		
 		return QABoardDetail;
 		
 	}
@@ -211,7 +213,9 @@ public class BoardController {
 		
 		board.setBoardNo(boardNo);
 		System.out.println(board);
-		return service.updateAQBoard(board);
+		
+		int result = service.updateAQBoard(board);
+		return result;
 	}
 	
 	

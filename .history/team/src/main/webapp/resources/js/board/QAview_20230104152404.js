@@ -59,10 +59,8 @@ for (let boardListViewItems of boardListView) {
         QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
         QAIDAndDateP.innerText =
-        QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
-
-        var content = QABoardDetail[0].boardContent;
-        QAContentP.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+          QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
+        QAContentP.innerText = QABoardDetail[0].boardContent;
 
         QATextCommentP.innerText = "답변";
 
@@ -70,7 +68,6 @@ for (let boardListViewItems of boardListView) {
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
-            commentTextarea.setAttribute("id", "commentContent");
             commentTextarea.innerText = QABoardDetail[0].commentContent;
             boardViewContentTextComment.append(commentTextarea);
           }else{
@@ -83,8 +80,8 @@ for (let boardListViewItems of boardListView) {
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
-            commentTextarea.setAttribute("id", "commentContent");
-            // commentTextarea.classList.add("")
+            commentTextarea.setAttribute("id", "commentContentTextarea");
+            // commentTextarea.classList.add("commentContent");
             boardViewContentTextComment.append(commentTextarea);
 
            
@@ -174,6 +171,9 @@ for (let boardListViewItems of boardListView) {
             });
           });
 
+
+
+          console.log("뭐라나옴?:"+QABoardDetail[0].commentNo);
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           if(loginMemberAutority ==2) {
@@ -191,7 +191,7 @@ for (let boardListViewItems of boardListView) {
                   $.ajax({
                     url:"/comment/update",
                     data : {"commentNo" :QABoardDetail[0].commentNo,
-                            "commentContent" : commentContent.value},
+                            "commentContent" : commentTextarea.value},
                     type : "post",
                     success : function(result) {
 
@@ -218,7 +218,7 @@ for (let boardListViewItems of boardListView) {
                 console.log(comment.commentNo);
                 $.ajax({
                   url : "/comment/insert",
-                    data : {"commentContent" :commentContent.value,
+                    data : {"commentContent" :commentTextarea.value,
                             "memberNo" : memberNo,
                             "boardNo" : boardListViewItems.lastElementChild.id},
                     type : "post",
@@ -258,7 +258,7 @@ for (let boardListViewItems of boardListView) {
             // !게시물 수정
             boardUpdate.addEventListener("click", () => {
               boardViewModal.style.display = "none";
-              // document.body.style.overflow = "unset";
+              document.body.style.overflow = "unset";
               boardViewTitleDetailAnswer.innerHTML = null;
               boardViewContentContent.innerHTML = null;
               boardViewContentText.innerHTML = null;
