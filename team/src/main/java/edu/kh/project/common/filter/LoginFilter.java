@@ -16,7 +16,7 @@ import org.springframework.core.annotation.Order;
 
 // 필터 등록
 @WebFilter(filterName = "loginFilter", // 필터 이름, 필터가 여러개 존재할 때 순서 지정
-			urlPatterns = {"/info", "/delete"}) // 필터링한 요청 주소(패턴 가능)
+			urlPatterns = {"/info", "/delete", "/logout"}) // 필터링한 요청 주소(패턴 가능)
 public class LoginFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
@@ -30,7 +30,6 @@ public class LoginFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		chain.doFilter(request, response);
 		
 		// 필터는 클라이언트의 요청이 되자마자
 		// 또는 응답이 되기 직전에 필터링 코드를 추가할 수 있는 기능
