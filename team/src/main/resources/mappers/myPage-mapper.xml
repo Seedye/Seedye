@@ -60,7 +60,8 @@
 	<select id="selectPhoneMemberId" resultType="string">
 		SELECT MEMBER_ID
 		FROM MEMBER
-		WHERE MEMBER_TEL = ${toPhone}
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_TEL = ${toPhone}
 	</select>
 	
 	<update id="pwChange" parameterType="Member">

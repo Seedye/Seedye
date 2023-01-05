@@ -7,6 +7,9 @@ const newPwConfirm = document.getElementById("newPwConfirm");
 
 const authKey = document.getElementById("authKey");
 
+// 휴대폰 인증 유무에 따른 타이머 시간 제어 변수 
+let flag = false;
+
 const timer = function(){
 
     let time = 180; // 인증번호 제한시간 작성
@@ -14,17 +17,20 @@ const timer = function(){
     let sec = ""; // 초
     
     // setInterval(함수, 시간) : 주기적인 실행
-    let infoTmier = setInterval(function(){
+    let infoTimer = setInterval(function(){
         // parseInt() : 정수를 반환
         min = parseInt(time/60); // 몫을 계산
         sec = time%60; // 나머지 계산
     
         document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
+        if(!flag){
+
+            time--;
+        }
     
         // 타임아웃 시
         if(time < 0) {
-            clearInterval(infoTmier); // setInterval() 실행 끝
+            clearInterval(infoTimer); // setInterval() 실행 끝
             document.getElementById("timer").innerHTML = "시간만료";
             checkObj.authKey = false;
     
@@ -40,6 +46,7 @@ const checkObj = {
     "newPwConfirm" : true, /* 새 비밀번호 확인 */
     "confirm" : true, /* 인증번호 */
     "authKey" : true, /* 인증 제한 시간(타이머) */
+    "memberTel" : true, /* 전화번호 */
 };
 
 if(document.getElementById("myPage-frm") != null){
@@ -57,6 +64,7 @@ if(document.getElementById("myPage-frm") != null){
                 case "newPwConfirm" :  str = "새 비밀번호 확인이 유효하지 않습니다."; break;
                 case "confirm" :  str = "전화번호 인증을 완료해주세요."; break;
                 case "authKey" : str = "인증 제한 시간이 초과되었습니다."; break;
+                case "memberTel" : str = "이미 가입되어있는 번호입니다."; break;
                 }
 
                 alert(str); // 대화상자 출력
@@ -135,7 +143,7 @@ if(btn1 != null){
                     pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
                     pwMessage.classList.add("error");
                     pwMessage.classList.remove("confirm");
-                    checkObj.newPw = false;                
+                    checkObj.newPw = false;
                 }
 
             });
@@ -226,6 +234,10 @@ if(btn1 != null){
 
             checkObj.newPw = true;
             checkObj.newPwConfirm = true;
+
+            currentPw.value = "";
+            newPw.value = "";
+            newPwConfirm.value = "";
         }
 
     });
@@ -242,6 +254,69 @@ const autoHyphen = (target) => {
 const mainTel = document.querySelector(".mainTel");
 
 const confirmTelMassege = document.getElementById("confirm");
+
+// 전화번호 유효성 검사
+const memberTel = document.getElementById("memberTel");
+
+if(memberTel != null){
+    memberTel.addEventListener("input", function(){
+
+        // ^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$
+        // 전화번호 정규표현식 검사
+        const regEx = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+
+        // 문자가 입력되지 않은 경우
+        if(memberTel.value.trim().length == 0){
+            confirmTelMassege.innerText = "전화번호를 입력해주세요.";
+            confirmTelMassege.classList.remove("confirm", "error");
+            checkObj.memberTel = false;
+            authKey.removeAttribute("disabled");
+            return;
+        }   
+
+        if(regEx.test(memberTel.value)){
+
+            $.ajax({
+                url: "/telDupCheck",
+                data: {"memberTel": memberTel.value},
+                type: "GET",
+                success: (result) => {
+
+                    if (result == 0){ // 전화번호 중복이 아닐 시
+                        confirmTelMassege.innerText = "유효한 전화번호 형식입니다."
+                        confirmTelMassege.classList.add("confirm");
+                        confirmTelMassege.classList.remove("error");
+                        checkObj.memberTel = true;
+                        authKey.removeAttribute("disabled");
+
+                    } else { // 중복이면
+                    
+                        confirmTelMassege.innerText = "이미 등록되어있는 번호입니다."
+                        confirmTelMassege.classList.add("error");
+                        confirmTelMassege.classList.remove("confirm");
+                        checkObj.memberTel = false;
+
+                        // 버튼 클릭 못하게
+                        authKey.setAttribute("disabled", "");
+                    
+                    }
+
+                },
+                error: () => {
+                    console.log("ajax 통신 실패");
+                },
+            });
+
+        } else {
+            confirmTelMassege.innerText = "전화번호 형식이 유효하지 않습니다."
+            confirmTelMassege.classList.add("error");
+            confirmTelMassege.classList.remove("confirm");
+            checkObj.memberTel = false;
+            authKey.setAttribute("disabled", "");
+        }
+
+    });
+}
 
 if(mainTel != null){
     // 전화번호 변경 버튼 눌렀을 때
@@ -320,9 +395,15 @@ if(mainTel != null){
                     // 인증번호 일치 할 때
                     checkObj.confirm = true;
         
-                    confirmTelMassege.innerText = "인증이 완료 되었습니다.";
-                    confirmTelMassege.classList.add("confirm");
-                    confirmTelMassege.classList.remove("error");
+                    if(checkObj.authKey == true) {
+                        confirmTelMassege.innerText = "인증이 완료 되었습니다.";
+                        confirmTelMassege.classList.add("confirm");
+                        confirmTelMassege.classList.remove("error");
+                        memberTel.setAttribute("readonly", "");
+                        authKey.setAttribute("disabled", "");
+                    }
+
+                    flag = true;
         
                 } else {
         

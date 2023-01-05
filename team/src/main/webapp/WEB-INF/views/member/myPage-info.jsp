@@ -68,7 +68,7 @@
 
                     <div class="myPage-row tel mainTel">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
+                        <input type="text" name="memberTel" id="memberTel" value="${loginMember.memberTel}" maxlength="13" readonly>
                         <button type="button" class="aaa" id="authKey">전화번호 변경</button>
                     </div>
                     <div class="confirmBox">
