@@ -193,6 +193,18 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 <select id="selectMemberList" resultMap="member_rm">
 	SELECT MEMBER_NO, AUTHORITY, MEMBER_ID, MEMBER_TEL, ENROLL_DATE, MEMBER_DEL_FL
 	FROM "MEMBER"
+	 <if test='query != null and query != ""'>
+	         <choose>
+	            <when test='key == "t"'> <!-- 제목 -->
+	               WHERE MEMBER_ID LIKE '%${query}%' <!-- #이 아니라 $ 사용해야지 홑따옴표가 안붙고 사용 -->
+	            </when>
+	            
+	         <otherwise> <!-- 작성자(w) -->
+	            WHERE MEMBER_TEL LIKE '%${query}%'
+	         </otherwise>
+	         </choose>
+     	  </if>
+	
 </select>
 
 <!-- 회원 권한 변경 -->
