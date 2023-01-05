@@ -19,8 +19,8 @@
         <input type="checkbox" id="sideNotice">
             <div id="sideMenu2">
                 <ul class="dropdown-sideMenu2">
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">업데이트</a></li>
+                    <li><a href="/boardList/1">공지사항</a></li>
+                    <li><a href="/boardList/2">업데이트</a></li>
                 </ul>
             </div>        
         <label for="side" class="sideM" id="side3">커뮤니티</label>

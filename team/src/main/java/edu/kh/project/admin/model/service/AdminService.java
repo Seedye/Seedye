@@ -125,6 +125,10 @@ public interface AdminService {
 
 
 
+	/** 식당 등록 이미지 조회
+	 * @param storeNo
+	 * @return storeList
+	 */
 	List<StoreImage> selectStoreManageImg(int storeNo);
 
 
@@ -151,6 +155,11 @@ public interface AdminService {
 
 
 	Map<String, Object> selectMemberList(int cp);
+
+
+
+	Map<String, Object> searchStoreList(Map<String, Object> searchMap, int cp);
+
 
 
 

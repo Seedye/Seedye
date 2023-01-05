@@ -290,17 +290,32 @@ public class AdminController {
 	@GetMapping("selectStoreList")
 	@ResponseBody
 	public String selectStoreList(Model model,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> searchMap) {
 		
 		
-		Map<String, Object> map = service.selectStoreList(cp);
+		System.out.println(searchMap);
 		
-		model.addAttribute("map", map);
+		if(searchMap.get("search") == null) {
+		
+			Map<String, Object> map = service.selectStoreList(cp);
 			
-		
-		System.out.println(map);
+			model.addAttribute("map", map);
+				
 			
-		return new Gson().toJson(map);
+			System.out.println(map);
+				
+			return new Gson().toJson(map);
+		
+		} else {
+			
+			
+			searchMap = service.searchStoreList(searchMap, cp);
+			
+			System.out.println(searchMap);
+			
+			return new Gson().toJson(searchMap);			
+		}
 		
 	}
 	
@@ -407,7 +422,11 @@ public class AdminController {
 		// 식당 이미지 조회
 		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
+		System.out.println(storeList);
+		
 		store.setLicensePath(storeList.get(0).getLicensePath());
+		
+		System.out.println(store);
 		
 		return store;
 		
