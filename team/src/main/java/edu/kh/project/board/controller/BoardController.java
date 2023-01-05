@@ -27,8 +27,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
-import edu.kh.project.board.model.vo.Comment;
-import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
 @Controller
@@ -151,7 +149,6 @@ public class BoardController {
 	public List<Board> selectFreeBoardDetail(@RequestParam("boardNo") int boardNo) {
 
 		List<Board> freeBoardDetail = service.selectFreeBoardDetail(boardNo);
-//		freeBoardDetail.setBoardContent(Util.newLineClear(freeBoardDetail.getBoardContent()));
 
 		System.out.println(boardNo);
 		System.out.println(freeBoardDetail);

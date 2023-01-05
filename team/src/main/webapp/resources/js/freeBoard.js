@@ -297,7 +297,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                                 error : function(req, status, error){
 
                                                     console.log("댓글 삭제 실패");
-                                                    console.log(req.responseText);
                                                 }
                                         
                                             });
@@ -327,11 +326,11 @@ for (let freeBoardOneItems of freeBoardOne) {
                                                     if(result > 0){
 
                                                         freeBoardDetailAnwserContent.innerHTML = "";
-                                                        alert("답글 등록 완료");
+                                                        alert("댓글 등록 완료");
                                                         commentListFun();
 
                                                     }else{
-                                                        alert("답글 등록 실패");
+                                                        alert("댓글 등록 실패");
                                                     }
                                                 },
                                                 error : function(){
@@ -432,7 +431,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 }
                                 }
                             } else {
-                                ContentImgArea.style.display = "none";
+                                // ContentImgArea.style.display = "none";
                             }
             
                         //글 수정 완료 버튼
@@ -450,7 +449,7 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                         // 수정 버튼 클릭 했을때
                         boardUpdateInput.addEventListener("click", () => {
-                            console.log("수정버튼 눌림");
+
                             $.ajax({
                             url: "/QABoardUpdate",
                             type: "GET",
@@ -521,7 +520,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                         type : "post",
                         success : function(result) {
                             if (result > 0){
-                                alert("댓글 등록 완료")
+                                alert("답변 등록 완료")
 
                                 // 입력한 댓글 초기화
                                 input.value = "";
@@ -539,7 +538,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                         },
 
                         error : () => {
-                            console.log("댓글 등록 실패");
+                            console.log("답변 등록 실패");
                         }
                     });
                 });

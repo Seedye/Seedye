@@ -30,7 +30,7 @@
             <nav id="nav-bar">
                 <ul id="ul-container">
                     <li><a href="/introduction">소개</a></li>
-                    <li><a href="/freeBoardList/3">공지사항</a></li>
+                    <li><a href="">공지사항</a></li>
                     <li><a href="/boardList/4">커뮤니티</a></li>
                     <li><a href="javascript:void(0);" id="inquiry">식당 등록 문의</a></li>
                     <li><a href="/support">후원</a></li>

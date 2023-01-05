@@ -20,7 +20,7 @@
     if (scrollTop > 100 && flag) {
 
         this.document.querySelector("header").style.position = "sticky";
-        
+
         headerSection.classList.add("scrolled");
         logoContaniner.classList.add("scrolled");
         logo.classList.add("scrolled");
@@ -38,7 +38,7 @@
     
     if (scrollTop <= 0 && !flag) {
 
-        this.document.querySelector("header").style.position = "initial";
+        // this.document.querySelector("header").style.position = "initial";
         
         headerSection.classList.remove("scrolled");
         logoContaniner.classList.remove("scrolled");

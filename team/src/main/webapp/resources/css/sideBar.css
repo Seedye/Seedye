@@ -10,12 +10,12 @@
     
     position: absolute; 
     left: 20px;
-    top: 289.4px;
+    top: 210px;
 
     border-right: 15px solid transparent;
     border-left: 15px solid transparent;
-	border-top: 10px solid  green; 
-	border-bottom: 10px solid green; 
+   border-top: 10px solid  green; 
+   border-bottom: 10px solid green; 
 
     z-index: 600;
 }
@@ -71,5 +71,4 @@
     padding: 0;
 
 }
-
 
