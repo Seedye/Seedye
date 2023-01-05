@@ -178,7 +178,9 @@ function selectStoreList(cp){
                             const select = document.getElementById("select");
                             const phoneNumberArea = document.getElementById("phoneNumberArea");
                             
-                            
+                            const roadAddr = document.querySelector(".inputRoad");
+                            const jibunAddr = document.querySelector(".inputJibun");
+
                             console.log(store.roadnameAddress);
                             console.log(store.imageList);
                            
@@ -205,8 +207,12 @@ function selectStoreList(cp){
                             }
                           storeNameArea.setAttribute('value', store.storeName);
 
-                            roadAddress.setAttribute('value', store.roadnameAddress);
-                            document.getElementById("sample4_jibunAddress").setAttribute('value', store.landnumberAddress);
+                            roadAddr.setAttribute('value', store.roadnameAddress);
+
+                            console.log(store.roadnameAddress);
+                            jibunAddr.setAttribute('value', store.landnumberAddress);
+
+                            
 
                           phoneNumberArea.setAttribute('value', store.storeTel);
 
