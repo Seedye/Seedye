@@ -217,6 +217,7 @@ public class MyPageController {
 		return selectPhoneMemberId;
 	}
 	
+	// ID/PW 찾기 비밀번호 인증 확인
 	@PostMapping("/find/confirmCheck")
 	@ResponseBody
 	public int confirmCheck(
