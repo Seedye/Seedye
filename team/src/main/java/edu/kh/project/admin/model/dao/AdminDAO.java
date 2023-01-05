@@ -274,6 +274,9 @@ public class AdminDAO {
 		return sqlSession.update("adminMapper.registerStore", storeNo);
 	}
 
+	/** 식당 전체 수
+	 * @return
+	 */
 	public int selectCount() {
 		return sqlSession.selectOne("adminMapper.selectCount");
 	}
@@ -284,9 +287,28 @@ public class AdminDAO {
 
 	
 	
+	/** 식당타입 리스트 수 
+	 * @param storeType
+	 * @return typeList
+	 */
 	public int typeList(String storeType) {
 		return sqlSession.selectOne("adminMapper.typeList", storeType);
 	}
+
+	public int searchStoreListCount(Map<String, Object> searchMap) {
+		return sqlSession.selectOne("adminMapper.searchStoreListCount", searchMap);
+	}
+
+	public List<Store> searchStoreList(Map<String, Object> searchMap, Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.searchStoreList", searchMap, rowBounds);
+	}
+
+
 
 
 

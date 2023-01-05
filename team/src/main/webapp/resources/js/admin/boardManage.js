@@ -18,6 +18,7 @@ var mySwiper = new Swiper('.swiper-container', {
   const update = document.getElementById("update");
   const freeBoard = document.getElementById("freeBoard");
   const question = document.getElementById("question");
+const boardTest = document.getElementById("boardTest");
 
   const swiperMain = document.getElementById("swiperMain");
   
@@ -33,6 +34,7 @@ var mySwiper = new Swiper('.swiper-container', {
 
   update.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
+
   });
 
   freeBoard.addEventListener("click", ()=>{
@@ -43,7 +45,6 @@ var mySwiper = new Swiper('.swiper-container', {
     swiperMain.style.display = "none";
   });
 
-const boardTest = document.getElementById("boardTest");
 boardTest.style.display = "none";
 
 
@@ -54,7 +55,7 @@ function selectBoardNotice(){
   tbody.innerHTML = "";
 
   $.ajax({
-    url:"/admin/selectAdminBoard",
+    url:"/admin/selectBoardList",
     data:{"boardCode" : '1'},
     dataType : "JSON",
     success : adminBoardList =>{
