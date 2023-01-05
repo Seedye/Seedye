@@ -175,7 +175,7 @@
 
                             <c:otherwise>
                                 <c:forEach var="bookmarkList" items="${mainPageMap.bookmarkList}">
-                                    <li>
+                                    <li id="${bookmarkList.storeNo}">
                                         <span>${bookmarkList.storeName}</span>
                                     </li>
                                 </c:forEach>
