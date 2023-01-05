@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소개</title>
     <link rel="stylesheet" href="../../resources/css/header.css">
-    <link rel="stylesheet" href="../../resources/css/sideBar.css">
     <link rel="stylesheet" href="../../resources/css/introduction-page.css">
+    <link rel="stylesheet" href="../../resources/css/sideBar.css">
 </head>
 <body>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
