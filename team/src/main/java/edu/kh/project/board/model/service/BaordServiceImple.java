@@ -182,8 +182,10 @@ public class BaordServiceImple implements BoardService {
 				return map;
 	}
 
-	
-	
-	
+	// 조회수 카운트
+	@Override
+	public int updateReadCount(int boardNo) {
+		return dao.updateReadCount(boardNo);
+	}
 
 }

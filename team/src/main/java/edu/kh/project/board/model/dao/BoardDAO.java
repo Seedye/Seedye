@@ -139,6 +139,10 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectFreeBoardList_search", pm, rowBounds);
 	}
 
+	public int updateReadCount(int boardNo) {
+		return sqlSession.update("boardMapper.updateReadcount", boardNo);
+	}
+
 	
 	
 	
