@@ -132,7 +132,7 @@
                             </tr>
                         </tbody> --%>
                     </table>
-                    <form action="">
+                    <form id="searchTag">
                         <div id="searchArea">
                             <select name="key" id="searcg-key">
                                 <option value="t">아이디</option>

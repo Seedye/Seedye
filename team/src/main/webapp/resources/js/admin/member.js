@@ -44,7 +44,6 @@ function selectMemberList(cp){
     $.ajax({
         url:"/admin/selectMemberList",
         dataType:"JSON",
-        data:{"cp" : cp},
         success:(map)=>{
             const memberTbody = document.getElementById("memberTbody");
             memberTbody.innerHTML="";
@@ -296,4 +295,12 @@ function pageLink(curPage, totalPages) {
 	
 	return pageUrl;
 }
+
+const searchTag = document.getElementById("searchTag");
+searchTag.addEventListener("submit", e => {
+
+    e.preventDefault();
+
+    
+});
 
