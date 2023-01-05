@@ -67,7 +67,7 @@
                             <option value="일반대중음식" id="f">일반대중음식</option>
                             <option value="편의점" id="g">편의점</option>
                             <option value="제과점" id="h">제과점</option>
-                            <option value="정육점" id="i">정육점</option>
+                            <option value="정육점" id="k">정육점</option>
                             <option value="착한식당" id="j">착한식당</option>
                         </select>
                     </div>

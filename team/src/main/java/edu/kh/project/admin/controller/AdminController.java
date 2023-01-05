@@ -139,7 +139,6 @@ public class AdminController {
 			message = " 삭제 실패";
 		}
 		
-		
 		ra.addFlashAttribute("message",message);
 		return "redirect:" + path;
 	}
@@ -228,13 +227,7 @@ public class AdminController {
 		return "redirect" + path;
 	}
 	
-	
-	// 답글 작성
-	
-	
-	// -----------------------------------------------------------
-	
-	
+
 	// 회원 목록 조회
 	@GetMapping("selectMemberList")
 	@ResponseBody

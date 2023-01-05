@@ -4,88 +4,78 @@ const memberManageBtn = document.getElementsByClassName("memberManageBtn")[0];
 const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
+const paginationMenu = document.getElementsByClassName("pagination")[0];
+
+
 var infoArea = document.getElementById("InfoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
-    selectStoreList();
-
-    pageBtnClick();
+    
 })
+let cp = 1;
+selectStoreList(cp);
 
 
-
-
-
-// function sample4_execDaumPostcode() {
-//     new daum.Postcode({
-//         oncomplete: function(data) {
-//             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-//             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-//             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-//             var roadAddr = data.roadAddress; // 도로명 주소 변수
-//             var extraRoadAddr = ''; // 참고 항목 변수
-            
-//             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-//             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-//             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-//                 extraRoadAddr += data.bname;
-//             }
-//             // 건물명이 있고, 공동주택일 경우 추가한다.
-//             if(data.buildingName !== '' && data.apartment === 'Y'){
-//                extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-//             }
-//             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-//             if(extraRoadAddr !== ''){
-//                 extraRoadAddr = ' (' + extraRoadAddr + ')';
-//             }
-            
-//             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-//             document.getElementById("sample4_roadAddress").value = roadAddr;
-//             document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-
-//         },
-//         onclose: function(state) {
-//             //state는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수 이며, 
-//             //상세 설명은 아래 목록에서 확인
-//             if(state === 'FORCE_CLOSE'){
-//                 //사용자가 브라우저 닫기 버튼을 통해 팝업창을 닫았을 경우, 
-//                 //실행될 코드를 작성하는 부분
-          
-//             } else if(state === 'COMPLETE_CLOSE'){
-//             //사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 
-//             //실행될 코드를 작성하는 부분
-//             //oncomplete 콜백 함수가 실행 완료된 후에 실행
-//                   }
-//                 }
-                
+// cp 얻어오기
+const pageBtnClick = ()=>{
+    $(".pageBtn").click(function(){
         
-//             }).open();
-//         }
-
-        /* const roadAddress = document.getElementById("sample4_roadAddress"); */
-      
+        var id_check = $(this).attr("id");
         
+        cp = id_check;
         
+        console.log(cp);
+
         
-        // 전화번호
-        $(document).on("keyup", ".phoneNumber", function() { 
-            $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
-        });
+        selectStoreList(cp); 
+       
+    if(selectBox.addEventListener("change", ()=>{
+        
+        let cp = 1;
+        
+        selectBoxSelect(cp);
+
+    }) 
+    )pageBtnClick();{
+
+             selectBoxSelect(cp); 
+        }
+
+    
+        
+    })
+}
+
+
+// 전화번호
+$(document).on("keyup", ".phoneNumber", function() { 
+    $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
+});
 
 
 
-function selectStoreList(){
+function selectStoreList(cp){
+
+    console.log(cp);
 
     $.ajax({
         url:"/admin/selectStoreList",
         dataType: "JSON",
+        data:{"cp": cp},
         success : (map) =>{
             
             const storeList = map.storeList;
             const pagination = map.pagination;
-            
+                
+
+            const totalCount = pagination.listCount;
+
+            var pageSize = pagination.pageSize;
+            var totalPages = 0;
+            var curPage = cp;
+    
+    
             console.log(pagination);
             
             for(let store of storeList){
@@ -141,18 +131,22 @@ function selectStoreList(){
                 tbody.append(tr);
             
                 
+                // 페이지네이션
+                if (totalCount != 0) {
+                    totalPages = Math.ceil(totalCount / pageSize);
+                
+                    paginationMenu.innerHTML = "";
+
+                    paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                }    
+
+
+
+
+
             }
             
-            for(i=pagination.startPage; i<=pagination.startPage; i++){
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                const span = document.createElement("span");
-                li.appendChild(a);
-                a.appendChild(span);
-                span.innerText = i;
-
-            }
-
+           
 
             // 관리하기 버튼 클릭
             const storeManage = document.getElementsByClassName("store-manage");
@@ -295,7 +289,7 @@ function selectStoreList(){
 
 // storeManage.addEventListener("click", ()=>{
 
-//     adminR.style.display = "flex";
+//     adminR.style.display = "flex";    
 //     storeManageMain.style.display = "none";
 
 // })
@@ -305,17 +299,15 @@ const selectBox = document.getElementById("selectBox");
 
 
 
-selectBox.addEventListener("change", ()=>{
 
-    let cp = 1;
+let pageBtn = document.getElementsByClassName("pageBtn");
 
-    selectBoxSelect(cp);
-});
 
- 
 
 function selectBoxSelect(cp){
-        $.ajax({
+    
+
+    $.ajax({
             url:"/admin/selectType",
             data: {"storeType" : selectBox.value, "cp":cp},
             dataType:"JSON",
@@ -369,7 +361,7 @@ function selectBoxSelect(cp){
                         td6.innerText = '협의중'
                     } else {
                         td6.innerText = "등록 완료"
-                    }
+                    }    
 
                     // 관리하기
                     const td7 = document.createElement("td");
@@ -388,24 +380,25 @@ function selectBoxSelect(cp){
                         let htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
                         // common.js - pageLink
                     
-                        const paginationMenu = document.getElementsByClassName("pagination")[0];
-
                         paginationMenu.innerHTML = "";
 
-                        paginationMenu.innerHTML = pageLink(curPage, totalPages, selectBoxSelect);
-                    }
+                        paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                    }    
 
-                }
+                }    
+
+                console.log(cp);
+             
                 
-            },
+            },    
             error : ()=>{
                 console.log("실패")
-            }
-        })
-    }
+            }    
+        })    
+    }    
 
 
-// 신청 조회
+// 신청 조회    
 const enroll = document.getElementById("enroll");
 enroll.addEventListener("click", ()=>{
     $.ajax({
@@ -445,39 +438,20 @@ enroll.addEventListener("click", ()=>{
                 const td7 = document.createElement("td");
                 td7.innerHTML = "<button class='store-manage'>관리하기</button>";
 
-            }
-        }, 
+            }    
+        },     
         error:()=>{
             console.log("실패");
-        }
+        }    
 
-    })
+    })    
 
-});
-
-const pageBtnClick = ()=>{
-    
-    let cp =0;
-    const pageBtn = document.getElementsByClassName("pageBtn");
-
-        for(i=0; i<pageBtn.length; i++){
-            
-            if(pageBtn[i].addEventListener("click", (e)=>{
-                
-                cp = e.currentTarget.innerText;
-            }) )
-            {
-                console.log(cp);
-                break;
-
-            }
-            
-        }
-
-    }
+});    
 
 
-function pageLink(curPage, totalPages, selectBoxSelect) {
+
+// 페이지 숫자
+function pageLink(curPage, totalPages) {
 	var pageUrl = "";
 	
 	var pageLimit = 10;
@@ -496,30 +470,30 @@ function pageLink(curPage, totalPages, selectBoxSelect) {
 	
 	//맨 첫 페이지
 	if (curPage > 1 && pageLimit < curPage) {
-	    pageUrl += "<a class='page first''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"+  "(1);'><i class='fas fa-angle-double-left'></a>";
+	    pageUrl += "<button class='page first''pageBtn' href='javascript:void(0);'"+  "(1);'><i class='fas fa-angle-double-left'></button>";
 	}
 
 	//이전 페이지
 	if (curPage > pageLimit) {
-	    pageUrl += "<a class='page prev''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></a>";
+	    pageUrl += "<button class='page prev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></button>";
 	}
 
 	//~pageLimit 맞게 페이지 수 보여줌
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<a class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</a>"
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</button>"
 	    } else {
-	        pageUrl += "<a class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'" + "(" + i + ");'> " + i + " </a>";
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();' + id="+i+">" + i + " </button>";
 	    }
 	}
 	//다음 페이지
 	if (nextPage <= totalPages) {
-	    pageUrl += "<a class='page next' 'pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></a>";
+	    pageUrl += "<button class='page next' 'pageBtn' href='javascript:void(0);'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></button>";
 	}
 	//맨 마지막 페이지
 	if (curPage < totalPages && nextPage < totalPages) {
-	    pageUrl += "<a class='page last''pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></a>";
+	    pageUrl += "<button class='page last''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></button>";
 	}
 	// console.log(pageUrl);
 	
