@@ -84,6 +84,17 @@ public class MainController {
 		return modalResult;
 	}
 	
+	@GetMapping("/selectBookmarkList")
+	@ResponseBody
+	public List<Bookmark> selectBookmarkList(
+			@RequestParam("loginMemberNo") int memberNo) {
+		
+		List<Bookmark> memberBookmarkList = service.selectBookmarkList(memberNo);
+		
+		return memberBookmarkList;
+		
+	}
+	
 	// 즐겨찾기 삭제
 	@GetMapping("/modalContent/delete")
 	@ResponseBody

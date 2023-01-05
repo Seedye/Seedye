@@ -21,7 +21,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 
         <div id="adminMain">
-            <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp" /> --%>
+            <jsp:include page="/WEB-INF/views/common/sideBar.jsp" /> 
             <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
             <!-- 식당 등록 -->
@@ -224,17 +224,17 @@
                             </tr>
                         </tbody> --%>
                     </table>
-                    <form action="">
-                        <div id="searchStore">
-                            <select name="" id="">
-                                <option value="">이름</option>
-                                <option value="">주소</option>
-                                <option value="">전화번호</option>
-                            </select>
-                            <input type="text" id="keyword">
-                            <button>검색</button>
-                        </div>
-                    </form>
+                         
+                            <div id="searchStore">
+                                <select name="search" id="search">
+                                    <option value="name">이름</option>
+                                    <option value="addr">주소</option>
+                                    <option valu="tel">전화번호</option>
+                                </select>
+                                <input type="text" name="keyword" id="keyword">
+                                <button id="searchBtn" onclick="return searchBtnClick()">검색</button>
+                            </div>
+                           
                     <div id="btnArea">
                         <button id="enroll">신청 조회</button>
                     </div>
@@ -273,7 +273,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
-    <%-- <script src="/resources/js/sideBar.js"></script> --%>
+    <script src="/resources/js/sideBar.js"></script>
    
 </body>
 </html>

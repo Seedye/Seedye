@@ -326,11 +326,13 @@ public class AdminServiceImpl implements AdminService{
 		return dao.deleteMember(memberNo);
 	}
 
+	// 식당 관리 이미지 조회
 	@Override
 	public List<StoreImage> selectStoreManageImg(int storeNo) {
 		return dao.selectStoreManageImg(storeNo);
 	}
 
+	// 식당 관리 정보 조회
 	@Override
 	public Store selectStoreManage(int storeNo) {
 		return dao.selectStoreManage(storeNo);
@@ -356,6 +358,29 @@ public class AdminServiceImpl implements AdminService{
 		return dao.registerStore(storeNo);
 	}
 
+	@Override
+	public Map<String, Object> searchStoreList(Map<String, Object> searchMap, int cp) {
+
+		int listCount = dao.searchStoreListCount(searchMap);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Store> storeList = dao.searchStoreList(searchMap, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("storeList", storeList);
+		map.put("pagination", pagination);
+		
+		System.out.println(map);
+		return map;
+		
+		
+	}
+
+
+	}
+
 
 
 
@@ -363,4 +388,4 @@ public class AdminServiceImpl implements AdminService{
 	
 	
 	
-}
+

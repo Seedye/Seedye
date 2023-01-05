@@ -19,17 +19,16 @@
         <input type="checkbox" id="sideNotice">
             <div id="sideMenu2">
                 <ul class="dropdown-sideMenu2">
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">업데이트</a></li>
+                    <li><a href="/boardList/1">공지사항</a></li>
+                    <li><a href="/boardList/2">업데이트</a></li>
                 </ul>
             </div>        
         <label for="side" class="sideM" id="side3">커뮤니티</label>
         <input type="checkbox" id="side">
             <div id="sideMenu3">
                 <ul class="dropdown-sideMenu3">
-                    <li><a href="/boardList/3">자유게시판</a></li>
-                    <li><a href="">문의게시판</a></li>
-                    <%-- <li><a href="">추가할 게시판</a></li>   --%>
+                    <li><a href="/boardList/4">문의게시판</a></li>
+                    <li><a href="/freeBoardList/3">자유게시판</a></li>
                 </ul>     
             </div>
         <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>
