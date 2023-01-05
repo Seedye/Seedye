@@ -241,7 +241,7 @@ public class AdminController {
 		model.addAttribute("map", map);
 				
 		
-		System.out.println(map.get("pagination"));
+		System.out.println(map);
 		return map;
 	}
 	

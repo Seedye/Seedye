@@ -134,43 +134,43 @@
                     </table>
                     <form action="">
                         <div id="searchArea">
-                            <select name="" id="">
-                                <option value="">아이디</option>
+                            <select name="key" id="searcg-key">
+                                <option value="t">아이디</option>
                                 <option value="">전화번호</option>
                             </select>
-                            <input type="text">
+                            <input type="text" name="query"  id="search-query" placeholder="검색어를 입력해주세요.">
                             <button>검색</button>
                         </div>
                     </form>
                     <div class="pagination-area">
                         <ul class="pagination">
                             <%-- 첫 페이지로 이동 --%>
-                            <li><a href="javascript:void(0)" id="firstP">&lt;&lt;</a></li>
+                            <%-- <li><a href="javascript:void(0)" id="firstP">&lt;&lt;</a></li> --%>
                             <%-- 이전 목록 마지막 번호로 이동 --%>
-                            <li><a href="javascript:void(0)" id="preP">&lt;</a></li>
+                          <%--   <li><a href="javascript:void(0)" id="preP">&lt;</a></li> --%>
         
-                           <c:forEach var="i" begin="${pagination.startPage}" 
+                        <%--    <c:forEach var="i" begin="${pagination.startPage}" 
                                 end="${pagination.endPage}" step="1">
         
                                 <c:choose>
                                     <c:when test="${i == pagination.currentPage}"> 
                                         <li><a class="current">${i}</a></li>
-                                    </c:when>
+                                    </c:when> --%>
         
-                                    <c:otherwise>
+                                    <%-- <c:otherwise> --%>
                                         <%-- 현재 페이지를 제외한 나머지 --%>
-                                        <li><a href="javascript:void(0)">${i}</a></li>
-                                    </c:otherwise>
+                                      <%--   <li><a href="javascript:void(0)">${i}</a></li> --%>
+                                 <%--    </c:otherwise>
                                 </c:choose> 
         
-                            </c:forEach>
+                            </c:forEach> --%>
                             <!-- 특정 페이지로 이동 -->
                             
                             <!-- 다음 목록 시작 번호로 이동 -->
-                            <li><a href="javascript:void(0);" id="nextP">&gt;</a></li>
+                           <%--  <li><a href="javascript:void(0);" id="nextP">&gt;</a></li> --%>
         
                             <!-- 끝 페이지로 이동 -->
-                            <li><a href="javascript:void(0);">&gt;&gt;</a></li>
+              <%--               <li><a href="javascript:void(0);">&gt;&gt;</a></li> --%>
                         </ul>
                     </div>        
                 </div>

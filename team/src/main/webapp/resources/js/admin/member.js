@@ -4,10 +4,8 @@ const memberManage = document.getElementById("memberManage");
 
 const memberNo = document.getElementById("memberNo");
 
-document.addEventListener("DOMContentLoaded", ()=>{
-
-    selectMemberList();
-})
+let cp=1;
+selectMemberList(cp);
 
 
 
@@ -22,16 +20,45 @@ const licenseView = document.getElementById("licenseView");
 
 let tempNo = [];
 
-function selectMemberList(){
 
+// cp 얻어오기
+const pageBtnClick = ()=>{
+    $(".pageBtn").click(function(){
+        
+        var id_check = $(this).attr("id");
+        
+        cp = id_check;
+        
+        console.log(cp);
+
+        
+        selectMemberList(cp); 
+        
+        
+        
+        
+        
+    })
+}
+function selectMemberList(cp){
     $.ajax({
         url:"/admin/selectMemberList",
         dataType:"JSON",
+        data:{"cp" : cp},
         success:(map)=>{
-
+            const memberTbody = document.getElementById("memberTbody");
+            memberTbody.innerHTML="";
             
-        
+            console.log(map);
             const memberList = map.memberList;
+            const pagination = map.pagination;
+            
+            const totalCount = pagination.listCount;
+
+            var pageSize = pagination.pageSize;
+            var totalPages = 0;
+            var curPage = cp;
+            console.log(cp);
 
             console.log(map);
 
@@ -89,7 +116,19 @@ function selectMemberList(){
 
                 memberTbody.append(tr);
 
-                   
+                const paginationMenu = document.getElementsByClassName("pagination")[0];
+                   // 페이지네이션
+                if (totalCount != 0) {
+                    totalPages = Math.ceil(totalCount / pageSize);
+
+                
+                    paginationMenu.innerHTML = "";
+
+                    paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                }    
+
+
+   
 
 
               
@@ -205,69 +244,56 @@ mBtnD.addEventListener("click" ,  () => {
 
 })
 
-$.ajax({
-    url : "/feed/" + memberNickname + "/selectBookmarkList",
-    type : "GET",
-    data : {"memberNo" : memberNo, "cp" : cp},
-    dataType : "json",
-    success : (map) => {
 
-        if(map==null) {
-            console.log("결과 없음");
-        }else{
 
-            const memberList = map.memberList;
-            const pagination = map.pagination;
-        
-            if (cp <= pagination.maxPage) {
-                
-                cp++;
-                console.log("cp :" + cp);
-            }
 
-                const tableHead = document.getElementById("tableHead");
-                /* tableHead.setAttribute("id", "tablehead"); */
-                const memberNo = document.getElementsByClassName("memberNo");
+// 페이지 숫자
+function pageLink(curPage, totalPages) {
+	var pageUrl = "";
+	
+	var pageLimit = 10;
+	var startPage = parseInt((curPage - 1) / pageLimit) * pageLimit + 1;
+	var endPage = startPage + pageLimit - 1;
+	
+    console.log(startPage);
     
-                tableHead.append(memberNo);
-    
-            for(let tableHead of memberList){
+	if (totalPages < endPage) {
+	    endPage = totalPages;
+	}
+	
+	var nextPage = endPage + 1;
+	
+    // console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage", totalPages, "totalPages")
+	
+	//맨 첫 페이지
+	if (curPage > 1 && pageLimit < curPage) {
+	    pageUrl += "<button class='page first''pageBtn' href='javascript:void(0);'"+  "(1);'><i class='fas fa-angle-double-left'></button>";
+	}
 
-                const boardContainer = document.createElement("a");
-                boardContainer.href = "/feedDetail/"+ bookmark.boardNo;
+	//이전 페이지
+	if (curPage > pageLimit) {
+	    pageUrl += "<button class='page prev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></button>";
+	}
 
-                imgContainer.append(boardContainer);
-
-                const feedImg = document.createElement("img");
-                feedImg.classList.add("feed-img");
-                feedImg.setAttribute("src", bookmark.imgPath);
-
-                const hoverIconContainer = document.createElement("div")
-                hoverIconContainer.classList.add("hover-icon-container");
-
-                boardContainer.append(feedImg, hoverIconContainer);
-
-                const faHeart = document.createElement("i");
-                faHeart.classList.add("fa-regular", "fa-heart");
-
-                const faComment = document.createElement("i");
-                faComment.classList.add("fa-regular", "fa-comment");
-
-                hoverIconContainer.append(faHeart, faComment);
-
-                const boardLikeSpan = document.createElement("span");
-                const boardCommentSpan = document.createElement("span");
-
-                boardLikeSpan.innerText = bookmark.likeCount;
-                boardCommentSpan.innerText = bookmark.commentCount;
-
-                faHeart.append(boardLikeSpan);
-                faComment.append(boardCommentSpan);
-            }
-        }
-},
-error : () => {
-    console.log("게시글 오류 발생");
+	//~pageLimit 맞게 페이지 수 보여줌
+	for (var i = startPage; i <= endPage; i++) {
+	    //현재페이지면 진하게 표시
+	    if (i == curPage) {
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</button>"
+	    } else {
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();' + id="+i+">" + i + " </button>";
+	    }
+	}
+	//다음 페이지
+	if (nextPage <= totalPages) {
+	    pageUrl += "<button class='page next' 'pageBtn' href='javascript:void(0);'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></button>";
+	}
+	//맨 마지막 페이지
+	if (curPage < totalPages && nextPage < totalPages) {
+	    pageUrl += "<button class='page last''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></button>";
+	}
+	// console.log(pageUrl);
+	
+	return pageUrl;
 }
 
-}); 
