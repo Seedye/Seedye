@@ -21,7 +21,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" /> 
 
         <div id="adminMain">
-            <jsp:include page="/WEB-INF/views/common/sideBar.jsp" />
+            <%-- <jsp:include page="/WEB-INF/views/common/sideBar.jsp" /> --%>
             <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
             <!-- 식당 등록 -->
@@ -67,7 +67,7 @@
                             <option value="일반대중음식" id="f">일반대중음식</option>
                             <option value="편의점" id="g">편의점</option>
                             <option value="제과점" id="h">제과점</option>
-                            <option value="정육점" id="i">정육점</option>
+                            <option value="정육점" id="k">정육점</option>
                             <option value="착한식당" id="j">착한식당</option>
                         </select>
                     </div>
@@ -273,7 +273,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
-    <script src="/resources/js/sideBar.js"></script>
+    <%-- <script src="/resources/js/sideBar.js"></script> --%>
    
 </body>
 </html>
