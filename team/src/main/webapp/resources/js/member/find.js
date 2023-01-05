@@ -20,6 +20,8 @@ const formBtn = document.querySelector(".formBtn");
 // 타이머 함수 작성
 const authKey = document.getElementById("authKey");
 
+let flag = false;
+
 // 입력한 전화번호 담을 변수 선언
 let toPhone;
 
@@ -74,7 +76,9 @@ confirmTelBtn.lastElementChild.addEventListener("click", () => {
         sec = time%60; // 나머지 계산
 
         document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
+        if(!flag){
+            time--;
+        }
 
         // 타임아웃 시
         if(time < 0) {
@@ -173,7 +177,6 @@ confirmBox.lastElementChild.addEventListener("click", () => {
                     
                 } else {
 
-                    
                     confirmTelBox.lastElementChild.innerText = "인증이 완료 되었습니다.";
 
                     confirmTelBox.lastElementChild.classList.add("confirm");

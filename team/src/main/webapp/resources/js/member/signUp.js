@@ -1,6 +1,10 @@
-// 회원가입 타이머 작성
+// 회원가입 타이머 작성setattribute
 // 타이머 함수 작성
 const authKey = document.getElementById("authKey");
+
+// 휴대폰 인증 유무에 따른 타이머 시간 제어 변수 
+let flag = false;
+
 const timer = function(){
 
     let time = 180; // 인증번호 제한시간 작성
@@ -14,7 +18,9 @@ const timer = function(){
         sec = time%60; // 나머지 계산
     
         document.getElementById("timer").innerHTML = "0" + min + ":" + (sec<10 ? "0" + sec : sec);
-        time--;
+        if(!flag){
+            time--;
+        }
     
         // 타임아웃 시
         if(time < 0) {
@@ -356,17 +362,19 @@ confirmCheck.lastElementChild.addEventListener("click", () => {
 
                 checkObj.phoneCheck = true;
 
-                authKeyMessage.innerText = "인증이 완료 되었습니다.";
-                authKeyMessage.classList.add("confirm");
-                authKeyMessage.classList.remove("error");
+                if(checkObj.authKey == true) {
 
-                const memberTel = document.getElementById("memberTel");
+                    authKeyMessage.innerText = "인증이 완료 되었습니다.";
+                    authKeyMessage.classList.add("confirm");
+                    authKeyMessage.classList.remove("error");
+    
+                    const memberTel = document.getElementById("memberTel");
+    
+                    memberTel.setAttribute("readonly", "");
+                    sendAuthKeyBtn.setAttribute("disabled", "");
+                }
 
-                memberTel.setAttribute("readonly", "");
-                // timer.style.display = "none";
-                // document.getElementById("timer").innerHTML = "";
-
-
+                flag = true;
 
             }
         },
