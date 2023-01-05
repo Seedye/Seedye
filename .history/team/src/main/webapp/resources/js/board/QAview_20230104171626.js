@@ -59,10 +59,8 @@ for (let boardListViewItems of boardListView) {
         QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
         QAIDAndDateP.innerText =
-        QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
-
-        var content = QABoardDetail[0].boardContent;
-        QAContentP.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+          QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
+        QAContentP.innerText = QABoardDetail[0].boardContent;
 
         QATextCommentP.innerText = "답변";
 

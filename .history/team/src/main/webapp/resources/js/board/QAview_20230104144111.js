@@ -59,10 +59,8 @@ for (let boardListViewItems of boardListView) {
         QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
         QAIDAndDateP.innerText =
-        QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
-
-        var content = QABoardDetail[0].boardContent;
-        QAContentP.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+          QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
+        QAContentP.innerText = QABoardDetail[0].boardContent;
 
         QATextCommentP.innerText = "답변";
 
@@ -70,7 +68,6 @@ for (let boardListViewItems of boardListView) {
           if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
-            commentTextarea.setAttribute("id", "commentContent");
             commentTextarea.innerText = QABoardDetail[0].commentContent;
             boardViewContentTextComment.append(commentTextarea);
           }else{
@@ -84,9 +81,11 @@ for (let boardListViewItems of boardListView) {
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
             commentTextarea.setAttribute("id", "commentContent");
-            // commentTextarea.classList.add("")
             boardViewContentTextComment.append(commentTextarea);
-
+            // commentTextarea.innerText ="아무거나";
+            // ajax써서 넘겨 줘야함
+            // 답변을
+            // 답변저장눌렀을때
            
           }else{
             QAContentCommentP.innerText =
@@ -174,6 +173,8 @@ for (let boardListViewItems of boardListView) {
             });
           });
 
+
+
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
           if(loginMemberAutority ==2) {
@@ -183,70 +184,97 @@ for (let boardListViewItems of boardListView) {
             boardUpdate.addEventListener("click",()=>{
 
               console.log("코멘트?:"+QABoardDetail[0].commentContent);
-
-
               if(QABoardDetail[0].commentContent != null){
                 console.log("값이 들어가 있음");
-                // console.log("작성된 코멘트값 : "+commentContent.value);                
-                  $.ajax({
-                    url:"/comment/update",
-                    data : {"commentNo" :QABoardDetail[0].commentNo,
-                            "commentContent" : commentContent.value},
-                    type : "post",
-                    success : function(result) {
-
-                        if(result > 0) {
-                            alert("댓글 수정 완료");
-
-                            // freeBoardDetailAnwserContent.innerHTML = "";
-                            
-                            // commentListFun();
-                            location.reload();
-
-                        }else {
-                            alert("수정 실패")
-                        }
-                    },
-                    error : function(req, status, error){
-
-                        console.log("댓글 삭제 실패");
-                        console.log(req.responseText);
-                    }
-            
-                });
-              }else{
-                console.log(comment.commentNo);
                 $.ajax({
                   url : "/comment/insert",
-                    data : {"commentContent" :commentContent.value,
-                            "memberNo" : memberNo,
-                            "boardNo" : boardListViewItems.lastElementChild.id},
-                    type : "post",
-                    success : function(result) {
-                        if (result > 0){
-                            alert("댓글 등록 완료")
-
-                            // 입력한 댓글 초기화
-                            // commentContent.value = "";
-
-                            // // 댓글 리스트를 초기화
-                            // freeBoardDetailAnwserContent.innerHTML = "";
-
-                            // // 댓글 리스트를 조회하는 ajax 함수 실행
-                            // commentListFun();
-                            location.reload();
-
-                        } else{
-                            alert("실패");
-                        }
-
-                    },
-
-                    error : () => {
-                        console.log("댓글 등록 실패");
-                    }
+                            data : {"commentContent" : QABoardDetail[0].commentContent,
+                                    "memberNo" : memberNo,
+                                    "boardNo" : boardListViewItems.lastElementChild.id},
+                            type : "post",
+                            success : function(result) {
+                                if (result > 0){
+                                    alert("댓글 등록 완료")
+    
+                                    // 입력한 댓글 초기화
+                                    // commentContent.value = "";
+    
+                                    // // 댓글 리스트를 초기화
+                                    // freeBoardDetailAnwserContent.innerHTML = "";
+    
+                                    // // 댓글 리스트를 조회하는 ajax 함수 실행
+                                    // commentListFun();
+                                    location.reload();
+    
+                                } else{
+                                    alert("실패");
+                                }
+    
+                            },
+    
+                            error : () => {
+                                console.log("댓글 등록 실패");
+                            }
               });
-            }
+              }else{
+              //   $.ajax({
+              //     url : "/comment/insert",
+              //               data : {"commentContent" : commentContent.value,
+              //                       "memberNo" : memberNo,
+              //                       "boardNo" : boardListViewItems.lastElementChild.id},
+              //               type : "post",
+              //               success : function(result) {
+              //                   if (result > 0){
+              //                       alert("댓글 등록 완료")
+    
+              //                       // 입력한 댓글 초기화
+              //                       // commentContent.value = "";
+    
+              //                       // // 댓글 리스트를 초기화
+              //                       // freeBoardDetailAnwserContent.innerHTML = "";
+    
+              //                       // // 댓글 리스트를 조회하는 ajax 함수 실행
+              //                       // commentListFun();
+              //                       location.reload();
+    
+              //                   } else{
+              //                       alert("실패");
+              //                   }
+    
+              //               },
+    
+              //               error : () => {
+              //                   console.log("댓글 등록 실패");
+              //               }
+              // });
+
+              console.log(comment.commentNo);
+              $.ajax({
+                url:"/comment/update",
+                data : {"commentNo" : comment.commentNo,
+                        "commentContent" : QABoardDetail[0].commentContent},
+                type : "post",
+                success : function(result) {
+
+                    if(result > 0) {
+                        alert("댓글 수정 완료");
+
+                        freeBoardDetailAnwserContent.innerHTML = "";
+                        
+                        commentListFun();
+
+                    }else {
+                        alert("수정 실패")
+                    }
+                },
+                error : function(req, status, error){
+
+                    console.log("댓글 삭제 실패");
+                    console.log(req.responseText);
+                }
+        
+            });
+              }
           });
           boardUpDel.append(boardUpdate, boardDelete);
           }else{
@@ -258,7 +286,7 @@ for (let boardListViewItems of boardListView) {
             // !게시물 수정
             boardUpdate.addEventListener("click", () => {
               boardViewModal.style.display = "none";
-              // document.body.style.overflow = "unset";
+              document.body.style.overflow = "unset";
               boardViewTitleDetailAnswer.innerHTML = null;
               boardViewContentContent.innerHTML = null;
               boardViewContentText.innerHTML = null;
