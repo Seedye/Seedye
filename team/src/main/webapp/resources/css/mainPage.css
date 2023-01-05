@@ -411,7 +411,7 @@ footer{
     margin-right: 30px;
 }
 
-.board-btn:hover, .bookmark-btn:hover{
+.board-btn:hover{
     background-color: #3e8e41;
 }
 
@@ -551,4 +551,8 @@ footer{
 
 .bookmark li{
     border-bottom: 1px solid #ddd;
+}
+
+.regi-bookmark{
+    background-color: #dd3333ee;
 }
