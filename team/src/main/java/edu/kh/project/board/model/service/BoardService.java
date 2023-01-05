@@ -76,4 +76,12 @@ public interface BoardService {
 	 */
 	int freeBoardDelete(int boardNo);
 
+	
+	/** 게시글 카운트
+	 * @param boardNo
+	 * @return
+	 */
+	int updateReadCount(int boardNo); 
+	
+
 }

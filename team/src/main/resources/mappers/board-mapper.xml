@@ -246,7 +246,13 @@
 		ORDER BY BOARD_NO DESC
 	</select>
 	
-	
+	<!-- 게시글 상세 조회시 조회수 증가 -->
+	<update id="updateReadcount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE
+		BOARD_NO=#{boardNo}
+	</update>
 	
 	
 	
