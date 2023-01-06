@@ -52,6 +52,7 @@ public class MainController {
 		
 		model.addAttribute("mainPageMap", mainPageMap);
 		
+		
 		return "main/mainPage";
 	}
 
