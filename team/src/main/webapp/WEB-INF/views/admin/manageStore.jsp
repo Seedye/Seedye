@@ -97,7 +97,7 @@
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
                     <select id="selectBox">
-                        <option>업종</option>
+                        <option value="업종" disabled>업종</option>
                         <option value="한식">한식</option>
                         <option value="중식">중식</option>
                         <option value="일식">일식</option>

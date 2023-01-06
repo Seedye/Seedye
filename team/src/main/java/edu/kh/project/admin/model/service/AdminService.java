@@ -162,6 +162,10 @@ public interface AdminService {
 
 
 
+	Map<String, Object> selectStoreList_search(Map<String, Object> selectMap, int cp);
+
+
+
 
 
 
