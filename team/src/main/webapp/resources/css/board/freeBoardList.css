@@ -140,9 +140,6 @@
 
 }
 
-/* #freeBoard-detail-view > div{
-  margin-bottom: 20px;
-} */
 
 #freeBoard-detail-title{
   display: flex;
@@ -161,8 +158,8 @@
   font-size: 14px;
   line-height: 22px;
 
-  height: 70px;
-
+  height: 100px;
+  margin-bottom: 20px;
   overflow-y: scroll;
 }
 
@@ -180,7 +177,6 @@
   display: flex;
   height: 120px;
   width: 500px;
-  /* justify-content: space-between; */
 }
 
 #freeBoard-detail-view img{
@@ -193,7 +189,6 @@
 #freeBoard-detail-anwser{
   font-size: 20px;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   margin: 20px 0px;
 }
@@ -258,7 +253,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: -10px;
+  bottom: 40px;
 
 }
 
@@ -309,14 +304,6 @@
 
 }
 
-/* .fa-comment-dots{
-  margin:0 10px;
-  background-color: #f7f8f9;
-  border: none;
-  font-size: 12px;
-  cursor: pointer;
-
-} */
 
 .deleteBtn{
   margin-right: 15px;
@@ -389,7 +376,6 @@
   border: none;
   
   margin:0 5px;
-  /* font-size: 14px; */
   font-weight: bold;
   cursor: pointer;
 }
@@ -454,7 +440,6 @@
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
-  /* background-color: red; */
 }
 
 .board-write-btn{
@@ -494,14 +479,13 @@
   height: 30px;
   list-style:none;
   cursor: pointer;
-  /* padding-left: 0px; */
 }
+
 .board-list-page-no:hover{
-  /* background-color: #061a00; */
   border-bottom: 1px solid #2db400;
 }
+
 i{
-  /* color : rgba(0, 0, 0, 0.459) */
   color:green;
 }
 i:hover{

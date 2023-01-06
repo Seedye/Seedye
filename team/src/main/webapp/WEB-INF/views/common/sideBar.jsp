@@ -4,7 +4,7 @@
     <section>
 
     <div id="sideAll">                  
-        <label for="sideIntro" class="sideM" id="side1">소개</label>
+        <label for="sideIntro" class="sideM" id="side1"><a href="/introduction">소개</a></label>
         <input type="checkbox" id="sideIntro">
             <div id="sideMenu1">
                 <ul class="dropdown-sideMenu1">

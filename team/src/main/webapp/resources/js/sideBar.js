@@ -93,8 +93,10 @@ side.addEventListener("click", () => {
 
 });
 
-sideManage.addEventListener("click", () => {
-    
+if(loginMemberAuthority == 2){
+
+    sideManage.addEventListener("click", () => {
+        
     if(toggleFlag){
         dropDownContent4.style.height = "100px";
         // dropDownContent.style.height = "0px";
@@ -113,7 +115,6 @@ sideManage.addEventListener("click", () => {
         side6.style.backgroundColor = "#2db400"
         toggleFlag = true;
     }
-
-    dropDownContent4.style.height = "0px";
-
+    
 });
+} 

@@ -168,7 +168,7 @@ public class BoardController {
 	public int freeBoardDelete(@RequestParam("boardNo") int boardNo) {
 
 		System.out.println(boardNo);
-//		
+		
 		int result = service.freeBoardDelete(boardNo);
 		return result;
 	}

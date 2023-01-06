@@ -103,7 +103,9 @@
     <!-- 푸터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    
+    <script>
+        var authority = "${loginMember.authority}";
+    </script>
     
     <script src="../../resources/js/sideBar.js"></script>
     <script src="../../resources/js/header.js"></script>
