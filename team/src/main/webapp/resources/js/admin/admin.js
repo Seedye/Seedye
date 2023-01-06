@@ -127,9 +127,8 @@ function selectStoreList(cp){
                         
                         cp = id_check;
                         
-
                         
-                        selectStoreList(cp); 
+                        if(id_check != null) selectStoreList(cp); 
                         
 
                     })
@@ -413,7 +412,7 @@ function selectStoreList(cp){
                             
 
                             
-                            selectStoreList(cp); 
+                            if(id_check != null) selectStoreList(cp); 
                             
 
                         })
@@ -702,7 +701,7 @@ function selectBoxSelect(cp){
                         
             
                         
-                        selectBoxSelect(cp); 
+                        if(id_check != null) selectBoxSelect(cp); 
                         
             
                     })
@@ -835,7 +834,7 @@ function selectBoxSelect(cp){
                         
                             
                         
-                        selectBoxSelect(cp); 
+                        if(id_check != null) selectBoxSelect(cp); 
                         
             
                     })

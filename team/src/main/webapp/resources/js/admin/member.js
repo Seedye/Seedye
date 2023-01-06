@@ -127,7 +127,7 @@ function selectMemberList(cp){
                                     console.log(cp);
             
                                     
-                                    selectMemberList(cp); 
+                                    if(id_check != null) selectMemberList(cp); 
                                     
             
                                 })
@@ -329,7 +329,7 @@ function selectMemberList(cp){
                                     console.log(cp);
             
                                     
-                                    selectMemberList(cp); 
+                                    if(id_check != null) selectMemberList(cp); 
                                     
             
                                 })
