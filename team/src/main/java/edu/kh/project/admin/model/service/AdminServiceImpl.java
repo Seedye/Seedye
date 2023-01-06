@@ -397,6 +397,30 @@ public class AdminServiceImpl implements AdminService{
 		return map;
 	}
 
+	/**
+	 * 회원 목록 조회  검색하기
+	 */
+	@Override
+	public Map<String, Object> searchKey(Map<String, Object> searchKey, int cp) {
+		
+		int listCount = dao.searchKey(searchKey);
+		
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		System.out.println(searchKey);
+		
+		
+		List<Member> memberList = dao.searchKey(searchKey, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("memberList", memberList);
+		map.put("pagination", pagination);
+		
+		return map;
+	}
+
 
 	}
 

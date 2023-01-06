@@ -321,6 +321,29 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectStoreList_search", selectMap, rowBounds);
 	}
 
+	/** 검색으로 회원 목록 조회
+	 * @param searchKey
+	 * @return
+	 */
+	public int searchKey(Map<String, Object> searchKey) {
+	
+		return sqlSession.selectOne("adminMapper.searchKey", searchKey);
+	}
+
+	/** 검색으로 회원 조회  List로 가져오기
+	 * @param searchKey
+	 * @param pagination
+	 * @return
+	 */
+	public List<Member> searchKey(Map<String, Object> searchKey, Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.searchKeyList", searchKey, rowBounds);
+	}
+
 
 
 

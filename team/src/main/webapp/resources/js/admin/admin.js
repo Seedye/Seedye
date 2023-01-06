@@ -993,7 +993,7 @@ function searchBtnClick(){
 
         selectStoreList();
     } else{
-        selectBoxSelect();
+        selectStoreList();
     }
 
 }

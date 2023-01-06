@@ -192,19 +192,7 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 <!-- 회원 목록 조회 -->
 <select id="selectMemberList" resultMap="member_rm">
 	SELECT MEMBER_NO, AUTHORITY, MEMBER_ID, MEMBER_TEL, ENROLL_DATE, MEMBER_DEL_FL
-	FROM "MEMBER"
-	 <if test='query != null and query != ""'>
-	         <choose>
-	            <when test='key == "t"'> <!-- 제목 -->
-	               WHERE MEMBER_ID LIKE '%${query}%' <!-- #이 아니라 $ 사용해야지 홑따옴표가 안붙고 사용 -->
-	            </when>
-	            
-	         <otherwise> <!-- 작성자(w) -->
-	            WHERE MEMBER_TEL LIKE '%${query}%'
-	         </otherwise>
-	         </choose>
-     	  </if>
-	
+	FROM "MEMBER"	
 </select>
 
 <!-- 회원 권한 변경 -->
@@ -460,6 +448,41 @@ WHERE STORE_TYPE=#{storeType}
 	
 		</choose>	
 	</if>	
+</select>
+
+
+<!-- 회원 목록 검색 조회 -->
+<select id="searchKey" resultType="_int">
+	SELECT COUNT(*)
+	FROM "MEMBER"
+	 <if test='query != null and query != ""'>
+	         <choose>
+	            <when test='key == "t"'> <!-- 제목 -->
+	               WHERE MEMBER_ID LIKE '%${query}%' <!-- #이 아니라 $ 사용해야지 홑따옴표가 안붙고 사용 -->
+	            </when>
+	         <otherwise> <!-- 작성자(w) -->
+	            WHERE MEMBER_TEL LIKE '%${query}%'
+	         </otherwise>
+	         </choose>
+     	  </if>
+</select>
+
+<!-- 회원 목록 검색 조회 리스트로 가져오기  -->
+
+<select id = "searchKeyList" resultMap="member_rm">
+	SELECT MEMBER_NO, AUTHORITY, MEMBER_ID, MEMBER_TEL, ENROLL_DATE, MEMBER_DEL_FL
+	FROM "MEMBER"
+	
+	<if test='query != null and query != ""'>
+	         <choose>
+	            <when test='key == "t"'> <!-- 제목 -->
+	               WHERE MEMBER_ID LIKE '%${query}%' <!-- #이 아니라 $ 사용해야지 홑따옴표가 안붙고 사용 -->
+	            </when>
+	         <otherwise> <!-- 작성자(w) -->
+	            WHERE MEMBER_TEL LIKE '%${query}%'
+	         </otherwise>
+	         </choose>
+     	  </if>
 </select>
 
 </mapper>  

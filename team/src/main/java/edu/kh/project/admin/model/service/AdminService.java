@@ -166,6 +166,15 @@ public interface AdminService {
 
 
 
+	/** 회원 검색
+	 * @param searchKey
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> searchKey(Map<String, Object> searchKey, int cp);
+
+
+
 
 
 
