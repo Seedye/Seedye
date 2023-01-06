@@ -308,6 +308,19 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.searchStoreList", searchMap, rowBounds);
 	}
 
+	public int searchStoreListCount_search(Map<String, Object> selectMap) {
+		return sqlSession.selectOne("adminMapper.searchStoreListCount_search", selectMap);
+	}
+
+	public List<Store> selectStoreList_search(Map<String, Object> selectMap, Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectStoreList_search", selectMap, rowBounds);
+	}
+
 
 
 

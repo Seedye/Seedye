@@ -20,22 +20,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 let cp = 1;
 selectStoreList(cp);
 
-// cp 얻어오기
-const pageBtnClick = ()=>{
-    $(".pageBtn").click(function(){
-        
-        var id_check = $(this).attr("id");
-        
-        cp = id_check;
-        
-        console.log(cp);
 
-        
-        selectStoreList(cp); 
-        
-
-    })
-}
 
 
 const searchBtn = document.getElementById("searchBtn");
@@ -137,6 +122,47 @@ function selectStoreList(cp){
                     paginationMenu.innerHTML = pageLink(curPage, totalPages);
                 }    
 
+                // cp 얻어오기
+                
+                    $(".pageBtn").click(function(){
+                        
+                        var id_check = $(this).attr("id");
+                        
+                        cp = id_check;
+                        
+                        console.log(cp);
+
+                        
+                        selectStoreList(cp); 
+                        
+
+                    })
+                
+                    $(".pageFirst").click(function(){
+                        
+                        cp = pagination.startPage;
+
+                        alert("ㅅㅂ");
+                        selectBoxSelect(cp);
+                    })
+                    $(".pagePrev").click(function(){
+                        
+                        cp = pagination.prevPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageNext").click(function(){
+                        
+                        cp = pagination.nextPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageLast").click(function(){
+                        
+                        cp = pagination.maxPage;
+
+                        selectBoxSelect(cp);
+                    })
 
 
 
@@ -178,7 +204,9 @@ function selectStoreList(cp){
                             const select = document.getElementById("select");
                             const phoneNumberArea = document.getElementById("phoneNumberArea");
                             
-                            
+                            const roadAddr = document.querySelector(".inputRoad");
+                            const jibunAddr = document.querySelector(".inputJibun");
+
                             console.log(store.roadnameAddress);
                             console.log(store.imageList);
                            
@@ -205,8 +233,12 @@ function selectStoreList(cp){
                             }
                           storeNameArea.setAttribute('value', store.storeName);
 
-                            roadAddress.setAttribute('value', store.roadnameAddress);
-                            document.getElementById("sample4_jibunAddress").setAttribute('value', store.landnumberAddress);
+                            roadAddr.setAttribute('value', store.roadnameAddress);
+
+                            console.log(store.roadnameAddress);
+                            jibunAddr.setAttribute('value', store.landnumberAddress);
+
+                            
 
                           phoneNumberArea.setAttribute('value', store.storeTel);
 
@@ -337,6 +369,8 @@ function selectStoreList(cp){
                     // 처리여부
                     const td6 = document.createElement("td");
                     
+                    console.log(store.checkFl);
+
                     if(store.checkFl == 'B'){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
@@ -365,7 +399,46 @@ function selectStoreList(cp){
                         paginationMenu.innerHTML = pageLink(curPage, totalPages);
                     }    
     
+                        // cp 얻어오기
+                        $(".pageBtn").click(function(){
+                            
+                            var id_check = $(this).attr("id");
+                            
+                            cp = id_check;
+                            
+                            console.log(cp);
+
+                            
+                            selectStoreList(cp); 
+                            
+
+                        })
+
+                        $(".pageFirst").click(function(){
+                        
+                            cp = pagination.startPage;
     
+                            selectBoxSelect(cp);
+                        })
+                        $(".pagePrev").click(function(){
+                            
+                            cp = pagination.prevPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                        $(".pageNext").click(function(){
+                            
+                            cp = pagination.nextPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                        $(".pageLast").click(function(){
+                            
+                            cp = pagination.maxPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                       
     
     
     
@@ -513,17 +586,6 @@ function selectStoreList(cp){
 
 }
 
-function searchBtnClick(){
-    
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-            
-    if(selectBox.value != null){
-        selectStoreList(cp);      
-    } else{
-        selectBoxSelect(cp);
-    }
-    }
 
 
 
@@ -544,8 +606,14 @@ const selectBox = document.getElementById("selectBox");
 
 let pageBtn = document.getElementsByClassName("pageBtn");
 
+selectBox.addEventListener("change",()=>{
+
+    selectBoxSelect(cp);
+})
+
 function selectBoxSelect(cp){
     
+    if(keyword == null){
 
     $.ajax({
             url:"/admin/selectType",
@@ -553,8 +621,6 @@ function selectBoxSelect(cp){
             dataType:"JSON",
             success : (typeMap) =>{
                 
-                tempType= selectBox.value;
-
                 const pagination = typeMap.pagination;
                 
                 var pageSize = pagination.pageSize;
@@ -624,28 +690,198 @@ function selectBoxSelect(cp){
                         paginationMenu.innerHTML = "";
 
                         paginationMenu.innerHTML = pageLink(curPage, totalPages);
-                    }    
+                    }  
+                    
+                    // cp 얻어오기
+                        $(".pageBtn").click(function(){
+                            
+                        var id_check = $(this).attr("id");
+                        
+                        cp = id_check;
+                        
+                        console.log(cp);
+            
+                        
+                        selectBoxSelect(cp); 
+                        
+            
+                    })
+                    $(".pageFirst").click(function(){
+                        
+                        cp = pagination.startPage;
 
-                }    
+                        selectBoxSelect(cp);
+                    })
+                    $(".pagePrev").click(function(){
+                        
+                        cp = pagination.prevPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageNext").click(function(){
+                        
+                        cp = pagination.nextPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageLast").click(function(){
+                        
+                        cp = pagination.maxPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    
+                
+                
+                
+            }    
+            
+            
+            
+        },    
+        error : ()=>{
+            console.log("실패")
+        }    
+        })    
+    } else {
+        $.ajax({
+            url:"/admin/selectType",
+            data: {"storeType" : selectBox.value, "cp":cp, "search":search.value, "keyword": keyword.value},
+            dataType:"JSON",
+            success : (map) =>{
 
                 console.log(cp);
-            
-            $(".pageBtn").click(function(){
-        
-                    var id_check = $(this).attr("id");
-                    
-                    cp = id_check;   
-                selectBoxSelect(cp, tempType); 
-            })
                 
-            },    
-            error : ()=>{
-                console.log("실패")
+                const pagination = map.pagination;
+                const storeList = map.storeList;
+                
+                var pageSize = pagination.pageSize;
+                var totalPages = 0;
+                var curPage = cp;
+                
+                const tbody = document.getElementById("tbody")
+                
+                
+                tbody.innerHTML = "";
+
+                for(let store of storeList){
+                    
+                    const tr = document.createElement("tr");
+                    tr.classList.add("storeList");
+                    
+                    // 번호
+                    const td1 = document.createElement("td");
+                    td1.innerText = store.storeNo;
+                    
+                    // 이름
+                    const td2 = document.createElement("td");
+                    td2.innerText = store.storeName;
+                    
+                    // 업종
+                    const td3 = document.createElement("td");
+                    td3.innerText = store.storeType;
+                    
+                    // 주소
+                    const td4 = document.createElement("td");
+                    td4.innerText = store.roadnameAddress;
+                    
+                    // 전화번호
+                    const td5 = document.createElement("td");
+                    td5.innerText = store.storeTel;
+                    
+                    // 처리여부
+                    const td6 = document.createElement("td");
+                    
+                    if(store.checkFl == 'B'){
+                        td6.innerText = '기본'
+                    } else if(store.checkFl == 'N'){
+                        td6.innerText = '미확인'
+                    } else if(store.checkFl = 'C'){
+                        td6.innerText = '협의중'
+                    } else {
+                        td6.innerText = "등록 완료"
+                    }    
+
+                    // 관리하기
+                    const td7 = document.createElement("td");
+                    td7.innerHTML = "<button class='store-manage'>관리하기</button>"
+                    
+                    tr.append(td1, td2, td3, td4, td5, td6, td7);
+
+                    tbody.append(tr);
+
+                    const totalCount = pagination.listCount;
+                    
+
+                    if (totalCount != 0) {
+                        totalPages = Math.ceil(totalCount / pageSize);
+                        // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
+                        let htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
+                        // common.js - pageLink
+                    
+                        paginationMenu.innerHTML = "";
+
+                        console.log(totalPages);
+                        console.log(curPage);
+
+                        paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                    }  
+                    
+                    // cp 얻어오기
+                        $(".pageBtn").click(function(){
+                            
+                        var id_check = $(this).attr("id");
+                        
+                        cp = id_check;
+                        
+                        console.log(cp);
+            
+                        
+                        selectBoxSelect(cp); 
+                        
+            
+                    })
+                    
+
+                    $(".pageFirst").click(function(){
+                        
+                        cp = pagination.startPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pagePrev").click(function(){
+                        
+                        cp = pagination.prevPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageNext").click(function(){
+                        
+                        cp = pagination.nextPage;
+
+                        selectBoxSelect(cp);
+                    })
+                    $(".pageLast").click(function(){
+                        
+                        cp = pagination.maxPage;
+
+                        selectBoxSelect(cp);
+                    })
+
+                
+                
             }    
-        })    
+            
+            
+            
+        },    
+        error : ()=>{
+            console.log("실패")
+        }    
+        })     
     }    
 
-
+}
 // 신청 조회    
 const enroll = document.getElementById("enroll");
 enroll.addEventListener("click", ()=>{
@@ -718,35 +954,47 @@ function pageLink(curPage, totalPages) {
 	
 	//맨 첫 페이지
 	if (curPage > 1 && pageLimit < curPage) {
-	    pageUrl += "<button class='page first''pageBtn' href='javascript:void(0);'"+  "(1);'><i class='fas fa-angle-double-left'></button>";
+	    pageUrl += "<button class='pageFirst''pageBtn' href='javascript:void(0);'"+  "(1);'>&lt;&lt;</button>";
 	}
 
 	//이전 페이지
 	if (curPage > pageLimit) {
-	    pageUrl += "<button class='page prev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></button>";
+	    pageUrl += "<button class='pagePrev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'>&lt;</button>";
 	}
 
 	//~pageLimit 맞게 페이지 수 보여줌
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</button>"
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'>" + i + "</button>"
 	    } else {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();' + id="+i+">" + i + " </button>";
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'  + id="+i+">" + i + " </button>";
 	    }
 	}
 	//다음 페이지
 	if (nextPage <= totalPages) {
-	    pageUrl += "<button class='page next' 'pageBtn' href='javascript:void(0);' onclick='return nextPage()'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></button>";
+	    pageUrl += "<button class='pageNext' 'pageBtn' href='javascript:void(0);'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'>&gt;</button>";
 	}
 	//맨 마지막 페이지
 	if (curPage < totalPages && nextPage < totalPages) {
-	    pageUrl += "<button class='page last''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + "); onclick='return pageLast()'><i class='fas fa-angle-double-right'></button>";
+	    pageUrl += "<button class='pageLast''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");>&gt;&gt;</button>";
 	}
 	// console.log(pageUrl);
     
 	return pageUrl;
     
   
+}
+
+
+function searchBtnClick(){
+
+    if(selectBox.value == null){
+
+        selectStoreList();
+    } else{
+        selectBoxSelect();
+    }
+
 }
 

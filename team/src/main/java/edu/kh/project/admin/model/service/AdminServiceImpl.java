@@ -378,6 +378,25 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 
+	@Override
+	public Map<String, Object> selectStoreList_search(Map<String, Object> selectMap, int cp) {
+
+		int listCount = dao.searchStoreListCount_search(selectMap);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		System.out.println(selectMap);
+		
+		List<Store> storeList = dao.selectStoreList_search(selectMap, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("storeList", storeList);
+		map.put("pagination", pagination);
+		
+		return map;
+	}
+
 
 	}
 

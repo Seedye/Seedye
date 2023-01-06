@@ -416,4 +416,50 @@ WHERE STORE_TYPE= #{storeType}
 	</if>	
 </select>
 
+<select id="searchStoreListCount_search" resultType="_int">
+SELECT COUNT(*) FROM STORE
+WHERE STORE_TYPE=#{storeType}
+	<!-- 검색어가 있을 경우 -->
+	<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "name" '>
+				AND STORE_NAME LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "addr" '>
+				AND ROADNAME_ADDRESS LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND STORE_TEL LIKE '%${keyword}%'
+			</otherwise>
+	
+		</choose>	
+	</if>	
+
+</select>
+
+
+<select id="selectStoreList_search" resultMap="store_rm">
+	SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
+ 	FROM STORE 
+ 	WHERE STORE_TYPE=#{storeType}
+	<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "name" '>
+				AND STORE_NAME LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "addr" '>
+				AND ROADNAME_ADDRESS LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND STORE_TEL LIKE '%${keyword}%'
+			</otherwise>
+	
+		</choose>	
+	</if>	
+</select>
+
 </mapper>  

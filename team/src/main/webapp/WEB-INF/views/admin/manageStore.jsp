@@ -75,8 +75,8 @@
                         <aside><span class="red">＊</span>주소</aside>
                         <div id="addr-area">
                             <button type="button" onclick="sample4_execDaumPostcode()" id="addrSearch">주소 검색</button>
-                            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="roadAddr" value="">
-                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="landAddr" value="">
+                            <input type="text" id="sample4_roadAddress" class="inputRoad" placeholder="도로명주소" name="roadAddr" value="">
+                            <input type="text" id="sample4_jibunAddress" class="inputJibun" placeholder="지번주소" name="landAddr" value="">
                             <span id="guide" style="color:#999;display:none"></span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
                     <select id="selectBox">
-                        <option>업종</option>
+                        <option value="업종" disabled>업종</option>
                         <option value="한식">한식</option>
                         <option value="중식">중식</option>
                         <option value="일식">일식</option>

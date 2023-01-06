@@ -323,18 +323,34 @@ public class AdminController {
 	@GetMapping("selectType")
 	@ResponseBody
 	public String selectTypeList(Model model, String storeType,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> selectMap) {
 		
 		
-		System.out.println(cp);
 		
-		Map<String, Object> typeMap = service.selectStoreList(storeType, cp);
+		if(selectMap.get("keyword") == null) {
+		
+			Map<String, Object> typeMap = service.selectStoreList(storeType, cp);
 	
-		model.addAttribute("typeMap", typeMap);
+			model.addAttribute("typeMap", typeMap);
 		
-		System.out.println(typeMap);
+			System.out.println(typeMap);
 		
-		return new Gson().toJson(typeMap);
+			return new Gson().toJson(typeMap);
+			
+		} else {
+			Map<String, Object> map = service.selectStoreList_search(selectMap, cp);
+			
+			System.out.println(selectMap);
+			System.out.println(map);
+			
+			model.addAttribute("selectMap", map);
+			
+			
+			return new Gson().toJson(map);
+			
+		}
+		
 	}
 	
 	// 식당관리 신청조회

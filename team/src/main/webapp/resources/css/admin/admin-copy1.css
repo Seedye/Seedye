@@ -220,12 +220,12 @@ margin-bottom: 20px;
 
 #storeTable{
     width: 100%;
-    height: 70%;
     border: 1px solid black;
 }
 
 .storeList{
     cursor: pointer;
+    height: 50px;
 }
 
 #storeTH{
@@ -408,4 +408,35 @@ td{
 
 #m-BtnR > a{
     text-decoration: none;
+}
+
+
+.pageBtn{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.pagePrev{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.pageLast{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.pageFirst{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.pageNext{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
 }
