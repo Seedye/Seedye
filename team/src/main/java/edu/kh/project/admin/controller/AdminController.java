@@ -233,10 +233,12 @@ public class AdminController {
 	@ResponseBody
 	public String selectMemberList(Model model,
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
-			@RequestParam Map<String, Object>searchKey) {
+			@RequestParam Map<String, Object> searchMap) {
 			
-
-		if(searchKey.get("searchKey") == null) {
+			System.out.println(searchMap);
+			
+			
+			if(searchMap.get("searchkey") == null) {
 			
 			Map<String, Object> map = service.selectMemberList(cp);
 			
@@ -246,12 +248,14 @@ public class AdminController {
 			System.out.println(map);
 			
 			return new Gson().toJson(map);
+	
 		} else {
-			System.out.println(searchKey);
 			
-			searchKey = service.searchKey(searchKey, cp); 
+			System.out.println(searchMap);
 			
-			return new Gson().toJson(searchKey);
+			searchMap = service.searchKey(searchMap, cp); 
+			
+			return new Gson().toJson(searchMap);
 		}
 	}
 	

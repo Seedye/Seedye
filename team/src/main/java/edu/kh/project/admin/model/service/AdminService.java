@@ -171,7 +171,7 @@ public interface AdminService {
 	 * @param cp
 	 * @return
 	 */
-	Map<String, Object> searchKey(Map<String, Object> searchKey, int cp);
+	Map<String, Object> searchKey(Map<String, Object> searchMap, int cp);
 
 
 
