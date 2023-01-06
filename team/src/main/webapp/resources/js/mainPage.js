@@ -26,8 +26,6 @@ function relayout(name, addr) {
     // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
     map.relayout();
 
-    
-
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch('"' + addr + '"', function(result, status) {
 
@@ -67,13 +65,14 @@ function relayout(name, addr) {
     });
 }
 
-
 const searchBtn = document.querySelector(".searchBtn");
 
 let selectStoreNo;
 
 /* 검색 버튼 눌렀을때 카태고리 나오게 하는 부분 */
 searchBtn.addEventListener("click", () => {
+
+    bookmarkListUpdate();
 
     if (searchBtn.previousElementSibling.value.trim().length == 0){
         alert("검색어를 입력해주세요");
@@ -298,7 +297,7 @@ searchBtn.addEventListener("click", () => {
                                                 
                                             } else {
                 
-                                                storeAdmarkListdr = modalResult[0].roadnameAddress;
+                                                storeAddr  = modalResult[0].roadnameAddress;
                                                 
                                             }
     
@@ -456,6 +455,12 @@ for (let mainItems of modalBtn){
     }
 }
 
+document.querySelector(".searchTxt").addEventListener("keyup", e => {
+    if(e.key == "Enter"){
+        document.querySelector(".searchBtn").click();
+    }
+})
+
 /* 신규 가맹점 등록 현황 swiper */
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
@@ -467,11 +472,3 @@ var swiper = new Swiper(".mySwiper", {
         disableOnInteraction : false,
     },
 });
-
-
-
-document.querySelector(".searchTxt").addEventListener("keyup", e => {
-    if(e.key == "Enter"){
-        document.querySelector(".searchBtn").click();
-    }
-})
