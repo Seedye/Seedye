@@ -21,25 +21,7 @@ const licenseView = document.getElementById("licenseView");
 let tempNo = [];
 
 
-// cp 얻어오기
-const pageBtnClick = ()=>{
-    $(".pageBtn").click(function(){
-        
-        var id_check = $(this).attr("id");
-        
-        cp = id_check;
-        
-        console.log(cp);
 
-        
-        selectMemberList(cp); 
-        
-        
-        
-        
-        
-    })
-}
 function selectMemberList(cp){
     $.ajax({
         url:"/admin/selectMemberList",
@@ -125,6 +107,31 @@ function selectMemberList(cp){
 
                     paginationMenu.innerHTML = pageLink(curPage, totalPages);
                 }    
+
+                $(".pageFirst").click(function(){
+                        
+                    cp = pagination.startPage;
+
+                    selectMemberList(cp);
+                })
+                $(".pagePrev").click(function(){
+                    
+                    cp = pagination.prevPage;
+
+                    selectMemberList(cp);
+                })
+                $(".pageNext").click(function(){
+                    
+                    cp = pagination.nextPage;
+
+                    selectMemberList(cp);
+                })
+                $(".pageLast").click(function(){
+                    
+                    cp = pagination.maxPage;
+
+                    selectMemberList(cp);
+                })
 
 
    
@@ -246,7 +253,6 @@ mBtnD.addEventListener("click" ,  () => {
 
 
 
-// 페이지 숫자
 function pageLink(curPage, totalPages) {
 	var pageUrl = "";
 	
@@ -254,7 +260,7 @@ function pageLink(curPage, totalPages) {
 	var startPage = parseInt((curPage - 1) / pageLimit) * pageLimit + 1;
 	var endPage = startPage + pageLimit - 1;
 	
-    console.log(startPage);
+    
     
 	if (totalPages < endPage) {
 	    endPage = totalPages;
@@ -266,41 +272,46 @@ function pageLink(curPage, totalPages) {
 	
 	//맨 첫 페이지
 	if (curPage > 1 && pageLimit < curPage) {
-	    pageUrl += "<button class='page first''pageBtn' href='javascript:void(0);'"+  "(1);'><i class='fas fa-angle-double-left'></button>";
+	    pageUrl += "<button class='pageFirst''pageBtn' href='javascript:void(0);'"+  "(1);'>&lt;&lt;</button>";
 	}
 
 	//이전 페이지
 	if (curPage > pageLimit) {
-	    pageUrl += "<button class='page prev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></button>";
+	    pageUrl += "<button class='pagePrev''pageBtn' href='javascript:void(0);'"  + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'>&lt;</button>";
 	}
 
 	//~pageLimit 맞게 페이지 수 보여줌
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();'>" + i + "</button>"
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'>" + i + "</button>"
 	    } else {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='pageBtnClick();' + id="+i+">" + i + " </button>";
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'  + id="+i+">" + i + " </button>";
 	    }
 	}
 	//다음 페이지
 	if (nextPage <= totalPages) {
-	    pageUrl += "<button class='page next' 'pageBtn' href='javascript:void(0);'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></button>";
+	    pageUrl += "<button class='pageNext' 'pageBtn' href='javascript:void(0);'" + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'>&gt;</button>";
 	}
 	//맨 마지막 페이지
 	if (curPage < totalPages && nextPage < totalPages) {
-	    pageUrl += "<button class='page last''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></button>";
+	    pageUrl += "<button class='pageLast''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");>&gt;&gt;</button>";
 	}
 	// console.log(pageUrl);
-	
+    
 	return pageUrl;
+    
+  
 }
 
-const searchTag = document.getElementById("searchTag");
+/* const searchTag = document.getElementById("searchTag");
 searchTag.addEventListener("submit", e => {
+
+    $.ajax
+
 
     e.preventDefault();
 
     
 });
-
+ */
