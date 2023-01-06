@@ -80,6 +80,50 @@ if(document.getElementById("myPage-frm") != null){
 
 }
 
+// 회원 탈퇴 작성
+const memberDeleteForm = document.getElementById("memberDeleteForm");
+
+if(memberDeleteForm != null){
+
+    memberDeleteForm.addEventListener("submit", function(event){
+
+        const memberPw = document.getElementById("memberPw");
+
+        // 비밀번호 미 작성 시
+        if(memberPw.value.trim().length == 0){
+            alert("비밀번호를 입력해주세요");
+            memberPw.focus();
+            memberPw.value = "";
+
+            event.preventDefault(); // form 기본 이벤트 제거
+            return;
+        }
+
+        // 체크박스 동의
+        const agree = document.getElementById("agree");
+
+        if(!agree.checked){ // 체크가 되지 않은 경우
+
+            alert("탈퇴를 원하시면 약관에 동의 해주세요.");
+            agree.focus();
+
+            agree.checked = false;
+            event.preventDefault();
+            return;
+        }
+
+        // 탈퇴 여부 검사
+        if(!confirm("탈퇴하시겠습니까?")){ // 취소를 누르면
+            alert("탈퇴 취소");
+            event.preventDefault();
+            memberPw.value = "";
+            return;
+        }
+
+    });
+}
+
+
 const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#^)(_+=|-])[A-Za-z\d@$!%*?&#^)(_+=|-]{8,16}$/;
 if(btn1 != null){
     btn1.addEventListener("click", function(){
@@ -422,51 +466,6 @@ if(mainTel != null){
             }
         })
 
-
-    });
-}
-
-// 회원 탈퇴 작성
-const memberDeleteForm = document.getElementById("memberDeleteForm");
-
-if(memberDeleteForm != null){
-
-    memberDeleteForm.addEventListener("submit", function(event){
-
-        console.log(event);
-
-        const memberPw = document.getElementById("memberPw");
-
-        // 비밀번호 미 작성 시
-        if(memberPw.value.trim().length == 0){
-            alert("비밀번호를 입력해주세요");
-            memberPw.focus();
-            memberPw.value = "";
-
-            event.preventDefault(); // form 기본 이벤트 제거
-            return;
-        }
-
-        // 체크박스 동의
-        const agree = document.getElementById("agree");
-
-        if(!agree.checked){ // 체크가 되지 않은 경우
-
-            alert("탈퇴를 원하시면 약관에 동의 해주세요.");
-            agree.focus();
-
-            agree.checked = false;
-            event.preventDefault();
-            return;
-        }
-
-        // 탈퇴 여부 검사
-        if(!confirm("탈퇴하시겠습니까?")){ // 취소를 누르면
-            alert("탈퇴 취소");
-            event.preventDefault();
-            memberPw.value = "";
-            return;
-        }
 
     });
 }
