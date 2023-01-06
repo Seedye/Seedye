@@ -54,6 +54,7 @@
 		<foreach collection="categoryArr" item="arr" open="(" close=")" separator=",">
 		#{arr}
 		</foreach>
+		AND (CHECK_FL ='B' OR CHECK_FL = 'Y')
 		ORDER BY STORE_NO
 	</select>
 	
@@ -73,13 +74,15 @@
 	
 	<!-- 신규 추가된 가맹점 조회(위에서 10개) -->
 	<select id="newInsertList" resultMap="store_rm">
-		SELECT STORE_NO, STORE_NAME
+		SELECT STORE_NO, STORE_NAME, CHECK_FL
+		FROM (
+		SELECT STORE_NO, STORE_NAME, CHECK_FL
 		FROM STORE
-		WHERE CHECK_FL = 'Y'
+		ORDER BY STORE_NO DESC)
 		<![CDATA[
-		AND ROWNUM <= 10
+		WHERE ROWNUM <=10
 		]]>
-		ORDER BY STORE_NO
+		AND (CHECK_FL = 'Y' OR CHECK_FL = 'B')
 	</select>
 	
 	<!-- 즐겨찾기 목록 조회 -->
