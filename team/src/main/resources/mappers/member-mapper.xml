@@ -47,7 +47,6 @@
 	<select id="idDupCheck" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM "MEMBER"
 		WHERE MEMBER_ID = #{memberId}
-		AND MEMBER_DEL_FL = 'N'
 	</select>
 	
 	<!-- 전화번호 중복 검사 -->
