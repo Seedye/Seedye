@@ -231,18 +231,28 @@ public class AdminController {
 	// 회원 목록 조회
 	@GetMapping("selectMemberList")
 	@ResponseBody
-	public Map<String, Object> selectMemberList(Model model,
-			@RequestParam(value="cp", required=false, defaultValue = "1") int cp) {
-		
+	public String selectMemberList(Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
+			@RequestParam Map<String, Object>searchKey) {
+			
 
-
-		Map<String, Object> map = service.selectMemberList(cp);
-		
-		model.addAttribute("map", map);
-				
-		
-		System.out.println(map);
-		return map;
+		if(searchKey.get("searchKey") == null) {
+			
+			Map<String, Object> map = service.selectMemberList(cp);
+			
+			model.addAttribute("map", map);
+			
+			
+			System.out.println(map);
+			
+			return new Gson().toJson(map);
+		} else {
+			System.out.println(searchKey);
+			
+			searchKey = service.searchKey(searchKey, cp); 
+			
+			return new Gson().toJson(searchKey);
+		}
 	}
 	
 	// 회원 관리 화면 조회

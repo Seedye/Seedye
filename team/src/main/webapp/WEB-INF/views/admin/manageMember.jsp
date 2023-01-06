@@ -132,16 +132,16 @@
                             </tr>
                         </tbody> --%>
                     </table>
-                    <form id="searchTag">
+                   
                         <div id="searchArea">
-                            <select name="key" id="searcg-key">
+                            <select name="key" id="search-key">
                                 <option value="t">아이디</option>
-                                <option value="">전화번호</option>
+                                <option value="tnumber">전화번호</option>
                             </select>
                             <input type="text" name="query"  id="search-query" placeholder="검색어를 입력해주세요.">
-                            <button>검색</button>
+                            <button id="searchBtn" onclick="return searchBtnClick()">검색</button>
                         </div>
-                    </form>
+                  
                     <div class="pagination-area">
                         <ul class="pagination">
                             <%-- 첫 페이지로 이동 --%>
