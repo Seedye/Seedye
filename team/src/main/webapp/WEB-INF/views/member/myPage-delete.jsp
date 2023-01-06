@@ -36,8 +36,7 @@
                 <h1 class="myPage-title">회원 탈퇴</h1>
                 <span class="myPage-subject">현재 비밀번호가 일치하는 경우 탈퇴할 수 있습니다.</span>
                 
-                <form action="delete" method="POST" name="myPage-frm" id="memberDeleteForm"
-                onsubmit="return memberDeleteValidate();">
+                <form action="delete" method="POST" name="myPage-frm" id="memberDeleteForm">
 
                     <div class="myPage-row">
                         <label>비밀번호</label>
@@ -49,29 +48,23 @@
                     </div>
 
                     <pre class="secession-terms">
-회원탈퇴 전 아래 내용을 확인 해 주세요.
 
-주의 사항
+                        회원탈퇴 전 아래 내용을 확인 해 주세요.
 
-① 회원탈퇴를 하시면 현재 로그인 된 아이디는 사용하실 수 없습니다.
+                                        주의 사항
 
-② 회원탈퇴 시 탈퇴 된 아이디는 복구가 불가능합니다.
+    • 회원탈퇴 시 현재 로그인 된 아이디는 사용하실 수 없습니다.
 
-③ 회원탈퇴 시 탈퇴 된 아이디에 대한 정보는 책임지지 않습니다.
+    • 회원탈퇴 시 탈퇴 된 아이디는 복구가 불가능합니다.
 
-④ 
+    • 회원탈퇴 시 등록된 모든 개인정보는 삭제, 폐기 처리되며 
+        복구되지 않습니다.
 
-⑤ 
+    • 회원탈퇴 시 동일 아이디로 재가입하실 수 없습니다.
 
-⑥ 
+    • 회원탈퇴 시 이용했던 커뮤니티 게시판 및 댓글이 삭제됩니다.
 
-⑦ 
-
-⑧ 
-
-⑨ 
-
-⑩
+    • 회원탈퇴 시 보류기간 없이 바로 탈퇴처리 됩니다.
                     </pre>
 
                     <div>
