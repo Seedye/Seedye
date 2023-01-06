@@ -33,16 +33,22 @@ const boardTest = document.getElementById("boardTest");
   
 
   update.addEventListener("click", ()=>{
-    swiperMain.style.display = "none";
+    swiperMain.style.display = "none"
+    boardTest.style.display = "block";
+    selectUpdateNotice();
 
   });
 
   freeBoard.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
+    boardTest.style.display = "block";
+    selectFreeboard();
   });
 
   question.addEventListener("click", ()=>{
     swiperMain.style.display = "none";
+    boardTest.style.display = "block";
+    selectQuestion();
   });
 
 boardTest.style.display = "none";
@@ -104,30 +110,6 @@ function selectBoardNotice(){
 }
 
 
-  // 공지사항 클릭
-  boardNotice.addEventListener("click", ()=>{
-    swiperMain.style.display = "none";
-    boardTest.style.display = "block";
-
-    selectBoardNotice();
-   
-  });
-  
-
-  update.addEventListener("click", ()=>{
-    swiperMain.style.display = "none";
-  });
-
-  freeBoard.addEventListener("click", ()=>{
-    swiperMain.style.display = "none";
-  });
-
-  question.addEventListener("click", ()=>{
-    swiperMain.style.display = "none";
-  });
-
-boardTest.style.display = "none";
-
 
 
 
@@ -187,7 +169,7 @@ function selectUpdateNotice(){
 }
 
 // 자유게시판
-function selectUpdateNotice(){
+function selectFreeboard(){
   const tbody = document.getElementById("tbody");
   tbody.innerHTML = "";
 
@@ -241,7 +223,7 @@ function selectUpdateNotice(){
 }
 
 // 문의게시판
-function selectUpdateNotice(){
+function selectQuestion(){
   const tbody = document.getElementById("tbody");
   tbody.innerHTML = "";
 
@@ -294,3 +276,7 @@ function selectUpdateNotice(){
   })
 }
 
+
+// 상세 보기 모달 연결 / 
+// js = QAview
+// jsp = boardView

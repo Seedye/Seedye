@@ -344,6 +344,10 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.searchKeyList", searchMap, rowBounds);
 	}
 
+	public int storeReturn(int storeNo) {
+		return sqlSession.update("adminMapper.storeReturn", storeNo);
+	}
+
 
 
 

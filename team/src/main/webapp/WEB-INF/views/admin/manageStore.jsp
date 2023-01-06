@@ -91,6 +91,7 @@
                     <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
                         <button id="registerStore" type="button">등록</button>
+                        <button id="returnStore" type="button">취소하기</button>
                     </div>
                 </form> 
             </div>
@@ -270,6 +271,11 @@
         </div>    
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script>
+              var loginMemberAuthority = "${loginMember.authority}";
+
+    </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
