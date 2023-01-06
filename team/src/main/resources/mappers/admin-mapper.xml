@@ -485,4 +485,10 @@ WHERE STORE_TYPE=#{storeType}
      	  </if>
 </select>
 
+<update id="storeReturn">
+UPDATE STORE SET
+CHECK_FL = 'N'
+WHERE STORE_NO = #{storeNo}
+</update>
+
 </mapper>  
