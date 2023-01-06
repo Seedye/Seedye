@@ -102,7 +102,7 @@ footer{
     color: white;
 }
 
-.foodTypecategory h2{
+.foodTypecategory h2, .searchBoxName, .newStoreTitle, .statistics h3, .searchList h2{
     text-align: center;
 }
 
@@ -517,7 +517,7 @@ footer{
 .swiper {
     width: 100vw;
     height: 400px;
-    background-color: #ddd;
+    background-color: white;
 }
 
 .swiper-slide {
