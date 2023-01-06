@@ -335,13 +335,13 @@ public class AdminDAO {
 	 * @param pagination
 	 * @return
 	 */
-	public List<Member> searchKey(Map<String, Object> searchKey, Pagination pagination) {
+	public List<Member> searchKey(Map<String, Object> searchMap, Pagination pagination) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("adminMapper.searchKeyList", searchKey, rowBounds);
+		return sqlSession.selectList("adminMapper.searchKeyList", searchMap, rowBounds);
 	}
 
 

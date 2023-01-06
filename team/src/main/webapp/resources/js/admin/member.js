@@ -3,8 +3,8 @@ const adminMember = document.getElementById("adminMember");
 const memberManage = document.getElementById("memberManage");
 
 const memberNo = document.getElementById("memberNo");
-const searchkey = document.getElementById("search-key");
-const searchquery = document.getElementById("search-query");
+const searchkey = document.getElementById("key");
+const searchquery = document.getElementById("query");
 
 let cp=1;
 selectMemberList(cp);
@@ -233,18 +233,17 @@ function selectMemberList(cp){
         
     });    
     } else {
-        let cp =1;
         $.ajax({
             url:"/admin/selectMemberList",
             dataType:"JSON",
         data : {"cp":cp ,"searchkey":searchkey.value, "searchquery":searchquery.value},
-            success:(searchkey)=>{
+            success:(searchMap)=>{
             const memberTbody = document.getElementById("memberTbody");
             memberTbody.innerHTML="";
             
-            console.log(searchkey);
-            const memberList = searchkey.memberList;
-            const pagination = searchkey.pagination;
+            console.log(searchMap);
+            const memberList = searchMap.memberList;
+            const pagination = searchMap.pagination;
             
             const totalCount = pagination.listCount;
 
@@ -254,7 +253,6 @@ function selectMemberList(cp){
             console.log(cp);
 
             
-            console.log(searchkey.value);
 
             for(let member of memberList){
                 
@@ -532,7 +530,7 @@ function pageLink(curPage, totalPages) {
 
 function searchBtnClick(){
 
-    selectMemberList();
+    selectMemberList(cp);
   
 }
 

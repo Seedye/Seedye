@@ -134,12 +134,12 @@
                     </table>
                    
                         <div id="searchArea">
-                            <select name="key" id="search-key">
+                            <select name="key" id="key">
                                 <option value="t">아이디</option>
                                 <option value="tnumber">전화번호</option>
                             </select>
-                            <input type="text" name="query"  id="search-query" placeholder="검색어를 입력해주세요.">
-                            <button id="searchBtn" onclick="return searchBtnClick()">검색</button>
+                            <input type="text" name="query"  id="query" placeholder="검색어를 입력해주세요.">
+                            <button id="searchBtn" type="button" onclick="return searchBtnClick()">검색</button>
                         </div>
                   
                     <div class="pagination-area">
@@ -221,20 +221,11 @@
             </div>
         </div>    
     </main>
-    <footer>
-    <p>
-        Copyright &copy; KH Information Educational Institute A-Class Seedye Team
-    </p>
-    <article>
-        <a href="#">프로젝트 소개</a>
-        <span>|</span>
-        <a href="#">이용약관</a>
-        <span>|</span>
-        <a href="#">개인정보처리방침</a>
-        <span>|</span>
-        <a href="#">고객센터</a>
-    </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script>
+        var loginMemberAuthority = "${loginMember.authority}";
+
+    </script> 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/member.js"></script>
     <script src="/resources/js/sideBar.js"></script>
