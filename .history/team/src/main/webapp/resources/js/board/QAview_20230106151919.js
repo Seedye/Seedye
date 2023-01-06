@@ -44,12 +44,9 @@ for (let boardListViewItems of boardListView) {
 
           var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
         }
-        if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-
-        }
         // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
         
+        var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
         // saveContent = saveContent.replaceAll("<br>", "\n");
         
         console.log("여기서도 당연히 나오겠지?:"+saveCommentContent);

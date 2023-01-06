@@ -3,7 +3,6 @@
 <%
   String queryValue = request.getParameter("query");
 %>
-	
 
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -250,7 +249,6 @@
       <%-- 상세보기 모달 연결 --%>
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
-
       <jsp:include page="/WEB-INF/views/board/boardWrite2.jsp"/>
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
       
