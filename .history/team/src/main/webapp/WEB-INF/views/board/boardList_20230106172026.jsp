@@ -251,7 +251,7 @@
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
 
-      <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
+      <jsp:include page="/WEB-INF/views/board/boardWrite2.jsp"/>
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
       
       

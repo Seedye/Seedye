@@ -3,7 +3,10 @@
 <%
   String queryValue = request.getParameter("query");
 %>
-	
+<% 
+	String url = request.getRequestURL().toString();
+	request.setAttribute("url", url);
+%>				
 
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -63,7 +66,6 @@
 
           </div>
         </form>
-
     
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
@@ -251,7 +253,7 @@
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
 
-      <jsp:include page="/WEB-INF/views/board/boardWrite.jsp"/>
+      <jsp:include page="/WEB-INF/views/board/noticeBoardWritee.jsp"/>
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
       
       

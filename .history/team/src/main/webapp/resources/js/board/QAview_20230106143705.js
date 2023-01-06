@@ -1,4 +1,4 @@
-const boardViewModal = document.getElementById("boardViewModal"); // 상세보기 모달onsole.log
+const boardViewModal = document.getElementById("boardViewModal"); // 상세보기 모달
 const boardViewX = document.getElementById("boardViewX"); // 상세보기 X
 
 const boardListView = document.getElementsByClassName("board-list-view");
@@ -37,22 +37,13 @@ for (let boardListViewItems of boardListView) {
       data: { boardNo: boardListViewItems.lastElementChild.id },
       dataType: "json",
       success: (QABoardDetail) => {
-        // console.log(QABoardDetail);
-        // console.log(QABoardDetail[0].commentCreateDate);
+        console.log(QABoardDetail);
+        console.log(QABoardDetail[0].commentCreateDate);
 
-        if(QABoardDetail[0].commentContent){
-
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
-        }
-        if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-
-        }
-        // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
         
-        // saveContent = saveContent.replaceAll("<br>", "\n");
-        
-        // console.log("여기서도 당연히 나오겠지?:"+saveCommentContent);
+        const saveContent = saveContent;
+        saveContent = saveContent.replaceAll("&nbsp;", " ").replaceAll("<br>", "(\r\n|\n|\r|\n\r)");
+        console.log("여기서도 당연히 나오겠지?:"+saveContent);
 
         // 제목 생성 P
         const QATitleP = document.createElement("p");
@@ -67,7 +58,7 @@ for (let boardListViewItems of boardListView) {
         // 답변 id/날짜 생성 P
         const QAIDAndDateCommentP = document.createElement("p");
 
-        // console.log("관리자 인가요? : "+loginMemberAuthority);
+        console.log("관리자 인가요? : "+loginMemberAuthority);
         // 답변 내용 생성 P
         const QAContentCommentP = document.createElement("p");
 
@@ -76,14 +67,14 @@ for (let boardListViewItems of boardListView) {
         QAIDAndDateP.innerText =
         QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
 
-        
-        QAContentP.innerText = saveContent;
+        var content = QABoardDetail[0].boardContent;
+        QAContentP.innerText = content.replace(/\n/g, '');
 
         QATextCommentP.innerText = "답변";
 
         // 답변이 들어가 있을때
-        // console.log("답변이 들어가 있을 뗀테"+saveCommentContent);
-        if (saveCommentContent != null) {
+        console.log("답변이 들어가 있을 뗀테"+saveContent);
+        if (saveContent != null) {
 
           // 관리자가 로그인 했을 때
           if(loginMemberAuthority== 2){
@@ -91,12 +82,12 @@ for (let boardListViewItems of boardListView) {
             const commentTextarea= document.createElement("textarea");
             commentTextarea.setAttribute("id", "commentContent");
             
-            commentTextarea.innerText = saveCommentContent;
+            commentTextarea.innerText = saveContent;
             boardViewContentTextComment.append(commentTextarea);
 
           }else{ // 일반인 로그인 일때
             QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
-            QAContentCommentP.innerText = saveCommentContent;
+            QAContentCommentP.innerText = saveContent;
             boardViewContentTextComment.append(QAContentCommentP);
           }
 
@@ -126,17 +117,17 @@ for (let boardListViewItems of boardListView) {
           QAIDAndDateCommentP
         );
 
-        // console.log(
-        //   "이미지 리스트 길이 출력 : " + QABoardDetail[0].imageList.length
-        // );
+        console.log(
+          "이미지 리스트 길이 출력 : " + QABoardDetail[0].imageList.length
+        );
         //! 이미지 만드는 create작성해야함.
         if (QABoardDetail[0].imageList.length != 0) {
           ContentImgArea.style.display = "flex";
           // <div class="board-view-content-img">
           //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
           // </div>
-          // console.log(QABoardDetail[0].imgNo);
-          // console.log(QABoardDetail[0].imageList.length);
+          console.log(QABoardDetail[0].imgNo);
+          console.log(QABoardDetail[0].imageList.length);
 
           for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
             //TODO 아마도 수정 필요
@@ -190,7 +181,7 @@ for (let boardListViewItems of boardListView) {
                 }
               },
               error: () => {
-                // console.log("게시물 작성중 오류발생");
+                console.log("게시물 작성중 오류발생");
                 boardViewModal.style.display = "none";
               },
             });
@@ -204,11 +195,11 @@ for (let boardListViewItems of boardListView) {
 
             boardUpdate.addEventListener("click",()=>{
 
-              // console.log("코멘트?:"+saveCommentContent);
+              console.log("코멘트?:"+saveContent);
 
 
-              if(saveCommentContent != null){
-                // console.log("값이 들어가 있음");
+              if(saveContent != null){
+                console.log("값이 들어가 있음");
                 // console.log("작성된 코멘트값 : "+commentContent.value);                
                   $.ajax({
                     url:"/comment/update",
@@ -231,8 +222,8 @@ for (let boardListViewItems of boardListView) {
                     },
                     error : function(req, status, error){
 
-                        // console.log("답변 수정 중 오류");
-                        // console.log(req.responseText);
+                        console.log("답변 수정 중 오류");
+                        console.log(req.responseText);
                     }
             
                 });
@@ -256,8 +247,7 @@ for (let boardListViewItems of boardListView) {
                     },
 
                     error : () => {
-                        // console.log("답변 등록 중 오류");
-                        alert("답변 등록 중 오류발생");
+                        console.log("답변 등록 중 오류");
                     }
               });
             }
@@ -311,7 +301,7 @@ for (let boardListViewItems of boardListView) {
   
               // 수정될 제목
               boardTitle.innerHTML = QABoardDetail[0].boardTitle;
-              boardContent.innerText = saveContent;
+              boardContent.innerText = QABoardDetail[0].boardContent;
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   
@@ -322,8 +312,8 @@ for (let boardListViewItems of boardListView) {
             // <div class="board-view-content-img">
             //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
             // </div>
-            // console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
-            // console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
+            console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
+            console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
   
   
             for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
@@ -358,7 +348,7 @@ for (let boardListViewItems of boardListView) {
                 document.getElementById("boardUpdateInput");
               // 수정 버튼 클릭 했을때
               boardUpdateInput.addEventListener("click", () => {
-                // console.log("수정버튼 눌림");
+                console.log("수정버튼 눌림");
                 $.ajax({
                   url: "/QABoardUpdate",
                   type: "GET",
@@ -392,8 +382,7 @@ for (let boardListViewItems of boardListView) {
         }
       },
       error: () => {
-        // console.log("실패");
-        alert("게시물 업데이트 중 오류 발생");
+        console.log("실패");
       },
     });
   });

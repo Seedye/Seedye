@@ -24,6 +24,7 @@ public class BaordServiceImple implements BoardService {
 	@Autowired
 	private BoardDAO dao;
 
+	
 	// 게시물 리스트 조회
 	@Override
 	public Map<String, Object> selectBoardList(int boardCode, int cp) {

@@ -175,6 +175,14 @@ public interface AdminService {
 
 
 
+	/** 등록 취소
+	 * @param storeNo
+	 * @return result
+	 */
+	int storeReturn(int storeNo);
+
+
+
 
 
 

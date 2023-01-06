@@ -28,10 +28,11 @@
             </section>
             <!-- 메뉴창 -->
             <nav id="nav-bar">
+            ${boardTypeList.BOARD_CODE}
                 <ul id="ul-container">
                     <li><a href="/introduction">소개</a></li>
-                    <li><a href="/noticeBoardListt/1">공지사항</a></li>
-                    <li><a href="/boardList/4">커뮤니티</a></li>
+                    <li><a href="/boardList/1">공지사항</a></li>
+                    <li><a href="/boardList/${boardTypeList.BOARD_CODE}">커뮤니티</a></li>
                     <li><a href="javascript:void(0);" id="inquiry">식당 등록 문의</a></li>
                     <li><a href="/support">후원</a></li>
                     <c:if test="${loginMember.authority == 2}">
