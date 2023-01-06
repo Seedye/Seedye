@@ -40,17 +40,10 @@ for (let boardListViewItems of boardListView) {
         console.log(QABoardDetail);
         console.log(QABoardDetail[0].commentCreateDate);
 
-        if(QABoardDetail[0].commentContent){
-
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
-        }
-        if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-
-        }
-        // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
         
-        // saveContent = saveContent.replaceAll("<br>", "\n");
+        var saveCommentContent = QABoardDetail[0].commentContent;
+        saveCommentContent = saveCommentContent.replaceAll("&nbsp;", " ").replaceAll("<br>", "(\r\n|\n|\r|\n\r)");
+        var 
         
         console.log("여기서도 당연히 나오겠지?:"+saveCommentContent);
 
@@ -76,8 +69,8 @@ for (let boardListViewItems of boardListView) {
         QAIDAndDateP.innerText =
         QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
 
-        
-        QAContentP.innerText = saveContent;
+        var content = QABoardDetail[0].boardContent;
+        QAContentP.innerText = content.replace(/\n/g, '');
 
         QATextCommentP.innerText = "답변";
 
@@ -310,7 +303,7 @@ for (let boardListViewItems of boardListView) {
   
               // 수정될 제목
               boardTitle.innerHTML = QABoardDetail[0].boardTitle;
-              boardContent.innerText = saveContent;
+              boardContent.innerText = QABoardDetail[0].boardContent;
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   

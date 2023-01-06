@@ -3,7 +3,10 @@
 <%
   String queryValue = request.getParameter("query");
 %>
-	
+<% 
+	String url = request.getServerName().toString();
+	request.setAttribute("url", url);
+%>				
 
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -65,6 +68,7 @@
         </form>
 
     
+<p>${url}</p>
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>

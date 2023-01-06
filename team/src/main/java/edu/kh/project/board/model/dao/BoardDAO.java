@@ -17,6 +17,8 @@ public class BoardDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	
 
 	/** 게시글 수 조회
 	 * @param boardCode

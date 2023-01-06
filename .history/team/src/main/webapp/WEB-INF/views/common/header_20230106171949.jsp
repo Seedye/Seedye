@@ -28,6 +28,7 @@
             </section>
             <!-- 메뉴창 -->
             <nav id="nav-bar">
+            <P>잠시확인만잠시확인만잠시확인만잠시확인만잠시확인만${boardTypeList.BOARD_CODE}잠시확인만</P>
                 <ul id="ul-container">
                     <li><a href="/introduction">소개</a></li>
                     <li><a href="/noticeBoardListt/1">공지사항</a></li>

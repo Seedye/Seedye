@@ -42,10 +42,10 @@ for (let boardListViewItems of boardListView) {
 
         if(QABoardDetail[0].commentContent){
 
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
+          var saveCommentContent = QABoardDetail[0].commentContent.replace("<br>", "\n");
         }
         if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
+          var saveContent = QABoardDetail[0].boardContent.replace("<br>", "\n");
 
         }
         // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");

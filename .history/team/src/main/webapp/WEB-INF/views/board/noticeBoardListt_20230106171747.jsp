@@ -3,7 +3,10 @@
 <%
   String queryValue = request.getParameter("query");
 %>
-	
+<% 
+	String url = request.getRequestURL().toString();
+	request.setAttribute("url", url);
+%>				
 
 <c:set var="boardList" value="${map.boardList}"/>
 <c:set var="pagination" value="${map.pagination}"/>
@@ -65,6 +68,7 @@
         </form>
 
     
+<p>민아롬;ㅣ냐올;ㅐㅑㅁ곧ㅎ;마${url}</p>
         <!-- 게시글 리스트 영역 -->
         <div class="board-list-area">
           <%-- 사이드바 --%>
@@ -251,7 +255,7 @@
       <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
       <%-- 게시물작성 모달 연결 --%>
 
-      <jsp:include page="/WEB-INF/views/board/boardWrite2.jsp"/>
+      <jsp:include page="/WEB-INF/views/board/noticeBoardWritee.jsp"/>
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
       
       

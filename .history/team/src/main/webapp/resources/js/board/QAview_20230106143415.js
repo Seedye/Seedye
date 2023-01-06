@@ -40,20 +40,8 @@ for (let boardListViewItems of boardListView) {
         console.log(QABoardDetail);
         console.log(QABoardDetail[0].commentCreateDate);
 
-        if(QABoardDetail[0].commentContent){
 
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
-        }
-        if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-
-        }
-        // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
-        
-        // saveContent = saveContent.replaceAll("<br>", "\n");
-        
-        console.log("여기서도 당연히 나오겠지?:"+saveCommentContent);
-
+        console.log(QABoardDetail[0].commentContent);
         // 제목 생성 P
         const QATitleP = document.createElement("p");
         //"문의 내용"텍스트 나올 P
@@ -76,14 +64,14 @@ for (let boardListViewItems of boardListView) {
         QAIDAndDateP.innerText =
         QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
 
-        
-        QAContentP.innerText = saveContent;
+        var content = QABoardDetail[0].boardContent;
+        QAContentP.innerText = content.replace(/\n/g, '');
 
         QATextCommentP.innerText = "답변";
 
         // 답변이 들어가 있을때
-        console.log("답변이 들어가 있을 뗀테"+saveCommentContent);
-        if (saveCommentContent != null) {
+        console.log("답변이 들어가 있을 뗀테"+QABoardDetail[0].commentContent);
+        if (QABoardDetail[0].commentContent != null) {
 
           // 관리자가 로그인 했을 때
           if(loginMemberAuthority== 2){
@@ -91,12 +79,12 @@ for (let boardListViewItems of boardListView) {
             const commentTextarea= document.createElement("textarea");
             commentTextarea.setAttribute("id", "commentContent");
             
-            commentTextarea.innerText = saveCommentContent;
+            commentTextarea.innerText = QABoardDetail[0].commentContent;
             boardViewContentTextComment.append(commentTextarea);
 
           }else{ // 일반인 로그인 일때
             QAIDAndDateCommentP.innerText = QABoardDetail[0].commentCreateDate;
-            QAContentCommentP.innerText = saveCommentContent;
+            QAContentCommentP.innerText = QABoardDetail[0].commentContent;
             boardViewContentTextComment.append(QAContentCommentP);
           }
 
@@ -204,10 +192,10 @@ for (let boardListViewItems of boardListView) {
 
             boardUpdate.addEventListener("click",()=>{
 
-              console.log("코멘트?:"+saveCommentContent);
+              console.log("코멘트?:"+QABoardDetail[0].commentContent);
 
 
-              if(saveCommentContent != null){
+              if(QABoardDetail[0].commentContent != null){
                 console.log("값이 들어가 있음");
                 // console.log("작성된 코멘트값 : "+commentContent.value);                
                   $.ajax({
@@ -310,7 +298,7 @@ for (let boardListViewItems of boardListView) {
   
               // 수정될 제목
               boardTitle.innerHTML = QABoardDetail[0].boardTitle;
-              boardContent.innerText = saveContent;
+              boardContent.innerText = QABoardDetail[0].boardContent;
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   

@@ -40,16 +40,11 @@ for (let boardListViewItems of boardListView) {
         console.log(QABoardDetail);
         console.log(QABoardDetail[0].commentCreateDate);
 
-        if(QABoardDetail[0].commentContent){
-
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
-        }
-        if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-
-        }
+        
+        var saveCommentContent = QABoardDetail[0].commentContent;
         // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
         
+        var saveContent = QABoardDetail[0].boardContent;
         // saveContent = saveContent.replaceAll("<br>", "\n");
         
         console.log("여기서도 당연히 나오겠지?:"+saveCommentContent);
