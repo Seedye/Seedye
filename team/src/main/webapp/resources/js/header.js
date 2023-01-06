@@ -52,6 +52,6 @@
         header.classList.remove("scrolled");
         flag = true;
 
-        window.scrollTo({ left: 0, top: 81 });
+        window.scrollTo({ left: 0, top: 50 });
     }
   });

@@ -408,13 +408,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                         //! 이미지 만드는 create작성해야함.
                             if (freeBoardDetail[0].imageList.length != 0) {
                                 boardViewContentImgArea.innerHTML ="";
-                                // ContentImgArea.style.display = "flex";
-                                // <div class="board-view-content-img">
-                                //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
-                                // </div>
-                                console.log("이미지번호 : "+ freeBoardDetail[0].imgNo);
-                                console.log("이미지길이 : "+freeBoardDetail[0].imageList.length);
-                    
                     
                                 for (let i = 0; i < freeBoardDetail[0].imageList.length; i++) {
                                 //TODO 아마도 수정 필요

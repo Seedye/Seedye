@@ -199,12 +199,12 @@
     <jsp:include page="/WEB-INF/views/board/freeBoardWrite.jsp"/>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>    
     </main>
-
     <script>
         var boardNo = "${freeBoardList[0].boardNo}";
         var memberId = "${loginMember.memberId}";
         var memberNo = "${loginMember.memberNo}";
-        var loginMemberAuthority = "${loginMember.loginMemberAuthority}";
+        var loginMemberAuthority = "${loginMember.authority}";
+        
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
