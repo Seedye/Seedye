@@ -285,8 +285,11 @@
     
     <!-- 카카오 api -->
     <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9"></script> -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9227b223417161b5e676ce8ceee2a4a9&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc8215ed76f35fe6d92a6a1368430e4f&libraries=services"></script>
     
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     <script>
     var memberNo = "${loginMember.memberNo}";
     var memberBookmarkNo = "${mainPageMap.bookmarkList[0].storeNo}";
@@ -296,7 +299,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
     crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script src="../resources/js/header.js"></script>
     <script src="../resources/js/mainPage.js"></script>
