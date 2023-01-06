@@ -53,7 +53,7 @@ for (let boardListViewItems of boardListView) {
         // 답변 id/날짜 생성 P
         const QAIDAndDateCommentP = document.createElement("p");
 
-        console.log("관리자 인가요? : "+loginMemberAuthority);
+        console.log("관리자 인가요? : "+loginMemberAutority);
         // 답변 내용 생성 P
         const QAContentCommentP = document.createElement("p");
 
@@ -68,10 +68,9 @@ for (let boardListViewItems of boardListView) {
         QATextCommentP.innerText = "답변";
 
         // 답변이 들어가 있을때
-        console.log("답변이 들어가 있을 뗀테"+QABoardDetail[0].commentContent);
         if (QABoardDetail[0].commentContent != null) {
           // 관리자가 로그인 했을 때
-          if(loginMemberAuthority== 2){
+          if(loginMemberAutority== 2){
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
             commentTextarea.setAttribute("id", "commentContent");
@@ -91,7 +90,7 @@ for (let boardListViewItems of boardListView) {
 
         } else { // 답변없을 때
 
-          if(loginMemberAuthority== 2){ // 관리자일때
+          if(loginMemberAutority== 2){ // 관리자일때
             QAIDAndDateCommentP.innerText = "";
             const commentTextarea= document.createElement("textarea");
             commentTextarea.setAttribute("id", "commentContent");
@@ -154,7 +153,7 @@ for (let boardListViewItems of boardListView) {
           ".board-view-content-delete-update"
         );
 
-        if (boardUpDel.id == QABoardDetail[0].memberId || loginMemberAuthority== 2) {
+        if (boardUpDel.id == QABoardDetail[0].memberId || loginMemberAutority== 2) {
           boardUpDel.innerHTML = "";
 
           const boardDelete = document.createElement("div");
@@ -187,7 +186,7 @@ for (let boardListViewItems of boardListView) {
 
           const boardUpdate = document.createElement("div");
           boardUpdate.classList.add("board-view-btn");
-          if(loginMemberAuthority ==2) {
+          if(loginMemberAutority ==2) {
 
             boardUpdate.innerText = "답변 저장";
 
