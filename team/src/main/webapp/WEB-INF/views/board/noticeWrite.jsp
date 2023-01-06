@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
   <div class="board-write-modal" id="boardWriteModal">
-  <form action="/QAWrite/2" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidate()">
+  <form action="/QAWrite/1" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidate()">
     <div class="board-view-area">
       <!-- /* 상세보기 */ -->
       <div class="board-view-title" id="boardWriteTitle">
