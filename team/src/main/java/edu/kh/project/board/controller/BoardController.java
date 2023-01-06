@@ -64,6 +64,36 @@ public class BoardController {
 
 		return "board/boardList";
 	}
+	/**
+	 * 공지사항 게시물 리스트 조회
+	 * 
+	 * @param boardCode
+	 * @param model
+	 * @param cp
+	 * @param pm
+	 * @return
+	 */
+	@GetMapping("/noticeBoardListt/{boardCode}")
+	public String noticeBoardListt(@PathVariable("boardCode") int boardCode, Model model,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+			@RequestParam Map<String, Object> pm) {
+
+		if (pm.get("key") == null) {
+
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+
+			model.addAttribute("map", map);
+			System.out.println(map);
+		}
+		// 게시판 검색 목
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
+
+		return "board//noticeBoardListt";
+	}
 
 	/**
 	 * 자유 게시물 리스트 조회

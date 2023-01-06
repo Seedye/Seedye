@@ -223,8 +223,7 @@
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script>
-        var loginMemberAuthority = "${loginMember.authority}";
-
+      var loginMemberAuthority = "${loginMember.authority}";
     </script> 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/member.js"></script>

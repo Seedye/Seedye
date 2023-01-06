@@ -15,12 +15,10 @@ var infoArea = document.getElementById("InfoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
-    
 })
+
 let cp = 1;
 selectStoreList(cp);
-
-
 
 
 const searchBtn = document.getElementById("searchBtn");
@@ -34,8 +32,7 @@ $(document).on("keyup", ".phoneNumber", function() {
 
 function selectStoreList(cp){
 
-
-    console.log(cp);
+    
 
     if(keyword.value == ''){
 
@@ -58,7 +55,6 @@ function selectStoreList(cp){
             const tbody = document.getElementById("tbody")
             tbody.innerHTML = "";
     
-            console.log(pagination);
             
             for(let store of storeList){
                 
@@ -93,12 +89,13 @@ function selectStoreList(cp){
                 
                 // 처리여부
                 const td6 = document.createElement("td");
+
                 
                 if(store.checkFl == 'B'){
                     td6.innerText = '기본'
                 } else if(store.checkFl == 'N'){
                     td6.innerText = '미확인'
-                } else if(store.checkFl = 'C'){
+                } else if(store.checkFl == 'C'){
                     td6.innerText = '협의중'
                 } else {
                     td6.innerText = "등록 완료"
@@ -120,7 +117,7 @@ function selectStoreList(cp){
                     paginationMenu.innerHTML = "";
 
                     paginationMenu.innerHTML = pageLink(curPage, totalPages);
-                }    
+                }
 
                 // cp 얻어오기
                 
@@ -130,7 +127,6 @@ function selectStoreList(cp){
                         
                         cp = id_check;
                         
-                        console.log(cp);
 
                         
                         selectStoreList(cp); 
@@ -140,28 +136,29 @@ function selectStoreList(cp){
                 
                     $(".pageFirst").click(function(){
                         
-                        cp = pagination.startPage;
+                        cp = 1;
 
-                        alert("ㅅㅂ");
-                        selectBoxSelect(cp);
+                        selectStoreList(cp);
                     })
                     $(".pagePrev").click(function(){
                         
                         cp = pagination.prevPage;
 
-                        selectBoxSelect(cp);
+                        selectStoreList(cp);
                     })
                     $(".pageNext").click(function(){
                         
                         cp = pagination.nextPage;
 
-                        selectBoxSelect(cp);
+                        selectStoreList(cp);
                     })
+                    
+                    
                     $(".pageLast").click(function(){
                         
                         cp = pagination.maxPage;
 
-                        selectBoxSelect(cp);
+                        selectStoreList(cp);
                     })
 
 
@@ -196,7 +193,6 @@ function selectStoreList(cp){
                         data: {"storeNo" : tempNo},
                         success:(store)=>{
                          
-                            console.log(store);
                             const preview = document.getElementsByClassName("preview");
                             
                             const storeNameArea = document.getElementById("storeNameArea");
@@ -207,9 +203,6 @@ function selectStoreList(cp){
                             const roadAddr = document.querySelector(".inputRoad");
                             const jibunAddr = document.querySelector(".inputJibun");
 
-                            console.log(store.roadnameAddress);
-                            console.log(store.imageList);
-                           
                             
 
                             if(store.imageList.length != 0){
@@ -235,7 +228,6 @@ function selectStoreList(cp){
 
                             roadAddr.setAttribute('value', store.roadnameAddress);
 
-                            console.log(store.roadnameAddress);
                             jibunAddr.setAttribute('value', store.landnumberAddress);
 
                             
@@ -265,9 +257,6 @@ function selectStoreList(cp){
                           if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
                           if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
 
-                          console.log(store.storeInfo);
-                          console.log(store.landnumberAddress);
-                          
                          
                         if(store.storeInfo != null){
 
@@ -293,11 +282,27 @@ function selectStoreList(cp){
                                 error:()=>{
                                     console.log("실패");
                                 }    
-
-                          
-                            
                             })  
                         });
+
+                        const returnStore = document.getElementById("returnStore");
+                        returnStore.addEventListener("click", ()=>{
+
+                                $.ajax({
+                                    url:"/admin/storeReturn",
+                                    data:{"storeNo" : tempNo},
+                                    success: (result) =>{
+                                        
+                                        if(result > 0){
+                                            alert("성공");
+                                        }
+
+                                    }
+                                });
+                        })
+
+
+
                     },
                         error:()=>{
                             console.log("실패");
@@ -319,6 +324,7 @@ function selectStoreList(cp){
             dataType: "JSON",
             data:{"cp": cp, "search" : search.value, "keyword":keyword.value},
             success : (map) =>{
+
                 
                 const storeList = map.storeList;
                 const pagination = map.pagination;
@@ -329,11 +335,11 @@ function selectStoreList(cp){
                 var pageSize = pagination.pageSize;
                 var totalPages = 0;
                 var curPage = cp;
+                var firstPage = 1;
                 
                 const tbody = document.getElementById("tbody")
                 tbody.innerHTML = "";
         
-                console.log(pagination);
                 
                 for(let store of storeList){
                     
@@ -369,7 +375,6 @@ function selectStoreList(cp){
                     // 처리여부
                     const td6 = document.createElement("td");
                     
-                    console.log(store.checkFl);
 
                     if(store.checkFl == 'B'){
                         td6.innerText = '기본'
@@ -397,7 +402,7 @@ function selectStoreList(cp){
                         paginationMenu.innerHTML = "";
     
                         paginationMenu.innerHTML = pageLink(curPage, totalPages);
-                    }    
+                    }   
     
                         // cp 얻어오기
                         $(".pageBtn").click(function(){
@@ -406,7 +411,6 @@ function selectStoreList(cp){
                             
                             cp = id_check;
                             
-                            console.log(cp);
 
                             
                             selectStoreList(cp); 
@@ -416,27 +420,29 @@ function selectStoreList(cp){
 
                         $(".pageFirst").click(function(){
                         
-                            cp = pagination.startPage;
+                            cp = 1;
     
-                            selectBoxSelect(cp);
+                            selectStoreList(cp);
                         })
                         $(".pagePrev").click(function(){
                             
                             cp = pagination.prevPage;
     
-                            selectBoxSelect(cp);
+                            selectStoreList(cp);
                         })
                         $(".pageNext").click(function(){
                             
                             cp = pagination.nextPage;
     
-                            selectBoxSelect(cp);
+                            selectStoreList(cp);
                         })
+                        
+                        
                         $(".pageLast").click(function(){
                             
                             cp = pagination.maxPage;
     
-                            selectBoxSelect(cp);
+                            selectStoreList(cp);
                         })
                        
     
@@ -471,7 +477,6 @@ function selectStoreList(cp){
                             data: {"storeNo" : tempNo},
                             success:(store)=>{
                              
-                                console.log(store);
                                 const preview = document.getElementsByClassName("preview");
                                 
                                 const storeNameArea = document.getElementById("storeNameArea");
@@ -479,10 +484,6 @@ function selectStoreList(cp){
                                 const select = document.getElementById("select");
                                 const phoneNumberArea = document.getElementById("phoneNumberArea");
                                 
-                                
-                                console.log(store.roadnameAddress);
-                                console.log(store.imageList);
-                               
                                 
     
                                 if(store.imageList.length != 0){
@@ -534,9 +535,7 @@ function selectStoreList(cp){
                               if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
                               if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
     
-                              console.log(store.storeInfo);
-                              console.log(store.landnumberAddress);
-                              
+
                              
                             if(store.storeInfo != null){
     
@@ -624,6 +623,7 @@ function selectBoxSelect(cp){
                 const pagination = typeMap.pagination;
                 
                 var pageSize = pagination.pageSize;
+                              
                 var totalPages = 0;
                 var curPage = cp;
                 
@@ -632,6 +632,7 @@ function selectBoxSelect(cp){
                 const storeTypeList = typeMap.storeTypeList;
                 
                 tbody.innerHTML = "";
+                
                 for(let store of storeTypeList){
                     
                     const tr = document.createElement("tr");
@@ -684,7 +685,7 @@ function selectBoxSelect(cp){
                     if (totalCount != 0) {
                         totalPages = Math.ceil(totalCount / pageSize);
                         // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
-                        let htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
+                        let htmlStr = pageLink(curPage, totalPages);
                         // common.js - pageLink
                     
                         paginationMenu.innerHTML = "";
@@ -699,7 +700,6 @@ function selectBoxSelect(cp){
                         
                         cp = id_check;
                         
-                        console.log(cp);
             
                         
                         selectBoxSelect(cp); 
@@ -708,7 +708,7 @@ function selectBoxSelect(cp){
                     })
                     $(".pageFirst").click(function(){
                         
-                        cp = pagination.startPage;
+                        cp = 1;
 
                         selectBoxSelect(cp);
                     })
@@ -730,6 +730,7 @@ function selectBoxSelect(cp){
 
                         selectBoxSelect(cp);
                     })
+                   
                     
                 
                 
@@ -748,19 +749,20 @@ function selectBoxSelect(cp){
             url:"/admin/selectType",
             data: {"storeType" : selectBox.value, "cp":cp, "search":search.value, "keyword": keyword.value},
             dataType:"JSON",
-            success : (map) =>{
+            success : (selectMap_search) =>{
 
-                console.log(cp);
+              
                 
-                const pagination = map.pagination;
-                const storeList = map.storeList;
+                const pagination = selectMap_search.pagination;
+                const storeList = selectMap_search.storeList;
                 
                 var pageSize = pagination.pageSize;
                 var totalPages = 0;
                 var curPage = cp;
+                var firstPage = 1;
                 
+
                 const tbody = document.getElementById("tbody")
-                
                 
                 tbody.innerHTML = "";
 
@@ -816,13 +818,10 @@ function selectBoxSelect(cp){
                     if (totalCount != 0) {
                         totalPages = Math.ceil(totalCount / pageSize);
                         // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
-                        let htmlStr = pageLink(curPage, totalPages, selectBoxSelect);
+                        let htmlStr = pageLink(curPage, totalPages);
                         // common.js - pageLink
                     
                         paginationMenu.innerHTML = "";
-
-                        console.log(totalPages);
-                        console.log(curPage);
 
                         paginationMenu.innerHTML = pageLink(curPage, totalPages);
                     }  
@@ -834,8 +833,7 @@ function selectBoxSelect(cp){
                         
                         cp = id_check;
                         
-                        console.log(cp);
-            
+                            
                         
                         selectBoxSelect(cp); 
                         
@@ -843,30 +841,31 @@ function selectBoxSelect(cp){
                     })
                     
 
-                    $(".pageFirst").click(function(){
+                      $(".pageFirst").click(function(){
                         
-                        cp = pagination.startPage;
-
-                        selectBoxSelect(cp);
-                    })
-                    $(".pagePrev").click(function(){
-                        
-                        cp = pagination.prevPage;
-
-                        selectBoxSelect(cp);
-                    })
-                    $(".pageNext").click(function(){
-                        
-                        cp = pagination.nextPage;
-
-                        selectBoxSelect(cp);
-                    })
-                    $(".pageLast").click(function(){
-                        
-                        cp = pagination.maxPage;
-
-                        selectBoxSelect(cp);
-                    })
+                            cp = 1;
+    
+                            selectBoxSelect(cp);
+                        })
+                        $(".pagePrev").click(function(){
+                            
+                            cp = pagination.prevPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                        $(".pageNext").click(function(){
+                            
+                            cp = pagination.nextPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                        $(".pageLast").click(function(){
+                            
+                            cp = pagination.maxPage;
+    
+                            selectBoxSelect(cp);
+                        })
+                       
 
                 
                 
@@ -889,7 +888,6 @@ enroll.addEventListener("click", ()=>{
         url:"/admin/enroll",
         data:{"checkFl" : 'N'},
         success : (storeList)=>{
-            console.log(storeList);
 
             const tbody = document.getElementById("tbody");
 
@@ -950,7 +948,6 @@ function pageLink(curPage, totalPages) {
 	
 	var nextPage = endPage + 1;
 	
-    // console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage", totalPages, "totalPages")
 	
 	//맨 첫 페이지
 	if (curPage > 1 && pageLimit < curPage) {
@@ -977,9 +974,8 @@ function pageLink(curPage, totalPages) {
 	}
 	//맨 마지막 페이지
 	if (curPage < totalPages && nextPage < totalPages) {
-	    pageUrl += "<button class='pageLast''pageBtn' href='javascript:void(0);'"  + "(" + totalPages + ");>&gt;&gt;</button>";
+	    pageUrl += "<button class='pageLast''pageBtn'"  + "(" + totalPages + ");>&gt;&gt;</button>";
 	}
-	// console.log(pageUrl);
     
 	return pageUrl;
     
@@ -991,10 +987,11 @@ function searchBtnClick(){
 
     if(selectBox.value == null){
 
-        selectStoreList();
+        cp = 1;
+        selectBoxSelect(cp);
     } else{
-        selectStoreList();
+        cp = 1;
+        selectStoreList(cp);
     }
 
 }
-

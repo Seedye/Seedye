@@ -353,15 +353,16 @@ public class AdminController {
 			return new Gson().toJson(typeMap);
 			
 		} else {
-			Map<String, Object> map = service.selectStoreList_search(selectMap, cp);
+			Map<String, Object> selectMap_search = service.selectStoreList_search(selectMap, cp);
 			
 			System.out.println(selectMap);
-			System.out.println(map);
+			System.out.println(selectMap_search);
 			
-			model.addAttribute("selectMap", map);
+			model.addAttribute("selectMap_search", selectMap_search);
 			
+			System.out.println(selectMap_search);
 			
-			return new Gson().toJson(map);
+			return new Gson().toJson(selectMap_search);
 			
 		}
 		
@@ -454,8 +455,9 @@ public class AdminController {
 		
 		System.out.println(storeList);
 		
-		store.setLicensePath(storeList.get(0).getLicensePath());
-		
+		if(!store.getImageList().isEmpty()) {
+			store.setLicensePath(storeList.get(0).getLicensePath());
+		}
 		System.out.println(store);
 		
 		return store;
@@ -477,6 +479,15 @@ public class AdminController {
 	}
 	
 
+	// 식당 등록 취소
+	@GetMapping("storeReturn")
+	@ResponseBody
+	public int storeReturn(int storeNo) {
+		
+		int result = service.storeReturn(storeNo);
+		
+		return result;
+	}
 	
 	
 	

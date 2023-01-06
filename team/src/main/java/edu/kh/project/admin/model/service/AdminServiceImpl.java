@@ -421,6 +421,13 @@ public class AdminServiceImpl implements AdminService{
 		return map;
 	}
 
+	// 등록 취소
+	@Transactional
+	@Override
+	public int storeReturn(int storeNo) {
+		return dao.storeReturn(storeNo);
+	}
+
 
 	}
 
