@@ -6,9 +6,11 @@
 <resultMap type="Board" id="board_rm">
 	<id property="boardNo" column="BOARD_NO" />
 	<result property="boardTitle" column="BOARD_TITLE" />
-	<result property="boardContent" column="BOARD_CONTENT" />
+	<result property="boardContent" column="BOARD_CONTENT" />	
 	<result property="createDate" column="CREATE_DATE" />
 	<result property="boardUpdateDate" column="UPDATE_DATE" />
+	<result property="boardDelFl" column="BOARD_DEL_FL" />
+    <result property="boardCode" column="BOARD_CODE" />
 	<result property="readCount" column="READ_COUNT" />
 	<result property="memberId" column="MEMBER_ID" />
 	<result property="memberNo" column="MEMBER_NO" />
@@ -248,13 +250,12 @@ SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
 WHERE CHECK_FL = #{checkFl}
 </select>
 
-<!-- 공지사항 조회 -->
+<!-- 게시글관리 조회 -->
 <select id="selectAdminBoard" resultMap="board_rm">
-SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID
+SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID, BOARD_CODE
 FROM BOARD
 JOIN "MEMBER" USING(MEMBER_NO)
 WHERE BOARD_CODE = #{boardCode}
-AND BOARD_DEL_FL = 'N'
 </select>
 
 
@@ -485,10 +486,61 @@ WHERE STORE_TYPE=#{storeType}
      	  </if>
 </select>
 
+<!-- 식당 등록 취소 -->
 <update id="storeReturn">
 UPDATE STORE SET
 CHECK_FL = 'N'
 WHERE STORE_NO = #{storeNo}
 </update>
+
+<select id="selectAdminBoardCount" resultType="_int">
+SELECT COUNT(*) FROM BOARD
+WHERE BOARD_CODE = #{boardCode}
+</select>
+
+<select id="selectAdminBoard_searchCount" resultType="_int">
+SELECT COUNT(*) 
+FROM BOARD
+JOIN "MEMBER" USING(MEMBER_NO)
+WHERE BOARD_CODE = #{boardCode}
+	<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "title" '>
+				AND BOARD_TITLE LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "content" '>
+				AND BOARD_CONTENT LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND MEMBER_ID LIKE '%${keyword}%'
+			</otherwise>
+		</choose>	
+	</if>	
+</select>
+
+<select id="selectAdminBoard_search" resultMap="board_rm">
+SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID, BOARD_CODE
+FROM BOARD
+JOIN "MEMBER" USING(MEMBER_NO)
+WHERE BOARD_CODE = #{boardCode}
+		<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "title" '>
+				AND BOARD_TITLE LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "content" '>
+				AND BOARD_CONTENT LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND MEMBER_ID LIKE '%${keyword}%'
+			</otherwise>
+		</choose>	
+	</if>	
+</select>
+
 
 </mapper>  

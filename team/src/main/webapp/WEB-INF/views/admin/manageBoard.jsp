@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="boardCode" value="${map.boardCode}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,7 @@
     <link rel="stylesheet" href="/resources/css/sideBar.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
+    <link rel="stylesheet" href="/resources/css/board/board-view-style.css">
 </head>
 <body>
     <main>
@@ -58,7 +61,8 @@
 
                 </div>
                 <div id="boardTest">
-                    <table>
+                    <span class="manageTitle"> ${map.boardCode} 관리</span>
+                    <table id=boardTable>
                         <thead>
                             <tr>
                                 <th>번호</th>
@@ -82,30 +86,39 @@
                             </tr> --%>
                         </tbody>    
                     </table>
-                    <form action="">
-                        <div id="searchBoard">
-                            <select name="" id="">
-                                <option value="">이름</option>
-                                <option value="">내용</option>
-                                <option value="">작성자</option>
-                            </select>
-                            <input type="text">
-                            <button>검색</button>
-                        </div>
-                    </form>
+                    <div id="searchBoard">
+                        <select name="search" id="search">
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
+                            <option value="writer">작성자</option>
+                        </select>
+                        <input type="text" name="keyword" id="keyword">
+                        <button id="searchBtn">검색</button>
+                    </div>
+                    <div id="returnArea">
+                        <a href="/admin/manageBoard">돌아가기</a>
+                    </div>
+                    <div class="pagination-area">
+                        <ul class="pagination">
+                        </ul>
+                    </div>
                 </div>
                 
             </div>
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <Jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
     <script>      
     var loginMemberAuthority = "${loginMember.authority}";
+    const boardCode = "${boardCode}"
+    console.log(boardCode);
     </script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/sideBar.js"></script>
    <script src="/resources/js/admin/swiper.min.js"></script>
    <script src="/resources/js/header.js"></script>
    <script src="/resources/js/admin/boardManage.js"></script>
+   <script src="/resources/js/board/QAview.js"></script>
 </body>
 </html>

@@ -105,13 +105,37 @@ public class AdminController {
 	// 게시판 리스트 조회
 	@GetMapping("selectBoardList")
 	@ResponseBody
-	public String selectAdminBoard(int boardCode) {
+	public String selectAdminBoard(int boardCode, Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
+			@RequestParam Map<String, Object> boardMap) {
 		
-		List<Board> adminBoardList = service.selectAdminBoard(boardCode);
 		
-		System.out.println(adminBoardList);
+		if(boardMap.get("search") == null) {
+			
+			Map<String, Object> map = service.selectAdminBoard(boardCode, cp);
+			
+			map.put("boardCode", boardCode);
+			
+			model.addAttribute("map", map);
+			System.out.println(map);
+			
+			return new Gson().toJson(map);
+			
+			
+		} else {
+			
+			boardMap.put("boardCode", boardCode);
+			
+			Map<String, Object> map = service.selectAdminBoard_search(boardMap, cp);
+
+			map.put("boardCode", boardCode);
+			
+			model.addAttribute("map", map);
+			System.out.println(map);
+			
+			return new Gson().toJson(map);
+		}
 		
-		return new Gson().toJson(adminBoardList);
 		
 	}
 	
@@ -241,6 +265,7 @@ public class AdminController {
 			if(searchMap.get("searchkey") == null) {
 			
 			Map<String, Object> map = service.selectMemberList(cp);
+			System.out.println(map);
 			
 			model.addAttribute("map", map);
 			
@@ -310,7 +335,7 @@ public class AdminController {
 		
 		System.out.println(searchMap);
 		
-		if(searchMap.get("search") == null) {
+		if(searchMap.get("search") == null){ 
 		
 			Map<String, Object> map = service.selectStoreList(cp);
 			

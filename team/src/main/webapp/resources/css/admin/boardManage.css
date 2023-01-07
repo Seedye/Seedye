@@ -105,3 +105,112 @@
     font-weight: bold;
     color: #2db400;
 }
+
+
+/* 게시판 관리 */
+#boardTest{
+    width: 100%;
+}
+
+#boardTable{
+    width: 100%;
+    border: 1px solid black;
+}
+
+#boardTable >thead {
+    background-color: #2db400;
+}
+
+
+#boardTable > tbody{
+    text-align: center;
+}
+
+/* 검색 영역 */
+#searchBoard{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* 상단 글씨 */
+.manageTitle{
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: large;    
+    font-weight: bold;
+    color: #2db400;
+}
+
+/* 돌아가기 */
+#returnArea > a{
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+    color: #2db400;
+    margin-right: 20px;
+}
+
+
+
+.pageBtn{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+
+}
+
+.pagePrev{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageLast{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageFirst{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageNext{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pageBtn:visited{
+    background-color: #2db400;
+    color:white;
+    border-radius: 50%;
+}
+
+/* 페이지 목록 */
+.pagination{
+
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+
+.pageBtn .checked{
+    background-color: #2db400;
+    color: white;
+}
