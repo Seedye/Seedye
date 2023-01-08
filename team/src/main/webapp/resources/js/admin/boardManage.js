@@ -186,6 +186,10 @@ function selectBoardNotice(cp){
               selectBoardNotice(cp);
           })
 
+          searchBtn.addEventListener("click", ()=>{
+            cp=curPage;
+            selectBoardNotice(cp);
+          })
          
 
 
@@ -300,6 +304,7 @@ function selectBoardNotice(cp){
               selectBoardNotice(cp);
           })
           searchBtn.addEventListener("click", ()=>{
+            cp=curPage;
             selectBoardNotice(cp);
           })
 
@@ -324,14 +329,14 @@ function selectBoardNotice(cp){
 // 업데이트
 function selectUpdateNotice(cp){
   const tbody = document.getElementById("tbody");
-  tbody.innerHTML = "";
-
+  
   if(keyword.value == ''){
     $.ajax({
-    url:"/admin/selectBoardList",
-    data:{"boardCode" : '2', "cp":cp},
-    dataType : "JSON",
+      url:"/admin/selectBoardList",
+      data:{"boardCode" : '2', "cp":cp},
+      dataType : "JSON",
     success : (map) =>{
+      tbody.innerHTML = "";
 
       const boardList = map.boardList;
       const pagination = map.pagination;
@@ -426,6 +431,10 @@ function selectUpdateNotice(cp){
           selectUpdateNotice(cp);
       })
 
+          searchBtn.addEventListener("click", ()=>{
+            selectUpdateNotice(cp);
+          })
+
    
 
 
@@ -443,6 +452,8 @@ function selectUpdateNotice(cp){
       data:{"boardCode" : '2', "cp":cp, "search":search.value, "keyword":keyword.value},
       dataType : "JSON",
       success : (map) =>{
+        tbody.innerHTML = "";
+
 
         const boardList = map.boardList;
         const pagination = map.pagination;
@@ -535,6 +546,10 @@ function selectUpdateNotice(cp){
   
             selectUpdateNotice(cp);
         })
+
+        searchBtn.addEventListener("click", ()=>{
+          selectUpdateNotice(cp);
+        })
   
       
         }
@@ -558,6 +573,8 @@ function selectFreeboard(cp){
       data:{"boardCode" : '3', "cp" :cp},
       dataType : "JSON",
       success : (map) =>{
+        tbody.innerHTML = "";
+
 
         const boardList = map.boardList;
         const pagination = map.pagination;
@@ -651,6 +668,10 @@ function selectFreeboard(cp){
             cp = pagination.maxPage;
 
             selectFreeboard(cp);
+        })
+
+        searchBtn.addEventListener("click", ()=>{
+          selectFreeboard(cp);
         })
 
         }
@@ -669,6 +690,8 @@ function selectFreeboard(cp){
       dataType : "JSON",
       success : (map) =>{
 
+        tbody.innerHTML = "";
+
         const boardList = map.boardList;
         const pagination = map.pagination;
             
@@ -760,6 +783,10 @@ function selectFreeboard(cp){
             cp = pagination.maxPage;
 
             selectFreeboard(cp);
+        })
+
+        searchBtn.addEventListener("click", ()=>{
+          selectFreeboard(cp);
         })
 
         }
@@ -785,6 +812,8 @@ function selectQuestion(cp){
       dataType : "JSON",
       success : (map) =>{
 
+        tbody.innerHTML = "";
+
 
         const boardList = map.boardList;
         const pagination = map.pagination;
@@ -880,6 +909,10 @@ function selectQuestion(cp){
             cp = pagination.maxPage;
 
             selectQuestion(cp);
+        })
+
+        searchBtn.addEventListener("click", ()=>{
+          selectQuestion(cp);
         })
     
         
@@ -898,6 +931,8 @@ function selectQuestion(cp){
       dataType : "JSON",
       success : (map) =>{
 
+        tbody.innerHTML = "";
+
         const boardList = map.boardList;
         const pagination = map.pagination;
             
@@ -994,6 +1029,10 @@ function selectQuestion(cp){
             cp = pagination.maxPage;
 
             selectQuestion(cp);
+        })
+
+        searchBtn.addEventListener("click", ()=>{
+          selectQuestion(cp);
         })
 
     
