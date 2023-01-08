@@ -28,8 +28,9 @@
 #boardManage{
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     margin-left: auto;
+    height: 65vh;
 }
 
 .container{
@@ -60,8 +61,8 @@
 
 #boardNotice > span{
     position: absolute;
-    top: 30%;
-    right: 25%;
+    top: 25%;
+    right: 20%;
     color: darkred;
     font-weight: bold;
 
@@ -74,8 +75,8 @@
 
 #freeBoard > span{
     position: absolute;
-    left: 55%;
-    bottom: 5%;
+    left: 65%;
+    bottom: 10%;
     color: #2db400;
     font-size: 1em;
     font-weight: 600;
@@ -87,8 +88,8 @@
 }
 #update > span{
     position: absolute;
-    right: 25%;
-    bottom: 5%;
+    right: 15%;
+    bottom: 10%;
     color: ivory;
     font-weight: bold;
 }
@@ -100,8 +101,142 @@
 
 #question > span{
     position: absolute;
-    right: 25%;
-    bottom: 5%;
+    right: 15%;
+    bottom: 10%;
+    font-weight: bold;
+    color: powderblue;
+}
+
+
+/* 게시판 관리 */
+#boardTest{
+    width: 100%;
+}
+
+#boardTable{
+    width: 100%;
+    border: 1px solid black;
+}
+
+#boardTable >thead {
+    background-color: #2db400;
+}
+
+
+#boardTable > tbody{
+    text-align: center;
+}
+
+/* 검색 영역 */
+#searchBoard{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* 상단 글씨 */
+.manageTitle{
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top:15px;
+    font-size: large;    
     font-weight: bold;
     color: #2db400;
+}
+
+/* 돌아가기 */
+#returnArea > a{
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+    color: #2db400;
+    margin-right: 20px;
+}
+
+
+
+.pageBtn{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+    color: #2db400;
+}
+
+.pagePrev{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageLast{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageFirst{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.pageNext{
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pageBtn:visited{
+    background-color: #2db400;
+    color:white;
+    border-radius: 50%;
+}
+
+/* 페이지 목록 */
+.pagination{
+
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+
+.pageBtn .checked{
+    background-color: #2db400;
+    color: white;
+}
+
+
+tr:hover{
+    background-color: #ccc;
+}
+
+
+#searchBtn{
+    margin: 3px;
+    background-color: #2db400;
+    color: white;
+    border: none;
+    font-weight: bold;
+    width: 5%;
+}
+
+#keyword{
+    margin: 3px;
+    width: 25%;
+}
+
+#search{
+    margin: 3px;
 }

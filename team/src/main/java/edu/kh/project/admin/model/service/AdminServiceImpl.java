@@ -204,10 +204,23 @@ public class AdminServiceImpl implements AdminService{
 		return dao.selectEnroll(checkFl);
 	}
 
-	// 공지사항 조회
+	// 게시판 리스트 조회(검색 X)
 	@Override
-	public List<Board> selectAdminBoard(int boardCode) {
-		return dao.selectAdminBoard(boardCode);
+	public Map<String, Object> selectAdminBoard(int boardCode, int cp) {
+		
+		int listCount = dao.selectAdminBoardCount(boardCode);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Board> boardList = dao.selectAdminBoard(boardCode, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("boardList",boardList);
+		map.put("pagination", pagination);
+		
+		return map;
+		
 	}
 
 	// 식당 등록 문의
@@ -427,6 +440,24 @@ public class AdminServiceImpl implements AdminService{
 	public int storeReturn(int storeNo) {
 		return dao.storeReturn(storeNo);
 	}
+
+	@Override
+	public Map<String, Object> selectAdminBoard_search(Map<String, Object> boardMap, int cp) {
+
+		int listCount = dao.selectAdminBoard_searchCount(boardMap);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Board> boardList = dao.selectAdminBoard_search(boardMap, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("boardList", boardList);
+		map.put("pagination", pagination);
+		
+		return map;
+	}
+
 
 
 	}
