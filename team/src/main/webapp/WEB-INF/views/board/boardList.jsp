@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boardList</title>
     <link rel="stylesheet" href="../../resources/css/header.css">
-    <link rel="stylesheet" href="../../resources/css/sideBar.css">
+    <link rel="stylesheet" href="../../resources/css/sideBar2.css">
     <%-- 게시물 css --%>
     <link rel="stylesheet" href="../../resources/css/board/boardList-style.css">
     <link rel="stylesheet" href="../../resources/css/board/board-view-style.css">
@@ -35,8 +35,8 @@
           <img src="../../resources/images/커뮤니티배경.jpg" alt="">
           <p>커뮤니티</p>
         </div>
-        <div>
-          <p>문의 게시판</p>
+        <div class="board-list-QA-text">
+          <p><i class="fa-regular fa-comments"></i>문의 게시판</p>
         </div>
         <!-- 검색 -->
         <form action="4" method="get" id="boardSearch" onSubmit="return true">
@@ -51,6 +51,7 @@
                   <option value="w">작성자</option>
                 </select>
                 <input type="text" name="query" id="search-query">
+              <button type="reset" class="serch-reset-btn"><i class="fa-solid fa-xmark fa-1.5x"></i>
               </div>
 
               <!-- 검색 버튼 -->
@@ -92,7 +93,7 @@
                 <c:forEach var="board" items="${boardList}">
                   <tr class="board-list-view">
                     <td>${board.boardNo}</td>
-                    <td><i class="fa-solid fa-seedling"></i>${board.boardTitle}</a></td>
+                    <td><i class="fa-solid fa-seedling seed-icon"></i>${board.boardTitle}</a></td>
                     <td>${board.memberId}</td>
                     <td>${board.readCount}</td>
                     <td id="${board.boardNo}">${board.createDate}</td>
