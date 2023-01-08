@@ -94,9 +94,10 @@ public interface AdminService {
 
 	/** 공지사항 조회
 	 * @param boardCode
-	 * @return boardList
+	 * @param cp 
+	 * @return map
 	 */
-	List<Board> selectAdminBoard(int boardCode);
+	Map<String, Object> selectAdminBoard(int boardCode, int cp);
 
 
 
@@ -175,11 +176,19 @@ public interface AdminService {
 
 
 
-	/** 등록 취소
+	/** 식당 등록 취소
 	 * @param storeNo
 	 * @return result
 	 */
 	int storeReturn(int storeNo);
+
+
+
+	Map<String, Object> selectAdminBoard_search(Map<String, Object> boardMap, int cp);
+
+
+
+
 
 
 

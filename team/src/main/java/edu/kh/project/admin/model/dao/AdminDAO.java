@@ -170,12 +170,19 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
 	}
 
-	/** 공지사항 조회
+	/** 게시판 리스트 조회
 	 * @param boardCode
+	 * @param pagination 
 	 * @return boardList
 	 */
-	public List<Board> selectAdminBoard(int boardCode) {
-		return sqlSession.selectList("adminMapper.selectAdminBoard", boardCode);
+	public List<Board> selectAdminBoard(int boardCode, Pagination pagination) {
+		
+
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectAdminBoard", boardCode, rowBounds);
 	}
 
 	/** 식당 정보 먼저 등록
@@ -347,6 +354,26 @@ public class AdminDAO {
 	public int storeReturn(int storeNo) {
 		return sqlSession.update("adminMapper.storeReturn", storeNo);
 	}
+
+	public int selectAdminBoardCount(int boardCode) {
+		
+		return sqlSession.selectOne("adminMapper.selectAdminBoardCount", boardCode);
+	}
+
+	public int selectAdminBoard_searchCount(Map<String, Object> boardMap) {
+		return sqlSession.selectOne("adminMapper.selectAdminBoard_searchCount", boardMap);
+	}
+
+	public List<Board> selectAdminBoard_search(Map<String, Object> boardMap, Pagination pagination) {
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectAdminBoard_search", boardMap, rowBounds);
+	}
+
+
 
 
 
