@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: space-around;
     margin-left: auto;
+    height: 100%;
 
    
     
@@ -203,6 +204,7 @@ margin-bottom: 20px;
     justify-content: center;
     align-items: center;
     margin-left: auto;
+    height: 100%;
 }
 
 
@@ -439,4 +441,28 @@ td{
     margin: 5px;
     border:none;
     cursor: pointer;
+}
+
+
+tr:hover{
+    background-color: #ccc;
+}
+
+
+#searchBtn{
+    margin: 3px;
+    background-color: #2db400;
+    color: white;
+    border: none;
+    font-weight: bold;
+    width: 5%;
+}
+
+#keyword{
+    margin: 3px;
+    width: 25%;
+}
+
+#search{
+    margin: 3px;
 }

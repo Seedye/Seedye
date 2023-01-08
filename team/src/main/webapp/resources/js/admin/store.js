@@ -1,8 +1,8 @@
-const inquiryR = document.getElementById("inquiryR");
-inquiryR.style.display = "none";
 
 const boardManage = document.getElementById("boardManage");
 const inquiry = document.getElementById("inquiry");
+const inquiryR = document.getElementById("inquiryR");
+
 
 inquiry.addEventListener("click", ()=>{
     

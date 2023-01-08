@@ -542,5 +542,58 @@ WHERE BOARD_CODE = #{boardCode}
 	</if>	
 </select>
 
+<!-- 식당 신청 수(검색 x) -->
+<select id="selectEnrollCount" resultType="_int">
+SELECT COUNT(*)
+FROM STORE
+WHERE CHECK_FL = 'N'
+</select>
+
+<!-- 검색있을때 식당 신청 조회수 -->
+<select id="selectEnrollCount_search" resultType="_int">
+SELECT COUNT(*)
+FROM STORE
+WHERE CHECK_FL = 'N'
+	<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "name" '>
+				AND STORE_NAME LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "addr" '>
+				AND ROADNAME_ADDRESS LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND STORE_TEL LIKE '%${keyword}%'
+			</otherwise>
+	
+		</choose>	
+	</if>	
+</select>
+
+<!-- 검색있을때 식당 신청 조회 -->
+<select id="selectEnroll_search" resultMap="store_rm">
+SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
+FROM STORE
+WHERE CHECK_FL = 'N'
+	<if test='keyword != null and keyword !=""'>	
+		<choose>
+			<when test='search == "name" '>
+				AND STORE_NAME LIKE '%${keyword}%'
+			</when>
+			
+			<when test='search == "addr" '>
+				AND ROADNAME_ADDRESS LIKE '%${keyword}%'
+			</when>
+			
+			<otherwise>
+				AND STORE_TEL LIKE '%${keyword}%'
+			</otherwise>
+	
+		</choose>	
+	</if>	
+</select>
+
 
 </mapper>  

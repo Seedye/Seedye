@@ -399,21 +399,21 @@ for (let boardListViewItems of boardListView) {
   });
 }
 
-// 상세보기 X
-// boardViewX.addEventListener("click", () => {
-//   boardViewModal.style.display = "none";
-//   document.body.style.overflow = "unset";
-//   boardViewTitleDetailAnswer.innerHTML = null;
-//   boardViewContentContent.innerHTML = null;
-//   boardViewContentText.innerHTML = null;
-//   boardViewContentContentComment.innerHTML = null;
-//   boardViewContentTextComment.innerHTML = null;
-//   ContentImgArea.style.display = "none";
-//   ContentImgArea.innerHTML = null;
-//   // location.reload();
+//상세보기 X
+boardViewX.addEventListener("click", () => {
+  boardViewModal.style.display = "none";
+  document.body.style.overflow = "unset";
+  boardViewTitleDetailAnswer.innerHTML = null;
+  boardViewContentContent.innerHTML = null;
+  boardViewContentText.innerHTML = null;
+  boardViewContentContentComment.innerHTML = null;
+  boardViewContentTextComment.innerHTML = null;
+  ContentImgArea.style.display = "none";
+  ContentImgArea.innerHTML = null;
+  // location.reload();
 
 
-// });
+});
 
 
 
