@@ -16,7 +16,7 @@
             <span>식당 등록 문의</span>
             <span class="close">X</span>
         </div>
-        <form action="/admin/register" method="post" enctype="multipart/form-data" onsubmit="function vailidate();" id=registerFrm>
+        <form action="/register" method="post" enctype="multipart/form-data" onsubmit="function vailidate();" id=registerFrm>
         <div>    
             <div id="imageArea">
                 <div class="imageDiv">

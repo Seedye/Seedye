@@ -86,7 +86,7 @@ searchBtn.addEventListener("click", () => {
     foodTypecategory.style.display = "flex";
     
     window.scrollTo({
-        top: 100,
+        top: 400,
         left: 0,
         behavior : 'smooth'
     });
@@ -203,6 +203,8 @@ searchBtn.addEventListener("click", () => {
                                     selectStoreNo = e.target.id;
     
                                     modalWindow.style.display = "flex";
+
+                                    document.body.style.overflow = "hidden";
     
                                     /* 모달 팝업창 내부 비동기 불러오기 */
                                     $.ajax({
@@ -220,13 +222,41 @@ searchBtn.addEventListener("click", () => {
                                             title.innerText = modalResult[0].storeName;
                                             
                                             const roadAddr = document.createElement("span");
-                                            roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>" + modalResult[0].landnumberAddress + "</span>"
+
+                                            /* 지번 주소 없을 때 화면에 출력 메세지 설정 */
+                                            if(modalResult[0].landnumberAddress != "") {
+
+                                                roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>" + modalResult[0].landnumberAddress + "</span>";
+
+                                            } else {
+                                                
+                                                roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>미입력</span>";
+                                            }
     
                                             const landAddr = document.createElement("span");
-                                            landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>" + modalResult[0].roadnameAddress + "</span>"
+
+                                            /* 지번 주소 없을 때 화면에 출력 메세지 설정 */
+                                            if(modalResult[0].roadnameAddress != "") {
+
+                                                landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>" + modalResult[0].roadnameAddress + "</span>";
+                                                
+                                            } else {
+
+                                                landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>미입력</span>";
+
+                                            }
     
                                             const storeTel = document.createElement("span");
-                                            storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>" + modalResult[0].storeTel + "</span>"
+
+                                            /* 전화번호 없을 때 화면에 출력 메세지 설정 */
+                                            if(modalResult[0].storeTel != "") {
+                                                
+                                                storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>" + modalResult[0].storeTel + "</span>";
+
+                                            } else {
+                                                
+                                                storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>미입력</span>";
+                                            }
     
                                             const modalSlider = document.createElement("div");
                                             modalSlider.classList.add("modal-slider");
@@ -325,6 +355,7 @@ searchBtn.addEventListener("click", () => {
                                 for (let subItems of modalCloseBtn){
                                     subItems.lastElementChild.addEventListener("click", () => {
                                         modalWindow.style.display = "none";
+                                        document.body.style.overflow = "unset";
                                         
                                     });
                                 }
@@ -440,21 +471,24 @@ const modalWindow = document.querySelector(".storeInfoModal-window");
 for (let mainItems of modalBtn){
     
     mainItems.lastElementChild.addEventListener("click", ()=>{
-        modalWindow.style.display = "flex";
 
+        modalWindow.style.display = "flex";
         relayout();
     });
     
     /* 모달 팝업창 닫는 버튼 */
     const modalCloseBtn = document.getElementsByClassName("modal-title");
-
+    
     for (let subItems of modalCloseBtn){
         subItems.lastElementChild.addEventListener("click", () => {
+            
             modalWindow.style.display = "none";
+            
         });
     }
 }
 
+/* 검색창 엔터누를때 작동하기 */
 document.querySelector(".searchTxt").addEventListener("keyup", e => {
     if(e.key == "Enter"){
         document.querySelector(".searchBtn").click();
