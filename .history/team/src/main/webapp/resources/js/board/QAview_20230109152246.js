@@ -332,7 +332,7 @@ for (let boardListViewItems of boardListView) {
               // 수정될 제목
               boardTitle.innerHTML = saveTitle;
               // 수정될 내용
-              boardContent.innerHTML = saveContent;
+              boardContent.innerText = saveContent;
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   

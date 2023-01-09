@@ -62,10 +62,10 @@ for (let boardListViewItems of boardListView) {
         if(QABoardDetail[0].boardTitle){
           var saveTitle = QABoardDetail[0].boardTitle.replaceAll("<br>", "\n");
           // XSS 방지 처리 해제
-          saveTitle =  saveTitle.replaceAll("&amp;", "&");
-          saveTitle =  saveTitle.replaceAll("&lt;", "<");
-          saveTitle =  saveTitle.replaceAll("&gt;", ">");
-          saveTitle =  saveTitle.replaceAll("&quot;", "\"");
+          saveContent =  saveContent.replaceAll("&amp;", "&");
+          saveContent =  saveContent.replaceAll("&lt;", "<");
+          saveContent =  saveContent.replaceAll("&gt;", ">");
+          saveContent =  saveContent.replaceAll("&quot;", "\"");
 
         }
         // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
@@ -332,7 +332,7 @@ for (let boardListViewItems of boardListView) {
               // 수정될 제목
               boardTitle.innerHTML = saveTitle;
               // 수정될 내용
-              boardContent.innerHTML = saveContent;
+              boardContent.innerText = QABoardDetail[0].boardContent.replaceAll("<br/>", "\n");
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   

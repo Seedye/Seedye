@@ -71,10 +71,12 @@ public class BaordServiceImple implements BoardService {
 	public int QAWrite(Board board, List<MultipartFile> fileList, String webPath, String folderPath)
 			throws IOException {
 
-		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+//		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+//		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		
-		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		
+//		board.setBoardTitle(Util.newLineHandling(board.setBoardTitle()));
+//		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
 
 		int boardNo = dao.QAWrite(board);
 

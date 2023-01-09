@@ -43,7 +43,7 @@ for (let boardListViewItems of boardListView) {
         if(QABoardDetail[0].commentContent){
 
           // 개행문자 처리 해제
-          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
+          var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("\n", "<br>");
           // XSS 방지 처리 해제
           saveCommentContent =  saveCommentContent.replaceAll("&amp;", "&");
           saveCommentContent =  saveCommentContent.replaceAll("&lt;", "<");
@@ -51,7 +51,7 @@ for (let boardListViewItems of boardListView) {
           saveCommentContent =  saveCommentContent.replaceAll("&quot;", "\"");
         }
         if(QABoardDetail[0].boardContent){
-          var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
+          var saveContent = QABoardDetail[0].boardContent.replaceAll("\n", "<br>");
           // XSS 방지 처리 해제
           saveContent =  saveContent.replaceAll("&amp;", "&");
           saveContent =  saveContent.replaceAll("&lt;", "<");
@@ -60,7 +60,7 @@ for (let boardListViewItems of boardListView) {
 
         }
         if(QABoardDetail[0].boardTitle){
-          var saveTitle = QABoardDetail[0].boardTitle.replaceAll("<br>", "\n");
+          var saveTitle = QABoardDetail[0].boardTitle.replaceAll("\n", "<br>");
           // XSS 방지 처리 해제
           saveTitle =  saveTitle.replaceAll("&amp;", "&");
           saveTitle =  saveTitle.replaceAll("&lt;", "<");
@@ -332,7 +332,7 @@ for (let boardListViewItems of boardListView) {
               // 수정될 제목
               boardTitle.innerHTML = saveTitle;
               // 수정될 내용
-              boardContent.innerHTML = saveContent;
+              boardContent.innerText = saveContent;
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   

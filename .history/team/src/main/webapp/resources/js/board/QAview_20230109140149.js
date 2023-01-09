@@ -42,30 +42,10 @@ for (let boardListViewItems of boardListView) {
 
         if(QABoardDetail[0].commentContent){
 
-          // 개행문자 처리 해제
           var saveCommentContent = QABoardDetail[0].commentContent.replaceAll("<br>", "\n");
-          // XSS 방지 처리 해제
-          saveCommentContent =  saveCommentContent.replaceAll("&amp;", "&");
-          saveCommentContent =  saveCommentContent.replaceAll("&lt;", "<");
-          saveCommentContent =  saveCommentContent.replaceAll("&gt;", ">");
-          saveCommentContent =  saveCommentContent.replaceAll("&quot;", "\"");
         }
         if(QABoardDetail[0].boardContent){
           var saveContent = QABoardDetail[0].boardContent.replaceAll("<br>", "\n");
-          // XSS 방지 처리 해제
-          saveContent =  saveContent.replaceAll("&amp;", "&");
-          saveContent =  saveContent.replaceAll("&lt;", "<");
-          saveContent =  saveContent.replaceAll("&gt;", ">");
-          saveContent =  saveContent.replaceAll("&quot;", "\"");
-
-        }
-        if(QABoardDetail[0].boardTitle){
-          var saveTitle = QABoardDetail[0].boardTitle.replaceAll("<br>", "\n");
-          // XSS 방지 처리 해제
-          saveTitle =  saveTitle.replaceAll("&amp;", "&");
-          saveTitle =  saveTitle.replaceAll("&lt;", "<");
-          saveTitle =  saveTitle.replaceAll("&gt;", ">");
-          saveTitle =  saveTitle.replaceAll("&quot;", "\"");
 
         }
         // saveCommentContent = saveCommentContent.replaceAll("<br>", "\n");
@@ -91,7 +71,7 @@ for (let boardListViewItems of boardListView) {
         // 답변 내용 생성 P
         const QAContentCommentP = document.createElement("p");
 
-        QATitleP.innerText = saveTitle;
+        QATitleP.innerText = QABoardDetail[0].boardTitle;
         QATextP.innerText = "문의 내용";
         QAIDAndDateP.innerText =
         QABoardDetail[0].memberId + " / " + QABoardDetail[0].createDate;
@@ -330,9 +310,8 @@ for (let boardListViewItems of boardListView) {
               });
   
               // 수정될 제목
-              boardTitle.innerHTML = saveTitle;
-              // 수정될 내용
-              boardContent.innerHTML = saveContent;
+              boardTitle.innerHTML = QABoardDetail[0].boardTitle;
+              boardContent.innerText = QABoardDetail[0].boardContent.replaceAll("\n", "<br/>");
   
              //TODO : 이미지 불러오기 / 저장된 이미지
   
