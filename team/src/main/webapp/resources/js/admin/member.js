@@ -121,11 +121,13 @@ function selectMemberList(cp){
                                     
                                     cp = id_check;
                                     
-                                    console.log(cp);
+                                    if(id_check != null) {
+                                        selectMemberList(cp);
+                                        $(this)[0].classList.add("fontColor");
+                                    } else{
+                                        $(this)[0].classList.remove("fontColor");
             
-                                    
-                                    if(id_check != null) selectMemberList(cp); 
-                                    
+                                    }
             
                                 })
                             
@@ -325,11 +327,13 @@ function selectMemberList(cp){
                                     
                                     cp = id_check;
                                     
-                                    console.log(cp);
+                                    if(id_check != null) {
+                                        selectMemberList(cp);
+                                        $(this)[0].classList.add("fontColor");
+                                    } else{
+                                        $(this)[0].classList.remove("fontColor");
             
-                                    
-                                    if(id_check != null) selectMemberList(cp); 
-                                    
+                                    }
             
                                 })
                             
@@ -506,7 +510,7 @@ function pageLink(curPage, totalPages) {
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'>" + i + "</button>"
+	        pageUrl += "<button class='pageBtn fontColor' href='javascript:void(0);'>" + i + "</button>"
 	    } else {
 	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'  + id="+i+">" + i + " </button>";
 	    }

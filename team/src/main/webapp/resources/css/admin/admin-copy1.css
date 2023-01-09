@@ -470,3 +470,12 @@ tr:hover{
 tr{
     height: 50px;
 }
+
+.checked{
+ background-color: black;
+}
+
+.fontColor{
+    color: #2db400;
+    font-weight: bold;
+}

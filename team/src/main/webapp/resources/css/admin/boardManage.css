@@ -242,10 +242,12 @@ tr:hover{
 }
 
 
-.pageBtn clicked{
-
-    background-color: #2db400;
-    border-radius: 50%;
-    color: white;
+.fontColor{
+    color: #2db400;
     font-weight: bold;
+}
+
+.board-view-content-text textarea{
+    width: 533px; 
+    height: 121px;
 }
