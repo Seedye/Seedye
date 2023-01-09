@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 // 필터 등록
 @WebFilter(filterName = "memberFilter", // 필터 이름, 필터가 여러개 존재할 때 순서 지정
-			urlPatterns = {"/find", "/signUp"}) // 필터링한 요청 주소(패턴 가능)
+			urlPatterns = {"/find", "/signUp", "/login"}) // 필터링한 요청 주소(패턴 가능)
 public class MemberFilter implements Filter {
 
     public void init(FilterConfig fConfig) throws ServletException {
