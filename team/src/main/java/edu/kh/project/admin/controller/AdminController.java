@@ -335,7 +335,7 @@ public class AdminController {
 		
 		System.out.println(searchMap);
 		
-		if(searchMap.get("search") == null){ 
+		if(searchMap.get("keyword") == null){ 
 		
 			Map<String, Object> map = service.selectStoreList(cp);
 			
