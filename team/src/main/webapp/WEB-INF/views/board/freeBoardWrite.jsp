@@ -22,7 +22,7 @@
       <div class="board-view-title-detail-answer">
         <div class="board-view-content-detail-answer">
           <div class="board-view-content-content">
-            <p>문의 내용</p>
+            <p>내용</p>
             <p>작성자 : ${loginMember.memberId}</p>
           </div>
           <div class="board-view-content-text">
