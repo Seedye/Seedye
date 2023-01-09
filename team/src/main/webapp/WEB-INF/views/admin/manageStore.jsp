@@ -12,7 +12,7 @@
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <link rel="stylesheet" href="/resources/css/sideBar2.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
@@ -281,7 +281,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
     <script src="/resources/js/sideBar.js"></script>
-    <script src="/resources/js/admin/store.js"></script>
 
    
 </body>

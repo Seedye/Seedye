@@ -80,13 +80,14 @@ function selectStoreList(cp){
                 // 전화번호
                 const td5 = document.createElement("td");
                 if(store.storeTel == null){
-                    store.storeTel = "정보 없음"
+                    td5.innerText = "정보 없음"
                     td5.style.color = "red";
                     td5.style.fontWeight = "bold";
                 
+                } else {
+                    td5.innerText = store.storeTel;
                 }
                 
-                    td5.innerText = store.storeTel;
                 
                 // 처리여부
                 const td6 = document.createElement("td");
@@ -296,9 +297,10 @@ function selectStoreList(cp){
                                         if(result > 0){
                                             alert("성공");
                                         }
-
+                                        history.back();
                                     }
                                 });
+
                         })
 
 
@@ -365,12 +367,13 @@ function selectStoreList(cp){
                     // 전화번호
                     const td5 = document.createElement("td");
                     if(store.storeTel == null){
-                        store.storeTel = "정보 없음"
+                        td5.innerText = "정보 없음"
                         td5.style.color = "red";
-                    
+                        td5.style.fontWeight = "bold";
+                    } else {
+                        td5.innerText = store.storeTel;
                     }
                     
-                        td5.innerText = store.storeTel;
                     
                     // 처리여부
                     const td6 = document.createElement("td");
@@ -657,10 +660,11 @@ function selectBoxSelect(cp){
                     // 전화번호
                     const td5 = document.createElement("td");
                     if(store.storeTel == null){
-                        store.storeTel = "정보 없음"
+                        td5.innerText = "정보 없음"
                         td5.style.color = "red";
                         td5.style.fontWeight = "bold";
-                    
+                    } else {
+                        td5.innerText = store.storeTel;
                     }
                     
                     // 처리여부
@@ -794,11 +798,15 @@ function selectBoxSelect(cp){
                     
                     // 전화번호
                     const td5 = document.createElement("td");
+
+                    console.log(store.storeTel);
                     if(store.storeTel == null){
-                        store.storeTel = "정보 없음"
+                        td5.innerText = "정보 없음"
                         td5.style.color = "red";
                         td5.style.fontWeight = "bold";
                     
+                    } else{
+                        td5.innerText = store.storeTel;
                     }
                     
                     // 처리여부
@@ -892,10 +900,12 @@ function selectBoxSelect(cp){
 
 }
 // 신청 조회    
+
 const enrollBtn = document.getElementById("enroll");
 enrollBtn.addEventListener("click", ()=>{
   enroll(cp)
 })
+
 
     function enroll(cp){
     if(keyword.value == null){
@@ -939,7 +949,7 @@ enrollBtn.addEventListener("click", ()=>{
 
                     const td5 = document.createElement("td");
                     if(store.storeTel == null){
-                        store.storeTel = "정보 없음"
+                        td5.innerText = "정보 없음"
                         td5.style.color = "red";
                         td5.style.fontWeight = "bold";
                     
@@ -1060,7 +1070,7 @@ enrollBtn.addEventListener("click", ()=>{
     
                         const td5 = document.createElement("td");
                         if(store.storeTel == null){
-                            store.storeTel = "정보 없음"
+                           td5.innerText = "정보 없음"
                             td5.style.color = "red";
                             td5.style.fontWeight = "bold";
                         } else{

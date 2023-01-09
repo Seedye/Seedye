@@ -39,8 +39,8 @@
           <p>공지사항</p>
         </div>
         <div class="board-list-QA-text">
-          <p><i class="fa-regular fa-comments"></i>공지사항</p>
-        </div>
+            <p><i class="fa-regular fa-comments"></i>업데이트</p>
+          </div>
         <!-- 검색 -->
         <form action="4" method="get" id="boardSearch" onSubmit="return true">
           <div class="board-list-serch-write-area">

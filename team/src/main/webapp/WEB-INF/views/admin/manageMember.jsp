@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
-    <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <link rel="stylesheet" href="/resources/css/sideBar2.css">
 
 </head>
 <body>
@@ -229,6 +229,5 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/member.js"></script>
     <script src="/resources/js/sideBar.js"></script>
-    <script src="/resources/js/admin/store.js"></script>
     </body>
 </html>

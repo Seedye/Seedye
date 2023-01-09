@@ -39,7 +39,7 @@ import edu.kh.project.member.model.vo.Member;
 
 
 
-@RequestMapping("/admin")
+
 @Controller
 public class AdminController {
 	
@@ -47,7 +47,7 @@ public class AdminController {
 	private AdminService service;
 
 	// 게시글 관리화면 이동
-	@GetMapping("/manageBoard")
+	@GetMapping("/admin/manageBoard")
 	public String selectManageBoard() {
 		return "admin/manageBoard";
 	}
@@ -56,20 +56,20 @@ public class AdminController {
 	
 	
 	// 회원 관리 화면 이동
-	@GetMapping("/manageMember")
+	@GetMapping("/admin/manageMember")
 	public String manageMember() {
 		return "admin/manageMember";
 	}
 	
 	// 식당 관리 화면 이동
-	@GetMapping("/manageStore")
+	@GetMapping("/admin/manageStore")
 	public String manageStore() {
 		return "admin/manageStore";
 	}
 	
 	
 	// 게시글 목록 조회
-	@GetMapping("/board/{boardCode}")
+	@GetMapping("/admin/board/{boardCode}")
 	public String selectBoardList(@PathVariable("boardCode") int boardCode,
 			Model model,
 			@RequestParam(value="cp", required = false, defaultValue = "1")int cp,
@@ -88,7 +88,7 @@ public class AdminController {
 
 	// 게시글 상세 조회
 	
-	@GetMapping("/board/{boardCode}/{boardNo}")
+	@GetMapping("/admin/board/{boardCode}/{boardNo}")
 	public String boardDetail(
 			@PathVariable("boardNo") int boardNo,
 			@PathVariable("boardCode") int boardCode,
@@ -103,7 +103,7 @@ public class AdminController {
 	}
 	
 	// 게시판 리스트 조회
-	@GetMapping("selectBoardList")
+	@GetMapping("/admin/selectBoardList")
 	@ResponseBody
 	public String selectAdminBoard(int boardCode, Model model,
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
@@ -214,14 +214,14 @@ public class AdminController {
 	
 	
 	// 게시글 작성(공지사항(code=1), 업데이트(code=2) 이동
-	@GetMapping("/write/{boardCode}")
+	@GetMapping("/admin/write/{boardCode}")
 	public String boardWrite(@PathVariable("boardCode") int boardCode) {
 		
 		return "board/boardWrite";
 	}
 	
 	// 게시글 작성
-	@PostMapping("/write/{boardCode}")
+	@PostMapping("/admin/write/{boardCode}")
 	public String boardWrite(Board board,
 			@SessionAttribute("loginMember") Member loginMember,
 			@PathVariable("boardCode")int boardCode,
@@ -253,7 +253,7 @@ public class AdminController {
 	
 
 	// 회원 목록 조회
-	@GetMapping("selectMemberList")
+	@GetMapping("/admin/selectMemberList")
 	@ResponseBody
 	public String selectMemberList(Model model,
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
@@ -285,7 +285,7 @@ public class AdminController {
 	}
 	
 	// 회원 관리 화면 조회
-	@GetMapping("selectMember")
+	@GetMapping("/admin/selectMember")
 	@ResponseBody
 	public Member selectMember(int memberNo) {
 		
@@ -300,7 +300,7 @@ public class AdminController {
 	
 	
 	// 회원 권한 변경
-	@GetMapping("updateInfo")
+	@GetMapping("/admin/updateInfo")
 	@ResponseBody
 	public int updateInfo( int memberNo) {
 		
@@ -314,7 +314,7 @@ public class AdminController {
 	
 	
 	// 회원 탈퇴
-	@GetMapping("deleteMember")
+	@GetMapping("/admin/deleteMember")
 	@ResponseBody
 	public int memberDelete (int memberNo) {
 		
@@ -326,7 +326,7 @@ public class AdminController {
 	
 	// 수정 중
 	// 식당 목록 조회
-	@GetMapping("selectStoreList")
+	@GetMapping("/admin/selectStoreList")
 	@ResponseBody
 	public String selectStoreList(Model model,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
@@ -359,7 +359,7 @@ public class AdminController {
 	}
 	
 	// 식당 selectBox 조회
-	@GetMapping("selectType")
+	@GetMapping("/admin/selectType")
 	@ResponseBody
 	public String selectTypeList(Model model, String storeType,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
@@ -394,7 +394,7 @@ public class AdminController {
 	}
 	
 	// 식당관리 신청조회
-	@GetMapping("enroll")
+	@GetMapping("/enroll")
 	@ResponseBody
 	public String selectEnroll(char checkFl,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
@@ -424,7 +424,7 @@ public class AdminController {
 	
 	
 	// 식당 등록 신청
-	@PostMapping("register")
+	@PostMapping("/register")
 	public String register(
 			Store store,
 			License license,
@@ -471,7 +471,7 @@ public class AdminController {
 
 	
 	// 식당 등록(조회 후 승인)
-	@GetMapping("storeManage")
+	@GetMapping("/admin/storeManage")
 	@ResponseBody
 	public Store selectStoreManage(int storeNo) {
 		
@@ -510,7 +510,7 @@ public class AdminController {
 	
 
 	// 식당 등록
-	@GetMapping("registerStore")
+	@GetMapping("/admin/registerStore")
 	@ResponseBody
 	public int registerStore(int storeNo) {
 		
@@ -522,7 +522,7 @@ public class AdminController {
 	
 
 	// 식당 등록 취소
-	@GetMapping("storeReturn")
+	@GetMapping("/admin/storeReturn")
 	@ResponseBody
 	public int storeReturn(int storeNo) {
 		
