@@ -261,7 +261,20 @@ function selectStoreList(cp){
                          
                         if(store.storeInfo != null){
 
-                            infoArea.innerText = store.storeInfo;
+                            let textTemp;
+
+                            textTemp = store.storeInfo;
+
+                                // XSS 방지 처리 해제
+                                textTemp =  textTemp.replaceAll("&amp;", "&");
+                                textTemp =  textTemp.replaceAll("&lt;", "<");
+                                textTemp =  textTemp.replaceAll("&gt;", ">");
+                                textTemp =  textTemp.replaceAll("&quot;", "\"");
+                            
+                            // 개행문자 처리 해제
+                            textTemp =  textTemp.replaceAll("<br>", "\n");
+
+                            infoArea.innerHTML = textTemp;
                         }
 
                         // 식당 등록 (협의중 -> 등록완료)
@@ -542,7 +555,20 @@ function selectStoreList(cp){
                              
                             if(store.storeInfo != null){
     
-                                infoArea.innerText = store.storeInfo;
+                                let textTemp;
+
+                                textTemp = store.storeInfo;
+
+                                    // XSS 방지 처리 해제
+                                    textTemp =  textTemp.replaceAll("&amp;", "&");
+                                    textTemp =  textTemp.replaceAll("&lt;", "<");
+                                    textTemp =  textTemp.replaceAll("&gt;", ">");
+                                    textTemp =  textTemp.replaceAll("&quot;", "\"");
+                                
+                                // 개행문자 처리 해제
+                                textTemp =  textTemp.replaceAll("<br>", "\n");
+
+                                infoArea.innerHTML = textTemp;
                             }
     
                             // 식당 등록 (협의중 -> 등록완료)
@@ -741,14 +767,171 @@ function selectBoxSelect(cp){
                     })
                    
                     
+                    const storeManage = document.getElementsByClassName("store-manage");
+            
+                    for(i=0; i<storeManage.length; i++){
+                        
+        
+                        storeManage[i].addEventListener("click", (e)=>{
+                        
+                        // 선택한 관리 버튼
+                        let dv = e.currentTarget;
+        
+                        
+                        // 선택한 관리버튼의 식당번호
+                        tempNo = dv.parentNode.parentNode.children[0].innerText;
+                                          
+                        storeManageMain.style.display = "none";
+                        adminR.style.display = "flex";
+        
+                
+        
+                            $.ajax({
+                                url:"/admin/storeManage",
+                                data: {"storeNo" : tempNo},
+                                success:(store)=>{
+                                 
+                                    const preview = document.getElementsByClassName("preview");
+                                    
+                                    const storeNameArea = document.getElementById("storeNameArea");
+          
+                                    const select = document.getElementById("select");
+                                    const phoneNumberArea = document.getElementById("phoneNumberArea");
+                                    
+                                    const roadAddr = document.querySelector(".inputRoad");
+                                    const jibunAddr = document.querySelector(".inputJibun");
+        
+                                    
+        
+                                    if(store.imageList.length != 0){
+        
+                                        if(store.licensePath != null){
+                                        image0i.setAttribute("src", store.licensePath);
+                                        }
+        
+                                        if(store.imageList[0].allPath != null){
+                                            image1i.setAttribute("src", store.imageList[0].allPath);
+                                        }
+        
+                                        if(store.imageList[1].allPath != null){
+                                            image2i.setAttribute("src", store.imageList[1].allPath);
+                                        }
+        
+                                    } else{
+                                        image0i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        image1i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        image2i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                    }
+                                  storeNameArea.setAttribute('value', store.storeName);
+        
+                                    roadAddr.setAttribute('value', store.roadnameAddress);
+        
+                                    jibunAddr.setAttribute('value', store.landnumberAddress);
+        
+                                    
+        
+                                  phoneNumberArea.setAttribute('value', store.storeTel);
+        
+        
+                                  const a = document.getElementById("a");
+                                  const b = document.getElementById("b");
+                                  const c = document.getElementById("c");
+                                  const d = document.getElementById("d");
+                                  const e = document.getElementById("e");
+                                  const f = document.getElementById("f");
+                                  const g = document.getElementById("g");
+                                  const h = document.getElementById("h");
+                                  const k = document.getElementById("k");
+                                  const j = document.getElementById("j");
+        
+                                  if(store.storeType == '한식'){ a.setAttribute("selected", true);}
+                                  if(store.storeType == '중식'){ b.setAttribute("selected", true);}
+                                  if(store.storeType == '일식'){ c.setAttribute("selected", true);}
+                                  if(store.storeType == '양식'){ d.setAttribute("selected", true);}
+                                  if(store.storeType == '패스트푸드'){ e.setAttribute("selected", true);}
+                                  if(store.storeType == '일반대중음식'){ f.setAttribute("selected", true);}
+                                  if(store.storeType == '편의점'){ g.setAttribute("selected", true);}
+                                  if(store.storeType == '제과점'){ h.setAttribute("selected", true);}
+                                  if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
+                                  if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
+        
+                                 
+                                if(store.storeInfo != null){
+                                    
+                                    let textTemp;
+        
+                                    textTemp = store.storeInfo;
+        
+                                        // XSS 방지 처리 해제
+                                        textTemp =  textTemp.replaceAll("&amp;", "&");
+                                        textTemp =  textTemp.replaceAll("&lt;", "<");
+                                        textTemp =  textTemp.replaceAll("&gt;", ">");
+                                        textTemp =  textTemp.replaceAll("&quot;", "\"");
+                                    
+                                    // 개행문자 처리 해제
+                                    textTemp =  textTemp.replaceAll("<br>", "\n");
+        
+                                    infoArea.innerHTML = textTemp;
+                                }
+        
+                                // 식당 등록 (협의중 -> 등록완료)
+                                const registerStore = document.getElementById("registerStore");
+                                registerStore.addEventListener("click", ()=>{
+                                    
+                                    $.ajax({
+                                        url:"/admin/registerStore",
+                                        data:{"storeNo" : tempNo},
+                                        success: (result)=>{
+                                            console.log("성공");
+                                        
+                                            if(result > 0){
+                                                alert("성공");
+                                                adminR.style.display = "none";
+                                                storeManageMain.style.display = "flex";
+                                            }
+                                        },
+                                        error:()=>{
+                                            console.log("실패");
+                                        }    
+                                    })  
+                                });
+        
+                                const returnStore = document.getElementById("returnStore");
+                                returnStore.addEventListener("click", ()=>{
+        
+                                        $.ajax({
+                                            url:"/admin/storeReturn",
+                                            data:{"storeNo" : tempNo},
+                                            success: (result) =>{
+                                                
+                                                if(result > 0){
+                                                    alert("성공");
+                                                }
+                                                history.back();
+                                            }
+                                        });
+        
+                                })
+        
+        
+        
+                            },
+                                error:()=>{
+                                    console.log("실패");
+                                }
+                            })
+                    
+                    
+                        });
+                    }
+                }
                 
                 
-                
-            }    
+            },    
             
             
             
-        },    
+            
         error : ()=>{
             console.log("실패")
         }    
@@ -884,6 +1067,164 @@ function selectBoxSelect(cp){
                             selectBoxSelect(cp);
                         })
                        
+
+                        const storeManage = document.getElementsByClassName("store-manage");
+            
+                        for(i=0; i<storeManage.length; i++){
+                            
+            
+                            storeManage[i].addEventListener("click", (e)=>{
+                            
+                            // 선택한 관리 버튼
+                            let dv = e.currentTarget;
+            
+                            
+                            // 선택한 관리버튼의 식당번호
+                            tempNo = dv.parentNode.parentNode.children[0].innerText;
+                                              
+                            storeManageMain.style.display = "none";
+                            adminR.style.display = "flex";
+            
+                    
+            
+                                $.ajax({
+                                    url:"/admin/storeManage",
+                                    data: {"storeNo" : tempNo},
+                                    success:(store)=>{
+                                     
+                                        const preview = document.getElementsByClassName("preview");
+                                        
+                                        const storeNameArea = document.getElementById("storeNameArea");
+              
+                                        const select = document.getElementById("select");
+                                        const phoneNumberArea = document.getElementById("phoneNumberArea");
+                                        
+                                        const roadAddr = document.querySelector(".inputRoad");
+                                        const jibunAddr = document.querySelector(".inputJibun");
+            
+                                        
+            
+                                        if(store.imageList.length != 0){
+            
+                                            if(store.licensePath != null){
+                                            image0i.setAttribute("src", store.licensePath);
+                                            }
+            
+                                            if(store.imageList[0].allPath != null){
+                                                image1i.setAttribute("src", store.imageList[0].allPath);
+                                            }
+            
+                                            if(store.imageList[1].allPath != null){
+                                                image2i.setAttribute("src", store.imageList[1].allPath);
+                                            }
+            
+                                        } else{
+                                            image0i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                            image1i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                            image2i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        }
+                                      storeNameArea.setAttribute('value', store.storeName);
+            
+                                        roadAddr.setAttribute('value', store.roadnameAddress);
+            
+                                        jibunAddr.setAttribute('value', store.landnumberAddress);
+            
+                                        
+            
+                                      phoneNumberArea.setAttribute('value', store.storeTel);
+            
+            
+                                      const a = document.getElementById("a");
+                                      const b = document.getElementById("b");
+                                      const c = document.getElementById("c");
+                                      const d = document.getElementById("d");
+                                      const e = document.getElementById("e");
+                                      const f = document.getElementById("f");
+                                      const g = document.getElementById("g");
+                                      const h = document.getElementById("h");
+                                      const k = document.getElementById("k");
+                                      const j = document.getElementById("j");
+            
+                                      if(store.storeType == '한식'){ a.setAttribute("selected", true);}
+                                      if(store.storeType == '중식'){ b.setAttribute("selected", true);}
+                                      if(store.storeType == '일식'){ c.setAttribute("selected", true);}
+                                      if(store.storeType == '양식'){ d.setAttribute("selected", true);}
+                                      if(store.storeType == '패스트푸드'){ e.setAttribute("selected", true);}
+                                      if(store.storeType == '일반대중음식'){ f.setAttribute("selected", true);}
+                                      if(store.storeType == '편의점'){ g.setAttribute("selected", true);}
+                                      if(store.storeType == '제과점'){ h.setAttribute("selected", true);}
+                                      if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
+                                      if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
+            
+                                     
+                                    if(store.storeInfo != null){
+                                        
+                                        let textTemp;
+            
+                                        textTemp = store.storeInfo;
+            
+                                            // XSS 방지 처리 해제
+                                            textTemp =  textTemp.replaceAll("&amp;", "&");
+                                            textTemp =  textTemp.replaceAll("&lt;", "<");
+                                            textTemp =  textTemp.replaceAll("&gt;", ">");
+                                            textTemp =  textTemp.replaceAll("&quot;", "\"");
+                                        
+                                        // 개행문자 처리 해제
+                                        textTemp =  textTemp.replaceAll("<br>", "\n");
+            
+                                        infoArea.innerHTML = textTemp;
+                                    }
+            
+                                    // 식당 등록 (협의중 -> 등록완료)
+                                    const registerStore = document.getElementById("registerStore");
+                                    registerStore.addEventListener("click", ()=>{
+                                        
+                                        $.ajax({
+                                            url:"/admin/registerStore",
+                                            data:{"storeNo" : tempNo},
+                                            success: (result)=>{
+                                                console.log("성공");
+                                            
+                                                if(result > 0){
+                                                    alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
+                                                }
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
+                                            }    
+                                        })  
+                                    });
+            
+                                    const returnStore = document.getElementById("returnStore");
+                                    returnStore.addEventListener("click", ()=>{
+            
+                                            $.ajax({
+                                                url:"/admin/storeReturn",
+                                                data:{"storeNo" : tempNo},
+                                                success: (result) =>{
+                                                    
+                                                    if(result > 0){
+                                                        alert("성공");
+                                                    }
+                                                    history.back();
+                                                }
+                                            });
+            
+                                    })
+            
+            
+            
+                                },
+                                    error:()=>{
+                                        console.log("실패");
+                                    }
+                                })
+                        
+                        
+                            });
+                        }
 
                 
                 
@@ -1028,6 +1369,165 @@ enrollBtn.addEventListener("click", ()=>{
                         enroll(cp);
                     })
 
+
+                    const storeManage = document.getElementsByClassName("store-manage");
+            
+                    for(i=0; i<storeManage.length; i++){
+                        
+        
+                        storeManage[i].addEventListener("click", (e)=>{
+                        
+                        // 선택한 관리 버튼
+                        let dv = e.currentTarget;
+        
+                        
+                        // 선택한 관리버튼의 식당번호
+                        tempNo = dv.parentNode.parentNode.children[0].innerText;
+                                          
+                        storeManageMain.style.display = "none";
+                        adminR.style.display = "flex";
+        
+                
+        
+                            $.ajax({
+                                url:"/admin/storeManage",
+                                data: {"storeNo" : tempNo},
+                                success:(store)=>{
+                                 
+                                    const preview = document.getElementsByClassName("preview");
+                                    
+                                    const storeNameArea = document.getElementById("storeNameArea");
+          
+                                    const select = document.getElementById("select");
+                                    const phoneNumberArea = document.getElementById("phoneNumberArea");
+                                    
+                                    const roadAddr = document.querySelector(".inputRoad");
+                                    const jibunAddr = document.querySelector(".inputJibun");
+        
+                                    
+        
+                                    if(store.imageList.length != 0){
+        
+                                        if(store.licensePath != null){
+                                        image0i.setAttribute("src", store.licensePath);
+                                        }
+        
+                                        if(store.imageList[0].allPath != null){
+                                            image1i.setAttribute("src", store.imageList[0].allPath);
+                                        }
+        
+                                        if(store.imageList[1].allPath != null){
+                                            image2i.setAttribute("src", store.imageList[1].allPath);
+                                        }
+        
+                                    } else{
+                                        image0i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        image1i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        image2i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                    }
+                                  storeNameArea.setAttribute('value', store.storeName);
+        
+                                    roadAddr.setAttribute('value', store.roadnameAddress);
+        
+                                    jibunAddr.setAttribute('value', store.landnumberAddress);
+        
+                                    
+        
+                                  phoneNumberArea.setAttribute('value', store.storeTel);
+        
+        
+                                  const a = document.getElementById("a");
+                                  const b = document.getElementById("b");
+                                  const c = document.getElementById("c");
+                                  const d = document.getElementById("d");
+                                  const e = document.getElementById("e");
+                                  const f = document.getElementById("f");
+                                  const g = document.getElementById("g");
+                                  const h = document.getElementById("h");
+                                  const k = document.getElementById("k");
+                                  const j = document.getElementById("j");
+        
+                                  if(store.storeType == '한식'){ a.setAttribute("selected", true);}
+                                  if(store.storeType == '중식'){ b.setAttribute("selected", true);}
+                                  if(store.storeType == '일식'){ c.setAttribute("selected", true);}
+                                  if(store.storeType == '양식'){ d.setAttribute("selected", true);}
+                                  if(store.storeType == '패스트푸드'){ e.setAttribute("selected", true);}
+                                  if(store.storeType == '일반대중음식'){ f.setAttribute("selected", true);}
+                                  if(store.storeType == '편의점'){ g.setAttribute("selected", true);}
+                                  if(store.storeType == '제과점'){ h.setAttribute("selected", true);}
+                                  if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
+                                  if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
+        
+                                 
+                                if(store.storeInfo != null){
+                                    
+                                    let textTemp;
+        
+                                    textTemp = store.storeInfo;
+        
+                                        // XSS 방지 처리 해제
+                                        textTemp =  textTemp.replaceAll("&amp;", "&");
+                                        textTemp =  textTemp.replaceAll("&lt;", "<");
+                                        textTemp =  textTemp.replaceAll("&gt;", ">");
+                                        textTemp =  textTemp.replaceAll("&quot;", "\"");
+                                    
+                                    // 개행문자 처리 해제
+                                    textTemp =  textTemp.replaceAll("<br>", "\n");
+        
+                                    infoArea.innerHTML = textTemp;
+                                }
+        
+                                // 식당 등록 (협의중 -> 등록완료)
+                                const registerStore = document.getElementById("registerStore");
+                                registerStore.addEventListener("click", ()=>{
+                                    
+                                    $.ajax({
+                                        url:"/admin/registerStore",
+                                        data:{"storeNo" : tempNo},
+                                        success: (result)=>{
+                                            console.log("성공");
+                                        
+                                            if(result > 0){
+                                                alert("성공");
+                                                adminR.style.display = "none";
+                                                storeManageMain.style.display = "flex";
+                                            }
+                                        },
+                                        error:()=>{
+                                            console.log("실패");
+                                        }    
+                                    })  
+                                });
+        
+                                const returnStore = document.getElementById("returnStore");
+                                returnStore.addEventListener("click", ()=>{
+        
+                                        $.ajax({
+                                            url:"/admin/storeReturn",
+                                            data:{"storeNo" : tempNo},
+                                            success: (result) =>{
+                                                
+                                                if(result > 0){
+                                                    alert("성공");
+                                                }
+                                                history.back();
+                                            }
+                                        });
+        
+                                })
+        
+        
+        
+                            },
+                                error:()=>{
+                                    console.log("실패");
+                                }
+                            })
+                    
+                    
+                        });
+                    }
+
                 }    
             },     
             error:()=>{
@@ -1154,6 +1654,164 @@ enrollBtn.addEventListener("click", ()=>{
     
                             enroll(cp);
                         })
+
+                        const storeManage = document.getElementsByClassName("store-manage");
+            
+                        for(i=0; i<storeManage.length; i++){
+                            
+            
+                            storeManage[i].addEventListener("click", (e)=>{
+                            
+                            // 선택한 관리 버튼
+                            let dv = e.currentTarget;
+            
+                            
+                            // 선택한 관리버튼의 식당번호
+                            tempNo = dv.parentNode.parentNode.children[0].innerText;
+                                              
+                            storeManageMain.style.display = "none";
+                            adminR.style.display = "flex";
+            
+                    
+            
+                                $.ajax({
+                                    url:"/admin/storeManage",
+                                    data: {"storeNo" : tempNo},
+                                    success:(store)=>{
+                                     
+                                        const preview = document.getElementsByClassName("preview");
+                                        
+                                        const storeNameArea = document.getElementById("storeNameArea");
+              
+                                        const select = document.getElementById("select");
+                                        const phoneNumberArea = document.getElementById("phoneNumberArea");
+                                        
+                                        const roadAddr = document.querySelector(".inputRoad");
+                                        const jibunAddr = document.querySelector(".inputJibun");
+            
+                                        
+            
+                                        if(store.imageList.length != 0){
+            
+                                            if(store.licensePath != null){
+                                            image0i.setAttribute("src", store.licensePath);
+                                            }
+            
+                                            if(store.imageList[0].allPath != null){
+                                                image1i.setAttribute("src", store.imageList[0].allPath);
+                                            }
+            
+                                            if(store.imageList[1].allPath != null){
+                                                image2i.setAttribute("src", store.imageList[1].allPath);
+                                            }
+            
+                                        } else{
+                                            image0i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                            image1i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                            image2i.setAttribute("src", "/resources/images/modal/noneImg.png");
+                                        }
+                                      storeNameArea.setAttribute('value', store.storeName);
+            
+                                        roadAddr.setAttribute('value', store.roadnameAddress);
+            
+                                        jibunAddr.setAttribute('value', store.landnumberAddress);
+            
+                                        
+            
+                                      phoneNumberArea.setAttribute('value', store.storeTel);
+            
+            
+                                      const a = document.getElementById("a");
+                                      const b = document.getElementById("b");
+                                      const c = document.getElementById("c");
+                                      const d = document.getElementById("d");
+                                      const e = document.getElementById("e");
+                                      const f = document.getElementById("f");
+                                      const g = document.getElementById("g");
+                                      const h = document.getElementById("h");
+                                      const k = document.getElementById("k");
+                                      const j = document.getElementById("j");
+            
+                                      if(store.storeType == '한식'){ a.setAttribute("selected", true);}
+                                      if(store.storeType == '중식'){ b.setAttribute("selected", true);}
+                                      if(store.storeType == '일식'){ c.setAttribute("selected", true);}
+                                      if(store.storeType == '양식'){ d.setAttribute("selected", true);}
+                                      if(store.storeType == '패스트푸드'){ e.setAttribute("selected", true);}
+                                      if(store.storeType == '일반대중음식'){ f.setAttribute("selected", true);}
+                                      if(store.storeType == '편의점'){ g.setAttribute("selected", true);}
+                                      if(store.storeType == '제과점'){ h.setAttribute("selected", true);}
+                                      if(store.storeType == '정육점'){ k.setAttribute("selected", true);}
+                                      if(store.storeType == '착한식당'){ j.setAttribute("selected", true);}
+            
+                                     
+                                    if(store.storeInfo != null){
+                                        
+                                        let textTemp;
+            
+                                        textTemp = store.storeInfo;
+            
+                                            // XSS 방지 처리 해제
+                                            textTemp =  textTemp.replaceAll("&amp;", "&");
+                                            textTemp =  textTemp.replaceAll("&lt;", "<");
+                                            textTemp =  textTemp.replaceAll("&gt;", ">");
+                                            textTemp =  textTemp.replaceAll("&quot;", "\"");
+                                        
+                                        // 개행문자 처리 해제
+                                        textTemp =  textTemp.replaceAll("<br>", "\n");
+            
+                                        infoArea.innerHTML = textTemp;
+                                    }
+            
+                                    // 식당 등록 (협의중 -> 등록완료)
+                                    const registerStore = document.getElementById("registerStore");
+                                    registerStore.addEventListener("click", ()=>{
+                                        
+                                        $.ajax({
+                                            url:"/admin/registerStore",
+                                            data:{"storeNo" : tempNo},
+                                            success: (result)=>{
+                                                console.log("성공");
+                                            
+                                                if(result > 0){
+                                                    alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
+                                                }
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
+                                            }    
+                                        })  
+                                    });
+            
+                                    const returnStore = document.getElementById("returnStore");
+                                    returnStore.addEventListener("click", ()=>{
+            
+                                            $.ajax({
+                                                url:"/admin/storeReturn",
+                                                data:{"storeNo" : tempNo},
+                                                success: (result) =>{
+                                                    
+                                                    if(result > 0){
+                                                        alert("성공");
+                                                    }
+                                                    history.back();
+                                                }
+                                            });
+            
+                                    })
+            
+            
+            
+                                },
+                                    error:()=>{
+                                        console.log("실패");
+                                    }
+                                })
+                        
+                        
+                            });
+                        }
     
                     }    
                 },     
@@ -1226,10 +1884,10 @@ function searchBtnClick(){
     if(selectBox.value == null){
 
         cp = 1;
-        selectBoxSelect(cp);
+        selectStoreList(cp);
     } else{
         cp = 1;
-        selectStoreList(cp);
+        selectBoxSelect(cp);
     }
 
 }
