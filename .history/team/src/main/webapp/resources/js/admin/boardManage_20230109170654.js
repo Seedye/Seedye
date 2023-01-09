@@ -201,18 +201,16 @@ function selectBoardNotice(cp){
               
               let dv = e.currentTarget;
 
-              console.log(dv);
               // 선택한 관리버튼의 회원번호
               tempNo = dv.parentNode.parentNode.children[0].innerText;
 
-              
               
               boardViewModal.style.display = "flex";
 
               $.ajax({
                 url: "/QABoardDetail",
                 type: "POST",
-                data: { boardNo: tempNo },
+                data: { boardNo:  tempNo },
                 dataType: "json",
                 success: (QABoardDetail) => {
                   // console.log(QABoardDetail);
@@ -697,7 +695,7 @@ const boardManageBtn = document.getElementsByClassName("board-list-view");
 
 for(i=0; i<boardManageBtn.length; i++){
 
-  boardManageBtn[i].addEventListener("click", (e)=>{
+  boardManageBtn.addEventListener("click", (e)=>{
 
     let dv = e.currentTarget;
 
