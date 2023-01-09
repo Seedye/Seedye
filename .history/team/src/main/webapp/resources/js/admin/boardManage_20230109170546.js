@@ -695,7 +695,7 @@ function selectBoardNotice(cp){
           
 const boardManageBtn = document.getElementsByClassName("board-list-view");
 
-for(i=0; i<boardManageBtn.length; i++){
+for(i=0; i=boardManageBtn.length; i++){
 
   boardManageBtn[i].addEventListener("click", (e)=>{
 
