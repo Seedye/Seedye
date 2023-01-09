@@ -26,11 +26,5 @@ window.addEventListener('scroll', function() {
         tIntroduction.style.opacity = 0;
     }
 
-    if (scrollPosition > 1276) {
-        pIntroduction.style.opacity = 1;
-    }
-    if(scrollPosition < 1293){
-        pIntroduction.style.opacity = 0;
-    }
     
   });
