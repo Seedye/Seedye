@@ -113,7 +113,7 @@ function selectBoardNotice(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-manage' type='button'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -191,10 +191,17 @@ function selectBoardNotice(cp){
             selectBoardNotice(cp);
           })
          
+          const boardManageBtn = document.getElementsByClassName("board-manage");
 
+          for(i=0; i<boardManageBtn.length; i++){
+
+            boardManageBtn[i].addEventListener("click", ()=>{
+
+          alert("확인");
+          })
 
         }
-      
+        }
       },
       error:()=>{
         console.log("실패")
@@ -1078,7 +1085,7 @@ function pageLink(curPage, totalPages) {
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'>" + i + "</button>"
+	        pageUrl += "<button class='pageBtn' href='javascript:void(0);' onclick='window.checked(event)'>" + i + "</button>"
 	    } else {
 	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'  + id="+i+">" + i + " </button>";
 	    }
@@ -1103,13 +1110,22 @@ function pageLink(curPage, totalPages) {
 // jsp = boardView
 
 
-
 const boardManageBtn = document.getElementsByClassName("board-manage");
 
 for(i=0; i<boardManageBtn.length; i++){
 
   boardManageBtn[i].addEventListener("click", ()=>{
 
-    boardViewModal.style.display = "flex";
+    alert("확인");
   })
 }
+
+ checked = function(event){
+
+  var check = event.target;
+  check.classList.toggle('checked');
+
+  
+}
+
+
