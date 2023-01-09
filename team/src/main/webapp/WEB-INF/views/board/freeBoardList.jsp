@@ -25,7 +25,9 @@
     <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
 
+
         <section id="freeBoard-section">
+        <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
             <div id="freeBoard-container">
                <form action="3" method="get" id="boardSearch" onSubmit="return true">
                     <div class="board-list-serch-write-area">
@@ -195,6 +197,7 @@
             </ul>
 
             </div>
+            <div class="qqq"></div>
         </section>
 
     <jsp:include page="/WEB-INF/views/board/freeBoardWrite.jsp"/>

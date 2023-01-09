@@ -6,11 +6,11 @@ window.addEventListener('scroll', function() {
     var tIntroduction = document.querySelector('.third-introduction');
     var pIntroduction = document.querySelector('.fourth-introduction');
   
-    if (scrollPosition > 0) {
-        fIntroduction.style.opacity = 1;
-    } else{
-        fIntroduction.style.opacity = 0;
-    }
+    // if (scrollPosition > 0) {
+    //     fIntroduction.style.opacity = 1;
+    // } else{
+    //     fIntroduction.style.opacity = 0;
+    // }
 
     if (scrollPosition > 342) {
         sIntroduction.style.opacity = 1;

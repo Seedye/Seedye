@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <section>
 
     <div id="sideAll">                  
         <label for="sideIntro" class="sideM" id="side1"><a href="/introduction">소개</a></label>
@@ -53,4 +52,3 @@
         </c:if>
     </div>
 
-</section>

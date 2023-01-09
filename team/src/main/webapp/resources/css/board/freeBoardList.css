@@ -13,7 +13,7 @@
   height: auto;
   margin: 50px 0;
 
- text-align: center;
+  text-align: center;
 
 }
 
@@ -522,4 +522,8 @@ i:hover{
   margin-right: 10px;
   background-color: white;
   cursor: pointer;
+}
+
+.qqq{
+  width: 150px;
 }
