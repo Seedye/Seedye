@@ -16,6 +16,7 @@ import edu.kh.project.board.model.dao.BoardDAO;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.board.model.vo.Pagination;
 import edu.kh.project.board.model.vo.BoardImg;
+import edu.kh.project.common.Pagination2;
 import edu.kh.project.common.Util;
 
 @Service
@@ -53,7 +54,7 @@ public class BaordServiceImple implements BoardService {
 		int listCount = dao.getListCount(boardCode);
 
 		// 페이징 처리 위해
-		Pagination pagination = new Pagination(listCount, cp);
+		Pagination2 pagination = new Pagination2(listCount, cp);
 
 		// 게시글 목록조회
 		List<Board> freeBoardList = dao.selectFreeBoardList(pagination, boardCode);

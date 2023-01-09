@@ -32,7 +32,7 @@ for (let freeBoardOneItems of freeBoardOne) {
           
                   }
 
-                  if(freeBoardDetail[0].boardContent){
+                  if(freeBoardDetail[0].boardTitle){
                     var saveBoardTitle =  freeBoardDetail[0].boardTitle.replaceAll((/(<br>|<br\/>|<br \/>)/g, '\r\n'));
                     // XSS 방지 처리 해제
                     saveBoardTitle =  saveBoardTitle.replaceAll("&amp;", "&");
@@ -163,7 +163,8 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 }else{
                                     // contentD.style.marginLeft = "10px"
                                     contentD.style.width = "495px"
-                                    iconContainer.setAttribute("class", "fa-solid fa-comment-dots");
+                                    // iconContainer.setAttribute("class", "fa-regular fa-message");
+                                    iconContainer.innerText = '┖'
                                     iconContainer.style.marginRight = "5px";
                                     anwserP.innerHTML =  comment.memberId + " : " + saveCommentContent;
                                 }
@@ -263,7 +264,7 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                                 const rCommentOk = document.createElement("button");
                                 rCommentOk.classList.add("rCommentOk");
-                                rCommentOk.setAttribute("class", "fa-solid fa-comment-dots");
+                                rCommentOk.setAttribute("class", "fa-solid fa-check");
 
                                 const rCommentCancel = document.createElement("button");
                                 rCommentCancel.classList.add("rCommentCancel");

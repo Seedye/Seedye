@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.board.model.vo.BoardImg;
 import edu.kh.project.board.model.vo.Pagination;
+import edu.kh.project.common.Pagination2;
 
 @Repository
 public class BoardDAO {
@@ -48,7 +49,7 @@ public class BoardDAO {
 	 * @param pm
 	 * @return
 	 */
-	public List<Board> selectFreeBoardList(Pagination pagination, int boardCode) {
+	public List<Board> selectFreeBoardList(Pagination2 pagination, int boardCode) {
 		
 		int offset = (pagination.getCurrentPage() -1 )*pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
