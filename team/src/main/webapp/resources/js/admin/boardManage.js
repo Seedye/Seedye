@@ -201,16 +201,11 @@ function selectBoardNotice(cp){
               let dv = e.currentTarget;
 
 
-              // 선택한 관리버튼의 회원번호
-              tempNo = dv.parentElement.firstElementChild.innerText;
-
-              
               boardViewModal.style.display = "flex";
-
               $.ajax({
                 url: "/QABoardDetail",
                 type: "POST",
-                data: { boardNo:  tempNo },
+                data: { boardNo: tempNo },
                 dataType: "json",
                 success: (QABoardDetail) => {
                   // console.log(QABoardDetail);
