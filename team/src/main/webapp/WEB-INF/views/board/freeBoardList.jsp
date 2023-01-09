@@ -43,10 +43,8 @@
                         <!-- 검색 버튼 -->
                         <button class="board-serch-btn"><i class="fa-solid fa-magnifying-glass fa-1.8x"></i></button>
 
-                        <c:if test="${not empty loginMember}">
                             <!-- 글작성 버튼 -->
                             <div class="board-write-btn" id="boardWriteBtn">글작성</div>
-                        </c:if>
 
                     </div>
                  </form>

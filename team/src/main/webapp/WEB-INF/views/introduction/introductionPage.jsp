@@ -19,39 +19,38 @@
     <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
 
         <section id="introduction-container" class="introduction-container">
-            <div id="main-introduction">새싹이는</div>
+            <div id="main-introduction">새싹이란?!</div>
 
             <div id="first-introduction" class="first-introduction">
-                <img src="../../resources/images/seedlings-g2f0997c9d_1920.jpg">
+                <img src="../../resources/images/새싹이.png">
                 <div class="introduction-text">
                     <p>소개글</p>
-                    <p>안녕하세요 새싹이 입니다. 저희 홈페이지를 방문해주셔 감사합니다. 결식 아동을 위한 길잡이가 되겠습니다.</p>
+                    <p>이 홈페이지는 비영리 목적으로 꿈나무 카드를 이용하는 아동들의 급식권 보호와 맛있고 영양가 있는 식사를 돕기 위해 위치 서비스를 제공합니다.</p>
+                    <p>* 정보수정이 필요한 경우 별도 문의게시판에 남겨주시면 감사하겠습니다 *</p>
                 </div>
             </div>
 
             <div id="second-introduction" class="second-introduction">
-                <div class="introduction-text">
-                    <p>프로젝트 및 팀원 소개</p>
-                    <p>저희는 파이널 프로젝트 주제를 선정하던 도중 결식 아동들의 불편함을 알고 도움이 되고자 새싹이라는 프로젝트를 준비했습니다.</p>
+                 <div class="introduction-text">
+                    <p>꿈나무 카드란?</p>
+                    <p>꿈나무카드는 대한민국이 2009년 7월 1일, 어린이를 위해 도입한 카드이다. 결식 어린이가 사는 지역 주민자치센터는 해당카드를 발급하는 역할을 한다. 어린이의 가정환경에 따라 하루 몇끼를 제공할 지 결정한다.</p>
                 </div>
-                <img src="../../resources/images/playmobil-g689a8b9bb_1920.jpg">
+                <img src="../../resources/images/꿈나무카드.jpg">
             </div>
 
             <div id="third-introduction" class="third-introduction">
-                <img src="../../resources/images/board-g283d28f9e_1920.jpg">
+                <img src="../../resources/images/playmobil-g689a8b9bb_1920.jpg">
                 <div class="introduction-text">
-                    <p>프로젝트 목적</p>
-                    <p>결식 아동들의 편의를 위해 중간 단계에서 확실한 길잡이가 되어 보다 편리한 시설이용을 목적으로 한 프로젝트 입니다.</p>
+                    <p>프로젝트 및 팀원 소개</p>
+                    <p>황석현 ( hsh9588@naver.com )</p>
+                    <p>강치우 ( cldn0619@naver.com )</p>
+                    <p>용환재 ( ist635@naver.com )</p>
+                    <p>강민규 ( rkdalsrb65@naver.com )</p>
+                    <p>신아민 ( qnrlgkals@naver.com)</p>
+                    <p>윤주영 ( sd05sd@naver.com )</p>
                 </div>
             </div>
 
-            <div id="fourth-introduction" class="fourth-introduction">
-                <div class="introduction-text">
-                    <p>꿈나무 카드</p>
-                    <p>꿈나무 카드를 이용한 시설을 알려드립니다.</p>
-                </div>
-                <img src="../../resources/images/abstract-gc426cae69_1280.png">
-            </div>
         </section>
     </main>
 
@@ -59,7 +58,7 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 <script>
-    var authority = "${loginMember.authority}";
+    var loginMemberAuthority = "${loginMember.authority}";
 </script>
 
     <script src="../resources/js/header.js"></script>
