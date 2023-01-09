@@ -205,12 +205,13 @@ function selectBoardNotice(cp){
               tempNo = dv.parentElement.firstElementChild.innerText;
 
               
+              
               boardViewModal.style.display = "flex";
 
               $.ajax({
                 url: "/QABoardDetail",
                 type: "POST",
-                data: { boardNo:  tempNo },
+                data: { boardNo: tempNo },
                 dataType: "json",
                 success: (QABoardDetail) => {
                   // console.log(QABoardDetail);

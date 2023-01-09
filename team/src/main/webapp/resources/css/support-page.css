@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+main{
+    display: flex;
+}
+
 body{
     background-color: #f7f8f9;
 }
@@ -90,6 +94,10 @@ body{
 
 .support-text > p:last-child{
     line-height: 200%;
+}
+
+.abc{
+    width: 150px;
 }
 
 

@@ -11,7 +11,7 @@
     <title>후원 및 단체소개</title>
     <link rel="stylesheet" href="../../resources/css/header.css">
     <link rel="stylesheet" href="../../resources/css/support-page.css">
-    <link rel="stylesheet" href="../../resources/css/sideBar.css">
+    <link rel="stylesheet" href="../../resources/css/sideBar4.css">
 </head>
 <body>
      <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -99,14 +99,14 @@
                 </div>
             </div>
         </section>
-
+<div class="abc"></div>
     </main>
     
     <!-- 푸터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <script>
-        var authority = "${loginMember.authority}";
+        var loginMemberAuthority = "${loginMember.authority}";
     </script>
     
     <script src="../../resources/js/sideBar.js"></script>
