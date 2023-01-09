@@ -884,7 +884,7 @@ function selectBoxSelect(cp){
 const enroll = document.getElementById("enroll");
 enroll.addEventListener("click", ()=>{
     $.ajax({
-        url:"/admin/enroll",
+        url:"/enroll",
         data:{"checkFl" : 'N'},
         success : (storeList)=>{
 
