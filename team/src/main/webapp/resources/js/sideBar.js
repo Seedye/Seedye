@@ -53,13 +53,17 @@ sideNotice.addEventListener("click", () => {
         dropDownContent2.style.height = "75px";
         dropDownContent.style.height = "0px";
         dropDownContent3.style.height = "0px";
+
+        if(loginMemberAuthority == 2){
         dropDownContent4.style.height = "0px";
+        }
 
         // side1.style.backgroundColor = "#2db400"
         side2.style.backgroundColor = "#ffffff5c"
         side3.style.backgroundColor = "#2db400"
+        if(loginMemberAuthority == 2){
         side6.style.backgroundColor = "#2db400"
-        
+        }
         toggleFlag = false;
         
     }else{
@@ -76,13 +80,17 @@ side.addEventListener("click", () => {
         dropDownContent3.style.height = "75px";
         // dropDownContent.style.height = "0px";
         dropDownContent2.style.height = "0px";
-        dropDownContent4.style.height = "0px";
+        if(loginMemberAuthority == 2){
+
+            dropDownContent4.style.height = "0px";
+        }
 
         // side1.style.backgroundColor = "#2db400"
         side2.style.backgroundColor = "#2db400"
         side3.style.backgroundColor = "#ffffff5c"
+        if(loginMemberAuthority == 2){
         side6.style.backgroundColor = "#2db400"
-        
+        }
         toggleFlag = false;
         
     }else{
