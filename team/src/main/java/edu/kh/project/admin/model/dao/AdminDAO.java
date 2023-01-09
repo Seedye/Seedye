@@ -12,6 +12,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.common.Pagination;
 import edu.kh.project.member.model.vo.Member;
 
@@ -415,6 +416,18 @@ public class AdminDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("adminMapper.selectEnroll_search", enrollMap, rowBounds);
+	}
+
+	public List<Board> selectFreeBoard(int boardNo) {
+		return sqlSession.selectList("adminMapper.selectFreeBoard", boardNo);
+	}
+
+	public List<Comment> selectFreeBoard_comment(int boardNo) {
+		return sqlSession.selectList("adminMapper.selectFreeBoard_comment", boardNo);
+	}
+
+	public int deleteFreeBoard(int boardNo) {
+		return sqlSession.update("adminMapper.deleteFreeBoard", boardNo);
 	}
 
 

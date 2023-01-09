@@ -23,7 +23,6 @@ if(searchParam.get("cp") != null){
     selectStoreList(searchParam.get("cp"));
 }else{
     selectStoreList(cp);
-    selectMemberList(cp);
 }
 
 

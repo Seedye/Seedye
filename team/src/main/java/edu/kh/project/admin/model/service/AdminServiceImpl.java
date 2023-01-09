@@ -19,6 +19,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.common.Pagination;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
@@ -494,6 +495,21 @@ public class AdminServiceImpl implements AdminService{
 		map.put("pagination", pagination);
 		
 		return map;
+	}
+
+	@Override
+	public List<Board> selectFreeBoard(int boardNo) {
+		return dao.selectFreeBoard(boardNo);
+	}
+
+	@Override
+	public List<Comment> selectFreeBoard_comment(int boardNo) {
+		return dao.selectFreeBoard_comment(boardNo);
+	}
+
+	@Override
+	public int deleteFreeBoard(int boardNo) {
+		return dao.deleteFreeBoard(boardNo);
 	}
 
 
