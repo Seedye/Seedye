@@ -72,6 +72,21 @@ let selectStoreNo;
 /* 검색 버튼 눌렀을때 카태고리 나오게 하는 부분 */
 searchBtn.addEventListener("click", () => {
 
+    // 검색 버튼 클릭 시 카테고리와 결과 창 초기화
+    for(let temp of document.querySelectorAll(".category-box > input")){
+
+        temp.checked = false;
+
+        temp.parentElement.style.boxShadow = 'none';
+
+        document.querySelector(".searchList").innerHTML = "<h2>검색 결과</h2>";
+        const searchListNone = document.createElement("div");
+        searchListNone.classList.add("searchList-none");
+        searchListNone.innerText = "카테고리를 선택 해주세요.";
+
+        document.querySelector(".searchList").append(searchListNone);
+    }
+
     bookmarkListUpdate();
 
     if (searchBtn.previousElementSibling.value.trim().length == 0){
@@ -366,6 +381,14 @@ searchBtn.addEventListener("click", () => {
                         console.log("검색 결과 불러오기 실패");
                     }
                 });
+            } else {
+                document.querySelector(".searchList").innerHTML = "<h2>검색 결과</h2>";
+
+                const searchListNone = document.createElement("div");
+                searchListNone.classList.add("searchList-none");
+                searchListNone.innerText = "카테고리를 선택 해주세요.";
+
+                document.querySelector(".searchList").append(searchListNone);
             }
         });
     }
