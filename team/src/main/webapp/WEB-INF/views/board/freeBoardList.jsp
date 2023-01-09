@@ -21,7 +21,6 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
-    <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
     <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
 
