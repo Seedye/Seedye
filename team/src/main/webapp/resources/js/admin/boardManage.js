@@ -194,16 +194,25 @@ function selectBoardNotice(cp){
          
           const boardManageBtn = document.getElementsByClassName("board-list-view");
 
-          for(i=0; i<boardManageBtn.length; i++){
+          for(let items of boardManageBtn){
 
-            boardManageBtn[i].addEventListener("click", ()=>{
-            
+            items.addEventListener("click", (e)=>{
+          
+              
+              let dv = e.currentTarget;
+
+              console.log(dv);
+              // 선택한 관리버튼의 회원번호
+              tempNo = dv.parentNode.parentNode.children[0].innerText;
+
+              
+              
               boardViewModal.style.display = "flex";
 
               $.ajax({
                 url: "/QABoardDetail",
                 type: "POST",
-                data: { boardNo: '1' },
+                data: { boardNo: tempNo },
                 dataType: "json",
                 success: (QABoardDetail) => {
                   // console.log(QABoardDetail);
@@ -344,6 +353,7 @@ function selectBoardNotice(cp){
           
                     // ?게시물 삭제
                     boardDelete.addEventListener("click", () => {
+                      
                       $.ajax({
                         url: "/QABoardDelete",
                         type: "GET",
@@ -687,14 +697,19 @@ const boardManageBtn = document.getElementsByClassName("board-list-view");
 
 for(i=0; i<boardManageBtn.length; i++){
 
-  boardManageBtn[i].addEventListener("click", ()=>{
+  boardManageBtn[i].addEventListener("click", (e)=>{
+
+    let dv = e.currentTarget;
+
+    // 선택한 관리버튼의 회원번호
+    tempNo = dv.parentNode.parentNode.children[0].innerText;
 
     boardViewModal.style.display = "flex";
 
     $.ajax({
       url: "/QABoardDetail",
       type: "POST",
-      data: { boardNo: '1' },
+      data: { boardNo: tempNo },
       dataType: "json",
       success: (QABoardDetail) => {
         // console.log(QABoardDetail);
@@ -1194,6 +1209,8 @@ for(i=0; i<boardManageBtn.length; i++){
 
   boardManageBtn[i].addEventListener("click", ()=>{
 
+
+    
     boardViewModal.style.display = "flex";
   
   $.ajax({

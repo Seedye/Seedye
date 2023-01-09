@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
-    <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <link rel="stylesheet" href="/resources/css/sideBar2.css">
 
 </head>
 <body>
