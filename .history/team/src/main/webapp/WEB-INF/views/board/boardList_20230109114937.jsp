@@ -124,8 +124,8 @@
             </tbody>
         
           </table>
-            <div id="board-list-all-area">
-            </div>
+          <div id="board-list-all-area">
+          </div>
           </div>
             <%-- 페이지네이션 --%>
             <ul class="board-list-page-area">

@@ -66,10 +66,10 @@
         </form>
 
     
-        <!-- 게시글 리스트 영역 -->
-        <div class="board-list-area">
           <%-- 사이드바 --%>
           <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
+        <!-- 게시글 리스트 영역 -->
+        <div class="board-list-area">
 
           <!-- 게시글 나타나는 테이블 -->
           <table class="board-list-table">
@@ -124,8 +124,6 @@
             </tbody>
         
           </table>
-            <div id="board-list-all-area">
-            </div>
           </div>
             <%-- 페이지네이션 --%>
             <ul class="board-list-page-area">
