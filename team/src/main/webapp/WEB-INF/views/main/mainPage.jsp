@@ -19,6 +19,8 @@
 
     <%-- 헤더 위치 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    <jsp:include page="/WEB-INF/views/admin/store.jsp" />
+
 
     <main>
         <!-- 메인페이지 상단 이미지 -->

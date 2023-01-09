@@ -15,6 +15,7 @@
     width: 1200px;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 
@@ -203,7 +204,6 @@ margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
     height: 100%;
 }
 
