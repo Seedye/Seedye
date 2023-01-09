@@ -1,5 +1,4 @@
 
-const boardManage = document.getElementById("boardManage");
 const inquiry = document.getElementById("inquiry");
 const inquiryR = document.getElementById("inquiryR");
 

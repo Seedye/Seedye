@@ -85,14 +85,38 @@ public class BoardController {
 			model.addAttribute("map", map);
 			System.out.println(map);
 		}
-		// 게시판 검색 목
+		// 게시판 검색 
 		else {
 			pm.put("boardCode", boardCode);
 			Map<String, Object> map = service.selectBoardList(pm, cp);
 			model.addAttribute("map", map);
 		}
 
-		return "board//noticeBoardListt";
+		return "board/noticeBoardListt";
+	}
+	
+	
+	
+	@GetMapping("/updateBoard2/{boardCode}")
+	public String updateBoard2(@PathVariable("boardCode") int boardCode, Model model,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+			@RequestParam Map<String, Object> pm) {
+		
+		if (pm.get("key") == null) {
+			
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			
+			model.addAttribute("map", map);
+			System.out.println(map);
+		}
+		// 게시판 검색 
+		else {
+			pm.put("boardCode", boardCode);
+			Map<String, Object> map = service.selectBoardList(pm, cp);
+			model.addAttribute("map", map);
+		}
+		
+		return "board/updateBoard2";
 	}
 
 	/**

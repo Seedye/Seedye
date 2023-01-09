@@ -281,7 +281,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
     <script src="/resources/js/sideBar.js"></script>
-    <script src="/resources/js/admin/store.js"></script>
 
    
 </body>
