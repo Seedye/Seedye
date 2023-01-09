@@ -109,7 +109,7 @@ public class AdminController {
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
 			@RequestParam Map<String, Object> boardMap) {
 		
-		
+		// 검색 결과 없을 때
 		if(boardMap.get("search") == null) {
 			
 			Map<String, Object> map = service.selectAdminBoard(boardCode, cp);
@@ -121,7 +121,7 @@ public class AdminController {
 			
 			return new Gson().toJson(map);
 			
-			
+		// 검색 결과 있을 때	
 		} else {
 			
 			boardMap.put("boardCode", boardCode);
@@ -396,11 +396,28 @@ public class AdminController {
 	// 식당관리 신청조회
 	@GetMapping("/enroll")
 	@ResponseBody
-	public String selectEnroll(char checkFl) {
-		List<Store> storeList = service.selectEnroll(checkFl);
+	public String selectEnroll(char checkFl,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> enrollMap) {
+		
+		if(enrollMap.get("keyword") == null) {
+			
+			Map<String, Object> map = service.selectEnroll(checkFl, cp);
+			
+			System.out.println(map);
+			
+			return new Gson().toJson(map);
+		
+		} else {
+			
+			Map<String, Object> map = service.selectEnroll_search(enrollMap, cp);
+			
+			System.out.println(map);
+			
+			return new Gson().toJson(map);
+		}
 		
 		
-		return new Gson().toJson(storeList);
 	}
 	
 	

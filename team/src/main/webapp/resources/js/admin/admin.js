@@ -82,6 +82,7 @@ function selectStoreList(cp){
                 if(store.storeTel == null){
                     store.storeTel = "정보 없음"
                     td5.style.color = "red";
+                    td5.style.fontWeight = "bold";
                 
                 }
                 
@@ -611,7 +612,7 @@ selectBox.addEventListener("change",()=>{
 
 function selectBoxSelect(cp){
     
-    if(keyword == null){
+    if(keyword.value == null){
 
     $.ajax({
             url:"/admin/selectType",
@@ -655,7 +656,12 @@ function selectBoxSelect(cp){
                     
                     // 전화번호
                     const td5 = document.createElement("td");
-                    td5.innerText = store.storeTel;
+                    if(store.storeTel == null){
+                        store.storeTel = "정보 없음"
+                        td5.style.color = "red";
+                        td5.style.fontWeight = "bold";
+                    
+                    }
                     
                     // 처리여부
                     const td6 = document.createElement("td");
@@ -788,7 +794,12 @@ function selectBoxSelect(cp){
                     
                     // 전화번호
                     const td5 = document.createElement("td");
-                    td5.innerText = store.storeTel;
+                    if(store.storeTel == null){
+                        store.storeTel = "정보 없음"
+                        td5.style.color = "red";
+                        td5.style.fontWeight = "bold";
+                    
+                    }
                     
                     // 처리여부
                     const td6 = document.createElement("td");
@@ -881,53 +892,256 @@ function selectBoxSelect(cp){
 
 }
 // 신청 조회    
-const enroll = document.getElementById("enroll");
-enroll.addEventListener("click", ()=>{
-    $.ajax({
-        url:"/enroll",
-        data:{"checkFl" : 'N'},
-        success : (storeList)=>{
 
-            const tbody = document.getElementById("tbody");
+const enrollBtn = document.getElementById("enroll");
+enrollBtn.addEventListener("click", ()=>{
+  enroll(cp)
+})
 
-            tbody.innerHTML = "";
 
-            for(let store of storeList){
+    function enroll(cp){
+    if(keyword.value == null){
+        $.ajax({
+            url:"/admin/enroll",
+            data:{"checkFl" : 'N', "cp" : cp},
+            success : (map)=>{
 
+                const tbody = document.getElementById("tbody");
+
+                tbody.innerHTML = "";
+
+                const pagination = map.pagination;
+                const storeList = map.storeList;
+
+                const totalCount = pagination.listCount;
+    
+                var pageSize = pagination.pageSize;
+                var totalPages = 0;
+                var curPage = cp;
+                var firstPage = 1;
+                
+
+                for(let store of storeList){
+
+                
+                    const tr = document.createElement("tr");
+                    tr.classList.add("storeList")
+                
+                    const td1 = document.createElement("td");
+                    td1.innerText = store.storeNo
+
+                    const td2 = document.createElement("td");
+                    td2.innerText = store.storeName;
+
+                    const td3 = document.createElement("td");
+                    td3.innerText = store.storeType;
+
+                    const td4 = document.createElement("td");
+                    td4.innerText = store.roadnameAddress;
+
+                    const td5 = document.createElement("td");
+                    if(store.storeTel == null){
+                        store.storeTel = "정보 없음"
+                        td5.style.color = "red";
+                        td5.style.fontWeight = "bold";
+                    
+                    }  else{
+                        td5.innerText = store.storeTel;
+                    }
+
+                    const td6 = document.createElement("td");
+                    td6.innerText = store.checkFl;
+
+                    const td7 = document.createElement("td");
+                    td7.innerHTML = "<button class='store-manage'>관리하기</button>";
+
+                    tr.append(td1, td2, td3, td4, td5, td6, td7);
+
+                    tbody.append(tr);
+
+                    const totalCount = pagination.listCount;
+
+
+                    if (totalCount != 0) {
+                        totalPages = Math.ceil(totalCount / pageSize);
+                        // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
+                        let htmlStr = pageLink(curPage, totalPages);
+                        // common.js - pageLink
+                    
+                        paginationMenu.innerHTML = "";
+
+                        paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                    }  
+                    
+                    // cp 얻어오기
+                        $(".pageBtn").click(function(){
+                            
+                        var id_check = $(this).attr("id");
+                        
+                        cp = id_check;
+                        
             
-                const tr = document.createElement("tr");
-                tr.classList.add("storeList")
+                        
+                        if(id_check != null) enroll(cp); 
+                        
             
-                const td1 = document.createElement("td");
-                td1.innerText = store.storeNo
+                    })
+                    $(".pageFirst").click(function(){
+                        
+                        cp = 1;
 
-                const td2 = document.createElement("td");
-                td2.innerText = store.storeName;
+                        enroll(cp);
+                    })
+                    $(".pagePrev").click(function(){
+                        
+                        cp = pagination.prevPage;
 
-                const td3 = document.createElement("td");
-                td3.innerText = store.storeType;
+                        enroll(cp);
+                    })
+                    $(".pageNext").click(function(){
+                        
+                        cp = pagination.nextPage;
 
-                const td4 = document.createElement("td");
-                td4.innerText = store.roadnameAddress;
+                        enroll(cp);
+                    })
+                    $(".pageLast").click(function(){
+                        
+                        cp = pagination.maxPage;
 
-                const td5 = document.createElement("td");
-                td5.innerText = store.storeTel;
+                        enroll(cp);
+                    })
 
-                const td6 = document.createElement("td");
-                td6.innerText = store.checkFl;
-
-                const td7 = document.createElement("td");
-                td7.innerHTML = "<button class='store-manage'>관리하기</button>";
-
+                }    
+            },     
+            error:()=>{
+                console.log("실패");
             }    
-        },     
-        error:()=>{
-            console.log("실패");
-        }    
+        });    
 
-    })    
+        } else {
+            $.ajax({
+                url:"/admin/enroll",
+                data:{"checkFl" : 'N', "cp" : cp, "search" : search.value, "keyword" : keyword.value},
+                dataType:"JSON",
+                success : (map)=>{
+    
+                    const tbody = document.getElementById("tbody");
+    
+                    tbody.innerHTML = "";
+                    
+                    const pagination = map.pagination;
+                    const storeList = map.storeList;
+                    
+                    console.log(map);
+                    
+                    const totalCount = pagination.listCount;
+        
+                    var pageSize = pagination.pageSize;
+                    var totalPages = 0;
+                    var curPage = cp;
+                    var firstPage = 1;
+                    
+    
+                    for(let store of storeList){
+    
+                    
+                        const tr = document.createElement("tr");
+                        tr.classList.add("storeList")
+                    
+                        const td1 = document.createElement("td");
+                        td1.innerText = store.storeNo
+    
+                        const td2 = document.createElement("td");
+                        td2.innerText = store.storeName;
+    
+                        const td3 = document.createElement("td");
+                        td3.innerText = store.storeType;
+    
+                        const td4 = document.createElement("td");
+                        td4.innerText = store.roadnameAddress;
+    
+                        const td5 = document.createElement("td");
+                        if(store.storeTel == null){
+                            store.storeTel = "정보 없음"
+                            td5.style.color = "red";
+                            td5.style.fontWeight = "bold";
+                        } else{
+                            td5.innerText = store.storeTel;
+                        }
+    
+                        const td6 = document.createElement("td");
+                        td6.innerText = store.checkFl;
+    
+                        const td7 = document.createElement("td");
+                        td7.innerHTML = "<button class='store-manage'>관리하기</button>";
+    
+                        tr.append(td1, td2, td3, td4, td5, td6, td7);
+    
+                        tbody.append(tr);
+    
+    
+    
+                        if (totalCount != 0) {
+                            totalPages = Math.ceil(totalCount / pageSize);
+                            // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
+                            let htmlStr = pageLink(curPage, totalPages);
+                            // common.js - pageLink
+                        
+                            paginationMenu.innerHTML = "";
+    
+                            paginationMenu.innerHTML = pageLink(curPage, totalPages);
+                        }  
+                        
+                        // cp 얻어오기
+                            $(".pageBtn").click(function(){
+                                
+                            var id_check = $(this).attr("id");
+                            
+                            cp = id_check;
+                            
+                
+                            
+                            if(id_check != null) enroll(cp); 
+                            
+                
+                        })
+                        $(".pageFirst").click(function(){
+                            
+                            cp = 1;
+    
+                            enroll(cp);
+                        })
+                        $(".pagePrev").click(function(){
+                            
+                            cp = pagination.prevPage;
+    
+                            enroll(cp);
+                        })
+                        $(".pageNext").click(function(){
+                            
+                            cp = pagination.nextPage;
+    
+                            enroll(cp);
+                        })
+                        $(".pageLast").click(function(){
+                            
+                            cp = pagination.maxPage;
+    
+                            enroll(cp);
+                        })
+    
+                    }    
+                },     
+                error:()=>{
+                    console.log("실패");
+                }    
+            });    
+        }
 
-});    
+   
+}
+
+
 
 
 

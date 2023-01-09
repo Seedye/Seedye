@@ -233,7 +233,7 @@
 #freeBoard-detail-anwser-content{
   font-size: 14px;
   line-height: 22px;
-  height: 230px;
+  height: 180px;
 
   overflow-y: scroll;
 }
@@ -253,7 +253,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  bottom: 40px;
+  bottom: -10px;
 
 }
 
@@ -514,4 +514,12 @@ i:hover{
 .asd{
   display: flex;
   align-items: center;
+}
+
+.serch-reset-btn {
+
+  border: none;
+  margin-right: 10px;
+  background-color: white;
+  cursor: pointer;
 }

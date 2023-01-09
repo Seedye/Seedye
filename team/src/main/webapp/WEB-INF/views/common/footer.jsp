@@ -6,13 +6,13 @@
             Copyright &copy; KH Information Educational Institute A-Class Seedye Team
         </p>
         <article>
-            <a href="#">프로젝트 소개</a>
+            <a href="/introduction">소개</a>
             <span>|</span>
-            <a href="#">이용약관</a>
+            <a href="/noticeBoardListt/1">공지사항</a>
             <span>|</span>
-            <a href="#">개인정보처리방침</a>
+            <a href="/boardList/4">커뮤니티</a>
             <span>|</span>
-            <a href="#">고객센터</a>
+            <a href="javascript:void(0);" id="inquiry">식당등록문의</a>
         </article>
     </footer>
 

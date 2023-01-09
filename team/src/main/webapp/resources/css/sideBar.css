@@ -3,14 +3,12 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    /* border: 3px solid #2db400; */
 
     background-color: #2db400;
     
-    
     position: absolute; 
     left: 20px;
-    top: 210px;
+    top: 600px;
 
     border-right: 15px solid transparent;
     border-left: 15px solid transparent;

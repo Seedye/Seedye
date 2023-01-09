@@ -162,12 +162,18 @@ public class AdminDAO {
 		return result;
 	
 	}
-	/** 식당 신청 조회
+	/** 식당 신청 조회(검색 X)
 	 * @param checkFl
+	 * @param pagination 
 	 * @return storeList
 	 */
-	public List<Store> selectEnroll(char checkFl) {
-		return sqlSession.selectList("adminMapper.selectEnroll", checkFl);
+	public List<Store> selectEnroll(char checkFl, Pagination pagination) {
+		
+		int offset = ( pagination.getCurrentPage() -1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectEnroll", checkFl, rowBounds);
 	}
 
 	/** 게시판 리스트 조회
@@ -351,19 +357,36 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.searchKeyList", searchMap, rowBounds);
 	}
 
+	/** 식당 등록 취소
+	 * @param storeNo
+	 * @return result
+	 */
 	public int storeReturn(int storeNo) {
 		return sqlSession.update("adminMapper.storeReturn", storeNo);
 	}
 
+	/** 게시판 관리 총 리스트 수 
+	 * @param boardCode
+	 * @return listCount
+	 */
 	public int selectAdminBoardCount(int boardCode) {
 		
 		return sqlSession.selectOne("adminMapper.selectAdminBoardCount", boardCode);
 	}
 
+	/** 게시판 관리 검색 리스트 수 
+	 * @param boardMap
+	 * @return listCount
+	 */
 	public int selectAdminBoard_searchCount(Map<String, Object> boardMap) {
 		return sqlSession.selectOne("adminMapper.selectAdminBoard_searchCount", boardMap);
 	}
 
+	/** 게시판 관리 검색 
+	 * @param boardMap
+	 * @param pagination
+	 * @return boardList
+	 */
 	public List<Board> selectAdminBoard_search(Map<String, Object> boardMap, Pagination pagination) {
 
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -371,6 +394,27 @@ public class AdminDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("adminMapper.selectAdminBoard_search", boardMap, rowBounds);
+	}
+
+	/** 검색 결과 없을 때 신청한 식당 수 조회
+	 * @param checkFl
+	 * @return listCount
+	 */
+	public int selectEnrollCount(char checkFl) {
+		return sqlSession.selectOne("adminMapper.selectEnrollCount", checkFl);
+	}
+
+	public int selectEnrollCount_search(Map<String, Object> enrollMap) {
+		return sqlSession.selectOne("adminMapper.selectEnrollCount_search", enrollMap);
+	}
+
+	public List<Store> selectEnroll_search(Map<String, Object> enrollMap, Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("adminMapper.selectEnroll_search", enrollMap, rowBounds);
 	}
 
 

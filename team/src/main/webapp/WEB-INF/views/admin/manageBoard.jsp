@@ -61,7 +61,7 @@
 
                 </div>
                 <div id="boardTest">
-                    <span class="manageTitle"> ${map.boardCode} 관리</span>
+                    <span class="manageTitle"> 게시판 관리</span>
                     <table id=boardTable>
                         <thead>
                             <tr>
@@ -108,11 +108,10 @@
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    <Jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
+    <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
     <script>      
     var loginMemberAuthority = "${loginMember.authority}";
-    const boardCode = "${boardCode}"
-    console.log(boardCode);
+
     </script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/sideBar.js"></script>
@@ -120,5 +119,7 @@
    <script src="/resources/js/header.js"></script>
    <script src="/resources/js/admin/boardManage.js"></script>
    <script src="/resources/js/board/QAview.js"></script>
+
+
 </body>
 </html>

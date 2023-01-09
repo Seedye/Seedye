@@ -13,6 +13,7 @@
     <title>관리자 메뉴</title>
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <link rel="stylesheet" href="/resources/css/sideBar.css">
 
 </head>
