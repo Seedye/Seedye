@@ -84,11 +84,6 @@ public interface AdminService {
 	 * @return
 	 */
 	int boardWrite(Board board);
-	/** 식당 신청조회
-	 * @param checkFl
-	 * @return storeList
-	 */
-	List<Store> selectEnroll(char checkFl);
 
 
 
@@ -184,7 +179,30 @@ public interface AdminService {
 
 
 
+	/** 게시판 관리 검색
+	 * @param boardMap
+	 * @param cp
+	 * @return map
+	 */
 	Map<String, Object> selectAdminBoard_search(Map<String, Object> boardMap, int cp);
+
+
+
+	/** 식당 신청 조회
+	 * @param checkFl
+	 * @param cp
+	 * @return map
+	 */
+	Map<String, Object> selectEnroll(char checkFl, int cp);
+
+
+
+	/** 식당 신청조회 (검색)
+	 * @param enrollMap
+	 * @param cp
+	 * @return map
+	 */
+	Map<String, Object> selectEnroll_search(Map<String, Object> enrollMap, int cp);
 
 
 

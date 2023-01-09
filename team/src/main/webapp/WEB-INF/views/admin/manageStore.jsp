@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
 </head>
@@ -32,7 +33,7 @@
                             <label for="image0">
                                 <img src="" class="preview" id="image0i">
                             </label>
-                            <input type="file" id="image0" accept="image/*" class="imageInput">
+                            <input type="file" id="image0" accept="image/*" class="imageInput" required>
                             <aside>사업자 등록증</aside>
                             <span class="red">*필수</span>
                             <span>${pagination}</span>
@@ -280,6 +281,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/admin.js"></script>
     <script src="/resources/js/sideBar.js"></script>
+    <script src="/resources/js/admin/store.js"></script>
+
    
 </body>
 </html>

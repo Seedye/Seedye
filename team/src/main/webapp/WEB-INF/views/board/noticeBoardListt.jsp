@@ -36,7 +36,7 @@
       <section class="board-body-area">
         <div class="board-title">
           <img src="../../resources/images/커뮤니티배경.jpg" alt="">
-          <p>커뮤니티</p>
+          <p>공지사항</p>
         </div>
         <div>
           <p>문의 게시판</p>
