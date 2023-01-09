@@ -33,6 +33,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.common.Pagination;
 import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
@@ -532,5 +533,34 @@ public class AdminController {
 	}
 	
 	
+	// 자유게시판 조회
+	@GetMapping("/admin/selectFreeBoard")
+	@ResponseBody
+	public String selectFreeBoard(int boardNo, Model model) {
+		
+		List<Board> boardList = service.selectFreeBoard(boardNo);
+		
+		List<Comment> commentList = service.selectFreeBoard_comment(boardNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("boardList", boardList);
+		map.put("commentList", commentList);
+		
+		model.addAttribute("map", map);
+		
+		System.out.println(map);
+		
+		return new Gson().toJson(map);
+	}
+	
+	@GetMapping("/admin/deleteFreeBoard")
+	@ResponseBody
+	public int deleteFreeBoard(int boardNo) {
+		
+		int result = service.deleteFreeBoard(boardNo);
+		
+		return result;
+	}
 	
 }
