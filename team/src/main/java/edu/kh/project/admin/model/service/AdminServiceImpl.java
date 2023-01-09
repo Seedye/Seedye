@@ -198,11 +198,7 @@ public class AdminServiceImpl implements AdminService{
 		return boardNo;
 		
 	}
-	// 식당 신청 조회
-	@Override
-	public List<Store> selectEnroll(char checkFl) {
-		return dao.selectEnroll(checkFl);
-	}
+
 
 	// 게시판 리스트 조회(검색 X)
 	@Override
@@ -358,6 +354,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.storeCheck(storeNo);
 	}
 
+	// 식당 협의중 변경
 	@Override
 	public void storeChange(int storeNo) {
 		dao.storeChange(storeNo);
@@ -371,6 +368,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.registerStore(storeNo);
 	}
 
+	// 식당 목록 조회
 	@Override
 	public Map<String, Object> searchStoreList(Map<String, Object> searchMap, int cp) {
 
@@ -391,6 +389,7 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 
+	// 식당 목록 조회(검색)
 	@Override
 	public Map<String, Object> selectStoreList_search(Map<String, Object> selectMap, int cp) {
 
@@ -441,6 +440,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.storeReturn(storeNo);
 	}
 
+	// 게시글 관리 검색
 	@Override
 	public Map<String, Object> selectAdminBoard_search(Map<String, Object> boardMap, int cp) {
 
@@ -453,6 +453,44 @@ public class AdminServiceImpl implements AdminService{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("boardList", boardList);
+		map.put("pagination", pagination);
+		
+		return map;
+	}
+
+	// 식당 등록 신청 조회(검색 X)
+	@Override
+	public Map<String, Object> selectEnroll(char checkFl, int cp) {
+		
+		int listCount = dao.selectEnrollCount(checkFl);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Store> storeList = dao.selectEnroll(checkFl, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("storeList", storeList);
+		map.put("pagination", pagination);
+		
+		return map;
+		
+		
+	}
+
+	// 식당 신청 조회 (검색 O)
+	@Override
+	public Map<String, Object> selectEnroll_search(Map<String, Object> enrollMap, int cp) {
+
+		int listCount = dao.selectEnrollCount_search(enrollMap);
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Store> storeList = dao.selectEnroll_search(enrollMap, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("storeList", storeList);
 		map.put("pagination", pagination);
 		
 		return map;

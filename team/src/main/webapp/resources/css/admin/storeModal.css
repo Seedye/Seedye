@@ -9,15 +9,15 @@
 #inquiryR{
     display: none;
     position: absolute;
-    top: auto;
+    top: 25%;
     z-index: 50;
     flex-direction: column;
-    justify-content: space-between;
     box-sizing: border-box;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;  
     border: 1px solid black;
-    background-color: aliceblue;
+    background-color: white;
+    height: 80%;
 
     
 }
