@@ -38,6 +38,7 @@
                             <option value="w">작성자</option>
                             </select>
                             <input type="text" name="query" id="search-query">
+                            <button type="reset" class="serch-reset-btn"><i class="fa-solid fa-xmark fa-1.5x"></i>
                         </div>
 
                         <!-- 검색 버튼 -->
