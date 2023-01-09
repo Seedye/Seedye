@@ -209,6 +209,8 @@ function selectMemberList(cp){
 
                                 if(member.licensePath != null){
                                     licenseView.setAttribute("src", member.licensePath);
+                                } else{
+                                    licenseView.setAttribute("src", "/resources/images/modal/noneImg.png")
                                 }
                                 
 

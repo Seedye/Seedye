@@ -12,7 +12,7 @@
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/admin/boardManage.css">
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar.css">
+    <link rel="stylesheet" href="/resources/css/sideBar2.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <link rel="stylesheet" href="/resources/css/board/board-view-style.css">
