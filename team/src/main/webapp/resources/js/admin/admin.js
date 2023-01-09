@@ -892,10 +892,12 @@ function selectBoxSelect(cp){
 
 }
 // 신청 조회    
+
 const enrollBtn = document.getElementById("enroll");
 enrollBtn.addEventListener("click", ()=>{
   enroll(cp)
 })
+
 
     function enroll(cp){
     if(keyword.value == null){
