@@ -22,6 +22,8 @@
 
     <main>
     <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
+    <jsp:include page="/WEB-INF/views/admin/store.jsp" />
+
 
         <section id="freeBoard-section">
             <div id="freeBoard-container">

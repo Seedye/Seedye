@@ -126,6 +126,9 @@
         
           </table>
             <%-- 페이지네이션 --%>
+            <!-- <div class="board-list-page-num"></div>
+              <div class="board-list-page-num"></div> -->
+            </div>
             <ul class="board-list-page-area">
 
             <c:choose>
@@ -242,9 +245,6 @@
               <%-- <li><i class="fa-solid fa-angle-right"></i></li>
               <li><i class="fa-solid fa-caret-right"></i></li> --%>
             </ul>
-            <!-- <div class="board-list-page-num"></div>
-            <div class="board-list-page-num"></div> -->
-          </div>
 
           
       </section>

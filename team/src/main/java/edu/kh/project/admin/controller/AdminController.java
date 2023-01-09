@@ -394,7 +394,7 @@ public class AdminController {
 	}
 	
 	// 식당관리 신청조회
-	@GetMapping("/enroll")
+	@GetMapping("/admin/enroll")
 	@ResponseBody
 	public String selectEnroll(char checkFl,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,

@@ -15,6 +15,8 @@
 </head>
 <body>
      <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+     <jsp:include page="/WEB-INF/views/admin/store.jsp" />
+
     <main>
        
         <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>

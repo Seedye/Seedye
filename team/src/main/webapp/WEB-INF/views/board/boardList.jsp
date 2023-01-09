@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../resources/css/board/boardList-style.css">
     <link rel="stylesheet" href="../../resources/css/board/board-view-style.css">
     <link rel="stylesheet" href="../../resources/css/board/board-write-style.css">
+  
 
     <script src="https://kit.fontawesome.com/95f413b465.js" crossorigin="anonymous"></script>
 </head>
