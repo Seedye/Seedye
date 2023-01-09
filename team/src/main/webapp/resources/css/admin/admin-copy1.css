@@ -466,3 +466,7 @@ tr:hover{
 #search{
     margin: 3px;
 }
+
+tr{
+    height: 50px;
+}

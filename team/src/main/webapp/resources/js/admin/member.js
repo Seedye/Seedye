@@ -39,7 +39,6 @@ function selectMemberList(cp){
             const memberTbody = document.getElementById("memberTbody");
             memberTbody.innerHTML="";
             
-            console.log(map);
             const memberList = map.memberList;
             const pagination = map.pagination;
             
@@ -48,9 +47,7 @@ function selectMemberList(cp){
             var pageSize = pagination.pageSize;
             var totalPages = 0;
             var curPage = cp;
-            console.log(cp);
-
-            console.log(map);
+          
 
             for(let member of memberList){
                 

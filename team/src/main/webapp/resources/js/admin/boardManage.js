@@ -25,6 +25,7 @@ const search = document.getElementById("search");
 const pageBtn = document.getElementsByClassName("pageBtn");
 const searchBtn = document.getElementById("searchBtn");
 
+
 let cp =1;
 boardTest.style.display = "none";
 
@@ -113,7 +114,7 @@ function selectBoardNotice(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage' type='button'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -191,13 +192,15 @@ function selectBoardNotice(cp){
             selectBoardNotice(cp);
           })
          
-          const boardManageBtn = document.getElementsByClassName("board-manage");
+          const boardManageBtn = document.getElementsByClassName("board-list-view");
 
           for(i=0; i<boardManageBtn.length; i++){
 
             boardManageBtn[i].addEventListener("click", ()=>{
+            
+              boardViewModal.style.display = "flex";
 
-          alert("확인");
+            ;
           })
 
         }
@@ -254,7 +257,7 @@ function selectBoardNotice(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -314,6 +317,19 @@ function selectBoardNotice(cp){
             cp=curPage;
             selectBoardNotice(cp);
           })
+
+          
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+
+  })
+}
+
 
 
         }
@@ -382,7 +398,7 @@ function selectUpdateNotice(cp){
         
         // 관리
         const td6 = document.createElement("td");
-        td6.innerHTML = "<button class='board-manage'>관리</button>"
+        td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
 
         tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -442,7 +458,17 @@ function selectUpdateNotice(cp){
             selectUpdateNotice(cp);
           })
 
-   
+          
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+  })
+}
+
 
 
     }
@@ -498,7 +524,7 @@ function selectUpdateNotice(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view'>관리</button>"
   
           tr.append(td1, td2, td3, td4, td5, td6);
   
@@ -557,6 +583,18 @@ function selectUpdateNotice(cp){
         searchBtn.addEventListener("click", ()=>{
           selectUpdateNotice(cp);
         })
+
+        
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+  })
+}
+
   
       
         }
@@ -620,7 +658,7 @@ function selectFreeboard(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -680,6 +718,18 @@ function selectFreeboard(cp){
         searchBtn.addEventListener("click", ()=>{
           selectFreeboard(cp);
         })
+
+        
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+  })
+}
+
 
         }
      
@@ -735,7 +785,7 @@ function selectFreeboard(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -795,6 +845,18 @@ function selectFreeboard(cp){
         searchBtn.addEventListener("click", ()=>{
           selectFreeboard(cp);
         })
+
+        
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+  })
+}
+
 
         }
      
@@ -858,7 +920,7 @@ function selectQuestion(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -921,6 +983,19 @@ function selectQuestion(cp){
         searchBtn.addEventListener("click", ()=>{
           selectQuestion(cp);
         })
+
+        
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+
+  })
+}
+
     
         
         }
@@ -976,7 +1051,7 @@ function selectQuestion(cp){
           
           // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-manage'>관리</button>"
+          td6.innerHTML = "<button class='board-list-view'>관리</button>"
 
           tr.append(td1, td2, td3, td4, td5, td6);
 
@@ -1041,6 +1116,17 @@ function selectQuestion(cp){
         searchBtn.addEventListener("click", ()=>{
           selectQuestion(cp);
         })
+        
+const boardManageBtn = document.getElementsByClassName("board-list-view");
+
+for(i=0; i<boardManageBtn.length; i++){
+
+  boardManageBtn[i].addEventListener("click", ()=>{
+
+    boardViewModal.style.display = "flex";
+  })
+}
+
 
     
         }
@@ -1110,15 +1196,8 @@ function pageLink(curPage, totalPages) {
 // jsp = boardView
 
 
-const boardManageBtn = document.getElementsByClassName("board-manage");
 
-for(i=0; i<boardManageBtn.length; i++){
 
-  boardManageBtn[i].addEventListener("click", ()=>{
-
-    alert("확인");
-  })
-}
 
  checked = function(event){
 

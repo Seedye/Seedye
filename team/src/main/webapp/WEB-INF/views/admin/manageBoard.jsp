@@ -108,7 +108,7 @@
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    <Jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
+    <jsp:include page="/WEB-INF/views/board/boardView.jsp"/>
     <script>      
     var loginMemberAuthority = "${loginMember.authority}";
 
@@ -117,9 +117,9 @@
    <script src="/resources/js/sideBar.js"></script>
    <script src="/resources/js/admin/swiper.min.js"></script>
    <script src="/resources/js/header.js"></script>
-   <script src="/resources/js/board/QAview.js"></script>
    <script src="/resources/js/admin/boardManage.js"></script>
-   <script src="/resources/js/admin/store.js"></script>
+   <script src="/resources/js/board/QAview.js"></script>
+
 
 </body>
 </html>
