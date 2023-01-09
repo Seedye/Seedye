@@ -213,6 +213,7 @@
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test8.jpg">테스트 중입니다.</div>
                 <div class="swiper-slide"><img src="..//resources/images/mainslide/test9.jpg">테스트 중입니다.</div> --%>
             </div>
+        </div>
 
         <!-- 상세보기 모달 팝업 -->
         <div class="modal-container">
@@ -276,7 +277,6 @@
                 </div>
             </div>
         </div>
-
         
     </main>
 
