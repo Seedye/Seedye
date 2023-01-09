@@ -18,7 +18,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 let cp = 1;
-selectStoreList(cp);
+const searchParam = new URLSearchParams(location.search);
+if(searchParam.get("cp") != null){
+    selectStoreList(searchParam.get("cp"));
+}else{
+    selectStoreList(cp);
+    selectMemberList(cp);
+}
+
 
 
 const searchBtn = document.getElementById("searchBtn");
@@ -128,6 +135,8 @@ function selectStoreList(cp){
                         var id_check = $(this).attr("id");
                         
                         cp = id_check;
+
+                        history.pushState(null,null, location.pathname + "?cp=" + id_check)
                         
                         
                         if(id_check != null) selectStoreList(cp); 
@@ -1891,3 +1900,10 @@ function searchBtnClick(){
     }
 
 }
+
+
+document.getElementById("returnList").addEventListener("click", e=>{
+    // location.reload();
+    storeManageMain.style.display = "flex";
+    adminR.style.display = "none";
+});
