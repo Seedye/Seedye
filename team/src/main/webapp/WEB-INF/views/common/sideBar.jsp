@@ -32,7 +32,14 @@
                 </ul>     
             </div>
         <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>
-        <label for="" class="sideM" id="side5"><a href="">마이페이지</a></label>
+        <c:if test="${empty loginMember}">
+        <label for="" class="sideM" id="side5"><a href="/login">마이페이지</a></label>
+        </c:if>
+
+        <c:if test="${loginMember.memberNo != null}">
+        <label for="" class="sideM" id="side5"><a href="/info">마이페이지</a></label>
+        </c:if>
+
         <c:if test="${loginMember.authority == 2}">
             <label for="sideManage" class="sideM" id="side6">관리자 메뉴</label>  
             <input type="checkbox" id="sideManage">
