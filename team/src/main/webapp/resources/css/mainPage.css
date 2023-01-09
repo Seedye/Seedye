@@ -556,3 +556,7 @@ footer{
 .regi-bookmark{
     background-color: #dd3333ee;
 }
+
+.storeInfoModal-window{
+    overflow: auto;
+}
