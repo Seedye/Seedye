@@ -18,10 +18,31 @@ for (let freeBoardOneItems of freeBoardOne) {
             dataType : "json",
             success : (freeBoardDetail) => {
 
-                console.log(freeBoardDetail);
+                // if(comment.commentContent){
+
+                //     var saveCommentContent = comment.commentContent.replaceAll("<br>", "\n");
+                //   }
+                  if(freeBoardDetail[0].boardContent){
+                    var saveContent = freeBoardDetail[0].boardContent.replaceAll(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+                     // XSS 방지 처리 해제
+                    saveContent =  saveContent.replaceAll("&amp;", "&");
+                    saveContent =  saveContent.replaceAll("&lt;", "<");
+                    saveContent =  saveContent.replaceAll("&gt;", ">");
+                    saveContent =  saveContent.replaceAll("&quot;", "\"");
+          
+                  }
+
+                  if(freeBoardDetail[0].boardContent){
+                    var saveBoardTitle =  freeBoardDetail[0].boardTitle.replaceAll((/(<br>|<br\/>|<br \/>)/g, '\r\n'));
+                    // XSS 방지 처리 해제
+                    saveBoardTitle =  saveBoardTitle.replaceAll("&amp;", "&");
+                    saveBoardTitle =  saveBoardTitle.replaceAll("&lt;", "<");
+                    saveBoardTitle =  saveBoardTitle.replaceAll("&gt;", ">");
+                    saveBoardTitle =  saveBoardTitle.replaceAll("&quot;", "\"");
+                  }
 
                 const bigTitle = document.createElement("p");
-                bigTitle.innerText = freeBoardDetail[0].boardTitle;
+                bigTitle.innerText = saveBoardTitle;
 
                 const freeBoardDetailTitle = document.createElement("div");
                 freeBoardDetailTitle.setAttribute("id", "freeBoard-detail-title");
@@ -39,9 +60,9 @@ for (let freeBoardOneItems of freeBoardOne) {
                 const freeBoardDetailContent = document.createElement("p");
                 freeBoardDetailContent.setAttribute("id", "freeBoard-detail-content")
                
-                var content = freeBoardDetail[0].boardContent;
-                freeBoardDetailContent.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
-                // freeBoardDetailContent.innerText = freeBoardDetail[0].boardContent;
+                // var content = freeBoardDetail[0].boardContent;
+                // freeBoardDetailContent.innerText = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+                freeBoardDetailContent.innerText = saveContent;
 
                 freeBoardDetailView.append(bigTitle);
                 freeBoardDetailView.append(freeBoardDetailTitle);
@@ -113,6 +134,17 @@ for (let freeBoardOneItems of freeBoardOne) {
                             console.log(rList);
 
                             for (let comment of rList) {
+                                if(comment.commentContent){
+                                    
+                                    var saveCommentContent = comment.commentContent.replaceAll(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+
+                                     // XSS 방지 처리 해제
+                                    saveCommentContent =  saveCommentContent.replaceAll("&amp;", "&");
+                                    saveCommentContent =  saveCommentContent.replaceAll("&lt;", "<");
+                                    saveCommentContent =  saveCommentContent.replaceAll("&gt;", ">");
+                                    saveCommentContent =  saveCommentContent.replaceAll("&quot;", "\"");
+
+                                  }
                                 
                                 // 답변 생성
                                 const contentD = document.createElement("div");
@@ -127,13 +159,13 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 asd.append(anwserP)
                                 if(comment.parentNo == 0) {
 
-                                    anwserP.innerText = comment.memberId + " : " + comment.commentContent;
+                                    anwserP.innerText = comment.memberId + " : " + saveCommentContent;
                                 }else{
                                     // contentD.style.marginLeft = "10px"
                                     contentD.style.width = "495px"
                                     iconContainer.setAttribute("class", "fa-solid fa-comment-dots");
                                     iconContainer.style.marginRight = "5px";
-                                    anwserP.innerHTML =  comment.memberId + " : " + comment.commentContent;
+                                    anwserP.innerHTML =  comment.memberId + " : " + saveCommentContent;
                                 }
                                 
                                 contentD.append(asd);
@@ -216,6 +248,15 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 const rCommentTextarea = document.createElement("textarea");
                                 rCommentTextarea.classList.add("rCommentTextarea");
                                 rCommentTextarea.setAttribute("id", "rCommentTextarea");
+                                $(rCommentTextarea).keyup(function(){
+                                    var rows = $(rCommentTextarea).val().split('\n').length;
+                                    var maxRows = 1;
+                                    if( rows > maxRows){
+                                        // alert('3줄 까지만 가능합니다');
+                                        modifiedText = $(rCommentTextarea).val().split("\n").slice(0, maxRows);
+                                        $(rCommentTextarea).val(modifiedText.join("\n"));
+                                    }
+                                  });
 
                                 const rCommentBtnContainer = document.createElement("div");
                                 rCommentBtnContainer.classList.add("rCommentBtnContainer");
@@ -273,7 +314,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                                         
                                         updateContainer.style.display = "flex";
 
-                                        updateInput.innerText = comment.commentContent;
+                                        updateInput.innerText = saveCommentContent;
                                         ok.addEventListener("click", function(){
 
                                             $.ajax({
@@ -309,10 +350,15 @@ for (let freeBoardOneItems of freeBoardOne) {
                                         updateContainer.style.display = "none";
                                     });
 
-                                    // 대댓글 등록
+                                    
+                                    // 댓글 등록
                                     anwserP.addEventListener("click", function(){
-                                        rCommentContainer.style.display = "flex";
+                                            if(memberNo == ""){
+                                                rCommentContainer.style.display = "none";
+                                            }else{
+                                                rCommentContainer.style.display = "flex";
 
+                                            
                                         rCommentOk.addEventListener("click", function(){
 
                                             $.ajax({
@@ -338,10 +384,11 @@ for (let freeBoardOneItems of freeBoardOne) {
                                                 }                                                    
                                             })
                                         });
+                                    }
                                     });
 
                                     rCommentCancel.addEventListener("click", function(){
-
+                                        
                                         rCommentContainer.style.display = "none";
                                     });
                         
@@ -371,7 +418,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                     // 게시글 수정
                      boardUpdate.addEventListener("click", () => {
 
-                        document.body.style.overflow = "unset";
+                        document.body.style.overflow = "hidden";
                         boardWriteModal.style.display = "flex";
             
                         boardWriteTitle.innerHTML = "";
@@ -399,15 +446,15 @@ for (let freeBoardOneItems of freeBoardOne) {
                             location.reload();
                         });
             
-                        // 수정될 제목
-                        boardTitle.innerHTML = freeBoardDetail[0].boardTitle;
-                        boardContent.innerText = freeBoardDetail[0].boardContent;
+                        // 수정될 제목 / 내용
+                        boardTitle.innerHTML = saveBoardTitle;
+                        boardContent.innerHTML = saveContent;
             
                         //TODO : 이미지 불러오기 / 저장된 이미지
             
                         //! 이미지 만드는 create작성해야함.
                             if (freeBoardDetail[0].imageList.length != 0) {
-                                boardViewContentImgArea.innerHTML ="";
+                                boardViewContentImgArea.innerHTML = "";
                     
                                 for (let i = 0; i < freeBoardDetail[0].imageList.length; i++) {
                                 //TODO 아마도 수정 필요
@@ -504,7 +551,11 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                 // 댓글 등록 ajax
                 anwserBtn.addEventListener("click", () => {
+                    if(memberNo == ""){
 
+                    } else {
+
+                    
                     $.ajax({
                         url : "/comment/insert",
                         data : {"commentContent" : input.value,
@@ -534,6 +585,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                             console.log("답변 등록 실패");
                         }
                     });
+                }
                 });
 
             },

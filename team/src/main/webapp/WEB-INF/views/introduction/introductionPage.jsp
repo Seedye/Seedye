@@ -10,7 +10,7 @@
     <title>소개</title>
     <link rel="stylesheet" href="../../resources/css/header.css">
     <link rel="stylesheet" href="../../resources/css/introduction-page.css">
-    <link rel="stylesheet" href="../../resources/css/sideBar.css">
+    <link rel="stylesheet" href="../../resources/css/sideBar3.css">
 </head>
 <body>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -18,8 +18,7 @@
 
 
     <main>
-    <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
-
+         <jsp:include page="/WEB-INF/views/common/sideBar.jsp"/>
         <section id="introduction-container" class="introduction-container">
             <div id="main-introduction">새싹이란?!</div>
 
@@ -37,7 +36,7 @@
                     <p>꿈나무 카드란?</p>
                     <p>꿈나무카드는 대한민국이 2009년 7월 1일, 어린이를 위해 도입한 카드이다. 결식 어린이가 사는 지역 주민자치센터는 해당카드를 발급하는 역할을 한다. 어린이의 가정환경에 따라 하루 몇끼를 제공할 지 결정한다.</p>
                 </div>
-                <img src="../../resources/images/꿈나무카드.jpg">
+                <img src="../../resources/images/꿈나무카드.PNG">
             </div>
 
             <div id="third-introduction" class="third-introduction">
@@ -54,6 +53,7 @@
             </div>
 
         </section>
+        <div class="qqq"></div>
     </main>
 
       <!-- 푸터 -->
