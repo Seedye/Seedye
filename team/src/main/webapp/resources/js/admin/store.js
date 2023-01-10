@@ -3,7 +3,6 @@ const inquiry = document.getElementById("inquiry");
 const inquiryR = document.getElementById("inquiryR");
 const modalStore = document.getElementById("modalStore");
 
-
 inquiry.addEventListener("click", ()=>{
     
     
@@ -76,7 +75,6 @@ for(let i=0; i<imageInput.length; i++){
 
     imageInput[i].addEventListener("change", (event)=>{
 
-        console.log(event.target.files[0]);
 
         if(event.target.files[0] != undefined){
 
