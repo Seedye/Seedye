@@ -856,7 +856,7 @@ function selectBoardNotice(cp){
                       $.ajax({
                         url: "/QABoardDelete",
                         type: "GET",
-                        data: { boardNo: boardListViewItems.lastElementChild.id },
+                        data: { "boardNo":tempNo },
                         dataType: "json",
                         success: (result) => {
                           if (result > 0) {
