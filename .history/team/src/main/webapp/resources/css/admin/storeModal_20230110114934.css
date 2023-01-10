@@ -1,0 +1,178 @@
+
+.modal-store{
+  position: fixed;
+  top: 0;left: 0;bottom: 0;right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+}
+
+.inquiry-mainMenu{
+    width: 900px;
+    /* height: 70vh; */
+    margin: 0 10px 10px 10px;
+    
+}    
+
+/* 식당 등록 전체 */
+#inquiryR{
+    /* display: none; */
+    position: absolute;
+    /* top: 25%; */
+    z-index: 50;
+    flex-direction: column;
+    box-sizing: border-box;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px;   */
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    background-color: white;
+    /* height: 80%; */
+
+    
+}
+
+/* 식당 등록 폼 메뉴 */
+.inquiryR-menu{
+    display: flex;
+    margin: 15px;
+    padding: 3px;
+    font-weight: bold;
+}
+.inquiryR-menu > aside{
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.inquiryR-menu > input{
+    width: 50%;
+    height: 25px;
+    padding-left: 5px;
+}
+/* 등록 버튼 */
+#btn{
+    display: flex;
+    justify-content: center;   
+    margin-bottom: 10px; 
+    margin: 30px 0;
+}
+
+#btn > button{
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#btn > button:hover{
+    background-color: #2db400;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#menu{
+    margin-bottom: 10px;
+    background-color: #2db400;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    
+}
+
+.close{
+    position: relative;
+    left: 40%;
+    cursor: pointer;
+}
+
+/* 이미지 영역 */
+#imageArea{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+
+#imageArea > aside{
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.imageDiv > aside{
+    font-weight: bold;
+}
+
+
+.imageInput{
+    display: none;
+}
+
+
+
+.imageDiv{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imageDiv > label{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+
+.red{
+    color: red;
+    font-weight: bold;
+}
+
+
+/* 식당 등록 주소 */
+#addr-area{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#addr-area > button{
+    width: 70px;
+    height: 45px;
+    background-color: #2db400;
+    color: white;
+    border: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#addr-area > input{
+    margin-bottom: 5px;
+    height: 40%;
+    padding: 3px;
+}
+
+#registerFrm{
+    overflow: hidden;
+}
+
+.preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

@@ -17,7 +17,7 @@
     var header = document.querySelector("header");
 
     // 스크롤 위치가 일정 값 이상이면 scrolled 클래스 추가, 이 값 미만이면 제거
-    if (scrollTop > 100 && flag) {
+    if (scrollTop > 81 && flag) {
 
         this.document.querySelector("header").style.position = "sticky";
 

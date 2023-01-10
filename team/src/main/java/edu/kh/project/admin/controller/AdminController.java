@@ -111,14 +111,13 @@ public class AdminController {
 			@RequestParam Map<String, Object> boardMap) {
 		
 		// 검색 결과 없을 때
-		if(boardMap.get("search") == null) {
+		if(boardMap.get("keyword") == null) {
 			
 			Map<String, Object> map = service.selectAdminBoard(boardCode, cp);
 			
 			map.put("boardCode", boardCode);
 			
 			model.addAttribute("map", map);
-			System.out.println(map);
 			
 			return new Gson().toJson(map);
 			
@@ -132,7 +131,6 @@ public class AdminController {
 			map.put("boardCode", boardCode);
 			
 			model.addAttribute("map", map);
-			System.out.println(map);
 			
 			return new Gson().toJson(map);
 		}
@@ -260,24 +258,20 @@ public class AdminController {
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp, 
 			@RequestParam Map<String, Object> searchMap) {
 			
-			System.out.println(searchMap);
 			
 			
 			if(searchMap.get("searchkey") == null) {
 			
 			Map<String, Object> map = service.selectMemberList(cp);
-			System.out.println(map);
 			
 			model.addAttribute("map", map);
 			
 			
-			System.out.println(map);
 			
 			return new Gson().toJson(map);
 	
 		} else {
 			
-			System.out.println(searchMap);
 			
 			searchMap = service.searchKey(searchMap, cp); 
 			
@@ -294,7 +288,6 @@ public class AdminController {
 		
 		member = service.selectMember(memberNo);
 		
-		System.out.println(member);
 		
 		return member;
 	}
@@ -334,7 +327,6 @@ public class AdminController {
 			@RequestParam Map<String, Object> searchMap) {
 		
 		
-		System.out.println(searchMap);
 		
 		if(searchMap.get("keyword") == null){ 
 		
@@ -343,7 +335,6 @@ public class AdminController {
 			model.addAttribute("map", map);
 				
 			
-			System.out.println(map);
 				
 			return new Gson().toJson(map);
 		
@@ -352,7 +343,6 @@ public class AdminController {
 			
 			searchMap = service.searchStoreList(searchMap, cp);
 			
-			System.out.println(searchMap);
 			
 			return new Gson().toJson(searchMap);			
 		}
@@ -374,19 +364,15 @@ public class AdminController {
 	
 			model.addAttribute("typeMap", typeMap);
 		
-			System.out.println(typeMap);
 		
 			return new Gson().toJson(typeMap);
 			
 		} else {
 			Map<String, Object> selectMap_search = service.selectStoreList_search(selectMap, cp);
 			
-			System.out.println(selectMap);
-			System.out.println(selectMap_search);
-			
+
 			model.addAttribute("selectMap_search", selectMap_search);
 			
-			System.out.println(selectMap_search);
 			
 			return new Gson().toJson(selectMap_search);
 			
@@ -405,7 +391,6 @@ public class AdminController {
 			
 			Map<String, Object> map = service.selectEnroll(checkFl, cp);
 			
-			System.out.println(map);
 			
 			return new Gson().toJson(map);
 		
@@ -413,7 +398,6 @@ public class AdminController {
 			
 			Map<String, Object> map = service.selectEnroll_search(enrollMap, cp);
 			
-			System.out.println(map);
 			
 			return new Gson().toJson(map);
 		}
@@ -479,7 +463,6 @@ public class AdminController {
 		// 식당 상태 조회
 		char storeCheck = service.storeCheck(storeNo);
 		
-		System.out.println(storeCheck);
 		
 		// 식당 등록 미확인일때 협의중으로 변경
 		if(storeCheck == 'N') {
@@ -491,17 +474,14 @@ public class AdminController {
 		// 식당 정보 조회(이미지 제외)
 		Store store = service.selectStoreManage(storeNo);
 
-		System.out.println(store);
 
 		// 식당 이미지 조회
 		List<StoreImage> storeList = service.selectStoreManageImg(storeNo);
 		
-		System.out.println(storeList);
 		
 		if(!store.getImageList().isEmpty()) {
 			store.setLicensePath(storeList.get(0).getLicensePath());
 		}
-		System.out.println(store);
 		
 		return store;
 		
@@ -549,11 +529,11 @@ public class AdminController {
 		
 		model.addAttribute("map", map);
 		
-		System.out.println(map);
 		
 		return new Gson().toJson(map);
 	}
 	
+	// 자유게시판 삭제
 	@GetMapping("/admin/deleteFreeBoard")
 	@ResponseBody
 	public int deleteFreeBoard(int boardNo) {
@@ -561,6 +541,23 @@ public class AdminController {
 		int result = service.deleteFreeBoard(boardNo);
 		
 		return result;
+	}
+	
+	
+	// 식당 정보 수정
+	@GetMapping("/admin/updateStore")
+	@ResponseBody
+	public int updateStore(@RequestParam Map<String, Object> paramMap, int storeNo) {
+		
+	
+		
+		int result = service.updateStore(paramMap, storeNo);
+		
+		
+		return result;
+			
+		
+		
 	}
 	
 }

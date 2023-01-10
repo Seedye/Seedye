@@ -67,8 +67,6 @@ boardTest.style.display = "none";
 
 // 공지사항
 function selectBoardNotice(cp){
-  const tbody = document.getElementById("tbody");
-  tbody.innerHTML = "";
   
   
   if(keyword == ''){
@@ -77,13 +75,13 @@ function selectBoardNotice(cp){
       data:{"boardCode" : '1' , "cp" : cp},
       dataType : "JSON",
       success : (map) =>{
-
-        console.log(boardCode);
+        
+        const tbody = document.getElementById("tbody");
+        tbody.innerHTML = "";
         
         const boardList = map.boardList;
         const pagination = map.pagination;
-            
-        
+
         const totalCount = pagination.listCount;
 
         var pageSize = pagination.pageSize;
@@ -108,17 +106,29 @@ function selectBoardNotice(cp){
           
           // 조회수
           const td4 = document.createElement("td");
-          td4.innerText = board.readCount
+          td4.innerText = board.readCount;
           
           // 등록일
           const td5 = document.createElement("td");
-          td5.innerText = board.createDate
+          td5.innerText = board.createDate;
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
+
+          
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 
@@ -202,6 +212,9 @@ function selectBoardNotice(cp){
 
               let dv = e.currentTarget;
 
+
+              // 선택한 관리버튼의 회원번호
+              tempNo = dv.parentElement.firstElementChild.innerText;
 
               boardViewModal.style.display = "flex";
               $.ajax({
@@ -352,7 +365,7 @@ function selectBoardNotice(cp){
                       $.ajax({
                         url: "/QABoardDelete",
                         type: "GET",
-                        data: { boardNo: boardListViewItems.lastElementChild.id },
+                        data: { "boardNo": tempNo},
                         dataType: "json",
                         success: (result) => {
                           if (result > 0) {
@@ -600,6 +613,7 @@ function selectBoardNotice(cp){
         var totalPages = 0;
         var curPage = cp;
 
+        
         for(let board of boardList){
 
           const tr = document.createElement("tr");
@@ -624,11 +638,22 @@ function selectBoardNotice(cp){
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
           
-          // 관리
           const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          }
+          
+
+          // 관리
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
+
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 
@@ -709,7 +734,7 @@ function selectBoardNotice(cp){
               $.ajax({
                 url: "/QABoardDetail",
                 type: "POST",
-                data: { boardNo: tempNo },
+                data: { "boardNo": tempNo },
                 dataType: "json",
                 success: (QABoardDetail) => {
                   // console.log(QABoardDetail);
@@ -853,7 +878,7 @@ function selectBoardNotice(cp){
                       $.ajax({
                         url: "/QABoardDelete",
                         type: "GET",
-                        data: { boardNo: boardListViewItems.lastElementChild.id },
+                        data: { "boardNo":tempNo },
                         dataType: "json",
                         success: (result) => {
                           if (result > 0) {
@@ -1142,12 +1167,22 @@ function selectUpdateNotice(cp){
         // 등록일
         const td5 = document.createElement("td");
         td5.innerText = board.createDate
+
+        const td6 = document.createElement("td");
+        if(board.boardDelFl == 'N'){
+          td6.innerText = "기본";
+        } else{
+          td6.innerText = "삭제된 글";
+          td6.style.color = "red";
+          td6.style.fontWeight = "bold";
+
+        }
         
         // 관리
-        const td6 = document.createElement("td");
-        td6.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
+        const td7 = document.createElement("td");
+        td7.innerHTML = "<button class='board-list-view' type='button'>관리</button>"
 
-        tr.append(td1, td2, td3, td4, td5, td6);
+        tr.append(td1, td2, td3, td4, td5, td6, td7);
 
         tbody.append(tr);
 
@@ -1644,12 +1679,22 @@ for(let boardItems of document.querySelectorAll("#tbody")){
           // 등록일
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view'>관리</button>"
   
-          tr.append(td1, td2, td3, td4, td5, td6);
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
   
           tbody.append(tr);
   
@@ -2152,12 +2197,22 @@ function selectFreeboard(cp){
           // 등록일
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view'>관리</button>"
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 
@@ -2231,8 +2286,8 @@ function selectFreeboard(cp){
             tempNo = dv.parentElement.firstElementChild.innerText;
 
             modalAll.style.display = "flex";
-
-            $.ajax({
+            
+              $.ajax({
               url:"/admin/selectFreeBoard",
               data:{"boardNo": tempNo},
               dataType:"JSON",
@@ -2247,7 +2302,6 @@ function selectFreeboard(cp){
                 const boardModalContent = document.getElementById("boardModalContent");
                 const boardModalComment = document.getElementById("boardModalComment");
 
-                console.log(commentList);
 
                 boardModalWriter.innerText = boardList[0].memberId;
 
@@ -2270,27 +2324,109 @@ function selectFreeboard(cp){
                     boardModalContent.innerText = textTemp;
                 
 
-
                 boardModalTitle.innerText = boardList[0].boardTitle;
 
 
                 boardModalComment.innerHTML = "";
-
-                for(i=0; i<commentList.length; i++){
+                for(let rComment of commentList){
 
                   const span = document.createElement("span");
-                  span.style.display = "block";
+                  // span.style.display = "block";
+                  const deleteBtn = document.createElement("button");
+                  deleteBtn.classList.add("deleteBtn")
+                  deleteBtn.innerText ="x";
                   
+                    if(rComment.parentNo == 0 ){
+                      const div2 = document.createElement("div");
+                      div2.classList.add("div2");
+                      span.innerText = rComment.memberId + " : " + rComment.commentContent;
+                      
+                      div2.style.display ="flex";
+                      div2.append(span, deleteBtn);
+                      boardModalComment.append(div2);
+                      div2.style.justifyContent ="space-between";
 
-                  
+                      deleteBtn.addEventListener("click", ()=>{
+  
+                        
+                        $.ajax({
+                          url:"/comment/delete",
+                          data:{"commentNo":rComment.commentNo},
+                          success: function(result){
+                            if(result>0){
+                              alert("성공?");
+                              // boardModalComment.innerHTML = "";
+                              // commentList2();
+                            }
+    
+    
+                          },
+                          error:()=>{
+                            console.log("실패");
+                          }
+                        })
+    
+                      })
 
-                    span.innerText = commentList[i].memberId + " : " + commentList[i].commentContent;
 
+                    }  else {
+                      
+                      const div1 = document.createElement("div");
+                      div1.classList.add("div1");
+                      div1.style.display="flex";
+                      div1.style.justifyContent="space-between";
+
+                      const div = document.createElement("div");
+                      
+                      const div3 = document.createElement("div");
+                      div3.classList.add("div3");
+                      div3.style.display="flex"
+                      
+                      div.innerText = 'ㄴ'
+                      div.style.marginRight = "5px";
+                      
+                      span.innerText = rComment.memberId + " : " + rComment.commentContent;
+                      div3.append(div,span);
  
+                      div1.append(div3, deleteBtn);
+                      
+                      boardModalComment.append(div1);
 
-                    boardModalComment.appendChild(span);
-                } 
+                      deleteBtn.addEventListener("click", ()=>{
+  
+                        
+                        $.ajax({
+                          url:"/comment/delete",
+                          data:{"commentNo":rComment.commentNo},
+                          success: function(result){
+                            if(result>0){
+                              alert("성공?");
+                              // boardModalComment.innerHTML = "";
+                              // commentList2();
+                            }
+    
+    
+                          },
+                          error:()=>{
+                            console.log("실패");
+                          }
+                        })
+    
+                      })
+                      
+                      
+                    }
+                    
+                    
+                    
 
+              } 
+                  
+
+                  
+                
+                  
+  
                 const deleteB = document.getElementById("deleteB")
 
                 deleteB.addEventListener("click", ()=>{
@@ -2310,14 +2446,16 @@ function selectFreeboard(cp){
                     
               }
             })
+          })
+            }
+         
             
 
-          })
-        }
+        
 
 
-        }
-     
+        
+      }
       },
       error:()=>{
         console.log("실패")
@@ -2367,12 +2505,22 @@ function selectFreeboard(cp){
           // 등록일
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view'>관리</button>"
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 
@@ -2465,7 +2613,6 @@ function selectFreeboard(cp){
                     const boardModalContent = document.getElementById("boardModalContent");
                     const boardModalComment = document.getElementById("boardModalComment");
     
-                    console.log(commentList);
     
                     boardModalWriter.innerText = boardList[0].memberId;
     
@@ -2595,12 +2742,22 @@ function selectQuestion(cp){
           // 등록일
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view'>관리</button>"
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 
@@ -3102,12 +3259,24 @@ function selectQuestion(cp){
           // 등록일
           const td5 = document.createElement("td");
           td5.innerText = board.createDate
+
+          const td6 = document.createElement("td");
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
-          const td6 = document.createElement("td");
-          td6.innerHTML = "<button class='board-list-view'>관리</button>"
+          const td7 = document.createElement("td");
+          td7.innerHTML = "<button class='board-list-view'>관리</button>"
 
-          tr.append(td1, td2, td3, td4, td5, td6);
+          
+
+          tr.append(td1, td2, td3, td4, td5, td6, td7);
 
           tbody.append(tr);
 

@@ -1,12 +1,13 @@
 
 const inquiry = document.getElementById("inquiry");
 const inquiryR = document.getElementById("inquiryR");
-
+const modalStore = document.getElementById("modalStore");
 
 inquiry.addEventListener("click", ()=>{
     
     
-    inquiryR.style.display = "flex";
+    modalStore.style.display = "flex";
+    document.body.style.overflow = "hidden";
     
 })
 
@@ -74,7 +75,6 @@ for(let i=0; i<imageInput.length; i++){
 
     imageInput[i].addEventListener("change", (event)=>{
 
-        console.log(event.target.files[0]);
 
         if(event.target.files[0] != undefined){
 
@@ -108,5 +108,6 @@ const close = document.querySelector(".close");
 
 close.addEventListener("click", ()=>{
 
-    inquiryR.style.display = "none";
+    modalStore.style.display = "none";
+    document.body.style.overflow = "unset";
 })

@@ -225,7 +225,6 @@ public class AdminDAO {
 	 */
 	public int insertStoreImageList(List<StoreImage> storeImageList) {
 		
-		System.out.println(storeImageList);
 		
 		return sqlSession.insert("adminMapper.insertStoreImageList", storeImageList);
 	}
@@ -246,7 +245,6 @@ public class AdminDAO {
 	public List<StoreImage> selectStoreManageImg(int storeNo) {
 		List<StoreImage> storeList = sqlSession.selectList("adminMapper.selectImageList", storeNo);
 		
-		System.out.println(storeList);
 		
 		return storeList;
 	}
@@ -259,7 +257,6 @@ public class AdminDAO {
 				
 			Store store = sqlSession.selectOne("adminMapper.selectStoreManage", storeNo);
 		
-			System.out.println(store);
 		
 			return store;
 	}
@@ -428,6 +425,17 @@ public class AdminDAO {
 
 	public int deleteFreeBoard(int boardNo) {
 		return sqlSession.update("adminMapper.deleteFreeBoard", boardNo);
+	}
+
+
+
+	public int updateStore(Map<String, Object> paramMap, int storeNo) {
+		
+		paramMap.put("storeNo", storeNo);
+		
+		
+		return sqlSession.update("adminMapper.updateStore", paramMap);
+		
 	}
 
 

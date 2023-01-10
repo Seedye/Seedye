@@ -409,8 +409,17 @@ td{
 }
 
 
-#m-BtnR > a{
+#memberBtn > a{
     text-decoration: none;
+    border: 2px solid black;
+    height: 30px;
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
@@ -477,6 +486,11 @@ tr{
 }
 
 .fontColor{
-    color: #2db400;
+    background-color: #2db400;
+    color: white;
+    border-radius: 50%;
     font-weight: bold;
+    width: 15px;
 }
+
+

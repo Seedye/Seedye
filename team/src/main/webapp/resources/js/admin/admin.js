@@ -10,6 +10,8 @@ const search = document.getElementById("search");
 const keyword = document.getElementById("keyword");
 
 const roadAddress = document.getElementById("sample4_roadAddress");
+const landnumberAddress = document.getElementById("sample4_jibunAddress");
+const number = document.getElementById("phoneNumberArea");
 
 var infoArea = document.getElementById("InfoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -103,10 +105,13 @@ function selectStoreList(cp){
                     td6.innerText = '기본'
                 } else if(store.checkFl == 'N'){
                     td6.innerText = '미확인'
+                    td6.style.color="red"
                 } else if(store.checkFl == 'C'){
                     td6.innerText = '협의중'
+                    td6.style.color = "blue"
                 } else {
                     td6.innerText = "등록 완료"
+                    td6.style.color = "green"
                 }
 
                 // 관리하기
@@ -323,12 +328,38 @@ function selectStoreList(cp){
                                     success: (result) =>{
                                         
                                         if(result > 0){
-                                            alert("성공");
+                                            alert("취소 성공");
+                                            adminR.style.display = "none";
+                                            storeManageMain.style.display = "flex";
                                         }
-                                        history.back();
+                                    }, 
+                                    error:()=>{
+                                        console.log("실패");
                                     }
                                 });
 
+                        })
+
+                        const roadTemp = document.querySelector(".inputRoad").value;
+                        const landTemp = document.querySelector(".inputJibun").value;
+
+                        document.getElementById("updateStore").addEventListener("click", ()=>{
+
+                            $.ajax({
+                                url:"/admin/updateStore",
+                                data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                success:(result)=>{
+                                    if(result >0){
+                                        alert("성공");
+                                        adminR.style.display = "none";
+                                        storeManageMain.style.display = "flex";
+                                    }
+                                },
+                                error:()=>{
+                                    console.log("실패");
+                                }
+                            })
                         })
 
 
@@ -411,10 +442,13 @@ function selectStoreList(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color="red"
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }
     
                     // 관리하기
@@ -616,6 +650,24 @@ function selectStoreList(cp){
                                 
                                 })  
                             });
+
+                            // 식당 정보 수정
+                            const roadTemp = document.querySelector(".inputRoad").value;
+                            const landTemp = document.querySelector(".inputJibun").value;
+    
+                            document.getElementById("updateStore").addEventListener("click", ()=>{
+    
+                                $.ajax({
+                                    url:"/admin/updateStore",
+                                    data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                    "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                    success:(result)=>{
+                                        if(result >0){
+                                            alert("성공");
+                                        }
+                                    }
+                                })
+                            })
                         },
                             error:()=>{
                                 console.log("실패");
@@ -721,10 +773,13 @@ function selectBoxSelect(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }    
 
                     // 관리하기
@@ -931,11 +986,38 @@ function selectBoxSelect(cp){
                                                 
                                                 if(result > 0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                               
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
+                                })
+
+                                const roadTemp = document.querySelector(".inputRoad").value;
+                                const landTemp = document.querySelector(".inputJibun").value;
+        
+                                document.getElementById("updateStore").addEventListener("click", ()=>{
+        
+                                    $.ajax({
+                                        url:"/admin/updateStore",
+                                        data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                        "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                        success:(result)=>{
+                                            if(result >0){
+                                                alert("성공");
+                                                adminR.style.display = "none";
+                                                storeManageMain.style.display = "flex";
+                                            }
+                                        },
+                                        error:()=>{
+                                            console.log("실패");
+                                        }
+                                    })
                                 })
         
         
@@ -1023,10 +1105,13 @@ function selectBoxSelect(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }    
 
                     // 관리하기
@@ -1234,12 +1319,34 @@ function selectBoxSelect(cp){
                                                 success: (result) =>{
                                                     
                                                     if(result > 0){
-                                                        alert("성공");
+                                                        alert("취소 성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
+                                    })
+
+                                    const roadTemp = document.querySelector(".inputRoad").value;
+                                    const landTemp = document.querySelector(".inputJibun").value;
+            
+                                    document.getElementById("updateStore").addEventListener("click", ()=>{
+            
+                                        $.ajax({
+                                            url:"/admin/updateStore",
+                                            data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                            "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                            success:(result)=>{
+                                                if(result >0){
+                                                    alert("성공");
+                                                }
+                                            }
+                                        })
                                     })
             
             
@@ -1331,10 +1438,13 @@ enrollBtn.addEventListener("click", ()=>{
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }
 
 
@@ -1540,12 +1650,34 @@ enrollBtn.addEventListener("click", ()=>{
                                             success: (result) =>{
                                                 
                                                 if(result > 0){
-                                                    alert("성공");
+                                                    alert("취소 성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                                
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
+                                })
+
+                                const roadTemp = document.querySelector(".inputRoad").value;
+                                const landTemp = document.querySelector(".inputJibun").value;
+        
+                                document.getElementById("updateStore").addEventListener("click", ()=>{
+        
+                                    $.ajax({
+                                        url:"/admin/updateStore",
+                                        data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                        "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                        success:(result)=>{
+                                            if(result >0){
+                                                alert("성공");
+                                            }
+                                        }
+                                    })
                                 })
         
         
@@ -1581,7 +1713,6 @@ enrollBtn.addEventListener("click", ()=>{
                     const pagination = map.pagination;
                     const storeList = map.storeList;
                     
-                    console.log(map);
                     
                     const totalCount = pagination.listCount;
         
@@ -1624,10 +1755,13 @@ enrollBtn.addEventListener("click", ()=>{
                             td6.innerText = '기본'
                         } else if(store.checkFl == 'N'){
                             td6.innerText = '미확인'
+                            td6.style.color="red"
                         } else if(store.checkFl = 'C'){
                             td6.innerText = '협의중'
+                            td6.style.color = "blue"
                         } else {
                             td6.innerText = "등록 완료"
+                            td6.style.color = "green"
                         }
                         const td7 = document.createElement("td");
                         td7.innerHTML = "<button class='store-manage'>관리하기</button>";
@@ -1830,12 +1964,39 @@ enrollBtn.addEventListener("click", ()=>{
                                                 success: (result) =>{
                                                     
                                                     if(result > 0){
-                                                        alert("성공");
+                                                        alert("취소 성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
+                                    })
+
+                                    const roadTemp = document.querySelector(".inputRoad").value;
+                                    const landTemp = document.querySelector(".inputJibun").value;
+            
+                                    document.getElementById("updateStore").addEventListener("click", ()=>{
+            
+                                        $.ajax({
+                                            url:"/admin/updateStore",
+                                            data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                            "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                            success:(result)=>{
+                                                if(result >0){
+                                                    alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
+                                                }
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
+                                            }
+                                        })
                                     })
             
             
@@ -1935,3 +2096,6 @@ document.getElementById("returnList").addEventListener("click", e=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
 });
+
+
+

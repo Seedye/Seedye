@@ -50,10 +50,14 @@ public interface BoardService {
 	/** 문의 게시글 수정
 	 * @param boardNo
 	 * @param board
+	 * @param fileList 
+	 * @param folderPath 
+	 * @param webPath 
 	 * @return
+	 * @throws IOException 
 	 */
+//	int updateAQBoard(Board board, List<MultipartFile> fileList, String webPath, String folderPath) throws IOException;
 	int updateAQBoard(Board board);
-
 
 	/** 게시판 검색 목록 조회
 	 * @param pm
@@ -81,7 +85,9 @@ public interface BoardService {
 	 * @param boardNo
 	 * @return
 	 */
-	int updateReadCount(int boardNo); 
+	int updateReadCount(int boardNo);
+
+	List<Board> selectBoardDetailImg(int boardNo); 
 	
 
 }

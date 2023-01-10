@@ -6,8 +6,15 @@ const memberNo = document.getElementById("memberNo");
 const searchkey = document.getElementById("key");
 const searchquery = document.getElementById("query");
 
-let cp=1;
-selectMemberList(cp);
+
+let cp = 1;
+const searchParam = new URLSearchParams(location.search);
+if(searchParam.get("cp") != null){
+    selectMemberList(searchParam.get("cp"));
+}else{
+    selectMemberList(cp);
+}
+
 
 
 
@@ -120,6 +127,8 @@ function selectMemberList(cp){
                                     var id_check = $(this).attr("id");
                                     
                                     cp = id_check;
+
+                                    history.pushState(null,null, location.pathname + "?cp=" + id_check)
                                     
                                     if(id_check != null) {
                                         selectMemberList(cp);
@@ -242,7 +251,6 @@ function selectMemberList(cp){
             const memberTbody = document.getElementById("memberTbody");
             memberTbody.innerHTML="";
             
-            console.log(searchMap);
             const memberList = searchMap.memberList;
             const pagination = searchMap.pagination;
             
@@ -251,7 +259,6 @@ function selectMemberList(cp){
             var pageSize = pagination.pageSize;
             var totalPages = 0;
             var curPage = cp;
-            console.log(cp);
 
             
 
@@ -551,3 +558,10 @@ searchTag.addEventListener("submit", e => {
     
 });
  */
+
+
+document.getElementById("m-BtnR").addEventListener("click", e=>{
+    // location.reload();
+    adminMember.style.display = "flex";
+    memberManage.style.display = "none";
+});

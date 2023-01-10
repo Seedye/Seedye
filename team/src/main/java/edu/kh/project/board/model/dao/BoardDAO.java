@@ -134,6 +134,7 @@ public class BoardDAO {
 		System.out.println(result);
 		return result;
 	}
+	
 
 	public List<Board> selectFreeBoardList(Pagination pagination, Map<String, Object> pm) {
 		

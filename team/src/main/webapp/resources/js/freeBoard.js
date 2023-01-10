@@ -131,7 +131,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                         type : "GET",
                         dataType : "json",
                         success : (rList) => {
-                            console.log(rList);
 
                             for (let comment of rList) {
                                 if(comment.commentContent){
@@ -221,26 +220,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 freeBoardDetailAnwserContent.append(updateContainer);
                                 freeBoardDetailAnwserContent.append(contentD);
 
-                                // 대댓글 생성
-                                // const rContentD = document.createElement("div");
-                                // rContentD.classList.add("rContentD")
-                                
-                                // const rAnwserP = document.createElement("p");
-                                // rAnwserP.classList.add("rAnwserP")
-                                // rAnwserP.innerText = comment.memberId + " : " + comment.rCommentTextarea;
-                                // rContentD.append(rAnwserP);
-
-                                
-                                // const rPen = document.createElement("div");
-                                // rPen.classList.add("rPen");
-
-                                // const updateRBtn = document.createElement("button");
-                                // updateRBtn.classList.add("updateRBtn")
-                                // updateRBtn.setAttribute("class", "fa-solid fa-pen");
-
-                                // const deleteRBtn = document.createElement("button");
-                                // deleteRBtn.classList.add("deleteRBtn")
-                                // deleteRBtn.innerText ="x";
 
                                 // 대댓글 등록 생성
                                 const rCommentContainer = document.createElement("div");
@@ -289,7 +268,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                             data : {"commentNo" : comment.commentNo},
                                             type : "GET",
                                             success : function(result){
-                                                console.log(comment.commentNo);
                                                 if(result > 0){
                                 
                                                     alert("삭제되었습니다.");
@@ -304,7 +282,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                             
                                             error : function(req, status, error){
                                                 console.log("댓글 삭제 실패");
-                                                console.log(req.responseText);
                                             }
                                         });
                                     }
@@ -338,7 +315,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                                                 },
                                                 error : function(req, status, error){
 
-                                                    console.log("댓글 삭제 실패");
+                                                    console.log("댓글 수정 실패");
                                                 }
                                         
                                             });
@@ -356,34 +333,41 @@ for (let freeBoardOneItems of freeBoardOne) {
                                     anwserP.addEventListener("click", function(){
                                             if(memberNo == ""){
                                                 rCommentContainer.style.display = "none";
+                                                alert("로그인 후 이용해주세요.")
+
                                             }else{
                                                 rCommentContainer.style.display = "flex";
 
                                             
                                         rCommentOk.addEventListener("click", function(){
-
+                                            if(rCommentTextarea.value == ""){
+                                                alert("댓글을 작성해주세요")
+                                            } else {
                                             $.ajax({
                                                 url : "/comment/insert",
-                                                data : {"memberNo" : memberNo,
-                                                        "boardNo": freeBoardOneItems.lastElementChild.id,
-                                                        "parentNo": comment.commentNo,
-                                                        commentContent : rCommentTextarea.value},
-                                                type : "POST",
-                                                success : function(result) {
-                                                    if(result > 0){
+                                            data : {"memberNo" : memberNo,
+                                                    "boardNo": freeBoardOneItems.lastElementChild.id,
+                                                    "parentNo": comment.commentNo,
+                                                    commentContent : rCommentTextarea.value},
+                                            type : "POST",
+                                            success : function(result) {
+                                                if(result > 0){
 
-                                                        freeBoardDetailAnwserContent.innerHTML = "";
-                                                        alert("댓글 등록 완료");
-                                                        commentListFun();
+                                                    freeBoardDetailAnwserContent.innerHTML = "";
+                                                    alert("댓글 등록 완료");
+                                                    commentListFun();
 
-                                                    }else{
-                                                        alert("댓글 등록 실패");
-                                                    }
-                                                },
-                                                error : function(){
-                                                    console.log("답글 오류 발생");
-                                                }                                                    
-                                            })
+                                                }else{
+                                                    alert("댓글 등록 실패");
+                                                }
+                                            },
+                                            error : function(){
+                                                alert("댓글을 작성해주세요");
+                                                console.log("답글 오류 발생");
+                                            }                                                    
+                                        })
+                                            
+                                        }
                                         });
                                     }
                                     });
@@ -450,7 +434,9 @@ for (let freeBoardOneItems of freeBoardOne) {
                         // 수정될 제목 / 내용
                         boardTitle.innerHTML = saveBoardTitle;
                         boardContent.innerHTML = saveContent;
-            
+                        if( freeBoardDetail[0].imageList.length==0){
+                            contentDetailAnswer.style.display="none";
+                          }
                         //TODO : 이미지 불러오기 / 저장된 이미지
             
                         //! 이미지 만드는 create작성해야함.
@@ -553,39 +539,45 @@ for (let freeBoardOneItems of freeBoardOne) {
                 // 댓글 등록 ajax
                 anwserBtn.addEventListener("click", () => {
                     if(memberNo == ""){
+                        alert("로그인 후 이용해주세요")
 
                     } else {
 
-                    
-                    $.ajax({
-                        url : "/comment/insert",
-                        data : {"commentContent" : input.value,
-                                "memberNo" : memberNo,
-                                "boardNo" : freeBoardOneItems.lastElementChild.id},
-                        type : "post",
-                        success : function(result) {
-                            if (result > 0){
-                                alert("답변 등록 완료")
+                    if(input.value == ""){
+                        alert("답변을 입력해주세요.")
+                    } else{
 
-                                // 입력한 댓글 초기화
-                                input.value = "";
-
-                                // 댓글 리스트를 초기화
-                                freeBoardDetailAnwserContent.innerHTML = "";
-
-                                // 댓글 리스트를 조회하는 ajax 함수 실행
-                                commentListFun();
-
-                            } else{
-                                alert("실패");
+                        $.ajax({
+                            url : "/comment/insert",
+                            data : {"commentContent" : input.value,
+                                    "memberNo" : memberNo,
+                                    "boardNo" : freeBoardOneItems.lastElementChild.id},
+                            type : "post",
+                            success : function(result) {
+                                if (result > 0){
+                                    alert("답변 등록 완료")
+    
+                                    // 입력한 댓글 초기화
+                                    input.value = "";
+    
+                                    // 댓글 리스트를 초기화
+                                    freeBoardDetailAnwserContent.innerHTML = "";
+    
+                                    // 댓글 리스트를 조회하는 ajax 함수 실행
+                                    commentListFun();
+    
+                                } else{
+                                    alert("답변을 입력해주세요");
+                                }
+    
+                            },
+    
+                            error : () => {
+                                alert("답변을 입력해주세요");
+                                console.log("답변 등록 실패");
                             }
-
-                        },
-
-                        error : () => {
-                            console.log("답변 등록 실패");
-                        }
-                    });
+                        });
+                    }
                 }
                 });
 

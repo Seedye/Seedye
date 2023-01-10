@@ -267,6 +267,31 @@ public class BoardController {
 		return result;
 	}
 
+//	/**
+//	 * 문의 게시글 업데이트
+//	 * 
+//	 * @param boardNo
+//	 * @return
+//	 * @throws IOException 
+//	 */
+//	@GetMapping("/QABoardUpdate")
+//	@ResponseBody
+//	public int updateAQBoard(@RequestParam("boardNo") int boardNo, Board board,
+//							@RequestParam(value = "imageList") List<MultipartFile> fileList, HttpSession session) throws IOException {
+//
+//		board.setBoardNo(boardNo);
+//		System.out.println(board);
+//		
+////		List<Board> result = service.selectBoardDetailImg(boardNo, fileList);
+//
+////		if()
+//		String webPath = "/resources/images/board/";
+//		String folderPath = session.getServletContext().getRealPath(webPath);
+//		int result = service.updateAQBoard(board, fileList,  webPath, folderPath);
+//		
+//		
+//		return result;
+//	}
 	/**
 	 * 문의 게시글 업데이트
 	 * 

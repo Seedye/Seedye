@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="boardCode" value="${map.boardCode}" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar2.css">
+    <link rel="stylesheet" href="/resources/css/sideBarBoard.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <link rel="stylesheet" href="/resources/css/board/board-view-style.css">
     <link rel="stylesheet" href="/resources/css/admin/boardManage.css">
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
         <jsp:include page="/WEB-INF/views/admin/store.jsp" />
         <jsp:include page="/WEB-INF/views/board/FreeBoardView.jsp"/>
         
@@ -44,7 +42,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="container" id="freeBoard">
-                                <span>커뮤니티</span>
+                                <span>자유게시판</span>
                                 <img src="/resources/images/자유게시판.jpg">
                             </div>
                         </div>
@@ -71,6 +69,7 @@
                                 <th>작성자</th>
                                 <th>조회수</th>
                                 <th>등록일</th>
+                                <th>삭제여부</th>
                                 <th>관리</th>
                             </tr>
                         </thead>

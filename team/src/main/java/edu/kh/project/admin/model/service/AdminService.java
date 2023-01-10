@@ -219,6 +219,13 @@ public interface AdminService {
 
 
 
+	int updateStore(Map<String, Object> paramMap, int storeNo);
+
+
+
+
+
+
 
 
 
