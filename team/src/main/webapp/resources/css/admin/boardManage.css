@@ -218,6 +218,9 @@
     color: white;
 }
 
+tr{
+    height: 50px;
+}
 
 tr:hover{
     background-color: #ccc;
@@ -257,5 +260,11 @@ tr:hover{
 }
 
 .board-list-view{
-    height: 50px;
+    height: 30px;
+}
+
+.deleteBtn {
+    border : none;
+    font-weight: bold;
+    cursor: pointer;
 }
