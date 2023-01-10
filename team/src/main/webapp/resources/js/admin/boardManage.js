@@ -615,7 +615,6 @@ function selectBoardNotice(cp){
 
         
         for(let board of boardList){
-          console.log(board);
 
           const tr = document.createElement("tr");
 
@@ -2349,7 +2348,6 @@ function selectFreeboard(cp){
 
                       deleteBtn.addEventListener("click", ()=>{
   
-                        console.log(rComment.commentNo);
                         
                         $.ajax({
                           url:"/comment/delete",
@@ -2396,7 +2394,6 @@ function selectFreeboard(cp){
 
                       deleteBtn.addEventListener("click", ()=>{
   
-                        console.log(rComment.commentNo);
                         
                         $.ajax({
                           url:"/comment/delete",
@@ -2616,7 +2613,6 @@ function selectFreeboard(cp){
                     const boardModalContent = document.getElementById("boardModalContent");
                     const boardModalComment = document.getElementById("boardModalComment");
     
-                    console.log(commentList);
     
                     boardModalWriter.innerText = boardList[0].memberId;
     
