@@ -130,7 +130,50 @@ public class BaordServiceImple implements BoardService {
 		return dao.DeleteQABoard(boardNo);
 	}
 
-	// 문의 게시글 수정
+	// 문의 게시글 수정	
+//	@Override
+//	public int updateAQBoard(Board board, List<MultipartFile> fileList, String webPath, String folderPath) throws IOException  {
+//		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+//		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+//		
+//		
+//		int boardNo = dao.updateAQBoard(board);
+//
+//		if (boardNo > 0) {
+//			List<BoardImg> boardImgList = new ArrayList<BoardImg>();
+//			List<String> imgChangeNameList = new ArrayList<String>();
+//
+//			for (int i = 0; i < fileList.size(); i++) {
+//				if (fileList.get(i).getSize() > 0) {
+//					BoardImg img = new BoardImg();
+//					img.setImgPath(webPath);
+//
+//					String reName = Util.fileRename(fileList.get(i).getOriginalFilename());
+//					System.out.println(reName);
+//					img.setImgRename(reName);
+//					imgChangeNameList.add(reName);
+//
+//					img.setImgOriginal(fileList.get(i).getOriginalFilename());
+//					img.setBoardNo(boardNo);
+//					img.setImgOrder(i);
+//
+//					boardImgList.add(img);
+//				}
+//			}
+//			if (!boardImgList.isEmpty()) {
+//				int result = dao.QAWriteImg(boardImgList);
+//
+//				if (result == boardImgList.size()) {
+//					for (int i = 0; i < boardImgList.size(); i++) {
+//						int index = boardImgList.get(i).getImgOrder();
+//						fileList.get(index).transferTo(new File(folderPath + imgChangeNameList.get(i)));
+//					}
+//				}
+//			}
+//		}
+////		int boardNo = dao.QAWrite(board);
+//		return boardNo;
+//	}
 	@Override
 	public int updateAQBoard(Board board) {
 		
@@ -140,6 +183,7 @@ public class BaordServiceImple implements BoardService {
 //		int boardNo = dao.QAWrite(board);
 		return dao.updateAQBoard(board);
 	}
+
 
 	//게시판 검색 목록 조회
 	@Override
@@ -191,5 +235,12 @@ public class BaordServiceImple implements BoardService {
 	public int updateReadCount(int boardNo) {
 		return dao.updateReadCount(boardNo);
 	}
+
+	@Override
+	public List<Board> selectBoardDetailImg(int boardNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

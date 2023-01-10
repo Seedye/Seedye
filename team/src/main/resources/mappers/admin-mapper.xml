@@ -205,6 +205,7 @@ ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 <select id="selectMemberList" resultMap="member_rm">
 	SELECT MEMBER_NO, AUTHORITY, MEMBER_ID, MEMBER_TEL, ENROLL_DATE, MEMBER_DEL_FL
 	FROM "MEMBER"	
+	ORDER BY MEMBER_NO ASC;
 </select>
 
 <!-- 회원 권한 변경 -->
@@ -258,6 +259,7 @@ WHERE MEMBER_NO  = #{memberNo}
 SELECT STORE_NO, STORE_NAME, STORE_TYPE, ROADNAME_ADDRESS, STORE_TEL, CHECK_FL
   FROM STORE
 WHERE CHECK_FL = #{checkFl}
+ORDER BY STORE_NO DESC
 </select>
 
 <!-- 게시글관리 조회 -->
@@ -265,7 +267,8 @@ WHERE CHECK_FL = #{checkFl}
 SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID, BOARD_CODE, BOARD_DEL_FL
 FROM BOARD
 JOIN "MEMBER" USING(MEMBER_NO)
-WHERE BOARD_CODE = #{boardCode}
+WHERE BOARD_CODE = #{boardCode}  
+ORDER BY BOARD_NO DESC
 </select>
 
 
@@ -413,6 +416,7 @@ WHERE STORE_TYPE= #{storeType}
 	
 		</choose>	
 	</if>	
+	ORDER BY STORE_NO DESC
 </select>
 
 <select id="searchStoreListCount_search" resultType="_int">
@@ -459,6 +463,7 @@ WHERE STORE_TYPE=#{storeType}
 	
 		</choose>	
 	</if>	
+	ORDER BY STORE_NO DESC
 </select>
 
 
@@ -494,6 +499,7 @@ WHERE STORE_TYPE=#{storeType}
 	         </otherwise>
 	         </choose>
      	  </if>
+     	  ORDER BY MEMBER_NO ASC
 </select>
 
 <!-- 식당 등록 취소 -->
@@ -531,7 +537,7 @@ WHERE BOARD_CODE = #{boardCode}
 </select>
 
 <select id="selectAdminBoard_search" resultMap="board_rm">
-SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID, BOARD_CODE
+SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, READ_COUNT, CREATE_DATE, MEMBER_ID, BOARD_CODE, BOARD_DEL_FL
 FROM BOARD
 JOIN "MEMBER" USING(MEMBER_NO)
 WHERE BOARD_CODE = #{boardCode}
@@ -549,7 +555,8 @@ WHERE BOARD_CODE = #{boardCode}
 				AND MEMBER_ID LIKE '%${keyword}%'
 			</otherwise>
 		</choose>	
-	</if>	
+	</if>
+	ORDER BY BOARD_NO DESC	
 </select>
 
 <!-- 식당 신청 수(검색 x) -->
@@ -603,6 +610,7 @@ WHERE CHECK_FL = 'N'
 	
 		</choose>	
 	</if>	
+	ORDER BY STORE_NO DESC
 </select>
 
 <select id="selectFreeBoard" resultMap="board_rm">
@@ -612,6 +620,7 @@ FROM BOARD
 JOIN MEMBER USING(MEMBER_NO)
 WHERE BOARD_DEL_FL = 'N'
 AND BOARD_NO = #{boardNo}
+ORDER BY BOARD_NO DESC
 </select>
 
 <select id="selectFreeBoard_comment" resultMap="comment_rm">

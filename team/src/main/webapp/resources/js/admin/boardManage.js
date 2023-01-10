@@ -116,7 +116,14 @@ function selectBoardNotice(cp){
           td5.innerText = board.createDate;
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
 
           
           
@@ -609,7 +616,9 @@ function selectBoardNotice(cp){
         var totalPages = 0;
         var curPage = cp;
 
+        
         for(let board of boardList){
+          console.log(board);
 
           const tr = document.createElement("tr");
 
@@ -634,7 +643,15 @@ function selectBoardNotice(cp){
           td5.innerText = board.createDate
           
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
+          
 
           // 관리
           const td7 = document.createElement("td");
@@ -1156,7 +1173,14 @@ function selectUpdateNotice(cp){
         td5.innerText = board.createDate
 
         const td6 = document.createElement("td");
-        td6.innerText = board.boardDelFl;
+        if(board.boardDelFl == 'N'){
+          td6.innerText = "기본";
+        } else{
+          td6.innerText = "삭제된 글";
+          td6.style.color = "red";
+          td6.style.fontWeight = "bold";
+
+        }
         
         // 관리
         const td7 = document.createElement("td");
@@ -1661,7 +1685,14 @@ for(let boardItems of document.querySelectorAll("#tbody")){
           td5.innerText = board.createDate
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
           const td7 = document.createElement("td");
@@ -2172,7 +2203,14 @@ function selectFreeboard(cp){
           td5.innerText = board.createDate
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
           const td7 = document.createElement("td");
@@ -2475,7 +2513,14 @@ function selectFreeboard(cp){
           td5.innerText = board.createDate
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
           const td7 = document.createElement("td");
@@ -2706,7 +2751,14 @@ function selectQuestion(cp){
           td5.innerText = board.createDate
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
           const td7 = document.createElement("td");
@@ -3216,7 +3268,14 @@ function selectQuestion(cp){
           td5.innerText = board.createDate
 
           const td6 = document.createElement("td");
-          td6.innerText = board.boardDelFl;
+          if(board.boardDelFl == 'N'){
+            td6.innerText = "기본";
+          } else{
+            td6.innerText = "삭제된 글";
+            td6.style.color = "red";
+            td6.style.fontWeight = "bold";
+
+          }
           
           // 관리
           const td7 = document.createElement("td");
