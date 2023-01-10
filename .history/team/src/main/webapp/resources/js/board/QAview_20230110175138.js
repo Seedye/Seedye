@@ -333,40 +333,40 @@ for (let boardListViewItems of boardListView) {
               boardTitle.innerHTML = saveTitle;
               // 수정될 내용
               boardContent.innerHTML = saveContent;
-  
-              if( QABoardDetail[0].imageList.length==0){
-                contentDetailAnswer.style.display="none";
+              console.log(QABoardDetail[0].imageList.length);
+              if(QABoardDetail[0].imageList.length == 0){
+                boardViewContentImgArea.style.display='none';
+                contentDetailAnswer.style.display='none';
               }
              //TODO : 이미지 불러오기 / 저장된 이미지
   
                //! 이미지 만드는 create작성해야함.
-          if (QABoardDetail[0].imageList.length != 0) {
-            boardViewContentImgArea.innerHTML ="";
-            ContentImgArea.style.display = "flex";
-            // <div class="board-view-content-img">
-            //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
-            // </div>
-            // console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
-            // console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
+               
+          // if (QABoardDetail[0].imageList.length != 0) {
+          //   boardViewContentImgArea.innerHTML ="";
+          //   ContentImgArea.style.display = "flex";
+          //   // <div class="board-view-content-img">
+          //   //   <img src="../../resources/images/게시판테스트img1.jpg" alt="">
+          //   // </div>
+          //   // console.log("이미지번호 : "+ QABoardDetail[0].imgNo);
+          //   // console.log("이미지길이 : "+QABoardDetail[0].imageList.length);
   
-  
-            for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
-              //TODO 아마도 수정 필요
-              if (i < 4) {
+          //     //TODO 아마도 수정 필요
+          //     if (i < 4) {
                 
-                const contentImgDiv = document.createElement("div");
-                const contentImgImg = document.createElement("img");
+          //       const contentImgDiv = document.createElement("div");
+          //       const contentImgImg = document.createElement("img");
   
-                contentImgDiv.classList.add("board-view-content-img");
-                contentImgImg.setAttribute("src", QABoardDetail[0].imageList[i].imgPath + "/" + QABoardDetail[0].imageList[i].imgRename);
+          //       contentImgDiv.classList.add("board-view-content-img");
+          //       contentImgImg.setAttribute("src", QABoardDetail[0].imageList[i].imgPath + "/" + QABoardDetail[0].imageList[i].imgRename);
   
-                contentImgDiv.append(contentImgImg);
-                boardViewContentImgArea.append(contentImgDiv);
-              }
-            }
-          } else {
-            ContentImgArea.style.display = "none";
-          }
+          //       contentImgDiv.append(contentImgImg);
+          //       boardViewContentImgArea.append(contentImgDiv);
+          //     }
+            
+          // } else {
+          //   ContentImgArea.style.display = "none";
+          // }
   
               //글 수정 완료 버튼
               const wirteUpdateBtn = document.getElementById("wirteUpdateBtn");
@@ -383,13 +383,17 @@ for (let boardListViewItems of boardListView) {
               // 수정 버튼 클릭 했을때
               boardUpdateInput.addEventListener("click", () => {
                 // console.log("수정버튼 눌림");
+                // console.log(imgArr);
+
                 $.ajax({
                   url: "/QABoardUpdate",
                   type: "GET",
                   data: {
                     boardNo: boardListViewItems.lastElementChild.id,
                     boardContent: boardContent.value,
+                    // imageList: imgArr,
                     boardTitle: boardTitle.value,
+
                   },
                   dataType: "json",
                   success: (result) => {
