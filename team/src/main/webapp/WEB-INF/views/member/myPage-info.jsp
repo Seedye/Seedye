@@ -39,7 +39,7 @@
 
                     <div class="myPage-row">
                         <label>아이디</label>
-                        <input type="text" name="memberId" value="${loginMember.memberId}" maxlength="20" readonly>
+                        <input type="text" name="memberId" value="${loginMember.memberId}" maxlength="14" readonly>
                     </div>
 
                     <button type="button" class="myPage-submit" id="btn1">비밀번호 변경</button>
