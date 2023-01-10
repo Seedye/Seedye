@@ -8,7 +8,6 @@ inquiry.addEventListener("click", ()=>{
     
     
     modalStore.style.display = "flex";
-    document.body.style.overflow = "hidden";
     
 })
 
@@ -111,5 +110,4 @@ const close = document.querySelector(".close");
 close.addEventListener("click", ()=>{
 
     modalStore.style.display = "none";
-    document.body.style.overflow = "unset";
 })

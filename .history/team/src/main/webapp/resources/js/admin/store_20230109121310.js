@@ -1,14 +1,12 @@
 
 const inquiry = document.getElementById("inquiry");
 const inquiryR = document.getElementById("inquiryR");
-const modalStore = document.getElementById("modalStore");
 
 
 inquiry.addEventListener("click", ()=>{
     
     
-    modalStore.style.display = "flex";
-    document.body.style.overflow = "hidden";
+    inquiryR.style.display = "flex";
     
 })
 
@@ -110,6 +108,5 @@ const close = document.querySelector(".close");
 
 close.addEventListener("click", ()=>{
 
-    modalStore.style.display = "none";
-    document.body.style.overflow = "unset";
+    inquiryR.style.display = "none";
 })
