@@ -344,7 +344,7 @@ searchBtn.addEventListener("click", () => {
                                                 storeAddr = modalResult[0].landnumberAddress;
                                                 
                                             } else {
-                                                
+
                                                 let str = modalResult[0].roadnameAddress;
                                                 let strResult = str.split('  ');
 
@@ -352,8 +352,6 @@ searchBtn.addEventListener("click", () => {
                                                 
                                             }
     
-                                            console.log(storeAddr);
-
                                             relayout(storeName, storeAddr);
     
                                             
