@@ -512,6 +512,14 @@ public class AdminServiceImpl implements AdminService{
 		return dao.deleteFreeBoard(boardNo);
 	}
 
+	@Override
+	public int updateStore(Map<String, Object> paramMap, int storeNo) {
+		return dao.updateStore(paramMap, storeNo);
+	}
+
+	
+	
+
 
 
 	}

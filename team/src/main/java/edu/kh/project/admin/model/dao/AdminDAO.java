@@ -432,6 +432,17 @@ public class AdminDAO {
 
 
 
+	public int updateStore(Map<String, Object> paramMap, int storeNo) {
+		
+		paramMap.put("storeNo", storeNo);
+		
+		
+		return sqlSession.update("adminMapper.updateStore", paramMap);
+		
+	}
+
+
+
 
 
 

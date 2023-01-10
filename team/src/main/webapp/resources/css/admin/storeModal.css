@@ -28,7 +28,8 @@
     border-top-right-radius: 10px;  
     border: 1px solid black;
     background-color: white;
-    height: 65%;
+    height: 80%;
+    
 
     
 }
@@ -52,7 +53,7 @@
 /* 등록 버튼 */
 #btn{
     display: flex;
-    justify-content: center;   
+    justify-content: end;   
     margin-bottom: 10px; 
 }
 
@@ -171,4 +172,8 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.btns{
+    margin-right: 10px;
 }

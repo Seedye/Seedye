@@ -634,4 +634,15 @@ BOARD_DEL_FL = 'Y'
 WHERE BOARD_NO = #{boardNo}
 </update>
 
+<update id="updateStore">
+UPDATE STORE SET
+STORE_NAME = #{storeName},
+STORE_TYPE = #{storeType},
+ROADNAME_ADDRESS = #{roadnameAddress},
+LANDNUMBER_ADDRESS = #{landnumberAddress},
+STORE_TEL = #{storeTel},
+STORE_INFO = #{storeInfo}
+WHERE STORE_NO = #{storeNo} 
+</update>
+
 </mapper>  
