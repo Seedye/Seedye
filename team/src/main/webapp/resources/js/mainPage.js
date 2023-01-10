@@ -239,38 +239,38 @@ searchBtn.addEventListener("click", () => {
                                             const roadAddr = document.createElement("span");
 
                                             /* 지번 주소 없을 때 화면에 출력 메세지 설정 */
-                                            if(modalResult[0].landnumberAddress != "") {
+                                            if(modalResult[0].landnumberAddress != null) {
 
                                                 roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>" + modalResult[0].landnumberAddress + "</span>";
 
                                             } else {
                                                 
-                                                roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>미입력</span>";
+                                                roadAddr.innerHTML = "<span class='content'><span class='content-title'>지번주소 : </span>등록되어있지 않은 정보입니다.</span>";
                                             }
     
                                             const landAddr = document.createElement("span");
 
                                             /* 지번 주소 없을 때 화면에 출력 메세지 설정 */
-                                            if(modalResult[0].roadnameAddress != "") {
+                                            if(modalResult[0].roadnameAddress != null) {
 
                                                 landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>" + modalResult[0].roadnameAddress + "</span>";
                                                 
                                             } else {
 
-                                                landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>미입력</span>";
+                                                landAddr.innerHTML = "<span class='content'><span class='content-title'>도로명 : </span>등록되어있지 않은 정보입니다.</span>";
 
                                             }
     
                                             const storeTel = document.createElement("span");
 
                                             /* 전화번호 없을 때 화면에 출력 메세지 설정 */
-                                            if(modalResult[0].storeTel != "") {
+                                            if(modalResult[0].storeTel != null) {
                                                 
                                                 storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>" + modalResult[0].storeTel + "</span>";
 
                                             } else {
                                                 
-                                                storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>미입력</span>";
+                                                storeTel.innerHTML = "<span class='content'><span class='content-title'>전화번호 : </span>등록되어있지 않은 정보입니다.</span>";
                                             }
     
                                             const modalSlider = document.createElement("div");
@@ -334,18 +334,26 @@ searchBtn.addEventListener("click", () => {
     
                                             if (modalResult[0].landnumberAddress == null){
     
-                                                storeAddr = modalResult[0].roadnameAddress;
-                                                
+                                                let str = modalResult[0].roadnameAddress;
+                                                let strResult = str.split('  ');
+
+                                                storeAddr  = strResult[0];
+
                                             } else if (modalResult[0].roadnameAddress == null) {
                                                 
                                                 storeAddr = modalResult[0].landnumberAddress;
                                                 
                                             } else {
-                
-                                                storeAddr  = modalResult[0].roadnameAddress;
+                                                
+                                                let str = modalResult[0].roadnameAddress;
+                                                let strResult = str.split('  ');
+
+                                                storeAddr  = strResult[0];
                                                 
                                             }
     
+                                            console.log(storeAddr);
+
                                             relayout(storeName, storeAddr);
     
                                             
