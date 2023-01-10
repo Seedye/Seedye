@@ -609,7 +609,9 @@ function selectBoardNotice(cp){
         var totalPages = 0;
         var curPage = cp;
 
+        
         for(let board of boardList){
+          console.log(board);
 
           const tr = document.createElement("tr");
 
