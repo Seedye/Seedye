@@ -326,7 +326,12 @@ function selectStoreList(cp){
                                         
                                         if(result > 0){
                                             alert("성공");
+                                            adminR.style.display = "none";
+                                            storeManageMain.style.display = "flex";
                                         }
+                                    }, 
+                                    error:()=>{
+                                        console.log("실패");
                                     }
                                 });
 
@@ -344,7 +349,12 @@ function selectStoreList(cp){
                                 success:(result)=>{
                                     if(result >0){
                                         alert("성공");
+                                        adminR.style.display = "none";
+                                        storeManageMain.style.display = "flex";
                                     }
+                                },
+                                error:()=>{
+                                    console.log("실패");
                                 }
                             })
                         })
@@ -967,8 +977,13 @@ function selectBoxSelect(cp){
                                                 
                                                 if(result > 0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                               
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
@@ -986,7 +1001,12 @@ function selectBoxSelect(cp){
                                         success:(result)=>{
                                             if(result >0){
                                                 alert("성공");
+                                                adminR.style.display = "none";
+                                                storeManageMain.style.display = "flex";
                                             }
+                                        },
+                                        error:()=>{
+                                            console.log("실패");
                                         }
                                     })
                                 })
@@ -1288,8 +1308,13 @@ function selectBoxSelect(cp){
                                                     
                                                     if(result > 0){
                                                         alert("성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
@@ -1611,8 +1636,13 @@ enrollBtn.addEventListener("click", ()=>{
                                                 
                                                 if(result > 0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                                
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
@@ -1918,8 +1948,13 @@ enrollBtn.addEventListener("click", ()=>{
                                                     
                                                     if(result > 0){
                                                         alert("성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
@@ -1937,7 +1972,12 @@ enrollBtn.addEventListener("click", ()=>{
                                             success:(result)=>{
                                                 if(result >0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         })
                                     })
