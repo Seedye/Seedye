@@ -81,10 +81,7 @@ function selectBoardNotice(cp){
         
         const boardList = map.boardList;
         const pagination = map.pagination;
-        
-        console.log(boardList.boardDelFl);
-        console.log(boardList.boardCode);
-        
+
         const totalCount = pagination.listCount;
 
         var pageSize = pagination.pageSize;

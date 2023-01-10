@@ -1713,7 +1713,6 @@ enrollBtn.addEventListener("click", ()=>{
                     const pagination = map.pagination;
                     const storeList = map.storeList;
                     
-                    console.log(map);
                     
                     const totalCount = pagination.listCount;
         

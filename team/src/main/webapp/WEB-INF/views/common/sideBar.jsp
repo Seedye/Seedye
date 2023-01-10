@@ -30,7 +30,7 @@
                     <li><a href="/freeBoardList/3">자유게시판</a></li>
                 </ul>     
             </div>
-        <label for="" class="sideM" id="side4"><a href="">식당 등록문의</a></label>
+        <!-- <label for="" class="sideM" id="side4"><a id="inquiry">식당 등록문의</a></label> -->
         <c:if test="${empty loginMember}">
         <label for="" class="sideM" id="side5"><a href="/login">마이페이지</a></label>
         </c:if>
