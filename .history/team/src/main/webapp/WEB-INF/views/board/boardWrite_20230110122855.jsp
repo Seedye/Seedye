@@ -69,31 +69,31 @@
                 </div> 
               -->
                 <!-- 사진 추가 버튼 -->
-                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+                <div class="board-view-content-img add-file-area" id="inputFilearea2">
                   <label for="inputFile2">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
-                  <input class="inputFile" type="file" name="inputFile" id="inputFile2" multiple="multiple" hidden>                
+                  <input type="file" name="inputFile" id="inputFile2" multiple="multiple" hidden>                
                 </div> 
 
-                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea3">
+                <div class="board-view-content-img add-file-area" id="inputFilearea3">
                   <label for="inputFile3">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
-                  <input class="inputFile" type="file" name="inputFile" id="inputFile3" multiple="multiple" hidden>                
+                  <input type="file" name="inputFile" id="inputFile3" multiple="multiple" hidden>                
                 </div> 
 
-                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea4">
+                <div class="board-view-content-img add-file-area" id="inputFilearea4">
                   <label for="inputFile4">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
-                  <input class="inputFile" type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
+                  <input type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
                 </div> 
               </div>
 

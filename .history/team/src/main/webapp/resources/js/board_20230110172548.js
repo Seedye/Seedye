@@ -30,10 +30,10 @@ let inputFilearea = 0;
 // let j = inputFilearea;
 let fileInputNum = 0;
 let inputFileCheck = 0;
-// var imgArr=[];
+var imgArr=[];
 for(let i=0; i<inputFile.length; i++){
   inputFile[i].addEventListener("change", (e) => {
-    // imgArr.push(inputFile[i].value);
+    imgArr.push(inputFile[i].value);
     
     if (e.target.files[0] != undefined) {
       // 첫 파일 선택 영역 안보이게
@@ -88,20 +88,20 @@ for(let i=0; i<inputFile.length; i++){
           // });
   
           // inputFileCheck=fileInputNum;
-          // console.log("중간에 확인:"+inputFileCheck);
+          console.log("중간에 확인:"+inputFileCheck);
 
         };
         inputFileCheck++;
         
-        // console.log("중간에 확인22:"+inputFileCheck);
+        console.log("중간에 확인22:"+inputFileCheck);
       }
-      // console.log("중간에 확인ㅁ나어로:"+inputFileCheck);
+      console.log("중간에 확인ㅁ나어로:"+inputFileCheck);
      
     }
 
-    // console.log(imgArr);
-    // console.log("중간에 확인2546846:"+inputFileCheck);
-    // console.log(fileInputNum);
+    console.log(imgArr);
+    console.log("중간에 확인2546846:"+inputFileCheck);
+    console.log(fileInputNum);
     if(inputFileCheck==1){
       inputFilearea2.classList.add("add-file-area");
       inputFilearea3.classList.add("add-file-area-hidden");
@@ -139,7 +139,7 @@ for(let i=0; i<inputFile.length; i++){
   });
 }
 
-// console.log("inputFileCheck:"+inputFileCheck);
+console.log("inputFileCheck:"+inputFileCheck);
 
 
 // }
