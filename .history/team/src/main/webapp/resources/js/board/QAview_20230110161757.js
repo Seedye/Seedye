@@ -410,17 +410,14 @@ for (let boardListViewItems of boardListView) {
               // 수정 버튼 클릭 했을때
               boardUpdateInput.addEventListener("click", () => {
                 // console.log("수정버튼 눌림");
-                // console.log(imgArr);
-
                 $.ajax({
                   url: "/QABoardUpdate",
                   type: "GET",
                   data: {
                     boardNo: boardListViewItems.lastElementChild.id,
                     boardContent: boardContent.value,
-                    // imageList: imgArr,
+                    imageList: imgArr,
                     boardTitle: boardTitle.value,
-
                   },
                   dataType: "json",
                   success: (result) => {

@@ -220,17 +220,12 @@
 }
 .addimg{
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
-  /* border: 1px solid #2aa80079; */
-  /* width: 100px;
-  height: 100px; */
-}
-.addimg>i{
-  color: white;
+  border: 1px solid #2aa80079;
+  width: 100px;
+  width: 100px;
 }
 .addimg:hover{
   background-color: #2aa80079;
-  box-shadow: 1px 1px 1px 1px rgb(206, 204, 204);
 }
 /* .board-Write-img-delete :hover{
   background-color: #2db40025;

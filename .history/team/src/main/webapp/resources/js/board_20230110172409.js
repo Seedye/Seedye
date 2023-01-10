@@ -30,11 +30,10 @@ let inputFilearea = 0;
 // let j = inputFilearea;
 let fileInputNum = 0;
 let inputFileCheck = 0;
-// var imgArr=[];
+var imgArr=[];
 for(let i=0; i<inputFile.length; i++){
   inputFile[i].addEventListener("change", (e) => {
-    // imgArr.push(inputFile[i].value);
-    
+  
     if (e.target.files[0] != undefined) {
       // 첫 파일 선택 영역 안보이게
       inputFilearea1.style.display = "none";
@@ -55,6 +54,7 @@ for(let i=0; i<inputFile.length; i++){
         const reader = new FileReader(); // 파일 읽는 객체
         reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
         
+        imgArr.push(inputFile[i].value);
 
         reader.onload = (e) => {
           // <div class="board-view-content-img">
@@ -88,20 +88,20 @@ for(let i=0; i<inputFile.length; i++){
           // });
   
           // inputFileCheck=fileInputNum;
-          // console.log("중간에 확인:"+inputFileCheck);
+          console.log("중간에 확인:"+inputFileCheck);
 
         };
         inputFileCheck++;
         
-        // console.log("중간에 확인22:"+inputFileCheck);
+        console.log("중간에 확인22:"+inputFileCheck);
       }
-      // console.log("중간에 확인ㅁ나어로:"+inputFileCheck);
+      console.log("중간에 확인ㅁ나어로:"+inputFileCheck);
      
     }
 
-    // console.log(imgArr);
-    // console.log("중간에 확인2546846:"+inputFileCheck);
-    // console.log(fileInputNum);
+    console.log(imgArr);
+    console.log("중간에 확인2546846:"+inputFileCheck);
+    console.log(fileInputNum);
     if(inputFileCheck==1){
       inputFilearea2.classList.add("add-file-area");
       inputFilearea3.classList.add("add-file-area-hidden");
@@ -139,7 +139,7 @@ for(let i=0; i<inputFile.length; i++){
   });
 }
 
-// console.log("inputFileCheck:"+inputFileCheck);
+console.log("inputFileCheck:"+inputFileCheck);
 
 
 // }

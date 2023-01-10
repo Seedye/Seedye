@@ -30,11 +30,9 @@ let inputFilearea = 0;
 // let j = inputFilearea;
 let fileInputNum = 0;
 let inputFileCheck = 0;
-// var imgArr=[];
 for(let i=0; i<inputFile.length; i++){
   inputFile[i].addEventListener("change", (e) => {
-    // imgArr.push(inputFile[i].value);
-    
+  
     if (e.target.files[0] != undefined) {
       // 첫 파일 선택 영역 안보이게
       inputFilearea1.style.display = "none";
@@ -42,9 +40,9 @@ for(let i=0; i<inputFile.length; i++){
       let filesLength = parseInt(e.target.files.length);
   
       // 선택파일 4개라면
-      if (filesLength > 4-inputFileCheck) {
+      if (filesLength > 4) {
         alert("사진 첨부는 4개까지 가능합니다.");
-        fileInputNum = 4-inputFileCheck;
+        fileInputNum = 4;
       } else {
         fileInputNum = e.target.files.length;
       }
@@ -54,8 +52,7 @@ for(let i=0; i<inputFile.length; i++){
         // 이벤트 발생한 파일 길이 만큼 for문 돌림
         const reader = new FileReader(); // 파일 읽는 객체
         reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
-        
-
+  
         reader.onload = (e) => {
           // <div class="board-view-content-img">
           //   <div class="board-Write-img-delete">&times;</div>
@@ -87,59 +84,74 @@ for(let i=0; i<inputFile.length; i++){
           //   console.log(inputFileCheck);
           // });
   
-          // inputFileCheck=fileInputNum;
-          // console.log("중간에 확인:"+inputFileCheck);
-
+          inputFileCheck++;
+          console.log(inputFileCheck);
         };
-        inputFileCheck++;
-        
-        // console.log("중간에 확인22:"+inputFileCheck);
+  
       }
-      // console.log("중간에 확인ㅁ나어로:"+inputFileCheck);
-     
     }
-
-    // console.log(imgArr);
-    // console.log("중간에 확인2546846:"+inputFileCheck);
-    // console.log(fileInputNum);
-    if(inputFileCheck==1){
+    console.log(fileInputNum);
+    if(fileInputNum==1){
+    
+      inputFilearea2.classList.remove("add-file-area-hidden");
       inputFilearea2.classList.add("add-file-area");
       inputFilearea3.classList.add("add-file-area-hidden");
-      inputFilearea3.classList.remove("add-file-area");
       inputFilearea4.classList.add("add-file-area-hidden");
-      inputFilearea4.classList.remove("add-file-area");
-    }else if(inputFileCheck==2){
+    }else if(fileInputNum==2){
       inputFilearea3.classList.add("add-file-area");
       inputFilearea3.classList.remove("add-file-area-hidden");
       inputFilearea2.classList.add("add-file-area-hidden");
       inputFilearea4.classList.add("add-file-area-hidden");
-      inputFilearea2.classList.remove("add-file-area");
-      inputFilearea4.classList.remove("add-file-area");
-    }else if(inputFileCheck==3){
+    }else if(fileInputNum==3){
       inputFilearea4.classList.remove("add-file-area-hidden");
-      inputFilearea4.classList.add("add-file-area");
       inputFilearea2.classList.add("add-file-area-hidden");
       inputFilearea3.classList.add("add-file-area-hidden");
-      inputFilearea2.classList.remove("add-file-area");
-      inputFilearea3.classList.remove("add-file-area");
+      inputFilearea4.classList.add("add-file-area");
     }else {
       inputFilearea2.classList.add("add-file-area-hidden");
       inputFilearea3.classList.add("add-file-area-hidden");
-      inputFilearea4.classList.add("add-file-area-hidden"); 
-      inputFilearea2.classList.remove("add-file-area");
-      inputFilearea3.classList.remove("add-file-area");
-      inputFilearea4.classList.remove("add-file-area"); 
-      
+      inputFilearea4.classList.add("add-file-area-hidden");
       // inputFilearea2.classList.add("add-file-area-hidden");
     }
     inputFilearea++;
     // console.log("마지막 콘솔 출력 : " + inputFilearea);
   
-    
+    //   if(inputFileCheck!=4){
+        //
+        // <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+        //   <label for="inputFile2">
+        //     <div class="board-Write-img-delete">
+        //       <i class="fa-solid fa-plus fa-1x"></i>
+        //     </div>
+        //   </label>
+        //   <input type="file" name="inputFile" id="inputFile2" class="inputFile" multiple="multiple" hidden>
+        // </div>
+  
+    //     const inputFileareaDiv = document.createElement("div");
+    //     const inputFileLabel = document.createElement("label");
+    //     const imgDeleteDiv = document.createElement("div");
+    //     const inputFileInput = document.createElement("input");
+  
+    //     inputFileareaDiv.classList.add("board-view-content-img");
+    //     inputFileareaDiv.setAttribute("id", "inputFilearea"+ inputFilearea);// 파일 몇번째 추가인가 작성
+    //     inputFileLabel.setAttribute("for", "inputFile"+inputFilearea);
+    //     imgDeleteDiv.classList.add("board-Write-img-delete");
+    //     imgDeleteDiv.setAttribute("class","fa-solid fa-plus fa-1x" );
+    //     inputFileInput.setAttribute("type","file");
+    //     inputFileInput.setAttribute("name", "inputFile");
+    //     inputFileInput.setAttribute("id","inputFile"+inputFilearea);
+    //     inputFileInput.classList.add("inputFile");
+    //     inputFileInput.setAttribute("multiple", "multiple");
+  
+    //     inputFileLabel.append(imgDeleteDiv,inputFileInput);
+    //     inputFileareaDiv.append(inputFileLabel);
+    //     boardViewContentImgArea.append(inputFileareaDiv);
+  
+    //   }
   });
 }
 
-// console.log("inputFileCheck:"+inputFileCheck);
+console.log("inputFileCheck:"+inputFileCheck);
 
 
 // }

@@ -71,7 +71,7 @@
                 <!-- 사진 추가 버튼 -->
                 <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
                   <label for="inputFile2">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
@@ -80,7 +80,7 @@
 
                 <div class="board-view-content-img add-file-area-hidden" id="inputFilearea3">
                   <label for="inputFile3">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
@@ -89,7 +89,7 @@
 
                 <div class="board-view-content-img add-file-area-hidden" id="inputFilearea4">
                   <label for="inputFile4">
-                    <div class="board-Write-img-delete addimg">
+                    <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
                     </div>
                   </label>
