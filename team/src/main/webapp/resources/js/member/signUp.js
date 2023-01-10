@@ -94,7 +94,7 @@ memberId.addEventListener("input", function(){
     }
 
     // 정규표현식을 이용한 유효성 검사
-    const regEx = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{10,20}$/;
+    const regEx = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,14}$/;
 
     if(regEx.test(memberId.value)){
         $.ajax({
@@ -123,7 +123,7 @@ memberId.addEventListener("input", function(){
             }
         });
     } else {
-        idMessage.innerText = "영문과 숫자를 포함해 10~20 글자 사이로 입력해주세요.";
+        idMessage.innerText = "영문과 숫자를 포함해 8~14 글자 사이로 입력해주세요.";
         idMessage.classList.add("error");
         idMessage.classList.remove("confirm");
 

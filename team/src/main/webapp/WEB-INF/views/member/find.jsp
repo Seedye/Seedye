@@ -57,7 +57,7 @@
                     <div class="find-wrap readonlyBox">
                         <div class="confirm-box new-box">
                             <div class="font-text">아이디</div>
-                            <input type="text" id="memberId" name="memberId" maxlength="20" autocomplete="off" value="test" readonly>
+                            <input type="text" id="memberId" name="memberId" maxlength=14" autocomplete="off" value="test" readonly>
                         </div>
                     </div>
 
