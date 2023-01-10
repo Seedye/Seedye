@@ -42,7 +42,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="container" id="freeBoard">
-                                <span>커뮤니티</span>
+                                <span>자유게시판</span>
                                 <img src="/resources/images/자유게시판.jpg">
                             </div>
                         </div>
