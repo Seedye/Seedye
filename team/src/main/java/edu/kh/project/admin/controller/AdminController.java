@@ -111,7 +111,7 @@ public class AdminController {
 			@RequestParam Map<String, Object> boardMap) {
 		
 		// 검색 결과 없을 때
-		if(boardMap.get("keyword") == null) {
+		if(boardMap.get("keyword").equals("")) {
 			
 			Map<String, Object> map = service.selectAdminBoard(boardCode, cp);
 			
