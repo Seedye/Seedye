@@ -12,7 +12,7 @@
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar2.css">
+    <link rel="stylesheet" href="/resources/css/sideBarStore.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
@@ -27,9 +27,8 @@
 
             <!-- 식당 등록 -->
             <div id="adminR" class="admin-mainMenu">
-                <form action="/admin/resisterStore" method="Post">
-                    <div id="imageArea">
-                        <div class="imageDiv">
+                <div id="imageArea">
+                    <div class="imageDiv">
                             <label for="image0">
                                 <img src="" class="preview" id="image0i">
                             </label>
@@ -55,7 +54,7 @@
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>업소 상호명</aside>
-                        <input type="text" id="storeNameArea">
+                        <input type="text" id="storeNameArea" name="storeName">
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>업종</aside>
@@ -83,19 +82,19 @@
                     </div>
                     <div class="adminR-menu">
                         <aside><span class="red">＊</span>전화번호</aside>
-                        <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="" id="phoneNumberArea">
+                        <input type="text" class="phoneNumber" placeholder="전화번호" onkeyup="" id="phoneNumberArea" name="storeTel">
                     </div>
                     <div class="adminR-menu">
                         <aside>메뉴, 가격</aside>
-                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none" id="InfoArea"></textarea>
+                        <textarea placeholder="주요 메뉴, 가격" style="width: 50%; height: 40%;" resize="none" id="InfoArea" name="storeInfo"></textarea>
                     </div>
                     <div style="margin-Left:40px"><span style="color:#aaa">* 필수 입력 항목입니다.</span></div>
                     <div id="btn">
-                        <button id="registerStore" type="button">등록</button>
-                        <button id="returnStore" type="button">취소하기</button>
-                        <button id="returnList" type="button">목록으로</button>
+                        <button id="registerStore" type="button" class="btns">식당 등록</button>
+                        <button id="updateStore" type="button" class="btns">정보 수정</button>
+                        <button id="returnStore" type="button" class="btns">취소하기</button>
+                        <button id="returnList" type="button" class="btns">목록으로</button>
                     </div>
-                </form> 
             </div>
             <div id="storeManage" class="admin-mainMenu">
                 <div id="storeArea">
@@ -273,10 +272,10 @@
         </div>    
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
     <script>
-              var loginMemberAuthority = "${loginMember.authority}";
+        var loginMemberAuthority = "${loginMember.authority}";
         const boardCode = "${boardCode}";
+        
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

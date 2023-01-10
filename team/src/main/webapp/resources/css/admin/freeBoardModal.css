@@ -7,6 +7,8 @@
     flex-direction: column;
     border-top-right-radius: 5%;
     border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
     position: absolute;
     top: 25%;
     right:50%;

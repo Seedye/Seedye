@@ -111,7 +111,7 @@ public class AdminController {
 			@RequestParam Map<String, Object> boardMap) {
 		
 		// 검색 결과 없을 때
-		if(boardMap.get("search") == null) {
+		if(boardMap.get("keyword") == null) {
 			
 			Map<String, Object> map = service.selectAdminBoard(boardCode, cp);
 			
@@ -554,6 +554,7 @@ public class AdminController {
 		return new Gson().toJson(map);
 	}
 	
+	// 자유게시판 삭제
 	@GetMapping("/admin/deleteFreeBoard")
 	@ResponseBody
 	public int deleteFreeBoard(int boardNo) {
@@ -561,6 +562,24 @@ public class AdminController {
 		int result = service.deleteFreeBoard(boardNo);
 		
 		return result;
+	}
+	
+	
+	// 식당 정보 수정
+	@GetMapping("/admin/updateStore")
+	@ResponseBody
+	public int updateStore(@RequestParam Map<String, Object> paramMap, int storeNo) {
+		
+	
+		System.out.println(paramMap);
+		
+		int result = service.updateStore(paramMap, storeNo);
+		
+		
+		return result;
+			
+		
+		
 	}
 	
 }
