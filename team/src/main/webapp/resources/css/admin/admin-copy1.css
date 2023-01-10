@@ -87,6 +87,7 @@
     justify-content: center;
     align-items: center;
     margin-left: auto;
+    height: 100%;
 }
 
 #tableArea{
@@ -469,4 +470,13 @@ tr:hover{
 
 tr{
     height: 50px;
+}
+
+.checked{
+ background-color: black;
+}
+
+.fontColor{
+    color: #2db400;
+    font-weight: bold;
 }

@@ -9,6 +9,7 @@ import edu.kh.project.admin.model.vo.License;
 import edu.kh.project.admin.model.vo.Store;
 import edu.kh.project.admin.model.vo.StoreImage;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.Comment;
 import edu.kh.project.member.model.vo.Member;
 
 public interface AdminService {
@@ -203,6 +204,18 @@ public interface AdminService {
 	 * @return map
 	 */
 	Map<String, Object> selectEnroll_search(Map<String, Object> enrollMap, int cp);
+
+
+
+	List<Board> selectFreeBoard(int boardNo);
+
+
+
+	List<Comment> selectFreeBoard_comment(int boardNo);
+
+
+
+	int deleteFreeBoard(int boardNo);
 
 
 

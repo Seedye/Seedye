@@ -23,7 +23,6 @@ if(searchParam.get("cp") != null){
     selectStoreList(searchParam.get("cp"));
 }else{
     selectStoreList(cp);
-    selectMemberList(cp);
 }
 
 
@@ -139,7 +138,14 @@ function selectStoreList(cp){
                         history.pushState(null,null, location.pathname + "?cp=" + id_check)
                         
                         
-                        if(id_check != null) selectStoreList(cp); 
+                        if(id_check != null) {
+                            selectStoreList(cp);
+                            $(this)[0].classList.add("fontColor");
+                        } else{
+                            $(this)[0].classList.remove("fontColor");
+
+                        }
+
                         
 
                     })
@@ -437,10 +443,15 @@ function selectStoreList(cp){
                             cp = id_check;
                             
 
+                            if(id_check != null) {
+                                selectStoreList(cp);
+                                $(this)[0].classList.add("fontColor");
+                            } else{
+                                $(this)[0].classList.remove("fontColor");
+    
+                            }
+    
                             
-                            if(id_check != null) selectStoreList(cp); 
-                            
-
                         })
 
                         $(".pageFirst").click(function(){
@@ -469,7 +480,8 @@ function selectStoreList(cp){
     
                             selectStoreList(cp);
                         })
-                       
+
+
     
     
     
@@ -745,10 +757,14 @@ function selectBoxSelect(cp){
                         cp = id_check;
                         
             
-                        
-                        if(id_check != null) selectBoxSelect(cp); 
-                        
-            
+                        if(id_check != null) {
+                            selectBoxSelect(cp);
+                            $(this)[0].classList.add("fontColor");
+                        } else{
+                            $(this)[0].classList.remove("fontColor");
+
+                        }
+
                     })
                     $(".pageFirst").click(function(){
                         
@@ -991,7 +1007,6 @@ function selectBoxSelect(cp){
                     // 전화번호
                     const td5 = document.createElement("td");
 
-                    console.log(store.storeTel);
                     if(store.storeTel == null){
                         td5.innerText = "정보 없음"
                         td5.style.color = "red";
@@ -1043,10 +1058,14 @@ function selectBoxSelect(cp){
                         
                         cp = id_check;
                         
-                            
-                        
-                        if(id_check != null) selectBoxSelect(cp); 
-                        
+                        if(id_check != null) {
+                            selectBoxSelect(cp);
+                            $(this)[0].classList.add("fontColor");
+                        } else{
+                            $(this)[0].classList.remove("fontColor");
+
+                        }
+
             
                     })
                     
@@ -1347,10 +1366,14 @@ enrollBtn.addEventListener("click", ()=>{
                         
                         cp = id_check;
                         
-            
-                        
-                        if(id_check != null) enroll(cp); 
-                        
+                        if(id_check != null) {
+                            enroll(cp);
+                            $(this)[0].classList.add("fontColor");
+                        } else{
+                            $(this)[0].classList.remove("fontColor");
+
+                        }
+
             
                     })
                     $(".pageFirst").click(function(){
@@ -1634,9 +1657,14 @@ enrollBtn.addEventListener("click", ()=>{
                             cp = id_check;
                             
                 
-                            
-                            if(id_check != null) enroll(cp); 
-                            
+                            if(id_check != null) {
+                                enroll(cp);
+                                $(this)[0].classList.add("fontColor");
+                            } else{
+                                $(this)[0].classList.remove("fontColor");
+    
+                            }
+    
                 
                         })
                         $(".pageFirst").click(function(){
@@ -1868,7 +1896,7 @@ function pageLink(curPage, totalPages) {
 	for (var i = startPage; i <= endPage; i++) {
 	    //현재페이지면 진하게 표시
 	    if (i == curPage) {
-	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'>" + i + "</button>"
+	        pageUrl += "<button class='pageBtn fontColor' href='javascript:void(0);'>" + i + "</button>"
 	    } else {
 	        pageUrl += "<button class='pageBtn' href='javascript:void(0);'  + id="+i+">" + i + " </button>";
 	    }

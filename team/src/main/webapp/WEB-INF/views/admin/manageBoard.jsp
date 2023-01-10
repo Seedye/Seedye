@@ -10,17 +10,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="/resources/css/admin/boardManage.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/sideBar2.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <link rel="stylesheet" href="/resources/css/board/board-view-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/boardManage.css">
 </head>
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
         <jsp:include page="/WEB-INF/views/admin/store.jsp" />
+        <jsp:include page="/WEB-INF/views/board/FreeBoardView.jsp"/>
         
         <div id="adminMain">    
             
@@ -114,11 +115,12 @@
 
     </script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-   <script src="/resources/js/sideBar.js"></script>
-   <script src="/resources/js/admin/swiper.min.js"></script>
-   <script src="/resources/js/header.js"></script>
-   <script src="/resources/js/admin/boardManage.js"></script>
-   <script src="/resources/js/board/QAview.js"></script>
+<script src="/resources/js/admin/swiper.min.js"></script>
+<script src="/resources/js/header.js"></script>
+<script src="/resources/js/board/QAview.js"></script>
+<script src="/resources/js/sideBar.js"></script>
+<script src="/resources/js/admin/boardManage.js"></script>
+<script src="/resources/js/admin/freeBoardView.js"></script>
 
 
 </body>
