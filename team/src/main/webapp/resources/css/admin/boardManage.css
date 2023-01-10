@@ -244,11 +244,18 @@ tr:hover{
 
 
 .fontColor{
-    color: #2db400;
+    background-color: #2db400;
+    color: white;
+    border-radius: 50%;
     font-weight: bold;
+    width: 15px;
 }
 
 .board-view-content-text textarea{
     width: 533px; 
     height: 121px;
+}
+
+.board-list-view{
+    height: 50px;
 }

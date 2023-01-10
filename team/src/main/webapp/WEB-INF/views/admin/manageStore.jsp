@@ -12,7 +12,7 @@
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar2.css">
+    <link rel="stylesheet" href="/resources/css/sideBarStore.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
