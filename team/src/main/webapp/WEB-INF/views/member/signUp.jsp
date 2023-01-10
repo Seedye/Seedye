@@ -38,10 +38,10 @@
                     <!-- 아이디 입력 -->
                     <div class="signUp-input-area">
                         <input type="text" name="memberId" id="memberId" placeholder="아이디"
-                        maxlength="20" autocomplete="off" >
+                        maxlength="14" autocomplete="off" >
 
                     </div>
-                    <span class="signUp-message" id="idMessage">영문과 숫자를 포함해 10~20 글자 사이로 입력해주세요.</span>
+                    <span class="signUp-message" id="idMessage">영문과 숫자를 포함해 8~14 글자 사이로 입력해주세요.</span>
 
                     <!-- 비밀번호/비밀번호 확인 입력 -->
                     <label for="memberPw">
