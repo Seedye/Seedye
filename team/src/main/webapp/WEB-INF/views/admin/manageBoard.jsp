@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
     <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/sideBar2.css">
+    <link rel="stylesheet" href="/resources/css/sideBarBoard.css">
     <link rel="stylesheet" href="/resources/css/admin/swiper.min.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
     <link rel="stylesheet" href="/resources/css/board/board-view-style.css">
@@ -71,6 +71,7 @@
                                 <th>작성자</th>
                                 <th>조회수</th>
                                 <th>등록일</th>
+                                <th>삭제여부</th>
                                 <th>관리</th>
                             </tr>
                         </thead>
