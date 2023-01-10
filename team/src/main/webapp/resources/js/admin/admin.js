@@ -103,10 +103,13 @@ function selectStoreList(cp){
                     td6.innerText = '기본'
                 } else if(store.checkFl == 'N'){
                     td6.innerText = '미확인'
+                    td6.style.color="red"
                 } else if(store.checkFl == 'C'){
                     td6.innerText = '협의중'
+                    td6.style.color = "blue"
                 } else {
                     td6.innerText = "등록 완료"
+                    td6.style.color = "green"
                 }
 
                 // 관리하기
@@ -411,10 +414,13 @@ function selectStoreList(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color="red"
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }
     
                     // 관리하기
@@ -721,10 +727,13 @@ function selectBoxSelect(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }    
 
                     // 관리하기
@@ -1023,10 +1032,13 @@ function selectBoxSelect(cp){
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }    
 
                     // 관리하기
@@ -1331,10 +1343,13 @@ enrollBtn.addEventListener("click", ()=>{
                         td6.innerText = '기본'
                     } else if(store.checkFl == 'N'){
                         td6.innerText = '미확인'
+                        td6.style.color = "red";
                     } else if(store.checkFl = 'C'){
                         td6.innerText = '협의중'
+                        td6.style.color = "blue"
                     } else {
                         td6.innerText = "등록 완료"
+                        td6.style.color = "green"
                     }
 
 
@@ -1624,10 +1639,13 @@ enrollBtn.addEventListener("click", ()=>{
                             td6.innerText = '기본'
                         } else if(store.checkFl == 'N'){
                             td6.innerText = '미확인'
+                            td6.style.color="red"
                         } else if(store.checkFl = 'C'){
                             td6.innerText = '협의중'
+                            td6.style.color = "blue"
                         } else {
                             td6.innerText = "등록 완료"
+                            td6.style.color = "green"
                         }
                         const td7 = document.createElement("td");
                         td7.innerHTML = "<button class='store-manage'>관리하기</button>";
