@@ -434,7 +434,9 @@ for (let freeBoardOneItems of freeBoardOne) {
                         // 수정될 제목 / 내용
                         boardTitle.innerHTML = saveBoardTitle;
                         boardContent.innerHTML = saveContent;
-            
+                        if( freeBoardDetail[0].imageList.length==0){
+                            contentDetailAnswer.style.display="none";
+                          }
                         //TODO : 이미지 불러오기 / 저장된 이미지
             
                         //! 이미지 만드는 create작성해야함.
