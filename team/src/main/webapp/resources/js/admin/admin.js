@@ -10,6 +10,8 @@ const search = document.getElementById("search");
 const keyword = document.getElementById("keyword");
 
 const roadAddress = document.getElementById("sample4_roadAddress");
+const landnumberAddress = document.getElementById("sample4_jibunAddress");
+const number = document.getElementById("phoneNumberArea");
 
 var infoArea = document.getElementById("InfoArea");
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -324,11 +326,37 @@ function selectStoreList(cp){
                                         
                                         if(result > 0){
                                             alert("성공");
+                                            adminR.style.display = "none";
+                                            storeManageMain.style.display = "flex";
                                         }
-                                        history.back();
+                                    }, 
+                                    error:()=>{
+                                        console.log("실패");
                                     }
                                 });
 
+                        })
+
+                        const roadTemp = document.querySelector(".inputRoad").value;
+                        const landTemp = document.querySelector(".inputJibun").value;
+
+                        document.getElementById("updateStore").addEventListener("click", ()=>{
+
+                            $.ajax({
+                                url:"/admin/updateStore",
+                                data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                success:(result)=>{
+                                    if(result >0){
+                                        alert("성공");
+                                        adminR.style.display = "none";
+                                        storeManageMain.style.display = "flex";
+                                    }
+                                },
+                                error:()=>{
+                                    console.log("실패");
+                                }
+                            })
                         })
 
 
@@ -616,6 +644,24 @@ function selectStoreList(cp){
                                 
                                 })  
                             });
+
+                            // 식당 정보 수정
+                            const roadTemp = document.querySelector(".inputRoad").value;
+                            const landTemp = document.querySelector(".inputJibun").value;
+    
+                            document.getElementById("updateStore").addEventListener("click", ()=>{
+    
+                                $.ajax({
+                                    url:"/admin/updateStore",
+                                    data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                    "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                    success:(result)=>{
+                                        if(result >0){
+                                            alert("성공");
+                                        }
+                                    }
+                                })
+                            })
                         },
                             error:()=>{
                                 console.log("실패");
@@ -931,11 +977,38 @@ function selectBoxSelect(cp){
                                                 
                                                 if(result > 0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                               
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
+                                })
+
+                                const roadTemp = document.querySelector(".inputRoad").value;
+                                const landTemp = document.querySelector(".inputJibun").value;
+        
+                                document.getElementById("updateStore").addEventListener("click", ()=>{
+        
+                                    $.ajax({
+                                        url:"/admin/updateStore",
+                                        data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                        "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                        success:(result)=>{
+                                            if(result >0){
+                                                alert("성공");
+                                                adminR.style.display = "none";
+                                                storeManageMain.style.display = "flex";
+                                            }
+                                        },
+                                        error:()=>{
+                                            console.log("실패");
+                                        }
+                                    })
                                 })
         
         
@@ -1235,11 +1308,33 @@ function selectBoxSelect(cp){
                                                     
                                                     if(result > 0){
                                                         alert("성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
+                                    })
+
+                                    const roadTemp = document.querySelector(".inputRoad").value;
+                                    const landTemp = document.querySelector(".inputJibun").value;
+            
+                                    document.getElementById("updateStore").addEventListener("click", ()=>{
+            
+                                        $.ajax({
+                                            url:"/admin/updateStore",
+                                            data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                            "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                            success:(result)=>{
+                                                if(result >0){
+                                                    alert("성공");
+                                                }
+                                            }
+                                        })
                                     })
             
             
@@ -1541,11 +1636,33 @@ enrollBtn.addEventListener("click", ()=>{
                                                 
                                                 if(result > 0){
                                                     alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
                                                 }
-                                                history.back();
+                                                
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
                                             }
                                         });
         
+                                })
+
+                                const roadTemp = document.querySelector(".inputRoad").value;
+                                const landTemp = document.querySelector(".inputJibun").value;
+        
+                                document.getElementById("updateStore").addEventListener("click", ()=>{
+        
+                                    $.ajax({
+                                        url:"/admin/updateStore",
+                                        data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                        "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                        success:(result)=>{
+                                            if(result >0){
+                                                alert("성공");
+                                            }
+                                        }
+                                    })
                                 })
         
         
@@ -1831,11 +1948,38 @@ enrollBtn.addEventListener("click", ()=>{
                                                     
                                                     if(result > 0){
                                                         alert("성공");
+                                                        adminR.style.display = "none";
+                                                        storeManageMain.style.display = "flex";
                                                     }
-                                                    history.back();
+                                                    
+                                                },
+                                                error:()=>{
+                                                    console.log("실패");
                                                 }
                                             });
             
+                                    })
+
+                                    const roadTemp = document.querySelector(".inputRoad").value;
+                                    const landTemp = document.querySelector(".inputJibun").value;
+            
+                                    document.getElementById("updateStore").addEventListener("click", ()=>{
+            
+                                        $.ajax({
+                                            url:"/admin/updateStore",
+                                            data:{"storeNo":tempNo, "storeName":storeNameArea.value, "storeType":select.value, "roadnameAddress": roadTemp,
+                                            "landnumberAddress" : landTemp, "storeTel":number.value, "storeInfo":infoArea.value},
+                                            success:(result)=>{
+                                                if(result >0){
+                                                    alert("성공");
+                                                    adminR.style.display = "none";
+                                                    storeManageMain.style.display = "flex";
+                                                }
+                                            },
+                                            error:()=>{
+                                                console.log("실패");
+                                            }
+                                        })
                                     })
             
             
@@ -1935,3 +2079,6 @@ document.getElementById("returnList").addEventListener("click", e=>{
     storeManageMain.style.display = "flex";
     adminR.style.display = "none";
 });
+
+
+
