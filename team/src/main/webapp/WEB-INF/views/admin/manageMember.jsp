@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/css/admin/admin-copy1.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
-    <link rel="stylesheet" href="/resources/css/sideBar2.css">
+    <link rel="stylesheet" href="/resources/css/sideBar5.css">
 
 </head>
 <body>
@@ -215,7 +215,8 @@
                     <div id="memberBtn">
                         <button id="m-Btn">권한 변경</button>
                         <button id="m-BtnD">탈퇴</button>
-                        <button id="m-BtnR"><a href="/admin/manageMember">돌아가기</a></button>
+                        <button id="m-BtnR">돌아가기</button>
+
                     </div>
                 </div> 
                 </div>
