@@ -328,7 +328,7 @@ function selectStoreList(cp){
                                     success: (result) =>{
                                         
                                         if(result > 0){
-                                            alert("성공");
+                                            alert("취소 성공");
                                             adminR.style.display = "none";
                                             storeManageMain.style.display = "flex";
                                         }
@@ -1319,7 +1319,7 @@ function selectBoxSelect(cp){
                                                 success: (result) =>{
                                                     
                                                     if(result > 0){
-                                                        alert("성공");
+                                                        alert("취소 성공");
                                                         adminR.style.display = "none";
                                                         storeManageMain.style.display = "flex";
                                                     }
@@ -1650,7 +1650,7 @@ enrollBtn.addEventListener("click", ()=>{
                                             success: (result) =>{
                                                 
                                                 if(result > 0){
-                                                    alert("성공");
+                                                    alert("취소 성공");
                                                     adminR.style.display = "none";
                                                     storeManageMain.style.display = "flex";
                                                 }
@@ -1965,7 +1965,7 @@ enrollBtn.addEventListener("click", ()=>{
                                                 success: (result) =>{
                                                     
                                                     if(result > 0){
-                                                        alert("성공");
+                                                        alert("취소 성공");
                                                         adminR.style.display = "none";
                                                         storeManageMain.style.display = "flex";
                                                     }
