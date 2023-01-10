@@ -43,11 +43,11 @@
               <!-- <div></div> -->
               <!-- 파일선택 div -->
                 <div class="board-view-content-img-select" id="inputFilearea1">
-                  <%-- <label for="inputFile1">
+                  <label for="inputFile1">
                     <i class="fa-solid fa-plus fa-3x"></i>
                     <p>업로드할 사진을 선택해 주세요</p>
                   </label>
-                  <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple"> --%>
+                  <input type="file" name="inputFile" id="inputFile1" class="inputFile" multiple="multiple">
                 </div>
                 <!-- 이미지미리보기 -->
                 <!-- <div class="board-view-content-img">
@@ -69,7 +69,7 @@
                 </div> 
               -->
                 <!-- 사진 추가 버튼 -->
-                <%-- <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
+                <div class="board-view-content-img add-file-area-hidden" id="inputFilearea2">
                   <label for="inputFile2">
                     <div class="board-Write-img-delete">
                       <i class="fa-solid fa-plus fa-1x"></i>
@@ -94,7 +94,7 @@
                     </div>
                   </label>
                   <input type="file" name="inputFile" id="inputFile4" multiple="multiple" hidden>                
-                </div>  --%>
+                </div> 
               </div>
 
           

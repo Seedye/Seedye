@@ -11,9 +11,16 @@ main{
     display: flex;
 }
 
+.introduction-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #main-introduction{
-    width: 1000px;
-    height: 100px;
+    width: 1200px;
+    height: 250px;
     padding: 70px 0px;
 
     display: flex;
@@ -26,27 +33,26 @@ main{
 }
 
 .first-introduction{
-    width: 1000px;
-    height: 500px;
-    margin-bottom: 40px;
+    width: 1100px;
+    height: 550px;
+    margin-bottom: 60px;
 
     display: flex;
     align-items: center;
     
     font-size: 30px;
 
-    /* transition: opacity 1s;
-    opacity: 0; */
-
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 25px 0.5px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .second-introduction, .third-introduction{
-    width: 1000px;
-    height: 500px;
-    margin-bottom: 40px;
+    width: 1100px;
+    height: 550px;
+    margin-bottom: 60px;
 
     display: flex;
     align-items: center;
@@ -72,29 +78,32 @@ main{
     font-weight: bold;
     color: white;
 
-    margin-bottom: 50px;
+    padding: 0px 50px;
+    margin-bottom: 70px;
 }
 
-.first-introduction > div > p:nth-child(2){
+.first-introduction > div > p:nth-child(2),
+.second-introduction > div > p:nth-child(2){
     font-size: 16px;
-    padding: 0px 20px;
+    padding: 0px 50px;
     line-height: 30px;
     color: white;
+    text-align: center;
 
 }
 
-.first-introduction > div > p:nth-child(3){
-    font-size: 10px;
-    color: #919191;
+.first-introduction > div > p:nth-child(3),
+.second-introduction > div > p:nth-child(3){
+    font-size: 12px;
     margin-top: 50px;
     display: flex;
     justify-content: center;
     padding: 0px 20px;
-    color: white;
+    color: #d8f2d8
 }
 
 .second-introduction{
-    background-color: #2db420;
+    background-color: rgb(151, 199, 57);
 }
 
 .second-introduction > div > p:nth-child(1){
@@ -112,16 +121,16 @@ main{
 
 }
 
-.second-introduction > div > p:nth-child(2){
+/* .second-introduction > div > p:nth-child(2){
     color: white;
     padding: 0px 50px;
     font-size: 16px;
     line-height: 30px;
-}
+} */
 
 
 .third-introduction{
-    background-color: #2db420;
+    background-color: white;
 }
 
 .third-introduction > div > p:nth-child(1){
@@ -140,7 +149,6 @@ main{
 .third-introduction > div > p{
     font-size: 12px;
     line-height: 30px;
-    color: white;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -159,9 +167,32 @@ main{
 
 .introduction-text{
 width: 50%;
-
 }
 
 .qqq{
     width: 150px;
+}
+.team-area-all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.team-area{
+    margin-left: 10px;
+}
+.team{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.team > p:nth-child(1){
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.team > p:nth-child(2){
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #2db420;
 }
