@@ -11,7 +11,7 @@
 
 .inquiry-mainMenu{
     width: 900px;
-    height: 70vh;
+    height: auto;
     margin: 0 10px 10px 10px;
     
 }    
@@ -28,7 +28,7 @@
     border-top-right-radius: 10px;  
     border: 1px solid black;
     background-color: white;
-    height: 65%;
+    height: 80%;
 
     
 }

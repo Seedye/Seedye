@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
 </head>
 <body>
-<div class="modal-store" id="modalStore">
+<div class="modal-store">
     <div id="inquiryR" class="inquiry-mainMenu">
         <div id="menu">
             <span>식당 등록 문의</span>

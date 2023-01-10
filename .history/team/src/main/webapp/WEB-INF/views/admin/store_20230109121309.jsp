@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/resources/css/admin/storeModal.css">
 </head>
 <body>
-<div class="modal-store" id="modalStore">
     <div id="inquiryR" class="inquiry-mainMenu">
         <div id="menu">
             <span>식당 등록 문의</span>
@@ -86,8 +85,6 @@
         </div>
         </form>
     </div>
-
-</div>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/admin/store.js"></script>
