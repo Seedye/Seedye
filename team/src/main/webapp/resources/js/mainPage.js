@@ -376,7 +376,7 @@ searchBtn.addEventListener("click", () => {
                                 for (let subItems of modalCloseBtn){
                                     subItems.lastElementChild.addEventListener("click", () => {
                                         modalWindow.style.display = "none";
-                                        document.body.style.overflow = "unset";
+                                        document.body.style.overflowY = "auto";
                                         
                                     });
                                 }
