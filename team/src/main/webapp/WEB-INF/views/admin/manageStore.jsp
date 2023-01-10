@@ -93,6 +93,7 @@
                     <div id="btn">
                         <button id="registerStore" type="button">등록</button>
                         <button id="returnStore" type="button">취소하기</button>
+                        <button id="returnList" type="button">목록으로</button>
                     </div>
                 </form> 
             </div>

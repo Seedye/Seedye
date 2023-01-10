@@ -506,10 +506,12 @@ i:hover{
   align-items: center;
 }
 
-.fa-comment-dots {
+/* .fa-check {
   text-transform: none;
   margin-left: 20px;
-}
+  display: flex;
+  align-items: center;
+} */
 
 .asd{
   display: flex;

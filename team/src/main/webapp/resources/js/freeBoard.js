@@ -32,7 +32,7 @@ for (let freeBoardOneItems of freeBoardOne) {
           
                   }
 
-                  if(freeBoardDetail[0].boardContent){
+                  if(freeBoardDetail[0].boardTitle){
                     var saveBoardTitle =  freeBoardDetail[0].boardTitle.replaceAll((/(<br>|<br\/>|<br \/>)/g, '\r\n'));
                     // XSS 방지 처리 해제
                     saveBoardTitle =  saveBoardTitle.replaceAll("&amp;", "&");
@@ -163,7 +163,8 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 }else{
                                     // contentD.style.marginLeft = "10px"
                                     contentD.style.width = "495px"
-                                    iconContainer.setAttribute("class", "fa-solid fa-comment-dots");
+                                    // iconContainer.setAttribute("class", "fa-regular fa-message");
+                                    iconContainer.innerText = '┖'
                                     iconContainer.style.marginRight = "5px";
                                     anwserP.innerHTML =  comment.memberId + " : " + saveCommentContent;
                                 }
@@ -220,26 +221,6 @@ for (let freeBoardOneItems of freeBoardOne) {
                                 freeBoardDetailAnwserContent.append(updateContainer);
                                 freeBoardDetailAnwserContent.append(contentD);
 
-                                // 대댓글 생성
-                                // const rContentD = document.createElement("div");
-                                // rContentD.classList.add("rContentD")
-                                
-                                // const rAnwserP = document.createElement("p");
-                                // rAnwserP.classList.add("rAnwserP")
-                                // rAnwserP.innerText = comment.memberId + " : " + comment.rCommentTextarea;
-                                // rContentD.append(rAnwserP);
-
-                                
-                                // const rPen = document.createElement("div");
-                                // rPen.classList.add("rPen");
-
-                                // const updateRBtn = document.createElement("button");
-                                // updateRBtn.classList.add("updateRBtn")
-                                // updateRBtn.setAttribute("class", "fa-solid fa-pen");
-
-                                // const deleteRBtn = document.createElement("button");
-                                // deleteRBtn.classList.add("deleteRBtn")
-                                // deleteRBtn.innerText ="x";
 
                                 // 대댓글 등록 생성
                                 const rCommentContainer = document.createElement("div");
@@ -263,7 +244,7 @@ for (let freeBoardOneItems of freeBoardOne) {
 
                                 const rCommentOk = document.createElement("button");
                                 rCommentOk.classList.add("rCommentOk");
-                                rCommentOk.setAttribute("class", "fa-solid fa-comment-dots");
+                                rCommentOk.setAttribute("class", "fa-solid fa-check");
 
                                 const rCommentCancel = document.createElement("button");
                                 rCommentCancel.classList.add("rCommentCancel");
@@ -355,6 +336,8 @@ for (let freeBoardOneItems of freeBoardOne) {
                                     anwserP.addEventListener("click", function(){
                                             if(memberNo == ""){
                                                 rCommentContainer.style.display = "none";
+                                                alert("로그인 후 이용해주세요.")
+
                                             }else{
                                                 rCommentContainer.style.display = "flex";
 
@@ -552,6 +535,7 @@ for (let freeBoardOneItems of freeBoardOne) {
                 // 댓글 등록 ajax
                 anwserBtn.addEventListener("click", () => {
                     if(memberNo == ""){
+                        alert("로그인 후 이용해주세요")
 
                     } else {
 
