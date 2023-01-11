@@ -200,7 +200,8 @@ footer {
 }
 
 #ul-container.scrolled {
-    width: 100%;
+    width: 200%;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     font-weight: bold;

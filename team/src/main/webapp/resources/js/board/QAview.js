@@ -334,6 +334,9 @@ for (let boardListViewItems of boardListView) {
               // 수정될 내용
               boardContent.innerHTML = saveContent;
   
+              if( QABoardDetail[0].imageList.length==0){
+                contentDetailAnswer.style.display="none";
+              }
              //TODO : 이미지 불러오기 / 저장된 이미지
   
                //! 이미지 만드는 create작성해야함.
@@ -348,36 +351,6 @@ for (let boardListViewItems of boardListView) {
   
   
             for (let i = 0; i < QABoardDetail[0].imageList.length; i++) {
-              if(QABoardDetail[0].imageList.length==1){
-                inputFilearea2.classList.add("add-file-area");
-                inputFilearea3.classList.add("add-file-area-hidden");
-                inputFilearea3.classList.remove("add-file-area");
-                inputFilearea4.classList.add("add-file-area-hidden");
-                inputFilearea4.classList.remove("add-file-area");
-              }else if(QABoardDetail[0].imageList.length==2){
-                inputFilearea3.classList.add("add-file-area");
-                inputFilearea3.classList.remove("add-file-area-hidden");
-                inputFilearea2.classList.add("add-file-area-hidden");
-                inputFilearea4.classList.add("add-file-area-hidden");
-                inputFilearea2.classList.remove("add-file-area");
-                inputFilearea4.classList.remove("add-file-area");
-              }else if(QABoardDetail[0].imageList.length==3){
-                inputFilearea4.classList.remove("add-file-area-hidden");
-                inputFilearea4.classList.add("add-file-area");
-                inputFilearea2.classList.add("add-file-area-hidden");
-                inputFilearea3.classList.add("add-file-area-hidden");
-                inputFilearea2.classList.remove("add-file-area");
-                inputFilearea3.classList.remove("add-file-area");
-              }else {
-                inputFilearea2.classList.add("add-file-area-hidden");
-                inputFilearea3.classList.add("add-file-area-hidden");
-                inputFilearea4.classList.add("add-file-area-hidden"); 
-                inputFilearea2.classList.remove("add-file-area");
-                inputFilearea3.classList.remove("add-file-area");
-                inputFilearea4.classList.remove("add-file-area"); 
-                
-                // inputFilearea2.classList.add("add-file-area-hidden");
-              }
               //TODO 아마도 수정 필요
               if (i < 4) {
                 
@@ -410,17 +383,13 @@ for (let boardListViewItems of boardListView) {
               // 수정 버튼 클릭 했을때
               boardUpdateInput.addEventListener("click", () => {
                 // console.log("수정버튼 눌림");
-                // console.log(imgArr);
-
                 $.ajax({
                   url: "/QABoardUpdate",
                   type: "GET",
                   data: {
                     boardNo: boardListViewItems.lastElementChild.id,
                     boardContent: boardContent.value,
-                    // imageList: imgArr,
                     boardTitle: boardTitle.value,
-
                   },
                   dataType: "json",
                   success: (result) => {

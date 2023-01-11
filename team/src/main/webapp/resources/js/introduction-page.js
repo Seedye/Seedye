@@ -12,17 +12,17 @@ window.addEventListener('scroll', function() {
     //     fIntroduction.style.opacity = 0;
     // }
 
-    if (scrollPosition > 342) {
+    if (scrollPosition > 300) {
         sIntroduction.style.opacity = 1;
     }else{
         sIntroduction.style.opacity = 0;
     }
 
-    if (scrollPosition > 745) {
+    if (scrollPosition > 945) {
         tIntroduction.style.opacity = 1;
 
     }
-    if(scrollPosition < 760){
+    if(scrollPosition < 1100){
         tIntroduction.style.opacity = 0;
     }
 

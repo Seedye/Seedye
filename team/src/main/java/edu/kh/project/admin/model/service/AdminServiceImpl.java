@@ -160,7 +160,6 @@ public class AdminServiceImpl implements AdminService{
 		typeMap.put("storeTypeList", storeTypeList);
 		typeMap.put("pagination", pagination);
 		
-		System.out.println(typeMap);
 		
 		return typeMap;
 	}
@@ -255,7 +254,6 @@ public class AdminServiceImpl implements AdminService{
 			}
 			license.setLicenseRename(reName);
 			
-			System.out.println(license);
 			int result1 = dao.insertLicense(license);
 			
 			if(result1 > 0) {
@@ -289,16 +287,13 @@ public class AdminServiceImpl implements AdminService{
 					
 					img.setStoreImageOrder(i);
 					
-					System.out.println(img);
 					storeImageList.add(img);
 				}
 				
-				System.out.println(storeImageList);
 								
 				if(!storeImageList.isEmpty()) {
 					storeNo = result;
 					
-					System.out.println(storeImageList);
 					
 					int result2 = dao.insertStoreImageList(storeImageList);
 					if(result2 == storeImageList.size()) {
@@ -384,7 +379,6 @@ public class AdminServiceImpl implements AdminService{
 		map.put("storeList", storeList);
 		map.put("pagination", pagination);
 		
-		System.out.println(map);
 		return map;
 		
 		
@@ -398,7 +392,6 @@ public class AdminServiceImpl implements AdminService{
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		System.out.println(selectMap);
 		
 		List<Store> storeList = dao.selectStoreList_search(selectMap, pagination);
 		
@@ -421,7 +414,6 @@ public class AdminServiceImpl implements AdminService{
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		System.out.println(searchKey);
 		
 		
 		List<Member> memberList = dao.searchKey(searchKey, pagination);
