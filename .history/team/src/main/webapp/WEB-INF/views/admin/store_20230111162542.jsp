@@ -45,7 +45,7 @@
             </div>
             <div class="inquiryR-menu">
                 <aside><span class="red">＊</span>업소 상호명</aside>
-                <input type="text" name="storeName" required>
+                <input type="text" name="storeName">
             </div>
             <div class="inquiryR-menu">
                 <aside><span class="red">＊</span>업종</aside>

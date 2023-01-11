@@ -44,8 +44,8 @@
                 </div>
             </div>
             <div class="inquiryR-menu">
-                <aside><span class="red">＊</span>업소 상호명</aside>
-                <input type="text" name="storeName" required>
+                <aside><span class="red" required>＊</span>업소 상호명</aside>
+                <input type="text" name="storeName">
             </div>
             <div class="inquiryR-menu">
                 <aside><span class="red">＊</span>업종</aside>
@@ -63,7 +63,7 @@
                 </select>
             </div>
             <div class="inquiryR-menu">
-                <aside><span class="red">＊</span>주소</aside>
+                <aside><span class="red" >＊</span>주소</aside>
                 <div id="addr-area">
                     <button type="button" onclick="sample4_execDaumPostcode()">주소 검색</button>
                     <input type="text" name="roadnameAddress" id="sample4_roadAddress" placeholder="도로명주소">
