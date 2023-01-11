@@ -20,6 +20,7 @@
     <main>
         <!-- header.jsp include -->
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/admin/store.jsp" />
 
         <session class="myPage-content">
 
